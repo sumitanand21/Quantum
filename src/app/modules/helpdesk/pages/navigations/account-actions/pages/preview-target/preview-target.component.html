@@ -1,0 +1,700 @@
+<div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 no_pad float-left mt40 margin-btm100">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card padd20">
+    <h1 class="heading-level-three font17">Preview target account details</h1>
+
+    <div class="col-12 no_pad float-left accordion-main bordr-top mt10">
+      <button class="col-12  float-left cp accordion-head mt10 mb20" role="button" tabindex="0" (click)="showAccountInfo = !showAccountInfo">
+        <span class="mdi-icon accr-arrow" [ngClass]="showAccountInfo ? 'mdi mdi-chevron-up':'mdi mdi-chevron-down'"></span>Account
+        information</button>
+      <div class="float-left col-12 no_pad" *ngIf="showAccountInfo">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accName" class="label-form">
+            Account name </label>
+          <!--<span class="required"> * </span>-->
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" [(ngModel)]="targetMergeDetails.Name" placeholder="" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accNumber" class="label-form">
+            Account number </label>
+
+          <div class="pos-rel w-100 float-left no_pad">
+            <span id="accNumber">{{targetMergeDetails?.Number || ''}}</span>
+
+          </div>
+        </div>
+        <div class="float-left col-12 no_pad">
+          <!-- Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accountType" class="label-form"
+              placeholder="Select enquiry type"> Account type </label>
+            <!--<span class="required"> * </span>-->
+            <!--<div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="accountType" role="listbox" aria-required="true">
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>-->
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="AC0000876543" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accountType" class="label-form"
+              placeholder="Select account type"> Account type </label>
+            <!--<span class="required"> * </span>-->
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.Type" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+            <!--<mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select account type</mat-label>
+              <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+                <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                  {{acctype.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>-->
+          </div>
+          <!--select dropdown ends -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="mainPhone" class="label-form">
+              Main phone</label>
+
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" [(ngModel)]="targetMergeDetails.Contact" placeholder="" id="mainPhone" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="float-left col-12 no_pad">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="parntAcc" class="label-form">Parent
+                account
+              </label>
+              <!--<span class="required"> * </span>-->
+              <div class="pos-rel w-100 float-left no_pad">
+                <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.ParentAccount" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+              </div>
+              <!--<div class="flex-grow-1">
+                <app-auto-complete-select [source]="selectparentAccount" [labelName]="'parntAcc'" [Placeholder]="'Search parent account'"
+                  [selectedObj]="selectedParentAccountObj" [Isdisabled]=true [IsApiCall]=false [details]="parentAccount"
+                  [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="parentAccount">
+                </app-auto-complete-select>
+              </div>-->
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="website" class="label-form">
+              Website</label>
+
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" [(ngModel)]="targetMergeDetails.WebsiteUrl" placeholder="www.test.com" id="website" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="float-left col-12 no_pad">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="currncy" class="label-form">Currency
+              </label>
+              <!--<span class="required"> * </span>-->
+              <!--<div class="flex-grow-1">
+                <app-auto-complete-select [source]="selectCurrency" [labelName]="'currncy'" [Placeholder]="'Search currency'"
+                  [selectedObj]="selectedCurrencyObj" [Isdisabled]=true [IsApiCall]=false [details]="currency"
+                  [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="currency">
+                </app-auto-complete-select>
+              </div>-->
+              <div class="pos-rel w-100 float-left no_pad">
+                <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.Currency" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="Originationlead" class="label-form">
+              Originating lead</label>
+
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" id="Originationlead" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-12 no_pad float-left accordion-main bordr-top mt10">
+      <button class="col-12  float-left cp accordion-head mt10 mb20" role="button" tabindex="0" (click)="showWiproEngagement = !showWiproEngagement">
+        <span class="mdi-icon accr-arrow" [ngClass]="showWiproEngagement ? 'mdi mdi-chevron-up':'mdi mdi-chevron-down'"></span>Wipro
+        engagement details</button>
+      <div class="float-left col-12 no_pad" *ngIf="showWiproEngagement">
+
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accountManger" class="label-form">Account
+              manager/Owner
+            </label>
+            <!--<span class="required"> * </span>-->
+            <!--<div class="flex-grow-1">
+              <app-auto-complete-select [source]="selectAccountManager" [labelName]="'accountManger'" [Placeholder]="'Search account manager/owner'"
+                [selectedObj]="selectedAccountManagerObj" [Isdisabled]=true [IsApiCall]=false [details]="accManager"
+                [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="accManager">
+              </app-auto-complete-select>
+            </div>-->
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.Owner" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="executiveSpons" class="label-form">Executive
+              sponsor
+            </label>
+            <!--<div class="flex-grow-1">
+              <app-auto-complete-select [source]="selectExecutiveSponsor" [labelName]="'executiveSpons'" [Placeholder]="'Search executive sponsor'"
+                [selectedObj]="selectedExecutiveSponsorObj" [Isdisabled]=true [IsApiCall]=false [details]="executiveSponsor"
+                [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="executiveSponsor">
+              </app-auto-complete-select>
+            </div>-->
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="industry" class="label-form">Industry
+            </label>
+            <!--<div class="flex-grow-1">
+              <app-auto-complete-select [source]="selectAccountManager" [labelName]="'industry'" [Placeholder]="'Search industry'"
+                [selectedObj]="selectedAccountManagerObj" [Isdisabled]=true [IsApiCall]=false [details]="accManager"
+                [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="accManager">
+              </app-auto-complete-select>
+            </div>-->
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accCountry" class="label-form">Account
+              country
+            </label>
+            <!--<div class="flex-grow-1">
+              <app-auto-complete-select [source]="selectExecutiveSponsor" [labelName]="'accCountry'" [Placeholder]="'Search account country'"
+                [selectedObj]="selectedExecutiveSponsorObj" [Isdisabled]=true [IsApiCall]=false [details]="executiveSponsor"
+                [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="executiveSponsor">
+              </app-auto-complete-select>
+            </div>-->
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.CountryReference" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="territory" class="label-form">Territory
+            </label>
+            <!--<div class="flex-grow-1">
+              <app-auto-complete-select [source]="selectAccountManager" [labelName]="'territory'" [Placeholder]="'Search territory'"
+                [selectedObj]="selectedAccountManagerObj" [Isdisabled]=true [IsApiCall]=false [details]="accManager"
+                [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="accManager">
+              </app-auto-complete-select>
+            </div>-->
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="vertical" class="label-form">Vertical
+            </label>
+            <!--<div class="flex-grow-1">
+              <app-auto-complete-select [source]="selectExecutiveSponsor" [labelName]="'vertical'" [Placeholder]="'Search vertical'"
+                [selectedObj]="selectedExecutiveSponsorObj" [Isdisabled]=true [IsApiCall]=false [details]="executiveSponsor"
+                [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="executiveSponsor">
+              </app-auto-complete-select>
+            </div>-->
+            <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.Vertical" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Select DROPDOWN STARTS -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accClassification" class="label-form"
+            placeholder="Select account classification"> Account classification </label>
+          <!--<div class="customized-select">
+            <span class="caret color-azure"></span>
+            <select id="accClassification" role="listbox" aria-required="true">
+              <option>1</option>
+              <option>2</option>
+            </select>
+          </div>-->
+          <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accClassification" class="label-form"
+            placeholder="Select account classification"> Account classification </label>
+          <!--<mat-form-field class="col-12 no_pad float-left">
+            <mat-label>Select account classification</mat-label>
+            <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+              <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                {{acctype.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>-->
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.AccountClassification" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+          </div>
+        </div>
+        <!--select dropdown ends -->
+
+        <!-- Select DROPDOWN STARTS -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accountCategory" class="label-form"
+            placeholder="Select account category"> Account category </label>
+          <!--<div class="customized-select">
+            <span class="caret color-azure"></span>
+            <select id="accountCategory" role="listbox" aria-required="true">
+              <option>1</option>
+              <option>2</option>
+            </select>
+          </div>-->
+          <div class="pos-rel w-100 float-left no_pad">
+              <input type="text" placeholder="" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accountCategory" class="label-form"
+            placeholder="Select account category"> Account category </label>
+          <!--<mat-form-field class="col-12 no_pad float-left">
+            <mat-label>Select account category</mat-label>
+            <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+              <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                {{acctype.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>-->
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.AccountCategory" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+          </div>
+        </div>
+        <!--select dropdown ends -->
+
+        <!-- Select DROPDOWN STARTS -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="financialyear" class="label-form"
+            placeholder="Select enquiry type">Financial year</label>
+          <!--<span class="required"> * </span>-->
+          <!--<div class="customized-select">
+            <span class="caret color-azure"></span>
+            <select id="financialyear" role="listbox" aria-required="true">
+              <option>1</option>
+              <option>2</option>
+            </select>
+          </div>-->
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="financialyear" class="label-form"
+            placeholder="Select financial year">Financial year</label>
+          <!--<span class="required"> * </span>-->
+          <!--<mat-form-field class="col-12 no_pad float-left">
+            <mat-label>Select financial year</mat-label>
+            <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+              <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                {{acctype.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>-->
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.FinYear" id="accName" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+          </div>
+        </div>
+        <!--select dropdown ends -->
+
+      </div>
+    </div>
+
+    <div class="col-12 no_pad float-left accordion-main bordr-top mt10">
+      <button class="col-12  float-left cp accordion-head mt10 mb20" role="button" tabindex="0" (click)="businessAccountInfo = !businessAccountInfo">
+        <span class="mdi-icon accr-arrow" [ngClass]="businessAccountInfo ? 'mdi mdi-chevron-up':'mdi mdi-chevron-down'"></span>Business
+        information</button>
+      <div class="float-left col-12 no_pad" *ngIf="businessAccountInfo">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="itbudget" class="label-form">
+            Total IT budget </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="itbudget" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="cbuoutsource" class="label-form">
+            No. of CBUs that can outsource </label>
+
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="cbuoutsource" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="totalappBudget" class="label-form">
+            Total apps budget </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="totalappBudget" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="cbuengaged" class="label-form">
+            No. of CBUs engaged</label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="cbuengaged" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="InfraBudget" class="label-form">
+            Total infra. budget </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="InfraBudget" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="cbuBilled" class="label-form">
+            No. of CBUs billed </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="cbuBilled" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="totalOper" class="label-form">
+            Total operations budget(BPO) </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="totalOper" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="activeGeo" class="label-form">
+            No. of active geo(s) </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="activeGeo" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="totalengg" class="label-form">
+            Total engineering budget </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="totalengg" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="totalout" class="label-form">
+            Total outsourcing budget </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="totalout" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="float-left col-12 no_pad">
+          <!-- Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="partnerStatus" class="label-form"
+              placeholder="Select partner status"> Partner status </label>
+            <span class="required"> * </span>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="partnerStatus" role="listbox" aria-required="true">
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="partnerStatus" class="label-form"
+              placeholder="Select partner status"> Partner status </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select partner status</mat-label>
+              <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+                <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                  {{acctype.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--select dropdown ends -->
+
+
+          <!-- Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="decisionMaking" class="label-form"
+              placeholder="Select decision making"> Decision making </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="decisionMaking" role="listbox" aria-required="true">
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="decisionMaking" class="label-form"
+              placeholder="Select decision making"> Decision making </label>
+            <!--<span class="required"> * </span>-->
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select decision making</mat-label>
+              <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+                <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                  {{acctype.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--select dropdown ends -->
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+    <div class="col-12 no_pad float-left accordion-main bordr-top mt10">
+      <button class="col-12  float-left cp accordion-head mt10 mb20" role="button" tabindex="0" (click)="mhaDetails = !mhaDetails">
+        <span class="mdi-icon accr-arrow" [ngClass]="mhaDetails ? 'mdi mdi-chevron-up':'mdi mdi-chevron-down'"></span>MHA
+        details</button>
+      <div class="float-left col-12 no_pad" *ngIf="mhaDetails">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="primaryVendor" class="label-form">
+              Primary vendor
+            </label>
+            <div class="flex-grow-1">
+              <app-auto-complete-select [requiredField]="false" [source]="selectparentAccount" [labelName]="'primaryVendor'" [Placeholder]="'Search primary vendor'"
+                [selectedObj]="selectedParentAccountObj" [Isdisabled]=true [IsApiCall]=false [details]="parentAccount"
+                [detailsId]="'parentAccMapGuid'" [MandtErrorFlag]="parentAccount">
+              </app-auto-complete-select>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="fyrevenue" class="label-form">
+            FY revenue</label>
+
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="fyrevenue" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+
+        <div class="float-left col-12 no_pad">
+          <!-- Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="outsourceStatus" class="label-form"
+              placeholder="Select outsource status"> Outsource status </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="outsourceStatus" role="listbox" aria-required="true">
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="outsourceStatus" class="label-form"
+              placeholder="Select outsource status"> Outsource status </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select outsource status</mat-label>
+              <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+                <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                  {{acctype.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--select dropdown ends -->
+
+          <!-- Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="primaryReason" class="label-form"
+              placeholder="Select primary reason for MHA recommendation"> primary reason for MHA recommendation </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="primaryReason" role="listbox" aria-required="true">
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="primaryReason" class="label-form"
+              placeholder="Select primary reason for MHA recommendation"> primary reason for MHA recommendation </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select primary reason for MHA recommendation</mat-label>
+              <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+                <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                  {{acctype.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--select dropdown ends -->
+
+          <!-- Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="thirdYear" class="label-form"
+              placeholder="Select third year revenue potential"> Third year revenue potential </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="thirdYear" role="listbox" aria-required="true">
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="thirdYear" class="label-form"
+              placeholder="Select third year revenue potential"> Third year revenue potential </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select third year revenue potential</mat-label>
+              <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+                <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                  {{acctype.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--select dropdown ends -->
+
+          <!-- Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20  mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="timeFrame" class="label-form"
+              placeholder="Select time frame to open"> Time frame to open </label>
+            <span class="required"> * </span>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="timeFrame" role="listbox" aria-required="true">
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  float-left  plb-60-20 web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="timeFrame" class="label-form"
+              placeholder="Select time frame to open"> Time frame to open </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select time frame to open</mat-label>
+              <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus">
+                <mat-option *ngFor="let acctype of Acctypes" [value]="acctype.value">
+                  {{acctype.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!--select dropdown ends -->
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="col-12 no_pad float-left accordion-main bordr-top mt10">
+      <button class="col-12  float-left cp accordion-head mt10 mb20" role="button" tabindex="0" (click)="showAdress = !showAdress">
+        <span class="mdi-icon accr-arrow" [ngClass]="showAdress ? 'mdi mdi-chevron-up':'mdi mdi-chevron-down'"></span>Address</button>
+      <div class="float-left col-12 no_pad" *ngIf="showAdress">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="street1" class="label-form">
+            Street 1 </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" [(ngModel)]="targetMergeDetails.Address.Address1" placeholder="" id="street1" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="street2" class="label-form">
+            Street 2 </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.Address.Address2" id="street2" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="city" class="label-form">
+            City</label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.Address.City" id="city" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="state" class="label-form">
+            State/Province </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.Address.State_Province" id="state" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ZIP/Postal code" class="label-form">
+            ZIP/Postal code </label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" [(ngModel)]="targetMergeDetails.Address.ZipCode" id="ZIP/Postal code" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left customized-input  plb-60-20 ">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="country" class="label-form">
+            Country</label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input type="text" placeholder="" id="country" [(ngModel)]="targetMergeDetails.Address.Country" disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

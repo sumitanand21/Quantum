@@ -1,0 +1,49 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad custom-select-checkbox"
+    (clickOutside)="closecheck()">
+    <div class="col-12 float-left no_pad">
+        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="serviceLine"
+            class="label-form">{{label}} <span class="asteriq" *ngIf="printAsterisk"> * </span></label>
+        <div class=" d-flex align-items-center ">
+            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left select-input w-100 h-40 mbot-10 "
+                [ngClass]="showcheck?'border-azure br-4-0 ':'border-marble'" (click)="opencheckbox()" (keypress)="opencheckbox()"
+                [(ngModel)]="showService" autocomplete="off" type="text" name="showService"
+                placeholder="{{Placeholder}}" (keyup)="onChangeField($event)" [readonly]="cbuReadOnlyInput">
+            <span class="caret color-azure right-26" [ngClass]="showcheck?'rotate-180':''"></span>
+
+            <!-- (clickOutside)="showcheckbox = false" -->
+
+        </div>
+        <div class="col-12 no_pad multi-check-select  float-left pt10 standard-border color-azure" *ngIf="showcheck">
+            <perfect-scrollbar class="scrollHeight">
+                <!-- <div class="col-xs-12 no_pad searchFilterOptions float-left w-100"> -->
+
+                <div class="checkBoxSelected col-12  float-left check-content" *ngIf="countStored > 0">
+                    <span class="checkBoxCount col-8 col-xs-8 float-left p-4-10 no_pad color-wash">{{countStored}}
+                        accounts selected</span>
+                    <span class="clearAllcheckBox col-4 col-xs-4 float-left no_pad">
+                        <button class="float-right clear-all color-azure btn-none" type="checkbox"
+                            (click)="clearAllCheckBox()">
+                            <span class="mdi mdi-close color-wash close-container"></span>Clear all</button>
+                    </span>
+                </div>
+                <div class="float-left pos-rel w-100 pt-10">
+                    <ul class="col-12 float-left pos-rel ">
+                        <li class="customized-checkbox">
+                            <mat-checkbox [(ngModel)]="selectedAll" (change)="selectAll($event)"
+                                [ngModelOptions]="{standalone: true}">All</mat-checkbox>
+                        </li>
+                        <li class=" pos-rel w-100 customized-checkbox float-left"
+                            *ngFor="let options of Source ;let i =index; ">
+                            <mat-checkbox name="cb" class="float-left" [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="options.idChecked" (change)="checkIfAllSelected($event,options,i);">
+                                <span class=" w-100 float-left">{{options.name}}
+                                </span>
+                            </mat-checkbox>
+                        </li>
+                    </ul>
+                </div>
+                <!-- </div> -->
+            </perfect-scrollbar>
+        </div>
+    </div>
+</div>

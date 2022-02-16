@@ -1,0 +1,66 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab account-modification-landing mt10 mb15">
+        <h1 class="float-left heading-level-one_mod">Modification request</h1>
+        <!-- <span class="sub-heading"><a (click)="goBack()">Account list</a> /  Modification request</span> -->
+        <span class="sub-heading" tabindex="0"> <a class="cp" (click)= "goBack()"> Account list </a> > Modification request</span>
+  </div>
+</div>
+
+
+
+<!-- main div starts here -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left account-modification-landing">
+  <div class="col-12 pos-abs bg-mid_night  pad-30 float-left h-435" ></div>      
+<div class="col-12 pad-30 padb-0 float-left padd-top-130">             
+
+    <!-- <div class="float-right disp-flex mrg-top20 responsive-btn-div web-action-button">
+      <button class="primary-button secondary-btn borderless btn-block h-40 std w-210 mr10 responsive-btn-div-button button-wd33" [routerLink]="['/accounts/createassignmentreference']">
+          Create assignment reference</button>
+      <button class="primary-button borderless btn-block h-40 std w-184 mr10 responsive-btn-div-button button-wd33" [routerLink]="['/accounts/accountcreation/createnewaccount']">
+          Create new account</button>
+    </div> -->
+
+    <div class="col-12 ptop-20 no_pad vertical-btns-div flex-tab pt26 float-left">  
+      <div class="col-xl-7 col-lg-7 col-md-8 col-12 no_pad flex-tab-width web-tab float-left">
+        <button  class="col-lg-3 col-sm-4 col-md-4 col-4 sub-vertical-but brd-right0 " role="tab" [attr.aria-selected]="modificationactiverequest ? true : '' " (click)="modificationactiverequest1()" [routerLink]="['modificationactiverequest']" routerLinkActive="active">
+          <span class="no_pad mdi calin-select-all pr5 pos_rel "></span>
+          <span class=" no_pad btntxt-s"> Active requests</span>
+        </button>
+       <!--  <button  *ngIf="service.loggedin_user == 'account_requestor'" class=" col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 " role="tab" [attr.aria-selected]="modificationcreationhistory ? true : '' " (click)="modificationcreationhistory1()"  [routerLink]="['modificationcreationhistory']" routerLinkActive="active"> 
+          <span class="no_pad calin-select-all mdi  pr5 pos_rel "></span>
+          <span class="no_pad btntxt-s"> Creation history</span>
+        </button>  
+        <button  *ngIf="service.loggedin_user != 'account_requestor'" class=" col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 " role="tab" [attr.aria-selected]="modificationcreationhistory ? true : '' " (click)="modificationcreationhistory1()"  [routerLink]="['modificationcreationhistory']" routerLinkActive="active">
+          <span class="no_pad calin-select-all mdi  pr5 pos_rel "></span>
+          <span class="no_pad btntxt-s">History</span>
+        </button>  -->
+        <button class=" col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 " role="tab" [attr.aria-selected]="modificationcreationhistory ? true : '' " (click)="modificationcreationhistory1()"  [routerLink]="['modificationcreationhistory']" routerLinkActive="active">
+          <span class="no_pad calin-select-all mdi  pr5 pos_rel "></span>
+          <span class="no_pad btntxt-s">Processed requests</span>
+        </button>
+      </div> 
+      
+
+      <div class="col-12 no_pad flex-tab-width mobile-tab">
+          <button  class="col-lg-3 col-sm-6 col-md-4 col-6 sub-vertical-but brd-right0 " role="tab" [attr.aria-selected]="modificationactiverequest ? true : '' " (click)="modificationactiverequest1()"  [routerLink]="['modificationactiverequest']" routerLinkActive="active">
+            <span class="no_pad mdi calin-select-all pr5 pos_rel "></span>
+            <span class=" no_pad btntxt-s"> Active requests</span>
+          </button>
+        <!--   <button *ngIf="service.loggedin_user == 'account_requestor'" class=" col-lg-3 col-sm-6 col-md-4 col-6 pull-right sub-vertical-but brd-left0 "  role="tab" [attr.aria-selected]="modificationcreationhistory ? true : '' " (click)="modificationcreationhistory1()"  [routerLink]="['modificationcreationhistory']" routerLinkActive="active"> 
+            <span class="no_pad calin-select-all mdi pr5 pos_rel "></span>
+            <span class="no_pad btntxt-s">Creation history</span>
+          </button>
+          <button *ngIf="service.loggedin_user != 'account_requestor'" class=" col-lg-3 col-sm-6 col-md-4 col-6 pull-right sub-vertical-but brd-left0 "  role="tab" [attr.aria-selected]="modificationcreationhistory ? true : '' " (click)="modificationcreationhistory1()"  [routerLink]="['modificationcreationhistory']" routerLinkActive="active">
+            <span class="no_pad calin-select-all mdi pr5 pos_rel "></span>
+            <span class="no_pad btntxt-s">History</span>
+          </button>-->
+          <button class=" col-lg-3 col-sm-6 col-md-4 col-6 pull-right sub-vertical-but brd-left0 "  role="tab" [attr.aria-selected]="modificationcreationhistory ? true : '' " (click)="modificationcreationhistory1()"  [routerLink]="['modificationcreationhistory']" routerLinkActive="active">
+            <span class="no_pad calin-select-all mdi pr5 pos_rel "></span>
+            <span class="no_pad btntxt-s">Processed requests</span>
+          </button>
+        </div>
+    </div> 
+  </div>
+</div>
+<router-outlet></router-outlet>

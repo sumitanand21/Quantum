@@ -1,0 +1,332 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+      <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+        <h1 class="heading-level-one mtop6"> Create new action </h1>
+      </div>
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-right no_pad web-button web-buttons">
+        <div class="float-right disp-flex save-cancel-responsive">
+          <button class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+          [ngClass]="clicked ? 'disabled-control' : 'primary-button'"
+            (click)="opencancelpop()" [disabled]="clicked">Cancel</button>
+          <button class="primary-button border-0 borderless h-40 std save-responsive-btn button-wd50" type="button"
+          [ngClass]="clicked ? 'disabled-control' : 'primary-button'"
+            (click)="create()" [disabled]="clicked">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- main div starts here -->
+<ng-container *ngIf="isLoading">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-144"></div>
+    <form id="validatescroll" [formGroup]="newActionForm">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 mt-90 scroll-middle-ios">
+
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card pad-30 mt40 mt20 margin-btm55 flex-new-action">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 float-left ">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 plb-60-20 customized-input float-left">
+
+              <label for="empty" class="w-100 label-form">Action name <span class="required">*</span></label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input (blur)="autoSaveChangedData(f.actionName.valid)" (input)="inputChange($event)"
+                 specialIsAlphaNumeric [attr.data-type]="'text'" id="empty" autocomplete="off" type="text" maxlength="100" class="border-gray w-100 agenda-txt"
+                  formControlName="actionName" value="" placeholder="Enter action name" 
+                  [ngClass]="{'error':  newActionForm.controls.actionName.touched && ! newActionForm.controls.actionName.valid ||  newActionForm.get('actionName').errors?.range}">
+                <p *ngIf="
+                 newActionForm.controls.actionName.touched &&  newActionForm.controls.actionName.value == ''"
+                  class="error-message top-40">Enter action name</p>
+                 <p *ngIf=" newActionForm.controls.actionName.value != '' && ! newActionForm.controls.actionName.valid"
+                    class="error-message top-40">Enter a valid action name</p>  
+                <p *ngIf=" newActionForm.get('actionName').errors?.range" class="error-message top-40">Name cannot
+                  exceed 100 characters</p>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6  float-left cust_autoComplete pos-rel plb-60-20">
+
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"  (clickOutside)="ConversationNameclose()">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ConversationName"
+                  class="label-form">
+                  Meeting subject
+                </label>
+                <div class="pos-rel w-100 float-left no_pad">
+                  <input 
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input ellipses"
+                  #meetinglist
+                  id="ConversationName"
+                  name="ConversationName" 
+                  formControlName="meetingSubject" 
+                  placeholder="Search meeting subject" 
+                  type="text" 
+                  role="combobox" 
+                  title="{{meetingValueCheck}}" 
+                  autocomplete="off"
+                  aria-owns="read" 
+                  appKeyListControl
+                  [dataManipulate]=true
+                  [attr.data-isDownBtn]=true
+                  (arrowDown)="arrowkeyLocation=$event"
+                  [attr.data-selectedvalue]="meetingValueCheck"
+                  [attr.aria-expanded]="ConversationNameSwitch?true:false" 
+                  [attr.aria-activedescendant]="arrowkeyLocation"
+                  (input)="ConversationNameSwitch = true;arrowkeyLocation=meetingValueCheck?-1:0" 
+                  (intialLoadData)="ConversationNameSwitch = true;clickMeetingSubject();arrowkeyLocation=0"
+                  (keyup.enter)="arrowkeyLocation=arrowkeyLocation==-1?0:arrowkeyLocation;appendConversation(meetingSubjectSearch[arrowkeyLocation]);ConversationNameSwitch=false;arrowkeyLocation=0"
+                  (keydown)="ConversationNameSwitch=true" 
+                  (keydown.Tab)="ConversationNameclose()"
+                  [attr.data-arrayMaxLength]="meetingSubjectSearch?.length" 
+                  aria-autocomplete="list"
+                  [attr.disabled]="disabled?'disabled' : null">
+                  <span class="mdi mdi-close auto-close"
+                  (click)="clearMeetingSubject();arrowkeyLocation=0;meetingValueCheck=''"
+                  *ngIf="!ConversationNameSwitch && selectedMeetingSubjectId!==''"></span>
+                </div>
+                <span class="mdi mdi-magnify" *ngIf="selectedMeetingSubjectId ==''"></span>
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                  *ngIf="ConversationNameSwitch" >
+                  <perfect-scrollbar style="max-height:160px"  class="z-ind-9">
+                    <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                    [ngClass]="{'loader-search':isMeetingSubjectSearchLoading }">
+                      <li id="{{i}}" tabindex="0" role="option"  class="list-group-item li-pad-10  ellipses cp" [ngClass]="service.chatBot ? 'list-DA-action' : 'list-name'" (click)="meetinglist.value=item.Subject;appendConversation(item)"
+                        *ngFor="let item of meetingSubjectSearch;let i = index;"
+                        [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                        matTooltip="{{item.Subject}}">{{item.Subject}}</li>
+
+                      <li class="d-block list-name h-40 p-10"
+                        *ngIf="(meetingSubjectSearch |filter: newActionForm.value.meetingSubject)?.length == 0 && !isMeetingSubjectSearchLoading">
+                        No record found </li>
+                    </ul>
+                    </span>
+                  </perfect-scrollbar>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Select dropdown starts -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 float-left plb-60-20 customized-input mobile-select-box">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="priorityType"
+                class="label-form">Priority
+                <span class="required">*</span></label>
+              <div class="customized-select"> <span class="caret color-azure"></span>
+                <select (blur)="autoSaveChangedData(newActionForm.controls.priority.valid)" id="priorityType" formControlName="priority" role="listbox"
+                  [ngClass]="{'error':  newActionForm.controls.priority.touched && !newActionForm.controls.priority.valid}">
+                  <option value="" selected>Select priority</option>
+                  <option *ngFor="let priority of getPriorityType" [value]="priority.Id" matTooltip="{{priority.Value}}">{{priority.Value}}</option>
+                </select>
+                <p *ngIf="newActionForm.controls.priority.touched && !newActionForm.controls.priority.valid"
+                  class="error-message top-40">Select priority</p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 float-left plb-60-20 customized-input web-select-box">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"  for="priorityType" class="label-form">
+                Priority
+                <span class="required"> *</span></label>
+                <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>Priority</mat-label>
+                    <mat-select (blur)="autoSaveChangedData(newActionForm.controls.priority.valid)" disableOptionCentering panelClass="Select-panel-class"
+                    [ngClass]="{'error':  newActionForm.controls.priority.touched && !newActionForm.controls.priority.valid}"
+                    class="select-focus" formControlName="priority">
+                        <mat-option value="">Select priority</mat-option>
+                        <mat-option  *ngFor="let priority of getPriorityType" [value]="priority.Id" matTooltip="{{priority.Value}}">
+                          {{priority.Value}}
+                        </mat-option>
+                    </mat-select>
+                    <p *ngIf=" newActionForm.controls.priority.touched && ! newActionForm.controls.priority.valid"
+                  class="error-message top-40">Select priority</p>
+                  </mat-form-field>
+            </div>
+            <!-- Select dropdowns ends -->
+            <!-- Date Picker dropdowns starts -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 float-left plb-60-20 customized-input">
+              <label for="calStart"
+                class="col-12 col-lg-12 col-sm-12 col-md-12 label-form float-left no_pad label_heading margin-btm5">Due
+                date <span class="required">*</span></label>
+              <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr pos-rel">
+                <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-calandar">
+                  <input  (blur)="autoSaveChangedData(newActionForm.controls.dueDate.valid)" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad" aria-required="true"
+                    id="calStart" (click)="picker1.open()" (keypress)="picker1.open()" [min]="today" [max]="sixMonthDate"
+                    [matDatepicker]="picker1" readonly title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY" formControlName="dueDate"
+                    [ngClass]="{'error':  newActionForm.controls.dueDate.touched && ! newActionForm.controls.dueDate.valid}"
+                    required>
+                  <mat-datepicker-toggle matSuffix [for]="picker1"> <span
+                      class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                  </mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                  <p *ngIf=" newActionForm.controls.dueDate.touched && ! newActionForm.controls.dueDate.valid"
+                    class="error-message top-40">Select due date</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 float-left plb-60-20 customized-input mobile-select-box">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="statusType"
+                class="label-form">Status <span class="required">*</span></label>
+              <div class="customized-select"> <span class="caret color-azure"></span>
+                <select (blur)="autoSaveChangedData(f.status.valid)" id="statusType" role="listbox" formControlName="status"
+                  [ngClass]="{'error':  newActionForm.controls.status.touched && !newActionForm.controls.status.valid}">
+                  <option value="" selected>Select status</option>
+                  <option *ngFor="let status of statusCode" [value]="status.Id" matTooltip="{{status.Value}}">{{status.Value}}</option>
+                </select>
+                <p *ngIf=" newActionForm.controls.status.touched && !newActionForm.controls.status.valid"
+                  class="error-message top-40">Select status</p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 float-left plb-60-20 customized-input web-select-box">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"  for="statusType" class="label-form">
+                Status
+                <span class="required"> *</span></label>
+                <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>Status</mat-label>
+                    <mat-select (blur)="autoSaveChangedData(f.status.valid)" disableOptionCentering panelClass="Select-panel-class"
+                    [ngClass]="{'error':  newActionForm.controls.status.touched && !newActionForm.controls.status.valid}"
+                    class="select-focus" formControlName="status">
+                        <mat-option value="">Select status</mat-option>
+                        <mat-option  *ngFor="let status of statusCode" [value]="status.Id" matTooltip="{{status.Value}}">
+                          {{status.Value}}
+                        </mat-option>
+                    </mat-select>
+                    <p *ngIf=" newActionForm.controls.status.touched && ! newActionForm.controls.status.valid"
+                  class="error-message top-40">Select status</p>
+                  </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left plb-60-20 customized-input">
+              <label class="label-form" for="description">Description <span class="required"> </span>
+                <span class="label-form" *ngIf= "textValue.value.length == 0">  (2000 characters)</span>
+                <span class="label-form" *ngIf= "textValue.value.length > 0 && textValue.value.length < 1999">  ({{ 2000 - textValue.value.length}} characters left)</span>
+                <span class="label-form" *ngIf= "textValue.value.length === 1999 || textValue.value.length === 2000">  ({{ 2000 - textValue.value.length}} character left)</span>
+              </label>
+ 
+              <div class="pos-rel w-100 float-left no_pad">
+                <textarea (blur)="autoSaveChangedData(f.description.valid)" #textValue class="form-control text-area-content" placeholder="Enter description" rows="5"
+                specialIsAlphaNumeric [attr.data-type]="'textareaLength'"
+                  id="description" formControlName="description" maxlength="2000"
+                  ></textarea>
+                <!-- <p *ngIf=" newActionForm.controls.description.touched && ! newActionForm.controls.description.valid"
+                  class="error-message top-130">Please enter description</p> -->
+                <p *ngIf=" newActionForm.controls.description.errors?.range"
+                  class="error-message top-130">Description cannot exceed 2000</p>
+              </div>
+            </div>
+            <!-- <div class="convo-name-title" id="archive">Archive remarks * (2000 characters)
+            </div> -->
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 float-left">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 plb-60-20 customized-input float-left">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="contactNameclose()">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactName"
+                  class="label-form">Action
+                  owners <span class="required">*</span></label>
+                <div class="pos-rel w-100 float-left no_pad">
+                  <input 
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input border-gray"
+                  #actionlist  
+                  id="contactName" 
+                  name="contactName"
+                  formControlName="actionOwner"
+                  placeholder="Search action owners"
+                  type="text"
+                  role="combobox"
+                  title=""
+                  autocomplete="off"
+                  aria-owns="read"
+                  appKeyListControl 
+                  [dataManipulate]=true
+                  [attr.data-isDownBtn]=true
+                  (arrowDown)="arrowkeyLocation=$event"
+                  [attr.data-selectedvalue]=""
+                  [attr.aria-expanded]="contactNameSwitch?true:false" 
+                  [attr.aria-activedescendant]="arrowkeyLocation"
+                  (input)="contactNameSwitch = true;arrowkeyLocation=0"
+                  (intialLoadData)="contactNameSwitch = true;clickActionOwner();arrowkeyLocation=0"
+                  (keyup.enter)="actionlist.value=ownerSystemValue[arrowkeyLocation].FullName;appendcontact(ownerSystemValue[arrowkeyLocation],arrowkeyLocation);contactNameSwitch=false;arrowkeyLocation=0"
+                  (keydown)="contactNameSwitch=true" 
+                  (keydown.Tab)="contactNameclose()"
+                  [attr.data-arrayMaxLength]="ownerSystemValue?.length" 
+                  aria-autocomplete="list"
+                  [ngClass]="{'error':  newActionForm.controls['actionOwner'].touched && !newActionForm.controls['actionOwner'].valid}">
+                  <span class="mdi mdi-magnify" aria-required="true" disabled="true" readonly></span>
+                  <p *ngIf=" !newActionForm.controls['actionOwner'].valid &&  newActionForm.controls.actionOwner.touched"
+                    class="error-message top-40">Search action owner</p>
+                </div>
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure"
+                  *ngIf="contactNameSwitch" [attr.focus]="newActionForm.value.actionOwner && contactNameSwitch">
+                  <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                    <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group mr2 sort-dropdown" role="listbox" id="read"
+                    [ngClass]="{'loader-search':isActionOwnersSearchLoading }">
+                      <li id="{{i}}" tabindex="0" role="option"  class="list-group-item h-50 p-4-10 " [ngClass]="service.chatBot ? 'list-DA-action' : 'list-name'"
+                        *ngFor="let item of ownerSystemValue|filter:newActionForm.value.actionOwner; let i=index"
+                        (click)="appendcontact(item, 0)"
+                        [class.active]="i==arrowkeyLocation" aria-disabled="false">
+                        <div class="float-left naming-tags child-middle bg-azure"> <span
+                            class="initials">{{item.FullName | firstWord | uppercase}}</span>
+                        </div>
+                        <label for="inti_name" class="float-left name"> <span
+                            class="d-block list-name" matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                        </label>
+                      </li>
+                      <li class="d-block list-name h-40 p-10"
+                        *ngIf="(ownerSystemValue |filter:newActionForm.value.actionOwner)?.length === 0 && !isActionOwnersSearchLoading">No
+                        record found</li>
+                    </ul>
+                    </span>
+                  </perfect-scrollbar>
+                  <span class="db-search" (click)="openadvancetabs('actionOwneSearch',ownerSystemValue, f.actionOwner.value )">
+                    <button id="adls{{ownerSystemValue.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                      type="button" class="button-search"
+                      (blur)="contactNameSwitch = false"
+                      [class.active]="ownerSystemValue.length+1 == arrowkeyLocation">
+                      <span class="mdi mdi-file-outline"></span> Advance look up
+                    </button>
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left no_pad selected-contact">
+              <perfect-scrollbar style="max-height:300px;">
+               
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt-10 p-4-10"
+                    *ngFor="let item of selectedContact; let i = index;">
+                    <div class="float-left naming-tags child-middle bg-azure"> <span
+                        class="initials">{{item.FullName | firstWord | uppercase}}</span>
+                    </div>
+                    <label for="inti_name" class="float-left name"> <span
+                        class="d-block" [ngClass]="service.chatBot ? 'list-DA-actiono' : 'list-name'" matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                      <span class="d-block sub-list">{{item.designation}}</span>
+                    </label>
+                    <span>
+                      <button aria-label="Delete" type="button" class="mdi mdi-close btn-none float-right"
+                        (click)="deleteContact(item)"></button>
+                    </span>
+                  </div>
+               
+              </perfect-scrollbar>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="float-left col-12 no_pad mobile-buttons">
+        <button type="button" class="col-6 no_pad float-left cancel-btn" (click)="opencancelpop()">Cancel</button>
+        <button type="button" class="col-6 no_pad float-left save-btn" [disabled]="clicked"
+          (click)="create()">Create</button>
+      </div>
+  </div>

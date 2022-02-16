@@ -1,0 +1,68 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab account-creation-landing main-containtnoSide " [ngClass]="userdat.chatBot? 'chat-bot-1100' : ''">
+     <!--<div class="col-12 pad-30 float-left padb-0 mt10 mb20">             -->
+          <h2 class="float-left heading-level-one-account">Account creation</h2>
+          <span class="sub-heading" tabindex="0"> <a class="cp" (click)= "navigateBack()"> Account </a> > Account creation</span>
+        <!--feb-19 rupali starts-->
+        <div class="float-right disp-flex mrg-top20 save-cancel-responsive web-action-button" >
+            <!-- [ngClass]="router.url.includes('accounts/accountcreation/creationhistory')?'d-none d-lg-flex':'' " -->
+          <button *ngIf="service.loggedin_user != 'cso'" class="flex-grow-1 save-responsive-btn button-wd50 primary-button borderless btn-block h-40 std w-184 margR10" (click)="getdnbtoken(); accountnavigate()">
+              Create new account</button>
+        </div>
+     <!--</div>-->
+  </div>
+</div>
+
+
+<!-- main div starts here -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left account-creation-landing">
+    <div class="col-12 pos-abs bg-mid_night  pad-30 float-left h-388"></div>      
+  <div class="col-12 pad-30 float-left padb-0 padd-top-130">             
+
+    <!--feb-19 rupali ends-->
+
+      <div class="col-12 ptop-20 no_pad vertical-btns-div  float-left flex-tab pt15">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-12 no_pad flex-tab-width web-tab float-left">
+          <button  class="col-lg-3 col-sm-4 col-md-4 col-4 sub-vertical-but brd-right0 " role="tab"  [attr.aria-selected]="activerequest ? true : '' " (click)="activerequest1()" [routerLink]="['activerequest']" routerLinkActive="active">
+            <span class="no_pad mdi mdi-file calin-select-all pr5 pos_rel "></span>
+            <span class=" no_pad btntxt-s"> Active requests</span>
+          </button>
+         <!-- <button  *ngIf="service.loggedin_user == 'account_requestor'" class=" col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 " role="tab" [attr.aria-selected]="creationhistory ? true : '' " (click)="creationhistory1()"  [routerLink]="['creationhistory']" routerLinkActive="active"> 
+            <span class="no_pad calin-select-all mdi  pr5 pos_rel "></span>
+            <span class="no_pad btntxt-s"> Creation history</span>
+          </button>  
+          <button  *ngIf="service.loggedin_user != 'account_requestor'" class=" col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 " role="tab" [attr.aria-selected]="creationhistory ? true : '' " (click)="creationhistory1()"  [routerLink]="['creationhistory']" routerLinkActive="active">
+            <span class="no_pad calin-select-all mdi  pr5 pos_rel "></span>
+            <span class="no_pad btntxt-s"> History</span>
+          </button> -->
+          <button class=" col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 " role="tab" [attr.aria-selected]="creationhistory ? true : '' " (click)="creationhistory1()"  [routerLink]="['creationhistory']" routerLinkActive="active">
+            <span class="no_pad calin-select-all mdi mdi-history pr5 pos_rel "></span>
+            <span class="no_pad btntxt-s"> Processed requests</span> 
+          </button>
+        </div> 
+        
+  
+        <div class="col-12 no_pad flex-tab-width mobile-tab">
+            <button  class="col-lg-3 col-sm-6 col-md-4 col-6 sub-vertical-but brd-right0 " role="tab" [attr.aria-selected]="activerequest ? true : '' " (click)="activerequest1()"  [routerLink]="['activerequest']" routerLinkActive="active">
+              <span class="no_pad mdi calin-select-all pr5 pos_rel "></span>
+              <span class=" no_pad btntxt-s"> Active requests</span>
+            </button>
+         <!--   <button   *ngIf="service.loggedin_user == 'account_requestor'" class=" col-lg-3 col-sm-6 col-md-4 col-6 pull-right sub-vertical-but brd-left0 "  role="tab" [attr.aria-selected]="creationhistory ? true : '' " (click)="creationhistory1()"  [routerLink]="['creationhistory']" routerLinkActive="active">
+              <span class="no_pad calin-select-all mdi pr5 pos_rel "></span>
+              <span class="no_pad btntxt-s">Creation history</span>
+            </button>
+            <button  *ngIf="service.loggedin_user != 'account_requestor'" class=" col-lg-3 col-sm-6 col-md-4 col-6 pull-right sub-vertical-but brd-left0 "  role="tab" [attr.aria-selected]="creationhistory ? true : '' " (click)="creationhistory1()"  [routerLink]="['creationhistory']" routerLinkActive="active">
+              <span class="no_pad calin-select-all mdi pr5 pos_rel "></span>
+              <span class="no_pad btntxt-s">History</span>
+            </button>-->
+            <button  class=" col-lg-3 col-sm-6 col-md-4 col-6 pull-right sub-vertical-but brd-left0 "  role="tab" [attr.aria-selected]="creationhistory ? true : '' " (click)="creationhistory1()"  [routerLink]="['creationhistory']" routerLinkActive="active">
+              <span class="no_pad calin-select-all mdi pr5 pos_rel "></span>
+              <span class="no_pad btntxt-s">Processed requests</span> 
+              <!-- chethana added as per Nov 26th vd -->
+            </button>
+          </div>
+      </div> 
+    </div>
+  </div>
+  <router-outlet></router-outlet>

@@ -1,0 +1,84 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-lg-12  review_container">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-lg-12 customizeTableHolder ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-lg-12 float-left no_pad table_popup_header">
+            <h4 class="col-10 head_style no_pad float-left">Add Parameters</h4>
+            <button class="col-2 btn_none mtop10 but_sty no_pad close-icn"  (click)="onCancel()">
+              <span class="mdi mdi-close"> </span>
+             </button>
+        </div>
+        <div class="selct_option col-lg-12 col-md-12 col-sm-12 col-lg-12 float-left no_pad">
+            Select and addtional search parameters from the list below.
+            <br>
+            Press reset to revert back to default.
+        </div>
+        <div class="col-lg-12 col-md-12 col-lg-12 col-sm-12 no_pad float-left column_conatiner">
+            <span class="col-lg-9 nmber_column no_pad float-left">
+                14 parametres
+            </span>
+            <button class="col-lg-3 no_pad button_reset" (click)="resetBut()">
+                <span class="reset_button" >Reset</span>
+            </button>
+        </div>
+
+        
+       <div class="example-container col-lg-4 col-md-4 col-lg-4 col-sm-4 float-left tableheader_width no_pad">                   
+        <div             
+          cdkDropList
+          #firstList="cdkDropList"
+          [cdkDropListData]="firstPanel"
+          [cdkDropListConnectedTo]="[secondList,thirdList]"
+          class="example-list firstList"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of firstPanel"  cdkDrag   [cdkDragDisabled]="item.isFixed?true:false" > 
+            <span class="number_ofname float-left" [ngClass]="item.default?'namedefalutInactive':'namedefalutactive'"> <span >0</span>{{item.order}}</span>
+            <span class="float-left file_name " [ngClass]="item.default?'namedefalutInactivetext':'namedefalutactiveText'" > {{item.title}} </span>
+            <span *ngIf="item.default == true" class="float-right  mdi mdi-checkbox-marked"  [ngClass]="item.default?'namedefalutInactivetext':'namedefalutactiveText'"></span>
+            <span class="text-primary a" *ngIf="item.default != true" [ngClass]="item.isFixed?'float-right mdi mdi-checkbox-marked':'float-right mdi mdi-checkbox-blank-outline'" (click)="columSort(item,$event)"></span></div>
+        </div>
+      </div>
+      <div class="example-container col-lg-4 col-md-4 col-lg-4 col-sm-4 float-left tableheader_width no_pad">                     
+        <div           
+          cdkDropList
+          #secondList="cdkDropList"
+          [cdkDropListData]="secondPanel"
+          [cdkDropListConnectedTo]="[firstList,thirdList]"
+         
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of secondPanel;"  cdkDrag  
+          [cdkDragDisabled]="item.isFixed?true:false"   class="example-box"  [cdkDragData]="item">
+           <span class="number_ofname float-left" [ngClass]="item.default?'namedefalutInactive':'namedefalutactive'"> <span *ngIf="item.order<10">0</span>{{item.order}}</span>
+          <span class="float-left file_name " [ngClass]="item.default?'namedefalutInactivetext':'namedefalutactiveText'"> {{item.title}} </span>
+          <span *ngIf="item.default == true" class="float-right  mdi mdi-checkbox-marked" [ngClass]="item.default?'namedefalutInactivetext':'namedefalutactiveText'"></span>
+            <span class="text-primary b" tabindex="0" role="checkbox" [attr.aria-label]="item.title" [attr.aria-checked]="item.isFixed? true : false" *ngIf="item.default != true" [ngClass]="item.isFixed?'float-right mdi mdi-checkbox-marked':'float-right mdi mdi-checkbox-blank-outline'" (click)="columSort(item,$event)"></span>
+            </div>
+          <!--<span [ngClass]="item.isFixed?'float-right mdi mdi-pin':'float-right mdi mdi-pin-outline'" (click)="columSort(item,$event)"></span></div>-->
+        </div>
+      </div>
+      
+      <div class="example-container col-lg-4 col-md-4 col-lg-4 col-sm-4 float-left tableheader_width no_pad">                     
+        <div               
+          cdkDropList
+          #thirdList="cdkDropList"
+          [cdkDropListData]="thirdPanel"
+          [cdkDropListConnectedTo]="[firstList,secondList]"
+         
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of thirdPanel;index as i"  cdkDrag 
+          [cdkDragDisabled]="item.isFixed?true:false"  [cdkDragDisabled]="item.isFixed?true:false" class="example-box" [cdkDragData]="item"> 
+           <span class="number_ofname float-left" [ngClass]="item.default?'namedefalutInactive':'namedefalutactive'"> <span *ngIf="item.order<10">0</span>{{item.order}}</span>
+          <span class="float-left file_name " [ngClass]="item.default?'namedefalutInactivetext':'namedefalutactiveText'"> {{item.title}} </span>
+          <span *ngIf="item.default == true" class="float-right  mdi mdi-checkbox-marked" [ngClass]="item.default?'namedefalutInactivetext':'namedefalutactiveText'"></span>
+            <span  class="text-primary c" tabindex="0" role="checkbox" [attr.aria-label]="item.title" [attr.aria-checked]="item.isFixed? true : false" *ngIf="item.default != true" [ngClass]="item.isFixed?'float-right mdi mdi-checkbox-marked':'float-right mdi mdi-checkbox-blank-outline'" (click)="columSort(item,$event)"></span>
+          </div>
+        </div>
+      </div>
+       
+
+        </div>
+    </div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-lg-12 no_pad apply_button mat-dialog-actions"  (click)="onApply();userdat.accounttoast('Changes applied successfully')"  (keypress)="onApply()"  mat-dialog-actions>
+<button class="col-lg-12 btn_none bg_lightBlue_pro_reject_pop" > Apply changes </button>
+</div>
+

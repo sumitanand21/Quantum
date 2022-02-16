@@ -1,0 +1,370 @@
+<ng-container *ngIf="isLoading">
+  <div class="col-12 float-left unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab ">
+    <div class="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left existing-tab-container no_pad">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad">
+        <div class="col-12 col-sm-5 col-md-5 col-lg-6 col-xl-6 float-left no_pad d-flex">
+          <span class="float-left mdi mdi-keyboard-backspace cp" (click)="navigateUp()" tabindex="0" role="button"
+            aria-label="back"></span>
+          <div class="col-12 float-left">
+            <h1 class="col-12 no_pad float-left heading-level-one ">Reference
+              documents ({{totalCount}})</h1>
+            <h1 class="col-12 no_pad float-left heading-level-one " *ngIf="!folder">{{heading}}</h1>
+            <span class="col-12 no_pad float-left brudcrumbs">{{path}}</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-right no_pad">
+      <div class="float-right disp-flex web-buttons upload-btn-doc">
+        <div class="cust-dropdown-btn mr10 no_pad col-md-6 mw-160">
+          <button class="primary-button pl90 hoverNone btnrespon borderless pad-0-10 btn-block h-40 std pos-rel min-width-161
+                   responsive-btn-div-button color-azure d-flex justify-content-start align-items-center "
+            [ngClass]="showContent?'show-action':''" (click)="toggleContent()" (clickOutside)="closeContent()">
+            <div class="mobileBottom">
+
+              <span class="mdi mdi-dots-vertical m-r-8 dot-respon left60 mdiButton">
+
+              </span> <span class="more-respon Actionclass">More actions</span>
+              <span class="caret Caretblock caret-respon color-azure caretNone">
+              </span>
+            </div>
+          </button>
+          <ng-template [ngIf]="showContent">
+            <ul
+              class=" dropdown-content width213 pad-0-10 pos-abs z-ind-99 content leftWidth respon-top no_pad b-top more-click-content">
+              <a (click)="createRow()">
+                <li class="list_names border_property mdi mdi-folder-plus border-botm">
+                  Create folder</li>
+              </a>
+              <a (click)="downloadAll()">
+                <li class="list_names border_property mdi mdi-download border-botm">
+                  Download all</li>
+              </a>
+            </ul>
+          </ng-template>
+        </div>
+        <!-- <button (click)="createRow()" class="primary-button border-0 h-40 std mdi mdi-folder-plus mr10">Create
+          folder
+        </button> -->
+        <!-- standard-border h-40 ellipses bg-transperent color-white float-right mdi mdi-paperclip font-bold btn-pad -->
+        <label for="fileinput" tabindex="0" role="button"
+          class="mb-0 primary-button border-0 h-40 std mdi mdi-attachment w-166 attach-icon-deal"
+          (click)="fileInput.value = null" (keydown.enter)="fileInput.value = null">
+          Upload document
+        </label>
+        <input (change)="attachFileUploadDoc($event)" id="fileinput" type="file" tabindex="-1"
+          class="w-166 upload-input" #fileInput />
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="col-12 pos-abs bg-mid_night mar-top-65 complex_table" style="height: 180px;"></div>
+
+<div class="col-12 no_pad main-div">
+
+
+  <div style="padding-top: 144px;" class="pad-30 pos-rel">
+
+    <div class="float-right no_pad pagination mb20 ">
+
+      <pagination-template #p="paginationApi" [id]="config.id">
+
+        <div class="custom-pagination pagination-status-down">
+          <div class="pagination-previous d-flex" [class.disabled]="p.isFirstPage()">
+
+            <span class="label center-align color-white l-h-40">1
+              <span *ngIf="!p.isLastPage()"> -
+                3</span>
+              <!-- <span
+                                                          *ngIf="p.isLastPage() &&((p.getTotalItems()-(p.getCurrent() - 1)*config.itemsPerPage)) != 1 ">
+                                                          - {{ p.getTotalItems()}} </span> -->
+              <span class="ml5">of
+                <span>3</span>
+                <!-- <span *ngIf="p.getTotalItems() > 5000">5000+</span> -->
+              </span>
+              <!-- <span *ngIf="filterBox.length>0">of
+                                  {{userdat.pseudoFilter.length}}</span>  -->
+            </span>
+
+            <div class="d-flex ">
+              <button aria-label="previous page" matTooltip="Previous page" (click)="p.previous()"
+                [disabled]="p.isFirstPage()"
+                class="standard-border mdi mdi-chevron-double-left color-white mLeft10"></button>
+
+              <div class="pagination-status">
+
+                <button *ngIf="p.isLastPage() && (config.currentPage - 2) > 0  "
+                  (click)="p.setCurrent(config.currentPage - 1)">
+
+                  <span>{{ config.currentPage - 2 }} </span>
+                </button>
+                <button *ngIf="config.currentPage - 1 > 0  && (config.currentPage-1) < p.getLastPage()  "
+                  (click)="p.setCurrent(config.currentPage - 1)">
+
+                  <span>{{ config.currentPage - 1 }} </span>
+                </button>
+                <button class="current" (click)="p.setCurrent(config.currentPage)">
+
+                  <span>{{ config.currentPage }} </span>
+                </button>
+                <button *ngIf="config.currentPage + 1 <= p.getLastPage() "
+                  (click)="p.setCurrent(config.currentPage + 1)">
+
+                  <span>{{ config.currentPage + 1}} </span>
+                </button>
+                <button *ngIf="config.currentPage == 1 && (config.currentPage+2) <= p.getLastPage()"
+                  (click)="p.setCurrent(config.currentPage + 2)">
+
+                  <span>{{ config.currentPage + 2}} </span>
+                </button>
+
+              </div>
+              <button aria-label="next page" matTooltip="Next page" [disabled]="p.isLastPage()"
+                (click)="p.isLastPage() ? nextPaginationButton() : p.next()"
+                class="standard-border mdi mdi-chevron-double-right color-white "></button>
+            </div>
+
+          </div>
+        </div>
+
+      </pagination-template>
+
+    </div>
+
+    <div class="pos-rel" id="scoll_top">
+      <table class="customized-checkbox ">
+        <thead>
+          <tr>
+            <th class="pl10 thead-th">
+              <mat-checkbox class="float-left prt10" [(ngModel)]="selectedAll" (change)="selectAll($event)">
+              </mat-checkbox>
+              <div>
+                <span>Type </span>
+                <span class="caretb"></span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span> Name </span>
+                <span class="caretb" (click)="sortBy('name')"></span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span> Modified</span>
+                <span class="caretb" (click)="sortBy('modified')"></span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>Modified by</span>
+                <span class="caretb"></span>
+              </div>
+            </th>
+            <th>
+              <div class="float-right d-flex pr15" *ngIf="selectedList.length > 0">
+                <div class="pos-rel" (clickOutside)="multiMovePopover = false">
+                  <button id="move" (click)="openMultiMovePopover(selectedList)" *ngIf="!onCheckIsFolder()"
+                    class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp" role="button"
+                    aria-label="Move" tabindex="0" matTooltip="Move">
+                    <span class="mdi mdi-arrow-right-box blue_circle_replay_img"></span>
+                  </button>
+                  <div class="pos-abs pop-over arrow-up-th" *ngIf="multiMovePopover">
+                    <app-move-popover [folderElement]="folderElemennts" (closePopup)="multiMovePopover = false"
+                      (detectValueActionPop)="performChildPopUpAction($event)" [canNavigateUpPop]="canNavigateUpPop"
+                      (navigatedDown)="navigateToFolder($event)" (navigateUpPop)="navigateUpPop($event)"
+                      [dirPathName]="dirPathName">
+                    </app-move-popover>
+                  </div>
+                  <button id="delete" class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                    aria-label="delete" (click)="openMultiDelete(selectedList)" matTooltip="Delete">
+                    <span class="blue_circle_replay_img mdi mdi-delete"></span>
+                  </button>
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngIf="fileElements.length > 0">
+          <tr *ngIf="newFolder">
+            <td class="pl10 first_text mobile-card-head" data-label=" ">
+              <mat-checkbox></mat-checkbox>
+              <span class="pl10 mdi mdi-folder typeicon"></span>
+            </td>
+            <td class="customized-input">
+              <input class="border-gray" [(ngModel)]="foldername" minlength="1" name="foldername" />
+            </td>
+            <td class="sm-hide">-</td>
+            <td class="sm-hide">-</td>
+            <td class="pr15 first_text actionColumn ">
+              <div class="float-right d-flex">
+
+                <button id="create" class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                  aria-label="create" matTooltip="create" (click)="createFolder()">
+                  <span class="blue_circle_replay_img mdi mdi-check"></span>
+                </button>
+
+                <button id="Cancel" class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                  role="button" aria-label="Cancel" tabindex="0" (click)="createRow()" matTooltip="Cancel">
+                  <span class="mdi mdi-close blue_circle_replay_img"></span>
+                </button>
+
+              </div>
+            </td>
+          </tr>
+          <tr *ngFor="let data of fileElements ;let i=index;">
+            <td class="pl10 first_text mobile-card-head" data-label=" ">
+              <mat-checkbox [(ngModel)]="data.selected" (change)="checkIfAllSelected(data, $event);"></mat-checkbox>
+              <span class="pl10 mdi {{data.type}} typeicon"></span>
+            </td>
+            <td class="color-azure font-bold cp head-link">
+              <span *ngIf="!data.rename" class="ellipses w-100 cp pt10-mob"
+                (click)="navigate(data)">{{data.name}}</span>
+              <span class="customized-input" *ngIf="data.rename">
+                <!-- <input *ngIf="!data.isFolder" class="border-gray" [(ngModel)]="data.name.substring(0, data.name.indexOf('.'))"
+                name="{{data.name}}" /> -->
+                <input class="border-gray" [(ngModel)]="data.name" name="editName" minlength="2" required
+                  #editName="ngModel" />
+                <div *ngIf="editName.invalid" class="error-message">
+                  Name required.
+                </div>
+              </span>
+            </td>
+            <td *ngIf="!data.rename" [attr.data-label]="'Modified'">{{data.modified | date: 'dd MMM yyyy'}}</td>
+            <td *ngIf="data.rename" [attr.data-label]="'Modified'">{{data.modified | date: 'dd MMM yyyy'}}</td>
+            <td *ngIf="!data.rename" [attr.data-label]="'Modified_by'" class="link">{{data.modifiedBy}}</td>
+            <td *ngIf="data.rename" [attr.data-label]="'Modified_by'" class="link">{{data.modifiedBy}}
+              <input type="hidden" value="{{data.path}}">
+            </td>
+            <td class="pr15 first_text actionColumn ">
+              <div class="float-right d-flex">
+                <div class="float-right d-flex" *ngIf="data.rename">
+
+                  <button id="create" class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                    aria-label="create" matTooltip="create" (click)="renameRow(data);">
+                    <span class="blue_circle_replay_img mdi mdi-check"></span>
+                  </button>
+
+                  <button id="Cancel" class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                    role="button" aria-label="Cancel" tabindex="0" (click)="resetRow(data, i)" matTooltip="Cancel">
+                    <span class="mdi mdi-close blue_circle_replay_img"></span>
+                  </button>
+
+                </div>
+                <button id="download" *ngIf="data.downloadBtnVisibility" (click)="downloadFile(data)"
+                  class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp" aria-label="download"
+                  matTooltip="Download">
+                  <span class="blue_circle_replay_img mdi mdi-download"></span>
+                </button>
+                <!-- <button id="folderIcon" *ngIf="data.isFolder" (click)="navigate(data)"
+                  class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                  aria-label="open folder" matTooltip="Open folder">
+                  <span class="blue_circle_replay_img mdi mdi-folder-open"></span>
+                </button> -->
+
+                <!-- move popup starts here -->
+                <div class="pos-rel" (clickOutside)="data.movePopover = false" *ngIf="data.moveBtnVisibility">
+                  <button id="move" *ngIf="data.moveBtnVisibility" (click)="openMovePop(data)"
+                    class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp" role="button"
+                    aria-label="Move" tabindex="0" matTooltip="Move">
+                    <span class="mdi mdi-arrow-right-box blue_circle_replay_img"></span>
+                  </button>
+                  <div class="pos-abs pop-over arrow-up" *ngIf="data.movePopover">
+                    <app-move-popover [folderElement]="folderElemennts" (closePopup)="data.movePopover = false"
+                      (detectValueActionPop)="performChildPopUpAction($event)" [canNavigateUpPop]="canNavigateUpPop"
+                      (navigatedDown)="navigateToFolder($event)" (navigateUpPop)="navigateUpPop($event)"
+                      [dirPathName]="dirPathName">
+                    </app-move-popover>
+                  </div>
+
+                </div>
+                <!-- move popup ends here -->
+
+                <button id="edit" *ngIf="data.editBtnVisibility && !data.rename" (click)="editRow(data)"
+                  class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp" role="button"
+                  aria-label="rename" tabindex="0" matTooltip="Rename">
+                  <span class="mdi mdi-pencil blue_circle_replay_img"></span>
+                </button>
+                <button id="delete" *ngIf="data.deleteBtnVisibility && !data.rename"
+                  class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp" aria-label="delete"
+                  (click)="openDelete(data)" matTooltip="Delete">
+                  <span class="blue_circle_replay_img mdi mdi-delete"></span>
+                </button>
+
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+        <tbody *ngIf="fileElements.length == 0">
+          <tr *ngIf="newFolder">
+            <td class="pl10 first_text ckbox" data-label=" ">
+              <mat-checkbox></mat-checkbox>
+              <span class="pl10 mdi mdi-folder typeicon"></span>
+            </td>
+            <td class="customized-input" [attr.data-label]="Name">
+              <input class="border-gray" [(ngModel)]="foldername" name="foldername" minlength="2" required
+                #newFoldername="ngModel" />
+              <div *ngIf="newFoldername.invalid" class="error-message">
+                Folder name required.
+              </div>
+            </td>
+            <td [attr.data-label]="Modified">-</td>
+            <td>-</td>
+            <td class="pr15 first_text actionColumn ">
+              <div class="float-right d-flex">
+
+                <button id="create" class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                  aria-label="create" matTooltip="create" (click)="createFolder()">
+                  <span class="blue_circle_replay_img mdi mdi-check"></span>
+                </button>
+
+                <button id="Cancel" class="btn-none blue_circle_replay  ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                  role="button" aria-label="Cancel" tabindex="0" (click)="createRow()" matTooltip="Cancel">
+                  <span class="mdi mdi-close blue_circle_replay_img"></span>
+                </button>
+
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="!newFolder">
+            <td style="text-align:center" colspan="4"> This folder is empty </td>
+            <!-- <span class="no-data" >
+          This folder is empty 
+        </span> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="float-left col-12 no_pad mobile-buttons">
+    <button type="button" class="col-6 no_pad float-left save-btn" (click)="createRow()">Create folder</button>
+    <label class="col-6 no_pad float-left save-btn" for="fileIp1">
+      Upload document
+      <input (change)="attachFileUploadDoc($event)" id="fileIp1" type="file" class="w-166 upload-input" #fileInput
+        (click)="fileInput.value = null" />
+    </label>
+  </div>
+
+</div>

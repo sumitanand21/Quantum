@@ -1,0 +1,156 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-opportunity suspendPop">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-11 float-left  no_pad popup-hd-txt" mat-dialog-title>Do you want to assign the selected opportunities?</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close" mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey "></div>
+        <!-- <div class="col-12 float-left pad-20-pop">
+            <div class="convo-name-title">Opportunity name</div>
+            <div class="convo-name mt5">Wipro’s lead to order transformation</div>
+        </div> -->
+
+        <div class="accordian-nomination  col-12 float-left no_pad">
+            <mat-accordion class="col-12 float-left no_pad accordian-style">
+                <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header class="no_pad" style="min-height:60px;">
+                        <mat-panel-title class="col-12 accord-heading">
+                            <span [ngClass]="panelOpenState ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                            <span class="accordian-title pad-top-8">06 Opportunities</span>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="col-12 float-left border-bottom-grey mbot-10 no_pad "></div>
+                    
+                    <perfect-scrollbar style="height:150px;">
+                        <div class="col-12 float-left no_pad mt-10 ">
+                            <div class="col-12 float-left no_pad customized-checkbox">
+                                <div class="col-12 float-left no_pad check-padding">
+                                    <mat-checkbox checked='true' class="name-inpopup">Wipro’s lead to order transformation
+                                    </mat-checkbox>
+                                </div>
+                                <div class="col-12 float-left no_pad check-padding">
+                                    <mat-checkbox checked='true' class="name-inpopup">Wipro’s lead to order transformation
+                                    </mat-checkbox>
+                                </div>
+                                <div class="col-12 float-left no_pad check-padding">
+                                    <mat-checkbox checked='true' class="name-inpopup">Wipro’s lead to order transformation
+                                    </mat-checkbox>
+                                </div>
+                                <div class="col-12 float-left no_pad check-padding">
+                                    <mat-checkbox checked='true' class="name-inpopup">Wipro’s lead to order transformation
+                                    </mat-checkbox>
+                                </div>
+                                <div class="col-12 float-left no_pad check-padding">
+                                    <mat-checkbox checked='true' class="name-inpopup">Wipro’s lead to order transformation
+                                    </mat-checkbox>
+                                </div>
+                                <div class="col-12 float-left no_pad check-padding">
+                                    <mat-checkbox checked='true' class="name-inpopup">Wipro’s lead to order transformation
+                                    </mat-checkbox>
+                                </div>
+                                <div class="col-12 float-left no_pad check-padding">
+                                    <mat-checkbox checked='true' class="name-inpopup">Wipro’s lead to order transformation
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </perfect-scrollbar>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+        <div class="col-12 float-left pad-20-pop pt5">
+
+            <mat-radio-group class="float-left" aria-labelledby="key">
+                <mat-radio-button value="Assign to me" class="no_pad float-left col-12">
+                    <div class="float-left col-11 no_pad pos10">
+                        <span class="col-12 no_pad convo-name float-left">Assign to me</span>
+                        <span class="convo-name-title mb10 col-12 no_pad float-left">Assign the selected opportunity to yourself.</span>
+
+                    </div>
+                </mat-radio-button>
+                <br>
+                <mat-radio-button class="no_pad float-left col-12" value="Assign to another user or team">
+                    <div class="float-left col-11 no_pad pos10">
+                        <span class="col-12 no_pad convo-name float-left">Assign to another user or team</span>
+                        <span class="convo-name-title mb10 col-12 no_pad float-left">Assign the selected opportunity to following user </span>
+
+                    </div>
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+
+        <!-- added-search-names -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left customized-input cust_autoComplete pos-rel no_pad ">
+
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="customerName" class="label-form"> </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input br-0-4" id="customerName" name="customerName"
+                        type="text" autocomplete="off" [(ngModel)]="customerName" placeholder="Search people to assign opportunity  "
+                        (clickOutside)="customerNameclose()" (click)="customerNameSwitch = true">
+                    <span class="mdi mdi-magnify"></span>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box top40 pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                    *ngIf="customerName && customerNameSwitch">
+                    <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                        <ul class=" list-group mr2 sort-dropdown">
+                            <li class="list-group-item h-50 p-4-10 " (click)="appendcustomer(item.contact,item.index)" *ngFor="let item of customerContact |filter:customerName">
+
+                                <div class="float-left naming-tags child-middle bg-azure">
+                                    <span class="initials">{{item.initials}}</span>
+                                </div>
+                                <label for="inti_name" class="float-left name">
+                                    <span class="d-block list-name">{{item.contact}}</span>
+                                    <span class="d-block sub-list">{{item.designation}}</span>
+                                </label>
+                                <span class="btn-key" *ngIf="item.value"> Key </span>
+                            </li>
+
+                            <li class="d-block list-name h-40 p-10" *ngIf="(customerContact |filter:customerName).length == 0">
+                                No record found </li>
+                        </ul>
+
+                    </perfect-scrollbar>
+                </div>
+            </form>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                <perfect-scrollbar style="max-height:200px">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10" *ngFor="let item of selectedCustomer">
+
+                        <div class="float-left naming-tags child-middle bg-azure">
+                            <span class="initials">{{item.initials}}</span>
+                        </div>
+                        <label for="inti_name" class="float-left name">
+                            <span class="d-block list-name">{{item.contact}}</span>
+                            <span class="d-block sub-list">{{item.designation}}</span>
+                        </label>
+
+
+                    </div>
+                </perfect-scrollbar>
+
+            </div>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey mt-30"></div>
+        <div class="float-left convo-name-title mt10">Are you sure you want to assign the ownership to Kinshuk Bose (SE SPOC) for this opportunity?</div>
+
+    </div>
+
+    <div class="col-6 float-left no_pad mt20">
+        <button aria-label="CANCEL" class="col-12 float-left no_pad cancel-btn1" style="z-index: 8;" mat-dialog-close>Cancel</button>
+    </div>
+    <div class="col-6 float-left no_pad mt20">
+        <button aria-label="CONFIRM" class="col-12 float-left btndef-none no_pad confrm-btn " style="z-index: 8;" mat-dialog-close>Confirm</button>
+    </div>
+
+</div>

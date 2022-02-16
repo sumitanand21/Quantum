@@ -1,0 +1,39 @@
+<div class="col-xl-12 col-12 no_pad expand-table-panel">
+  <div class="col-xl-12 col-12 float-left no_pad expand-content">
+    <div class="loader-search" *ngIf="isLoading"></div>
+    <div class="col-xl-11 col-12 col-md-11 float-left width100-max">
+      <div *ngIf="!isLoading" class="col-12 float-left">
+        <span class="col-12 no_pad float-left desp-text mb10">Task reminders</span>
+
+        <div class="col-12 float-left no_pad">
+          <label class="col-12 no_pad float-left mb-0 label-text">Actionable date</label>
+          <span class="col-12 no_pad float-left content-data">{{dateValue | date}}</span>
+        </div>
+
+        <div class="col-12 float-left no_pad">
+          <label class="col-12 no_pad float-left mb-0 label-text">Action owners</label>
+          <span class="col-12 no_pad float-left content-data">{{actionOwners}}</span>
+        </div>
+
+        <div class="col-12 float-left no_pad mt20">
+          <label class="col-12 no_pad float-left label-text">Reminder comments</label>
+          <span class="col-xl-7 col-12 no_pad float-left content-data">
+            {{comments}}
+          </span>
+        </div>
+
+      </div>
+
+      <div class="col-12 float-left">
+        <div class="col-12 no_pad float-left comment-main">
+
+          <div class="col-12 float-left no_pad exp-btns-div">
+            <button class="float-left btn-none f-capital exp-cancel-btn exp-cancel-cmnt-btn" (click)="openclosepopup()">
+              Close </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,292 @@
+<ng-container *ngIf="isLoading">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing"
+    >
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div
+  class="top-header"
+  [ngClass]="service.header ? 'navbar-sticky-top' : 'navbar-fixed-top'"
+>
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab new-container">
+    <!-- <div style="max-width: 400px" class="float-left">
+        <h1 class="float-left heading-level-one mb-0">
+            <span class="mdi mdi-arrow-left cp mr10" (click)="service.goBack()"></span>Past deals</h1>
+            <span class="col-12 no_pad float-left brudcrumbs">Deals > Existing deals</span>
+            
+      </div> -->
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad"
+    >
+      <div
+        class="col-11 col-sm-11 col-md-5 col-lg-5 col-xl-5 float-left no_pad"
+      >
+        <span
+          class="float-left mdi mdi-keyboard-backspace cp"
+          routerLink="/deals/deal/existing"
+          tabindex="0"
+          role="button"
+        ></span>
+        <div class="col-11 float-left">
+          <h1 class="col-12 no_pad float-left heading-level-one ">RLS view</h1>
+
+          <span class="col-12 no_pad float-left brudcrumbs"
+            >Deals > RLS view</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night blue-patch res-position-rel"
+  ></div>
+
+  <div
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container"
+  >
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left top-13 margin-btm55 pad-top-140"
+    >
+      <div class="col-12 no_pad float-left">
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad"
+        >
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left no_pad"
+          >
+            <div class="col-12 float-left pad-18-30 pad-bot0">
+              <h3 class="col-10 float-left no_pad heading-level-two">
+                Search details
+              </h3>
+              <!-- <span class="col-2 no_pad float-left color-azure text-right">User guide</span> -->
+            </div>
+
+            <div class="col-12 float-left pad-18-30 pad-top0">
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt10 customized-input no_pad"
+              >
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 mobile-select-box"
+                >
+                  <label for="SBU" class="w-100">SBU</label>
+
+                  <div class="customized-select">
+                    <span class="caret color-azure"></span>
+                    <select
+                      id="SBU"
+                      role="listbox"
+                      [(ngModel)]="sbuCode"
+                      (ngModelChange)="selectSBU($event)"
+                    >
+                      <option value="">Select SBU</option>
+                      <option
+                        [value]="sbu.SBUCode"
+                        *ngFor="let sbu of SBUList"
+                        >{{ sbu.SBUName }}</option
+                      >
+                    </select>
+                  </div>
+                </div>
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 web-select-box"
+                >
+                  <label for="SBU" class="w-100">SBU</label>
+                  <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>Select SBU</mat-label>
+                    <mat-select
+                      id="SBU"
+                      disableOptionCentering
+                      panelClass="Select-panel-class"
+                      class="select-focus"
+                      [(ngModel)]="sbuCode"
+                      aria-label="{{ selectedSBU }}"
+                      (ngModelChange)="selectSBU($event)"
+                    >
+                      <mat-option>Select SBU</mat-option>
+                      <mat-option
+                        [value]="sbu.SBUCode"
+                        *ngFor="let sbu of SBUList"
+                        >{{ sbu.SBUName }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 mobile-select-box"
+                >
+                  <label for="Vertical" class="w-100">Vertical</label>
+                  <div class="customized-select">
+                    <span class="caret color-azure"></span>
+                    <select
+                      id="Vertical"
+                      role="listbox"
+                      [(ngModel)]="verticalcode"
+                      (ngModelChange)="selectVertical($event)"
+                    >
+                      <option value="">Select vertical</option>
+                      <option
+                        [value]="vertical.VerticalCode"
+                        *ngFor="let vertical of verticalList"
+                      >
+                        {{ vertical.VerticalName }}</option
+                      >
+                    </select>
+                  </div>
+                </div>
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 web-select-box"
+                >
+                  <label for="Vertical" class="w-100">Vertical</label>
+                  <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>Select vertical</mat-label>
+                    <mat-select
+                      id="Vertical"
+                      disableOptionCentering
+                      panelClass="Select-panel-class"
+                      class="select-focus"
+                      [(ngModel)]="verticalcode"
+                      aria-label="{{ selectedVertical }}"
+                      (ngModelChange)="selectVertical($event)"
+                    >
+                      <mat-option>Select vertical</mat-option>
+                      <mat-option
+                        [value]="vertical.VerticalCode"
+                        *ngFor="let vertical of verticalList"
+                        >{{ vertical.VerticalName }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 mobile-select-box"
+                >
+                  <label for="filterby" class="w-100">Filter by</label>
+                  <div class="customized-select">
+                    <span class="caret color-azure"></span>
+                    <select id="filterby" role="listbox" [(ngModel)]="filterby">
+                      <option value="">SELECT</option>
+                      <option value="DealHeaderName">Deal Name</option>
+                      <option value="TraceOppID">Opp Id/Amend. No</option>
+                      <option value="PricingId">Pricing Id</option>
+                      <option value="CustomerName">Client Name</option>
+                      <option value="Status">Status</option>
+                    </select>
+                  </div>
+                </div>
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 web-select-box"
+                >
+                  <label for="filterby" class="w-100">Filter by</label>
+                  <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>Select filter by</mat-label>
+                    <mat-select
+                      id="filterby"
+                      disableOptionCentering
+                      panelClass="Select-panel-class"
+                      class="select-focus"
+                      [(ngModel)]="filterby"
+                    >
+                      <mat-option>Select filter by</mat-option>
+                      <mat-option value="DealHeaderName">Deal Name</mat-option>
+                      <mat-option value="TraceOppID"
+                        >Opp Id/Amend. No</mat-option
+                      >
+                      <mat-option value="PricingId">Pricing Id</mat-option>
+                      <mat-option value="CustomerName">Client Name</mat-option>
+                      <mat-option value="Status">Status</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left "
+                >
+                  <div class="w-100">
+                    <input
+                      class="border-gray w-100 mt25"
+                      placeholder="Search"
+                      [(ngModel)]="searchText"
+                      id="Dealname"
+                      type="text"
+                      value=""
+                      aria-label="search"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 float-left pl-0 mt20 search-resetbtn"
+              >
+                <button
+                  class="primary-button btn-block w-150"
+                  (click)="searchBtn()"
+                >
+                  Search
+                </button>
+              </div>
+              <div
+                class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 float-left pr-0 mt20 search-resetbtn"
+              >
+                <button
+                  class="primary-button btn-block w-150"
+                  (click)="resetDeal()"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- table starts here -->
+        <div class="col-12 float-left complex_table pt0 no_pad mt20">
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mt10"
+          >
+            <div class="col-12 no_pad float-left ">
+              <h3 class="col-12 float-left no_pad heading-level-two">
+                Deals ({{ tableTotalCount }})
+              </h3>
+            </div>
+            <div
+              class="col-lg-12 col-sm-12 col-md-12 col-12 float-left no_pad mt15 "
+            >
+              <div class="parent-container" *ngIf="rlsDealTable.length > 0">
+                <app-single-table
+                  (detectActionValue)="performTableChildAction($event)"
+                  (detectPageChangeData)="pagination($event)"
+                  [TableName]="'rlsDeals'"
+                  [TableCollection]="rlsDealTable"
+                  [bgParentColor]="'bgWhiteContainer'"
+                  [totalTableCount]="tableTotalCount"
+                  (detectPageChangeData)="pagination($event)"
+                  [IsFreezedColumn]="true"
+                  [filterConfigData]="filterConfigData"
+                  [paginationPageNumber]="paginationPageNo"
+                  [IsCustomizeTable]="false"
+                  [IsDropBoxRequired]="false"
+                  [IsClearFilter]="true"
+                >
+                </app-single-table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- table ends here -->
+      </div>
+    </div>
+  </div>
+

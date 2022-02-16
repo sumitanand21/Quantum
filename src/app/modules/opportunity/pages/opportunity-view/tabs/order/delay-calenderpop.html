@@ -1,0 +1,29 @@
+<div class="col-12 float-left  no_pad popup-container newchildconvo ">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt margin-btm0">Please provide the reason
+                for delay in order booking</span>
+            <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close"
+            (click)="onClose('No')"></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey "></div>
+
+        <div class="col-12 no_pad float-left">
+        <span class="float-left convo-name-title desc-color mt20">Delay reason*</span>
+        <textarea class="col-12 float-left textarea-pop"  [(ngModel)] ="delayReason" (ngModelChange)="changeDelayReason()" [appAlphaNumeric] = "'alphanumeric'"> </textarea>        
+            <p *ngIf="showErrorFlag" class="validation_text float-left no_pad mb-0">Delay reason is mandatory</p>
+        </div>
+       
+
+        <div class="col-12 float-left border-bottom-grey mt20"></div>
+        <div class="col-12 float-left convo-name-title desc-color no_pad mt10"><span class="color-black">Note:</span> Signed date is 7 days prior to Current date.</div>
+    </div>
+
+    <div class="col-12 float-left no_pad mt30">
+        <button aria-label="cancel" class="col-6 float-left no_pad cancel-btn" (click)="onClose('No')" >Cancel</button>
+        <button aria-label="submit" class="col-6 float-left btndef-none no_pad confrm-btn mr0"
+            (click)="onClose('Yes')" [ngClass]="bgcolorblue ? 'bg-azure':'bg-grey' ">Submit</button>
+    </div>
+
+</div>

@@ -1,0 +1,209 @@
+<div
+  class="top-header zindex_cls"
+  [ngClass]="service.header ? 'navbar-sticky-top' : 'navbar-fixed-top'"
+>
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab deal">
+    <div
+      class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left existing-tab-container no_pad"
+    >
+      <div
+        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad"
+      >
+        <div
+          class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 float-left no_pad d-flex"
+        >
+          <span
+            class="float-left mdi mdi-keyboard-backspace cp"
+            (click)="navTo()"
+            tabindex="0"
+            aria-label="back"
+            role="button"
+          ></span>
+          <div class="col-11 float-left">
+            <h1 class="col-12 no_pad float-left heading-level-one ">
+              {{ dealName }}
+            </h1>
+
+            <span
+              class="col-12 no_pad float-left brudcrumbs"
+              *ngIf="
+                !previousUrl.includes('rlsView') &&
+                !previousUrl.includes('pastDeal')
+              "
+              >Deals > Existing deals</span
+            >
+            <span
+              class="col-12 no_pad float-left brudcrumbs"
+              *ngIf="previousUrl.includes('pastDeal')"
+              >Deals > Past deals</span
+            >
+            <span
+              class="col-12 no_pad float-left brudcrumbs"
+              *ngIf="previousUrl.includes('rlsView')"
+              >Deals > RLS view</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-right no_pad existing-tab-container" id="more-mob1">
+      <div class="float-right disp-flex" style="padding-top: 3px;">
+        <div class="cust-dropdown-btn" *ngIf="router.url.includes('/deals/existingTabs/overview')">
+          <button
+            class="primary-button borderless pad-0-10 btn-block h-40 std pos-rel pad-ryt30 responsive-btn-div-button color-azure d-flex justify-content-start align-items-center"
+            [ngClass]="showContent?'show-action':''" (click)="toggleContent()" (clickOutside)="closeContent()">
+            <span class="mdi mdi-dots-vertical m-r-8 buttn-vertical"></span>
+            <span class="d-none d-md-inline-block more-respon Actionclass">
+              <span class="sm-hide">More</span> actions </span>
+            <span class="caret color-azure d-none d-md-block">
+            </span>
+          </button>
+          <div *ngIf="showContent" class="pos-rel">
+            <ul class=" dropdown-content pad-0-10 pos-abs z-ind-99 top-2 respon-top b-top">
+              <li class="h-40 cp color-azure line-height-40" (click)="showAssignPop()">
+                <span class="mdi mdi-account-convert m-r-5"> </span> <span>Co-owners </span>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div> -->
+    <div
+      class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-right no_pad existing-tab-container web-buttons"
+    >
+      <button
+        [ngClass]="{ 'disable-button-control': enableCoOwner }"
+        class="float-right primary-button border-0 h-40 std mdi mdi-account-convert"
+        [attr.disabled]="(originUrl == '/deals/rlsView') && enableCoOwner  ? 'disabled' : null"
+        (click)="showAssignPop()"
+      >
+        Add deal co-owner
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-12 float-left no_pad existing-tab-container">
+  <div
+    class="col-12 pos-abs mar-top-65 bg-mid_night h-290 pad-30"
+    [ngClass]="
+      router.url.includes('/deals/existingTabs/techSolution')
+        ? 'h-315'
+        : '' || router.url.includes('/deals/existingTabs/calendar')
+        ? 'h-336'
+        : '' || router.url.includes('/deals/existingTabs/overview')
+        ? 'h-237'
+        : ''
+    "
+  ></div>
+  <div class="col-12 no_pad float-left mar-top-130">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 text-center pb-0 "
+    >
+      <div class="float-left col-12 col-xl-9 scroll-tabs tabs-deal-mob">
+        <div class="col-9 float-left overflow-div-deals no_pad">
+          <button
+            class="btn-label btn-text width-view float-left"
+            routerLinkActive="activetabs"
+            role="tab"
+            [routerLink]="['overview']"
+            (click)="showAccOverview()"
+            [attr.aria-selected]="AccOverview"
+          >
+            Overview
+          </button>
+          <!-- <button class=" btn-label btn-text width-view float-left" routerLinkActive="activetabs"
+          [routerLink]="['team']" *ngIf="previousUrl !='/deals/rlsView' && previousUrl !='/deals/pastDeal'">Team
+        </button> -->
+          <button
+            class=" btn-label btn-text width-view float-left"
+            routerLinkActive="activetabs"
+            role="tab"
+            [routerLink]="['module']"
+            [disabled]="enableModule"
+            (click)="showAccModule()"
+            [attr.aria-selected]="AccModule"
+          >
+            Module
+          </button>
+          <button
+            class=" btn-label btn-text width-view float-left tab-btns"
+            routerLinkActive="activetabs"
+            role="tab"
+            [routerLink]="['commercial/commlanding']"
+            [disabled]="enableCommercial"
+            (click)="showAccCommercials()"
+            [attr.aria-selected]="AccCommercials"
+          >
+            Commercials
+          </button>
+          <!--  -->
+          <!-- <button
+            class=" btn-label btn-text width-view float-left"
+            routerLinkActive="activetabs"
+            role="tab"
+            [routerLink]="['techSolution']"
+            (click)="showAccProposal()"
+            [attr.aria-selected]="AccProposal"
+            [disabled]="tabVisibility"
+          >
+            Proposal
+          </button> -->
+          <!-- <button
+            class=" btn-label btn-text width-view float-left"
+            routerLinkActive="activetabs"
+            role="tab"
+            [routerLink]="['calendar']"
+            (click)="showAccDealTracker()"
+            [attr.aria-selected]="AccDealTracker"
+            [disabled]="tabVisibility"
+          >
+            Deal tracker
+          </button> -->
+        </div>
+      </div>
+      <div class="float-right web-buttons">
+        <button
+          (click)="onAttachDocument()"
+          [ngClass]="{ 'disable-button-control': tabVisibility }"
+          class="standard-border h-40 ellipses bg-transperent color-white float-right mdi mdi-content-save-all font-bold"
+        >
+          Reference documents ({{ totalAttachDoc }})
+        </button>
+      </div>
+      <div
+        class="float-right col-2 pagination mobile-display pos-rel attach-mobile"
+      >
+        <button
+          class="pos-abs standard-border color-white deal-btn mdi mdi-attachment mdi-rotate-90"
+          (click)="onAttachDocument()"
+        ></button>
+      </div>
+    </div>
+    <div class="col-12 pad-30 float-left pt-3">
+      <!-- <app-custom-tab-dropdown [tabList]="IsTabList" [selectedTab]="TabValueSelected"> </app-custom-tab-dropdown> -->
+      <router-outlet></router-outlet>
+    </div>
+    <div
+      class="float-left col-12 mobile-buttons bg-azure mobile-sticky-btns"
+      [ngClass]="{ 'disable-button-control': enableCoOwner }"
+      *ngIf="router.url.includes('/deals/existingTabs/overview')"
+    >
+      <div class="d-flex-center">
+        <button
+          class="primary-button borderless"
+          (click)="showAssignPop()"
+          [attr.disabled]="(originUrl == '/deals/rlsView') && enableCoOwner ? 'disabled' : null"
+        >
+          <span
+            class="mdi mdi-comment-multiple-outline pr5 w-100 float-left"
+          ></span
+          >Add deal co-owner
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

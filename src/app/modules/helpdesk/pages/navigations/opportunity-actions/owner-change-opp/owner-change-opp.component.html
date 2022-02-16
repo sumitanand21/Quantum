@@ -1,0 +1,177 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container HelpdeskOpp">
+   <ng-container *ngIf="isLoading">
+                    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                                <div class="loaderContainer">
+                                    <div class="loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-180"> </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 mob-card-pad no_pad mt20">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt-15 ">
+        <span class="back-arrow-helpdesk mdi mdi-arrow-left" (click)="goback()"></span>
+        <h2 class="heading-owner"> Opportunity vertical owner change  </h2>
+
+        <div class="divider mt10"> </div>
+
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+          <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+            <div class="customized-input">
+              <label for="callid" class=" own-colr label-form w-100">Call ID</label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input id="callid" type="text" class="col-12 float-left" placeholder="Enter call ID">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+            <div class="customized-input">
+              <label for="callraised" class=" own-colr label-form w-100">Call raised by (email ID)</label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input id="callraised" type="text" class="col-12 float-left" placeholder="Enter email">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+            <div class="customized-input">
+              <label for="OppNumber" class="label-form own-colr w-100">Opportunity number</label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input id="OppNumber" type="text" class="col-12 float-left" placeholder="Enter opportunity number"
+                  [(ngModel)]="searchopp">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad" for="changeVerArr"
+                class="label-form own-colr ">Current vertical owner
+              </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex Vertical_Owner">
+                <div class="flex-grow-1">
+                  <!--<app-auto-complete-select [source]="selectedAdvisorName" [labelName]="'Childorder'"
+                    [Placeholder]="'Enter current vertical owner'" [selectedObj]="selectedAdvisorOwnerObj"
+                    [Isdisabled]=false [IsApiCall]=false [details]="advisorOwner" [detailsId]="'advisorOwnerMapGuid'"
+                    [MandtErrorFlag]="advisorOwner">
+                  </app-auto-complete-select>-->
+                  <app-auto-complete-select [requiredField]="false" [source]="searchOwnerData" (content)="searchOwnerContent($event)" (advanceLookUp)="advanceLookUpSearch($event)"
+  [selectedObj] ='selectedOwnerObj'     [IsApiCall]=true [isSearchLoader]='isSearchLoader' 
+   [labelName]= "'changeVerArr'" [titleName]="'Current vertical owner'"  [details]="ownerName" [detailsId]="ownerId"    [dataHeader] ='header' 
+    (SelectedData)="selectedOwner($event)"  [Placeholder]="'Enter current vertical owner'" [showSelected]=false>
+                  </app-auto-complete-select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-right mt20 plb-60-20">
+          <button class="float-right pos-rel searchButton" (click)="checktable()">
+            Search
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left blue-patch">
+        <div class="blue-patch-text">
+          <span class="bld">Note- </span>
+          <span>Target vertical owner should be opportunity's account owner or account's
+              secondary account owner</span>
+          </div>
+      </div>
+      <div *ngIf="showtable">
+          <div class="col-12 float-left pad-RL-30 heading-level-three mt20">Opportunites</div>
+          <!--table starts-->
+  
+          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+              <app-simple-scroll-table [TableHeader]="headernonsticky1" [TableCollection]="userArray"
+              [IscheckBoxRequired]=false [totalTableCount]="tableCount" [TableName]="'verticalowner'"
+              [IsPaginationRequired]=false></app-simple-scroll-table>
+  
+          </div>
+      </div>
+      <!--scroll table starts-->
+      <div *ngIf="showScrolltable">
+          <div class="col-12 float-left pad-RL-30 heading-level-three pos-rel top-order-40">Opportunities
+            
+            </div>
+            <app-simple-scroll-table [TableHeader]="headernonsticky1" [TableCollection]="userArray"
+                (detectPageChangeData)="performTableChildAction($event)"
+                [IscheckBoxRequired]=true [totalTableCount]="tableCount" [TableName]="'verticalowner'"
+                [IsPaginationRequired]=true></app-simple-scroll-table>
+    
+   
+  
+      </div>
+
+      <!--expansion table after checkbox-->
+      <div *ngIf='selectedOpp' class="col-12 col-md-12 col-xl-12 float-left no_pad">
+        <div class="col-12 col-md-12 col-xl-12 float-left pad-RL-15 heading-level-three mt20 "
+          (click)="expandordertable =!expandordertable">
+          <span class="mdi-icon" [ngClass]="expandordertable ? 'mdi mdi-chevron-down':'mdi mdi-chevron-up'"></span>{{selectedName?.length}}
+          opportunities
+          selected</div>
+
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad "
+          *ngIf="expandordertable">
+          <app-simple-scroll-table [TableHeader]="headernonsticky1" [TableCollection]="selectedName"
+          [IscheckBoxRequired]=false [totalTableCount]="tableCount" [TableName]="'verticalowner'"
+          [IsPaginationRequired]=false></app-simple-scroll-table>
+        </div>
+      </div>
+      <!--expansion table after checkbox-->
+      <!--scroll table starts-->
+      <div class="divider mt20 mar-RL-30" *ngIf="showtable"> </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 mb20 pad-RL-30">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 ">
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="newVerticalOwner"
+              class="label-form own-colr">New vertical owner
+            </label>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex Vertical_Owner">
+              <div class="flex-grow-1">
+                <!--<app-auto-complete-select [source]="selectedAdvisorName" [labelName]="'Childorder'"
+                  [Placeholder]="'Enter new vertical owner'" [selectedObj]="selectedAdvisorOwnerObj" [Isdisabled]=false
+                  [IsApiCall]=false [details]="advisorOwner" [detailsId]="'advisorOwnerMapGuid'"
+                  [MandtErrorFlag]="advisorOwner">
+                </app-auto-complete-select>-->
+                  <app-auto-complete-select [requiredField]="false" [source]="searchOwnerNewData" (content)="searchNewOwnerContent($event)" 
+                  (advanceLookUp)="advanceLookUpSearch($event)"
+  [selectedObj] ='selectedNewOwnerObj'  [Isdisabled] ='getNewValidate()'   [IsApiCall]=true [isSearchLoader]='isSearchLoader'  [labelName]= "'changeNewVerArr'"  [titleName]="'New vertical owner'"
+    [details]="ownerNewName" [detailsId]="ownerNewId"    [dataHeader] ='headerNew'  (SelectedData)="selectedNewOwner($event)" 
+     [Placeholder]="'Enter new vertical owner'" [showSelected]=false>
+                  </app-auto-complete-select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-right mt20 plb-60-20">
+          <button  [ngClass] = "getValidateUpdate() ?'disableAssign':''"   [disabled]='getValidateUpdate()' class="float-right pos-rel searchButton" (click)="checkresultstable()">
+            Update
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!--<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad" *ngIf="showresults">-->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad" >
+      
+      <div *ngIf="showresults" class="col-12 float-left pad-RL-30 heading-level-three mt20">Results</div>
+      <div  *ngIf="showresults"class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  no_pad float-left">
+          <app-simple-scroll-table [TableHeader]="headernonsticky2" [TableCollection]="userArray2"
+          [IscheckBoxRequired]=false [totalTableCount]="tableCount1" [TableName]="'verticalowner'"
+          [IsPaginationRequired]=false></app-simple-scroll-table>
+
+      </div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad" >
+</div>
+    </div>
+  </div>
+
+ 

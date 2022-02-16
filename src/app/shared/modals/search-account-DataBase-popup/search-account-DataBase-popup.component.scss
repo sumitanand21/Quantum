@@ -1,0 +1,151 @@
+.popup-tabs{
+    background-color: #d9e9ff;
+    width:100%;
+    height:75px;
+    // margin-top: 65px;
+    position:absolute;
+    left:0px;
+    right:0px;
+}
+
+.popup-tabs-arrow{
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    margin-left: 86px;
+    border-width: 17px 15px 0 15px;
+    border-color: #d9e9ff transparent transparent transparent;
+    line-height: 0px;
+    margin-top: 3px;
+}
+.popup-tabs-arrowdb{
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    // margin-left: 136px;
+    border-width: 17px 15px 0 15px;
+    border-color: #d9e9ff transparent transparent transparent;
+    line-height: 0px;
+    margin-top: 3px;
+}
+.btn-circle {
+    width: 35px;
+    height: 35px;
+    padding: 4px 0px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.42857;
+}
+
+.mr-lt{
+    margin-left: -49px;
+}
+
+.mr-lt{
+    margin-left: -55px;
+}
+
+.mt-09{
+    margin-top:-9px;
+}
+
+.mt-105{
+     margin-top:88px;
+}
+
+.mb-5{
+         margin-bottom: 5px !important;
+}
+
+.mb-30{
+    margin-bottom:30px;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+}
+.pad-top{
+    padding-top: 6px;
+}
+.create_pading{
+    margin-top: 0px;
+    padding-left: 0px;
+    padding-right: 28px;
+    padding-top: 8px;
+}
+.border-bottm{
+    border: 1px solid #d8d8d8;
+    height: 2px;
+    margin: 5px 5px 0 5px !important;
+    width: 99%;
+    float: left;
+}
+.search_space{
+    // height: 10em;
+    position: relative 
+}
+.search_space p{
+    // margin: 0;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    // margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+ .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+}
+.button_widthborder{
+    width: auto;
+    border: 2px solid;
+    text-align: center;
+    padding: 0px 20px !important;
+}
+.top64{
+    top:64px;
+}
+.db-container .CompanyName .mdi-magnify:before {
+    color: #2f81ff;
+    font-size: 20px;
+    right: 10px;
+    position: absolute;
+    top: 32px;
+}
+.db-container .CompanyNamewip .mdi-magnify:before {
+    color: #2f81ff;
+    font-size: 20px;
+    right: 10px;
+    position: absolute;
+    top: 6px;
+}
+.list-group-itemsearch{
+   padding: 0.40rem 1.25rem;
+   border:none;
+   cursor:pointer;
+}
+.search_space_loader{
+//   top:-130px;
+    position: relative;
+
+}
+.list-group-item{
+    cursor:pointer;
+}
+
+.DynamicWidth400 {
+    width:400px !important;
+}
+
+.DynamicWidth600 {
+    width:600px !important;
+}
+.heightdb{
+    height:45px !important;
+}
+.primary-button:hover {
+    background-color: #2f81ff;
+    color: #ffffff;
+}

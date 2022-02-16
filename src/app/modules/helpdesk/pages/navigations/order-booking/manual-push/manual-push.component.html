@@ -1,0 +1,301 @@
+<div class="float-left no_pad col-lg-12 col-sm-12 col-md-12 col-12 parent_div">
+    <div class="float-left blue_patch no_pad col-lg-12 col-sm-12 col-md-12 col-12"></div>
+    
+    <div class="float-left card rfc-card rfc_card_mob">
+        <div class="float-left no_pad col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
+        <span class="back-arrow-helpdesk mdi mdi-arrow-left z-ind-1" (click)="goback()"></span>
+            <h5 class="font_style_bold rfc_heading">RFC Push</h5>
+            <button class="float-left top_btn col-lg-6 col-xl-6 col-md-6 col-sm-6 col-6 no_pad font_style_bold" type="button" (click)= "ShowManualPushContent()" [ngClass]="ManualContent?'bg_black':'bg_white'">Manual Push</button>
+            <button class="float-left top_btn col-lg-6 col-xl-6 col-md-6 col-sm-6 col-6 font_style_bold" type="button" (click)= "ShowViewDetailsContent()" [ngClass]="ManualContent?'bg_white':'bg_black'">View Details</button>
+        </div>
+        <div class="col-lg-12 col-xl-12 col-md-12 col-12 float-left no_pad emptydiv"></div>
+    
+    <div *ngIf="ManualContent" class="float-left no_pad col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 ">
+  <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+    <div class="float-left  col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 input_top mob_text_area right_pad">
+      <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <h6 class="font_style_bold">Opportunity numbers</h6>
+        <label class="float-left no_pad col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 font_style_regular mt15">Separated by commas</label>
+        <label class="float-right no_pad col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 font_style_regular mt15 opp_count">{{oppArrayLength}} Opportunities</label>
+        <textarea class="form-control text font_style_bold" rows="5" cols="10" [(ngModel)]="OpportunityIds" (change)="checkNumOfOpp($event)" placeholder="Enter opportunity numbers"></textarea>
+      </div>
+      <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 input_top">
+        <h6 class="font_style_bold">CRM reference numbers</h6>
+        <label class="float-left no_pad col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 font_style_regular mt15">Separated by commas</label>
+        <textarea class="form-control text font_style_bold" rows="5" cols="10" [(ngModel)]="CrmNumbers" (change)="checkNumOfCRM($event)" placeholder="Enter CRM reference numbers"></textarea>
+      </div>
+    </div>
+    <div class="float-left col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  input_top mob_text_area left_pad">
+      <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 com-sm-12 col-12 ">
+        <h6 class="font_style_bold">Order numbers</h6>
+        <label class="float-left no_pad col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 font_style_regular mt15">Separated by commas</label>
+        <label class="float-right no_pad col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 font_style_regular mt15 opp_count">{{ordArrayLength}} Orders</label>
+        <textarea class="form-control text font_style_bold" rows="5" cols="10" [(ngModel)]="OrderNumbers" (change)="checkNumOfOrder($event)" placeholder="Enter order numbers"></textarea>
+      </div>
+      <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 input_top">
+        <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 customized-input">
+          <label class="float-left no_pad label_box font_style_regular">Call ID</label>
+          <input class="col-12 float-left" placeholder="call id" type="text">
+        </div>
+        <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 customized-input input_50">
+          <label class="float-left no_pad label_box font_style_regular">Call Raised by</label>
+          <input class="col-12 float-left" placeholder="----@wipro.com" type="text">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="float-left no_pad col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 input_top">
+    <div class="float-left no_pad col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 no_pad manual_label">
+      <label class="float-left select_manual_push_label font_style_bold">Select MANUAL PUSH</label>
+    </div>
+    <div class="float-left col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 no_pad manual_push_buttons">
+      <div class="float-left col-lg-3 col-xl-3 col-md-3 col-sm-12 col-12 mob_text_area button_1">
+        <button class="float-left no_pad col-lg-12 col-md-12 col-sm-12 col-12 to_cpro footer_btn" (click)="doManualPush(1)" type="button"> <span class="span_pad float-left col-lg-12 col-md-12 col-12 font_style_bold">TO CPRO</span>
+         <span class="float-left col-lg-12 col-md-12 col-12 font_style_regular span_pad_2"> Push opp/order to OPP-OR (CPRO) & ADD-NL (OWBS) to conﬂuence
+          OPP-OR (C-PRO) & ADDNL (OWBS)
+           </span>
+        </button>
+      </div>
+      <div class="float-left col-lg-3 col-xl-3 col-md-3 col-sm-12 col-12 mob_text_area button_2">
+        <button class="float-left no_pad col-lg-12 col-md-12 col-sm-12 col-12 no_pad mon_budget footer_btn" (click)="doManualPush(2)" type="button"><span class="span_pad float-left col-lg-12 col-md-12 col-12 font_style_bold">MONTHLY BUDGET</span>
+        <span class="float-left col-lg-12 col-md-12 col-sm-12 col-12 font_style_regular span_pad_2"> Push Monthly budget to PWBS table for at risk approved orders </span>
+          <span class="float-left col-lg-12 col-md-12 col-sm-12 col-12 font_style_bold span_pad_2">PWBS</span> </button>
+      </div>
+      <div class="float-left col-lg-3 col-xl-3 col-md-3 col-sm-12 col-12 mob_text_area button_3">
+        <button class="float-left no_pad col-lg-12 col-md-12 col-sm-12 col-12 no_pad pri_details footer_btn" (click)="doManualPush(3)" type="button"><span class="span_pad float-left col-lg-12 col-md-12 col-12 font_style_bold">PRICING DETAILS</span>
+        <span class="float-left col-lg-12 col-md-12 col-sm-12 col-12 font_style_regular span_pad_2">Push overall budget allocated against the order to pricing details</span>
+          <span class="float-left col-lg-12 col-md-12 col-sm-12 col-12 font_style_bold span_pad_2">PWBS</span> 
+          </button>
+      </div>
+      <div class="float-left col-lg-3 col-xl-3 col-md-3 col-sm-12 col-12 mob_text_area button_4">
+        <button class="float-left no_pad col-lg-12 col-md-12 col-sm-12 col-12 no_pad to_itac footer_btn" (click)="doItacPush(5)" type="button"><span class="span_pad float-left col-lg-12 col-md-12 col-12 font_style_bold">TO ITAC </span>
+        <span class="float-left col-lg-12 col-md-12 col-sm-12 col-12 font_style_regular span_pad_2"> Push the opportunity to ITAC portal wherever product sub practice is tagged in the opportunity
+          </span></button>
+      </div>
+    </div>
+                
+    </div>
+  </div>
+    
+    
+    <div *ngIf="ViewDetailsContent" class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 view_details_parent">
+      <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 view_details_content">
+        <div class="float-left col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mob_text_area customized-input">
+          <label class="float-left no_pad font_style_regular input_top" >Username</label>
+          <input class="col-12 float-left" placeholder="Enter username" type="text" [(ngModel)]="getusername" >
+        </div>
+        <div class="float-left col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mob_text_area customized-input">
+          <label class="float-left no_pad font_style_regular input_top" >Email ID</label>
+          <input class="col-12 float-left" placeholder="Enter email" type="text" [(ngModel)]="getemailId">
+        </div>
+        <div class="float-left col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mob_text_area customized-input">
+          <label class="float-left no_pad font_style_regular input_top" >CRM reference number</label>
+          <input class="col-12 float-left" placeholder="Enter CRM reference number" type="text"  [(ngModel)]="getCrmnum" >
+        </div>
+        <div class="float-left col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mob_text_area customized-input">
+          <label class="float-left no_pad font_style_regular input_top" >Opportunity number</label>
+          <input class="col-12 float-left" placeholder="Enter opportunity number" type="text"  [(ngModel)]="getOppnum"  >
+        </div>
+        <div class="float-left col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mob_text_area customized-input">
+          <label class="float-left no_pad font_style_regular input_top" >Order number</label>
+          <input class="col-12 float-left" placeholder="Enter order number" type="text"  [(ngModel)]="getOrdernum" >
+        </div>
+        <div class="float-left col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mob_text_area customized-input">
+          <label class="float-left no_pad font_style_regular input_top" >Account number</label>
+          <input class="col-12 float-left" placeholder="Enter account number" type="text" [(ngModel)]="getAccountnum">
+        </div>
+        <div class="float-right no_pad col-xl-11 col-lg-11 col-md-11 col-sm-11 col-11 reset_div reset_div_mob mt20">
+          <button class="float-right reset_btn" type="button" (click)="resetvalues()">
+            <span class="font_style_regular">Reset</span></button>
+        </div>
+        <div class="float-left no_pad col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 view_details_footer">
+          <!-- <div class="float-right no_pad col-xl-12 col-lg-12 col-md-12 col-12 input_top">
+            <button class="float-right reset_btn" type="button">
+            <span class="font_style_regular">Reset</span></button>
+          </div> -->
+          <div class="float-left no_pad mt30 mr10">
+            <button class="float-left view_details_footer_btn" type="button" (click)="forBaseViewOrder()"><span class="span_mar mdi mdi-eye"></span>
+            <span class="font_style_bold">Base Records</span></button>
+          </div>
+          <div class="float-left no_pad mt30 mr10">
+            <button class="float-left view_details_footer_btn" type="button" (click)="forViewAdhVdhSdh()">
+            <span class="span_mar mdi mdi-eye"></span>
+            <span class="font_style_bold">ADH/VDH/SDH</span></button>
+          </div>
+          <!-- <div class="float-left no_pad mt30 mr10">
+            <button class="float-left view_details_footer_btn" type="button"><span class="span_mar mdi mdi-eye"></span>
+            <span class="font_style_bold">OWBS Push Logs</span></button>
+          </div> -->
+        </div>
+      </div>
+      
+    </div>
+    </div>
+
+      <!-- code for manual push starts here-->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mb-100 second_card pad-30" *ngIf="ManualContent" >
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card block-disp">
+    <h2 class="heading-level-three pad-20-25"> Push details </h2>
+  
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 no_pad float-left" *ngIf="NotCpro">
+      <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left table-title">Opportunity pushed result (C-PRO)</span>
+      <div class="scroll-window" slimScroll>
+      <table class="brd-right" *ngIf="NoOpp">
+        <thead>
+          <tr>
+            <th class="pad-5-10">Flag</th>
+            <th class="no_pad">Opp. number</th>
+            <th class="no_pad">Message</th>
+          </tr>
+        </thead>
+        <tbody class="no_pad">
+          <tr *ngFor="let data of process_table">
+            <td class="pad-5-10">{{data.flag}}</td>
+            <td class="no_pad">{{data.oppnumber}}</td>
+            <td class="no_pad"> {{data.Message}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <span class="col-12 float-left" *ngIf= "!NoOpp">       
+    <p class="col-6 no_data">  No data pushed   </p>
+  </span>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 no_pad float-left" *ngIf="NotCpro">
+      <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left table-title">Amendment pushed result (C-PRO)</span>
+      <div class="scroll-window" slimScroll>
+      <table class="no_pad" *ngIf="amendTable.length > 0">
+        <thead>
+          <tr>
+            <th class="no_pad">Flag</th>
+            <th class="no_pad">Order number</th>
+            <th class="no_pad">Message</th>
+          </tr>
+        </thead>
+        <tbody class="no_pad">
+          <!-- <tr *ngFor="let data of process_table"> -->
+          <tr *ngFor="let data of amendTable">
+            <td class="no_pad">{{data.flag}}</td>
+            <td class="no_pad">{{data.ordernumber}}</td>
+            <td class="no_pad">{{data.Message}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <span class="col-12 float-left" *ngIf= "amendTable.length == 0">       
+        <p class="col-6 no_data">  No data pushed   </p>
+      </span>
+
+  
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 no_pad float-left" *ngIf="NotCpro">
+      <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left table-title">OWBS (ADD-NL) status</span>
+      <div class="scroll-window" slimScroll>
+      <table class="no_pad brd-left" *ngIf="NoADDNL">
+        <thead>
+          <tr>
+            <th class="pad-5-10">CRM id</th>
+            <th class="">Message</th>
+            <th class="">Flag</th>
+          </tr>
+        </thead>
+        <tbody class="no_pad">
+          <tr *ngFor="let data of owbs_table">
+            <td class="pad-5-10">{{data.crmreferencenumber}}</td>
+            <td class="">{{data.Message}}</td>
+            <td class="">{{data.flag}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <span class="col-12 float-left" *ngIf="!NoADDNL">       
+        <p class="col-6 no_data">  No data pushed   </p>
+      </span>
+    </div>
+  
+    <div class="col-12 col-sm-12 col-md-4 col-lg-12 col-xl-12 no_pad float-left" *ngIf="!NotCpro && isItac">
+      <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left table-title">{{ !ispricing ? 'Budget details (PWBS)' : 'Pricing details (PWBS)' }}</span>
+      <div class="scroll-window" slimScroll>
+      <table class="brd-right" *ngIf="budgetTable.length > 0">
+        <thead>
+          <tr>
+            <th class="pad-5-10">Flag</th>
+            <th class="no_pad">Order number</th>
+            <th class="no_pad">Message</th>
+          </tr>
+        </thead>
+        <tbody class="no_pad">
+          <tr *ngFor="let data of budgetTable">
+            <td class="pad-5-10">{{data.flag}}</td>
+            <td class="no_pad">{{data.ordernumber}}</td>
+            <td class="no_pad"> {{data.Message}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <span class="col-12 float-left" *ngIf= "budgetTable.length == 0">       
+    <p class="col-6 no_data">  No data pushed   </p>
+  </span>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-4 col-lg-12 col-xl-12 no_pad float-left" *ngIf="!NotCpro && !isItac">
+      <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left table-title">ITAC pushed result </span>
+      <div class="scroll-window" slimScroll>
+      <table class="brd-right" *ngIf="itacTable.length > 0">
+        <thead>
+          <tr>
+              <th class="no_pad">Opportunity number</th>
+            <th class="no_pad">Order number</th>
+            <th class="pad-5-10">Flag</th>
+            <th class="no_pad">Message</th>
+          </tr>
+        </thead>
+        <tbody class="no_pad">
+          <tr *ngFor="let data of itacTable">
+            <td class="no_pad">{{data.oppnumber}}</td>
+            <td class="no_pad">{{data.ordernumber}}</td>
+            <td class="pad-5-10">{{data.flag}}</td>
+            <td class="no_pad"> {{data.Message}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <span class="col-12 float-left" *ngIf= "itacTable.length == 0">       
+    <p class="col-6 no_data">  No data pushed   </p>
+  </span>
+    </div>
+  
+  </div>
+  </div>
+ <!-- code for manual push ends here-->
+
+ <!--table for view details starts-->
+ <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mb-100 second_card pad-30 mt20" *ngIf="ViewDetailsContent && toshowBASEtable">
+ <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card block-disp pad-b-20"  >
+    <div class="col-12 float-left pad-RL-30 heading-level-three mt20" >List of base records</div>
+    <div class="divider mar-RL-30"> </div>
+   
+    <app-simple-scroll-table [TableHeader]="headerbaserecords" [TableCollection]="BaseRecordTable" [IscheckBoxRequired]=false
+      [totalTableCount]="tableCount" [TableName]="'manualpush'" [IsPaginationRequired]=false>
+    </app-simple-scroll-table>
+
+  </div>
+</div>
+
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mb-100 second_card pad-30 mt20" *ngIf="ViewDetailsContent && toshowADHtable">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card block-disp pad-b-20"  >
+     <div class="col-12 float-left pad-RL-30 heading-level-three mt20" >List of ADH/VDH/SDH</div>
+     <div class="divider mar-RL-30"> </div>
+    
+     <app-simple-scroll-table [TableHeader]="headerAdhVdhSdh" [TableCollection]="AdhVdhSdhTable" [IscheckBoxRequired]=false
+       [totalTableCount]="tableCount" [TableName]="'manualpush'" [IsPaginationRequired]=false>
+     </app-simple-scroll-table>
+ 
+   </div>
+ </div>
+ <!--table for view details ends-->
+</div>
+

@@ -1,0 +1,32 @@
+<div class="col-12 float-left  news-window-widget">
+
+  <div class="col-12 float-left p-l-r-5 cardHeader"> 
+    <h4 class="cardsHead col-10 float-left no_pad" > News </h4>
+    <button class="col-2 float-right no_pad mdi mdi-close btn-none cp news-close" aria-label="close" (click)="hideNewsWidget()"> </button>
+  </div>
+  <!-- slimScroll -->
+  <perfect-scrollbar [style.height.px]="setInnerScroll" > 
+  <div class="col-12 float-left p-l-r-5 mt-15 " *ngFor="let news of newsWidget">
+      <div class="col-12 float-left no_pad news-card  " >
+
+      <div class="col-12 float-left no_pad">
+          <h4 class="news-cardeader"> {{news.title}} </h4>
+      </div>
+
+      <div class="col-12 float-left no_pad news-card-content" >
+        <p class="news-card-text mb-0">  {{news.content}}</p>
+        <span class="col-12 float-left mb-15">
+            <span class="mdi mdi-link-variant"> </span> <a class="linkTxt">  {{news.linkTxt}} </a>
+        </span>
+      </div>
+      <div class="col-12 no_pad float-left pad-15">
+
+        <span class="time-stamp float-right "> <span> {{news.date}} </span> | <span> {{news.time}}  </span> </span>
+
+      </div>
+  </div>
+  
+</div>
+<span class="no_record d-block" *ngIf="newsWidget.length == 0"> No news articles available for this account as of now </span>  
+</perfect-scrollbar>
+

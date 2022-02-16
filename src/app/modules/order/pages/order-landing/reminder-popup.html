@@ -1,0 +1,120 @@
+<div class="col-12 float-left  no_pad popup-container newchildconvo ">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt margin-btm0" mat-dialog-title>Are you sure you want to
+                set a reminder?</span>
+            <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey "></div>
+
+        <!--<div class="float-left convo-name-title desc-color mt20"></div>-->
+
+        <!--datepicker-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 no_pad">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad" for="calStart">
+                Actionable date<span class="required"> *</span></label>
+            <div class="pos-rel">
+                <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                    <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input ">
+                        <div class="pos-rel w-100 float-left no_pad">
+                            <input [(ngModel)]="taskDate" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart"
+                                (click)="picker2.open()" [min]="today" (keypress)="picker2.open()" [matDatepicker]="picker2"
+                                autocomplete="off" title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY" required>
+                        </div>
+                        <mat-datepicker-toggle matSuffix [for]="picker2">
+                            <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--autocomplete-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left no_pad mt10">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left no_pad cust_autoComplete pos-rel">
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left CompanyName">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ownerArrayy"
+                        class="label-form">Action owners
+                        <span class="required"> *</span>
+                    </label>
+                    <!-- <input
+                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                                id="actionowner" name="actionowner" autocomplete="off" type="text"
+                                [(ngModel)]="actionowner" placeholder="Search & add action owners"
+                                (clickOutside)="actionOwnerClose()"
+                                (click)="actionownerSwitch = true">
+                            <span class="mdi mdi-magnify"></span>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-right  border-btm z-ind-9999 float-left no_pad suggestion-box pos-rel border-bottom-4 standard-border color-azure z-ind-9 bg-white"
+                                *ngIf="actionowner && actionownerSwitch">
+                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                    <ul class=" list-group mr2 dropdown-content no_pad">
+                                        <li class="list-group-item h-50 pad-4-10"
+                                            (click)="appendActionOwner(item.contact,item.index)"
+                                            *ngFor="let item of actionContact |filter:actionowner">
+    
+                                            <div class="float-left naming-tags child-middle bg-azure">
+                                                <span class="initials">{{item.initials}}</span>
+                                            </div>
+                                            <label for="inti_name" class="float-left name w-80">
+                                                <span class="d-block list-name ellipses">{{item.contact}}</span>
+                                                <span class="d-block sub-list">{{item.designation}}</span>
+                                            </label>
+    
+                                        </li>
+                                        <li class="d-block list-name h-40 p-10"
+                                            *ngIf="(actionContact |filter:actionowner).length == 0">
+                                            No record found </li>
+                                    </ul>
+                                </perfect-scrollbar>
+                            </div> -->
+                    <app-auto-complete-select [requiredField]="true" [source]="searchOwnerData" (content)="searchOwnerContent($event)"
+                        (advanceLookUp)="advanceLookUpSearch($event)" [selectedObj]='selectedOwnerObj' [IsApiCall]=true
+                        [isSearchLoader]='isSearchLoader' [labelName]="'ownerArrayy'" [details]="ownerName"
+                        [detailsId]="ownerId" [dataHeader]='header' (SelectedData)="selectedOwner($event)"
+                        [Placeholder]="'Search & add action owners'" [showSelected]=false>
+                    </app-auto-complete-select>
+                </form>
+                <div
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact selected-tags">
+                    <perfect-scrollbar style="max-height:300px">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt-10 p-4-10 mr10 d-flex"
+                            *ngFor="let item of selectedOwnerArray;let i=index">
+
+                            <div class="float-left naming-tags child-middle bg-azure">
+                                <span class="initials">{{item.initials}}</span>
+                            </div>
+
+                            <label for="inti_name" class="float-left name">
+                                <span class="d-block color-azure mr10 float-left ellipses w-100">{{item.Name}}</span>
+                                <!-- <span class="d-block sub-list">{{item.Designation}}</span> -->
+                            </label>
+                            <span role="button" tabindex="0" (click)="deleteActionOwner(i)" aria-label="delete"
+                                class="mdi mdi-close close-lead float-right cp"></span>
+                        </div>
+                    </perfect-scrollbar>
+                </div>
+
+            </div>
+        </div>
+
+        <!--textarea-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+            <label for="reminder" class="col-6 float-left no_pad label-form rel-top-18">
+                Reminder comments
+            </label>
+            <textarea id="comment" maxlength="2000" #textValue
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left textarea-100" [(ngModel)]="comment"
+                placeholder="Enter your comments">
+                </textarea>
+        </div>
+    </div>
+
+    <div class="col-12 float-left no_pad mt30">
+        <button aria-label="No" class="col-6 float-left no_pad cancel-btn" mat-dialog-close>No</button>
+        <button aria-label="Yes" class="col-6 float-left btndef-none no_pad confrm-btn mr0" (click)="setReminder()">Yes</button>
+    </div>
+
+</div>

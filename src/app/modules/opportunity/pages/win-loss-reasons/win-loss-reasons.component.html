@@ -1,0 +1,181 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left opportunity-landing-container no_pad">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+          <button class="float-left mdi mdi-keyboard-backspace cp back-buttonbg" (click)="goBack()" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+          <div class="col-11 float-left">
+            <h1 class="col-12 no_pad float-left heading-level-one ">Win/Loss reasons</h1>
+
+            <span class="col-12 no_pad float-left brudcrumbs">Opportunities</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-178">
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad opportunity-landing-container">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 top-24 mt-126">
+
+    <div class="col-12 float-left card no_pad ">
+      <div class="col-12 card-content float-left pad-create-lead1">
+        <div class="col-12 float-left pt-10">
+          <h2 class="col-6 float-left no_pad heading-level-two pad-top-8">Win Reasons</h2>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+              <div class="zui-wrapper first-tbl" id="new-scroll">
+                <perfect-scrollbar class="zui-scroller">
+                  <table class="zui-table ">
+                    <thead>
+                      <tr>
+                        <!-- <th class="zui-sticky-col">Name</th> -->
+                        <th *ngFor="let data of headernonsticky1" [ngClass]="data.name=='Name' ? 'zui-sticky-col' : ''">
+                          <span class="float-left">{{data.name}}</span>
+                          <button class="float-left" [ngClass]="data.name=='Kushal Shah' ? 'd-block btn-none cp' : 'd-none'" >
+                            <span class="mdi mdi-pencil white_circle_replay" role="button" tabindex="0" aria-label="information"></span>
+                          </button>
+                        </th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let content of bodynonsticky1">
+                        <!-- <td class="zui-sticky-col">DeMarcus Cousins</td> -->
+                        <td *ngFor="let data of headernonsticky1" [ngClass]="content[data.name]=='Loss category*' ? 'zui-sticky-col' : ''" class="width_200">
+                          <span class="span_cls">{{content[data.name]}}</span>
+                        </td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </perfect-scrollbar>
+              </div>
+            </div>
+
+      </div>
+      <div class="col-12 card-content float-left pad-create-lead1">
+          <div class="col-12 float-left pt-10">
+            <h2 class="col-6 float-left no_pad heading-level-two pad-top-8">Things that went well</h2>
+          </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead no_pad">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+            <div class="zui-wrapper sec-tbl" id="new-scroll">
+              <perfect-scrollbar class="zui-scroller">
+                <table class="zui-table ">
+                  <thead>
+                    <tr>
+                      <!-- <th class="zui-sticky-col">Name</th> -->
+                      <th *ngFor="let data of headernonsticky2" [ngClass]="data.name=='Name' ? 'zui-sticky-col' : ''">
+                        <span class="float-left">{{data.name}}</span>
+                        <button class="float-left" [ngClass]="data.name=='Kushal Shah' ? 'd-block btn-none cp' : 'd-none'" >
+                          <span class="mdi mdi-pencil white_circle_replay" role="button" tabindex="0" aria-label="information"></span>
+                        </button>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let content of bodynonsticky2">
+                      <!-- <td class="zui-sticky-col">DeMarcus Cousins</td> -->
+                      <td *ngFor="let data of headernonsticky2" [ngClass]="content[data.name]=='Reason1' ? 'zui-sticky-col' : 'width_400'" >
+                        <span class="span_cls">{{content[data.name]}}</span>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </perfect-scrollbar>
+            </div>
+          </div>
+
+    </div>
+    <div class="col-12 card-content float-left pad-create-lead1">
+        <div class="col-12 float-left pt-10">
+          <h2 class="col-6 float-left no_pad heading-level-two pad-top-8">Things that didn't go well</h2>
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+          <div class="zui-wrapper third-tbl" id="new-scroll">
+            <perfect-scrollbar class="zui-scroller">
+              <table class="zui-table ">
+                <thead>
+                  <tr>
+                    <!-- <th class="zui-sticky-col">Name</th> -->
+                    <th *ngFor="let data of headernonsticky2" [ngClass]="data.name=='Name' ? 'zui-sticky-col' : ''">
+                      <span class="float-left">{{data.name}}</span>
+                      <button class="float-left" [ngClass]="data.name=='Kushal Shah' ? 'd-block btn-none cp' : 'd-none'" >
+                        <span class="mdi mdi-pencil white_circle_replay" role="button" tabindex="0" aria-label="information"></span>
+                      </button>
+                    </th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let content of bodynonsticky3">
+                    <!-- <td class="zui-sticky-col">DeMarcus Cousins</td> -->
+                    <td *ngFor="let data of headernonsticky2" [ngClass]="content[data.name]=='Reason1' ? 'zui-sticky-col' : 'width_400'">
+                      <span class="span_cls">{{content[data.name]}}</span>
+                    </td>
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </perfect-scrollbar>
+          </div>
+        </div>
+
+  </div>
+  <div class="col-12 card-content float-left pad-create-lead1">
+      <div class="col-12 float-left pt-10">
+        <h2 class="col-6 float-left no_pad heading-level-two pad-top-8">Opportunity for Improvement (OFIs)</h2>
+      </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead no_pad">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+        <div class="zui-wrapper fourth-tbl" id="new-scroll">
+          <perfect-scrollbar class="zui-scroller">
+            <table class="zui-table ">
+              <thead>
+                <tr>
+                  <!-- <th class="zui-sticky-col">Name</th> -->
+                  <th *ngFor="let data of headernonsticky2" [ngClass]="data.name=='Name' ? 'zui-sticky-col' : ''">
+                    <span class="float-left">{{data.name}}</span>
+                    <button class="float-left" [ngClass]="data.name=='Kushal Shah' ? 'd-block btn-none cp' : 'd-none'" >
+                      <span class="mdi mdi-pencil white_circle_replay" role="button" tabindex="0" aria-label="information"></span>
+                    </button>
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let content of bodynonsticky4">
+                  <!-- <td class="zui-sticky-col">DeMarcus Cousins</td> -->
+                  <td *ngFor="let data of headernonsticky2" [ngClass]="content[data.name]=='Reason1' ? 'zui-sticky-col' : 'width_400'">
+                    <span class="span_cls"> {{content[data.name]}} </span>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </perfect-scrollbar>
+        </div>
+      </div>
+
+</div>
+    </div>
+
+  </div>
+</div>

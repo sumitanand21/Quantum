@@ -1,0 +1,94 @@
+.expand-table-panel
+{
+  position: sticky;
+  background: #fff;
+  
+  height: auto;
+}
+.tagged-selector-container
+{
+    padding: 15px 32px;
+    .step-ul{
+     list-style: none;
+     margin-top: 10px;
+     li{
+         width: 100%;
+         float:left;
+         padding-left: 20px;
+        position: relative;
+         .step-icon{
+            position: absolute;
+            width: 21px;
+            height: 21px;
+            margin-left: -9px;
+            background: #2f81ff;
+            border-radius: 50%;
+            text-align: center;
+            color: #fff;
+            //margin-top: 7px;
+            z-index: 9;
+            &:before
+            {
+                line-height: 1.4;
+            }
+         }
+         .content-div{
+           
+            padding: 20px;
+            padding-top: 0;
+            position: relative;
+            top: -10px;
+            
+         }
+        
+         .borderline{
+             position: absolute;
+             left:20px;
+             width: 1px;
+             top: 0px;
+             bottom:0px;
+             background: #2f81ff;
+            
+         }
+     }
+     li:first-child{
+        position: relative;
+       .borderline{
+           top:10px;
+            width: 2px;
+       }
+       .step-icon
+       {
+           background: #f7b500;
+       }
+    }
+    li:last-child{
+        position: relative;
+       .borderline{
+           width: 0px;
+
+       }
+    }
+    
+    
+ }   
+ label {
+    opacity: 0.87;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    color: #6f6f6f;
+    margin-bottom: 0px;
+}
+.label-content  {
+    .exp-content
+    {
+        font-family: WiproAkkuratTT-Bold;
+        &:nth-child(3)
+        {
+            color: #2f81ff;
+        }
+    }
+    
+}
+
+}

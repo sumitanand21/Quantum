@@ -1,0 +1,274 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab opportunityPage new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+      <div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 float-left no_pad">
+
+        <button class="mdi mdi-keyboard-backspace cursor-pointer float-left back-buttonbg" (click)="goBack()" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+        <h1 class="heading-level-one heading-custom">Additional details : IP</h1>
+        <span class="brudcrumbs">Sales > Opportunities > {{opportunityName}} > IP</span>
+      </div>
+      <div class="col-12 col-sm-6 col-md-5 col-lg-5 col-xl-5 float-right no_pad">
+        <div class="float-right disp-flex web-button contact-details-action-btn">
+          <button class="primary-button secondary-btn btn-block h-40 mr10 std " (click)="goBack()">Cancel</button>
+          <button class="primary-button borderless btn-block h-40 std " (click)="callSaveMethod()" *ngIf="showSaveButton">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div clas="col-12 float-left ">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-285 new-container">
+  </div>
+
+  <!-- code goes here -->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad vertical-btns-div float-left flex-tab pad-top142">
+    <div class="col-9 float-left no_pad flex-tab-width">
+      <button (click)="tabone()" [ngClass]="Competitortab ? 'active':''" class="col-lg-3 col-sm-4 col-md-3 col-4 col-xl-3 sub-vertical-but brd-right0 "
+        (click)="additionalInfo()">
+        <span class=" mdi mdi-regex calin-select-all"></span>
+        <span class=" no_pad btntxt-s pad-top2">Additional IP Information</span>
+      </button>
+      <button (click)="tabtwo()" [ngClass]="Teambuildingtab ? 'active':''" class="col-lg-3 col-sm-4 col-md-3 col-4 col-xl-3 float-right sub-vertical-but brd-left0"
+        (click)="getCloudValue()">
+        <span class=" calin-select-all mdi  mdi-cloud-outline"></span>
+        <span class="no_pad btntxt-s pad-top2">Cloud details</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left ">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card pad-10-30 ipmoreoption">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mb-30 " *ngIf="wiproDatabsebtn">
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad border-btm">
+            <div class="col-6 float-left pad-top20 plb-0-20">
+              <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">IP Details</span>
+            </div>
+
+            <div class="col-6 float-left no_pad">
+              <span class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 float-right plb-0-10">
+                <button (click)="ipadditionaldelete();panelOpenState2 = false"
+                  class="float-right addAccountBtns" *ngIf="!disableUserAccessIP">
+                  <span class="mdi  mdi-delete"></span> Delete IP additional info.</button>
+              </span>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left no_pad" *ngFor="let tab of table_data">
+
+            <div class="col-12 float-left plb-0-10">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-text">{{tab.first_data}}</label>
+              <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">{{tab.second_data}}</span>
+              <!-- <input *ngIf="tab.first_data == 'Est license value($)' || first_data == 'Est AMC Value ($)'" id="value1" class="col-9 border-gray w-100" value="" placeholder="Enter {{tab.second_data}}"> -->
+            </div>
+
+          </div>
+
+          <div class="col-12 no_pad float-left"> <span class="col-12 sub-text pad-topbtm float-left">Services
+              Value</span>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10">
+            <div class="customized-input">
+              <label for="field1" class="w-100">Implementation ($)</label>
+              <input id="field1" onkeypress="return event.charCode >= 48
+           && event.charCode <= 57" [disabled]="disableUserAccessIP" min="0" type="number" class="col-9 border-gray w-100" [(ngModel)]="this.additionalIpData.WiproImplementationValue"
+                (change)="updateIpAdditionalDetails($event,'WiproImplementationValue')" value="" placeholder="00.00">
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 float-left plb-0-10 ">
+            <div class="col-12 float-left customized-input">
+              <label for="field1" class="w-100">Comments</label>
+              <textarea class="float-left Padd-5 h-40 input-text-more" [disabled]="disableUserAccessIP" id="text3" [(ngModel)]="this.additionalIpData.WiproImplementationComments"
+                (change)="updateIpAdditionalDetails($event,'WiproImplementationComments')" name="text" type="text" placeholder="Enter comments"></textarea>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10">
+            <div class="customized-input">
+              <label for="field1" class="w-100">Customization ($)</label>
+              <input id="field1" type="number" [disabled]="disableUserAccessIP" class="col-9 border-gray w-100" (change)="updateIpAdditionalDetails($event,'WiproCustomizationValue')"
+                [(ngModel)]="this.additionalIpData.WiproCustomizationValue" value="" placeholder="00.00" onkeypress="return event.charCode >= 48
+           && event.charCode <= 57" min="0">
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 float-left plb-0-10 ">
+            <div class="col-12 float-left customized-input">
+              <label for="field1" class="w-100">Comments</label>
+              <textarea class="float-left Padd-5 h-40 input-text-more" [disabled]="disableUserAccessIP" (change)="updateIpAdditionalDetails($event,'WiprocustomizationComments')"
+                [(ngModel)]="this.additionalIpData.WiprocustomizationComments" id="text3" name="text" type="text" placeholder="Enter comments"></textarea>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10">
+            <div class="customized-input">
+              <label for="field1" class="w-100">Professional services ($)</label>
+              <input id="field1" type="number" class="col-9 border-gray w-100" [disabled]="disableUserAccessIP" value="" (change)="updateIpAdditionalDetails($event,'WiproProfessionalServicesValue')"
+                [(ngModel)]="this.additionalIpData.WiproProfessionalServicesValue" placeholder="00.00" onkeypress="return event.charCode >= 48
+           && event.charCode <= 57" min="0">
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 float-left plb-0-10 ">
+            <div class="col-12 float-left customized-input">
+              <label for="field1" class="w-100">Comments</label>
+              <textarea class="float-left Padd-5 h-40 input-text-more" [disabled]="disableUserAccessIP" (change)="updateIpAdditionalDetails($event,'WiproProfessionaServicesComments')"
+                [(ngModel)]="this.additionalIpData.WiproProfessionaServicesComments" id="text3" name="text" type="text" placeholder="Enter comments"></textarea>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10 customized-checkbox ">
+            <div class="customized-input">
+              <label for="field1" class="w-100">Additional solution value</label>
+              <mat-checkbox class="col-1 pad-leftright" [disabled]="disableUserAccessIP" (change)="updateIpAdditionalDetails($event,'WiproadditionalValueOfTCV')" [(ngModel)]="this.additionalIpData.WiproadditionalValueOfTCV">
+              </mat-checkbox>
+              <input id="field1" type="number" class="col-7 border-gray w-100" value="" placeholder="00.00" [disabled]="disableUserAccessIP" (change)="updateIpAdditionalDetails($event,'WiproadditionalSolutionValue')"
+                [(ngModel)]="this.additionalIpData.WiproadditionalSolutionValue" onkeypress="return event.charCode >= 48
+           && event.charCode <= 57" min="0">
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10 pad-left22">
+            <div class="col-12  float-left customized-input">
+              <label for="field1" class="w-100">Absolute value ($)</label>
+              <input id="field1" type="number" class="col-9 border-gray w-100" value="" (change)="updateIpAdditionalDetails($event,'WiproAbsolutevalue')"
+                [(ngModel)]="this.additionalIpData.WiproAbsolutevalue" [disabled]="disableUserAccessIP" placeholder="00.00" onkeypress="return event.charCode >= 48
+           && event.charCode <= 57" min="0">
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" *ngIf="dDatabasebtn">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad  float-left">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2 float-left plb-0-20">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">IP TCV
+                ($)</label>
+              <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">{{IPTCV}}</span>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2 float-left plb-0-10">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">Cloud TCV
+                ($)</label>
+              <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">{{finalTCVValue}}</span>
+            </div>
+
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+            <div class="col-6 float-left pad-top20 plb-0-20">
+              <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">Cloud
+                details</span>
+            </div>
+            <div class="col-6 float-left no_pad">
+              <span class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 float-right plb-0-10">
+                <button (click)="addIpCloud();panelOpenState2 = false" class="float-right addAccountBtns" *ngIf="!disableUserAccessIP">+ Add
+                  row</button></span>
+            </div>
+          </div>
+
+          <div class="col-12 no_pad float-left">
+            <!-- Table starts here -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+              <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th>Function *</th>
+                    <th>Category *</th>
+                    <th class="ellipses">Service provider *</th>
+                    <th>Technology *</th>
+                    <th class="ellipses">Open source</th>
+                    <th>Value *</th>
+                    <th>Remarks </th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of ipCloud_data;let i = index">
+
+                    <td>
+                      <!-- Select DROPDOWN STARTS -->
+                      <div class="customized-select">
+                        <span class="caret color-azure"></span>
+                        <select id="selectFunction{{i}}" role="listbox" [disabled]="disableUserAccessIP" [(ngModel)]="data.WiproFunction" (change)="updateCloudValue(i,$event,'WiproFunction')">
+                          <option value="" selected hidden>Select Function</option>
+                          <option *ngFor="let function of FunctionList"  [value]="function.Id">{{function.Name}}</option>
+                        </select>
+                      </div>
+                      <!-- Select DROPDOWN STARTS -->
+                    </td>
+                    <td class="no_pad">
+                      <!-- Select DROPDOWN STARTS -->
+                      <div class="customized-select">
+                        <span class="caret color-azure"></span>
+                        <select id="selectCategory{{i}}" role="listbox" [disabled]="disableUserAccessIP" [(ngModel)]="data.WiproCategory" (change)="updateCloudValue(i,$event,'WiproCategory')">
+                          <option value="" selected hidden>Select Category</option>
+                         <option *ngFor="let category of CategoryList"  [value]="category.Id">{{category.Name}}</option>
+                        </select>
+                      </div>
+                      <!-- Select DROPDOWN STARTS -->
+                    </td>
+                    <td>
+                      <!-- Select DROPDOWN STARTS -->
+                      <div class="customized-select">
+                        <span class="caret color-azure"></span>
+                        <select id="selectServiceProvider{{i}}" role="listbox" class="ellipses" [disabled]="disableUserAccessIP" [(ngModel)]="data.WiproServiceProvider"
+                          (change)="updateCloudValue(i,$event,'WiproServiceProvider')">
+                          <option value="" selected hidden>Select Service Provider </option>
+                         <option *ngFor="let serviceprovider of ServiceProviderList" [value]="serviceprovider.Id">{{serviceprovider.Name}}</option>
+                          
+                        </select>
+                      </div>
+                      <!-- Select DROPDOWN STARTS -->
+                    </td>
+                    <td class="no_pad">
+                      <!-- Select DROPDOWN STARTS -->
+                      <div class="customized-select">
+                        <span class="caret color-azure"></span>
+                        <select id="selectTech{{i}}" role="listbox" [disabled]="disableUserAccessIP" [(ngModel)]="data.WiproTechnology" (change)="updateCloudValue(i,$event,'WiproTechnology')">
+                          <option value="" selected hidden>Select Technology</option>
+                           <option *ngFor="let technology of TechnologyList"  [value]="technology.Id">{{technology.Name}}</option>
+                        </select>
+                      </div>
+                      <!-- Select DROPDOWN STARTS -->
+                    </td>
+
+                    <td class="customized-checkbox">
+                      <mat-checkbox aria-label="select" [disabled]="disableUserAccessIP" [(ngModel)]="data.WiproOpenSource" (change)="updateCloudValue(i,$event,'WiproOpenSource')"></mat-checkbox>
+                    </td>
+                    <td class="no_pad">
+                      <div class="customized-input">
+                        <label for="fieldOpenSource{{i}}" class=""> </label>
+                        <input id="fieldOpenSource{{i}}" type="number" class="border-gray w-75" value="00.00" placeholder="00.00" [disabled]="disableUserAccessIP"
+                          [(ngModel)]="data.WiproValue" (change)="updateCloudValue(i,$event,'WiproValue')" onkeypress="return event.charCode >= 48
+           && event.charCode <= 57" min="0">
+                      </div>
+                    </td>
+                    <td class="no_pad">
+                      <div class="customized-input">
+                        <label for="fieldRemarks{{i}}" class=""> </label>
+                        <input id="fieldRemarks{{i}}" type="text" class="border-gray w-75" value="Remarks" placeholder="Remarks" [disabled]="disableUserAccessIP"
+                          [(ngModel)]="data.WiproRemarks" (change)="updateCloudValue(i,$event,'WiproRemarks')">
+                          <span class="required" *ngIf="data.WiproOpensource"> * </span>
+                      </div>
+                    </td>
+                    <td class="display_flex right10">
+                      <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="Delete" matTooltip="Delete" (click)="confirmdelete(i)"
+                       *ngIf="!disableUserAccessIP">
+                        <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--Table ends here -->
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

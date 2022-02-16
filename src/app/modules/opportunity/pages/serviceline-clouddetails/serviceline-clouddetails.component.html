@@ -1,0 +1,186 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab opportunityPage new-container">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+        <div class="col-5 col-sm-12 col-md-6 col-lg-5 col-xl-5 float-left no_pad">
+  
+          <button class="mdi mdi-keyboard-backspace cursor-pointer float-left back-buttonbg" (click)="goBack()" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+          <h1 class="heading-level-one heading-custom">Service lines - Cloud details</h1>
+          <span class="brudcrumbs">Sales > Opportunities > Singtel Procurement engagement Process > Order</span>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-right no_pad">
+          <div class="float-right disp-flex web-button contact-details-action-btn">
+            <button aria-label="cancel" class="primary-button secondary-btn btn-block h-40 mr10 std " (click)="goBack()">Cancel</button>
+            <button aria-label="save" class="primary-button borderless btn-block h-40 std ">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div clas="col-12 float-left ">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-285 new-container">
+    </div>
+  
+    <!-- code goes here -->
+  
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt140">
+  
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card pad-20-30 mb20 ipmoreoption">
+  
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+     
+                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10 customized-input">
+                   <label for="field1" class="col-12 float-left no_pad w-100">Service line</label>
+                   <span id="field1" type="text" class="col-12 float-left no_pad sub-text">Wipro digital</span>
+                 </div>
+  
+                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10 customized-input">
+                     <label for="field2" class="col-12 float-left no_pad w-100">Practice</label>
+                     <span id="field2" type="text" class="col-12 float-left no_pad sub-text">Practice 1</span>
+                   </div>
+  
+                   <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10 customized-input">
+                       <label for="field3" class="col-12 float-left no_pad w-100">Sub-practice</label>
+                       <span id="field3" type="text" class="col-12 float-left no_pad sub-text" >Sub-practice 1</span>
+                     </div>
+               </div>
+     
+             </div>
+  
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card pad-30 ipmoreoption">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" >
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad  float-left">
+              <div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2 float-left plb-0-20">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">SL TCV
+                  ($)</label>
+                <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">22.00</span>
+              </div>
+  
+              <div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2 float-left plb-0-10">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">Cloud TCV
+                  ($)</label>
+                <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">0.00</span>
+              </div>
+  
+            </div>
+  
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+              <div class="col-6 float-left pad-top20 plb-0-20">
+                <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">Cloud
+                  details</span>
+              </div>
+              <div class="col-6 float-left no_pad">
+                <span class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 float-right plb-0-10">
+                  <button aria-label="Add row" (click)="addcompetitor();panelOpenState2 = false" class="float-right addAccountBtns">+ Add
+                    row</button></span>
+              </div>
+            </div>
+  
+            <div class="col-12 no_pad float-left">
+              <!-- Table starts here -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th>Function *</th>
+                      <th>Category *</th>
+                      <th class="ellipses">Service provider *</th>
+                      <th>Technology</th>
+                      <th class="ellipses">Open source</th>
+                      <th>Value *</th>
+                      <th>Remarks</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of competitor_data">
+  
+                      <td>
+                        <!-- Select DROPDOWN STARTS -->
+                        <div class="customized-select">
+                          <span class="caret color-azure"></span>
+                          <select id="select1" role="listbox" [disabled]="data.disabled">
+                            <option value="Unit">Function</option>
+                            <option value="Alliance">Function</option>
+                            <option value="Unit1">Function 1</option>
+                            <option value="Unit2">Function 2</option>
+                          </select>
+                        </div>
+                        <!-- Select DROPDOWN STARTS -->
+                      </td>
+                      <td class="no_pad">
+                        <!-- Select DROPDOWN STARTS -->
+                        <div class="customized-select">
+                          <span class="caret color-azure"></span>
+                          <select id="select1" role="listbox" [disabled]="data.disabled">
+                            <option value="Eventtype">Category</option>
+                            <option value="Eventtype1">Category 1</option>
+                            <option value="Eventtype2">Category 2</option>
+                          </select>
+                        </div>
+                        <!-- Select DROPDOWN STARTS -->
+                      </td>
+                      <td>
+                        <!-- Select DROPDOWN STARTS -->
+                        <div class="customized-select">
+                          <span class="caret color-azure"></span>
+                          <select id="select1" role="listbox" class="ellipses" [disabled]="data.disabled">
+                            <option value="Eventtype">Service </option>
+                            <option value="Eventtype1">Service 1</option>
+                            <option value="Eventtype2">Service 2</option>
+                          </select>
+                        </div>
+                        <!-- Select DROPDOWN STARTS -->
+                      </td>
+                      <td class="no_pad">
+                        <!-- Select DROPDOWN STARTS -->
+                        <div class="customized-select">
+                          <span class="caret color-azure"></span>
+                          <select id="select1" role="listbox" [disabled]="data.disabled">
+                            <option value="Eventtype">Service </option>
+                            <option value="Eventtype1">Service 1</option>
+                            <option value="Eventtype2">Service 2</option>
+                          </select>
+                        </div>
+                        <!-- Select DROPDOWN STARTS -->
+                      </td>
+  
+                      <td class="customized-checkbox">
+                        <mat-checkbox aria-label="select" [disabled]="data.disabled"></mat-checkbox>
+                      </td>
+                      <td class="no_pad">
+                        <div class="customized-input">
+                          <label for="field1" class=""> </label>
+                          <input id="field1" type="text" class="border-gray w-75" value="00.00" placeholder="00.00" [disabled]="data.disabled">
+                        </div>
+                      </td>
+                      <td class="no_pad">
+                        <div class="customized-input">
+                          <label for="field1" class=""> </label>
+                          <input id="field1" type="text" class="border-gray w-75" value="Remarks" placeholder="Remarks" [disabled]="data.disabled">
+                        </div>
+                      </td>
+                      <td class="display_flex right10">
+                        <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="Delete"
+                          matTooltip="Delete" (click)="deletecompetitor(data.id)" [disabled]="data.disabled">
+                          <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- Table ends here -->
+            </div>
+  
+  
+          </div>
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>

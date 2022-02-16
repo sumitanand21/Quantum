@@ -1,0 +1,83 @@
+<div class="col-12 float-left  no_pad popup-container accountOwn swapParent">
+
+    <div class="col-12 float-left swap-mobile ">
+        <div class="col-12 float-left popup-hd">
+            <span class="col-10 float-left  no_pad heading-level-two" mat-dialog-title>Select account to swap</span>
+            <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+        <div class="float-left col-12 no_pad overflow-auto">
+        <div class="col-12 no_pad float-left swap-table" role="grid">
+        <div class="col-12 float-left no_pad mt20 mb10" role="presentation">
+            <div class="float-left col-12 no_pad" role="row">
+                <div class="float-left width-25 pl35" role="columnheader">
+                    <span class="float-left"> Name</span>
+                    <!--<span class="float-left caret1"></span>-->
+                </div>
+                <div class="float-left width-25 no_pad" role="columnheader">
+                    <span class="float-left"> Last opportunity closed date</span> 
+                    <!-- chethana added as per Nov 26th vd -->
+                    <!--<span class="float-left caret1"></span>-->
+                </div>
+                <div class="float-left width-25 no_pad" role="columnheader">
+                    <span class="float-left"> Last  order end date</span>
+                    <!--<span class="float-left caret1"></span>-->
+                </div>
+                <div class="float-left width-25 no_pad" role="columnheader">
+                    <span class="float-left"> Last activity date</span>
+                    <!--<span class="float-left caret1"></span>-->
+                </div>
+                <!-- <div class="float-right width-20 no_pad" role="columnheader">
+                    <span class="float-left"> Last invoice raised</span> -->
+                    <!--<span class="float-left caret1"></span>-->
+                <!-- </div> -->
+
+
+            </div>
+        </div>
+        <perfect-scrollbar>
+
+            <div class="col-12 no_pad" *ngIf="cardItems.length>0">
+                <div class="col-12 float-left card no_pad mb10" *ngFor="let list of cardItems;index as i">
+
+                    <div class="float-left col-12 no_pad mt10" (change)="selectedValue=list" role="row">
+                        <div class="float-left width-25 no_pad mar-top18" role="gridcell">
+
+                            <div class="col-lg-4 col-sm-4 col-md-4 col-4 float-left Bold_list">
+                                <mat-radio-group [(ngModel)]="radioBtnselected">
+                                    <section>
+                                        <mat-radio-button value="{{list.SysGuid}}" (change)="selectedValue=list">
+                                            <span class="acc_label ellipses w-150" matTooltip="{{list.Name}}">{{getSymbol(list.Name)}}</span>
+                                            <br>
+                                            <span class="acc_labelnum ellipses w-150" matTooltip="{{list.Number}}">{{list.Number}}</span>
+                                        </mat-radio-button>
+                                    </section>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="float-left  width-25 no_pad pad-20"  role="gridcell">
+                            <span class="float-left sub_list"> {{list.LastActiveOpportunity ? (list.LastActiveOpportunity | date: 'dd/MM/yyyy'):'NA'}}</span>
+                        </div>
+                        <div class="float-left  width-25 no_pad pad-20 "  role="gridcell">
+                            <span class="float-left sub_list">{{list.LastOpenOrder ? (list.LastOpenOrder | date: 'dd/MM/yyyy') : 'NA'}}</span>
+                        </div>
+                        <div class="float-left  width-25 no_pad pad-20 "  role="gridcell">
+                            <span class="float-left sub_list"> {{list.LastActiveDone ? (list.LastActiveDone | date: 'dd/MM/yyyy') : 'NA'}}</span>
+                        </div>
+                        <!-- <div class="float-right  width-20 no_pad pad-20"  role="gridcell">
+                            <span class="float-left sub_list"> {{list.LastInvoiceRaised ? (list.LastInvoiceRaised | date: 'dd/MM/yyyy') :'NA'}}</span>
+                        </div> -->
+
+                    </div>
+
+                </div>
+            </div>
+            <div *ngIf="cardItems.length==0">Don't have any account to swap </div>
+        </perfect-scrollbar>
+    </div>
+</div>
+    </div>
+    <div class="col-12 float-left no_pad">
+        <button aria-label="swap account" (click)="accservive.accounttoast('Acoount to be swapped selected')" class="col-12 float-left btndef-none no_pad confrm-btn-swap" mat-dialog-close (click)="selectedData()" [ngClass]="selectedValue?'bg-azure-p':'bg-gray-p'" [disabled]="!selectedValue">Swap account</button>
+    </div>

@@ -1,0 +1,182 @@
+
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+.h-228 {
+  height: 120px;
+}
+.pt100 {
+  padding-top: 135px;
+}
+
+.pad-20{
+  padding: 20px;
+}
+.heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color: $NavyBlue !important;
+    letter-spacing: -0.4px;
+}
+.brudcrumbs {
+  position: relative;
+  left: 7px;
+  top: 0px;
+  opacity: 0.8;
+  font-size: 12px;
+  color: #e7ebf2;
+}
+.heading-custom {
+  position: relative;
+  left: 6px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.block-disp{
+    display: block;
+    position: relative;
+}
+.pad-45{
+    padding: 0px 45px 0 0px;
+}
+.pad-25-40 {
+        padding: 0 25px 0 40px;
+}
+
+.border-botton-pad-10{
+  border-bottom: solid 2px #d7d7d7;
+  padding:0px 0px 5px 0px;
+}
+
+.label-heading{
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+}
+.totalAccText{
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 11px;
+}
+
+
+.radio-fontfamly {
+  color: #2f81ff;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Regular";
+}
+.btn-text{
+    padding: 8px 5px;
+    background-color: #2f81ff;
+    color: #fff;
+    border-radius: 4px;
+    border: 1.5px solid #2f81ff;
+    font-size: 14px;
+    font-family: "WiproAkkuratTT-Bold";
+}
+.disableAssign
+{
+    pointer-events: none;
+    color: rgba(0,0,0,.26);
+    background-color: rgba(0,0,0,.12);
+} 
+.btn-width120{
+  width: 120px;
+}
+.txtstyle{
+  background: #d9e9ff;
+}
+.textone{
+    padding: 20px 0 0 35px;
+    font-size: 12px;
+    font-family: "WiproAkkuratTT-Bold"
+}
+.texttwo{
+    padding: 5px 0 0 35px;
+    font-size: 12px;
+    font-family: "WiproAkkuratTT-Bold"
+}
+.common-text{
+    padding: 5px 0 0 55px;
+    font-size: 12px;
+    font-family: "WiproAkkuratTT-Bold"
+}
+
+.label-form {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px;
+  line-height: 1.83;
+  color: #4a4a4a;
+  margin-bottom: 4px;
+}
+.mr30{
+  margin-right: 30px;
+}
+.mr45{
+  margin-right: 45px;
+}
+.pad-0-30{
+    padding: 0 30px 30px 30px;
+}
+.pad-10-30{
+    padding: 10px 30px 30px 30px;
+}
+//without scroll table starts
+.tasklist-table th {
+  padding: 8px 20px;
+  color: #103f86;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Bold";
+  font-weight: normal;
+}
+
+.tasklist-table td {
+  padding: 15px 20px;
+  font-family: "WiproAkkuratTT-Regular";
+  font-size: 14px;
+  color: $Black;
+}
+.tasklist-table thead tr {
+  background: #d9e9ff;
+}
+
+.tasklist-table tbody tr {
+  background: #f3f5f9;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #e2e0e0;
+}
+
+.tasklist-table tbody tr:last-child {
+  border-bottom: none;
+}
+.back-arrow-helpdesk {
+  color: black;
+  font-size: 22px;
+  position: absolute;
+  left: 5px;
+  top: 23px !important;
+  cursor: pointer;
+  display: none;
+}
+//without scroll table ends
+@media screen and (min-width: 823px) {
+  .allianceTable-home tbody tr:nth-child(even) {
+    background: white !important;
+  }
+}

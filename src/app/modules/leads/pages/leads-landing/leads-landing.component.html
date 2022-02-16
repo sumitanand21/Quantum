@@ -1,0 +1,73 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab " [ngClass]="sidebar?'':userdat.sideTrans ? 'main-containt-280-sideleads' : 'main-containt-sideleads'">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad leads-landing-container">
+      <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+        <h1 class="heading-level-one mtop6"> Leads </h1>
+      </div>
+      <div class="float-right disp-flex responsive-btn-div web-action-button web-buttons">
+        <button class="primary-button activity-home-mblbtns borderless btn-block button-wd100 h-40 std responsive-btn-div-button" (click)="createlead()">
+          <span class="mdi mdi-rounded-corner pr5"></span>Create lead
+        </button>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+<!-- main div starts here -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad leads-landing-container ">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs res-position-rel no_pad bg-mid_night"
+    [ngClass]="service.tableRecordsChecked == true ? 'h-427':'h-346'"></div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 top-24 mt10" [ngClass]="sidebar?'':userdat.sideTrans ? 'main-containt-280-sideleads' : 'main-containt-sideleads'">
+    
+    <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ptop-20  float-left no_pad vertical-btns-div flex-tab">
+      <div class="no_pad  flex-tab-width"
+        [ngClass]="service.chatBot ? 'col-lg-6 col-12' : 'col-lg-4 col-12'">
+        <button routerLinkActive="active" role="tab" [attr.aria-selected]="Qualified_lead ? true : '' "
+          (click)="Qualified();service.leadNuture = true;service.leadArchive = false;service.leadDetails = true; service.serviceSearchItem=''"
+          [routerLink]="['/leads/qualified']" class="col-4 pull-right  brd-right0 sub-vertical-but h-40 ">
+          <span class="no_pad logo mdi mdi-border-style d-inline-w-h-16-14"></span>
+          <span class="no_pad btntxt-s mleft-5">My open
+            <span class="sm-hide"> leads </span>
+          </span>
+        </button>
+        <button routerLinkActive="active" role="tab" [attr.aria-selected]="Unqualified_lead ? true : '' "
+          (click)="unqalified();service.leadDetails = true;service.leadNuture = false;service.leadArchive = false; service.serviceSearchItem=''"
+          [routerLink]="['/leads/unqalified']" class="col-4 sub-vertical-but h-40">
+          <span class="no_pad mdi mdi-border-right-variant logo d-inline-w-h-16-14"></span>
+          <span class=" no_pad btntxt-s mleft-5">Open
+            <span class="sm-hide"> leads </span>
+          </span>
+        </button>
+        <button routerLinkActive="active" role="tab" [attr.aria-selected]="Archived_lead ? true : '' "
+          (click)="Archived();service.leadArchive = true;service.leadDetails = false;service.leadNuture = false; service.serviceSearchItem=''"
+          [routerLink]="['/leads/archived']" class="col-4 pull-right sub-vertical-but brd-left0 h-40 ">
+          <span class="no_pad logo mdi mdi-folder-outline d-inline-w-h-16-14"></span>
+          <span class=" no_pad btntxt-s mleft-5">Archived
+            <span class="sm-hide"> leads</span>
+          </span>
+        </button>
+      </div>
+    </div> -->
+    <div class="col-4 float-right no_pad p-top-100">
+      <!-- <button
+        class="btn-down-leads mdi mdi-download float-right standard-border bg-transparent color-white ml10" aria-label="download" (click)="download()"></button> -->
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="float-left col-12 no_pad mobile-buttons bg-azure">
+      <button class="primary-button borderless" >
+          <span class=" pr5 w-100 float-left"></span>
+        </button>
+    <button class="primary-button borderless" (click)="createlead()">
+      <span class="mdi mdi-rounded-corner pr5 w-100 float-left font-size18-mobile"></span>Create lead
+    </button>
+    <button class="primary-button borderless" >
+        <span class=" pr5 w-100 float-left"></span>
+      </button>
+  </div>
+</div>

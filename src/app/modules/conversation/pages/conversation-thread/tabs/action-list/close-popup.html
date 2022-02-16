@@ -1,0 +1,17 @@
+<div class="col-12 float-left no_pad popup-container">
+    
+        <div class="col-12 float-left container-dialog">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left no_pad popup-hd-txt" mat-dialog-title>Alert</span>
+                <button class="float-left  no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+            </div>
+            <div class="col-12 float-left border-bottom-grey"></div>
+            <div class="col-12 float-left no_pad">
+                <span class="col-12 float-left  no_pad margin-top-20 txt-style">Are you sure you want to close the actions</span>
+            </div>
+        </div>
+        <div class="col-12 float-left no_pad">
+            <button aria-label="cancel" class="col-6 float-left btndef-none no_pad discard-btn" mat-dialog-close (click)="cancel()" >Cancel</button>
+            <button aria-label="ok" class="col-6 float-left btndef-none no_pad ok-btn" mat-dialog-close (click)="onNoClick()" [mat-dialog-close]="true"  >OK</button>
+        </div>
+    </div>

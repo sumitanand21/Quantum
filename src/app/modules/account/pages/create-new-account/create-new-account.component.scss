@@ -1,0 +1,1012 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$LabelGrey: #4a4a4a;
+
+/***** my clor **/
+
+$DarkBlack: #2e2e2e;
+.new-container {
+    .input-border-left {
+        border-left: none;
+    }
+    .border-btm {
+        border-bottom: 2px solid;
+    }
+    .border-right {
+        border-right: 2px solid $Azure !important;
+    }
+    .z-ind-9999 {
+        z-index: 9999;
+    }
+    .z-ind-99 {
+        z-index: 99;
+    }
+    .z-ind-9 {
+        z-index: 9;
+    }
+    .mt-8 {
+        margin-top: 8px;
+    }
+    .top62 {
+        top: 62px;
+    }
+    .top64 {
+        top: 64px;
+    }
+    .top66 {
+        top: 66px;
+    }
+    .pad-30 {
+        padding: 30px;
+    }
+    .mr10 {
+        margin-right: 10px;
+    }
+    .h-40 {
+        min-height: 40px;
+    }
+    .heading-level-one {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 24px;
+        color: $White;
+        small {
+            font-family: "WiproAkkuratTT-Regular";
+            font-size: 14px;
+            padding: 0 30px;
+        }
+    }
+    .primary-button.std {
+        padding: 9px 5px;
+        min-width: 110px !important;
+    }
+    .borderless {
+        border: none !important;
+    }
+    .h-260 {
+        height: 260px;
+    }
+    .pad-30 {
+        padding: 30px;
+    }
+    .card {
+        border-radius: 5px;
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+        background-color: $White;
+    }
+    .heading-level-two {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 20px;
+        color: $DarkBlack;
+    }
+    .heading-level-three {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 16px;
+        color: #000000;
+        padding-left: 18px !important;
+    }
+    .divider {
+        border: 1px solid $Marble;
+    }
+    .mt10 {
+        margin-top: 10px;
+    }
+    .create-mt20 {
+        margin-top: 14px;
+        padding-left: 32px;
+        padding-right: 28px;
+        padding-top: 8px;
+    }
+    .mt15 {
+        margin-top: 15px;
+    }
+    .mt40 {
+        margin-top: 40px;
+    }
+    .plb-20-20 {
+        padding: 0px 20px 20px 0px;
+    }
+    .checkbox-label {
+        font-family: WiproAkkuratTT-Regular;
+        font-size: 14px;
+        color: $Metal;
+        line-height: 1.43;
+        letter-spacing: 0.3px;
+    }
+    .label-form {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 12px;
+        line-height: 1.83;
+        color: $Metal;
+        margin-bottom: 4px;
+    }
+    .CompanyName {
+        .mdi-magnify:before {
+            color: $Azure;
+            font-size: 20px;
+            right: 10px;
+            position: absolute;
+            bottom: 5px;
+        }
+    }
+    .CompanyName1 {
+        .mdi-magnify:before {
+            font-size: 20px;
+            right: 10px;
+            position: absolute;
+            bottom: 5px;
+        }
+        .color-azure {
+            color: $Azure;
+        }
+        .color-disabled {
+            color: $MetalLight;
+        }
+    }
+    .h-40 {
+        height: 40px;
+    }
+    .w-110 {
+        width: 110px;
+    }
+    .attach-btn {
+        height: 40px;
+        width: 110px;
+        font-size: 12px;
+        letter-spacing: 0.1px;
+        cursor: pointer;
+    }
+    .rel-top-18 {
+        position: relative;
+        top: -18px;
+    }
+    .label-input {
+        font-family: WiproAkkuratTT-Regular;
+        font-size: 14px;
+        color: #000;
+        padding-right: 33px;
+        &:focus {
+            // border: 1.5px solid $Azure !important;
+            outline: none;
+        }
+    }
+    .customized-input {
+        input {
+            &:focus {
+                border: 1.5px solid $Azure !important;
+                outline: none;
+            }
+        }
+    }
+    .list-group-item {
+        cursor: pointer;
+        font-size: 12px;
+        color: $Azure;
+        border: none;
+    }
+    .top70 {
+        top: 70px;
+    }
+    .list-group-item:hover {
+        background-color: $River;
+    }
+    .customized-select {
+        position: relative;
+        select {
+            width: 100%;
+            min-height: 40px;
+            border-radius: 5px;
+            // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+            border: 1.5px solid rgba(0, 0, 0, 0.1);
+            padding: 2px 5px;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+            &:focus {
+                outline: none;
+                border-color: $Azure;
+            }
+        }
+        select::-ms-expand {
+            // for IE
+            display: none !important;
+        }
+        .caret {
+            top: 17px;
+            right: 16px;
+        }
+    }
+    .disable-caret {
+        .caret {
+            top: 17px;
+            right: 16px;
+            color: #9f9f9f;
+        }
+    }
+}
+
+.pad-create-lead {
+    padding: 0px 3px 30px 3px;
+}
+
+.btn-sub-mdi {
+    font-size: 16px;
+    text-align: center;
+    color: $Azure;
+}
+
+.mdi-delete:before {
+    position: relative;
+    right: 8px;
+}
+
+.mdi-star:before {
+    position: relative;
+    right: 8px;
+}
+
+.mdi-share-variant:before {
+    position: relative;
+    right: 8px;
+}
+
+.mt50 {
+    margin: 50px 0 0 0;
+}
+
+.pad-top-8 {
+    padding-top: 8px;
+}
+
+.naming-tags {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+}
+
+.child-middle {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.bg-azure {
+    background: $Azure;
+}
+
+.bg-blue {
+    background: #0e356f;
+}
+
+.bg-green {
+    background: $Green;
+}
+
+.bg-pink {
+    background: #ee3341;
+}
+
+.initials {
+    color: $White;
+}
+
+.left-50 {
+    left: 50px;
+}
+
+.naming-tags-square {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px 0 0 4px;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+.pl10 {
+    padding-left: 10px;
+}
+
+.padLR-10 {
+    padding: 0px 10px;
+}
+
+.border-std {
+    border: 1.5px solid;
+}
+
+.color-label_gray {
+    color: $LabelGrey;
+}
+
+.edit-btn {
+    min-width: 88px !important;
+}
+
+.top64 {
+    top: 64px;
+}
+
+.cust-label-input {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #4a4a4a;
+    &:focus {
+        border: 1.5px solid $Azure !important;
+        outline: none;
+    }
+}
+
+.input-text {
+    border-radius: 4px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border: 1.5px solid #d8d8d8;
+}
+
+.top40 {
+    top: 40px;
+}
+
+.bluebox {
+    height: 40px;
+    background: #2f81ff;
+    color: #0e356f;
+}
+
+.rel-top-18 {
+    position: relative;
+    top: -18px;
+}
+
+.bor-rad-cust {
+    border-radius: 0 4px 4px 0 !important;
+}
+
+select option {
+    line-height: 20px;
+}
+
+.mdi-pencil:before {
+    margin-right: 5px;
+}
+
+.new-container {
+    .cust_autoComplete {
+        input {
+            border: 1.5px solid #d8d8d8;
+            position: relative;
+            border-radius: 4px;
+            padding-right: 35px;
+            left: -2px;
+        }
+    }
+}
+
+.mobile-buttons {
+    display: none;
+}
+
+.mobile-blue {
+    color: white;
+    font-size: 22px;
+    height: 30px;
+}
+
+.paddingblue {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.sort-dropdown {
+    background: white;
+}
+
+.p-4-10 {
+    padding: 4px 10px 4px 10px;
+}
+
+
+/********** style for auto complete list start ***************/
+
+.list-name {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+}
+
+.sub-list {
+    font-size: 10px;
+    color: #9b9b9b;
+    font-family: WiproAkkuratTT-Regular;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/********** style for auto complete list end ***************/
+
+.center {
+    justify-content: center;
+}
+
+.round-btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    // background-color: rgb(136, 159, 195);
+    background-color: #0e3570; //Rudra as per Nov 26th VD
+    border-radius: 50%;
+    color: #ffffff; //Rudra as per Nov 26th VD
+    cursor: pointer;
+    outline: none;
+    border: 2px solid #ffffff; //Rudra as per Nov 26th VD
+    z-index: 99;
+    padding: 0px !important;
+}
+
+.active {
+    //Rudra as per Nov 26th VD
+    // background-color: white !important;
+    background-color: #2f81ff !important;
+    // border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.horizontal-bar-one {
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    bottom: 15px;
+    left: 30px;
+}
+
+.horizontal-bar-two {
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    bottom: 21px;
+    left: 30px;
+}
+
+// .disable-input {
+//   background-color: #f3f3f3 !important;
+// }
+.active-text {
+    color: white !important;
+    position: relative;
+    width: 85px;
+    top: 15px;
+    right: 35px;
+}
+
+.text-step {
+    position: relative;
+    width: 83px;
+    top: 15px;
+    right: 32px;
+    // color: rgba(255, 255, 255, 0.5);
+    color: #ffffff; //Rudra as per Nov 26th VD
+}
+
+.no-pad-lead {
+    padding: 0 !important;
+}
+
+.span-text {
+    // margin-top: 5px;
+    // margin-top: 3px; //Rudra as per Nov 26th VD
+    // margin-left: 3px;//Rudra as per Nov 26th VD
+    // font-size: 14px;
+    width: 100%;
+    line-height: 30px;
+    vertical-align: middle;
+    text-decoration: center;
+    padding: 0px !important;
+}
+
+
+/*************************sumeet***********************/
+
+
+/*************************Pradeep CSS***********************/
+
+.input-text {
+    border-radius: 4px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1) !important;
+    background-color: #ffffff;
+    border: 1.5px solid #d8d8d8;
+    padding: 10px 50px 10px 10px;
+}
+
+.text-height-70 {
+    height: 70px !important;
+}
+
+.min-text-height-70 {
+    min-height: 70px !important;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb50 {
+    margin-bottom: 50px;
+}
+
+.mt70 {
+    margin-top: 70px;
+}
+
+.border-bottm {
+    border: 1px solid #d8d8d8;
+    height: 2px;
+    margin: 5px 25px 0 25px;
+}
+
+.dropdown-bg {
+    background: #f3f3f3;
+}
+
+.input-text:focus {
+    border-color: $Azure;
+}
+
+.mt30 {
+    margin-top: 34px;
+}
+
+.mdi-chevron-down {
+    position: absolute;
+    right: 12px;
+    font-size: 20px;
+    top: 5px;
+}
+
+.mat-slide-toggle {
+    max-width: 30% !important;
+}
+
+.customized-slider {
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color: $Azure !important;
+    }
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color: $Azure !important;
+    }
+}
+
+.customized-input1 {
+    .label-input {
+        border: 1.5px solid #f58323 !important;
+        &:focus,
+        &:active {
+            // border: 1.5px solid #f58323 !important;
+            outline: none;
+        }
+    }
+    .error-message-acc-required {
+        background: #ffffff !important;
+        padding: 6px 6px !important;
+        color: $RubyRed !important;
+        border-radius: 0 0 4px 4px;
+        position: absolute;
+        top: 65px;
+        right: 2px;
+        height: 28px;
+        width: 100%;
+        z-index: 1;
+        top: 40px;
+    }
+    .error-message {
+        background: #f58323 !important;
+        padding: 6px 6px !important;
+        color: #ffffff !important;
+        border-radius: 0 0 4px 4px;
+        position: absolute;
+        top: 65px;
+        right: 2px;
+        height: 28px;
+        width: 100%;
+        z-index: 1;
+    }
+    .border-pink {
+        border-color: #f58323 !important;
+    }
+}
+
+.customized-input2 {
+    .label-input {
+        border: 1.5px solid #6dc24b !important;
+        &:focus,
+        &:active {
+            //border: 1.5px solid #6dc24b !important;
+            outline: none;
+        }
+    }
+    .error-message-acc-required {
+        background: #ffffff !important;
+        padding: 6px 6px !important;
+        color: $RubyRed !important;
+        border-radius: 0 0 4px 4px;
+        position: absolute;
+        top: 65px;
+        right: 2px;
+        height: 28px;
+        width: 100%;
+        z-index: 1;
+        top: 40px;
+    }
+    .error-message {
+        background: #6dc24b !important;
+        padding: 6px 6px !important;
+        color: #ffffff !important;
+        border-radius: 0 0 4px 4px;
+        position: absolute;
+        top: 65px;
+        right: 2px;
+        height: 28px;
+        width: 100%;
+        z-index: 1;
+    }
+    .border-pink {
+        border-color: #6dc24b !important;
+    }
+}
+
+.slidetoggle {
+    padding-left: 35px;
+    font-size: 12px;
+    padding-top: 33px;
+    padding-bottom: 15px;
+}
+
+.slidetoggle1 {
+    padding-left: 35px;
+    padding-top: 58px;
+    font-size: 12px;
+}
+
+.pad-left10 {
+    padding-left: 10px !important;
+}
+
+.info-icon {
+    font-size: 20px;
+    color: #2f81ff;
+    position: relative;
+    top: 3px;
+}
+
+.mdi-information-outline:before {
+    padding-left: 5px;
+    position: relative;
+}
+
+.pad-create-lead1 {
+    padding: 10px 30px 10px 20px;
+}
+
+.asteriq {
+    color: #4a4a4a;
+    font-weight: bold;
+}
+
+.cur-ptr {
+    cursor: pointer;
+}
+
+.border-leftdrop {
+    border-left: 2px solid #2f81ff !important;
+}
+
+
+/* (alex) - form validation starts */
+
+.border-pink {
+    border-color: $RubyRed !important;
+}
+
+.border-pink:focus {
+    border-color: $RubyRed !important;
+}
+
+.error-message {
+    background: $RubyRed;
+    padding: 1px 0px 0px 10px;
+    // text-align: center;
+    color: #ffffff;
+    border-radius: 0 0 4px 4px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    font-size: 13px;
+    top: 38px;
+    right: 0px;
+    height: 22px;
+}
+
+.error-message.custom-msg {
+    top: 64px;
+}
+
+.error-message.right2 {
+    right: 2px;
+}
+
+.error-message-text-area {
+    // background: #ef3341;
+    padding: 0px !important;
+    color: #ef3341;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    font-size: 13px;
+    right: 0px;
+    height: 22px;
+}
+
+
+/* (alex) - form validation ends */
+
+
+/*chethana heander css starts*/
+
+.padd-top-130 {
+    padding-top: 115px !important;
+}
+
+.h-335 {
+    height: 312px;
+}
+
+.padd-top-65 {
+    padding-top: 45px;
+}
+
+.custom-txtarea {
+    top: 103px;
+    right: 28px;
+    width: 86%;
+}
+
+.custom-msg {
+    top: 64px;
+    right: 28px;
+    width: 86%;
+}
+
+.custom-msgAcnt {
+    top: 64px;
+    right: 2px;
+    width: 100%;
+}
+
+.custom-msgAcntlegal {
+    top: 40px;
+    right: 2px;
+    width: 100%;
+}
+
+.custom-label {
+    top: 64px !important;
+}
+
+.paddingleftRight {
+    padding-left: 32px;
+    padding-right: 28px;
+}
+
+
+/*chethana heander css ends*/
+
+.border_owner_lookup {
+    border: 2px solid #2f81ff;
+    position: relative;
+    left: -2px;
+    top: -3px;
+}
+
+.border_owner_all{
+    border: 2px solid #2f81ff;
+}
+.align-owner{
+    top:-2px;
+    right: 2px;
+}
+
+.t-63{
+    top: 63px;
+    right:2px;
+}
+
+.mb55{
+    margin-bottom: 55px;
+}
+
+.p-0-10 {
+    padding: 0px 10px 10px 10px;
+    max-width: 100% !important;
+}
+
+
+/*safari media query start samee 25-09-2019 */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* Safari only override */
+     ::i-block-chrome,
+    .horizontal-bar-one {
+        width: 100%;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        position: relative !important;
+        bottom: 58px !important;
+        left: 30px !important;
+    }
+     ::i-block-chrome,
+    .padd-top-65 {
+        padding-top: 88px !important;
+    }
+}
+
+::i-block-chrome,
+.horizontal-bar-one {
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    position: relative !important;
+    bottom: 58px !important;
+    left: 30px !important;
+}
+
+::i-block-chrome,
+.padd-top-65 {
+    padding-top: 88px !important;
+}
+
+//media query only for safari browser samee start 
+@media not all and (min-resolution:.001dpcm) {
+    /* your code for Safari Desktop & Mobile */
+    //     .horizontal-bar-one, .horizontal-bar-two {
+    //                                                width: 100%;
+    //                                                border-bottom: 2px solid rgba(255,255,255,.5);
+    //                                               position: relative;
+    //                                               bottom: 60px;   
+    //                                               left: 25px;
+    // }
+    // .span-text {
+    // margin-top: 3px;
+    // margin-left: 5px;
+    // font-size: 14px;
+    // }
+    /* end */
+}
+
+//media query only for safari browser samee end
+.error-message-create {
+    background: transparent !important;
+    padding: 4px 0px !important;
+    color: #ef3341 !important;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: normal;
+    top: 63px;
+    right: -2px;
+}
+
+.toolTipDiv {
+    //rudra
+    display: none;
+}
+
+// #keyconGov:hover .toolTipDiv{ 
+//     display: block;
+//     background: #00000080;
+//     color: white;
+//     padding: 5px;
+//     border-radius: 6px;
+//     font-size: 10px;
+//     position:absolute;
+//     z-index:1;
+// }
+#keyconGov {
+    .info-icon:hover+.toolTipDiv {
+        display: block;
+        background: rgba( 0 , 0 , 0 , 0.502 );
+        color: white;
+        padding: 5px;
+        border-radius: 6px;
+        font-size: 10px;
+        position: absolute;
+        z-index: 1;
+    }
+}
+
+.blockcolor {
+    color: #aaa !important;
+}
+
+.p-4-10owner {
+    padding: 6px 10px 6px 10px;
+}
+
+textarea {
+    resize: none !important;
+}
+
+.completedFirstStep {
+    //Rudra as per Nov 26th VD
+    background: #fff !important;
+    color: #0e3570 !important;
+}
+
+span.mdi.mdi-close.auto-close {
+    position: absolute;
+    right: 29px;
+    top: 35px;
+    cursor: pointer;
+}
+
+.top-94 {
+    top: 94px !important;
+}
+
+.t-8 {
+    top: 8px !important
+}
+
+.error-message-acc-required {
+    background: transparent;
+    // padding: 6px 6px !important;
+    color: $RubyRed !important;
+    border-radius: 0 0 4px 4px;
+    position: absolute;
+    right: 2px;
+    height: 28px;
+    width: 100%;
+    z-index: 1;
+    top: 40px;
+}
+
+.suggestion-box {
+    background-color: white;
+}
+
+.list-name-sbu {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+    width: 100%;
+}
+
+@media screen and (min-width:320px) and (max-width:410px) {
+    .top-115 {
+        top: 115px !important;
+    }
+}
+
+.top-64 {
+    top: 64px !important;
+}
+.mb-15{
+    margin-bottom: 15px;
+}

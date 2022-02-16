@@ -1,0 +1,115 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$MidNight: #103f86;
+$LightBlue: #2f81ff;
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$LabelGrey: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$Pink_dark: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$Metal : #4a4a4a;
+* {
+  outline: none;
+}
+.mb-15{
+  margin-bottom: 15px;
+}
+.blue-H-223{
+  height: 232px !important;
+}
+.h-388{
+  height: 266px ;
+}
+.h-227
+{
+  height: 227px !important;
+}
+.h-475 {
+  height: 348px !important;
+}
+.w-180{
+  width: 180px;
+}
+.pr5{
+  padding-right: 5px;
+}
+.primary-button.std{
+  padding: 9px 5px;
+  min-width: 110px;
+  margin: 0;
+}
+
+.vertical-btns-div {
+  margin: 17px 0px 0px 0px;
+  .sub-vertical-but:last-child{
+    border-radius: 0 4px 4px 0;
+  }
+  .mdi-pin:before{
+    color: $White; 
+  }
+  .active .mdi-pin:before{
+    color: $Azure;
+  }
+  .btntxt-s{
+    position: relative;
+    top: -3px;
+  }
+}
+.primary-button.std {
+  padding: 9px 15px;
+}
+.primary-button:hover{
+  .mdi.Create-deal{
+    background-image: url(/assets/images/Create-deal.1.svg);
+  }
+}
+.mdi.Create-deal{
+  background-image: url(/assets/images/Create-deal.svg);
+  width: 22px;
+  height: 17px;
+  float: left;
+  background-repeat: no-repeat;
+}
+.borderless {
+  border: none;
+}
+.loader {
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+}
+.loaderContainer {
+width: 100%;
+top:0em;
+position: absolute;
+height: 100%;
+z-index: 9999;
+background: white;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.mobile-buttons .deal-btn
+{
+    width: 100%;
+}

@@ -1,0 +1,16 @@
+.navbar-sticky-top {
+  .header-action-tab {
+    padding: 19px 30px;
+  }
+}
+.helpdesk-part-nav {
+  position: fixed;
+  min-height: calc(100vh - 119px)
+}
+.helpdesk-part-main{
+  min-height: calc(100vh - 100px);
+  margin-top: 59px;
+}
+.top-header{
+  background-color: unset;
+}

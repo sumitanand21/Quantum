@@ -1,0 +1,173 @@
+<ng-container *ngIf="isLoading">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing"
+    >
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div
+  class="col-12 float-left  no_pad popup-container suspendPop"
+  role="alertdialog"
+  tabindex="0"
+>
+  <form [formGroup]="AssignDealOwnerForm">
+    <div class="col-12 float-left  container-dialog">
+      <div class="col-12 float-left  no_pad popup-hd">
+        <span
+          class="col-10 float-left  no_pad popup-hd-txt margin-btm0"
+          mat-dialog-title
+          >Deal Co-owners</span
+        >
+        <button
+          class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn cp"
+          aria-label="close"
+          mat-dialog-close
+        ></button>
+      </div>
+      <div class="col-12 float-left border-bottom-grey "></div>
+      <!-- added-search-names -->
+      <div
+        class="col-12 col-sm-12 col-md-12 col-lg-12 float-left customized-input cust_autoComplete pos-rel no_pad  mar-top22"
+        [ngClass]="customerContact?.length > 0 &&  customerNameSwitch ? 'mb-150':''"
+      >
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="ownerSearchClose()"
+        >
+          <label
+            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+            for="customerName"
+            class="label-form"
+          >
+            Search co-owners
+          </label>
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+          >
+            <div class="pos-rel w-100 float-left no_pad">
+              <input
+                appKeyListControl
+                #coOwnerList
+                (arrowDown)="arrowkeyLocation=$event"
+                (keyup.enter)="
+                appendDealOwner(customerContact[arrowkeyLocation]);
+                customerNameSwitch = false;
+                arrowkeyLocation = 0"
+                [attr.data-arrayMaxLength]="customerContact?.length"
+                [attr.data-isDownBtn]="true"
+                type="text"
+                role="combobox"
+                aria-autocomplete="list"
+                [attr.aria-expanded]="customerNameSwitch?true:false"
+                aria-owns="read"
+                [attr.aria-activedescendant]="arrowkeyLocation"
+                autocomplete="false"
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                id="owner"
+                name="owner"
+                (intialLoadData)="customerNameSwitch = true;userSearchMethod('a');arrowkeyLocation=0"
+                placeholder="Search owner name"
+                formControlName="customerName"
+                maxlength="250"
+                (keydown.Tab)="ownerSearchClose()"
+                (keydown.shift.Tab)="ownerSearchClose()"
+                [dataManipulate]="true"
+                (input)="customerNameSwitch = true;"
+                
+                [ngClass]="{'error': AssignDealOwnerForm.controls['customerName'].errors}"
+              />
+              <span class="mdi mdi-magnify"></span>
+              <p
+                *ngIf="AssignDealOwnerForm?.controls['customerName']?.errors"
+                class="error-message top-40"
+              >
+                Please select the deal owner
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+            *ngIf="customerNameSwitch"
+            [attr.focus]="customerNameSwitch"
+          >
+            <perfect-scrollbar style="max-height:205px" class="z-ind-9">
+              <span class="w-100 z-ind-9 float-left bg-white">
+                <ul
+                  class=" list-group mr2 sort-dropdown"
+                  role="listbox"
+                  id="read"
+                  [ngClass]="{'loader-search':isDealOwnersSearchLoading }"
+                >
+                  <li
+                    class="list-group-item h-50 p-4-10 "
+                    (click)="appendDealOwner(item);"
+                    id="{{ i }}"
+                    tabindex="0"
+                    role="option"
+                    class="list-group-item list-name"
+                    [class.active]="i == arrowkeyLocation"
+                    aria-disabled="false"
+                    *ngFor="let item of customerContact;let i = index;"
+                  >
+                    <div class="float-left naming-tags child-middle bg-azure">
+                      <span class="initials">{{item.AdId | slice:0:2}}</span>
+                    </div>
+                    <label for="inti_name" class="float-left name">
+                      <span class="d-block list-name">{{item.FullName}}</span>
+                      <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+                    </label>
+                    <!-- <span class="btn-key" *ngIf="item.value"> Key </span> -->
+                  </li>
+                  <li
+                    class="d-block list-name h-40 p-10"
+                    *ngIf="customerContact?.length==0 && !isDealOwnersSearchLoading"
+                  >
+                    No record found
+                  </li>
+                </ul>
+              </span>
+            </perfect-scrollbar>
+          </div>
+        </div>
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact"
+        >
+          <perfect-scrollbar style="max-height:200px">
+            <div
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10"
+              *ngFor="let item of selectedCustomerDeal;let i=index"
+            >
+              <div class="float-left naming-tags child-middle bg-azure">
+                <span class="initials">{{item.AdId | slice:0:2}}</span>
+              </div>
+              <label for="inti_name" class="float-left name">
+                <span class="d-block list-name">{{item.FullName}}</span>
+                <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+              </label>
+              <span
+                class="mdi mdi-close close-lead float-right cp"
+                (click)="deleteDealOwner()"
+              ></span>
+            </div>
+          </perfect-scrollbar>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 float-left no_pad mt20">
+      <button
+        aria-label="Done"
+        type="button"
+        class="col-12 float-left btndef-none no_pad confrm-btn"
+        (click)="submit()"
+        aria-label="done"
+      >
+        Done
+      </button>
+    </div>
+  </form>
+</div>

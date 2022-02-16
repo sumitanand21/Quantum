@@ -1,0 +1,209 @@
+::ng-deep .bs-media-container .bs-datepicker-multiple:nth-child(2) {
+    display:none;
+}
+::ng-deep .theme-green .bs-datepicker-body table td.week span {
+    color:#103f86;
+}
+::ng-deep .bs-datepicker-body table.days span{
+    width: 37px !important;
+    height: 37px !important;
+    line-height: 37px !important;
+}
+
+::ng-deep .bs-datepicker-head .previous,::ng-deep .bs-datepicker-head .next {
+    visibility:visible!important;
+}
+ ::ng-deep .theme-green .bs-datepicker-body table td span.selected {
+    background-color: #103f86;
+}
+::ng-deep .theme-green .bs-datepicker-head{
+background-color: white !important
+}
+::ng-deep .bs-datepicker-container{
+    padding: 0px !important;
+}
+::ng-deep .bs-datepicker {
+    box-shadow: 0 0 2px 0 #aaa;
+}
+::ng-deep span.select-start.select-end.selected{
+    border-radius: 50% !important;
+    width: 37px !important;
+}
+::ng-deep .in-range{
+    border-radius: 0% !important;
+    color: #fff;
+    background: #2f81ff;
+    margin: 0;
+    padding: 0;
+    width: 37px !important;
+}
+::ng-deep .in-range:hover{
+    color: #fff !important;
+    background: #2f81ff !important;
+}
+::ng-deep .bs-datepicker-body table{
+    border-spacing: 0 2px !important;
+}
+::ng-deep span.in-range.select-end.selected{
+    border-radius: 0px 18px 18px 0px !important;
+    background: #2f81ff !important;
+}
+::ng-deep .bs-datepicker-head button{
+    color:#4a4a4a !important;
+}
+::ng-deep span.select-start.selected{
+    
+    border-radius: 18px 0 0 18px !important;
+    width: 37px !important;
+    background: #2f81ff !important;
+}
+::ng-deep span.select-start.selected:hover{
+    
+    border-radius: 18px 0 0 18px !important;
+}
+::ng-deep span.is-highlighted.select-start.selected{
+    border-radius: 50% !important;
+}
+::ng-deep .bs-datepicker-head button:nth-child(2){
+        position: relative;
+        left:10px !important;
+
+}
+::ng-deep .bs-datepicker-head button:nth-child(3){
+    position: relative;
+    right:10px !important;
+
+}
+.dateRangeBtnView {
+    cursor: pointer;
+    //padding: 5px 15px;
+    background-color: #ffffff !important;
+    color: #2f81ff !important;
+    font-family: "WiproAkkuratTT-Regular";
+    width: 280px;
+    height: 34px;
+    line-height: 1.42857143;
+    outline: none !important;
+    border-radius: 4px;
+    border: none !important;
+    padding: 0;
+}
+.rangePicText {
+    //text-align: right !important;
+    color: #2f81ff;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding-top: 3px;
+    padding-left: 108px;
+    border-radius: 4px;
+    padding-right: 10px;
+}
+::placeholder {
+    color: #2f81ff !important;
+}
+.dateRangeBtnView:hover {
+    background-color: #2f81ff !important;
+    color: #ffffff !important;
+    .dateRangeViewIcon, input {
+        background-color: #2f81ff !important;
+        color: #ffffff !important;
+   }
+}
+.dateRangeViewIcon {
+    color: #2f81ff ;
+    left: 15px;
+    position: absolute;
+    top:7px;
+    // margin-top: 1px;
+    pointer-events: none;
+    font-family: "WiproAkkuratTT-Bold";
+    font-size: 13px;
+    &::before{
+        margin-right: 5px;
+    }
+}
+.zindex{
+    z-index: 9999;
+}
+.heading-level-one{
+    max-width: 210px !important;
+}
+.mar-top-activity{
+    margin-top: 50px;
+}
+.color-white{
+    color: #fff !important;
+    }
+    .mdi-arrow-left {
+      font-size: 22px;
+      position: relative;
+      color: white !important;
+    }
+    .h-344{
+        height: 286px;
+    }
+    .h-387{
+        height:335px;
+    }
+.mar-top-90{
+    margin-top: 65px ;
+}
+    .loader {
+        margin: 200px auto;
+        border: 6px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 6px solid #3498db;
+        width: 64px;
+        height: 64px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      
+    }
+    .loaderContainer {
+
+      width: 100%;
+      top:7em;
+      position: absolute;
+      height: 100%;
+      z-index: 9999;
+      background: white;
+    }
+    .header-action-tab{
+  padding: 12px 30px;
+}
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @media screen and (max-width: 441px) {
+        .h-344{
+            height: 376px !important;
+        }  
+      }
+      .toast-bold{
+        top: 2px;
+        font-family: "WiproAkkuratTT-Bold";
+        max-width: 145px;
+        margin-right: 3px;
+        position: relative;
+        color: white;
+      }
+
+      .close-taost{
+        background: transparent;
+        border: none;
+        color: white;
+        margin-left: 10px;
+        cursor: pointer;
+        position: relative;
+        top: -2px;
+        font-size: 14px;
+      }

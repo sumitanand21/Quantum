@@ -1,0 +1,52 @@
+<ng-container *ngIf="isLoading">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <div class="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<!-- <ng-template #elseTemplate> -->
+
+    <div class="col-12 float-left padng-30 padt10"> 
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <h2 class="col-12 float-left heading-level-two color-white top25 no_pad padding-left0 padt-0">{{tableTotalCount}} Account assignment request(s)</h2>
+                <div class="parent-container" *ngIf="CreationActiveRequestTable.length > 0">
+                    <app-single-table
+                     (detectActionValue)="performTableChildAction($event)"
+                     (detectPageChangeData)="getNewTableData($event)" 
+                     [TableName]="'CreationAssigActiveRequest'"
+                     [totalTableCount]="tableTotalCount"
+                     [TableCollection]="CreationActiveRequestTable"
+                     [IsFreezedColumn]="true"
+                     [IsActionFixed]="true"
+                     [expansionTable]="'account-overview-selector'"
+                     [IsMoreAction]="true" 
+                     [IsView]="true" 
+                     [IsViewCSO_SBU]="isviewcso_sbu" 
+                     [IsApprove]="true" 
+                     [IsReject]="true" 
+                     [IsReview]="true"
+                     [IsEditDraft]="true"
+                     [serviceSearch]="true" 
+                     [IsApproveWithSwap]="approvewithswap"
+                     [paginationPageNumber]="Activerequest"
+                     [ConfigData]="configData"
+                     [IsCustomizeTable]="true"
+                     [IsDownload]="true" 
+                     [filterConfigData]="filterConfigData"
+                     [IsAccountsDownload]=true
+                     >
+
+                    </app-single-table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </ng-template> -->
+<!--[IsViewMore]="true"-->

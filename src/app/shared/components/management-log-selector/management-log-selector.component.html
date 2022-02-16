@@ -1,0 +1,97 @@
+<div class="col-xl-12 col-12 no_pad expand-table-panel " *ngIf="tableName=='ManagementLog'" [style.width.px]="width">
+    <div class="col-xl-12 col-12 float-left no_pad expand-content">
+        <div class="col-xl-1 col-12 col-md-1 float-left lightBlueBackground width100-max">
+            <div class="col-xl-12 col-6 col-md-12 float-left button-align bot-border width50-max">
+                <span class="col-12 no_pad float-left Overview">Participants</span>
+                <button class="btn-none " (click)="showdesp_cntnt()" [ngClass]="desp_cntnt ? 'blueCircle' : 'whiteCircle'">
+                    <span class="table-icons mdi mdi-account-multiple-check "></span>
+                </button>
+                <div class="tooltip-expand">
+                    <span [ngClass]="desp_cntnt ? 'caret_right_table' : ''"></span>
+                </div>
+            </div>
+            <div class="col-xl-12 col-6 col-md-12 float-left button-align tooltip-arrow  width50-max">
+                <span class="col-12 no_pad float-left Rejection Exception">Comments and conclusions</span>
+                <button class="btn-none " (click)="showcmnts_cntnt()" [ngClass]="cmnts_cntnt || localPartentRef ? 'blueCircle' : 'whiteCircle'">
+                    <span class="table-icons mdi mdi-flag-variant-outline"></span>
+                </button>
+                <div class="tooltip-expand">
+                    <span [ngClass]="cmnts_cntnt || localPartentRef ? 'caret_right_table' : ''"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-11 col-12 col-md-11 float-left width100-max">
+            <div class="col-12 float-left desp-section" *ngIf="desp_cntnt">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngIf="expansionData.Participants.length>0">
+                    <div class="col-12 no_pad float-left comment-head">Participants</div>
+                    <div class="col-xl-7 col-12 no_pad float-left desp-text">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left selected-contact">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mail-box-text mt-10 mr10 no_pad" *ngFor="let item of expansionData.Participants">
+                                <span class="float-left initial-text">{{getInitials(item.FullName)}}</span>
+                                <label for="inti_name" class="float-left name-label">
+                                <span class="d-block color-label_gray mr10 float-left">{{item.FullName}}</span>
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngIf="expansionData.NonTraceUsers.length>0">
+                    <div class="col-12 no_pad float-left comment-head">Participants (Non-trace users)</div>
+                    <div class="col-xl-7 col-12 no_pad float-left desp-text">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left selected-contact">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mail-box-text mt-10 mr10 no_pad" *ngFor="let item of expansionData.NonTraceUsers">
+                                <span class="float-left initial-text">{{getInitials(item.FullName)}}</span>
+                                <label for="inti_name" class="float-left name-label">
+                                <span class="d-block color-label_gray mr10 float-left">{{item.FullName}}</span>
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-12 no_pad float-left desp-text" *ngIf="expansionData.NonTraceUsers.length==0 && expansionData.Participants.length==0">No Record Found</div>
+                <!-- <div class="col-12 no_pad float-left comment-head mt30">Participants ( Non-trace users)</div>
+                <div class="col-xl-7 col-12 no_pad float-left desp-text">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left selected-contact">
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 float-left mail-box-text mt-10 mr10 no_pad"
+                            *ngFor="let item of selectepartcipant">
+                            <span class="float-left initial-text">{{item.initials}}</span>
+                            <label for="inti_name" class="float-left name-label">
+                                <span class="d-block color-label_gray mr10 float-left">{{item.contact}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-12 float-left comments-section" *ngIf="cmnts_cntnt">
+                <div class="col-12 no_pad float-left comment-heading">
+                    <span class="col-6 no_pad float-left comment-head">Comments and conclusions</span>
+                    <span class="col-6 no_pad float-left comment-head">Actions identified</span>
+                    <span class="col-12 no_pad float-left bordr-btm"></span>
+                </div>
+                <div class="col-12 no_pad float-left" *ngFor="let comment of expansionData.CommentandConclusion">
+                    <!-- <perfect-scrollbar class="expand-comment-hgt"> -->
+                    <div class="col-6 float-left comment-main">
+                        <!-- <div class="col-12 no_pad float-left">
+                                <span class="comment-name">{{comment.name}}</span>
+                                <span class="comment-date">{{comment.date}}</span>
+                            </div> -->
+                        <span class="col-12 no_pad float-left comment-text">{{comment.Comment}}</span>
+                    </div>
+                    <div class="col-6 float-left comment-main">
+                        <!-- <div class="col-12 no_pad float-left">
+                                    <span class="comment-name">{{comment1.name}}</span>
+                                    <span class="comment-date">{{comment.date}}</span>
+                                </div> -->
+                        <span class="col-12 no_pad float-left comment-text">{{comment.ActionIdentified}}</span>
+                    </div>
+                    <!-- </perfect-scrollbar> -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

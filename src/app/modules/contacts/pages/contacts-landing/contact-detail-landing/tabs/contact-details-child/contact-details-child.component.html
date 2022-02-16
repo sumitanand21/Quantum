@@ -1,0 +1,1201 @@
+<ng-container *ngIf="isLoading">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-95 profile new-container">
+
+  <!-- NonEdit part starts from here -->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card card-content float-left pad-30"
+    *ngIf="contactService.showeditbtn">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 no_pad float-left">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+          <h3 class="header-level-three pb20 float-left col-12 no_pad mb20">Business card</h3>
+          <span class="col-12 float-left grey-back-profile mt20" *ngIf="imageSrc == '' || imageSrc == null ">
+            <span class="col-12 mdi mdi-camera float-left"
+              *ngIf="imageSrc == '' || imageSrc == null "></span>No business card attached</span>
+        </div>
+        <div class="img-block hov-none" *ngIf="imageSrc != '' && imageSrc!=null ">
+          <label class="business-card pos-rel noeditbui" for="fileUpload">
+            <img class="business-card pos-rel" id="image" [src]="imageSrc" width="100%" height="100%">
+            <button class="mdi mdi-close float-right image-delete-btn" type="button" (click)="deleteBusinessCard($event)"
+              aria-label="delete uploaded image"></button>
+          </label>
+        </div>
+        <div class="social-media col-12 no_pad" [ngClass]="!imageSrc == '' || !imageSrc == null ? 'mar-100-top':''">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt30 no_pad">
+            <h3 class="header-level-three pb20 textcolor pt20">Social media details</h3>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad cp">
+            <span class="header-level-three pb20 mdi mdi-twitter-circle textclr ellipses" role="link" tabindex="0"
+              *ngIf="TwitterUrldata===''">Link to
+              twitter</span>
+            <a class="header-level-three pb20 mdi mdi-twitter-circle textclr ellipses" href="{{TwitterUrldata}}"
+              target="_blank" role="link" tabindex="0" *ngIf="TwitterUrldata!==''"
+              title="{{TwitterUrldata}}">{{TwitterUrldata}}</a>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad cp">
+            <span class="header-level-three pb20 mdi mdi-linkedin linkedIn-icon ellipses textclr" role="link"
+              tabindex="0" *ngIf="LinkendUrldata===''">Link to
+              linkedIn</span>
+            <a class="header-level-three pb20 mdi mdi-linkedin linkedIn-icon ellipses textclr" role="link" tabindex="0"
+              *ngIf="LinkendUrldata!==''" href="{{LinkendUrldata}}" target="_blank"
+              title="{{LinkendUrldata}}">{{LinkendUrldata}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9 float-right pad-30-contact">
+        <h3 class="header-level-three  float-left pb20 col-12 mb20">General details</h3>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Salutation
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text"
+          [ngClass]="contactObject?.salutationname != 'NA' ? '':''"    
+          matTooltip=" {{Generaldetails?.Salutation | capitalizeFirst}}">
+            {{Generaldetails?.Salutation}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">First name
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Generaldetails?.Firstname != 'NA' ? '':''"   
+          matTooltip="{{Generaldetails?.Firstname}}">
+            {{Generaldetails?.Firstname}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70"
+          *ngIf="Generaldetails?.Lastname!==undefined">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Last name
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Generaldetails?.Lastname != 'NA' ? '':''"  
+          matTooltip="{{Generaldetails?.Lastname}}">
+            {{Generaldetails?.Lastname}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Designation
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="contactObject?.Designation != 'NA' ? '':''"  
+          matTooltip="{{Generaldetails?.Designation | capitalizeFirst}}">
+            {{Generaldetails?.Designation}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Email
+            address
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Generaldetails?.Emailaddress != 'NA' ? '':''" 
+          matTooltip="{{Generaldetails?.Emailaddress | capitalizeFirst}}">
+            {{Generaldetails?.Emailaddress}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70"
+          *ngIf=" Generaldetails?.Phonenumber.length===0">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Phone
+            number</div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text ">
+            NA</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70"
+          *ngFor="let pnumber of Generaldetails?.Phonenumber;let i=index">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+            *ngIf="Generaldetails?.Phonenumber.length>1">
+            Phone number {{i+1}}
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+            *ngIf="Generaldetails?.Phonenumber.length===0">
+            Phone number
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+            *ngIf="Generaldetails?.Phonenumber.length===1">
+            Phone number
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text ">
+            {{ (pnumber.ContactNo!=null)?pnumber.ContactNo:"NA" }}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Account
+            name
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Generaldetails?.AccountName != 'NA' ? '':''"
+            matTooltip="{{Generaldetails?.AccountName | capitalizeFirst}}">
+            {{Generaldetails?.AccountName}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Reporting
+            manager
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text"
+           [ngClass]="Generaldetails?.ReportingManager != 'NA' ? '':''"
+            matTooltip=" {{Generaldetails?.ReportingManager | capitalizeFirst}}">
+            {{Generaldetails?.ReportingManager}}
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">CBU</div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Generaldetails?.CBU != 'NA' ? '':''"
+          matTooltip=" {{Generaldetails?.CBU | capitalizeFirst}}">
+            {{Generaldetails?.CBU}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">
+            Relationship</div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Generaldetails?.Relationship  != 'NA' ? '':''"  
+          matTooltip=" {{Generaldetails?.Relationship | capitalizeFirst}}">
+            {{Generaldetails?.Relationship}}
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">
+           Category</div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Generaldetails?.Category != 'NA' ? '':''"  
+          matTooltip=" {{Generaldetails?.Category | capitalizeFirst}}">
+            {{Generaldetails?.Category}}
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Key
+            contact
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Generaldetails?.KeyContact != 'NA' ? 'f-capital':''"  
+          matTooltip="{{Generaldetails?.KeyContact | capitalizeFirst}}">
+            {{Generaldetails?.KeyContact}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">
+                Reference-able
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+            [ngClass]="Generaldetails?.Referenceable != 'NA' ? 'f-capital':''"  
+            matTooltip="{{Generaldetails?.Referenceable | capitalizeFirst}}">
+              {{Generaldetails?.Referenceable}}</div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 " 
+          *ngIf="Generaldetails?.Referenceable=='Yes'"  >
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">
+                Reference type</div>
+              <div *ngIf="Generaldetails?.ReferenceType.length>0">
+              
+                  <div *ngFor="let v of Generaldetails?.ReferenceType">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text"
+                      [ngClass]="v.Name != 'NA' ? '':''" matTooltip=" {{v.Name}}">
+                      {{v.Name}}</div>
+                  </div>
+              
+                </div>
+                <div *ngIf="Generaldetails?.ReferenceType.length==0">
+                 NA
+                </div>
+          </div>
+       
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height-70" 
+          *ngIf="Generaldetails?.Referenceable=='Yes'"  >
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">
+                Reference mode</div>
+              <div *ngIf="Generaldetails?.ReferenceMode.length>0">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text"
+                      [ngClass]="Generaldetails?.ReferenceType != 'NA' ? '':''" matTooltip=" {{Generaldetails?.ReferenceType}}">
+                      {{Generaldetails?.ReferenceMode}}</div>
+                  </div>
+                <div *ngIf="Generaldetails?.ReferenceMode.length==0">
+                 NA
+                </div>
+          </div>
+
+      
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 float-right pad-30-contact">
+        <h3 class="header-level-three float-left pb20 col-12 mb20">Customer address</h3>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">
+            Country</div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Customerdetails?.Country != 'NA' ? '':''"  
+          matTooltip="{{Customerdetails?.Country | capitalizeFirst}}">
+            {{Customerdetails?.Country}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">
+            State/province</div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Customerdetails?.stateProvince != 'NA' ? '':''"
+          matTooltip="{{Customerdetails?.stateProvince | capitalizeFirst}}">
+            {{Customerdetails?.stateProvince}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">City </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Customerdetails?.City != 'NA' ? '':''" 
+          matTooltip="{{Customerdetails?.City | capitalizeFirst}}">
+            {{Customerdetails?.City}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Address
+            line 1
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Customerdetails?.address1 != 'NA' ? '':''"  
+          matTooltip="{{Customerdetails?.address1 | capitalizeFirst}}">
+            {{Customerdetails?.address1 }}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Address
+            line 2
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Customerdetails?.address2 != 'NA' ? '':''"   
+          matTooltip="{{Customerdetails?.address2 | capitalizeFirst}}">
+            {{Customerdetails?.address2}}
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Street name
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Customerdetails?.streetName != 'NA' ? '':''"  
+          matTooltip="  {{Customerdetails?.streetName | capitalizeFirst}}">
+            {{Customerdetails?.streetName}}</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 height-70">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Zip/postal
+            code
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-sub-text "
+          [ngClass]="Customerdetails?.zipPostalCode != 'NA' ? '':''"   
+          matTooltip="{{Customerdetails?.zipPostalCode | capitalizeFirst}}">
+            {{Customerdetails?.zipPostalCode}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- NonEdit part ends here -->
+  <!-- Edit part starts from here -->
+  <form id="validatescroll" [formGroup]="contactDetailEditForm">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card card-content float-left pad-30"
+      *ngIf="!contactService.showeditbtn">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+        <!-- Left side Business card panel starts here-->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 no_pad float-left">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad contact-details pos-rel">
+            <h3 class="header-level-three pb20 mb20">Business card</h3>
+            <label *ngIf="imageSrc == null || imageSrc==''; else imgBlock" class="business-card1 d-flex pos-rel"
+              for="fileUpload1">
+              <span class="upload color-azure btn-none w-100"  matTooltip="Upload contact's business card to fetch and pre-populate relevant details, you will be able to edit these details before saving">
+                <span class="mdi mdi-cloud-upload"></span>Upload
+                <input type="file" class="business-card-upload" style="opacity:0" #fileInput (click)="fileInput.value = null" value=""
+              id="fileUpload1" accept="image/*" (change)="detectFilesRead($event,'fileUpload1')" name="files[]" />
+              </span>
+            </label>  
+            <ng-template #imgBlock>
+              <div class="img-block"> 
+                <label class="business-card pos-rel" for="fileUpload">
+                  <div class="d-flex pos-abs pl50 middle-btns">
+                    <button class="upload color-white btn-none z-999" type="button" (click)="replaceBusinessCard()">Replace |</button>
+                    <button class="upload color-white btn-none z-999" id="delete-file"
+                      (click)="deleteBusinessCard($event)" type="button">Delete</button>
+                  </div>
+                  <img class="business-card pos-rel" id="image" [src]="imageSrc" width="100%" height="100%">
+                  <div class="overley-image"></div>
+                  <button class="mdi mdi-close float-right image-delete-btn" type="button" (click)="deleteBusinessCard($event)"
+                    aria-label="delete uploaded image"></button>
+                </label>
+                <input type="file" style="opacity:0" #fileInput (click)="fileInput.value = null" value=""
+                  id="fileUpload"   (change)="detectFilesRead($event,'fileUpload1')" name="files[]" />
+              </div>
+            </ng-template>
+            <span class="float-left col-12 no_pad type-accepted-contact">*File types allowed for business card and profile image(JPG,PNG,PJP,JPEG). File size allowed upto 5mb</span>
+          </div>
+          <div class="social-media float-left col-10 no_pad ">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+              <h3 class="header-level-three pb20 textcolor mt10 pt20">Social media details</h3>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad cp">
+              <span class="ellipses  header-level-three pb20 mdi mdi-twitter-circle textclr " role="link"
+                tabindex="0" *ngIf="TwitterUrldata===''" [ngClass]="service.chatBot?'max-w-100':'max-width-200'" aria-hidden="true">Link to twitter</span>
+              <a href="{{TwitterUrldata}}" target="_blank"
+                class="ellipses  header-level-three pb20 mdi mdi-twitter-circle textclr"
+                *ngIf="TwitterUrldata!==''" [ngClass]="service.chatBot?'max-w-100':'max-width-200'">{{TwitterUrldata}}</a>
+              <span class="color-azure mdi mdi-pencil float-right pos-abs top-18 cp" role="button" tabindex="0"
+                aria-label="Link twitter account edit" (keypress)="opensocial('twitter',TwitterUrldata)"
+                (click)="opensocial('twitter',TwitterUrldata)">
+                <span class="sr-only">Link twitter account edit</span>
+              </span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad cp">
+              <span class="ellipses header-level-three pb20 mdi mdi-linkedin linkedIn-icon textclr"
+                role="link" tabindex="0" *ngIf="LinkendUrldata===''" [ngClass]="service.chatBot?'max-w-100':'max-width-200'" aria-hidden="true">Link to
+                linkedIn</span>
+              <a href="{{LinkendUrldata}}" target="_blank"
+                class="ellipses header-level-three pb20 mdi mdi-linkedin linkedIn-icon textclr"
+                *ngIf="LinkendUrldata!==''" [ngClass]="service.chatBot?'max-w-100':'max-width-200'">{{LinkendUrldata}}</a>
+              <span class="color-azure mdi mdi-pencil float-right paddtop-6 cp" role="button" tabindex="0"
+                aria-label="Link twitter account edit" (keypress)="opensocial('twitter',TwitterUrldata)"
+                (click)="opensocial('linkedin',LinkendUrldata)">
+                <span class="sr-only">Link linkedin account edit</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9 float-right pad-30-contact">
+          <h3 class="header-level-three float-left pb20 col-12 mb20">General details</h3>
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left pad-left plb-0-35 height80 conversation-padd10 mobile-select-box">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="selectcontact1">Salutation<span class="required"> *</span></div>
+            <div class="customized-select">
+              <span class="caret color-azure customized-caret"></span>
+              <div class="pos-rel w-100 float-left no_pad">
+              <select id="select1" aria-labelledby="selectcontact1" role="listbox" formControlName="salutation"
+                [ngClass]="{'error': f.salutation.invalid && (f.salutation.dirty || f.salutation.touched)}">
+                <option value="">Select salutation </option>
+                <option [value]="item.Id" *ngFor="let item of salutation" matTooltip="{{item.Value}}">{{item.Value}}
+                </option>
+              </select>
+              <p *ngIf="f.salutation.touched && !f.salutation.valid" class="error-message top-40">  Select
+                salutation </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left pad-left plb-0-35 height80 conversation-padd10 web-select-box">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="selectcontact1">Salutation <span class="required"> *</span></div>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select salutation </mat-label>
+              <mat-select  aria-label="{{'Select salutation' + salutationTypeAria}}" disableOptionCentering panelClass="Select-panel-class" class="select-focus"
+              (selectionChange)="appendSalutationType($event)"
+                formControlName="salutation"
+                [ngClass]="{'error': f.salutation.invalid && (f.salutation.dirty || f.salutation.touched)}"
+                >
+                <mat-option value="" disabled>Select salutation </mat-option>
+                <mat-option *ngFor="let item of salutation" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </mat-option>
+              </mat-select>
+              <p *ngIf="f.salutation.touched && !f.salutation.valid" class="error-message top-40">  Select
+                salutation </p>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 customized-input height80">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="field1d1">First
+              name <span class="required"> *</span></div>
+            <div class="pos-rel w-100 float-left no_pad">
+              <input id="field1c1" type="text" formControlName="firstName" maxlength="100" aria-labelledby="field1d1"
+                class="border-gray w-95 error" pattern="^[a-zA-Z\. ]+$" value="" placeholder="Enter first name"
+                minlength="2" [ngClass]="{'error': f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)}"
+                required>
+              <p *ngIf="f.firstName.touched && !f.firstName.valid && !f.firstName.errors?.pattern" class="error-message top-40"> 
+                Enter first name </p>
+              <p *ngIf="f.firstName.errors?.pattern" class="error-message top-40">
+                Enter valid first name</p>
+              <p *ngIf="f.firstName.errors?.range" class="error-message top-40">First Name
+                cannot
+                exceed 100 characters</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 customized-input height80">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="field1d2">Last
+              name <span class="required"> *</span></div>
+            <div class="pos-rel w-100 float-left no_pad">
+              <input id="field1c2" type="text" formControlName="lastName" minlength="1" maxlength="100" arai-labelledby="field1d2"
+                required class="border-gray w-95 error" pattern="^[a-zA-Z\. ]+$" value="" placeholder="Enter last name"
+                minlength="1" [ngClass]="{'error': f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)}">
+              <p *ngIf="f.lastName.touched && !f.lastName.valid && !f.lastName.errors?.pattern" class="error-message top-40"> 
+                Enter last name </p>
+              <p *ngIf="f.lastName.errors?.pattern && !f.lastName.errors?.range" class="error-message top-40">
+                Enter valid last name</p>
+              <p *ngIf="f.lastName.errors?.range" class="error-message top-40">Last Name
+                cannot
+                exceed 100 characters</p>
+            </div>
+          </div>
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 customized-input pad-left height80">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="selectcontact2">Designation
+              <span class="required"> *</span></div>
+            <div class="pos-rel w-100 float-left no_pad">
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text " id="Address"
+                name="Address" type="text" formControlName="designation" minlength="2"
+                (keypress)="removeNumbers($event)" placeholder="Enter designation" required
+                [ngClass]="{'error': f.designation.invalid  && (f.designation.dirty || f.designation.touched)}">
+                <p *ngIf="f.designation.touched && !f.designation.valid && !f.designation.errors?.isError" 
+                class="error-message top-40"> 
+                Enter designation </p>
+              <p *ngIf="f.designation.errors?.isError"
+               class="error-message top-40">Special characters are not allowed
+              </p>
+              <p *ngIf="designationErrorMessage && f.designation.errors?.isError"
+               class="error-message top-40">{{designationErrorMessage}}</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 customized-input height80">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="field1d3">Email
+              address <span class="required"> *</span></div>
+            <div class="pos-rel w-100 float-left no_pad">
+              <input id="field1" aria-labelledby="field1d3" type="text" formControlName="emailAddress"
+                class="border-gray w-95 error"
+                pattern="^[a-zA-Z0-9_-]+(\.[_a-zA-Z0-9_-]+)*@[a-zA-Z0-9-_-]+(\.[a-zA-Z0-9-_-]+)*(\.[a-zA-Z]{2,15})$"
+                value="" placeholder="Enter email address" type="text" required
+                [ngClass]="{'error': f.emailAddress.invalid  && (f.emailAddress.dirty || f.emailAddress.touched)}">
+
+                <p *ngIf="f.emailAddress.touched && f.emailAddress.value == ''" class="error-message top-40">  Enter
+                  email address </p>
+                <p *ngIf="f.emailAddress.errors?.pattern" class="error-message top-40">  Enter valid email id</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 phone-number  
+          web-select-box"
+          formArrayName="contacts" *ngFor="let number of getContacts?.controls;let i=index">
+          <label for="phone" class="label-form w-100">Phone number 
+             <span *ngIf="i === 0">{{i+1}}</span>
+            <span *ngIf="i > 0">{{i+1}}</span> </label>
+          <div class="pos-rel" [formGroupName]="i">
+            <div class="customized-select float-left w-90">
+              <span class="caret color-azure"></span>
+              <select id="phone" role="listbox" (change)="contactTypeChanges1($event,i, number.value)"
+                formControlName="ContactType" #phoneType [required]="phoneType.value == '' && phoneNo.value.length > 1">
+                <option value="">Select</option>
+                <option *ngFor="let item of phoneContactType" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </option>
+              </select>
+            </div>
+            <div class="customized-input d-flex">
+              <span (click)="PhoneNumberValidation(phoneType.value)">
+                  <!-- onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : (event.charCode == 43 || event.charCode == 45) || event.charCode >= 48 && event.charCode <= 57"
+                pattern="^\+?[\d-]+$" -->
+              <input  specialIsAlphaNumeric [attr.data-type]="'mobileNumber'"
+                input id="phone" type="text" #phoneNo class="border-gray"
+                [attr.disabled]="phoneType.value==''?'disabled' : null" placeholder="Phone"
+                formControlName="ContactNo" minlength="8" maxlength="15" #phoneNumberValue
+               [required]="phoneType.value != '' && phoneNo.value.length==0">
+                </span>
+              <p *ngIf=" (contactDetailEditForm.controls['contacts'].controls[i].controls['ContactNo'].touched) 
+              && (!contactDetailEditForm.controls['contacts'].controls[i].controls['ContactNo'].valid)"
+                class="error-message1 top-40"> Enter the valid phone number</p>
+                <p *ngIf="(phoneType.value == '' && contactDetailEditForm.controls['contacts'].controls[i].controls['ContactNo'].touched 
+              && !contactDetailEditForm.controls['contacts'].controls[i].controls['ContactNo'].valid)"
+                class="error-message1 top-40"> Select phone type</p>
+              <div class="float-right no_pad pagination ml10 ">
+                <button aria-label="add contact" contactnumber.value='' phoneType.value=''
+                  class="standard-border color-azure mdi mdi-plus" *ngIf="i == 0 ? true : false" type="button"
+                  (click)="addContactss($event)"></button>
+                <button aria-label="Delete" class="standard-border color-azure mdi mdi-delete"
+                  *ngIf="i >0 ? true : false" type="button" (click)="deleteContact(i,number.value)"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 phone-number  
+        mobile-select-box"
+       formArrayName="contacts" *ngFor="let number of getContacts?.controls;let i=index">
+        <label for="phone" class="label-form w-100">Phone number
+           <span *ngIf="i === 0">{{i+1}}</span>
+          <span *ngIf="i > 0">{{i+1}}</span> </label>
+        <div class="pos-rel" [formGroupName]="i">
+          <div class="customized-select float-left w-90">
+            <span class="caret color-azure"></span>
+            <select id="phone" role="listbox" (change)="contactTypeChanges1($event,i, number.value)"
+              formControlName="ContactType" #phoneType [required]="phoneType.value == '' && phoneNo.value.length>1">
+              <option value="">Select</option>
+              <option *ngFor="let item of phoneContactType" [value]="item.Id" matTooltip="{{item.Value}}">
+                {{item.Value}}
+              </option>
+            </select>
+          </div>
+          <div class="customized-input d-flex">
+            <span (click)="PhoneNumberValidation(phoneType.value)">
+                <!-- onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : (event.charCode == 43 || event.charCode == 45) || event.charCode >= 48 && event.charCode <= 57" -->
+                <!-- pattern="^\+?[\d-]+$" -->
+                <input   specialIsAlphaNumeric [attr.data-type]="'mobileNumber'"
+               input id="phone" type="text" #phoneNo class="border-gray"
+              [attr.disabled]="phoneType.value==''?'disabled' : null" placeholder="Phone"
+              formControlName="ContactNo" minlength="8" maxlength="15" #phoneNumberValue
+              [required]="phoneType.value != '' && phoneNo.value.length==0 && i>0">
+              </span>
+            <p *ngIf=" (contactDetailEditForm.controls['contacts'].controls[i].controls['ContactNo'].touched) 
+            && (!contactDetailEditForm.controls['contacts'].controls[i].controls['ContactNo'].valid)"
+              class="error-message1 top-40"> Enter the valid phone number</p>
+            <p *ngIf="(phoneType.value == '' && contactDetailEditForm.controls['contacts'].controls[i].controls['ContactNo'].touched 
+            && !contactDetailEditForm.controls['contacts'].controls[i].controls['ContactNo'].valid)"
+              class="error-message1 top-40"> Select phone type</p>
+            <div class="float-right no_pad pagination ml10 ">
+              <button aria-label="add contact" contactnumber.value='' phoneType.value=''
+                class="standard-border color-azure mdi mdi-plus" *ngIf="i == 0 ? true : false" type="button"
+                (click)="addContactss($event)"></button>
+              <button aria-label="Delete" class="standard-border color-azure mdi mdi-delete"
+                *ngIf="i >0 ? true : false" type="button" (click)="deleteContact(i,number.value)"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-input  CompanyName"
+              (clickOutside)="AccountNameclose()">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accountID"
+                class="label-form"> Account name 
+                <!-- <span class="required"> *</span> -->
+              </label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input 
+                 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text "
+                 [attr.data-selectedvalue]="AccountZunkdata"
+                 (refinejunkvalue)="AccountZunkdata=''"
+                 appKeyListControl
+                 #accountlist 
+                 (arrowDown)="arrowkeyLocation=$event"
+                 (keyup.enter)="accountlist.value=getAccountCompany[arrowkeyLocation].Name;
+                 AccountZunkdata=getAccountCompany[arrowkeyLocation].Name;
+                 AccountNameSwitch=false;appendAccountName(getAccountCompany[arrowkeyLocation])"
+                 [attr.data-arrayMaxLength]="getAccountCompany?.length"
+                 id="accountID"
+                 (input)="AccountNameSwitch = true;" 
+                 role="combobox"
+                 aria-autocomplete="list"
+                 [attr.aria-expanded]="AccountNameSwitch?true:false"
+                 aria-owns="read"
+                 [attr.aria-activedescendant]="arrowkeyLocation"
+                 id="accountID"
+                 name="accountnamee"
+                 (click)="AccountNameSwitch=true"
+                 autocomplete="off"
+                 type="text"
+                 placeholder="Please select an account name" 
+                 required 
+                 title="{{Conversation}}"
+                 formControlName="accountName"
+                  >
+              </div>
+              <span class="mdi mdi-magnify"></span>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                *ngIf="contactDetailEditForm.value.accountName && AccountNameSwitch"
+                [attr.focus]="contactDetailEditForm.value.accountName && AccountNameSwitch ">
+                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                  <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                      [ngClass]="{'loader-search':isAccountNameSearchLoading }">
+                      <li id="{{i}}" tabindex="0" role="option" class="list-group-item ellipses" [ngClass]="service.chatBot ? 'list-DA' : 'list-name'"
+                        [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                        *ngFor="let item of getAccountCompany |filter:contactDetailEditForm.value.accountName; let i=index"
+                        (click)="accountlist.value=item.Name;AccountZunkdata=item.Name;appendAccountName(item)" matTooltip="{{item.Name}}">
+                        <span class="d-block list-name"> {{item.Name}} </span>
+                        <span class="sub-list d-block"> {{ (item.Number!==undefined)?item.Number:"NA" }} |
+                          {{item.Owner.FullName}} | {{item.Vertical.Name}} | {{item.Address.Region.Name}}</span>
+                      </li>
+                      <li class="d-block list-name h-40 p-10"
+                        *ngIf="(getAccountCompany |filter:contactDetailEditForm.value.accountName)?.length == 0 && !isAccountNameSearchLoading">
+                        No record found </li>
+                    </ul>
+                  </span>
+                </perfect-scrollbar>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-input CompanyName"
+              (clickOutside)="ReportingManagerclose()">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad cp" for="reportingID"
+                class="label-form" matTooltip="Please select the contact's reporting manager from account contact list"> Reporting manager</label>
+                <div class="pos-rel w-100 float-left no_pad">
+              <input 
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text "
+              #reportingmanagerlist
+              id="reportingID"
+              name="reportingManager"
+              formControlName="reportingManager"
+              placeholder="Search reporting manager" 
+              type="text"
+              role="combobox" 
+              title="{{ReportingManagerName}}"
+              autocomplete="off" 
+              aria-owns="read"
+              appKeyListControl
+              [dataManipulate]=true
+              [attr.data-isDownBtn]=true
+              (arrowDown)="arrowkeyLocation=$event"
+              [attr.data-selectedvalue]="ReportingManagerName"
+              [attr.aria-expanded]="ReportingManagerSwitch?true:false"
+              [attr.aria-activedescendant]="arrowkeyLocation"
+              (input)="ReportingManagerSwitch=true;arrowkeyLocation=0"
+              (intialLoadData)="ReportingManagerSwitch=true;callTempReportingManager();arrowkeyLocation=reportingManager?-1:0"
+              (keyup.enter)="arrowkeyLocation=arrowkeyLocation==-1?0:arrowkeyLocation; ReportingManagerSwitch=false;appendReportingManager(getReportingManager[arrowkeyLocation]);arrowkeyLocation=0"
+              (keydown)="ReportingManagerSwitch=true"
+              [attr.data-arrayMaxLength]="getReportingManager?.length"
+              aria-autocomplete="list"
+              (keydown.Tab)="ReportingManagerclose()"
+              >
+              <span class="mdi mdi-magnify" *ngIf="ReportingManagerSwitch || ReportingManagerName ==''"></span>
+              <span class="mdi mdi-close auto-close"
+              (click)="clearReportingManagerName();arrowkeyLocation=0;ReportingManagerName=''"
+              *ngIf="!ReportingManagerSwitch && ReportingManagerName!==''"></span>
+                </div>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                *ngIf="ReportingManagerSwitch"
+                [attr.focus]="contactDetailEditForm.value.reportingManager  && ReportingManagerSwitch">
+                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                  <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                      [ngClass]="{'loader-search':isReportingManagerSearchLoading }">
+                      <li id="{{i}}" tabindex="0" role="option" class="list-group-item ellipses" [ngClass]="service.chatBot ? 'list-DA' : 'list-name'"
+                        [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                        *ngFor="let item of getReportingManager ; let i=index"
+                        (click)="reportingmanagerlist.value=item.FullName;appendReportingManager(item)"
+                        matTooltip="{{item.FullName}}">
+                        {{item.FullName}}</li>
+                      <li class="d-block list-name h-40 p-10"
+                        *ngIf="(getReportingManager)?.length == 0 && !isReportingManagerSearchLoading">
+                        No record found </li>
+                    </ul>
+                  </span>
+                </perfect-scrollbar>
+                    <span class="db-search" (click)="openadvancetabs('reportingSearch',getReportingManager, f.reportingManager.value)">
+                      <button id="{{getReportingManager?.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                        type="button" class="button-search"
+                        [class.active]="getReportingManager?.length+1 == arrowkeyLocation">
+                        <span class="mdi mdi-file-outline"></span> Advance look up
+                      </button>
+                    </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-input CompanyName"
+              (clickOutside)="CBUclose()">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="cbuID"
+                class="label-form">Customer business unit</label>
+                <div class="pos-rel w-100 float-left no_pad">
+              <input 
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text "
+              #CBUlist 
+              id="cbuID"
+              name="cbuname"
+              formControlName="CBU"
+              placeholder="Search customer business unit"
+              type="text"
+              role="combobox"
+              title="{{CBUName}}" 
+              autocomplete="off"
+              aria-owns="read"
+              appKeyListControl 
+              [dataManipulate]=true
+              [attr.data-isDownBtn]=true
+              (arrowDown)="arrowkeyLocation=$event"
+              [attr.data-selectedvalue]="CBUName" 
+              [attr.aria-expanded]="CBUSwitch?true:false"
+              [attr.aria-activedescendant]="arrowkeyLocation"
+              (input)="CBUSwitch=true;arrowkeyLocation=0"
+              (intialLoadData)="CBUSwitch=true;callTempCBU();arrowkeyLocation=CBUName?-1:0"
+              (keyup.enter)="arrowkeyLocation=arrowkeyLocation==-1?0:arrowkeyLocation; CBUSwitch=false;appendCBU(getCBU[arrowkeyLocation]);arrowkeyLocation=0" 
+              (keydown)="CBUSwitch=true"
+              [attr.data-arrayMaxLength]="getCBU?.length"
+              aria-autocomplete="list"
+              (keydown.Tab)="CBUclose()"
+              >
+              <span class="mdi mdi-magnify" *ngIf="CBUSwitch || CBUName ==''"></span>
+              <span class="mdi mdi-close auto-close"
+              (click)="clearCBUName();arrowkeyLocation=0;CBUName=''"
+              *ngIf="!CBUSwitch && CBUName!==''"></span>
+                </div>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                *ngIf="CBUSwitch"
+                [attr.focus]="contactDetailEditForm.value.CBU && CBUSwitch">
+                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                  <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                      [ngClass]="{'loader-search':isCBUSearchLoading }">
+                      <li id="{{i}}" tabindex="0" role="option" class="list-group-item ellipses" [ngClass]="service.chatBot ? 'list-DA' : 'list-name'"
+                        [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                        *ngFor="let item of getCBU |filter:contactDetailEditForm.value.CBU; let i=index"
+                        (click)="CBUlist.value=item.Name;appendCBU(item)" matTooltip="{{item.Name}}">
+                        {{item.Name}}</li>
+                      <li class="d-block list-name h-40 p-10"
+                        *ngIf="(getCBU |filter:contactDetailEditForm.value.CBU)?.length == 0 && !isCBUSearchLoading">
+                        No record found </li>
+                    </ul>
+                  </span>
+                </perfect-scrollbar>
+                    <span class="db-search" (click)="openadvancetabs('cbuSearch',getCBU, f.CBU.value)">
+                      <button id="{{getCBU?.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                        type="button" class="button-search"
+                        [class.active]="getCBU?.length+1 == arrowkeyLocation">
+                        <span class="mdi mdi-file-outline"></span> Advance look up
+                      </button>
+                    </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 pad-left height80 mobile-select-box">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="selectcontact5">Relationship <span class="required"> *</span></div>
+            <div class="customized-select w-95">
+              <span class="caret color-azure customized-caret"></span>
+              <div class="pos-rel w-100 float-left no_pad">
+                <select id="select1" class="error " aria-labelledby="selectcontact5" role="listbox" required
+                  formControlName="relationship"
+                  [ngClass]="{'error': f.relationship.invalid && (f.relationship.dirty || f.relationship.touched)}">
+                  <option value="" >Select relationship</option>
+                  <option [value]="item.Id" *ngFor="let item of relationship" matTooltip="{{item.Value}}">{{item.Value}}
+                  </option>
+                </select>
+                <p *ngIf="f.relationship.touched && !f.relationship.valid" class="error-message top-40"> 
+                  Select relationship </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 pad-left height80 web-select-box">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb9"
+              id="selectcontact5">Relationship <span class="required"> *</span></div>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Relationship</mat-label>
+              <mat-select aria-label="{{'Select relationship' + relationTypeAria}}" disableOptionCentering panelClass="Select-panel-class" class="select-focus"
+                (selectionChange)="appendRelationshipType($event)"
+                formControlName="relationship"
+                [ngClass]="{'error': f.relationship.invalid && (f.relationship.dirty || f.relationship.touched)}"
+                >
+                <mat-option value="" >Select relationship </mat-option>
+                <mat-option *ngFor="let item of relationship" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </mat-option>
+              </mat-select>
+              <p *ngIf="f.relationship.touched && !f.relationship.valid" class="error-message top-40">  Select
+                relationship </p>
+            </mat-form-field>
+          </div>
+           <div
+           class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 pad-left height80 mobile-select-box">
+           <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+             id="selectcontact5">Category <span class="required"> *</span></div>
+           <div class="customized-select w-95">
+             <span class="caret color-azure customized-caret"></span>
+             <div class="pos-rel w-100 float-left no_pad">
+               <select id="select1"  aria-labelledby="selectcontact5" role="listbox" 
+                 formControlName="category" 
+                 [ngClass]="{'error': f.category.invalid && (f.category.dirty || f.category.touched)}">
+                 <option value="">Select category</option>
+                 <option [value]="item.Id" *ngFor="let item of categoryData" matTooltip="{{item.Value}}">{{item.Value}}
+                 </option>
+               </select>
+               <p *ngIf="f.category.touched && !f.category.valid" class="error-message top-40"> 
+                Select category </p>
+             </div>
+           </div>
+         </div>
+         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 pad-left height80 web-select-box">
+           <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb9"
+             id="categoryid">Category <span class="required"> *</span></div>
+           <mat-form-field class="col-12 no_pad float-left">
+             <mat-label>Category</mat-label>
+             <mat-select aria-label="{{'Select category' + categoryTypeAria}}" disableOptionCentering panelClass="Select-panel-class" class="select-focus"
+              (selectionChange)="appendCategoryType($event)"
+               formControlName="category"
+               [ngClass]="{'error': f.category.invalid && (f.category.dirty || f.category.touched)}">
+               <mat-option value="" >Select category </mat-option>
+               <mat-option *ngFor="let item of categoryData" [value]="item.Id" matTooltip="{{item.Value}}">
+                 {{item.Value}}
+               </mat-option>
+             </mat-select>
+             <p *ngIf="f.category.touched && !f.category.valid" class="error-message top-40"> 
+              Select category </p>
+           </mat-form-field>
+         </div>
+         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 height80">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb20"
+            id="key">Key contact <span class="required"> *</span>
+          </div>
+          <mat-radio-group aria-labelledby="key" formControlName="keyContact">
+            <mat-radio-button [value]=true [checked]="contactDetailEditForm.value.keyContact===true" class="pr30">
+              Yes</mat-radio-button>
+            <mat-radio-button [value]=false [checked]="contactDetailEditForm.value.keyContact===false">No
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+         <!-- Referencable START -->
+         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 mar-top-11">
+          <label for="reference" class="w-100 radio-label label-form">
+              Reference-able <span class="required"> *</span> </label>
+              <div class="pos-rel w-100 float-left no_pad">
+          <mat-radio-group (change)="matReferencable($event)" aria-labelledby="a" formControlName="referenceable">
+            <mat-radio-button [value]=true class="pr30"
+              [checked]="contactDetailEditForm.value.referenceable===true">Yes
+            </mat-radio-button>
+            <mat-radio-button [value]=false
+             [checked]="contactDetailEditForm.value.referenceable===false">No
+            </mat-radio-button>
+          </mat-radio-group>
+          <p *ngIf="f.referenceable.touched && !f.referenceable.valid" class="error-message top-20">  Select
+              reference-able </p>
+          </div>
+        </div>
+        <!-- Referencable end -->
+
+                   <!-- Reference Type start -->
+                   <div class="col-12 col-md-12 col-xl-4 float-left no_pad">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left plb-0-35 mt3">
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                      *ngIf="contactDetailEditForm.value.referenceable === true" 
+                      (clickOutside)="ReferenceTypeclose()">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="referencetypeID"
+                          class="label-form">Reference type <span class="required"> *</span></label>
+                        <div class="pos-rel w-100 float-left no_pad">
+                          <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pr30 h-40 input-text "
+                          #referencelist
+                          id="referencetypeID"
+                          name="referencetypename"
+                          formControlName="referenceType"
+                          placeholder="Select reference type"
+                          type="text" 
+                          role="combobox"
+                          title="{{referenceTypeName}}" 
+                          autocomplete="off"
+                          aria-owns="read"
+                          appKeyListControl
+                          [dataManipulate]=true
+                          [attr.data-isDownBtn]=true
+                          (arrowDown)="arrowkeyLocation=$event" 
+                          [attr.data-selectedvalue]="referenceTypeName" 
+                          [attr.aria-expanded]="ReferenceTypeSwitch?true:false" 
+                          [attr.aria-activedescendant]="arrowkeyLocation"
+                          (input)="ReferenceTypeSwitch=true;arrowkeyLocation=0"
+                          (intialLoadData)="ReferenceTypeSwitch=true;callTempReferenceType();arrowkeyLocation=0"
+                          (keyup.enter)="appendReferenceType(getReferenceType[arrowkeyLocation]);referencelist.value=getReferenceType[arrowkeyLocation].Name;ReferenceTypeSwitch=false;arrowkeyLocation=0"
+                          (keydown)="ReferenceTypeSwitch=true"
+                          [attr.data-arrayMaxLength]="getReferenceType?.length"
+                          aria-autocomplete="list"
+                          (keydown.Tab)="ReferenceTypeclose()"
+                          [ngClass]="{'error': f.referenceType.invalid  && (f.referenceType.dirty || f.referenceType.touched)}"
+                          >
+                          <p *ngIf="f.referenceType.touched && !f.referenceType.valid" class="error-message top-40">
+                            Select reference type  </p>
+                        <span class="mdi mdi-magnify" *ngIf="ReferenceTypeSwitch || referenceTypeName ==''"></span>
+                        <span class="mdi mdi-close auto-close"
+                        (click)="clearReferenceType();arrowkeyLocation=0;referenceTypeName=''"
+                        *ngIf="!ReferenceTypeSwitch && referenceTypeName!==''"></span>
+                        </div>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                         *ngIf="ReferenceTypeSwitch" [attr.focus]="contactDetailEditForm.value.referenceType && ReferenceTypeSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <span class="w-100 z-ind-9 float-left bg-white">
+                              <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                                [ngClass]="{'loader-search':isReferenceTypeSearchLoading }">
+                                <li id="{{i}}" tabindex="0" role="option" class="list-group-item  ellipses"
+                                  [ngClass]="service.chatBot ? 'list-DA-con' : 'list-name'" [class.active]="i==arrowkeyLocation"
+                                  aria-disabled="false"
+                                  *ngFor="let item of getReferenceType |filter:contactDetailEditForm.value.referenceType; let i=index"
+                                  (click)="referencelist.value=item.Name;appendReferenceType(item)" matTooltip="{{item.Name}}"
+                                  > {{item.Name}}</li>
+                                <li class="d-block list-name h-40 p-10"
+                                *ngIf="(getReferenceType |filter:contactDetailEditForm.value.referenceType)?.length == 0 && !isReferenceTypeSearchLoading">
+                                  No record found </li>
+                              </ul>
+                            </span>
+                          </perfect-scrollbar>
+                        </div>
+                        <!-- Multiple interest start -->
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                          <perfect-scrollbar style="max-height:250px">
+                            <div
+                              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left d-flex tagged-box mt-10 p-4-10 mr10"
+                              *ngFor="let item of selectedReferenceType ; let i=index">
+                              <label for="inti_name" class="float-left name w-100">
+                                <span class="d-block color-azure mr10 float-left ellipses width90" title="{{item.Name}}"
+                                  matTooltip="{{item.Name}}">{{item.Name}}</span>
+                              </label>
+                              <span class="mdi mdi-close close-lead float-right cp ml10" (click)="delinkReferenceType(item, i)"></span>
+                            </div>
+                          </perfect-scrollbar>
+                        </div>
+                        <!-- Multiple interest start -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Reference Type end -->
+      
+         <!-- Referencable Mode Start -->
+                 <!--Mobile start here -->
+                 <div   *ngIf="contactDetailEditForm.value.referenceable === true" 
+                 class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 pad-left height80 mobile-select-box">
+                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+                   id="selectcontact5">Reference mode <span class="required"> *</span></div>
+                 <div class="customized-select w-95">
+                   <span class="caret color-azure customized-caret"></span>
+                   <div class="pos-rel w-100 float-left no_pad">
+                     <select id="select1" class="error " aria-labelledby="selectcontact5" role="listbox" required
+                       formControlName="referenceMode"
+                       [ngClass]="{'error': f.referenceMode.invalid && (f.referenceMode.dirty || f.referenceMode.touched)}">
+                       <option value="" disabled>Select reference mode</option>
+                       <option [value]="item.Id" *ngFor="let item of ContactReferenceMode" matTooltip="{{item.Value}}">{{item.Value}}
+                       </option>
+                     </select>
+                     <p *ngIf="f.referenceMode.touched && !f.referenceMode.valid" class="error-message top-40"> 
+                      Select reference mode </p>
+                   </div>
+                 </div>
+               </div>
+               <!--Mobile end  -->
+               <!--Web select start here -->
+               <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35 mt3 pad-left height80 web-select-box"
+               *ngIf="contactDetailEditForm.value.referenceable === true" >
+                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb9"
+                   id="selectcontact5">Reference mode <span class="required"> *</span></div>
+                 <mat-form-field class="col-12 no_pad float-left">
+                   <mat-label>Reference mode</mat-label>
+                   <mat-select aria-label="{{'Select referenceMode' + referenceModeAria}}" disableOptionCentering panelClass="Select-panel-class" class="select-focus"
+                   (selectionChange)="appendReferenceMode($event)"
+                     formControlName="referenceMode"
+                     [ngClass]="{'error': f.referenceMode.invalid && (f.referenceMode.dirty || f.referenceMode.touched)}"
+                     >
+                     <mat-option value="" >Select reference mode</mat-option>
+                     <mat-option *ngFor="let item of ContactReferenceMode" [value]="item.Id" matTooltip="{{item.Value}}">
+                       {{item.Value}}
+                     </mat-option>
+                   </mat-select>
+                   <p *ngIf="f.referenceMode.touched && !f.referenceMode.valid" class="error-message top-40">  Select
+                    reference mode</p>
+                 </mat-form-field>
+               </div>
+               <!--Web end here -->
+
+          <!-- Referencable Mode end -->
+        </div>
+        <div class="col-12 col-sm-12 col-md- col-lg-9 col-xl-9 float-right pad-30-contact height80">
+          <h3 class="header-level-three float-left pb20 col-12 mb20">Customer address</h3>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left plb-0-35">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-input  CompanyName"
+              (clickOutside)="Countrynameclose()">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="countryID"
+                class="label-form">Country <span class="required"> *</span>
+              </label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input 
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text "
+                #countrylist
+                id="countryID"
+                name="countryname"
+                formControlName="country"
+                placeholder="Please select country name" 
+                type="text"
+                role="combobox"
+                title="{{SelectedCountryName}}" 
+                autocomplete="off" 
+                aria-owns="read"
+                appKeyListControl
+                [dataManipulate]=true
+                [attr.data-isDownBtn]=true
+                (arrowDown)="arrowkeyLocation=$event"
+                [attr.data-selectedvalue]="SelectedCountryName" 
+                [attr.aria-expanded]="CountrynameSwitch?true:false" 
+                [attr.aria-activedescendant]="arrowkeyLocation"
+                (input)="CountrynameSwitch = true;arrowkeyLocation=0"
+                (intialLoadData)="CountrynameSwitch=true;callTempCountry();arrowkeyLocation=SelectedCountryName?-1:0" 
+                (keyup.enter)="arrowkeyLocation=arrowkeyLocation==-1?0:arrowkeyLocation; CountrynameSwitch=false;appendCountryname(getCountry[arrowkeyLocation]);arrowkeyLocation=0"
+                (keydown)="CountrynameSwitch=true"
+                [attr.data-arrayMaxLength]="getCountry?.length"
+                aria-autocomplete="list"
+                (keydown.Tab)="Countrynameclose()"
+                [ngClass]="{'error': f.country.invalid  && (f.country.dirty || f.country.touched)}"
+                  >
+                <p *ngIf="f.country.touched && !f.country.valid" class="error-message top-40">  Select country name </p>
+                    <span class="mdi mdi-magnify" *ngIf="CountrynameSwitch || SelectedCountryName ==''"></span>
+                    <span class="mdi mdi-close auto-close"
+                    (click)="clearCountryName();arrowkeyLocation=0;SelectedCountryName=''"
+                    *ngIf="!CountrynameSwitch && SelectedCountryName!==''"></span>
+              </div>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                *ngIf="CountrynameSwitch"
+                [attr.focus]="contactDetailEditForm.value.country && CountrynameSwitch ">
+                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                  <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                      [ngClass]="{'loader-search':isCountrySearchLoading }">
+                      <li id="{{i}}" tabindex="0" role="option" class="list-group-item ellipses" [ngClass]="service.chatBot ? 'list-DA' : 'list-name'"
+                        [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                        *ngFor="let item of getCountry |filter:contactDetailEditForm.value.country; let i=index"
+                        (click)="countrylist.value=item.Name;appendCountryname(item)" matTooltip="{{item.Name}}">
+                        <span class="d-block list-name"> {{item.Name}} </span>
+                      </li>
+                      <li class="d-block list-name h-40 p-10"
+                        *ngIf="(getCountry |filter:contactDetailEditForm.value.country)?.length == 0 && !isCountrySearchLoading">
+                        No record found </li>
+                    </ul>
+                  </span>
+                </perfect-scrollbar>
+              </div>
+            </div>
+          </div>
+         <!-- Search Country end-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 customized-input height80">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+              (clickOutside)="Statenameclose()">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="stateID"
+                class="label-form"> State/province</label>
+                <div class="pos-rel w-100 float-left no_pad">
+              <input 
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text "
+              #statelist
+              id="stateID"
+              name="state"
+              formControlName="stateProvince"
+              placeholder="Search state/province name"
+              type="text"
+              role="combobox" 
+              title="{{selectedStateName}}"
+              autocomplete="off"
+              aria-owns="read"
+              appKeyListControl
+              [dataManipulate]=true
+              [attr.data-isDownBtn]=true
+              (arrowDown)="arrowkeyLocation=$event"
+              [attr.data-selectedvalue]="selectedStateName"
+              [attr.aria-expanded]="StatenameSwitch?true:false"
+              [attr.aria-activedescendant]="arrowkeyLocation"
+              (input)="StatenameSwitch=true;arrowkeyLocation=0"
+              (intialLoadData)="StatenameSwitch=true;callTempState();arrowkeyLocation=selectedStateName?-1:0" 
+              (keyup.enter)="arrowkeyLocation=arrowkeyLocation==-1?0:arrowkeyLocation; StatenameSwitch=false;appendStatename(getState[arrowkeyLocation]);arrowkeyLocation=0"
+              [attr.data-arrayMaxLength]="getState?.length" 
+              aria-autocomplete="list"
+              (keydown.Tab)="Statenameclose()"
+              >
+              <span class="mdi mdi-magnify" *ngIf="StatenameSwitch || selectedStateName ==''"></span>
+              <span class="mdi mdi-close auto-close"
+              (click)="clearStateName();arrowkeyLocation=0;selectedStateName=''"
+              *ngIf="!StatenameSwitch && selectedStateName!==''"></span>
+            </div>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                *ngIf="StatenameSwitch"
+                [attr.focus]="contactDetailEditForm.value.stateProvince && StatenameSwitch ">
+                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                  <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                      [ngClass]="{'loader-search':isStateSearchLoading }">
+                      <li id="{{i}}" tabindex="0" role="option" class="list-group-item ellipses" [ngClass]="service.chatBot ? 'list-DA' : 'list-name'"
+                        [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                        *ngFor="let item of getState |filter:contactDetailEditForm.value.stateProvince; let i=index"
+                        (click)="statelist.value=item.Name;appendStatename(item)" matTooltip="{{item.Name}}">
+                        {{item.Name}}</li>
+                      <li class="d-block list-name h-40 p-10"
+                        *ngIf="(getState |filter:contactDetailEditForm.value.stateProvince)?.length == 0 && !isStateSearchLoading">
+                        No record found </li>
+                    </ul>
+                  </span>
+                </perfect-scrollbar>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 ">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-input CompanyName"
+              (clickOutside)="Citynameclose()">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="cityID"
+                class="label-form">City</label>
+                <div class="pos-rel w-100 float-left no_pad">
+              <input 
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text "
+              #citylist 
+              id="cityID"
+              name="Cityname"
+              formControlName="City"
+              placeholder="Search city name"
+              type="text"
+              role="combobox"
+              title="{{selectedCityName}}"
+              autocomplete="off"
+              aria-owns="read"
+              appKeyListControl 
+              [dataManipulate]=true
+              [attr.data-isDownBtn]=true
+              (arrowDown)="arrowkeyLocation=$event" 
+              [attr.data-selectedvalue]="selectedCityName"
+              [attr.aria-expanded]="CitynameSwitch?true:false"
+              [attr.aria-activedescendant]="arrowkeyLocation"
+              (input)="CitynameSwitch=true;arrowkeyLocation=0"
+              (intialLoadData)="CitynameSwitch=true;callTempCity();arrowkeyLocation=selectedCityName?-1:0"
+              (keyup.enter)="arrowkeyLocation=arrowkeyLocation==-1?0:arrowkeyLocation;CitynameSwitch=false;appendCityname(getCity[arrowkeyLocation]);arrowkeyLocation=0"
+              (keydown)="CitynameSwitch=true"
+              [attr.data-arrayMaxLength]="getCity?.length" 
+              aria-autocomplete="list"
+              (keydown.Tab)="Citynameclose()"
+              [ngClass]="{'disable-input' : ngclass }"
+               >
+              <span class="mdi mdi-magnify" *ngIf="CitynameSwitch || selectedCityName ==''"></span>
+              <span class="mdi mdi-close auto-close"
+              (click)="clearCityName();arrowkeyLocation=0;selectedCityName=''"
+              *ngIf="!CitynameSwitch && selectedCityName!==''"></span>
+              </div>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                *ngIf="CitynameSwitch"
+                [attr.focus]="contactDetailEditForm.value.City && CitynameSwitch ">
+                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                  <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                      [ngClass]="{'loader-search':isCitySearchLoading }">
+                      <li id="{{i}}" tabindex="0" role="option" class="list-group-item ellipses" [ngClass]="service.chatBot ? 'list-DA' : 'list-name'"
+                        [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                        *ngFor="let item of getCity |filter:contactDetailEditForm.value.City; let i=index"
+                        (click)="citylist.value=item.Name;appendCityname(item)" matTooltip="{{item.Name}}">
+                        {{item.Name}}</li>
+                      <li class="d-block list-name h-40 p-10"
+                        *ngIf="(getCity |filter:contactDetailEditForm.value.City)?.length == 0 && !isCitySearchLoading">
+                        No record found </li>
+                    </ul>
+                  </span>
+                </perfect-scrollbar>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 customized-input">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="field1d4">Address line 1</div>
+            <input id="field1" aria-labelledby="field1d4" type="text" formControlName="address1"
+              class="border-gray w-95" value="" placeholder="Enter address line 1" maxlength="100">
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 customized-input height80">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="field1d5">Address line 2</div>
+            <input id="field1" aria-labelledby="field1d5" type="text" formControlName="address2"
+              class="border-gray w-95" value="" placeholder="Enter address line 2" maxlength="100">
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 customized-input height80">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5"
+              id="field1d6">Street name</div>
+            <input id="field1" aria-labelledby="field1d6" type="text" formControlName="streetName"
+              class="border-gray w-95" value="" placeholder="Enter street name" maxlength="100">
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-35 customized-input height80">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name label-form"
+              id="field1d7">Zip/postal code</div>
+            <div class="pos-rel w-100 float-left no_pad">
+              <input id="field1" aria-labelledby="field1d8" formControlName="zipPostalCode" type="text"
+                class="border-gray w-95" maxlength="15" placeholder="Enter zip/postal code" >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+

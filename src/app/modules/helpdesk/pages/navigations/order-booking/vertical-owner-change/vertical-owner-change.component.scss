@@ -1,0 +1,127 @@
+$white: #ffffff;
+$FadedWhite: #fafbfc;
+$Grey: #9b9b9b;
+$DarkGrey: #4a4a4a;
+$BorderGrey: #979797;
+$LightGrey: #b1b1b1;
+$MidGrey: #343434;
+$footer-border: #d5d2d2;
+$Standardblue: #0e3570;
+$LightBlue: #2f81ff;
+$FadedBlue: #879fc2;
+$OpacityBlue: #eef5ff;
+$StandardGreen: #6dc24b;
+$LightGreen: #c5e7b7;
+$FontGreen: #24ac51;
+$Black: #000000;
+$StandardRed: #ef3341;
+$StandardYellow: #ffda29;
+$managerLoginBorder: rgba(0, 0, 0, 0.08);
+$managerFormBorder: rgba(0, 0, 0, 0.15);
+$loginLabel: #9b9b9b;
+$loginBtn: #2f81ff;
+$LighterGrey: #e5e5e5;
+$nominationBlack: #353535;
+$preproposebtn: rgba(234, 246, 238, 0.8);
+
+$error_text: red;
+$warmBlue: #306bd8;
+$greyish: #a6a6a6;
+$lightblue: #d9e9ff;
+
+$statusBlue: #708cb6;
+$dullWhite: #e7ebf2;
+$labelGrey: #6f6f6f;
+$valueGrey: #cfcfcf;
+$darkBlue: #103f86;
+
+$BlueSoftBG: #eaf2ff;
+$DeepBlue: #2f81ff;
+$MetalLight: #9b9b9b;
+$Metal: #4a4a4a;
+$DarkBlack: #2e2e2e;
+.heading-owner {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color: #0e3570;
+  letter-spacing: -0.4px;
+}
+.plb-60-20 {
+  padding: 0 60px 15px 0;
+}
+.searchButton {
+  padding: 5px 5px;
+  background-color: #2f81ff;
+  color: white;
+  border-radius: 4px;
+  border: 1.5px solid #2f81ff;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Bold";
+  width: 140px !important;
+  height: 40px;
+}
+.searchButton:disabled {
+  color: #969696;
+  border-color: #969696;
+  background: transparent;
+}
+.blue-patch {
+  background-color: #d9e9ff;
+  padding: 20px 30px;
+}
+.blue-patch-text {
+  color: black;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Regular";
+}
+//without scroll table starts
+.tasklist-table th {
+  padding: 8px 20px;
+  color: #103f86;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Bold";
+  font-weight: normal;
+}
+
+.tasklist-table td {
+  padding: 15px 20px;
+  font-family: "WiproAkkuratTT-Regular";
+  font-size: 14px;
+  color: $Black;
+}
+.tasklist-table thead tr {
+  background: #d9e9ff;
+}
+
+.tasklist-table tbody tr {
+  background: #f3f5f9;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #e2e0e0;
+}
+
+.tasklist-table tbody tr:last-child {
+  border-bottom: none;
+}
+//without scroll table ends
+.pad-RL-30 {
+  padding: 0px 30px;
+}
+.mar-RL-30 {
+  margin: 20px 30px 0px;
+}
+.mdi-chevron-up:before {
+  font-size: 24px;
+  margin-right: 10px;
+  position: relative;
+  top: 3px;
+}
+.mdi-chevron-down:before {
+  font-size: 24px;
+  margin-right: 10px;
+  position: relative;
+  top: 3px;
+}
+.top-order-40{
+  top:40px
+}
+

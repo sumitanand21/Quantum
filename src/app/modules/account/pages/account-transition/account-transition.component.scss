@@ -1,0 +1,394 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey:#343434;
+$Assistant-blue: #E5F0FF;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+.h-190 {
+    height: 190px;
+}
+
+.borderless {
+    border: none !important;
+}
+
+.padd-all {
+    padding: 10px 20px 10px 20px;
+}
+
+.heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color: #0e3570; //chethana Aug 19th
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 400px;
+}
+
+.heading-level-two-TransChecklist {
+    //chethana Aug 19th
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color: #000;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 400px;
+}
+
+.pad-leftright {
+    padding: 20px 0px 0px 30px;
+}
+
+.pad-leftright1 {
+    // padding: 10px 0px 10px 30px;
+    padding: 0px 0px 0px 30px; //harish
+}
+
+.sub-text {
+    font-size: 14px;
+    font-family: WiproAkkuratTT-Bold;
+    padding-top: 3px;
+}
+
+.label-text {
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+.calin-select-all {
+    font-size: 17px;
+    text-align: center;
+    padding-right: 10px;
+}
+
+.btn-tabs-with-active {
+    text-align: center;
+    // border: solid 1.5px #ffffff;
+    color: #2f81ff;
+    border-radius: 5px;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 35px 20px;
+}
+
+.pad-left-30 {
+    padding-left: 30px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.width-300 {
+    width: 300px;
+}
+
+.padd-left40 {
+    padding-left: 40px;
+}
+
+.btn-color {
+    border: 1px solid $Wash;
+    color: $Wash;
+}
+
+.attach-icon {
+    transform: rotate(90deg);
+    margin-top: 10px;
+    font-size: 16px;
+    bottom: 5px;
+}
+
+.mdi-attachment:before {
+    color: $Azure;
+}
+
+.bttm-3 {
+    position: relative;
+    bottom: 3px;
+}
+
+.bttn-form {
+    border-radius: 18px;
+    height: 26px;
+    width: 26px;
+    background-color: #03a9f447;
+    position: absolute;
+    right: 20px;
+}
+
+hr {
+    width: 97%;
+    margin-top: -8px;
+    margin-bottom: 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.attach-icon-btn {
+    margin-top: 6px;
+    transform: rotate(90deg);
+}
+
+button[disabled] {
+    background: #ccc;
+}
+
+
+/*chethana  css starts*/
+
+.padd-top-130 {
+    padding-top: 150px !important;
+}
+
+.h-225 {
+    height: 225px;
+}
+
+.padd-top-65 {
+    padding-top: 65px !important;
+}
+
+//file upload css starts
+.file_ip {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    z-index: 99;
+    cursor: pointer;
+    left: 0;
+    top: 0px;
+}
+
+.uploaded_doc {
+    padding: 5px 0px;
+    cursor: pointer;
+    border-radius: 4px;
+    background: #f8f9fa;
+    font-size: 12px;
+    width: 100%;
+    height: 42px;
+    border: 2px solid #2f81ff;
+}
+
+.doc-img {
+    bottom: 0px;
+    left: -1px;
+    position: absolute;
+}
+
+.child-middle {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.naming-tags-square {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px 0 0 4px;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.initials {
+    color: #ffffff;
+}
+
+.htpos-left {
+    position: absolute;
+    left: 50px;
+    height: auto;
+}
+
+.pl-0,
+.px-0 {
+    padding-left: 0 !important;
+}
+
+.pad-5 {
+    padding: 5px;
+}
+
+.uploaded_text {
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #000;
+}
+
+.del_upload {
+    color: #2f81ff;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    opacity: 0.6;
+    font-size: 16px;
+    position: relative;
+}
+
+.mdi-window-close:before {
+    // padding-left: 0px;
+    // padding-left: 60px; //harishG257
+}
+
+.del_upload {
+    color: #2f81ff;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    opacity: 0.6;
+    font-size: 16px;
+    position: relative;
+}
+
+//file upload css ends
+.padleft_0 {
+    // padding-left: 0px !important; //harish
+}
+
+.padright_10 {
+    padding-right: 10px !important;
+}
+
+.card {
+    /*chethana Aug 19th*/
+    margin-bottom: 0px !important;
+}
+
+
+/*chethana  css ends*/
+
+.heading-level-one-cc {
+    margin-bottom: 0;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 24px;
+    color: #ffffff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 400px;
+    min-width: 70px;
+}
+
+// responsive table starts here harish
+@media screen and (max-width: 823px) {
+    .display-contents {
+        display: contents;
+    }
+    table {
+        border: 0;
+    }
+    table caption {
+        font-size: 1.3em;
+    }
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    table tr:not(:first-child) {
+        border-top: 20px solid #f9f9f9;
+    }
+    table tr {
+        margin-bottom: 0.625em;
+        height: auto !important;
+        // display: inline-block !important;
+        // height: auto !important;
+        position: relative;
+        background-color: white !important;
+        touch-action: pan-y !important;
+    }
+    table td {
+        display: inline-grid;
+        text-align: left;
+        width: 100% !important;
+        float: left;
+        line-height: normal !important;
+        touch-action: pan-y !important;
+    }
+    table th.actionColumn {
+        display: inline-grid;
+        text-align: left;
+        //width: 100% !important;
+        float: left;
+        line-height: normal !important;
+        padding-right: 0px;
+    }
+    table tr th {
+        display: inline-grid;
+        text-align: left;
+        width: 100% !important;
+        float: left;
+        line-height: normal !important;
+        touch-action: pan-y !important;
+        padding-right: 0px;
+    }
+    table td::before,
+    table tr th::before {
+        /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+        content: attr(data-label);
+        font-family: WiproAkkuratTT-Regular;
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: -0.3px;
+        color: #9b9b9b;
+        padding-bottom: 5px;
+    }
+    table th.actionColumn {
+        border-bottom: 0;
+        overflow-x: auto;
+    }
+    .mb15 {
+        margin-bottom: 0px;
+    }
+    .disp-flex {
+        display: flex !important;
+    }
+}
+
+// responsive table ends here harish
+.backspace_button {
+    width: 22px;
+    height: 22px;
+    float: left;
+    color: #fff;
+    font-size: 22px;
+    letter-spacing: -0.2px;
+    line-height: 1.27;
+    margin-right: 5px;
+    background: transparent;
+    border: none;
+}
+
+.l-h-55 {
+    line-height: 55px;
+}

@@ -1,0 +1,1538 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab">
+
+    <ng-container *ngIf="isLoading">
+      <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+            <div class="loaderContainer">
+              <div class="loader"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+
+
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left new-container new-opportunity-page pad-lr-30 no_pad">
+      <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 float-left no_pad btm-3 width_25">
+        <button (click)="goBack()" class="mdi mdi-keyboard-backspace no_pad back-buttonbg" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()" ></button>
+      </div>
+      <div class="col-11 col-sm-7 col-md-7 col-lg-7 col-xl-7 float-left no_pad new-opp-page pl10 padd-10">
+        <h1 class="heading-level-one margin_bottom_0"> New opportunity </h1>
+        <small class="colorWhite">Sales > Opportunity > Create Opportunity</small>
+      </div>
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-right no_pad">
+        <div class="float-right disp-flex save-cancel-responsive">
+           <button class="border-0 primary-button borderless btn-block margR10 h-40 std save-responsive-btn button-wd50"
+            (click)="openClearPopup()">Clear</button>
+          <button class="primary-button secondary-btn btn-block h-40 margR10 std cancel-responsived-btn button-wd50"
+            (click)="goBack()">Cancel</button>
+          <button class="border-0 primary-button borderless btn-block h-40 std save-responsive-btn button-wd50"
+            (click)="saveMethod()">Create</button>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container new-opportunity-page newOpp-uniformPlaceholder">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-218"> </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 cust-cont-pt scroll-middle-ios-100vh">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 pad_bottom_0 margin_top_0 pr0 pl0 padtop20">
+      <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState1 = true"
+        (closed)="panelOpenState1 = false">
+        <mat-expansion-panel-header style="min-height:60px;">
+          <mat-panel-title class="accord-heading">
+            <span
+              [ngClass]="panelOpenState1 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-up chevron-right'"></span>
+            <span class="accordian-title pad-top-8 cardsHead pl36 editTopHeads col-12 no_pad pt15">Opportunity stage
+              selection
+            </span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="col-12 no_pad float-left convo-name border_top">
+          <div class="col-6 mobile-no_pad"
+            matTooltip="Simple deal is a small opportunity which will have a potential/estimated TCV up to 50K USD and is non-strategic in nature.">
+            <!-- Is this a simple deal? -->
+            Is the deal value < 50K USD (Simple deal)?
+          </div>
+
+
+          <mat-radio-group [(ngModel)]="simpleDeal" (change)="showHideAccordion(simpleDeal)"
+            class="col-12 mt20 float-left mobile-no_pad">
+            <section class="float-left col-lg-1 col-md-1 col-sm-2 col-4 no_pad">
+              <mat-radio-button [value]="trueValue">Yes</mat-radio-button>
+            </section>
+            <section class="float-left col-lg-1 col-md-1 col-sm-2 col-4 no_pad">
+              <mat-radio-button [value]="falseValue">No</mat-radio-button>
+            </section>
+          </mat-radio-group>
+        </div>
+
+        <div class="col-12 float-left mb20 mt10 mobile-no_pad" *ngIf="showDivision">
+          <h3 class="cardsHead">Select opportunity stage</h3>
+          <div class="col-12 no_pad float-left flexParent">
+            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 no_pad float-left" role="tab" tabindex="0" (keypress)="clickCreate()"
+              [attr.aria-selected]="Creatediv?true : false">
+              <div class="float-left Lightbluebox" *ngIf="CreatedivHidden">
+                <div class="overley"></div>
+                <div class="continue-btn-div" align="center">
+                  <button (click)="clickCreate()">Select</button>
+                </div>
+                <div class="DarkcenterContent">
+                  <div class="float-left col-3 no_pad">
+                    <span title="create" class="round-btn">
+                      <span class="float-left span-text mdi mdi-pencil-off"></span>
+                    </span>
+                  </div>
+                  <div class="float-left col-9 no_pad">
+                    <div class="col-12 no_pad float-left Centerblock mt10">
+                      <b>CREATE</b>
+                    </div>
+                    <div class="col-12 no_pad font12 Centerblock mt10">Sales Management has agreed to engage with the
+                      customer on this potential opportunity.</div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="float-left Lightbluebox" *ngIf="CreatedivShow">
+                <div class="DarkcenterContentSelected">
+                  <div class="float-left col-3 no_pad">
+                    <span title="create" class="round-btn">
+                      <span class="float-left span-text mdi mdi-pencil-off"></span>
+                    </span>
+                  </div>
+                  <div class="float-left col-9 no_pad">
+                    <div class="col-12 no_pad float-left Centerblock mt10">
+                      <b>CREATE</b>
+                    </div>
+                    <div class="col-12 no_pad font12 Centerblock mt10">Sales Management has agreed to engage with the
+                      customer on this potential opportunity.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 no_pad float-left" role="tab" tabindex="0" (keypress)="clickQualify()"
+              [attr.aria-selected]="Qualifydiv?true : false">
+              <div class="float-left Lightbluebox" *ngIf="QualifydivHidden">
+                <div class="overley"></div>
+                <div class="continue-btn-div" align="center">
+                  <button (click)="clickQualify()">Select</button>
+                </div>
+                <div class="DarkcenterContent">
+                  <div class="float-left col-3 no_pad">
+                    <span title="qualify" class="round-btn">
+                      <span class="float-left span-text mdi mdi-trophy-outline"></span>
+                    </span>
+                  </div>
+                  <div class="float-left col-9 no_pad">
+                    <div class="col-12 no_pad float-left Centerblock mt10">
+                      <b>QUALIFY</b>
+                    </div>
+                    <div class="col-12 no_pad font12 Centerblock mt10">A politically powerful customer executive sponsor
+                      requested for a solution/ proposal. </div>
+                  </div>
+                </div>
+              </div>
+              <div class="float-left Lightbluebox" *ngIf="QualifydivShow">
+                <div class="DarkcenterContentSelected">
+                  <div class="float-left col-3 no_pad">
+                    <span title="qualify" class="round-btn">
+                      <span class="float-left span-text mdi mdi-trophy-outline"></span>
+                    </span>
+                  </div>
+                  <div class="float-left col-9 no_pad">
+                    <div class="col-12 no_pad float-left Centerblock mt10">
+                      <b>QUALIFY</b>
+                    </div>
+                    <div class="col-12 no_pad font12 Centerblock mt10">A politically powerful customer executive sponsor
+                      requested for a solution/ proposal. </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 no_pad float-left" role="tab" tabindex="0" (keypress)="clickPursuit()"
+              [attr.aria-selected]="Simplediv?true : false">
+              <div class="float-left Lightbluebox" *ngIf="Pursuitshow">
+                <div class="overley"></div>
+                <div class="continue-btn-div" align="center">
+                  <button (click)="clickPursuit()">Select</button>
+                </div>
+                <div class="DarkcenterContent">
+                  <div class="float-left col-3 no_pad">
+                    <span title="persuit" class="round-btn">
+                      <span class="float-left span-text mdi mdi-target"></span>
+                    </span>
+                  </div>
+                  <div class="float-left col-9 no_pad">
+                    <div class="col-12 no_pad float-left Centerblock mt10">
+                      <b>PURSUIT</b>
+                    </div>
+                    <div class="col-12 no_pad font12 Centerblock mt10">Customer initiated a formal procurement process &
+                      requested for commercial.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="float-left Lightbluebox" *ngIf="Pursuithidden">
+
+                <div class="DarkcenterContentSelected">
+                  <div class="float-left col-3 no_pad">
+                    <span title="persuit" class="round-btn">
+                      <span class="float-left span-text mdi mdi-target"></span>
+                    </span>
+                  </div>
+                  <div class="float-left col-9 no_pad">
+                    <div class="col-12 no_pad float-left Centerblock mt10">
+                      <b>PURSUIT</b>
+                    </div>
+                    <div class="col-12 no_pad font12 Centerblock mt10">Customer initiated a formal procurement process &
+                      requested for commercial.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 no_pad float-left" role="tab" tabindex="0" (keypress)="clickSecure()"
+              [attr.aria-selected]="Securediv?true : false">
+              <div class="float-left Lightbluebox" *ngIf="Secureshow">
+                <div class="overley"></div>
+                <div class="continue-btn-div" align="center">
+                  <button (click)="clickSecure()">Select</button>
+                </div>
+                <div class="DarkcenterContent">
+                  <div class="float-left col-3 no_pad">
+                    <span title="secure" class="round-btn">
+                      <span class="float-left span-text mdi mdi-security"></span>
+                    </span>
+                  </div>
+                  <div class="float-left col-9 no_pad">
+                    <div class="col-12 no_pad float-left Centerblock mt10 mb10">
+                      <b>SECURE</b>
+                    </div>
+                    <div class="col-12 no_pad font12 mb20 Centerblock mt10">Customer ofﬁcially shortlisted Wipro.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="float-left Lightbluebox" *ngIf="Securehidden">
+
+                <div class="DarkcenterContentSelected">
+                  <div class="float-left col-3 no_pad">
+                    <span title="secure" class="round-btn">
+                      <span class="float-left span-text mdi mdi-security"></span>
+                    </span>
+                  </div>
+                  <div class="float-left col-9 no_pad">
+                    <div class="col-12 no_pad float-left Centerblock mt10">
+                      <b>SECURE</b>
+                    </div>
+                    <div class="col-12 no_pad font12 Centerblock mt10">Customer ofﬁcially shortlisted Wipro.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 mt40 mt20 pad_bottom_0 margin_top_0 pl0 padtop20"
+      *ngIf="NoSelectbtn">
+
+      <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState2 = true"
+        (closed)="panelOpenState2 = false">
+        <mat-expansion-panel-header style="min-height:60px;">
+          <mat-panel-title class="accord-heading ">
+            <span
+              [ngClass]="panelOpenState2 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-up chevron-right'"></span>
+            <span class="accordian-title pad-top-8 cardsHead pl36 col-12 no_pad pt15 editTopHeads"
+              *ngIf="Creatediv">Create opportunity overview
+            </span>
+            <span class="accordian-title pad-top-8 cardsHead pl36 col-12 no_pad pt15 editTopHeads"
+              *ngIf="Qualifydiv">Qualify opportunity overview
+            </span>
+            <span class="accordian-title pad-top-8 cardsHead pl36 col-12 no_pad pt15 editTopHeads"
+              *ngIf="Simplediv">Pursuit opportunity overview
+            </span>
+            <span class="accordian-title pad-top-8 cardsHead pl36 col-12 no_pad pt15 editTopHeads"
+              *ngIf="Securediv">Secure opportunity overview
+            </span>
+
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+
+        <div class="col-12 no_pad float-left border_top ">
+          <div class="col-12 no_pad float-left fixedHeightAlign">
+            <!-- opportunity name starts here -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 float-left plb-60-20 h100 marg-top-15">
+              <div class="customized-input">
+                <label for="field1" class="w-100 label-form">Opportunity name* </label>
+                <input [(ngModel)]="opportunityName" autofocus (ngModelChange)="oppNameMethod()" id="field1" type="text"
+                  maxlength="100" class="border-gray w-100" value="" placeholder="Enter opportunity name" required
+                  [ngClass]="oppNameFlag?'orangeborder':''" (blur) = "appendRedisCache()" [appAlphaNumeric] = "'text'"
+                  autocomplete="off" >
+                <p *ngIf="oppNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top50">{{OppNameErr}}</p>
+
+              </div>
+            </div>
+            <!-- opportunity name ends here -->
+
+            <!--Account name autocomplete starts here-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 ">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="AccountName"
+                  class="label-form">Account name
+                  <span class="required"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="accNameFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [requiredField]="true" [source]="wiproAccountName" [dataHeader]="accontObj" [details]="details"
+                      [detailsId]="detailsId" [selectedObj]="selectedAccObj" (content)="getAccountNameData($event)"
+                      (SelectedData)="SelectedAccountValue($event)" [labelName]="'Enter account name'" [titleName]="'Account name'"
+                      [Placeholder]="'Enter account name'" [IsSpecialBtn]=false [IsinitialsView]=false 
+                      [showSelected]=false [IsApiCall]=true [IsSearchDatabase]=false [Isdisabled]="fromLeadFlag || fromAccountFlag"
+                      [Isrequired]=false [isSearchLoader]='isSearchLoader' (advanceLookUp)="advanceLookUpSearch($event)"
+                      [MandtErrorFlag]="accNameFlag" [IsSubContent]=true>
+                    </app-auto-complete-select>
+                    <p *ngIf="accNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Account
+                      name is mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Account name autocomplete ends here-->
+
+            <!--Sap code autocomplete starts here-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 "
+              *ngIf="!Creatediv">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="sapcode"
+                  class="label-form">Sap code <span *ngIf = "!showRequestSAP">*</span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="sapFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="sapArray" (content)="sapMethod($event)"
+                      [dataSource]="'Accountname'" [labelName]="'Sap code'" [titleName]="'Sap code'" [dataHeader]="sapObj" [details]="sapName"
+                      [detailsId]="sapId" [selectedObj]="selectedSapObj" (SelectedData)="sapSelected($event)"
+                      [Placeholder]="sapCodePlaceholder" [IsSpecialBtn]=false [IsinitialsView]=false [IsApiCall]=true
+                      [showSelected]=false [IsSearchDatabase]=false [isSearchLoader]='isSearchLoader'
+                      (advanceLookUp)="advanceLookUpSearch($event)" [Isdisabled]='sapCodeDisabled'
+                      [MandtErrorFlag]="sapFlag" [showSAPCode]="false">
+
+                    </app-auto-complete-select>
+                    <p *ngIf="sapFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Sap code is
+                      mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Sap code autocomplete ends here-->
+
+            <!-- Source Select DROPDOWN STARTS -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mt-20-mob web-select-box h100">
+              <div class="w-100">
+                <label for="source" class="label-form">Source* </label>
+                <button class="btn-none cp" (click)="openLeadPopup()" *ngIf = "showIcon" [disabled] = "sourceDisabled">
+                  <span class="mdi mdi-information-outline info-icon" role="button" tabindex="0"
+                    aria-label="information"></span>
+                </button>
+              </div>
+              <mat-form-field class="col-12 no_pad float-left">
+                <mat-label>Select source</mat-label>
+                <!--<span class="caret color-azure"></span>-->
+                <mat-select aria-label="{{'Source selected' + service.getCollectionValue(srcArray,'Id','Name',sourceValue)}}" disableOptionCentering panelClass="Select-panel-class" [(ngModel)]="sourceValue"
+                  class="select-focus mat-select {{service.getSelectedClass(sourceValue)}}" name="source1" id="source1"
+                  role="listbox" (ngModelChange)="onSourceChange(sourceValue)"
+                  [ngClass]="srcNameFlag?'orangeborder':''"[disabled] = "sourceDisabled || fromLeadFlag">
+                  <mat-option value="" selected hidden disabled>Select source</mat-option>
+                  <mat-option *ngFor="let ver of srcArray" [value]="ver.Id" (click) = "checkForLeadPopup(ver.Id)">{{ver.Name}}</mat-option>
+                </mat-select>
+                <p *ngIf="(srcNameFlag && !linkedLeadErr) || errorFlag" class="col-12 no_pad float-left validation-text top40">Source is
+                  mandatory.</p>
+                  <p *ngIf="linkedLeadErr" class="col-12 no_pad float-left validation-text top40">Lead details are mandatory</p>
+                  
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box">
+              <label for="source" class="w-100 label-form">Source* </label>
+              <div class="customized-select">
+                <span class="caret color-azure"></span>
+                <mat-select aria-label="{{'Source selected' + service.getCollectionValue(srcArray,'Id','Name',sourceValue)}}" [(ngModel)]="sourceValue"
+                  class="select-focus mat-select {{service.getSelectedClass(sourceValue)}}" name="source" id="source"
+                  role="listbox" (ngModelChange)="onSourceChange(sourceValue)"
+                  [ngClass]="srcNameFlag?'orangeborder':''" [disabled] = "sourceDisabled || fromLeadFlag">
+                  <mat-option value="" selected hidden disabled>Select source</mat-option>
+                  <mat-option *ngFor="let ver of srcArray" [value]="ver.Id" (click) = "checkForLeadPopup(ver.Id)">{{ver.Name}}</mat-option>
+                </mat-select>
+                <p *ngIf="(srcNameFlag && !linkedLeadErr) || errorFlag" class="col-12 no_pad float-left validation-text top40">Source is
+                  mandatory.</p>
+                  <p *ngIf="linkedLeadErr" class="col-12 no_pad float-left validation-text top40">Lead details are mandatory</p>
+
+              </div>
+            </div>
+            <!-- Source Select DROPDOWN ends -->
+
+            <!--Proposal type Select DROPDOWN STARTS -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mt-20-mob web-select-box h100"
+              *ngIf="!Creatediv && !simpleDeal">
+              <label for="proposal" class="w-100 label-form">Proposal type* </label>
+              <mat-form-field class="col-12 no_pad float-left">
+                <!--<span class="caret color-azure"></span>-->
+                <mat-label>Select Proposal type</mat-label>
+                <mat-select aria-label="{{'Proposal type selected' + service.getCollectionValue(proArray,'Id','Name',proposalTypeValue)}}" disableOptionCentering panelClass="Select-panel-class-proposalType" [(ngModel)]="proposalTypeValue"
+                  class="select-focus mat-select {{service.getSelectedClass(proposalTypeValue)}}"
+                  (ngModelChange)="proposalMethod(proposalTypeValue)" [ngClass]="proNameFlag?'orangeborder':''"
+                  name="proposal" id="proposal" role="listbox">
+                  <mat-option value="" selected hidden disabled>Select Proposal type</mat-option>
+                  <mat-option *ngFor="let ver of proArray" [value]="ver.Id">{{ver.Name}}</mat-option>
+                </mat-select>
+                <p *ngIf="proNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Proposal type
+                  is mandatory.</p>
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box"
+              *ngIf="!Creatediv && !simpleDeal">
+              <label for="proposal" class="w-100 label-form">Proposal type* </label>
+              <div class="customized-select">
+                <span class="caret color-azure"></span>
+                <select [(ngModel)]="proposalTypeValue"
+                  class="select-focus mat-select {{service.getSelectedClass(proposalTypeValue)}}"
+                  (ngModelChange)="proposalMethod(proposalTypeValue)" [ngClass]="proNameFlag?'orangeborder':''"
+                  name="proposal" id="proposal" role="listbox">
+                  <option value="" selected hidden disabled>Select Proposal type</option>
+                  <option *ngFor="let ver of proArray" [value]="ver.Id">{{ver.Name}}</option>
+                </select>
+                <p *ngIf="proNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Proposal type
+                  is mandatory.</p>
+              </div>
+            </div>
+            <!--Proposal type Select DROPDOWN ends -->
+
+            <!--Currency autocomplete starts here-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 ">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="Currency"
+                  class="label-form">Currency
+                  <span class="required"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="curNameFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="currency" (content)="currencyMethod($event)"
+                      [dataHeader]="currencyObj" (SelectedData)="currencyMethodSelect($event)" [IsApiCall]="true"
+                      [details]="cuName" [detailsId]="cuId" [selectedObj]="cuSelected" [dataSource]="'Currency'"
+                      [labelName]="'Currency'" [titleName]="'Currency'" [Placeholder]="'Enter currency'" [IsSpecialBtn]=false
+                      [IsinitialsView]=false [showSelected]=false [IsSearchDatabase]=false
+                      [isSearchLoader]='isSearchLoader' (advanceLookUp)="advanceLookUpSearch($event)"
+                      [MandtErrorFlag]="curNameFlag"  [Isdisabled]='currencyDisabled'>
+                    </app-auto-complete-select>
+
+                    <p *ngIf="curNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Currency
+                      is
+                      mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Currency autocomplete ends here-->
+
+            <!--Vertical Select DROPDOWN STARTS -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mt-20-mob web-select-box h100" [ngClass]="verticalAble?'HideMatDropdown':''">
+              <label for="acVertical" class="w-100 label-form">Vertical* </label>
+              <mat-form-field class="col-12 no_pad float-left">
+                <!--<span class="caret color-azure"></span>-->
+                <mat-label>Select vertical</mat-label>
+                <mat-select aria-label="{{'Vertical selected' + service.getCollectionValue(acVertical,'SysGuid','Name',verticalValue)}}" disableOptionCentering panelClass="Select-panel-class" [(ngModel)]="verticalValue"
+                  [disabled]="verticalAble" class="select-focus mat-select {{service.getSelectedClass(verticalValue)}}"
+                  name="acVertical" id="acVertical" role="listbox" (ngModelChange)="verticalMethod(verticalValue)"
+                  [ngClass]="verNameFlag?'orangeborder':''">
+                  <mat-option value="" selected hidden disabled>Select vertical</mat-option>
+                  <!--<option [value]="1">Please Select Proper Account Name</option>-->
+                  <mat-option *ngFor="let ver of acVertical" [value]="ver.SysGuid">{{ver.Name}}</mat-option>
+                  <mat-option value=""  disabled *ngIf="acVertical.length == 0">
+                    No records found</mat-option>
+                </mat-select>
+                <p *ngIf="verNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Vertical is
+                  mandatory.</p>
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box" [ngClass]="verticalAble?'HideMatDropdown':''">
+              <label for="acVertical" class="w-100 label-form">Vertical* </label>
+              <div class="customized-select">
+                <span class="caret color-azure" *ngIf = "!verticalAble"></span>
+                <select [(ngModel)]="verticalValue" [disabled]="verticalAble"
+                  class="select-focus mat-select {{service.getSelectedClass(verticalValue)}}" name="acVertical"
+                  id="acVertical" role="listbox" (ngModelChange)="verticalMethod(verticalValue)">
+                  <option value="" selected hidden disabled>Select vertical</option>
+                  <option *ngFor="let ver of acVertical" [value]="ver.SysGuid">{{ver.Name}}</option>
+                  <option value=""  disabled *ngIf="acVertical.length == 0">
+                    No records found</option>
+                </select>
+                <p *ngIf="verNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Vertical is
+                  mandatory.</p>
+              </div>
+            </div>
+            <!--Vertical Select DROPDOWN ends -->
+
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 ">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="cbuList"
+                  class="label-form">CBU
+                  <span class="required" *ngIf="stageSelected!=184450000"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="curNameFlag?'orangeborder':''"> -->
+                  <span class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 float-left add-btn cp" (click)="OpenCBU()" 
+                  [ngClass]="cbuNameFlag? cbuDisabled ? 'plusErrorAndDisabled' :'plusError':cbuDisabled ? 'plusDisabled' : ''"
+                  (keypress)="OpenCBU()"
+                 role="button" tabindex="0" aria-label="Add">
+                    + </span>
+                  <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 float-left   no_pad mar_neg2 flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="cbuList" (content)="getCBUList($event)"
+                      [dataHeader]="dataHeader" (SelectedData)="selectedCbu($event)" [IsApiCall]="true"
+                      [details]="cbuName" [detailsId]="cbuListValue" [selectedObj]="selectedCbuObj" [labelName]="'Cbu'" [titleName]="'CBU'"
+                      [Placeholder]="'Enter CBU'" [IsSpecialBtn]=false [IsinitialsView]=false [showSelected]=false
+                      [IsSearchDatabase]=false [isSearchLoader]='isSearchLoader'
+                      (advanceLookUp)="advanceLookUpSearch($event)" [Isdisabled]='cbuDisabled'
+                      [MandtErrorFlag]="cbuNameFlag">
+                    </app-auto-complete-select>
+                    <p *ngIf="cbuNameFlag" class="col-12 no_pad float-left validation-text top40">CBU is
+                      mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--CBU Select DROPDOWN ends -->
+
+            <!--Opportunity region Select DROPDOWN STARTS -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mt-20-mob web-select-box h100">
+              <label for="acRegion" class="w-100 label-form">Opportunity region* </label>
+              <mat-form-field class="col-12 no_pad float-left">
+                <!--<span class="caret color-azure"></span>-->
+                <mat-label>Select opportunity region</mat-label>
+                <mat-select aria-label="{{'Opportunity region selected' + service.getCollectionValue(acRegion,'RegionId','Name',oppRegionValue)}}" disableOptionCentering panelClass="Select-panel-class" [(ngModel)]="oppRegionValue"
+                  class="select-focus mat-select {{service.getSelectedClass(oppRegionValue)}}" [disabled]="oppRegAble"
+                  [ngClass]="oppRegNameFlag?'orangeborder':''" name="acRegion" id="acRegion" role="listbox"
+                  (ngModelChange)="oppRegionMethod($event)">
+                  <mat-option value="" selected hidden disabled>Select opportunity region</mat-option>
+                  <!--<option [value]="1">Please Select Proper Account Name</option>-->
+                  <mat-option *ngFor="let reg of acRegion" [value]="reg.RegionId">{{reg.Name}}</mat-option>
+                  <mat-option value=""  disabled *ngIf="acRegion.length == 0">
+                    No records found</mat-option>
+                </mat-select>
+                <p *ngIf="oppRegNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">
+                  Opportunity
+                  region is mandatory.</p>
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box">
+              <label for="acRegion" class="w-100 label-form">Opportunity region*</label>
+              <div class="customized-select">
+                <span class="caret color-azure"></span>
+                <select [(ngModel)]="oppRegionValue"
+                  class="select-focus mat-select {{service.getSelectedClass(oppRegionValue)}}" [disabled]="oppRegAble"
+                  [ngClass]="oppRegNameFlag?'orangeborder':''" name="acRegion" id="acRegion" role="listbox"
+                  (ngModelChange)="oppRegionMethod($event)">
+                  <option value="" selected hidden disabled>Select opportunity region</option>
+                  <option *ngFor="let reg of acRegion" [value]="reg.RegionId">{{reg.Name}}</option>
+                  <option value=""  disabled *ngIf="acRegion.length == 0">
+                    No records found</option>
+                </select>
+                <p *ngIf="oppRegNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">
+                  Opportunity region is mandatory.</p>
+              </div>
+            </div>
+            <!--Opportunity region Select DROPDOWN ends -->
+
+            <!--Vertical sales owner autocomplete starts here-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 ">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContrctingCountry"
+                  class="label-form">Vertical sales owner
+                  <span class="required"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="vsoNameFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="vertSalesOwner" (content)="verticalSalesOwMethod($event)"
+                      [dataHeader]="vertSaOwnDataHeader" [dataSource]="'verticalSaOw'"
+                      [labelName]="'Enter_Owner'" [titleName]="'Vertical sales owner'" [Placeholder]="'Enter vertical sales owner'"
+                      [IsSpecialBtn]=false [IsinitialsView]=false [showSelected]=false [IsApiCall]="true"
+                      [details]="verSaOwName" [detailsId]="verSaOwId" (SelectedData)="vertcalSalesOwnMethod($event)" [IsSearchDatabase]=false
+                      [selectedObj]="verticalSalesOwObject" [isSearchLoader]='isSearchLoader'
+                      (advanceLookUp)="advanceLookUpSearch($event)" [Isdisabled]='vsoDisabled'
+                      [MandtErrorFlag]="vsoNameFlag">
+
+                    </app-auto-complete-select>
+                   <p *ngIf="vsoNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Vertical
+                      sales owner is mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Vertical sales owner autocomplete ends here-->
+
+            <!-- digital big bets starts here -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mt-20-mob web-select-box h100"
+              *ngIf="!Creatediv">
+              <label for="digitalBigBets" class="w-100 label-form">Digital big bets* </label>
+              <mat-form-field class="col-12 no_pad float-left">
+                <!--<span class="caret color-azure"></span>-->
+                <mat-label>Select digital big bets</mat-label>
+                <mat-select aria-label="{{'Digital big bets selected' + service.getCollectionValue(digBigBets,'Id','Name',digitalBigBetsValue)}}" disableOptionCentering panelClass="Select-panel-class"
+                  class="select-focus mat-select {{service.getSelectedClass(digitalBigBetsValue)}}"
+                  [(ngModel)]="digitalBigBetsValue" name="digitalBigBets" id="digitalBigBets" role="listbox"
+                  (ngModelChange)="onDigitalBigBetsChange(digitalBigBetsValue)" [ngClass]="dbbFlag?'orangeborder':''">
+                  <mat-option value="" selected hidden disabled>Select digital big bets</mat-option>
+                  <!--<option [value]="1">Please Select Proper Account Name</option>-->
+                  <mat-option *ngFor="let state of digBigBets" [value]="state.Id">{{state.Name}}</mat-option>
+
+                </mat-select>
+                <p *ngIf="dbbFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Digital big bets
+                  is
+                  mandatory.</p>
+              </mat-form-field>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box" *ngIf="!Creatediv">
+              <label for="digitalBigBets" class="w-100 label-form">Digital big bets* </label>
+              <div class="customized-select">
+                <span class="caret color-azure"></span>
+                <select class="select-focus mat-select {{service.getSelectedClass(digitalBigBetsValue)}}"
+                  [(ngModel)]="digitalBigBetsValue" name="digitalBigBets" id="digitalBigBets" role="listbox"
+                  (ngModelChange)="onDigitalBigBetsChange(digitalBigBetsValue)" [ngClass]="dbbFlag?'orangeborder':''">
+                  <option value="" selected hidden disabled>Select digital big bets</option>
+                  <option *ngFor="let state of digBigBets" [value]="state.Id">{{state.Name}}</option>
+                </select>
+                <p *ngIf="dbbFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Digital big bets
+                  is mandatory.</p>
+              </div>
+            </div>
+            <!--Digital big bets Select DROPDOWN ends -->
+
+            <!-- estimated closure date starts -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 h100 pb0 ptop-2"
+              *ngIf="!Creatediv">
+              <label matTooltip="Realistic date of when the Opportunity will be closed and the first Order will be booked. When estimating the date, consider that additional time may be required (for example, for contract negotiations) after the customer has announced the successful bidder." class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad" for="calStart">
+                Estimated closure date <span class="required" *ngIf="stageSelected!=184450000"> *
+                </span>
+                </label>
+              <div class="pos-rel">
+                <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                  <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                    <input [(ngModel)]="estClosureDate" (ngModelChange)="estChange($event);validateEstDate()" matInput [min]="minDate"
+                      [max]="endDate" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart"
+                      [matDatepicker]="picker2" (click)="picker2.open()" (keypress)="picker2.open()" title="DD-MMM-YYYY"
+                      placeholder="DD-MMM-YYYY" [ngClass]="estFlag?'orangeborder':''" readonly="readonly" (blur) = 'appendRedisCache()'>
+                    <mat-datepicker-toggle matSuffix [for]="picker2" tabindex="0" aria-label="calender"
+                      (click)="picker2.open()" (keypress)="picker2.open()">
+                      <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </div>
+                </div>
+                <p *ngIf="estFlag || errorFlag" class="col-12 no_pad float-left validation-text top64">Estimated closure
+                  date is mandatory.</p>
+              </div>
+            </div>
+            <!-- estimated closure date ends -->
+
+            <!-- proposal submissiondue date starts here -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 h100 pb0 ptop-2"
+              *ngIf="Simplediv || Securediv">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                for="estclosure">
+                Proposal submission due date <span class="required"> *
+                </span></label>
+              <div class="pos-rel">
+                <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                  <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                    <input [formControl] = 'proposalSubmissionDateControl' matInput class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="estclosure"
+                      [matDatepicker]="pickerprop" [(ngModel)]="proposalSubmissionDate" (click)="pickerprop.open()"
+                      (keypress)="pickerprop.open()" title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY"
+                      (ngModelChange)="changeSubmissionDate();validateEstDate()" [ngClass]="proposalDateFlag?'orangeborder':''"
+                      readonly="readonly" (blur) = 'appendRedisCache()' [min]="minDate">
+                    <mat-datepicker-toggle matSuffix [for]="pickerprop" tabindex="0" aria-label="calender"
+                      (click)="pickerprop.open()" (keypress)="pickerprop.open()">
+                      <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #pickerprop></mat-datepicker>
+                  </div>
+                </div>
+                <p *ngIf="proposalDateFlag || errorFlag" class="col-12 no_pad float-left validation-text top64">Proposal
+                  submission due date is mandatory.</p>
+              </div>
+            </div>
+            <!-- proposal submissiondue date ends here -->
+
+            <!-- project duration starts here -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 plb-60-20 h100 customized-input float-left"
+              *ngIf="!Creatediv">
+              <label for="projDuration" class="w-100 label-form">Project duration (months)
+                <span class="required"> *</span>
+              </label>
+              <input [(ngModel)]="projectDuiration" (keyup)="projDur(projectDuiration)"
+                [ngClass]="projDurFlag?'orangeborder':''" id="projDuration" autocomplete="off" type="text"
+                class="border-gray w-100 agenda-txt" value="" onkeypress="return event.charCode >= 48
+           && event.charCode <= 57" placeholder="Enter duration" maxlength="3"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" (blur) = 'appendRedisCache()'>
+              <p *ngIf="projDurFlag || errorFlag" class="col-12 no_pad float-left validation-text top50">Project
+                duration
+                is mandatory.</p>
+            </div>
+            <!-- project duration ends here -->
+
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 "
+              *ngIf="!Creatediv">
+
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="VerticalSales"
+                  class="label-form">Contracting country
+                  <span class="required"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+
+                  <!-- <div class="flex-grow-1" [ngClass]="countryFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="contractingCounrty" (content)="conCountryMethod($event)"
+                      [dataSource]="'country'" [labelName]="'country'" [titleName]="'Contracting country'" [Placeholder]="'Enter contracting country'"
+                      [IsSpecialBtn]=false [IsinitialsView]=false [showSelected]=false [IsSearchDatabase]=false
+                      [IsApiCall]="true" [details]="countName" [detailsId]="countId" [dataHeader]="countObj"
+                      (SelectedData)="getCountrySelected($event)" [isSearchLoader]='isSearchLoader'
+                      (advanceLookUp)="advanceLookUpSearch($event)" [selectedObj]="CountSelected"
+                      [MandtErrorFlag]="countryFlag">
+                    </app-auto-complete-select>
+                    <p *ngIf="countryFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Country
+                      is
+                      mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Vertical sales autocomplete ends here-->
+
+            <!--mat select end-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 "
+              *ngIf="!Creatediv && scFlag">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="state"
+                  class="label-form">State
+                  <span class="required" *ngIf = "showStateMandt"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="curNameFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="acState" (content)="getStateList($event)"
+                      [dataHeader]="dataHeader" (SelectedData)="selectedStateList($event)" [IsApiCall]="true"
+                      [details]="stateName" [detailsId]="stateId" [selectedObj]="selectedStateObj" [labelName]="'state'" [titleName]="'Account name'"
+                      [Placeholder]="'Select'" [IsSpecialBtn]=false [IsinitialsView]=false [showSelected]=false
+                      [IsSearchDatabase]=false [isSearchLoader]='isSearchLoader'
+                      (advanceLookUp)="advanceLookUpSearch($event)" [MandtErrorFlag]="stateNameFlag">
+                    </app-auto-complete-select>
+                    <p *ngIf="stateNameFlag" class="col-12 no_pad float-left validation-text top40">State is mandatory.
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--State Select DROPDOWN ends -->
+
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 "
+              *ngIf="!Creatediv && !noCityFlag">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="city"
+                  class="label-form">City
+                  <span class="required"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="curNameFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="acCity" (content)="getCityList($event)"
+                      [dataHeader]="dataHeader" (SelectedData)="selectedCity($event)" [IsApiCall]="true"
+                      [details]="cityName" [detailsId]="cityId" [selectedObj]="selectedCityObj" [requiredField]="true" [labelName]="'city'" [titleName]="'City'"
+                      [Placeholder]="'Enter City'" [IsSpecialBtn]=false [IsinitialsView]=false [showSelected]=false
+                      [IsSearchDatabase]=false [isSearchLoader]='isSearchLoader'
+                      (advanceLookUp)="advanceLookUpSearch($event)" [MandtErrorFlag]="cityNameFlag">
+                    </app-auto-complete-select>
+                    <p *ngIf="cityNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">City is
+                      mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- City Select DROPDOWN ends -->
+
+            <!--Advisor name autocomplete starts here-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 "
+              *ngIf="!Creatediv && !simpleDeal">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="AdvisorName"
+                  class="label-form">Advisor
+                  <span class="required"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="accNameFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="AdvisorName" (content)="getAdvisorNameMethod($event)"
+                      [dataHeader]="advisorObj" (SelectedData)="getAdvisorNameMethodSelected($event)" [IsApiCall]="true"
+                      [details]="adName" [detailsId]="adNameId" [dataSource]="'Advisorname'"
+                      [labelName]="'Add advisor name'" [titleName]="'Advisor name'" [Placeholder]="'Add advisor name'" [selectedObj]="adNameSelected"
+                      [IsSpecialBtn]=false [IsinitialsView]=false [showSelected]=false [IsSearchDatabase]=false
+                      [Isdisabled]=advNameFlagVar [isSearchLoader]='isSearchLoader'
+                      (advanceLookUp)="advanceLookUpSearch($event)" [MandtErrorFlag]="advNameFlag">
+                    </app-auto-complete-select>
+                    <p *ngIf="advNameFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Advisor
+                      is
+                      mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Advisor name autocomplete ends here-->
+
+            <!--Advisor Contact autocomplete starts here-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100 "
+              *ngIf="!Creatediv && !simpleDeal && !advFlagVar">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="DecisionMaker"
+                  class="label-form">Advisor contact
+                  <span class="required"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="accNameFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="advisorContact" (content)="advisorContactMethod($event)"
+                      [dataHeader]="advisorContactObj" [selectedObj]="advisorConObj" [dataSource]="'Advisorcontact'"
+                      [labelName]="'Enter advisor contact'" [titleName]="'Advisor contact'" [Placeholder]="'Enter advisor contact'"
+                      (SelectedData)="advisorContactMethodSelected($event)" [IsSpecialBtn]=false [IsinitialsView]=false
+                      [showSelected]=false [IsSearchDatabase]=false [details]="adContactName" [detailsId]="adContactId"
+                      [IsApiCall]=true [Isdisabled]=advFlagVar [isSearchLoader]='isSearchLoader'
+                      (advanceLookUp)="advanceLookUpSearch($event)" [MandtErrorFlag]="advContactFlag">
+                    </app-auto-complete-select>
+                    <p *ngIf="advContactFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">
+                      Advisor
+                      contact is mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Advisor Contact autocomplete ends here-->
+
+            <!--Advisor owner autocomplete starts here-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 h100"
+              *ngIf="!Creatediv && !simpleDeal && !advFlagVar">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="DecisionMaker1"
+                  class="label-form">Advisor owner
+                  <span class="required"> *
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                  <!-- <div class="flex-grow-1" [ngClass]="accNameFlag?'orangeborder':''"> -->
+                  <div class="flex-grow-1">
+                    <app-auto-complete-select [requiredField]="true" [source]="advisorOwner" [dataSource]="'advisorowner'"
+                      [dataSource]="'Advisorowner'" [labelName]="'Enter advisor owner'" [titleName]="'Advisor owner'"
+                      [Placeholder]="'Enter advisor owner'" [IsSpecialBtn]=false [IsinitialsView]=true
+                      [showSelected]=false [IsSearchDatabase]=false [Isdisabled]=true [details]="adOwnerName"
+                      [detailsId]="adOwnerId" [MandtErrorFlag]="accOwnerFlag">
+                    </app-auto-complete-select>
+                    <p *ngIf="accOwnerFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Account
+                      owner is mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Advisor owner autocomplete ends here-->
+
+            <!-- Target area Select DROPDOWN ends -->
+
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left " *ngIf="!Creatediv">
+           
+              <!-- Estimated RFI value starts here -->
+              <div *ngIf="rfiFlag && !simpleDeal"
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left plb-60-20 h100 ">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+
+                  <div class="customized-input">
+                    <label for="field1" class="w-100 label-form">Estimated RFI value </label>
+                    <input id="field1" maxlength="12" type="number" min="0" class="border-gray w-100" value=""
+                      placeholder="00.00" [(ngModel)]="estRfiValue"
+                      (change)="valueValidationRFI($event); addCommasRFI($event) " onkeypress="return event.charCode >= 46
+&& event.charCode <= 57" required oninput="javascript: if (this.value.split('.')[0].length > this.maxLength) { this.value = this.value.slice(0, this.maxLength); } else { let values = this.value.split('.');
+if(values[1] && values[1].length > 2)  this.value = values[0] + '.' + values[1].slice(0,2)}"
+                      [ngClass]="rfiError?'orangeborder':''" (blur) = "appendRedisCache()">
+                    <p *ngIf="rfiError" class="col-12 no_pad float-left validation-text top50">Estimated RFI is
+                      mandatory.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+              <!-- Estimated RFI value ends here -->
+
+              <!-- Estimated empanelment value value starts here -->
+              <div *ngIf="empFlag && !simpleDeal"
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left plb-60-20 h100 ">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+                  <div class="customized-input">
+
+                    <label for="field_2" class="w-100 label-form">Estimated Empanelment value*</label>
+                    <input [(ngModel)]="estEmpValue" id="field_2" maxlength="12" type="number" min="0"
+                      class="border-gray w-100" value="" placeholder="00.00"
+                      (change)="valueValidationEmpanelment($event); addCommasEMP($event)" required onkeypress="return event.charCode >= 46
+&& event.charCode <= 57" oninput="javascript: if (this.value.split('.')[0].length > this.maxLength) { this.value = this.value.slice(0, this.maxLength); } else { let values = this.value.split('.');
+if(values[1] && values[1].length > 2)  this.value = values[0] + '.' + values[1].slice(0,2)}"
+                      [ngClass]="empError?'orangeborder':''" (blur) = "appendRedisCache()">
+                    <p *ngIf="empError" class="col-12 no_pad float-left validation-text top50">Estimated empanelment is
+                      mandatory.</p>
+                      
+
+
+                  </div>
+                </div>
+              </div>
+              <!-- Estimated empanelment value value ends here -->
+            </div>
+          </div>
+          <!-- textarea starts here -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left plb-60-20">
+            <div class="col-7 col-sm-9 col-md-9 col-lg-9 col-xl-9 float-left no_pad mt20">
+              <h3 class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-three pad-top-8">
+                Scope of work
+                <span class="label-form" *ngIf="textValue.value?.length == 0"> (10000 characters)</span>
+                <span class="label-form" *ngIf="textValue.value?.length > 0 && textValue.value?.length < 9999">
+                  ({{ 10000 - textValue.value?.length}} characters left)</span>
+                <span class="label-form" *ngIf="textValue.value?.length === 9999 || textValue.value?.length === 10000">
+                  ({{ 10000 - textValue.value?.length}} character left)</span>
+              </h3>
+              <!-- <label for="record" class="col-6 float-left no_pad label-form rel-top-18 padding_top_5">
+                Description * </label> -->
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 float-left no_pad ">
+              <label for="record" class="col-6 float-left no_pad label-form rel-top-18 padding_top_5">
+                Description * </label>
+              <textarea #textValue id="record" [(ngModel)]="textDescription" (ngModelChange)="descMethod()" maxlength="10000"
+                [ngClass]="descriptionFlag?'orangeborder':''"
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left rel-top-18  text-area-content"
+                placeholder="Enter description" (blur) = "appendRedisCache()"  [appAlphaNumeric] = "'alphanumeric'"></textarea>
+              <p *ngIf="descriptionFlag || errorFlag" class="col-12 no_pad float-left validation-text top53 mt30">Description
+                is mandatory.</p>
+            </div>
+          </div>
+          <!-- textarea ends here -->
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 mt20" (clickOutside)="contactTagclose()"
+          *ngIf="!Creatediv && !simpleDeal">
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label for="contactTag"
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form">Link account growth
+              projects
+              <!-- <span class="float-right pos-abs font-size12 right-0">(0)</span> -->
+            </label>
+            <input 
+            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input" 
+            id="contactTag"
+            name="contactTag" 
+            placeholder="Add and link account growth projects" 
+            type="text"
+            role="combobox" 
+            autocomplete="off" 
+            aria-owns="read"
+            appKeyListControl
+            [dataManipulate]=true
+            [attr.data-isDownBtn]=true
+            (arrowDown)="arrowkeyLocation=$event"
+            [attr.aria-expanded]="contactTagSwitch?true:false" 
+            [attr.aria-activedescendant]="arrowkeyLocation" 
+            (input)="contactTagSwitch = true;arrowkeyLocation=0;" 
+            (intialLoadData)="contactTagSwitch = true;arrowkeyLocation=0"
+            (keydown)="contactTagSwitch=true" 
+            (keydown.Tab)="contactTagclose()"
+            aria-autocomplete="list"
+            [(ngModel)]="contactTag"
+            [disabled]="agpDisabled" (blur) = "appendRedisCache()">
+            <span class="float-right mdi mdi-magnify"></span>
+            <div
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-right  border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+              *ngIf="contactTagSwitch" [ngClass]="contactTagSwitch ? 'pos-sticky' : ''">
+              <!-- contactTag &&  -->
+              <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                <ul class=" list-group mr2  sort-dropdown "  role="listbox">
+                  <li class="list-group-item h-50 p-4-10 " (click)="appendTag(item.Name,item.Value)" id="{{i}}" tabindex="0" role="option"
+                    *ngFor="let item of wiproLinkedAGPArray |filter:contactTag ; let i= index">
+                    <!--<div class="float-left naming-tags child-middle bg-azure">-->
+                    <!--<span class="initials">{{item.Name}}</span>
+            </div>-->
+                    <label for="inti_name" class="float-left name">
+                      <span class="d-block list-name">{{item.Name}}</span>
+                      <!--<span class="d-block sub-list">{{item.designation}}</span>-->
+                    </label>
+                    <!-- <span class="btn-key float-right" *ngIf="item.value"> Key </span> -->
+                  </li>
+                  <li class="d-block list-name h-40 p-10" *ngIf="(wiproLinkedAGPArray |filter:contactTag).length == 0">
+                    No record found </li>
+                </ul>
+              </perfect-scrollbar>
+            </div>
+
+          </form>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+            <perfect-scrollbar style="max-height:200px">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10"
+                *ngFor="let item of linkedAgpComArray;let j = index">
+                <!--<div class="float-left naming-tags child-middle bg-azure">
+            <span class="initials">{{item.initials}}</span>
+          </div>-->
+                <label for="inti_name" class="float-left name">
+                  <span class="d-block list-name">{{item.Name}}</span>
+                  <!--<span class="d-block sub-list">{{item.designation}}</span>-->
+                </label>
+                <span role="button" tabindex="0" aria-label="delete" (click)="deleteAgp(item,j)"
+                  class="mdi mdi-close close-lead float-right cp"></span>
+              </div>
+            </perfect-scrollbar>
+          </div>
+        </div>
+        <!--linked account autocomplete ends here-->
+
+
+                <!-- primary customer autocomplete ends -->
+                <div
+                class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left edgeCustAuto cust_autoComplete pos-rel plb-60-20 mt20 pad_bot_0 bottom-1"
+                *ngIf="!Creatediv">
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="PrimaryContact"
+                    class="label-form">Primary customer*
+                    <!--<span class="required"> *
+                    </span>-->
+                  </label>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                    <!-- <div class="flex-grow-1" [ngClass]="priCustFlag?'orangeborder':''"> -->
+                    <span class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 float-left add-btn cp" (click)="OpenContactPopup()"
+                     (keypress)="OpenContactPopup()"
+                      [ngClass]="priCustFlag? primaryCustDisabled ? 'plusErrorAndDisabled' :'plusError':primaryCustDisabled ? 'plusDisabled' : ''"
+                       role="button" tabindex="0" aria-label="Add">
+                      + </span>
+                    <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 float-left  flex-grow-1  no_pad mar_neg2">
+                      <app-auto-complete-select [requiredField]="true" [source]="wiproPrimaryCustomerContact" [dataHeader]="primaryCustomerConObj"
+                        [details]="details1" [detailsId]="detailsId1" (content)="primayCustomerContact($event)"
+                        (SelectedData)="SelectedPrimaryCustomerContact($event)" [labelName]="'Enter primary customer contact'" [titleName]="'Primary customer'"
+                        [Placeholder]="'Enter primary customer contact'" [IsSpecialBtn]=false [IsinitialsView]=false [showSelected]=true
+                        [IsApiCall]=true [IsSearchDatabase]=false [Isdisabled]="primaryCustDisabled" [Isrequired]=false
+                        [isSearchLoader]='isSearchLoader' (advanceLookUp)="advanceLookUpSearch($event)"
+                        [selectedObj]="selectedAccObj1" [MandtErrorFlag]="priCustFlag" [isLastVar]=true>
+                      </app-auto-complete-select>
+                      <p *ngIf="priCustFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Primary
+                        customer is mandatory.</p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- primary customer autocomplete ends -->
+
+              
+        <!-- customer decision maker autocomplete starts -->
+        <div
+          class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 mt20 pad_bot_0"
+          *ngIf="!Creatediv">
+
+
+          <!-- multiple append autocomplete starts here -->
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left  cust_autoComplete pos-rel plb-60-20 pad_bot_0 no_pad"  (clickOutside)="contactNameclose()">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                for="contactName"> Customer decision makers*
+                <!--<span class="required">*</span>-->
+              </label>
+              <span class="float-right pos-abs right-0">({{selectedContact?.length}})</span>
+              <input 
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                #customerdecision
+                id="contactName" 
+                name="contactName"
+                placeholder="Add decision maker contacts"
+                type="text"
+                role="combobox"
+                autocomplete="off" 
+                aria-owns="read"
+                appKeyListControl 
+                [dataManipulate]=true
+                [attr.data-isDownBtn]=true
+                (arrowDown)="arrowkeyLocation=$event"
+                [attr.data-selectedvalue]="meetingValueCheck"
+                [attr.aria-expanded]="contactNameSwitch?true:false" 
+                (click)="contactNameSwitch = true;arrowkeyLocation=0; customerDMakerMethod($event)" 
+                [attr.aria-activedescendant]="customerDMaker?.length+1 == arrowkeyLocation?'adls'+arrowkeyLocation:arrowkeyLocation"
+                (input)="contactNameSwitch = true;arrowkeyLocation=0;" 
+                (intialLoadData)="contactNameSwitch = true;arrowkeyLocation=0"
+                (keyup.enter)="customerDMaker?.length+1 == arrowkeyLocation? openadvancetabs('DecisionMakers',customerDMaker,contactName) :appendcontact(customerDMaker[arrowkeyLocation]);contactNameSwitch=false;"
+                (keydown)="contactNameSwitch=true" 
+                (keydown.Tab)="contactNameclose()"
+                [attr.data-arrayMaxLength]="customerDMaker?.length" 
+                aria-autocomplete="list"
+                [(ngModel)]="contactName" 
+                (ngModelChange)="customerDMakerMethod($event)" 
+                [ngClass]="cDMCFlag?'orangeborder':''" 
+                [disabled]="dmakerDisabled" >
+
+              <p *ngIf="cDMCFlag || errorFlag" class="col-12 no_pad float-left validation-text top50">Customer decision
+                maker is mandatory.</p>
+              <span class="mdi mdi-magnify"></span>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                *ngIf="contactNameSwitch" [ngClass]="contactNameSwitch ? 'pos-sticky' : ''">
+                <!-- contactName &&  -->
+                <perfect-scrollbar style="max-height:185px" class="z-ind-9">
+                  <ul class=" list-group mr2 sort-dropdown"  role="listbox">
+                    <li id="{{i}}" class="list-group-item h-50 p-4-10 "  tabindex="0" role="option" (click)="appendcontact(item)"
+                      (keypress)="appendcontact(item)" [class.active]="i==arrowkeyLocation"
+                      *ngFor="let item of customerDMaker |filter:contactName; let i= index">
+                      <div class="float-left naming-tags child-middle bg-azure">
+                        <span class="initials">{{getInitials(item.Name)}}</span>
+                      </div>
+                      <label for="inti_name" class="float-left name">
+                        <span class="d-block list-name">{{item.Name}}</span>
+                        <span class="d-block sub-list">{{item.Designation}}</span>
+                      </label>
+                    </li>
+                    <!-- <button id="loadMoreFC" class="loadMorePS" (click)="loadMoreEvent()"></button> -->
+                    <li class="d-block list-name h-40 p-10 cd" *ngIf="(customerDMaker |filter:contactName).length == 0">
+                      No record found </li>
+
+                  </ul>
+                </perfect-scrollbar>
+                <span class="db-search" (click)="openadvancetabs('DecisionMakers',customerDMaker,contactName)" (keypress)="openadvancetabs('DecisionMakers',customerDMaker,contactName)">
+                  <button id="adls{{customerDMaker?.length+1}}" role="option" tabindex="0" aria-disabled="false" type="button"
+                    class="button-search" [class.active]="customerDMaker?.length+1 == arrowkeyLocation">
+                    <span class="mdi mdi-file-outline"></span> Advance look up
+                  </button>
+                </span>
+              </div>
+            </form>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+              <perfect-scrollbar style="max-height:300px">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10"
+                  *ngFor="let item of selectedContact;let j = index">
+                  <div class="float-left naming-tags child-middle bg-azure">
+                    <span class="initials">{{getInitials(item.Name)}}</span>
+                  </div>
+                  <label for="inti_name" class="float-left name">
+                    <span class="d-block list-name">{{item.Name}}</span>
+                    <span class="d-block sub-list">{{item.Designation}}</span>
+                  </label>
+                  <span role="button" tabindex="0" aria-label="delete" class="mdi mdi-close close-lead float-right cp"
+                    (click)="deleteCustomerContact(item,j)"></span>
+                </div>
+              </perfect-scrollbar>
+            </div>
+          </div>
+          <!-- multiple append autocomplete ends here -->
+        </div>
+        <!-- customer decision maker autocomplete ends -->
+
+
+
+        <!-- 4/4/19 end -->
+      </mat-expansion-panel>
+    </div>
+
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  margin-btm55 pad-30 mt40 mt20 margin_top_0 pr0 pl0 padtop20 pad_bottom_0 serviceline-accr"
+      *ngIf="ServiceDetails">
+      <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState3 = true"
+        (closed)="panelOpenState3 = false">
+        <mat-expansion-panel-header style="min-height:60px;">
+          <mat-panel-title class="accord-heading">
+            <span
+              [ngClass]="panelOpenState3 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-up chevron-right'"></span>
+            <span class="accordian-title pad-top-8 cardsHead pl36 col-12 no_pad pt15 editTopHeads">Service line details
+            </span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="col-12 no_pad float-left border_top">
+          <!-- Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left  plb-60-20 mt-20-mob web-select-box">
+            <label for="serviceLine" class="w-100 label-form">Service line*</label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <!--<span class="caret color-azure"></span>-->
+              <mat-label>Select</mat-label>
+              <mat-select aria-label="{{'Service line selected' + service.getCollectionValue(serviceLine,'SysGuid','Name',serviceValue)}}" disableOptionCentering panelClass="Select-panel-class" [(ngModel)]="serviceValue"
+                class="select-focus mat-select {{service.getSelectedClass(serviceValue)}}" name="serviceLine"
+                id="serviceLine" role="listbox" (ngModelChange)="serviceLineMethod(serviceValue)"
+                [ngClass]="serLineFlag?'orangeborder':''" [disabled]="slDisabled">
+                <mat-option value="" selected hidden disabled>Select service line</mat-option>
+                <!--<option [value]="1">Please Select Proper Account</option>-->
+                <mat-option title="{{method.Name}}" *ngFor="let method of serviceLine" [value]="method.SysGuid">
+                  {{method.Name}}</mat-option>
+                <mat-option value="" disabled *ngIf="serviceLine.length == 0">
+                  No records found</mat-option>
+              </mat-select>
+              <p *ngIf="serLineFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Service line is
+                mandatory.</p>
+
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box">
+            <label for="serviceLine" class="w-100 label-form">Service line*</label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select [(ngModel)]="serviceValue"
+                class="select-focus mat-select {{service.getSelectedClass(serviceValue)}}" name="serviceLine"
+                id="serviceLine" role="listbox" (ngModelChange)="serviceLineMethod(serviceValue)"
+                [ngClass]="serLineFlag?'orangeborder':''" [disabled]="slDisabled">
+                <option value="" selected hidden disabled>Select</option>
+                <option *ngFor="let method of serviceLine" [value]="method.SysGuid">{{method.Name}}</option>
+                <option value="" disabled *ngIf="serviceLine.length == 0">
+                  No records found</option>
+              </select>
+              <p *ngIf="serLineFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Service line is
+                mandatory.</p>
+            </div>
+          </div>
+
+          <!--practice Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mt-20-mob web-select-box">
+            <label for="practice" class="w-100 label-form">Practice <span *ngIf="!flagPactice">*</span> </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <!--<span class="caret color-azure"></span>-->
+              <mat-label>Select</mat-label>
+              <mat-select aria-label="{{'Practice selected' + service.getCollectionValue(practice,'SysGuid','Name',practiceValue)}}" disableOptionCentering panelClass="Select-panel-class" [(ngModel)]="practiceValue"
+                [disabled]="pracAble || flagPactice"
+                class="select-focus mat-select {{service.getSelectedClass(practiceValue)}}" name="practice"
+                id="practice" role="listbox" (ngModelChange)="practiceMethod(practiceValue)"
+                [ngClass]="pracFlag?'orangeborder':''">
+                <mat-option value="" selected hidden disabled>Select</mat-option>
+                <!--<option  [value]="1">Please Select Service Line</option>-->
+                <mat-option *ngFor="let practices of practice" [hidden]="(!practices.IsVisible)" [value]="practices.SysGuid" title="{{practices.Name}}">{{practices.Name}}
+                </mat-option>
+              </mat-select>
+              <p *ngIf="pracFlag" class="col-12 no_pad float-left validation-text top40">Practice is mandatory.</p>
+
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box">
+            <label for="practice" class="w-100 label-form">Practice <span *ngIf="!flagPactice">*</span> </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select [(ngModel)]="practiceValue" [disabled]="pracAble || flagPactice"
+                class="select-focus mat-select {{service.getSelectedClass(practiceValue)}}" name="practice"
+                id="practice" role="listbox" (ngModelChange)="practiceMethod(practiceValue)"
+                [ngClass]="pracFlag?'orangeborder':''">
+                <option value="" selected hidden disabled>Select</option>
+                <option *ngFor="let practices of practice" [value]="practices.SysGuid"  [hidden]="(!practices.IsVisible)">{{practices.Name}}</option>
+              </select>
+              <p *ngIf="pracFlag && !flagPactice" class="col-12 no_pad float-left validation-text top40">Practice is mandatory.</p>
+            </div>
+          </div>
+          <!-- practice dropdown ends here -->
+
+          <!-- sub-practice Select DROPDOWN STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mt-20-mob web-select-box">
+            <label for="subPractice" class="w-100 label-form">Sub-practice <span *ngIf="!flagSubPactice">*</span>
+            </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <!--<span class="caret color-azure"></span>-->
+              <mat-label>Select</mat-label>
+              <mat-select aria-label="{{'Sub-practice selected' + service.getCollectionValue(subPractice,'SubPracticeId','Name',subPracticeValue)}}" disableOptionCentering panelClass="Select-panel-class" [(ngModel)]="subPracticeValue"
+                [disabled]="subPracAble || flagSubPactice"
+                class="select-focus mat-select {{service.getSelectedClass(subPracticeValue)}}" name="subPractice"
+                id="subPractice" role="listbox" (ngModelChange)="subPracticeMethod(subPracticeValue)"
+                [ngClass]="subPraFlag?'orangeborder':''">
+                <mat-option value="" selected hidden disabled>Select</mat-option>
+                <!--<option [value]="1">Please Select Practice</option>-->
+                <mat-option *ngFor="let subPractices of subPractice" [value]="subPractices.SubPracticeId" title="{{subPractices.Name}}">
+                  {{subPractices.Name}}
+                </mat-option>
+              </mat-select>
+              <p *ngIf="subPraFlag" class="col-12 no_pad float-left validation-text top40">Sub-Practice is mandatory.
+              </p>
+
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box">
+            <label for="subPractice" class="w-100 label-form">Sub-practice <span *ngIf="!flagSubPactice">*</span>
+            </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select [(ngModel)]="subPracticeValue" [disabled]="subPracAble || flagSubPactice"
+                class="select-focus mat-select {{service.getSelectedClass(subPracticeValue)}}" name="subPractice"
+                id="subPractice" role="listbox" (ngModelChange)="subPracticeMethod(subPracticeValue)"
+                [ngClass]="subPraFlag?'orangeborder':''">
+                <option value="" selected hidden disabled>Select</option>
+                <option *ngFor="let subPractices of subPractice" [value]="subPractices.SubPracticeId">
+                  {{subPractices.Name}}</option>
+              </select>
+              <p *ngIf="subPraFlag" class="col-12 no_pad float-left validation-text top40">Sub-Practice is mandatory.
+              </p>
+            </div>
+          </div>
+          <!-- sub practice dropdown ends here -->
+
+          <!-- SL BDM autocomplete starts here-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  edgeCustAuto cust_autoComplete pos-rel plb-60-20 h100 "
+            [ngClass]="addBottomPadding?'pad_bottom_160':''">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="slbdmName1"
+                class="label-form">SL BDM
+                <span class="required"> *
+                </span>
+              </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                <!-- <div class="flex-grow-1" [ngClass]="slBdmFlag?'orangeborder':''"> -->
+                <div class="flex-grow-1">
+                  <app-auto-complete-select [requiredField]="true" [source]="wiproSlBdm" [dataHeader]="slbdmHeaderObj" [details]="slbdmName"
+                    [detailsId]="slBdValue" [selectedObj]="selectedSlbdmObj" (content)="getSLBDMData($event)"
+                    (SelectedData)="selectedSLBDMValue($event)" [labelName]="'SlBdmValue'" [titleName]="'SL BDM'"
+                    [Placeholder]="'Enter SL BDM'" [IsSpecialBtn]=false [IsinitialsView]=false [showSelected]=true
+                    [IsApiCall]=true [IsSearchDatabase]=false [Isdisabled]='slbdmDisable' [Isrequired]=false
+                    [isSearchLoader]='isSearchLoader' (advanceLookUp)="advanceLookUpSearch($event)"
+                    [MandtErrorFlag]="slBdmFlag" [isLastVar]=true>
+
+                  </app-auto-complete-select>
+                  <p *ngIf="slBdmFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">SL BDM is
+                    mandatory.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- SL BDM autocomplete ends here-->
+
+          <!-- SL BDM dropdown ends here-->
+
+          <!-- engagement model starts here -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mt-20-mob web-select-box">
+            <label for="engagementmodel" class="w-100 label-form">Engagement model* </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <!--<span class="caret color-azure"></span>-->
+              <mat-label>Select engagement model</mat-label>
+              <mat-select aria-label="{{'Engagement model selected' + service.getCollectionValue(engModel,'Id','Name',engagementModelValue)}}" disableOptionCentering panelClass="Select-panel-class" [(ngModel)]="engagementModelValue"
+                [disabled]="engAble" class="select-focus mat-select {{service.getSelectedClass(engagementModelValue)}}"
+                name="engagementmodel" (ngModelChange)="engMoMethod()" id="engagementmodel" role="listbox"
+                [ngClass]="enModFlag?'orangeborder':''">
+                <mat-option value="" selected hidden>Select engagement model</mat-option>
+                <!--<option [value]="1">Please Select Service Line</option>-->
+                <mat-option *ngFor="let slBdm of engModel" [value]="slBdm.Id" title="{{slBdm.Name}}">{{slBdm.Name}}</mat-option>
+
+              </mat-select>
+              <p *ngIf="enModFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Engagement model
+                is mandatory.</p>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box">
+            <label for="engagementmodel" class="w-100 label-form">Engagement model*</label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select [(ngModel)]="engagementModelValue" [disabled]="engAble"
+                class="select-focus mat-select {{service.getSelectedClass(engagementModelValue)}}"
+                name="engagementmodel" (change)="engMoMethod()" id="engagementmodel" role="listbox"
+                [ngClass]="enModFlag?'orangeborder':''">
+                <option value="" selected hidden disabled>Select engagement model</option>
+                <option *ngFor="let slBdm of engModel" [value]="slBdm.Id">{{slBdm.Name}}</option>
+              </select>
+              <p *ngIf="enModFlag || errorFlag" class="col-12 no_pad float-left validation-text top40">Engagement model
+                is mandatory.</p>
+            </div>
+          </div>
+          <!-- engagement model ends here -->
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 plb-60-20 customized-input float-left  mb1">
+            <label for="empty" class="w-100 label-form">TCV
+              <span class="required"> *</span>
+            </label>
+            <input [(ngModel)]="tcvValue" id="empty" [ngClass]="tcvFlag?'orangeborder':''" maxlength="11" type="number"
+              min="0" class="border-gray w-100" value="" placeholder="00.00" (change)="tcvValidation($event)"
+              (keyup)="tcvMethod(tcvValue)" required onkeypress="return event.charCode >= 46
+&& event.charCode <= 57" oninput="javascript: if (this.value.split('.')[0].length > this.maxLength) { this.value = this.value.slice(0, this.maxLength); } else { let values = this.value.split('.');
+if(values[1] && values[1].length > 2)  this.value = values[0] + '.' + values[1].slice(0,2)}" (blur) = "appendRedisCache();trimTCVValue()">
+            <p *ngIf="tcvFlag || errorFlag" class="col-12 no_pad float-left validation-text top50">TCV is mandatory.</p>
+            <p *ngIf="tcvEmpCheck" class="col-12 no_pad float-left validation-text top50"
+              title="Empanelment value should be greater or equal to TCV.">Empanelment value should be greater or equal
+              to TCV.</p>
+            <p *ngIf="tcvRfiCheck" class="col-12 no_pad float-left NOwrap validation-text top50">RFI value should be greater or
+              equal to TCV.</p>
+
+          </div>
+        </div>
+
+      </mat-expansion-panel>
+    </div>
+
+    <!-- engagement details starts here -->
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  margin-btm55 pad-30 mt40 mt20 margin_top_0 pr0 pl0 padtop20 pad_bottom_0"
+      *ngIf="Securediv">
+      <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState4 = true"
+        (closed)="panelOpenState4 = false">
+        <mat-expansion-panel-header style="min-height:60px;">
+          <mat-panel-title class="accord-heading">
+            <span
+              [ngClass]="panelOpenState4 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-up chevron-right'"></span>
+            <span class="accordian-title pad-top-8 cardsHead pl36 col-12 no_pad pt15 editTopHeads">Engagement details
+            </span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="col-12 no_pad float-left border_top">
+
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 pb21 ptop-2">
+            <div class="col-12 no_pad float-left">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                for="engStartDate">Engagement start date <span class="required">*</span></label>
+              <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input cal_brdr">
+                <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left" [(ngModel)]="engStartDate"
+                  id="engStartDate" [matDatepicker]="picker6" title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY"
+                  (ngModelChange)="dateValidationEngStartDate($event)" (click)="picker6.open()"
+                  (keypress)="picker6.open()" [ngClass]="engStartDateFlag?'orangeborder':''" readonly="readonly"
+                  [min]="minDate" (blur) = "appendRedisCache()">
+                <mat-datepicker-toggle matSuffix [for]="picker6" tabindex="0" aria-label="calender"
+                  (click)="picker6.open()" (keypress)="picker6.open()">
+                  <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker6></mat-datepicker>
+              </div>
+              <p *ngIf="engStartDateFlag || errorFlag" class="col-12 no_pad float-left validation-text top64">Engagement
+                start date is mandatory.</p>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 pb21 ptop-2">
+            <div class="col-12 no_pad float-left">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                for="engEndDate">Engagement end date <span class="required">*</span></label>
+
+              <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input cal_brdr">
+                <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left" [(ngModel)]="engEndDate" id="engEndDate"
+                  [matDatepicker]="picker7" title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY"
+                  (ngModelChange)="dateValidationEngEndDate($event)" (click)="picker7.open()"
+                  (keypress)="picker7.open()" [ngClass]="engEndDateFlag?'orangeborder':''" readonly="readonly"
+                  [min]="minDate" (blur) = "appendRedisCache()">
+                <mat-datepicker-toggle matSuffix [for]="picker7" tabindex="0" aria-label="calender"
+                  (click)="picker7.open()" (keypress)="picker7.open()">
+                  <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker7></mat-datepicker>
+              </div>
+              <p *ngIf="engEndDateFlag || errorFlag" class="col-12 no_pad float-left validation-text top64">Engagement
+                end date is mandatory.</p>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 pb21 ptop-2">
+            <div class="col-12 no_pad float-left">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                for="submittedDate">Submitted date <span class="required">*</span></label>
+              <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input cal_brdr">
+                <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left" [(ngModel)]="submittedDate"
+                  id="submittedDate" [matDatepicker]="picker9" required title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY"
+                  [max]="minDate" [min]="minDate" [disabled]="disableAccessPermission" (click)="picker9.open()"
+                  (keypress)="picker9.open()" (ngModelChange)="changeSubmittedDate($event)"
+                  [ngClass]="submittedDateFlag?'orangeborder':''" readonly="readonly" (blur) = "appendRedisCache()">
+                <mat-datepicker-toggle matSuffix [for]="picker9" tabindex="0" aria-label="calender"
+                  (click)="picker9.open()" (keypress)="picker9.open()">
+                  <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker9></mat-datepicker>
+              </div>
+              <!-- </div> -->
+              <p *ngIf="submittedDateFlag || errorFlag" class="col-12 no_pad float-left validation-text top64">
+                Submitted date is mandatory.</p>
+            </div>
+          </div>
+
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 pb21 ptop-2">
+            <div class="col-12 no_pad float-left">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                for="shortlistedDate">Shortlisted date <span class="required">*</span></label>
+              <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input cal_brdr">
+                <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " [(ngModel)]="shortlistedDate"
+                  [ngClass]="shortlistedDateFlag?'orangeborder':''" id="shortlistedDate" [matDatepicker]="picker8"
+                  [max]="minDate" [min]="minDate" title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY"
+                  [disabled]="disableAccessPermission" [disabled]="disableAccessPermission" (click)="picker8.open()"
+                  (keypress)="picker8.open()" (ngModelChange)="changeShortlistedDate($event)" readonly="readonly" 
+                  (blur) = "appendRedisCache()">
+                <mat-datepicker-toggle matSuffix [for]="picker8" tabindex="0" aria-label="calender"
+                  (click)="picker8.open()" (keypress)="picker8.open()">
+                  <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker8></mat-datepicker>
+              </div>
+              <p *ngIf="shortlistedDateFlag || errorFlag" class="col-12 no_pad float-left validation-text top64">
+                Shortlisted date is mandatory.</p>
+            </div>
+          </div>
+
+
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 pb21 ptop-2">
+            <div class="col-12 no_pad float-left">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                for="decisiondate">Customer decision date</label>
+              <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input cal_brdr">
+                <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left" [(ngModel)]="decisionDate"
+                  id="decisiondate" [matDatepicker]="picker_1" required title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY"
+                  [max]="minDate" [min]="minDate" [disabled]="disableAccessPermission" (click)="picker_1.open()"
+                  (keypress)="picker_1.open()" readonly="readonly" (blur) = "appendRedisCache()">
+                <mat-datepicker-toggle matSuffix [for]="picker_1" tabindex="0" aria-label="calender"
+                  (click)="picker_1.open()" (keypress)="picker_1.open()">
+                  <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker_1></mat-datepicker>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </mat-expansion-panel>
+    </div>
+    <!-- engagement details ends here -->
+
+  </div>
+</div>

@@ -1,0 +1,64 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$LabelGrey: #4a4a4a;
+$DarkBlack: #2e2e2e;
+
+.linkClass {
+  color: #007bff !important;
+  cursor: pointer !important;
+}
+
+.popup-container {
+  .popup-hd {
+    padding: 15px 0px 10px 0px;
+  }
+
+  .popup-hd-txt {
+    margin: 0;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 24px;
+    color: $Black !important;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    padding-top: 3px;
+  }
+  .mt-20 {
+    margin-top: 20px;
+  }
+  .blue-div {
+    //height: 80px !important;
+
+    .pad-top-10 {
+      padding-top: 10px;
+    }
+  }
+  .tcv-compare {
+    padding-top: 10px;
+    background: #eaf8f9;
+    //height: 200px;
+    border-radius: 4px;
+  }
+  .small-text {
+    font-size: 12px;
+    font-family: WiproAkkuratTT-Bold;
+  }
+  .main-text {
+    font-size: 14px;
+    font-family: WiproAkkuratTT-Bold;
+  }
+}

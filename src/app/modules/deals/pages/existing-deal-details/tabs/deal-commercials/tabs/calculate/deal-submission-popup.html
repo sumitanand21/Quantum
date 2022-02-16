@@ -1,0 +1,101 @@
+<div
+  class="col-12 float-left  no_pad popup-container accountOwn swapParent deal-sub-main"
+>
+  <div class="col-12 float-left ">
+    <div class="col-12 float-left popup-hd">
+      <span class="col-11 float-left  no_pad heading-level-two" mat-dialog-title
+        >Select BFM</span
+      >
+
+      <button
+        class="col-1 float-left no_pad border-0 mdi mdi-window-close close-icn"
+        aria-label="close"
+        mat-dialog-close
+      ></button>
+    </div>
+    <div class="col-12 float-left border-bottom-grey"></div>
+    <div class="col-12 float-left no_pad mt20 mb10">
+      <div class="float-left col-12 no_pad">
+        <div class="float-left width-20 pl35">
+          <span class="float-left"> Employee id</span>
+        </div>
+        <div class="float-left width-20 no_pad">
+          <span class="float-left"> Employee name</span>
+        </div>
+        <div class="float-left width-18 no_pad last-openheading email-width">
+          <span class="float-left">Employee email</span>
+        </div>
+        <div class="float-left width-20 no_pad last-openheading">
+          <span class="float-left">ADID</span>
+        </div>
+      </div>
+    </div>
+    <!-- <perfect-scrollbar> -->
+      <div class="col-12 no_pad">
+        <ng-container *ngFor="let list of cardItems;let i = index;">
+          <div class="col-12 float-left card no_pad mb10">
+            <div
+              class="float-left col-12 no_pad "
+              (change)="selectedValue=list"
+            >
+              <div class="float-left width-18 no_pad mar-top18">
+                <div
+                  class="col-lg-4 col-sm-4 col-md-4 col-4 float-left Bold_list"
+                >
+                  <mat-radio-group [(ngModel)]="radioBtnselected[i]">
+                    <section>
+                      <mat-radio-button
+                        value="{{list}}"
+                        (change)="selectedValue=list"
+                      >
+                        <span class="acc_label">{{list.EmployeeNumber}}</span>
+                      </mat-radio-button>
+                    </section>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div class="float-left  width-20 no_pad pad-20 last-active">
+                <span class="float-left sub_list pr30 padt-5">
+                  {{list.EmployeeName}}</span
+                >
+              </div>
+              <div class="float-left  width-20 no_pad pad-20 last-order email-width">
+                <span
+                  class="float-left sub_list pr16 padt-5"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="{{list.EmployeeMail}}"
+                >
+                  {{list.EmployeeMail}}</span
+                >
+              </div>
+              <div class="float-left  width-22 no_pad pad-20 last-activity">
+                <span class="float-left sub_list pr16 padt-5">
+                  {{list.EmployeeId}}</span
+                >
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    <!-- </perfect-scrollbar> -->
+  </div>
+  <div class="col-12 float-left no_pad mt30">
+    <button
+      aria-label="Cancel"
+      class="col-6 float-left no_pad cancel-btn"
+      [mat-dialog-close]="false"
+    >
+      Cancel
+    </button>
+    <button
+      aria-label="Ok"
+      class="col-6 float-left border-0 no_pad confrm-btn mr0 mt0"
+      [mat-dialog-close]="true"
+      [ngClass]="radioBtnselected?.length == '0' ? 'disabled-add-btn' : ''"
+      [attr.disabled]="radioBtnselected?.length == '0' ? 'disabled' : null"
+    >
+      Add
+    </button>
+  </div>
+</div>

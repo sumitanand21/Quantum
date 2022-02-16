@@ -1,0 +1,41 @@
+<div class="col-12 float-left  no_pad popup-container ">
+
+  <div class="col-12 float-left  container-dialog">
+      <div class="col-12 float-left  no_pad popup-hd">
+          <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Add customer business unit</span>
+          <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn close-icn"
+              aria-label="close" mat-dialog-close ></button>
+      </div>
+
+      <div class="col-12 float-left border-bottom-grey"></div>
+      
+      
+      <div class="col-12 float-left no_pad cust_autoComplete ">
+          <label class="col-12 float-left  no_pad margin-top-20 hd-val" for="CBU">Customer business unit</label>
+          <input type="text"  class="col-12 float-left border-gray w-100 label-input" name="cbuActivate" id="CBU"
+              placeholder="Enter customer business unit"  [(ngModel)]="name"/>
+      </div>
+
+      <div class="col-6 float-left no_pad mt-20">
+        <span class="col-6 float-left no_pad "> Activate </span>
+      <div class="col-6 float-left  customized-input slidetoggle customized-slider">
+        <mat-slide-toggle  [checked]="IsActivate" (change)="isActivecbu($event)">
+          <span class="sr-only">Activate</span>
+        </mat-slide-toggle>
+      </div>
+      </div>
+
+      
+
+  </div>
+
+  <div class="col-12 float-left no_pad mt30 margin-btm">
+      <div class="float-left disp-flex  mar-28">
+          <button class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+          mat-dialog-close>Cancel</button>
+          <button class="primary-button h-40 std save-responsive-btn button-wd50" (click)="addcbu()">Add</button>
+      </div>
+
+  </div>
+
+</div>

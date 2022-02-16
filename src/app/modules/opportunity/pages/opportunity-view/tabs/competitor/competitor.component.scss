@@ -1,0 +1,671 @@
+$Azure : #2f81ff;
+$White : #ffffff;
+$River : #d9e9ff;
+$MetalLight : #9b9b9b;
+$MidNight : #103f86;
+$Metal : #4a4a4a;
+$Black : #000000;
+$Orange : #f58323;
+$RubyRed : #ef3341;
+$Green : #6dc24b;
+$Wash : #9f9f9f;
+$MidGrey:#343434;
+$Assistant-blue: #E5F0FF;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$LabelGrey : #4a4a4a;
+$DarkBlack : #2e2e2e;
+.h-218{
+    height: 218px;
+}
+.mt-33
+{
+    margin-top: 33px;
+}
+.pad-lr-30
+{
+    padding: 0 30px;
+}
+.pad-30{
+    padding: 26px 30px;
+}
+.pad-15-30{
+    padding: 0px 30px;
+}
+.new-container{
+ .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+    margin: 0;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.h-40 {
+    height: 40px;
+}
+.cardsHead {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: #000000;
+}
+}
+.colorWhite{
+   color: $Marble;
+}
+.bluebox{
+    background: $Azure;
+    
+    border-radius: 5px;
+    margin-right:10px;
+    width: calc(25% - 13px);
+    margin-right: 13px;
+}
+.centerContent{
+    float: none;
+    margin: 0 auto;
+    color: $White;
+    padding-top: 22px;
+    padding-bottom: 14px;
+}
+.w100{
+    width: 100px;
+}
+.font12{
+    font-size: 12px;
+}
+.circleImg {
+  width: 40px;
+  height: 40px;
+  background: $White;
+  border-radius: 20px;
+margin-bottom: 10px !important;
+
+}
+.mdi-chevron-down:before{
+    
+    content: "\F140";
+    font-size: 24px;
+    color: #000;
+    position: absolute;
+    top: 43px;
+    margin-right: 8px;
+}
+.mdi-chevron-right:before{
+    font-size: 24px;
+    color: #000;
+    position: absolute;
+    top: 43px;
+    margin-right: 8px;
+}
+.pl36{
+    padding-left: 36px !important;
+}
+.Centerblock{
+    text-align: left;
+    float: none;
+    margin: 0 auto;
+}
+.mb20{
+    margin-bottom: 20px !important;
+}
+
+.plb-60-10 {
+    padding: 0 55px 10px 5px;
+}
+.mt-20{
+    margin-top: -18px;
+}
+.mb1{
+    margin-bottom: 2px;
+}
+.heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: #000000;
+}
+.text-area-content{
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #4a4a4a;
+    resize: none;
+    border: 1.5px solid #d8d8d8;
+    border-radius: 4px;
+    background-color: #ffffff;
+    height: 170px;
+    padding: 10px;
+    outline: none;
+}
+.attach-icon {
+    width: 18px;
+    height: 18px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    text-align: center;
+    position: relative;
+    right: 6px;
+    font-size: 18px;
+}
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+    background: #fff;
+}
+
+
+// sathish code start
+
+.margin_top_0 {
+    margin-top: 0px;
+}
+
+.pad_bottom_0 {
+    padding-bottom: 0px !important;
+}
+
+.margin_top_10 {
+    margin-top: 10px !important;
+}
+.padding_top_5 {
+    padding-top: 5px;
+}
+.padding_top_10 {
+    padding-top: 10px !important;
+}
+
+.downloadAllStyle {
+    color: #2f81ff;
+    font-family: 'WiproAkkuratTT-Bold';
+    font-size: 14px;
+}
+
+.circleName {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    color: red;
+}
+.border_top {
+    border-top: 2px solid #d8d8d8;
+    padding-top: 20px;
+}
+.width_25 {
+    color: white;
+    width: 28px;
+    .mdi-keyboard-backspace {
+        font-size: 22px;
+        cursor: pointer;
+    }
+}
+.margin_bottom_0 {
+    margin-bottom: 0px;
+}
+.pr0{
+    padding-right: 0 !important;
+}
+// sathish code end
+
+.add-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 4px 0px 0px 4px;
+    padding: 3px 6px;
+    background: $White;
+    border: 1.5px solid $Azure;
+    font-family: WiproAkkuratTT-Bold;
+    color: $Azure;
+    outline: none;
+    font-size: 18px;
+    // width:40px;
+  }
+  .add-btn:hover {
+    background: #2f81ff;
+    color: white;
+  }
+
+
+/********** style for auto complete list start ***************/
+/********** style for auto complete list start ***************/
+.addotherlabel
+{
+    padding-top: 10px;
+    color: #2f81ff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.list-nameaddother {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #2f81ff;
+  }
+.list-name {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .sub-list {
+    font-size: 10px;
+    color: #9b9b9b;
+    font-family: WiproAkkuratTT-Regular;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .autocomplete-box {
+    top: 0px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    border: 1.5px solid $Azure;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: 0.2s;
+
+    .list-group-item {
+      cursor: pointer;
+      height: 50px;
+      padding: 10px;
+    }
+
+    .db-search {
+      height: 40px;
+      cursor: pointer;
+      list-style-type: none;
+
+      &:hover {
+        background-color: #d9e9ff;
+      }
+      button {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        color: $Azure;
+        outline: none;
+        border: none;
+        background: transparent;
+        text-align: left;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .list-box:hover {
+      background-color: #d9e9ff;
+      cursor: pointer;
+    }
+
+    .btn-none {
+      outline: none;
+      border: none;
+      background: transparent;
+    }
+  }
+
+
+// meghana classes
+.min_height60
+{
+    min-height: 60px;
+}
+.accord-heading{
+    // position: absolute;
+    padding-top: 20px;
+}
+.bot10
+{
+    bottom: 10px;
+}
+th{
+    background: #d9e9ff;
+    color: #103f86;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+}
+.disabled_blue_circle_replay
+{
+    background: #d2d5d8 !important;
+    color: #ffffff !important;
+    cursor: default;
+}
+
+.blue_circle_replay {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #d9e9ff;
+    position: relative;
+    text-align: center;
+    color: #2f81ff;
+    margin-left: 10px;
+  }
+  .blue_circle_replay:hover {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #2f81ff;
+    position: relative;
+    color: #ffffff;
+
+    .blue_circle_replay_img {
+      color: #ffffff;
+    }
+  }
+  .w-75
+  {
+      width: 75% !important;
+      font-size: 12px;
+  }
+  .display_flex
+  {
+      display: flex;
+  }
+  tr{
+      white-space: nowrap;
+  }
+  td{
+      vertical-align: middle;
+  }
+//   .gray_back
+//   {
+//       background: #f9f9f9 !important;
+//   }
+  .trans_back
+  {
+      background: transparent !important;
+  }
+  .disabled_check.customized-checkbox .mat-checkbox-frame
+  {
+    border-color:#d8d8d8 !important;
+  }
+  .comp_tool
+  {
+    font-family: "WiproAkkuratTT-Bold";
+    font-size: 12px;
+    color: #2f81ff;
+  }
+  .pb5
+  {
+    padding-bottom: 5px;
+  }
+  .pad_10
+  {
+      padding: 0px 10px !important;
+  }
+  .mdi-magnify:before {
+    color: #2f81ff;
+    font-size: 20px;
+    right: 5px;
+    position: absolute;
+    background: #ffffff;
+    bottom: 9px;
+}
+.top64{
+    top: 39px;
+    min-width: 300px !important;
+    z-index: 5;
+    border: 2px solid #2f81ff !important;
+}
+.pad-top10{
+    padding-top: 10px;
+}
+// css for text overflow ellipsis
+.currentscopesharepercentmessage{
+    white-space: nowrap; 
+  max-width: 287px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+.competitormessage{
+    white-space: nowrap; 
+    max-width: 185px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+// end ofcss for text overflow ellipsis
+
+// css for validation starts here
+.validation-text
+{
+    font-size: 12px;
+    font-family: WiproAkkuratTT-Bold;
+    color: #ef3341;
+    position: absolute;
+    margin: 0px !important;
+}
+.orangeborder
+{
+    border: 2px solid #ef3341 !important;
+}
+.validation-bar
+{
+    background: #ef3341;
+    width: 0px;
+    height: 53px;
+    position: absolute;
+}
+.top
+{
+    top: 52px;
+}
+// css for validation ends here
+
+// tooltip and validation css
+// <!-- New Design - uncomment this line 17/07 -->
+// .button_messagespophover{
+//     border: none;
+//     background: none;
+//     margin: 0px !important;
+// }
+// .tooltiphead { 
+//     font-family: WiproAkkuratTT-Bold;
+//     font-size: 12px;
+//     color: #000000;
+//     margin-bottom: 0px;
+// }
+// .tooltip-content {
+//     font-family: WiproAkkuratTT-Regular;
+//     font-size: 12px;
+//     color: #ffffff;
+// }
+// .popover
+// {
+//     width: auto !important;
+//     min-width: 250px !important;
+//     top: 13px !important;
+// }
+// .error-message {
+//     background: #ef3341;
+//     padding: 3px 6px;
+//     color: #ffffff;
+//     border-radius: 0 0 4px 4px;
+//     position: absolute;
+//     // top: 38px;
+//     width: 110px;
+//     z-index: 1;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+//     overflow: hidden;
+//   }
+//   .top-40
+//   {
+//       top: 49px !important;
+//   }
+//   .width100
+//   {
+//     width: 286px !important;
+//     white-space: normal;
+//     border-top-right-radius: 4px;
+//   }
+//   .redborder
+//   {
+//       border : 2px solid #ef3341 !important;
+//   }
+table{
+    overflow-y: hidden !important;
+}
+.cust_autoComplete input
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 30px;
+    // width: 185px;
+}
+.list-group-item
+{
+    border : unset !important;
+    padding: 5px 5px !important;
+}
+
+
+@media screen and (max-width: 823px){
+    .top
+    {
+        top: 68px;
+        left:20px;
+    }
+    table {
+      border: 0;
+    }
+    table caption {
+      font-size: 1.3em;
+    }
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    table tr:not(:first-child) {
+        border-top: 20px solid #f9f9f9;
+    }
+    table tr {
+      margin-bottom: 0.625em;
+      height: auto !important;
+      // display: inline-block !important;
+      // height: auto !important;
+      position: relative;
+      background-color: white !important;
+      touch-action: pan-y !important;
+    }
+    table td {
+      display: inline-grid;
+      text-align: left;
+      width: 100% !important;
+      float: left;
+      line-height: normal !important;
+      touch-action: pan-y !important;
+    }
+    table th.actionColumn {
+      display: inline-grid;
+      text-align: left;
+      //width: 100% !important;
+      float: left;
+      line-height: normal !important;
+      padding-right: 0px;
+      
+    }
+    table tr th {
+      display: inline-grid;
+      text-align: left;
+      width: 100% !important;
+      float: left;
+      line-height: normal !important;
+      touch-action: pan-y !important;
+      padding-right: 0px;
+     
+     
+    }
+    table td::before,
+    table tr th::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      font-family: WiproAkkuratTT-Regular;
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: -0.3px;
+      color: #9b9b9b;
+    }
+     table th.actionColumn {
+      border-bottom: 0;
+      overflow-x: auto;
+    }
+    .mobile_hide
+    {
+        display: none !important;
+    }
+    .w-80
+    {
+        width: 80%;
+    }
+    .mobile-button-width
+    {
+        width: 100%;
+        float: left !important;
+        top: 20px;
+        // left : 10px;
+    }
+    .mobile-no_pad
+    {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin-bottom:20px;
+    }
+    .w-75
+    {
+        width:100% !important;
+    }
+    .plb-60-10
+    {
+        padding: 0 55px 10px 20px;
+    }
+    .cardsHead 
+    {
+        padding: 0px 15px !important;
+        position: relative;
+    }
+    .mobile-aligntext
+    {
+        float: left !important;
+        padding: 10px 15px;
+    }
+  }
+  .label-text{
+    font-size: 12px;
+      font-family: WiproAkkuratTT-Bold;
+      color: #9b9b9b;
+      margin-bottom: 4px;
+  }
+  .text-data{
+    font-size: 13px;
+    font-family: WiproAkkuratTT-Bold;
+  }
+  .tableReadonly
+  {
+      tr:nth-child(even)
+      {
+        background-color: #f0f0f0;
+      }
+      td
+      {
+        padding: 20px 15px;
+        font-size: 14px;
+        font-family: WiproAkkuratTT-Regular;
+      }
+      .bold-font
+      {
+        font-family: WiproAkkuratTT-Bold !important; 
+      }
+  }

@@ -1,0 +1,22 @@
+<div class="col-12 float-left  no_pad popup-container ">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Are you sure you want to replace the business card details?</span>
+            <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+        <div class="col-12 float-left  no_pad mt10">
+            <span class="col-12 float-left  no_pad txt-style">If you replace the business card, all the current contact details will be lost. Instead you can maintain history to keep the previous details.</span>
+        </div>
+
+    </div>
+
+    <div class="col-12 float-left no_pad">
+            <button aria-label="Retain information" class="col-6 float-left btndef-none no_pad discard-btn mt0"  (click)="retailInformation()">Retain information</button>
+        <button aria-label="update" class="col-6 float-left btndef-none no_pad confrm-btn" mat-dialog-close (click)="replaceInformation()">Update</button>
+    </div>
+
+</div>

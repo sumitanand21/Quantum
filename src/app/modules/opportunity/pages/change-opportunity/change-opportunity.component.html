@@ -1,0 +1,269 @@
+<div>
+  <ng-container *ngIf="isLoading">
+                      <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                                <div class="loaderContainer">
+                                    <div class="loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </ng-container>
+  <div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab pb0">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left opportunity-landing-container no_pad">
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad">
+
+
+              <div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 float-left no_pad">
+                  <h1 class="heading-level-one heading-custom">
+                  <button class="mdi mdi-keyboard-backspace cursor-pointer back-buttonbg" (click)="goBack()" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+                  Change opportunity type </h1>
+                  <span class="brudcrumbs">Sales > Opportunities > {{overviewData.opportunityName}}</span>
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-right no_pad">
+                  <!--march-4 rupali starts-->
+                    <div class="float-right disp-flex save-cancel-responsive">
+                        <button class="primary-button secondary-btn btn-block h-40 margR10 std cancel-responsived-btn button-wd50" (click)="stepone()">Cancel</button>
+                        <button class="primary-button borderless btn-block h-40 std save-responsive-btn button-wd50" *ngIf="dealinfo" (click)="successPopup()">Confirm</button>
+                        <button class="primary-button borderless btn-block h-40 std save-responsive-btn button-wd50" (click)="steptwo()" *ngIf="leadinfo">Next</button>
+                    </div>
+                     <!--march-4 rupali ends-->
+                </div>
+    
+          </div>
+      </div>
+
+  </div>
+</div>  
+
+
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-178">
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad opportunity-landing-container ">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 top-24 mt-126">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad disp-flex center pad-stepper-mob">
+          <div class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-2 float-left no_pad create-lead-steeper">
+            <button class="round-btn active del" (click)="goHome()">
+              <span class="float-left span-text">1</span>
+              <span class="float-left active-text">Change type</span>
+            </button>
+            <span class="float-left horizontal-bar-one" [ngClass]="dealinfo || twoactive ?'active':''"></span>
+    
+          </div>
+          <div class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1 float-left no_pad ">
+            <button class="round-btn" [attr.aria-selected]="dealinfo || twoactive ? true : '' "
+              [ngClass]="dealinfo || twoactive?'active':'cd'">
+              <span class="float-left span-text">2</span>
+              <span class="float-left text-step" [ngClass]="dealinfo || twoactive ?'active-text':''">Verify details
+                </span>
+            </button>
+    
+    
+          </div>
+    
+        </div>
+<div class="col-12 float-left no_pad" *ngIf="leadinfo">
+    <div class="col-12 float-left card no_pad pad-top20" >
+      <div class="col-12 card-content float-left pad-create-lead1">
+        <div class="col-12 float-left no_pad">
+          <h2 class="col-6 float-left no_pad heading-level-two pad-top-8">Select opportunity type</h2>
+        </div>
+      </div>
+      <span class="border-bottm"></span>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead">
+          <div class="col-12 no_pad mt20 float-left  border_top">
+              <div class="col-12">Select the new opportunity type to change.</div>
+              <mat-radio-group class="col-12 mt20 float-left">
+    
+                <section class="float-left col-lg-1 col-md-1 col-sm-2 col-4 no_pad " matTooltip="Renewal opportunity of an ongoing project. Value or scope change
+                within +/- 25% to be treated as renewal project even if the bid is
+                competitive. New SOW becomes operational from the end date of
+                current SOW. ">
+                  <mat-radio-button checked="true" value=1 (change)="selectType($event)">Renewal</mat-radio-button>
+                </section>
+                <section class="float-left col-lg-1 col-md-1 col-sm-2 col-4 " matTooltip="Opportunity related to addition of scope/people in existing
+                running project.">
+                  <mat-radio-button value=3 (change)="selectType($event)">Incremental</mat-radio-button>
+                </section>
+              </mat-radio-group>
+            </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+       
+                              <div
+                              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20"  (clickOutside)="ordernoNameclose()">
+                              <form
+                                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                                      for="ordernoName" class="label-form">
+                                      Order number
+                                      <span class="required"> *</span>
+                                  </label>
+                      <input appKeyListControl #orderList (arrowDown)="arrowkeyLocation=$event"
+                        (keyup.enter)="orderList.value=ordernos[arrowkeyLocation].OrderNumber;ordernoNameSwitch=false;appendorderno(ordernos[arrowkeyLocation],ordernos[arrowkeyLocation],0,true)"
+                        [attr.data-arrayMaxLength]="ordernos?.length" [attr.data-isDownBtn]=true                                      
+                        (input)="ordernoNameSwitch=true" role="combobox" aria-autocomplete="list"
+                         [attr.aria-expanded]="ordernoNameSwitch?true:false" aria-owns="read"
+                        [attr.aria-activedescendant]="arrowkeyLocation"
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input ellipses"
+                        id="ordernoName" name="ordernoName" [(ngModel)]="orderno" 
+                        (click)="ordernoNameSwitch=true" autocomplete="off" type="text" 
+                        placeholder="Enter order number" (ngModelChange)="wiproContact(orderno)" (click)="wiproContact(orderno)"
+                        title="{{orderno}}">
+                                  <span class="mdi mdi-magnify"></span>
+
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                                      *ngIf="orderno && ordernoNameSwitch">
+                                      <perfect-scrollbar style="max-height:160px">
+                                        <ul *ngIf="isSearchLoaderForOrder" class=" list-group color-azure  sort-dropdown mr2">
+                                           <li  class="liststyle_none loader-search"></li>
+                                        </ul>
+                                          <ul *ngIf="!isSearchLoaderForOrder" class=" list-group color-azure  sort-dropdown mr2">
+                                              <li  id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation"
+                                              class="list-group-item list-name ellipses"  aria-disabled="false"
+                                                  (click)="appendorderno(item)"
+                                                  *ngFor="let item of ordernos |filter:orderno;let i=index"
+                                                  title="{{item.contact}}">{{item.OrderNumber}}</li>
+                                              <li class="d-block list-name h-40 p-10"
+                                                  *ngIf="(ordernos |filter:orderno).length == 0">
+                                                  No record found </li>
+                                          </ul>
+                                      </perfect-scrollbar>
+
+                                  </div>
+                              </form>
+                          </div>
+                                 <!--order number autocomplete ends here-->
+
+                              <!--Opportunity name input ends here-->
+                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 ">
+                                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accountName"
+                                  class="label-form">Opportunity name</label>
+                                <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text " [(ngModel)]="oppName"
+                                  id="Opportunity name" name="Opportunity name" type="text" placeholder="Opportunity name" autocomplete="off" disabled>
+                                
+                              </div>
+                            
+                              <div
+                                class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20" (clickOutside)="oppnoNameclose()">
+
+                                <form
+                                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                                        for="oppnoName" class="label-form">
+                                        Opportunity number
+                                        <span class="required"> *</span>
+                                    </label>
+                  <input  appKeyListControl #oppNumberList (arrowDown)="arrowkeyLocation=$event"
+                   (keyup.enter)="oppNumberList.value=oppnos[arrowkeyLocation].OpportunityNumber;oppnoNameSwitch=false;appendoppno(oppnos[arrowkeyLocation])"
+                   [attr.data-arrayMaxLength]="oppnos?.length" [attr.data-isDownBtn]=true                                      
+                   (input)="oppnoNameSwitch=true" role="combobox" aria-autocomplete="list"
+                   [attr.aria-expanded]="oppnoNameSwitch?true:false" aria-owns="read"
+                   [attr.aria-activedescendant]="arrowkeyLocation"  
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input ellipses"
+                  id="oppnoName" name="oppnoName"
+                  (click)="oppnoNameSwitch=true" autocomplete="off" type="text"
+                  [(ngModel)]="oppno" placeholder="Enter opportunity number" (ngModelChange)="wiproContactOpportunityNumber(oppno)" (click)="wiproContactOpportunityNumber(oppno)"
+                  title="{{oppno}}">
+
+                                    <span class="mdi mdi-magnify"></span>
+
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                                        *ngIf="oppno && oppnoNameSwitch">
+                                        <perfect-scrollbar style="max-height:160px">
+                                          <ul *ngIf="isSearchLoaderForOpp" class=" list-group color-azure  sort-dropdown mr2">
+                                           <li  class="liststyle_none loader-search"></li>
+                                        </ul>
+                                            <ul *ngIf="!isSearchLoaderForOpp" class=" list-group color-azure  sort-dropdown mr2">
+                                                <li id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation"
+                                                class="list-group-item list-name ellipses"
+                                                    (click)="appendoppno(item)"
+                                                    *ngFor="let item of oppnos |filter:oppno;let i=index"
+                                                    title="{{item.contact}}">{{item.OpportunityNumber}}</li>
+                                                    
+                                                <li class="d-block list-name h-40 p-10"
+                                                    *ngIf="(oppnos |filter:oppno).length == 0">
+                                                    No record found </li>
+                                            </ul>
+                                        </perfect-scrollbar>
+                                    </div>
+                                </form>
+                            </div>
+                              <!--Opportunity number autocomplete ends here-->
+                       
+                        <div class="col-12 float-left create-mt20 pd-lf">
+                          <div class="col-sm-12 col-md-1 col-lg-1 col-xl-1 float-left no_pad">
+                            <button (click)="searchTable(paginationPageNoSearch)" class="primary-button btn-block serachbutton" >Search</button>
+                          </div>
+                         
+                        </div>
+                      </form>
+            
+        </div>
+        </div>
+      </div>
+      <div class="float-left cardsHead mt20  col-12 no_pad">
+        Orders({{tableTotalCount}})
+                </div>
+    <div class="parent-container new-resp-tbl" *ngIf="changeOpportunityTable.length>0">
+      <app-single-table 
+      (detectActionValue)="performTableChildAction($event)" 
+      (detectPageChangeData)="getNewTableData($event)"
+        [TableName]="'changeOpportunity'"
+        [TableCollection]="changeOpportunityTable"
+         [IsRadioRequired]=true 
+         [IsActionFixed]=false 
+         [IsFreezedColumn]=true
+        [IsAccessActivation]=true 
+        [IsCustomizeTable]=true
+         [bgParentColor]="'bgWhiteContainer'"
+         [paginationPageNumber]="ManagementLogTableRequestBody"
+         [totalTableCount]="tableTotalCount"
+        [filterConfigData]="filterConfigData">
+      </app-single-table>
+    </div>
+
+  </div>
+  
+
+<!-- level-two -->
+<div class="col-12 float-left  no_pad tabs_mdi" *ngIf="dealinfo">
+  <!-- card-content for first tab starts here-->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card float-left " >
+      
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mb20 bordr-bottm">
+          <span  type="text" class="col-12 float-left sub-text mt20 mb20">Your current opportunity will be converted to {{opportunityType==1?"renewal":"incremental"}}. Please verify the below details</span>
+        <span  type="text" class="col-12 float-left sub-text font-bold">Current details</span>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+  
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left pad-15-12 " *ngFor="let data of table_data_first">
+            <label for="field3" class="col-12 float-left no_pad w-100 label-text">{{data.label}}</label>
+            <span id="field3" type="text" class="col-12 float-left no_pad sub-text">{{data.text}}</span>
+          </div>
+  
+        </div>
+      </div>
+      <span  type="text" class="col-12 float-left sub-text font-bold">Selected order details</span>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left pad-15-12 " *ngFor="let data of table_data">
+          <label for="field3" class="col-12 float-left no_pad w-100 label-text">{{data.label}}</label>
+          <span id="field3" type="text" class="col-12 float-left no_pad sub-text">{{data.text}}</span>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- card-content for first tab ends here-->
+    
+
+</div>
+</div>
+</div>
+</div>

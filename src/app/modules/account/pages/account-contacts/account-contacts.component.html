@@ -1,0 +1,61 @@
+<!-- main div starts here -->
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12  main-containt header-action-tab header-action-tab_padding"
+   [ngClass]="userdat.chatBot? 'chat-bot-1100' : userdat.sideTrans ? 'main-containt-250' : ''">
+    <h1 class="float-left heading-level-one pb130  pt15">Contacts</h1>
+    <!--feb-19 rupali starts-->
+    <div class="float-right disp-flex mrg-top20 save-cancel-responsive web-action-button">
+        <!--<button *ngIf="router.url.includes('/accounts/contacts/relationshipplan')"  class="save-responsive-btn button-wd50 primary-button borderless  h-40 std w-184 margR10" routerLink="/accounts/relationshipplan">
+          Add relationship manager</button>-->
+          <!--<button *ngIf="router.url.includes('/accounts/contacts/relationshipsuite')"  class="save-responsive-btn button-wd50 primary-button borderless  h-40 std w-184 margR10"><span class="mdi mdi-plus" ></span>
+            Create new analysis</button>-->
+            <!-- router.url.includes('/accounts/contacts/relationshipplan') -->
+      <button *ngIf="router.url.includes('/accounts/contacts/accountcontacts') " class="save-responsive-btn button-wd50 primary-button borderless btn-block h-40 std w-184 flex-grow-1" (click)="createredirect()"><span class="mdi mdi-account-plus-outline" ></span>
+          Create contact</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad account-contact-landing" [ngClass]="userdat.sideTrans ? 'main-containt-250' : 'main-containt'">
+    <div class="col-12 pos-abs bg-mid_night pad-30 h-380" [ngClass]=" (router.url.includes('/accounts/contacts/relationshipsuite'))?'h-343' :(userdat.tableRecordsChecked == true) ? 'h-515':'h-380' " [class.h-420]="router.url.includes('/accounts/contacts/relationshipplan')"></div>     
+    <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" [ngClass]="userdat.sideTrans ? 'main-containt-250' : 'main-containt'"> -->
+  <div class="col-12 pad-30 float-left padb-0 padd-top-130">             
+
+  
+      <div class="col-12 ptop-20 no_pad vertical-btns-div flex-tab pt15">
+        <div class="col-xl-7 col-lg-7 col-md-8 col-12 no_pad flex-tab-width web-tab">
+          <button  class="col-lg-3 col-sm-4 col-md-4 col-4 sub-vertical-but brd-right0 " role="tab" [attr.aria-selected]="accountcontacts ? true : '' " (click)="accountcontacts1()" [routerLink]="['accountcontacts']" routerLinkActive="active">
+            <span class="no_pad mdi mdi-account-multiple calin-select-all pr5 pos_rel "></span>
+            <span class=" no_pad btntxt-s">Account contacts</span>
+          </button>
+          <button [ngClass]="showrelSuit ? 'col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but sub_suite': 'col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but sub_suite sidenavdisabled'" role="tab" [attr.aria-selected]="relationshipsuite ? true : '' " (click)="relationshipsuite1()"  [routerLink]="['relationshipsuite']" routerLinkActive="active">
+              <span class="no_pad calin-select-all mdi mdi-account-box-multiple pr5 pos_rel "></span>
+              <span class="no_pad btntxt-s"> Relationship suite</span>
+            </button> 
+          <button [ngClass]="showrelPlan ? 'col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0': 'col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 sidenavdisabled'" role="tab" [attr.aria-selected]="relationshipplan ? true : '' " (click)="relationshipplan1()"  [routerLink]="['relationshipplan']" routerLinkActive="active">
+            <span class="no_pad calin-select-all mdi mdi-account-search pr5 pos_rel "></span>
+            <span class="no_pad btntxt-s"> Relationship plan</span>
+          </button> 
+        </div>
+  
+        <div class="col-12 no_pad flex-tab-width mobile-tab">
+            <button  class="col-lg-3 col-sm-6 col-md-4 col-4 sub-vertical-but brd-right0 " role="tab" [attr.aria-selected]="accountcontacts ? true : '' " (click)="accountcontacts1()"  [routerLink]="['accountcontacts']" routerLinkActive="active">
+              <span class="no_pad mdi mdi-account-multiple calin-select-all pr5 pos_rel "></span>
+              <span class=" no_pad btntxt-s">Account contacts</span>
+            </button>
+            <button  class=" col-lg-3 col-sm-6 col-md-4 col-4 pull-right sub-vertical-but "  role="tab" [attr.aria-selected]="relationshipsuite ? true : '' " (click)="relationshipsuite1()"  [routerLink]="['relationshipsuite']" routerLinkActive="active">
+              <span class="no_pad calin-select-all mdi mdi-account-box-multiple pr5 pos_rel "></span>
+              <span class="no_pad btntxt-s">Relationship suite</span>
+            </button>
+            <button  class=" col-lg-3 col-sm-6 col-md-4 col-4 pull-right sub-vertical-but brd-left0 "  role="tab" [attr.aria-selected]="relationshipplan ? true : '' " (click)="relationshipplan1()"  [routerLink]="['relationshipplan']" routerLinkActive="active">
+                <span class="no_pad calin-select-all mdi mdi-account-search pr5 pos_rel "></span>
+                <span class="no_pad btntxt-s">Relationship plan</span>
+              </button>
+          </div>
+      </div> 
+    </div>
+
+  <router-outlet></router-outlet>
+<!-- </div> -->
+</div>

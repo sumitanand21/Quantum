@@ -1,0 +1,66 @@
+<ng-container *ngIf="isLoading">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <div class="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<!-- <ng-container *ngIf="isLoading; else elseTemplate">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <div class="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>-->
+
+<div class="col-12 float-left padng-30">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+            <!-- <h2 class="col-6 float-left heading-level-two color-white padng-30 no_pad padding-left0 padt-0">account(s)</h2> -->
+            <!-- <div class="col-6 no_pad float-right">
+                <button aria-label="Download" title="Download" class="width_moblie no_pad btn-align-right primary-button h-40 std1 save_btn_mobile button-wd50 add-btn-design float-right white-boreder no_pad">
+                    <span class="mdi mdi-download dwn-load-btn" ></span></button>
+                <button title="Save view" class="no_pad save-responsive-btn save_btn_mobile button-wd50 primary-button h-40 w-170 float-right margR10 btn-align-right" (click)=openCreatePopup()>
+                    <span class="mdi mdi-content-save-outline pad-right create-btn" ></span>Save view</button>
+            </div> -->
+            <div class="parent-container" *ngIf="AccountCreationActiveRequestsTable.length > 0">
+                <app-single-table 
+                (detectActionValue)="performTableChildAction($event)" 
+                (detectPageChangeData)="getNewTableData($event)" 
+                [TableName]="'AccountCreationActiveRequests'" 
+                [paginationPageNumber]="ActiveAccountRequest" 
+                [totalTableCount]="tableTotalCount" 
+                [TableCollection]="AccountCreationActiveRequestsTable"
+                [IsFreezedColumn]=true 
+                [IsCustomizeTable]=true 
+                [serviceSearch]=true 
+                [TabList]="tabList2" 
+                [IsPinEnable]=true
+                [SelectedTab]="selectedTabId" 
+                [IsTabRequired]=true              
+                [IsDownload]=accservive.getRoleAccess()
+                [filterConfigData]="filterConfigData"
+                [IsAccountsDownload]=true
+                ></app-single-table>
+
+                <!-- [IscheckBoxRequired]= true 
+                [IsActionFixed]= true
+                [IsRestore] = false 
+                [IsMoreAction] = true
+                [expansionTable] = "'LeadsRejection'"
+                [IsDropBoxRequired] = true  -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--[IsTabRequired]="false"-->

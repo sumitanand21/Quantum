@@ -1,0 +1,35 @@
+<div class="col-12 float-left no_pad popup-container newconvo">
+    <div class="col-12 float-left pb-30 container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-11 float-left  no_pad popup-hd-txt mt5" mat-dialog-title>New conversation</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey"></div>
+        <div class="col-12 float-left  no_pad">
+            <div class="col-12 float-left  no_pad sel-convo-type"> Select type to capture conversation </div>
+         
+                <button class="col-12 float-left conversation-btns no_pad pt20 display_flex cp btn-none"   mat-dialog-close  [routerLink]="['/conversations/newConversation']">
+                    <span class="mdi mdi-account buidelete"></span>
+                <div class="float-left col-10 no_pad">
+                    <span class="new-convo-type w-100 float-left">Face to face conversation</span>
+                    <span class="help-text w-100 float-left conversation-desc">Capture face to face conversation for live meetings.</span>
+                </div>
+                </button>
+                <button class="col-12 float-left conversation-btns no_pad pt20 display_flex cp btn-none"  mat-dialog-close  [routerLink]="['/conversations/newConversation']">
+                    <span class="mdi mdi-cisco-webex buidelete"></span>
+                    <div class="float-left col-10 no_pad">
+                    <span class="new-convo-type w-100 float-left">Virtual conversation</span>
+                    <span class="help-text w-100 float-left conversation-desc">Capture virtual conversation for Webex, Skype etc.</span>
+                    </div>
+                </button>
+                <button class="col-12 float-left conversation-btns no_pad pt20 display_flex cp btn-none"  mat-dialog-close  [routerLink]="['/conversations/newConversation']">
+                    <span class="mdi mdi-phone buidelete"></span>
+                    <div class="float-left col-10 no_pad">
+                    <span class="new-convo-type w-100 float-left">Telephonic conversation</span>
+                    <span class="help-text w-100 float-left conversation-desc">Capture telephonic conversation for mobile or phone.</span>
+                </div>
+                </button>
+           
+        </div>
+    </div>

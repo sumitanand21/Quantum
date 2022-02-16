@@ -1,0 +1,125 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity">
+    <div class="col-12 float-left container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left no_pad popup-hd-txt col-size" mat-dialog-title>Impact message
+            </span>
+            <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close close-icn discard-close-btn"
+                aria-label="close" mat-dialog-close></button>
+        </div>
+
+
+        <perfect-scrollbar class="height-180">
+            <div class="col-12 float-left mb10 border-bottom-grey"></div>
+            <div class="col-12 float-left no_pad mt10 text-clr pdR10">
+                <span class="col-12 float-left bordr-top no_pad fontweights">
+                    SAP Customer Code:
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                   <div class="dotsize "> ·</div><div class="displaytext"> Customer Name change in Trace has an impact on where the invoice is raised <br>
+                     because of the Trace----> SAP Linkage .</div>
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize"> ·</div><div class="displaytext">  Project creation and Resource Management is linked to Customer Name.</div>
+                </span>
+
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize "> ·</div><div class="displaytext"> SAP customer code cannot be changed for Amendments, as it should match<br>
+                        with it's parent order SAP customer code.</div>
+                </span>
+            </div>
+            <div class="col-12 float-left no_pad mt10 text-clr pdR10">
+                <span class="col-12 float-left bordr-top no_pad fontweights">
+                    Project Start Date:
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize "> ·</div><div class="displaytext"> Start date of an Order cannot be changed. Please create a Negative <br>
+                        Amendment for the original order and a Positive Amendment with the new<br>
+                        details.</div>
+                </span>
+            </div>
+            <div class="col-12 float-left no_pad mt10 text-clr pdR10">
+                <span class="col-12 float-left bordr-top no_pad fontweights">
+                    Project End Date:
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize "> ·</div><div class="displaytext"> If the approved order duration is more than 12 months, then a change in end <br>
+                        date will lead to change in ACV. Therefore change in End date cannot be <br>
+                        allowed if the original approved order duration is more than 12 months.<br> 
+                    Negative amendment for the initial order needs to be created and positive<br>
+                    amendment based on new dates has to be created.</div>
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize "> ·</div><div class="displaytext"> If the approved order period is less than 12 months and the change in original <br>
+                        end date causes the new duration to be less than 12 months, the project <br>
+                        duration is affected but the ACV is not impacted.</div>
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize "> ·</div><div class="displaytext"> If the original order period was less than 12 months and change in the End date <br>
+                        leads to a duration of more than 12 months, then the ACV is impacted and a <br>
+                        negative amendment for the original order booked and positive amendment <br>
+                        with new details has to created.</div>
+                </span>
+            </div>
+
+            <div class="col-12 float-left no_pad mt10 mb10 text-clr pdR10">
+                <span class="col-12 float-left bordr-top no_pad fontweights">
+                    Vertical Sales Owner:
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize"> ·</div><div class="displaytext"> Changing the Vertical Sales Owner has an impact on the incentive that will <br>
+                        be paid.</div>
+                </span>
+            </div>
+            <div class="col-12 float-left no_pad mt10 mb10 text-clr pdR10">
+                <span class="col-12 float-left bordr-top no_pad fontweights">
+                    Advisor:
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize"> ·</div><div class="displaytext"> Changing the Advisor has an impact on the incentive that will be paid.</div>
+                </span>
+            </div>
+            <div class="col-12 float-left no_pad mt10 mb10 text-clr pdR10">
+                <span class="col-12 float-left bordr-top no_pad fontweights">
+                    Authorization type:
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize"> ·</div><div class="displaytext"> Please upload the new documents with the correct dates. (Link for same <br>
+                        should be provided so that he can directly go ahead and do it.)</div>
+                </span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize "> ·</div><div class="displaytext"> If the new document has a signed date which does not belong to the same <br>
+                        financial year of the signed date, then it is not allowed. Please book a negative <br>
+                       amendment for the original order and positive amendment for the new details.</div></span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize "> ·</div><div class="displaytext"> If the new start date is different from the original Start date then it is not <br>
+                        allowed. Please book a negative amendment for the original order and a <br>
+                        positive amendment with new details.</div></span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize "> ·</div><div class="displaytext"> If the new end date leads to a change in duration which is more <br>
+                        than 12 months, then it is not allowed. Please book a negative amendment for the<br>  
+                        original order and a positive amendment with new details.</div></span>
+                <span class="col-12 float-left bordr-top no_pad inlineflex">
+                    <div class="dotsize  "> ·</div><div class="displaytext"> If the original period was less than 12 months and the new end date leads to a <br>
+                        duration of more than 12 months, then it is not allowed. Please book a negative <br>
+                        amendment for the original order and a positive amendment with new details.</div></span>
+            </div>
+    
+        </perfect-scrollbar>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+        <div class="col-12 float-left no_pad bordr-top mt10 customized-checkbox">
+            <mat-checkbox aria-label="select all" name="checkbox" class="col-1 float-left no_pad">
+            </mat-checkbox> <span class="col-11 float-left no_pad">
+                Don’t show this message again!</span>
+        </div>
+
+    </div>
+
+    <div class="col-12 float-left no_pad">
+        <button aria-label="Decline" class="col-6 float-left btndef-none no_pad discard-btn" mat-dialog-close
+            >Decline</button>
+        <button aria-label="Accept" class="col-6 float-left btndef-none no_pad confrm-btn mt15" mat-dialog-close
+            (click)="onAccept()">Accept</button>
+    </div>
+</div>

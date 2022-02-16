@@ -1,0 +1,1084 @@
+$Azure : #2f81ff;
+$White : #ffffff;
+$River : #d9e9ff;
+$MetalLight : #9b9b9b;
+$MidNight : #103f86;
+$Metal : #4a4a4a;
+$Black : #000000;
+$Orange : #f58323;
+$RubyRed : #ef3341;
+$Green : #6dc24b;
+$Wash : #9f9f9f;
+$MidGrey:#343434;
+$Assistant-blue: #E5F0FF;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$LabelGrey : #4a4a4a;
+$DarkBlack : #2e2e2e;
+
+.pf15{
+  padding-left: 15px !important;
+}
+.h-48{
+  height: 48px !important;
+}
+
+.pd-5{
+  padding-top: 5px !important;
+}
+
+.orangeborder
+{
+    border: 2px solid #ef3341 !important;
+}
+.h-218{
+    height: 218px;
+}
+.mt-33
+{
+    margin-top: 33px;
+}
+.pad-lr-30
+{
+    padding: 0 30px;
+}
+.pad-26{
+    padding: 20px 0px;
+}
+.pad-15-30{
+    padding: 0px 30px;
+}
+.new-container{
+.primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+    margin: 0;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.h-40 {
+    height: 40px;
+}
+.cardsHead {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: #000000;
+}
+}
+.colorWhite{
+   color: $Marble;
+}
+.bluebox{
+    background: $Azure;
+    
+    border-radius: 5px;
+    margin-right:10px;
+    width: calc(25% - 13px);
+    margin-right: 13px;
+}
+.centerContent{
+    float: none;
+    margin: 0 auto;
+    color: $White;
+    padding-top: 22px;
+    padding-bottom: 14px;
+}
+.w100{
+    width: 100px;
+}
+.font12{
+    font-size: 12px;
+}
+.circleImg {
+  width: 40px;
+  height: 40px;
+  background: $White;
+  border-radius: 20px;
+margin-bottom: 10px !important;
+
+}
+.mdi-chevron-down:before{
+    
+    content: "\F140";
+    font-size: 24px;
+    color: #000;
+    position: initial;
+    margin-top: -5px;
+    margin-left: -15px;
+    margin-right: 8px;
+}
+.mdi-chevron-right:before{
+    font-size: 24px;
+    color: #000;
+    position: initial;
+    margin-top: -5px;
+    margin-left: -15px;
+    margin-right: 8px;
+}
+// <!-- This -->
+.mdi-pencil:before {
+    color: #2f81ff;
+    padding-left: 6px;
+    font-size: 17px !important;
+    bottom: 2px;
+    position: relative;
+}
+.mdi-information-outline:before {
+  font-size: 18px;
+  color: #2f81ff;
+  position: relative;
+  padding-left: 5px;
+  top: 3px;
+}
+.mdi-information-outline:before {
+  line-height: 0px;
+}
+.info-icon {
+  font-size: 12px;
+  color: #2f81ff;
+}
+
+.inputfixed-width-pt {
+  // display: block;
+  position: relative;
+  flex: auto;
+  min-width: 90px;
+  width: 120px;
+  // border-top: .84375em solid transparent;
+}
+
+.pad-9{
+  padding: 9px;
+}
+
+.mr_0{
+    .mat-checkbox-layout .mat-checkbox-label {
+        margin-right: 0px!important;
+    }
+}
+// <!-- This -->
+.pl36{
+    padding-left: 36px !important;
+}
+.Centerblock{
+    text-align: left;
+    float: none;
+    margin: 0 auto;
+}
+.mb20{
+    margin-bottom: 20px !important;
+}
+
+.plb-60-20 {
+    padding: 0 55px 20px 5px;
+}
+.mt-20{
+    margin-top: -18px;
+}
+.mb1{
+    margin-bottom: 2px;
+}
+.heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: #000000;
+}
+.text-area-content{
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #4a4a4a;
+    resize: none;
+    border: 1.5px solid #d8d8d8;
+    border-radius: 4px;
+    background-color: #ffffff;
+    height: 170px;
+    padding: 10px;
+    outline: none;
+}
+.attach-icon {
+    width: 18px;
+    height: 18px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    text-align: center;
+    position: relative;
+    right: 6px;
+    font-size: 18px;
+}
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+    background: #fff;
+}
+
+// sathish code start
+
+.margin_top_0 {
+    margin-top: 0px;
+}
+
+.pad_bottom_0 {
+    padding-bottom: 0px !important;
+}
+
+.margin_top_10 {
+    margin-top: 10px !important;
+}
+.padding_top_5 {
+    padding-top: 5px;
+}
+.padding_top_10 {
+    padding-top: 10px !important;
+}
+
+.downloadAllStyle {
+    color: #2f81ff;
+    font-family: 'WiproAkkuratTT-Bold';
+    font-size: 14px;
+}
+
+.circleName {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    color: red;
+}
+.border_top {
+    border-top: 2px solid #d8d8d8;
+    padding-top: 20px;
+}
+.width_25 {
+    color: white;
+    width: 28px;
+    .mdi-keyboard-backspace {
+        font-size: 22px;
+        cursor: pointer;
+    }
+}
+.margin_bottom_0 {
+    margin-bottom: 0px;
+}
+.pr0{
+    padding-right: 0 !important;
+}
+// sathish code end
+
+.add-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 4px 0px 0px 4px;
+    padding: 3px 6px;
+    background: $White;
+    border: 1.5px solid $Azure;
+    font-family: WiproAkkuratTT-Bold;
+    color: $Azure;
+    outline: none;
+    font-size: 18px;
+    // width:40px;
+  }
+  .add-btn:hover {
+    background: #2f81ff;
+    color: white;
+  }
+
+/********** style for auto complete list start ***************/
+/********** style for auto complete list start ***************/
+.list-name {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .sub-list {
+    font-size: 10px;
+    color: #9b9b9b;
+    font-family: WiproAkkuratTT-Regular;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .autocomplete-box {
+    top: 0px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    border: 1.5px solid $Azure;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: 0.2s;
+
+    .list-group-item {
+      cursor: pointer;
+      height: 50px;
+      padding: 0px;
+    }
+
+    .db-search {
+      height: 40px;
+      cursor: pointer;
+      list-style-type: none;
+
+      &:hover {
+        background-color: #d9e9ff;
+      }
+      button {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        color: $Azure;
+        outline: none;
+        border: none;
+        background: transparent;
+        text-align: left;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .list-box:hover {
+      background-color: #d9e9ff;
+      cursor: pointer;
+    }
+
+    .btn-none {
+      outline: none;
+      border: none;
+      background: transparent;
+    }
+  }
+
+// meghana classes
+.min_height60
+{
+    min-height: 60px;
+}
+.accord-heading{
+    // position: absolute;
+    padding-top: 20px;
+}
+.bot10
+{
+    bottom: 10px;
+}
+th{
+    background: #d9e9ff;
+    color: #103f86;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+}
+.blue_circle_replay {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #d9e9ff;
+    position: relative;
+    text-align: center;
+    color: #2f81ff;
+   margin-left: 10px;
+  }
+  .blue_circle_replay:hover {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #2f81ff;
+    position: relative;
+
+    color: #ffffff;
+
+    .blue_circle_replay_img {
+      color: #ffffff;
+    }
+  }
+  .w-75
+  {
+      width: 75% !important;
+      font-size: 12px;
+  }
+  .w-100
+  {
+      width: 100% !important;
+      font-size: 13px;
+  }
+  .display_flex
+  {
+      display: flex;
+  }
+  tr{
+      white-space: nowrap;
+  }
+  td{
+      vertical-align: middle;
+  }
+  .gray_back
+  {
+      background: #f9f9f9 !important;
+  }
+  .trans_back
+  {
+      background: transparent !important;
+  }
+  .disabled_check.customized-checkbox .mat-checkbox-frame
+  {
+    border-color:#d8d8d8 !important;
+  }
+  .comp_tool
+  {
+    font-family: "WiproAkkuratTT-Bold";
+    font-size: 12px;
+    color: #2f81ff;
+  }
+  .pb5
+  {
+    padding-bottom: 5px;
+  }
+  .pad_10
+  {
+      padding: 0px 10px !important;
+  }
+  .mdi-magnify:before {
+    color: #2f81ff;
+    font-size: 20px;
+    right: 5px;
+    position: absolute;
+    bottom: 9px;
+    background: #ffffff;
+}
+.top64{
+    top: 39px;
+    min-width: 300px !important;
+    z-index: 5;
+}
+.pad_t0
+{
+    padding-top: 0px !important;
+}
+.mdi-dots-vertical:before{
+    position: relative;
+    left: -1px;
+    top: 0px;
+    font-size: 18px;
+}
+td,th{
+    padding: 10px 5px !important
+}
+.width120
+{
+    width: 120px !important;
+}
+.width125
+{
+    width: 125px !important;
+}
+.width80
+{
+    width: 80px !important;
+}
+.width95
+{
+    width: 95px !important;
+}
+.width10
+{
+    width: 10% !important;
+}
+.customized-select .caret
+{
+    right: 7px !important;
+    // background: #ffffff !important;
+    // height: 14px !important;
+}
+.btop_withoutpadding{
+    border-top: 2px solid #d8d8d8;
+}
+
+
+// Pradeep 19-04 changes
+
+.text-alignment{
+    text-align: center;
+}
+
+.border-rightazure{
+    border-right: 3px solid #d9e9ff;
+}
+.subtext1{
+    font-size: 14px;
+    font-family: WiproAkkuratTT-Bold;
+}
+.label-data{
+    font-size: 12px;
+    font-family: WiproAkkuratTT-Regular;
+    top: 8px;
+}
+.pt-10{
+    padding-top: 10px;
+
+}
+
+.mat-expansion-panel {
+    overflow: inherit !important;
+}
+.validation-text
+{
+    font-size: 12px;
+    font-family: WiproAkkuratTT-Bold;
+    color: #ef3341;
+    position: absolute;
+    left: 50px;
+}
+.td-mb
+{
+    td
+    {
+        margin-bottom: 20px;
+    }
+}
+.validation-bar
+{
+  background: #ef3341;
+  width: 10px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+}
+// .validation-bar-transparent
+// {
+//     background: transparent;
+//     width: 0px;
+//     height: 53px;
+//     position: absolute;
+// }
+.nodata_tr{
+ position: relative;
+ border-top: none;
+}
+
+.nodata_td{
+ text-align: center;
+ font-family: WiproAkkuratTT-Regular;
+ font-size: 14px;
+ font-weight: normal;
+ font-style: normal;
+ font-stretch: normal;
+ line-height: normal;
+ letter-spacing: normal;
+ color: #000000;
+ padding-top: 25px !important;
+}
+.new-container .disable-input + .mdi-magnify:before, input:disabled + .mdi-magnify:before
+{
+    background: #f9f9f9;
+}
+.customized-select .caret
+{
+    background: #fff;
+    padding: 5px 0px;
+    margin: -2px 0px;
+    top: 20px;
+}
+.disabled-control .caret, .disabled-control .mdi:before
+{
+    background: #f9f9f9;
+    padding: 5px 0px;
+    margin: -3px 0px;
+    top: 20px;
+}
+
+.ipmoreoption {
+    .border-top {
+      border-top: 1.5px solid #9b9b9b73;
+    }
+    .colr-orange{
+      color: #f58323;
+    }
+
+    .cancel-btn1{
+      background: #d9e9ff;
+      color: #2f81ff;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.38;
+      font-family: "WiproAkkuratTT-Bold";
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      }
+      .mt-110 {
+        margin-top: 110px !important;
+      }
+      .pad-leftright{
+        padding: 25px 0 8px 35px !important;
+      }
+     .serviceline .popup-tabs {
+        background-color: #d9e9ff;
+        width: 100%;
+        height: 75px;
+        margin-top: 70px;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+      }
+
+      .ellipses {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap !important;
+        width: 225px;
+      }
+      
+      .font-14 {
+        font-size: 14px;
+      }
+  
+}
+
+.popup-container-opportunity {         
+    .mdi-window-close:before {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    background: #d9e9ff;
+    color: #03a9f4;
+    }
+    .mdi-window-close:before {
+        font-size: 22px !important;
+    }
+    .cancel-btn1{
+        background: #d9e9ff;
+        color: #2f81ff;
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.38;
+        font-family: "WiproAkkuratTT-Bold";
+        padding: 14px;
+        margin-top: 15px;
+        border: none;
+        }
+    .confrm-btn-save {
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.38;
+        font-family: "WiproAkkuratTT-Bold";
+        padding: 14px;
+        margin-top: 15px;
+        outline: none;
+        background: transparent;
+        border: none;
+      }
+}
+
+.tcvpopup {
+    .cancel-btn1{
+        background: #d9e9ff;
+        color: #2f81ff;
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.38;
+        font-family: "WiproAkkuratTT-Bold";
+        padding: 14px;
+        margin-top: 15px;
+        border: none;
+        }
+    .confrm-btn-save {
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.38;
+        font-family: "WiproAkkuratTT-Bold";
+        padding: 14px;
+        margin-top: 15px;
+        outline: none;
+        background: transparent;
+        border: none;
+      }
+      .rowspanth:nth-child(even){
+        background: #f3f3f3;
+    }
+    tr:nth-child(even) {
+        background: #f3f3f3;
+    }
+
+}
+.cust_autoComplete input {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 30px;
+    // width: 185px;
+}
+.font-14 {
+    font-size: 14px !important;
+}
+
+.close-icn1 {
+    outline: none;
+    background: transparent;
+    border: none;
+    color: #000000;
+    font-size: 22px;
+}
+.display-none
+{
+    display: none;
+}
+  .cio-popup .hd-val {
+      color: black !important;
+      font-weight: 600;
+  }
+//   .mat-form-field-wrapper {
+//       padding-bottom: 0px !important;
+//   }
+  .pleft10 {
+      padding-left: 10px !important;
+  }
+  .right10per
+  {
+      right :10%;
+  }
+  .checkpos
+  {
+    position: relative;
+    right: 15px;
+    bottom: 5px;
+  }
+  .height60
+  {
+      height:60px;
+  }
+  .height80
+  {
+      height:80px !important;
+  }
+  .borderBottom
+  {
+    border-bottom: 2px solid #d8d8d8;
+    margin-bottom: 5px;
+  }
+
+.tableFixHead thead th 
+{ 
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+.tableFixHead
+{
+::ng-deep .ps__thumb-y
+{
+    top: 40px !important;
+}
+}
+.label-text{
+    font-size: 12px;
+      font-family: WiproAkkuratTT-Bold;
+      color: #9b9b9b;
+      margin-bottom: 4px;
+  }
+  .text-data{
+    font-size: 13px;
+    font-family: WiproAkkuratTT-Bold;
+  }
+  .tableReadonly
+  {
+      tr:nth-child(even)
+      {
+        background-color: #f0f0f0;
+      }
+      td
+      {
+        // padding: 20px 15px !important;
+        font-size: 14px;
+        font-family: WiproAkkuratTT-Regular;
+      }
+      .bold-font
+      {
+        font-family: WiproAkkuratTT-Bold !important; 
+      }
+  }
+  .cio_edit
+  {
+    position: relative;
+    right: 25px;
+  }
+
+  // autocomplete dropdown starts here
+  // tr:last-child .suggestion-box1 {
+  //   bottom: 40px !important;
+  //   top:-85px !important;
+  // }
+  // tr:last-child .suggestion-box2 {
+  //   bottom: 40px !important;
+  //   top:-125px !important;
+  // }
+  // tr:last-child .suggestion-box {
+  //   bottom: 40px !important;
+  //   top:-150px !important;
+  // }
+  // tr:first-child .suggestion-box1 {
+  //   bottom: -85px !important;
+  //   top:40px !important;
+  // }
+  // tr:first-child .suggestion-box2 {
+  //   bottom: -125px !important;
+  //   top:40px !important;
+  // }
+  // tr:first-child .suggestion-box {
+  //   bottom: -150px !important;
+  //   top:40px !important;
+  // }
+  // tr:nth-last-child(2) .suggestion-box1 {
+  //   bottom: 40px;
+  //   top:-85px;
+  // }
+  // tr:nth-last-child(2) .suggestion-box2 {
+  //   bottom: 40px;
+  //   top:-125px;
+  // }
+  // tr:nth-last-child(2) .suggestion-box {
+  //   bottom: 40px;
+  //   top:-150px;
+  // }
+  // tr:nth-last-child(3) .suggestion-box1 {
+  //   bottom: 40px;
+  //   top:-85px;
+  // }
+  // tr:nth-last-child(3) .suggestion-box2 {
+  //   bottom: 40px;
+  //   top:-125px;
+  // }
+  // tr:nth-last-child(3) .suggestion-box {
+  //   bottom: 40px;
+  //   top:-150px;
+  // }
+// autocomplete dropdown ends here
+.pad-bot-65
+{
+  padding-bottom: 65px;
+}
+.mh-107
+{
+    max-height: 107px;
+}
+.mh-50
+{
+    max-height: 50px;
+}
+
+.mf10{
+  margin-left: 10px;
+}
+
+#servicetable{
+  .checkbox-center{
+    position: relative;
+    left: 10px;
+  }  
+}
+#iptable{
+  .checkbox-center{
+    position: relative ;
+    left: 10px;
+  } 
+  .accept-ip{
+      position: relative ;
+      left: 20px;
+  }
+}
+
+@media screen and (max-width: 823px) {
+  .checkbox-center{
+    position: unset !important;
+  }
+  .h150{
+    height: 108px !important;
+  }
+  .right10per{
+      right :0%;
+      margin-top: 5px;
+  }
+  .pd10{
+    padding-left: 10px !important;
+  }
+    .mob_width100
+    {
+        width: 100% !important;
+    }
+    .display-none
+    {
+        display: block !important;
+    }
+    table {
+      border: 0;
+    }
+    table caption {
+      font-size: 1.3em;
+    }
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    table tr:not(:first-child) {
+        border-top: 20px solid #f9f9f9;
+    }
+    table tr {
+      margin-bottom: 0.625em;
+      height: auto !important;
+      // display: inline-block !important;
+      // height: auto !important;
+      position: relative;
+      background-color: white !important;
+      touch-action: pan-y !important;
+    }
+    table td {
+      display: inline-grid;
+      text-align: left;
+      width: 100% !important;
+      float: left;
+      line-height: normal !important;
+      touch-action: pan-y !important;
+    }
+    table th.actionColumn {
+      display: inline-grid;
+      text-align: left;
+      //width: 100% !important;
+      float: left;
+      line-height: normal !important;
+      padding-right: 0px;
+      
+    }
+    table tr th {
+      display: inline-grid;
+      text-align: left;
+      width: 100% !important;
+      float: left;
+      line-height: normal !important;
+      touch-action: pan-y !important;
+      padding-right: 0px;
+     
+     
+    }
+    table td::before,
+    table tr th::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      font-family: WiproAkkuratTT-Regular;
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: -0.3px;
+      color: #9b9b9b;
+    }
+     table th.actionColumn {
+      border-bottom: 0;
+      overflow-x: auto;
+    }
+    .mobile_hide
+    {
+        display: none !important;
+    }
+    .w-80
+    {
+        width: 80%;
+    }
+    .mobile-button-width
+    {
+        width: 100%;
+        float: left !important;
+        margin-top: 20px;
+        display: flex;
+        left : -25px;
+    }
+    .mobile-no_pad
+    {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin-bottom:20px;
+    }
+  }
+  .list-group-item {
+    padding: 0px;
+  }
+
+//   [ngStyle]="(solData.solutionBDMDD).length <= 1?{'max-height':'40px'}:(solData.solutionBDMDD).length == 2?{'max-height':'80px'}:{'max-height':'107px'}"
+
+//Sparsh added to provide space on either side of the card
+@media screen and (min-width: 320px) and (max-width: 1240px) {
+  .businesssolution-page {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+  }
+  .mobile-mb50
+  {
+    margin-bottom: 50px !important;
+  }
+
+}
+
+// .minheight{
+//   min-height: 250px;
+// }
+
+.h150{
+  height: 150px;
+}
+
+::ng-deep #servicetable > perfect-scrollbar > .ps > .ps-content{
+  min-height: 250px !important;
+}
+
+::ng-deep #iptable > perfect-scrollbar > .ps > .ps-content{
+  min-height: 250px !important;
+}
+
+::ng-deep #solutiontable > perfect-scrollbar > .ps > .ps-content{
+  min-height: 250px !important;
+}
+.name
+{
+  margin-bottom: 3px !important;
+  margin-top: 1px;
+}
+.pad-10
+{
+  padding: 10px !important;
+}
+.pd0{
+  padding-left: 0px;
+}
+.commonActionBtnDisabled {
+  border: 1.5px solid #9a9a9a !important;
+  color: #9a9a9a !important;
+  pointer-events: none;
+  opacity: 0.4;
+  background-color: #f9f9f9 !important;
+}
+.border{
+  border: 2px solid #2f81ff!important;
+}
+.auto-close
+{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.mt20
+{
+  margin-top: 20px !important;
+}
+.popup-padding
+{
+  padding: 20px 30px;
+}

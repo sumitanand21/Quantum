@@ -1,0 +1,39 @@
+<ng-container *ngIf="isLoading">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+          <!-- <h2 class="col-12 float-left heading-level-two color-white padng-30 no_pad padding-left0">{{tableTotalCount}} Campaigns </h2> -->
+
+          <div class="parent-container" *ngIf="campaignTable?.length>=1">
+              <app-single-table 
+              (detectActionValue)="performListActions($event)" 
+              (detectPageChangeData) = "onPagination($event)" 
+              [totalTableCount]="tableTotalCount"
+              [TableName]="'completedcampaigns'"
+              [TableCollection]="campaignTable" 
+              [IscheckBoxRequired]= true 
+              [IsActionFixed]= false 
+              [IsFreezedColumn]= true 
+              [IsCreateLead] = false
+              [IsDownload]=userdat.getRoleAccess()
+              [serviceSearch] = true
+              [IsCustomizeTable] = true
+              [paginationPageNumber]= "CompletedCampaignRequestbody"
+              [IsDropBoxRequired] = true
+              [TabName]="'completedcampaigns'"
+              [filterConfigData]="filterConfigData"
+              > </app-single-table>
+              </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="col-12 float-left  no_pad popup-container newchildconvo ">
+    <form [formGroup]="archievedForm">
+        <div class="col-12 float-left  container-dialog">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Archive lead</span>
+                <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close" mat-dialog-close></button>
+            </div>
+            <div class="col-12 float-left border-bottom-grey "></div>
+            <div class="col-12 float-left pad-20-pop">
+                <div class="convo-name-title">Lead name</div>
+                <div class="convo-name mt5" matTooltip="{{leadName}}">{{leadName}}</div>
+            </div>
+            <div class="col-12 float-left border-bottom-grey"></div>
+            <!--datepicker starts-->
+            <div class="col-12  float-left  pad-20-pop ">
+                <label class="col-12  float-left no_pad" for="calStart">Set reminder prompt date *</label>
+                <div class=" col-12  float-left no_pad pos-rel">
+                    <div class="col-12  float-left no_pad cal_brdr">
+                        <div class="col-12  float-left no_pad cust_calan customized-input">
+                            <input class="col-12  float-left " id="calStart" [min]="mindate" (click)="picker6.open()" (keypress)="picker6.open()" [matDatepicker]="picker6"
+                                title="DD-MMM-YYYY" readonly placeholder="DD-MMM-YYYY" formControlName="archievedDate" [ngClass]="{'error': f.archievedDate.invalid && (f.archievedDate.dirty || f.archievedDate.touched)}">
+                            <mat-datepicker-toggle matSuffix [for]="picker6" >
+                                <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker6></mat-datepicker>
+                            <div class="error-modal float-left col-12" *ngIf= "this.archievedForm.controls['archievedDate'].touched && !this.archievedForm.controls['archievedDate'].valid">Please select reminder prompt date</div>
+                            <!-- <div class="error-modal float-left col-12" *ngIf="Dateinvalid">Please select date</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--datepicker ends-->
+            <div class="convo-name-title" id="archive" >Archive remarks * 
+                    <span class="label-form" *ngIf= "textValue.value.length == 0">  (2000 characters)</span>
+                    <span class="label-form" *ngIf= "textValue.value.length > 0 && textValue.value.length < 1999">  ({{ 2000 - textValue.value.length}} characters left)</span>
+                    <span class="label-form" *ngIf= "textValue.value.length === 1999 || textValue.value.length === 2000">  ({{ 2000 - textValue.value.length}} character left)</span>
+            </div>
+            <textarea #textValue class="col-12 float-left mt10 pop-area" aria-labelledby="archive" maxlength="2000"
+            specialIsAlphaNumeric [attr.data-type]="'textareaLength'"
+             placeholder="Enter archive remarks " formControlName="archievedRemarks" [ngClass]="{'error': f.archievedRemarks.invalid && (f.archievedRemarks.dirty || f.archievedRemarks.touched)}"></textarea>
+
+            <div class="error-modal float-left col-12" *ngIf= "this.archievedForm.controls['archievedRemarks'].touched && !this.archievedForm.controls['archievedRemarks'].valid">Please enter the remarks</div>
+            <div class="col-12 float-left border-bottom-grey mt20"></div>
+            <!-- <div class="error-modal float-left col-12" *ngIf="RemarksInvalid"> Kindly fill the remarks</div> -->
+            <!-- <p *ngIf="this.archievedForm.get('archievedRemarks').errors?.range"class="error-modal float-left col-12">Remarks cannot
+                exceed 2500 characters</p>  -->
+            <div class="float-left convo-name-title mt10">This lead will be archived.</div>
+        </div>
+        <div class="col-12 float-left no_pad mt30">
+            <button aria-label="Archive" type="button" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="openarchived()">Archive</button>
+        </div>
+    </form>    
+</div>

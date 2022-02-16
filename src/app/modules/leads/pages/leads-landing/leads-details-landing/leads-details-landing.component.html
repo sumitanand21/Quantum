@@ -1,0 +1,187 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab child-leads-landing">
+    <div class="float-left  ">
+      <div class="d-flex float-left min-max-width">
+        <button class="mdi mdi-arrow-left cp back btn-none no_pad" aria-label="back" (click)="navTo()"></button>
+        <h1 *ngIf="!isHistory" class="float-left heading-level-one txt-small"
+          [ngClass]="LeadStateDetails?.IsNurture || LeadDetailsActionButtons?.restore ? 'tag-heading':'' "
+          matTooltip="{{LeadStateDetails?.Title}}">{{LeadStateDetails?.Title}}</h1>
+        <h1 *ngIf="isHistory" class="float-left heading-level-one txt-small">
+          Lead history</h1>
+        <span class="archive-tag" *ngIf="LeadDetailsActionButtons?.restore">Archived</span>
+        <span class="archive-tag" *ngIf="LeadStateDetails?.IsNurture">Nurtured</span>
+      </div>
+      
+      <div class="w-100 float-left">
+        <div class="d-flex tag pl35 ">
+          <small class="d-md-block d-none tag cp mar-left-25" role="link" tabindex="0"
+            >Leads</small>
+            <!-- [routerLink]="['/leads/unqalified']" -->
+          <span class="mdi mdi-chevron-right d-none d-md-block float-left pt7" *ngIf="isHistory"></span>
+          <small class="d-md-block  tag-title d-none float-left tag cp ellipses"
+            *ngIf="isHistory">{{LeadStateDetails?.Title}}</small>
+          <span class="mdi mdi-chevron-right d-none d-md-block float-left pt7" *ngIf="isHistory"></span>
+          <small class="d-md-block  tag d-none float-left tag cp" *ngIf="isHistory">Lead history</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-right disp-flex web-button" *ngIf="!showCancelSave">
+      <button class="primary-button secondary-btn border-0 h-40 mob mr10 std cancel-responsived-btn button-wd50"
+        (click)="emitActions(true,'cancel')">Cancel</button>
+      <!-- (click)="opencancelpop();" -->
+      <button class="primary-button borderless border-0 h-40 std save-responsive-btn button-wd50"
+        (click)="emitActions(true,'save')">Save</button>
+      <!-- (click)="save()"  -->
+    </div>
+
+    <!-- <div class="loaderContainer col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" *ngIf="isLoading">
+      <div class="loader"></div>
+    </div> -->
+
+    <!-- <div *ngIf="!service.edited"> -->
+    <div *ngIf="showCancelSave">
+      <div class="float-right disp-flex web-button">
+        <button
+          class="svgHover primary-button disqual-btns borderless h-40 mr10 button-width-25 responsive-btn-div-button"
+          (click)="opendisqualify()" *ngIf="LeadDetailsActionButtons?.disqualify && !showArchivedRestoreIcon ">
+          <span class="new-disqualify imgQuali-btn  pr5 responsive-btn-div-span"></span>Disqualify
+        </button>
+        <button
+          class="svgHover primary-button header-btns borderless h-40 mr10 button-width-25 responsive-btn-div-button"
+          (click)="QualifyLead()" *ngIf="LeadDetailsActionButtons?.qualify && !showArchivedRestoreIcon">
+          <span class="new-qualify imgQuali-btn pr5 responsive-btn-div-span"></span>Qualify
+        </button>
+        <button class="primary-button borderless header-btns h-40 button-width-25 mr10 responsive-btn-div-button"
+          (click)="openarchive()" *ngIf="LeadDetailsActionButtons?.archive && !showArchivedRestoreIcon">
+          <span class="mdi mdi-folder-outline pr5 responsive-btn-div-span"></span>Archive
+        </button>
+
+        <button class="primary-button borderless header-btns h-40 mr10 button-wd50 responsive-btn-div-button"
+          (click)="openrestore()" *ngIf="LeadDetailsActionButtons?.restore && showArchivedRestoreIcon">
+          <span class="mdi mdi-restore pr5 responsive-btn-div-span"></span>Restore
+        </button>
+        <!--lead details edit button added-->
+        <button *ngIf="showmoreOptions && showEditbutton && !isHistory"
+          class="col-2 primary-button edit-mb-btn borderless mdi mdi-pencil btn-block h-40 std edit-btn responsive-btn-div-button button-wd100 w-100"
+          (click)="emitActions(true,'edit');showCancelSave=false">
+          Edit
+        </button>
+        <!--lead details edit button added-->
+      </div>
+
+      <div *ngIf="showmoreOptions && isMoreAction">
+        <div class="float-right disp-flex  web-action-button " *ngIf="(!LeadDetailsActionButtons?.restore && !LeadDetailsActionButtons?.nurture && LeadDetailsActionButtons?.opportunity) || isAssignbuttonShow">
+          <!-- MORE ACTION BUTTONS STARTS -->
+          <div class="cust-dropdown-btn mr10 custom-mob-btn mob-more-btn ">
+            <button class="primary-button btn-respon b-no-web pad-0-10 btn-block h-40 pos-rel min-width-161
+                 responsive-btn-div-button color-azure d-flex justify-content-start align-items-center"
+              [ngClass]="showContent?'show-action border-radius0':''" (click)="toggleContent()"
+              (clickOutside)="closeContent()">
+              <span class="mdi mdi-dots-vertical m-r-8 dot-respon more-action-icon"></span>
+              <span class="more-respon">More action
+              </span>
+              <span class="caret d-block caret-respon color-azure">
+              </span>
+            </button>
+            <div *ngIf="showContent" class="pos-rel group-content">
+              <ul class=" dropdown-content pad-0-10 pos-abs z-ind-99 top-2 respon-top">
+                <li *ngIf="isAssignbuttonShow" (click)="openassign()"
+                  class="h-40 cp color-azure line-height-40 noshow-button-list">
+                  <span class=" mdi mdi-account-convert mar-r-10"> </span>
+                  <span>Assign</span>
+                </li>
+                <li (click)="opennurture()" *ngIf="!LeadDetailsActionButtons?.nurture && nurtureVisibility===false"
+                  class="h-40 cp color-azure line-height-40 noshow-button-list" (click)="additem(item)">
+                  <span class=" mdi mdi-crop-square mar-r-10"> </span>
+                  <span>Nurture </span>
+                </li>
+                <li (click)="openopportunity()" *ngIf="LeadDetailsActionButtons?.opportunity"
+                 class="h-40 cp color-azure line-height-40 noshow-button-list"
+                  (click)="additem(item)">
+                  <span class=" mdi mdi-vector-difference-ab mar-r-10"> </span>
+                  <span>Convert to opportunity </span>
+                </li>
+                <li class="h-40 cp line-height-40 color-azure show-button-list"
+                  (click)="additem(item);navigateToHistory()">
+                  <span class=" mdi mdi-history mar-r-10"> </span>
+                  <span>Lead history </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- MORE ACTION BUTTONS ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- main div starts here -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad child-leads-landing">
+  <div class="col-12 pos-abs bg-mid_night h-300 pad-30 res-position-rel"></div>
+  <div class="col-12 padd-all pad-left-right-10 float-left padding-top20 top-22 mar-top-100 mb70 scroll-middle-ios">
+    <router-outlet> </router-outlet>
+  </div>
+
+  <!--mobile sticky buttons-->
+  <div class="float-left col-12 mobile-buttons bg-azure mobile-sticky-btns" *ngIf="showCancelSave && showmoreOptions">
+    <button class="primary-button borderless" *ngIf="showmoreOptions && showEditbutton"
+      (click)="emitActions(true,'edit');showCancelSave=false">
+      <span class="mdi mdi-pencil pr5 w-100 float-left"></span> <span>Edit</span>
+    </button>
+    <button class="primary-button borderless" [ngClass]="!showEditbutton?'width-sticy':''" (click)="opendisqualify()"
+      *ngIf="LeadDetailsActionButtons?.disqualify && !showArchivedRestoreIcon ">
+      <span class="new-disqualify-icon pr5 w-100 float-left"></span> Disqualify
+    </button>
+    <button class="primary-button borderless" [ngClass]="!showEditbutton?'width-sticy':''" (click)="QualifyLead()"
+      *ngIf="LeadDetailsActionButtons?.qualify && !showArchivedRestoreIcon">
+      <span class="new-qualify-icon pr5 w-100 float-left"></span>
+       Qualify
+    </button>
+
+    <button class="primary-button borderless" (click)="showmore = !showmore" (clickOutside)="showmore = false;"
+      [ngClass]="!showEditbutton?'width-sticy':''">
+      <span class="mdi mdi-dots-vertical pr5 w-100 float-left"></span>More actions
+
+    </button>
+    <div class="pos-abs group-content-lead float-right " *ngIf="showmore">
+      <ul class=" dropdown-content-lead pad-0-10  z-ind-99 respon-top no_pad">
+        <li class="h-40 cp color-azure line-height" *ngIf="isAssignbuttonShow" (click)="openassign()">
+          <span class=" mdi mdi-account-convert mar-r-10"> </span> <span>Assign </span>
+        </li>
+        <li (click)="opennurture()" *ngIf="!LeadDetailsActionButtons?.nurture && nurtureVisibility===false"
+          class="h-40 cp color-azure line-height" (click)="additem(item)">
+          <span class=" mdi mdi-crop-square mar-r-10"> </span>
+          <span>Nurture </span>
+        </li>
+        <li (click)="openopportunity()" *ngIf="LeadDetailsActionButtons?.opportunity"
+             class="h-40 cp color-azure line-height" (click)="additem(item)">
+          <span class=" mdi mdi-vector-difference-ab mar-r-10"> </span>
+          <span>Convert to opportunity </span>
+        </li>
+        <li class="h-40 cp color-azure  show-mob-list" (click)="openarchive()"
+          *ngIf="LeadDetailsActionButtons?.archive && !showArchivedRestoreIcon">
+          <span class="mdi mdi-folder-outline mar-r-10"></span>
+          <span>Archive</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!--mobile sticky buttons-->
+  <div class="float-left col-12 no_pad mobile-buttons" *ngIf="showCancelSave && showArchivedRestoreIcon">
+    <button type="button" class="col-12 no_pad float-left save-btn mdi mdi-restore "
+      *ngIf="LeadDetailsActionButtons?.restore && showArchivedRestoreIcon" (click)="openrestore()"><span
+        class="marl-5">Restore</span></button>
+  </div>
+
+  <div class="float-left col-12 no_pad mobile-buttons" *ngIf="!showCancelSave">
+    <button type="button" class="col-6 no_pad float-left cancel-btn"
+      (click)="emitActions(true,'cancel');showCancelSave=true">Cancel</button>
+    <button type="button" class="col-6 no_pad float-left save-btn" (click)="emitActions(true,'save')">Save</button>
+  </div>
+</div>
+
+<!-- main div ends here -->

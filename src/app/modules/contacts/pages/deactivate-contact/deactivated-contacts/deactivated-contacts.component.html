@@ -1,0 +1,57 @@
+<ng-container *ngIf="isLoading">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+          <div class="loaderContainer">
+            <div class="loader"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab conversation-landing">
+    <h1 class="float-left heading-level-one mtop6">Contacts</h1>
+    <div class="float-right disp-flex responsive-btn-div web-action-button" *ngIf="userdat.requestCampaign">
+      <button class="primary-button edit-mb-btn borderless btn-block h-40 std activity-home-mblbtns responsive-btn-div-button button-wd100"
+        (click)="OnClickCreateConatct()">
+        <span class="mdi mdi-account-plus-outline pr5"></span>Create contact
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-12 float-left no_pad conversation-landing complex_table">
+  <div class="col-12 pos-abs bg-mid_night h-415 pad-30"
+    [ngClass]="userdat.tableRecordsChecked == true ? 'h-427':'h-277'"></div>
+    <div class="col-12 pad-30 float-left mar-top-100">
+      <div class="col-12 float-left complex_table unqualified-padding pt50 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+            <div class="parent-container" *ngIf="deactivatedcontactTable?.length>0">
+              <app-single-table 
+                (detectActionValue)="performTableChildAction($event)"
+                (detectPageChangeData)="getNewTableData($event)"
+                 [TableName]="'deactivatedcontacts'"
+                 [totalTableCount]="tableTotalCount"
+                 [TableCollection]="deactivatedcontactTable"
+                 [IscheckBoxRequired]=false
+                 [IsActionFixed]=true
+                 [IsDropBoxRequired]=true
+                 [TabName]="'deactivatedcontacts'"
+                 [IsFreezedColumn]=true
+                 [Isativate]=true
+                 [IsEdit]=false
+                 [AllBtnLable]="btnLabel"
+                 [serviceSearch]=true 
+                 [IsCustomizeTable]=true
+                 [paginationPageNumber]="AllInActiveContactsRequestbody"
+                 [IsDownload]=userdat.getRoleAccess()
+                 [filterConfigData]="filterConfigData">
+              </app-single-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="col-12 float-left  no_pad ipmoreoption ">
+
+        <div class="col-12 float-left  container-dialog servicemoreoption no_pad tcvpopup">
+            <div class="col-12 float-left mt20 no_pad popup-hd">
+                <span class="col-11 float-left  search-db-hd-txt" mat-dialog-title>Change TCV</span>
+                <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn negLeft15 right-10" aria-label="close"
+                    mat-dialog-close></button>
+            </div>
+    
+            <div class="col-12 no_pad popup-tabs">
+                <div class="row col-12 no_pad pad-top float-left">
+                    <div class="col-6 col-lg-3 col-xl-3 text-center ">
+                        <button aria-labelledby="Wipro" class="btn  btn-circle mb-5"
+                            [ngClass]="{'btn-default bg-light text-primary': tcvRemarks == false ,'btn-primary text-light': tcvRemarks == true}"
+                            role="tab" [attr.aria-selected]="tcvRemarks ? 'true':''" (click)="additionalInfo1()">
+                            <span class="mdi mdi-comment-processing-outline"></span></button>
+                        <br>
+                        <span class="text-fontpop" id="Wipro">TCV change remarks</span>
+                        <div class="popup-tabs-arrow" *ngIf="tcvRemarks"></div>
+                    </div>
+    
+                    <div class="col-6 col-lg-3 col-xl-3 text-center mr-lt ">
+                        <button aria-labelledby="database" class="btn btn-circle mb-5"
+                            [ngClass]="{'btn-default bg-light text-primary': tcvDetails == false ,'btn-primary text-light': tcvDetails == true}"
+                            role="tab" [attr.aria-selected]="tcvDetails ? 'true':''" (click)="servicevalue1()"> <span
+                                class="mdi mdi-cash-multiple"></span></button>
+                        <br>
+                        <span class="text-fontpop" id="database">TCV change details</span>
+                        <div class="popup-tabs-arrow" *ngIf="tcvDetails"></div>
+                        </div>
+                </div>
+            </div>
+    
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt-90" *ngIf="tcvRemarks"> 
+                <perfect-scrollbar style="max-height:250px" class="z-ind-9">
+                <!-- Select DROPDOWN STARTS -->
+                <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 float-left plb-0-10">
+                    <label for="select1" class="w-100">Change occurred *</label>
+                    <div class="col-11 customized-select no_pad">
+                        <span class="caret color-azure"></span>
+                        <select id="select1" role="listbox" name="TCVChnagedOccured" [(ngModel)]="selectedChanged">
+                            <option selected hidden disabled value="">Select</option>
+                            <option *ngFor="let item of ChangeOccuredDD" [value]="item.Id">{{item.Name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3 float-left plb-0-10">
+                    <div class="col-12 customized-input leftNeg15">
+                        <label for="field1" class="w-100">TCV change %</label>
+                        <input id="field1" type="text" class="col-12 col-lg-9 col-xl-9 border-gray w-100" name="TCVPercchnage" [(ngModel)]="TCVPerc" placeholder="00.00" disabled>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 right-2">
+                            <label class="col-12 text-label mt10 no_pad">Reason for change*</label>
+                            <!-- <textarea class="col-10 float-left no_pad h100" 
+                            placeholder="Pre-Lorem ipsum dolor sit amet, aliquam consectetur adipiscing elit. Nullam at eros vitae nulla blandit ullam."></textarea> -->
+                           
+                            <textarea class="col-10 float-left input-text h100" maxlength="2000" [appAlphaNumeric] = "'text'"
+                              id="text3" name="textAreaTCV" placeholder="Enter the reason for change" [(ngModel)]="Reason" type="text"></textarea>                    
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+            </div>        
+    
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-90" *ngIf="tcvDetails">
+                <perfect-scrollbar style="max-height:250px" class="z-ind-9">
+                <div class="col-12 no_pad float-left"> 
+                    <!-- Table starts here -->
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt10">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Change occurred</th>
+                                    <th >TCV change (%)</th>
+                                    <th>Reasons for change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of TCVChangesdetails">
+                                    <td [attr.data-label]="'Date'">
+                                      <label class="">{{data.createdon | date: 'dd-MMM-yyyy'}}</label>    
+                                    </td>
+                                    <td [attr.data-label]="'Change occurred'"> <label class="">{{data.WiproChangeoccurred}}</label> </td>
+                                    <td [attr.data-label]="'TCV change (%)'">  <label class="">{{data.WiproChangepercentage}}</label></td>
+                                    <td [attr.data-label]="'Reasons for change'"> <label class="">{{data.WiproReason}}</label> </td>                                
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Table ends here -->
+                </div>
+                </perfect-scrollbar>
+            </div>
+    
+        </div>
+    </div>
+    
+    <div class="col-12 float-left no_pad ipmoreoption" *ngIf="tcvRemarks">
+        <button aria-label="save" class="col-12 float-left no_pad confrm-btn-save "
+            [ngClass]="tcvDetails?'':'bg-azure-p'" (click)="saveTCVPopUP()">Save</button>
+    </div>

@@ -1,0 +1,330 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #0c0707;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+
+.blue_patch {
+  position: absolute;
+  height: 120px;
+  width: 100%;
+  background-color: #0e3570;
+}
+
+.rfc_heading {
+  font-size: 24px !important;
+}
+.rfc-card {
+  padding: 10px 30px 30px 30px;
+  margin-top: 30px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 0px;
+}
+
+.emptydiv {
+  width: 100%;
+  height: 2px;
+  // background-color: #f9f9f9;
+  position: relative;
+  margin-top: 20px;
+  border: 2px solid #f9f9f9;
+}
+
+.input_50 {
+  margin-top: 50px;
+}
+
+.top_btn {
+  border: none;
+  // color: black;
+  background-color: #ffffff;
+  width: auto;
+}
+
+.footer_btn {
+  background-color: #d9e9ff;
+  color: #0e3570;
+  overflow: hidden;
+  border: 0px;
+  border-radius: 4px;
+  padding: 5px;
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+  height: 185px;
+}
+
+.button_1 {
+  padding-left: 0px;
+}
+
+.footer_btn:hover {
+  background-color: #2f81ff;
+  color: white;
+}
+
+.font_style_regular {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+}
+
+.font_style_bold {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+}
+
+.span_pad {
+  padding: 15px;
+}
+
+.input_top {
+  margin-top: 30px;
+}
+
+.span_pad_2 {
+  padding: 0 15px 15px 15px;
+}
+
+.reset_btn {
+  color: #2f81ff;
+  border-radius: 5px;
+  border: 2px solid #2f81ff;
+  background-color: white;
+  padding: 7px 20px;
+  width: 110px;
+}
+.reset_btn:hover {
+  color: white;
+  border-radius: 5px;
+  border: 2px solid #2f81ff;
+  background-color: #2f81ff;
+  padding: 7px 20px;
+  width: 110px;
+}
+
+.view_details_footer_btn {
+  background-color: #ddefef;
+  color: #2f81fffc;
+  padding: 9px 15px 9px 10px;
+  border: none;
+  border-radius: 5px;
+  width: auto;
+}
+
+.span_mar {
+  margin-right: 10px;
+}
+
+.opp_count {
+  text-align: right;
+  color: #2f81ff;
+}
+
+.reset_div {
+  margin-right: 15px;
+}
+.bg_black {
+  color: black;
+}
+.bg_white {
+  color: #2f81ff;
+}
+.block-disp {
+  display: block;
+  position: relative;
+}
+.mb-100 {
+  margin-bottom: 100px !important;
+}
+.pad-30 {
+  padding: 30px;
+}
+
+.second_card {
+  // changes for 23-12-2019
+  .pad-45 {
+    padding: 0px 45px 0 0px;
+  }
+  .pad-25-40 {
+    padding: 0 25px 0 40px;
+  }
+  .heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 18px;
+    color: #000 !important;
+    letter-spacing: -0.4px;
+  }
+  .table-title {
+    background: #e6f3f9;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: $NavyBlue;
+    height: 34px;
+    padding: 7px 10px;
+  }
+  .pad-5-10 {
+    padding: 5px 10px;
+  }
+  .pad-20-25 {
+    padding: 20px 30px 0 25px;
+  }
+  .brd-right {
+    border-right: 2px solid #eee;
+  }
+  .brd-left {
+    border-left: 2px solid #eee;
+  }
+  table {
+    width: 100%;
+    margin-top: 3px;
+
+    tr th {
+      // background: #e6f3f9;
+      height: 35px;
+      color: $Black;
+      font-family: WiproAkkuratTT-Regular;
+      font-size: 12px;
+    }
+
+    .br-tl {
+      border-radius: 5px 0 0 0;
+    }
+
+    .br-tr {
+      border-radius: 0 5px 0 0;
+    }
+
+    .brdr-lr {
+      border-left: 2px solid white;
+      border-right: 2px solid white;
+    }
+
+    .brdr-left {
+      border-left: 2px solid white;
+    }
+
+    .brdr-right {
+      border-right: 2px solid white;
+    }
+    .br-tlr {
+      border-radius: 5px 5px 0 0;
+    }
+
+    td,
+    th {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr td {
+      height: 50px;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: WiproAkkuratTT-Regular;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #f0f0f080;
+    }
+
+    td tr {
+      background-color: inherit;
+    }
+  }
+
+  p.no_data {
+    margin: 60px auto;
+    border: 2px solid red;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 4px;
+    padding: 12px 10px;
+    color: red;
+  }
+  //////////////////////////////slim scroll css starts-------------------------->
+  .scroll-window {
+    width: 100%;
+    max-height: 180px;
+    font-size: 13px;
+    font-size: 15px;
+    // line-height: 30px;
+    line-height: unset;
+  }
+  .slimscroll-grid {
+    display: none !important;
+  }
+  .slimscroll-bar {
+    width: 7px !important;
+    right: 0px !important;
+    background: #bab6b6 !important;
+    z-index: 8 !important;
+    height: 65.223px !important;
+  }
+  .slimscroll-bar:hover {
+    background: #bab6b6 !important;
+  }
+  //////////////////////////////slim scroll css ends-------------------------->
+}
+//without scroll table starts
+.tasklist-table th {
+  padding: 8px 20px;
+  color: #103f86;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Bold";
+  font-weight: normal;
+}
+
+.tasklist-table td {
+  padding: 15px 20px;
+  font-family: "WiproAkkuratTT-Regular";
+  font-size: 14px;
+  color: $Black;
+}
+.tasklist-table thead tr {
+  background: #d9e9ff;
+}
+
+.tasklist-table tbody tr {
+  background: #f3f5f9;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #e2e0e0;
+}
+
+.tasklist-table tbody tr:last-child {
+  border-bottom: none;
+}
+//without scroll table ends
+.pad-b-20 {
+  padding: 0 0px 20px 0px;
+}
+.z-ind-1 {
+  z-index: 1;
+}
+.right_pad {
+  padding-right: 60px;
+}
+
+.left_pad {
+  padding-left: 60px;
+}
+@media screen and (min-width: 823px) {
+  .allianceTable-home tbody tr:nth-child(even) {
+    background: white !important;
+  }
+}

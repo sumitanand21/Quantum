@@ -1,0 +1,102 @@
+<!-- 
+<button (click)="openSaveViewModal()"> pop up </button> -->
+
+
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab ">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left all-opportunity-container no_pad">
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad">
+                <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 float-left no_pad">
+                    <button class="float-left mdi mdi-keyboard-backspace cp back-buttonbg" (click)="goBack()"  role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+                    <div class="col-11 float-left">
+                        <h1 class="col-12 no_pad float-left heading-level-one ">Opportunities</h1>
+
+                        <span class="col-12 no_pad float-left brudcrumbs">Sales > Opportunities</span>
+                    </div>
+
+                </div>
+
+
+                <div class="float-right disp-flex responsive-btn-div web-action-button">
+                    <button aria-label="create opportunity"
+                        class="primary-button borderless btn-block button-wd100 h-40 std responsive-btn-div-button mt2">
+                        <span class="mdi mdi-vector-difference-ab pr5"></span>Create opportunity
+                    </button>
+                </div>
+                <!-- <div class="col-12 no_pad float-left mb20">
+                        <div class="float-left">
+                           
+                        </div>
+                        <div class="float-right downloadOppo">
+                            <div class="float-right disp-flex downloadButton">
+                                <button aria-label="download" class="standard-border mdi mdi-download  pr5 color-white">
+                                </button>
+                            </div>
+        
+                        </div>
+            </div> -->
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-290">
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad all-opportunity-container padd-top-130 mt20"
+    [ngClass]="service.sideTrans ? 'main-containt-250' : 'main-containt'">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 pt0 top-24">
+
+
+
+
+        <div class="no_pad float-right ">
+
+            <!-- <app-custom-tab-dropdown [tabList]="tabList" [selectedTab]="selectedTabValue" (TabSelectEvent)="appendConversation($event)"> </app-custom-tab-dropdown> -->
+
+
+
+
+
+            <!-- <span class="mdi mdi-arrow-down-bold pr5"></span> -->
+
+            <div class="float-right responsive-btn-div web-action-button web-button btn-allopportunity saveBtn">
+                <button aria-label="Save view" class="primary-button-bgBlue pad-9-30   " (click)="openSaveViewModal()">
+                    Save view
+                </button>
+                <button aria-label="download" class="primary-button-bgBlue downloadbtn">
+                    <span class="mdi mdi-download"></span>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left ">
+
+            <div class="parent-container" *ngIf="AllOpportunityTable.length>0">
+                <app-single-table (detectActionValue)="performTableChildAction($event)" [TableName]="'allopportunities'"
+                    [TableCollection]="AllOpportunityTable" [IscheckBoxRequired]=true [IsActionFixed]=true
+                    [IsFreezedColumn]=true [IsAssign]=true [IsSuspend]=true [IsEstimateDate]=true [IsShare]=true
+                    [IsTabList]="tabList" (selectedValue)="appendConversation($event)"
+                    [TabValueSelected]="selectedTabValue"
+                    [paginationPageNumber]="paginationPageNo"
+                    [totalTableCount]="tableTotalCount"
+                    > </app-single-table>
+            </div>
+
+
+        </div>
+
+
+
+        <!-- <div class="float-left col-12 no_pad mobile-buttons">
+              <button aria-label="Export view" class="col-6 no_pad float-left cancel-btn">Export view</button>
+              <button aria-label="Opportunity" class="col-6 no_pad float-left save-btn" (click)="createopportunity()">Opportunity</button>
+          </div> -->
+
+
+    </div>
+
+</div>

@@ -1,0 +1,64 @@
+<div class="col-12 float-left  no_pad popup-container accountOwn DashboardParent">
+
+    <div class="col-12 float-left ">
+        <div class="col-12 float-left popup-hd">
+            <span class="col-11 float-left  no_pad heading-level-two" mat-dialog-title>Consolidated performance dashboard - {{data.Username}}</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+    </div>
+
+      
+
+  <div class="col-12 col-lg-12 col-sm-12 col-md-12 mt30 float-left">
+    <perfect-scrollbar>
+     <table class="table1 width100">
+        <thead *ngFor="let data of thead">
+            <tr>
+                <th rowspan="2" class="Emptyth">{{data.rowspan1}}</th>
+                <th rowspan="2" class="Emptyth">{{data.rowspan2}}</th>
+                <th rowspan="2" class="Emptyth">{{data.rowspan3}}</th>
+                <th colspan="2" class="colspanth">{{data.colspan1}}</th>
+                <th colspan="2" class="colspanth">{{data.colspan2}}</th>
+                <th colspan="2" class="colspanth">{{data.colspan3}}</th>
+                <th colspan="2" class="colspanth">{{data.colspan4}}</th>
+                <th colspan="2" class="colspanth">{{data.colspanTotal}}</th>
+            </tr>
+            <tr>
+                <th class="rowspanth">{{data.Q1thead1}} <span class="border_row"></span></th>
+                <th class="rowspanth">{{data.Q1thead2}} </th>
+                <th class="rowspanth">{{data.Q2thead1}} <span class="border_row"></span></th>
+                <th class="rowspanth">{{data.Q2thead2}} </th>
+                <th class="rowspanth">{{data.Q3thead1}} <span class="border_row"></span></th>
+               <th class="rowspanth">{{data.Q3thead2}} </th>
+                <th class="rowspanth">{{data.Q4thead1}} <span class="border_row"></span></th>
+                <th class="rowspanth">{{data.Q4thead2}} </th>
+                <th class="rowspanth">{{data.Totalthead1}} <span class="border_row"></span></th>
+                <th class="rowspanth">{{data.Totalthead2}} </th>
+            </tr>
+        </thead>
+            <tbody>     
+                <tr *ngFor="let data of tablerow">
+                    <td>{{data.SAPaccount}}</td>
+                    <td>{{data.Accountname}}</td>
+                    <td>{{data.Geo}}</td>
+                    <td class="td_left_shadow">{{data.Q1thead1}} <span class="border_td"></span></td>
+                    <td class="td_right_shadow">{{data.Q1thead2}}</td>
+                    <td class="td_left_shadow">{{data.Q2thead1}} <span class="border_td"></span></td>
+                    <td class="td_right_shadow">{{data.Q2thead2}}</td>
+                    <td class="td_left_shadow">{{data.Q3thead1}} <span class="border_td"></span></td>
+                    <td class="td_right_shadow">{{data.Q3thead2}}</td>
+                    <td class="td_left_shadow">{{data.Q4thead1}} <span class="border_td"></span></td>
+                    <td class="td_right_shadow">{{data.Q4thead2}}</td>
+                    <td class="td_left_shadow">{{data.Totalthead1}}<span class="border_td"></span></td>
+                    <td class="td_right_shadow">{{data.Totalthead2}}</td>
+                </tr>
+            </tbody>
+     </table>
+    </perfect-scrollbar>
+   </div>
+
+</div>

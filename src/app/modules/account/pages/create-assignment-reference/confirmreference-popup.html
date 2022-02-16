@@ -1,0 +1,47 @@
+<!--<div class="col-12 float-left  no_pad popup-container ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title>Confirm reference creation</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey1"></div>
+        <div class="col-12 float-left  no_pad">
+            <span class="col-12 float-left  no_pad logo-hd-popup padt-20">Are you sure you want to create a new assignment reference request for "{{data.dataKey.accountName}}" </span>
+
+            <span class="col-12 float-left  no_pad txt-style padt-20 color-black">Additional comments *</span>
+            <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left Padd-5 h-40 input-text-popup" id="text3" [(ngModel)]="refcomment"
+                name="text" type="text" placeholder="Type here"></textarea>
+            <p *ngIf="refcomment === ''" class="error-message custom-msgdate">Additional comments is mandatory</p>
+        </div>
+    </div>
+    <div class="col-12 float-left no_pad">
+        <button aria-label="Confirm" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="submitAssignmentRef();">Confirm</button>
+    </div>
+</div>-->
+
+
+<!--july 6th vd chethana starts-->
+<div class="col-12 float-left  no_pad popup-container ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txtsize popup-hd-size" mat-dialog-title>Are you sure you want to create a new assignment reference request for "{{data.dataKey.accountName}}" </span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" (click)="toastcancel1()"></button>
+        </div>
+        <!--<div class="col-12 float-left border-bottom-grey1"></div>-->
+        <div class="col-12 float-left  no_pad">
+            <!--<span class="col-12 float-left  no_pad logo-hd-popup padt-20">Are you sure you want to create a new assignment reference request for "{{data.dataKey.accountName}}" </span>-->
+
+            <span class="col-12 float-left  no_pad txt-style color-black" id="text3">Additional comments </span>
+            <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left Padd-5 h-40 input-text-popup" aria-labelledby="text3" [(ngModel)]="refcomment" name="text" type="text" placeholder="Enter additional comments"></textarea>
+            <!--<p *ngIf="refcomment === ''" class="error-message custom-msgdate">Additional comments is mandatory</p>-->
+        </div>
+    </div>
+    <!--<div class="col-12 float-left no_pad">
+        <button aria-label="Confirm" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="submitAssignmentRef();">Confirm</button>
+    </div>-->
+    <div class="col-12 float-left no_pad">
+        <button class="col-6 float-left no_pad cancel-btn1" aria-label="NO" (click)="toastcancel1()" mat-dialog-close>No</button>
+        <button aria-label="YES" (click)="submitAssignmentRef();" class="col-6 float-left btndef-none no_pad confrm-btn">Yes</button>
+    </div>
+</div>
+<!--july 6th vd chethana ends-->

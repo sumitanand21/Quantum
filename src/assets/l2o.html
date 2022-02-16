@@ -1,0 +1,29 @@
+<html>
+<head>	
+	<script language="javascript">
+		
+		function onBodyLoad()
+		{
+			let url = window.location.href.split("#");
+			console.log(url);
+			// var prmstr = window.location.search.substr(1).split("=");
+			// console.log(prmstr[1])
+			document.getElementById("mytext").value = url[1];
+
+			document.wittyChatForm.submit()
+		}
+	</script>
+</head>
+
+<body onload="javascript:onBodyLoad();">
+<!--form name = "wittyChatForm" action="https://qawittychat.wittyparrot.com/embed/" method="post" target="wittyChatFrame"> -->
+
+<!-- After changr URL from witty side. -->
+ <form name = "wittyChatForm" action="https://qawittychat.wipro.com/chatapi/wittyparrot/api/wpchat/embed" method="post" target="wittyChatFrame"> 
+
+  <input type="hidden" id="mytext" name = "signed_request" value="">
+</form>
+
+<iframe name="wittyChatFrame" width="100%" height="100%" style="border:none" ></iframe>
+</body>
+</html>

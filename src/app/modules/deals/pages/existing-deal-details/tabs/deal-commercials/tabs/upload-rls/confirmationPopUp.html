@@ -1,0 +1,23 @@
+<div class="col-12 float-left  no_pad popup-container newchildconvo " *ngIf="showconfirmpopup" alert="dialog" tabindex="0">
+  <div class="col-12 float-left  container-dialog">
+    <div class="col-12 float-left  no_pad popup-hd">
+      <span class="col-10 float-left  no_pad popup-hd-txt">Confirmation</span>
+      <button class="float-left no_pad border-0 mdi mdi-window-close close-icn cp" aria-label="close"
+        mat-dialog-close></button>
+    </div>
+    <div class="col-12 float-left border-bottom-grey "></div>
+
+
+    <div class="float-left convo-name-title desc-color mt10">
+      Existing entered data will be removed. Do you want to continue?
+    </div>
+  </div>
+
+  <div class="col-12 float-left no_pad mt30">
+    <!-- <button aria-label="No" class="col-6 float-left no_pad cancel-btn" mat-dialog-close>No</button>
+          <button (click)="popupYes()"aria-label="Yes" class="col-6 float-left btndef-none no_pad confrm-btn mr0 mt0">Yes</button> -->
+    <button aria-label="No" class="col-6 float-left no_pad cancel-btn" [mat-dialog-close]="false">No</button>
+    <button aria-label="Yes" class="col-6 float-left border-0 no_pad confrm-btn mr0 mt0"
+      (click)="Upload()">Yes</button>
+  </div>
+</div>

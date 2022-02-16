@@ -1,0 +1,16 @@
+<div class="col-12 float-left  no_pad popup-container commentbox">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-11 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title>Save changes</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn close_bottom5" aria-label="close" mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey1"></div>
+       <div class="textarea_readonly col-12 float-left padt-20 no_pad">
+        <textarea class="form-control vision_txt_area_placeholder" ngModel="" #newListItem1
+          name="newListItem1" rows="6" placeholder="Write your comments here.."></textarea>
+      </div>
+    </div>
+    <div class="col-12 float-left no_pad">
+        <button aria-label="Done" (click)="service.accounttoast('Successfully saved')" class="col-12 float-left btndef-none no_pad confrm-btn" mat-dialog-close  [routerLink]="['/accounts/accountcreation/activerequest']">Done</button>
+    </div>
+</div> 

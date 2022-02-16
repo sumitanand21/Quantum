@@ -1,0 +1,92 @@
+<div class="col-12 float-left  no_pad db-container">
+
+    <div class="col-12 float-left  container-dialog">
+      <div class="col-12 float-left  no_pad popup-hd">
+        <span class="col-10 float-left  no_pad search-db-hd-txt" mat-dialog-title>Create activity group</span>
+        <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+          mat-dialog-close (click)="onNoClick()"></button>
+      </div>
+  
+      <div class="col-12 float-left border-bottom-grey"></div>
+      <form [formGroup]="ActivityTypeForm">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20 ">
+          <label for="empty" class="w-100 label-form">New activity group <span class="required"> * </span></label>
+          <div class="pos-rel w-100 float-left no_pad">
+            <input id="empty" autocomplete="off" type="text" class="border-gray w-100 agenda-txt-activity" value=""
+              placeholder="Enter activity group" formControlName="newActivityGroup"
+              [ngClass]="{'error': f.newActivityGroup.invalid && (f.newActivityGroup.dirty || f.newActivityGroup.touched)}">
+            <p *ngIf="f.newActivityGroup.touched && !f.newActivityGroup.valid" class="error-message top-40"> Please
+              enter new activity group </p>
+  
+            <!-- <p *ngIf="newActivityGroup.errors?.pattern" class="error-message top-40">Please enter valid data</p> -->
+          </div>
+        </div>
+  
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationT1"
+            class="label-form"> Activity type <span class="required"> *</span></label>
+          <div class="customized-select">
+            <span class="caret color-azure"></span>
+            <select id="CoversationT1" role="listbox" (change)="appendActivityType($event)" formControlName="activityType"
+              [ngClass]="{'error': f.activityType.invalid && (f.activityType.dirty || f.activityType.touched)}" aria-required="true">
+              <option value="" disabled>Select activity type</option>
+              <option *ngFor="let item of ActivityType" [value]="item.Id">{{item.Value}}
+            </select>
+            <p *ngIf="f.activityType.touched && !f.activityType.valid" class="error-message top-40"> Please
+              select activity type </p>
+          </div>
+        </div> -->
+  
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20">
+  
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accName" class="label-form">
+              Account name *</label>
+            <div class="pos-rel w-100 float-left no_pad">
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="accName"
+                name="CompanyName" type="text" autocomplete="off" placeholder="Enter account name"
+                (click)="showCompanySwitch = true" formControlName="accountName" disabled
+                [ngClass]="{'error': f.accountName.invalid && (f.accountName.dirty || f.accountName.touched)}">
+              <p *ngIf="f.accountName.touched && !f.accountName.valid" class="error-message top-40"> Please
+                enter account name </p>
+            </div>
+            <span class="mdi mdi-magnify magnify-activity"></span>
+<!--   
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad z-ind-9  mt-10"
+              *ngIf="ActivityTypeForm.value.accountName && showCompanySwitch ">
+              <ul class=" list-group color-azure autocomplete-box">
+                <perfect-scrollbar style="max-height:100px">
+                  <li class="list-group-item" (click)="appendAccontName(item.Name, item)"
+                    *ngFor="let item of companyDetails |filter:ActivityTypeForm.value.accountName">
+                    <span class="d-block list-name"> {{item.Name}} </span>
+                    <span class="sub-list d-block"> Anubhav Jain | Singapore | Vertical1 </span>
+                  </li>
+  
+                  <li class="d-block list-name h-40 p-10"
+                    *ngIf="(companyDetails |filter:ActivityTypeForm.value.accountName).length == 0">
+                    No record found </li>
+                </perfect-scrollbar>
+                <li class="db-search mr2" (click)="openSearchDBPopup()">
+                    <button type="button">
+                      <span class="mdi mdi-database-search"></span> Search D&B
+                    </button>
+                  </li>
+              </ul>
+            </div> -->
+  
+          </div>
+        </div>
+      </form>
+      <div class="col-12 float-left border-bottom-grey mt-20"></div>
+  
+      <span class="mt-20 float-left">Are you sure you want to create this activity group?</span>
+  
+    </div>
+  
+    <div class="col-12 float-left no_pad mt-20">
+      <button aria-label="create" class="col-12 float-left btndef-none no_pad confrm-btn"
+        (click)="CreateActivity()" [disabled]="create">Create</button>
+    </div>
+  
+  </div>
+  

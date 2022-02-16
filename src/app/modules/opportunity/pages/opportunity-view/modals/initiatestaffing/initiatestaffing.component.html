@@ -1,0 +1,54 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-opportunity staff-initiate ">
+
+    <div class="col-12 float-left mb20">
+
+      <div class="col-12 float-left  no_pad popup-hd">
+        <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Initiate staffing for opportunity</span>
+        <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn close-icn" aria-label="close"
+          mat-dialog-close></button>
+      </div>
+
+      <div class="col-12 float-left mt10 border-bottom-grey"></div>
+
+      <div class="col-12 float-left mt20 no_pad" *ngIf="!dataInfo.allcheck">
+        <span class="col-12 no_pad float-left textcomment">
+          Staffing could not be initiated for this opportunity since one of the
+          following criteria is not met:
+          </span>
+      </div>
+      <!--will be art of wave 3-->
+      <!--<div class="col-12 float-left no_pad">
+      <button class="btn-none col-1 float-left">
+       <span class="mdi" [ngClass]="!dataInfo.winprobabilityCheck?'icon-wrongfont mdi-close-circle-outline':'icon-correctfont mdi-check-circle-outline'"></span></button>
+      <span class="col-11 float-left textcomment mt15 left-10">
+          Win probability is greater than 10% </span>
+      </div>-->
+
+       <div class="col-12 float-left no_pad">
+        <button class="btn-none col-1 float-left mxwidth">
+          <span class="mdi" [ngClass]="!dataInfo.forCasteCheck?'icon-wrongfont mdi-close-circle-outline':'icon-correctfont mdi-check-circle-outline'"></span></button>
+        <span class="col-11 float-left textcomment mt15 left-10">
+            Opportunity forecasted as Commit or Upside </span>
+        </div>
+
+      <div class="col-12 float-left no_pad">
+          <button class="btn-none col-1 float-left mxwidth">
+            <span class="mdi" [ngClass]="!dataInfo.estDateCheck?'icon-wrongfont mdi-close-circle-outline':'icon-correctfont mdi-check-circle-outline'"></span></button>
+          <span class="col-11 float-left textcomment mt15 left-10">
+              Estimated closure date is 180 days or lesser from today</span>
+      </div>
+
+      <div class="col-12 float-left no_pad">
+            <button class="btn-none col-1 float-left mxwidth">
+               <span class="mdi" [ngClass]="!dataInfo.sapCheck?'icon-wrongfont mdi-close-circle-outline':'icon-correctfont mdi-check-circle-outline'"></span></button>
+            <span class="col-11 float-left textcomment mt15 left-10">
+                SAP code is selected for the opportunity </span>
+      </div>
+
+    </div>
+
+    <div class="col-12 float-left no_pad ">
+      <button aria-label="OK" class="col-12 float-left btndef-none no_pad confrm-btn" [disabled]="!dataInfo.allcheck" [ngClass]="!dataInfo.allcheck ?'disableAssign':''" (click)="onNoClick()">OK</button>
+    </div>
+
+  </div>

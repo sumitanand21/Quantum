@@ -1,0 +1,28 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  opportunity-landing-container no_pad pt0">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad top-24">
+  
+    <h2 class="float-left heading-level-two color-white pos-abs">{{TeamsTable.length}} team members</h2>
+    
+    <div class="parent-container new-resp-tbl" *ngIf="TeamsTable.length>0">
+        <app-editable-expansion-table
+        (detectActionValue)="performTableChildAction($event)" 
+        [TableName]="'teamDeal'"
+        [TableCollection]="TeamsTable" 
+        [IsFreezedColumn]= true 
+        [IsActionFixed]=true
+        [IsCustomizeTable] = true
+        [IscheckBoxRequired]= true 
+        [ConfigData]="configData" 
+        [IsInitialsRequired]=true
+        [IsEditWholeTable]=false
+        [IsEdit]=true
+        [IsDelete]=true
+        
+        >
+      </app-editable-expansion-table>
+
+      
+    </div>
+
+  </div>
+</div>

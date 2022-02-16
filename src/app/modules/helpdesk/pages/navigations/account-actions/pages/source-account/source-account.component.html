@@ -1,0 +1,121 @@
+<!--parent div-->
+<div class="col-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12 float-left mt40 no_pad ">
+  <!--upper div-->
+  <div class="float-left col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card pad_upperdiv">
+
+    <span class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 heading-level-three mt10 mb10">Source Account
+    </span>
+
+    <!--for select and text-->
+    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+      <!-- Vertical Mobile -select starts here -->
+      <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 float-left mobile-select-box">
+        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="vertical"
+          class="label-form ml5">
+          Vertical
+        </label>
+        <div class="customized-select">
+          <span class="caret color-azure"></span>
+          <select id="Vertical" role="listbox">
+            <option value="option1">option1</option>
+            <option value="option2">option2</option>
+            <option value="option3">option3</option>
+          </select>
+        </div>
+      </div> -->
+      <!-- Vertical Mobile -select end here -->
+      <!-- Vertical Web-select starts here-->
+      <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 float-left web-select-box select_pad">
+        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad" for="Vertical">
+          Vertical</label>
+        <mat-form-field class="col-12 no_pad float-left">
+          <mat-label>Select</mat-label>
+          <mat-select class="select-focus" disableOptionCentering panelClass="Select-panel-class">
+            <mat-option value="option1">option1</mat-option>
+            <mat-option value="option2">option2</mat-option>
+            <mat-option value="option3">option3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+      <!-- <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"> -->
+        <!-- Vertical Mobile -select starts here by pritika--> 
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CurrentVerticalOwner"
+              class="label-form">Vertical
+            </label>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+              <div class="flex-grow-1">
+                <!--<app-auto-complete-select [source]="newverticalOwner" [dataHeader]="dataHeaderVerticalOwner" [labelName]="'Childorder'" (content)="newgetVerticalOwnerData($event)"
+                [Placeholder]="'Enter vertical'" [selectedObj]="selectedVerticalOwnerObj"
+                [Isdisabled]=false [IsApiCall]=false [details]="SourceVertical" [detailsId]="'SourceVerticalMapGuid'"
+                [MandtErrorFlag]="SourceVertical">
+              </app-auto-complete-select>-->
+                <app-auto-complete-select [requiredField]="false" [source]="newverticalOwner" [dataHeader]="dataHeaderVerticalOwner" [selectedObj]="selectedVerticalOwnerObj" 
+                  (content)="newgetVerticalOwnerData($event)" (SelectedData)="newselectedVerticalOwner($event)"
+                  [IsinitialsView]=false
+                  [details]="newVerticalOwnerName" [detailsId]="newVerticalOwnerSysGuid" [labelName]="'CurrentVerticalOwner'"
+                  [Placeholder]="'Select vertical'" [Isdisabled]=false [IsApiCall]=true
+                  [isSearchLoader]='isSearchLoader' (advanceLookUp)="advanceLookUpSearch($event)">
+                </app-auto-complete-select>
+              </div>
+            </div>
+            <!-- <p *ngIf="createFormErrorCheck && form_create.verticalSales.invalid" class="col-12 no_pad float-left validation-text manditary-cls">Vertical sales owner is required.</p> -->
+          </form>
+        </div>
+      <!--Vertical Web select ends here by pritika-->
+
+      <!--Text by pritika -->
+      <div class="float-left col-sm-12 col-md-6 col-lg-6 col-xl-6 plb-60-20">
+        <span class="textspan">
+          Select account(s) which you would like to merge from the table below
+          <br>
+          (To merge the sub accounts of selected accounts, they should be selected explicitly)
+        </span>
+      </div>
+      <!--Ending text by pritika-->
+    </div>
+    <!--end for select and text-->
+  </div>
+  <!--end upper div-->
+
+  <!--single table div-->
+
+  <div class="col-12 float-left pt0 no_pad">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 float-left no_pad">
+
+        <div class="parent-container" *ngIf="accountListServ.sourceAccountData.length > 0">
+          <app-single-table
+           (detectActionValue)="performTableChildAction($event)"
+
+            (detectPageChangeData)="getNewTableData($event)" 
+           
+            [TableName]="'SourceAccount'"
+          
+            [TableCollection]="accountListServ.sourceAccountData" 
+            
+            [bgParentColor]="'bgWhiteContainer'" 
+            
+            [IscheckBoxRequired]=true
+            
+
+            [totalTableCount]="tableTotalCount" 
+            [SourceAccount]=true
+            [paginationPageNumber]="sourceAccountTableRequest"
+            [serviceSearch]=true >
+            <!--[enableTableSearch]=true-->
+            <!--[filterConfigData]="filterConfigData">-->
+
+          </app-single-table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<!--end parent div-->

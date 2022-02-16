@@ -1,0 +1,223 @@
+<div class="col-6 float-right no_pad pagination mr20 hidemobile" *ngIf="IsPaginationRequired">
+  <div class="col-12 no_pad float-right web-dropdown" *ngIf="totalTableCount > 0">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-12 float-right no_pad">
+
+      <div class="float-right no_pad pagination  mb10 " [ngClass]="IsCustomizeTable? 'mr20':''">
+
+        <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="pageChangeEvent($event)">
+
+          <div class="custom-pagination">
+            <div class="pagination-previous d-flex" [class.disabled]="p.isFirstPage()">
+
+              <span class="label center-align l-h-40" *ngIf="filterBox?.length==0">{{1
+              + (p.getCurrent() -
+              1)*config.itemsPerPage}}&nbsp;
+                <span *ngIf="!p.isLastPage()"> -
+                  {{config.itemsPerPage*p.getCurrent()}}</span>
+                <span *ngIf="p.isLastPage() &&((p.getTotalItems()-(p.getCurrent() - 1)*config.itemsPerPage)) != 1 ">
+                  - {{ p.getTotalItems()}}
+                </span>
+                <span class="ml5" *ngIf="filterBox?.length==0">
+                  of <span *ngIf="p.getTotalItems() <= 5000">{{p.getTotalItems()}}</span>
+                  <span *ngIf="p.getTotalItems() > 5000">5000+</span>
+                </span>
+
+                <span class="ml5" *ngIf="filterBox?.length>0">of
+                  {{userdat.pseudoFilter?.length}}</span>
+              </span>
+
+              <div class="d-flex pagination-status" *ngIf="!((userArray | filter : searchItemLC)?.length == 0)"
+                [ngClass]="filterBox?.length>0 ? 'disable-button-filter':''">
+                <button aria-label="previous page" matTooltip="Previous page" (click)="p.previous()"
+                  [disabled]="p.isFirstPage()"
+                  class="standard-border mdi mdi-chevron-double-left mLeft10"></button>
+
+                <div class="pagination-status">
+
+                  <button *ngIf="p.isLastPage() && (config.currentPage - 2) > 0  "
+                    (click)="p.setCurrent(config.currentPage - 2)">
+
+                    <span>{{ config.currentPage - 2 }} </span>
+                  </button>
+                  <button *ngIf="config.currentPage - 1 > 0  && (config.currentPage-1) < p.getLastPage()  "
+                    (click)="p.setCurrent(config.currentPage - 1)">
+
+                    <span>{{ config.currentPage - 1 }} </span>
+                  </button>
+                  <button class="current" (click)="p.setCurrent(config.currentPage)">
+
+                    <span>{{ config.currentPage }} </span>
+                  </button>
+                  <button *ngIf="config.currentPage + 1 <= p.getLastPage() "
+                    (click)="p.setCurrent(config.currentPage + 1)">
+
+                    <span>{{ config.currentPage + 1}} </span>
+                  </button>
+                  <button *ngIf="config.currentPage == 1 && (config.currentPage+2) <= p.getLastPage()"
+                    (click)="p.setCurrent(config.currentPage + 2)">
+
+                    <span>{{ config.currentPage + 2}} </span>
+                  </button>
+
+                </div>
+                <button aria-label="next page" matTooltip="Next page" [disabled]="p.isLastPage()"
+                  (click)="p.isLastPage() ? nextPaginationButton() : p.next()"
+                  class="standard-border mdi mdi-chevron-double-right "></button>
+              </div>
+
+            </div>
+          </div>
+
+        </pagination-template>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+  <div class="zui-wrapper" id="new-scroll">
+    <perfect-scrollbar class="zui-scroller">
+      <table class="zui-table tasklist-table allianceTable-home">
+        <thead class="customized-checkbox">
+          <tr>
+            <th *ngFor="let data of headerArray;let i = index" [ngClass]="i==0 ? 'zui-sticky-col' : ''" >
+              <mat-checkbox tabindex="0" aria-label="select" [ngModel]="selectAll" class="float-left mr10 " (change)="checkIfAllSelected($event,'selectAll')"
+                *ngIf="i==0 && IscheckBoxRequired">
+              </mat-checkbox>
+              <span class="span_cls float-left ellipses" title="{{data.title}}" >{{data.title}}</span>
+
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="customized-checkbox">
+          <tr *ngFor="let content of userArray|paginate: config" >
+            <td *ngFor="let data of headerArray;let i = index" [attr.data-label]="data.title" [ngClass]="i==0? 'zui-sticky-col' : ''" 
+              class="width_200" >
+              <mat-checkbox tabindex="0" aria-label="select" [ngModel]="content.isCheccked" class="float-left mr10" (change)="checkIfAllSelected($event,'checkbox',content)" *ngIf="i==0 && IscheckBoxRequired">
+              </mat-checkbox>
+              <span class="span_cls ellipses" title="{{content[data.name]}}" >{{content[data.name]}}</span>
+            </td>
+            <!--Delete icon starts here-->
+            <td class="mob-delIcon">
+              <div class="pos-rel" *ngIf="IsDelete">
+                <button id="delete"
+                      class="btn-none blue_circle_replay commonActionBtn ng-tns-c8-2 ng-star-inserted pad_left_0 cp"
+                      aria-label="delete" (click)="openDelete(content,'delete')"
+                      matTooltip="Delete">
+                      <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-delete"></span>
+                </button>
+                <span class="mobile-del-icon-text">Delete</span>
+                </div>
+            </td>
+            <!--Delete icon ends here-->
+          </tr>
+      
+
+        </tbody>
+      </table>
+      <div class="no-record" *ngIf="!userArray || (userArray && userArray.length == 0)">
+        <p class="mt20" style="text-align:center"> No record found </p>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>
+
+
+<div class="col-12 float-left no_pad mt20" *ngIf="IsPaginationRequired">
+
+  <div class="pos-rel float-left no_pad">
+    <div class="float-left pagin-help" [ngClass]="totalTableCount<=5?'pagin-help-disabled':''">
+      <span class="float-left helpdesk_pagination mdi mdi-arrow-expand-vertical"
+        [ngClass]="totalTableCount<=5?'disabled-span':''"></span>
+      <span class="caret_pagination color-azure" [ngClass]="totalTableCount<=5?'disabled-span':''"></span>
+      <select [(ngModel)]="config.itemsPerPage" [ngClass]="totalTableCount<=5 ?'disabled-select':''"
+        [attr.disabled]="totalTableCount<=5?'disabled':null" (change)="changeItemsPerPage($event)"
+        class=" float-left helpdesk-select cp">
+        <option value="5">5 Items</option>
+        <option value="10" [attr.disabled]="totalTableCount<=5?'disabled':null">10 Items</option>
+        <option value="15" [attr.disabled]="totalTableCount<=10?'disabled':null">15 Items
+        </option>
+      </select>
+    </div>
+
+  </div>
+  <div class="col-6 float-right no_pad pagination mr20 hidemobile">
+    <div class="col-12 no_pad float-right web-dropdown" *ngIf="totalTableCount > 0">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 float-right no_pad">
+
+        <div class="float-right no_pad pagination  mb10 " [ngClass]="IsCustomizeTable? 'mr20':''">
+
+          <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="pageChangeEvent($event)">
+
+            <div class="custom-pagination">
+              <div class="pagination-previous d-flex" [class.disabled]="p.isFirstPage()">
+
+                <span class="label center-align l-h-40" *ngIf="filterBox?.length==0">{{1
+                + (p.getCurrent() -
+                1)*config.itemsPerPage}}&nbsp;
+                  <span *ngIf="!p.isLastPage()"> -
+                    {{config.itemsPerPage*p.getCurrent()}}</span>
+                  <span *ngIf="p.isLastPage() &&((p.getTotalItems()-(p.getCurrent() - 1)*config.itemsPerPage)) != 1 ">
+                    - {{ p.getTotalItems()}}
+                  </span>
+                  <span class="ml5" *ngIf="filterBox?.length==0">
+                    of <span *ngIf="p.getTotalItems() <= 5000">{{p.getTotalItems()}}</span>
+                    <span *ngIf="p.getTotalItems() > 5000">5000+</span>
+                  </span>
+
+                  <span class="ml5" *ngIf="filterBox?.length>0">of
+                    {{userdat.pseudoFilter?.length}}</span>
+                </span>
+
+                <div class="d-flex pagination-status" *ngIf="!((userArray)?.length == 0)"
+                  [ngClass]="filterBox?.length>0 ? 'disable-button-filter':''">
+                  <button aria-label="previous page" matTooltip="Previous page" (click)="p.previous()"
+                    [disabled]="p.isFirstPage()"
+                    class="standard-border mdi mdi-chevron-double-left mLeft10"></button>
+
+                  <div class="pagination-status">
+
+                    <button *ngIf="p.isLastPage() && (config.currentPage - 2) > 0  "
+                      (click)="p.setCurrent(config.currentPage - 2)">
+
+                      <span>{{ config.currentPage - 2 }} </span>
+                    </button>
+                    <button *ngIf="config.currentPage - 1 > 0  && (config.currentPage-1) < p.getLastPage()  "
+                      (click)="p.setCurrent(config.currentPage - 1)">
+
+                      <span>{{ config.currentPage - 1 }} </span>
+                    </button>
+                    <button class="current" (click)="p.setCurrent(config.currentPage)">
+
+                      <span>{{ config.currentPage }} </span>
+                    </button>
+                    <button *ngIf="config.currentPage + 1 <= p.getLastPage() "
+                      (click)="p.setCurrent(config.currentPage + 1)">
+
+                      <span>{{ config.currentPage + 1}} </span>
+                    </button>
+                    <button *ngIf="config.currentPage == 1 && (config.currentPage+2) <= p.getLastPage()"
+                      (click)="p.setCurrent(config.currentPage + 2)">
+
+                      <span>{{ config.currentPage + 2}} </span>
+                    </button>
+
+                  </div>
+                  <button aria-label="next page" matTooltip="Next page" [disabled]="p.isLastPage()"
+                    (click)="p.isLastPage() ? nextPaginationButton() : p.next()"
+                    class="standard-border mdi mdi-chevron-double-right "></button>
+                </div>
+
+              </div>
+            </div>
+
+          </pagination-template>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

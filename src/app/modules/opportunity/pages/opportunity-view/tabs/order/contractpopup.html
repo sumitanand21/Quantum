@@ -1,0 +1,30 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity">
+
+        <div class="col-12 float-left container-dialog">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left no_pad popup-hd-txt col-size" mat-dialog-title>Contract not available
+                </span>
+                <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close close-icn discard-close-btn" aria-label="close" mat-dialog-close (click)="onNoClick()"></button>
+            </div>
+
+            <div class="col-12 float-left border-bottom-grey"></div>
+
+            <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad">
+
+                <!-- Select DROPDOWN STARTS -->
+                <div class="col-12 no_pad float-left  mt-20 pr-10 ">
+                    <!--<label for="approvalType" class="float-left w-100 label-form mb20">Contract is not initiated in ICM. To proceed for order
+                            booking submission, create a contract in ICM. </label>-->
+                         <label for="approvalType" *ngIf="data ? data.WarningMsg ? data.WarningMsg : false : false" class="float-left w-100 label-form mb20">{{data.WarningMsg}}</label>
+                         <label for="approvalType" *ngIf="data ? data.show_label ? data.show_label : false : false" class="float-left w-100 label-form mb20">
+                             Contract is not initiated in ICM. To proceed for order booking submission, create a contract in ICM.
+                         </label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 float-left no_pad">
+            <button aria-label="OK" class="col-12 float-left btndef-none no_pad confrm-btn" mat-dialog-close>OK</button>
+        </div>
+    </div>

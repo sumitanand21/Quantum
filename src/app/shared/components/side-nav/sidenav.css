@@ -1,0 +1,235 @@
+// **************************SIDE NAV STARTS*****************************//
+.collapser{
+  position: fixed;
+  z-index: 999;
+  .mdi-chevron-left:before, .mdi-chevron-right:before {
+    // content: "\F141";
+    color: #2f81ff;
+    font-size: 20px;
+  }
+  button{
+    background: white;
+    z-index: 999;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    top: 24px;
+    left: 77px;
+    transition:all 0.5s ease ; 
+    outline: none;
+  }
+  .icon-slide{
+    left: 230px !important;
+    transition: 0.5s;
+    // animation: iconSlide .8s;
+  }
+  @keyframes iconSlide{
+    0%{opacity: 0}
+    50%{opacity: 0}
+    70%{opacity: 0.5}
+    100%{opacity: 0.87}
+  }
+
+}
+.sidenav {
+  min-height: 100vh;
+  width: 100px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  color: #4a4a4a;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  // padding-top: 60px;
+  box-shadow: 0 2px 10px 0 rgba(180, 179, 179, 0.3);
+
+  .mdi{
+    cursor: pointer;
+    // display: inline-flex;
+  }
+  .hidden{
+    display: none;
+   
+   transition:all 0.5s ease ;
+   }
+     
+   .Account-Details {
+    
+   opacity: 0.87;
+   font-size: 14px;
+   font-weight: normal;
+   font-style: normal;
+   font-stretch: normal;
+   line-height: 1.43;
+   letter-spacing: normal;
+  //  color: #000000;
+   margin-left: 30px;
+  //  transition:opacity 2s ease-out;
+    animation: fadein_menu 1s;
+    position: relative;
+    top: -4px;
+   }
+   .tooltip_s{
+     width: 0px;
+   }
+   a {
+     position: relative;
+    .tooltiptext {
+      visibility: hidden;
+      right: -1px;
+      width: 100px;
+      background-color: $DeepBlue;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 78%;
+      font-size: 12px;
+      /* left: 50%; */
+      margin-left: -60px;
+      line-height: 1.5;
+      animation: fadeout_Tooltip 1s;
+    }
+    @keyframes fadeout_Tooltip{
+      // 30%{opacity: 0.3}
+      // 50%{opacity: 0.5}
+      // 75%{opacity: 0.8}
+      // 100%{opacity: 1}
+      100%{opacity: 0.3}
+      75%{opacity: 0.5}
+      50%{opacity: 0.8}
+      5%{opacity: 1}
+    }
+    .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: $DeepBlue transparent transparent transparent;
+    }
+   }
+   .sideBarExpand a:hover.tooltiptext{
+    display: none !important;
+   }
+  a:hover .tooltiptext {
+    visibility: visible;
+  }  
+}
+@keyframes fadein_menu{
+  0%{opacity: 0}
+  50%{opacity: 0}
+  70%{opacity: 0.5}
+  100%{opacity: 0.87}
+}
+.appleCircle{
+  border-radius: 50%;
+  background: #cfcfcf;
+  font-size: 20px !important;
+  color: #fff !important;
+  height: 50px;
+  width: 50px;
+  margin-left: 23px;
+  margin-top: 12px;
+  min-height: 50px !important;
+  line-height: 50px !important;
+}
+.sidenav a {
+  min-height: 53px;
+  text-decoration: none;
+  font-size: 23px;
+  color: #4a4a4a;
+  display: block;
+  padding-left:36px;
+  // transition: 0.3s;
+  max-height: 70px;
+  // text-align: center;
+  line-height: 53px;
+}
+
+
+// .sidenav a:hover {
+//   color: #c2c0c0; lakshman commented oct 25
+// }
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+  background: $LightBlue; 
+}
+#descri{
+  display: none;
+}
+.sideBar{
+  width: 95px;
+}
+.sideBar.sideBarExpand{
+  width:250px;
+}
+.openBtn{
+  margin-left: 0px;
+}
+.openBtn.sideBarBtnExpand{
+  margin-left: 150px;
+}
+.active-link{
+  // border-left: 4px solid;
+  // padding-left: 28px !important;
+  font-family: 'WiproAkkuratTT-Bold' !important;
+  background-color: $BlueSoftBG !important;
+  color:  $DeepBlue !important;
+}
+
+
+.sidenav{
+
+    a{
+
+      &:hover{
+
+        font-family: 'WiproAkkuratTT-Bold' !important;
+        background-color: $BlueSoftBG !important;
+        color:  $DeepBlue !important;
+
+      }
+    }
+    .ac-head{
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 20px;
+      letter-spacing: 0.2px;
+      color: #000000;
+    }
+    .ac-desc{
+      font-size: 12px;
+      line-height: 1.33;
+      letter-spacing: 0.4px;
+      color: #9b9b9b;
+    }
+    .disp-flex{
+      display: flex;
+    }
+    .acchd{
+      margin-left: 15px;
+      padding-top: 19px;
+      p{
+        margin: 0px;
+      }
+    }
+}
+
+// **************************SIDE NAV ENDS*****************************//

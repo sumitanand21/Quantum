@@ -1,0 +1,102 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab">
+    <h1 class="float-left heading-level-one">Deals</h1>
+    <div class="float-right disp-flex responsive-btn-div web-action-button web-buttons">
+      <!-- MORE ACTION BUTTONS STARTS -->
+      <!-- <div class="cust-dropdown-btn mr10" *ngIf="router.url.includes('/deals/deal/existing')">
+        <button class="primary-button borderless pad-0-10 btn-block h-40 std pos-rel min-width-161
+                               responsive-btn-div-button color-azure d-flex justify-content-start align-items-center"
+          [ngClass]="showContent?'show-action':''" (click)="toggleContent()" (clickOutside)="closeContent()">
+          <span class="mdi mdi-dots-vertical m-r-8"></span> More actions <span class="caret d-block color-azure">
+          </span>
+        </button>
+        <div *ngIf="showContent" class="pos-rel">
+          <ul class=" dropdown-content pad-0-10 pos-abs z-ind-99 top-2 respon-top b-top min-width-161">
+            <li   class="h-40 cp color-azure line-height-40" [routerLink]="['/deals/pastDeal']">
+              <span class=" mdi mdi-more m-r-5"> </span> <span>Past deal </span>
+            </li>
+            <li  class="h-40 cp color-azure line-height-40" [routerLink]="['/deals/rlsView']">
+              <span class="mdi mdi-table-large m-r-5"> </span> <span>RLS view</span>
+            </li>
+          
+          </ul>
+        </div>
+      </div> -->
+      <!-- MORE ACTION BUTTONS STARTS -->
+      <button class="primary-button border-0 btn-block button-wd100 h-40 std web-tab responsive-btn-div-button"
+        (click)="clearOppContent()" *ngIf="showCreate">
+        <span class="mdi Create-deal pr5"></span>Create deal
+      </button>
+      
+    </div>
+    <div class="float-left col-12 no_pad mobile-buttons bg-azure">
+     
+      <button class="primary-button borderless deal-btn"
+        (click)="clearOppContent()" *ngIf="showCreate">
+        <span class="mdi Create-deal pr5 w-100 float-left"></span>
+        <span class="pr5 w-100 float-left">Create deal</span>
+      </button>
+      
+    </div>
+
+  </div>
+</div>
+<div class="col-12 float-left no_pad conversation-landing complex_table pad-top-66">
+  <!-- [ngClass]="service.tableRecordsChecked == true ? 'h-475': service.topbuttons == true ?'h-475':'h-388'" -->
+  <div class="col-12 pos-abs bg-mid_night pad-30 h-388" [ngClass]="router.url === '/deals/deal/tagged' ? 'blue-H-223' : ''">
+  </div>
+
+  <div class="col-12 float-left no_pad">
+
+    <div class="col-12 ptop-20 no_pad vertical-btns-div flex-tab pad-top-66">
+      <div class="col-lg-11 col-md-8 col-12 no_pad flex-tab-width max-wid-tabDeal mb-15">
+        <button class="col-lg-3 col-sm-4 col-md-4 col-4 sub-vertical-but brd-right0 " [routerLink]="['tagged']"
+          routerLinkActive="active">
+          <span class="no_pad mdi mdi-pin calin-select-all pr5 pos_rel top-2"></span>
+          <span class=" no_pad btntxt-s pos-btn">
+            Tagged
+            <span class="d-none d-md-inline-block">opportunities</span>
+          </span>
+        </button>
+
+        <!-- <button [attr.aria-selected]="suitetab ? true : '' "
+          class=" col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but  " [routerLink]="['actionList']"
+          routerLinkActive="active" (click)="userdat.checkFalse()">
+          <span class="no_pad calin-select-all mdi mdi-comment-check-outline pr5 pos_rel top-2"></span>
+          <span class="no_pad btntxt-s pos-btn">
+            Actions</span>
+        </button> -->
+
+        <button class="col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but" [routerLink]="['existing']"
+          routerLinkActive="active">
+          <span class="calin-select-all mdi mdi-more pr5 pos_rel top-2"></span>
+          <span class=" no_pad btntxt-s pos-btn">
+            Existing
+            <span class="d-none d-md-inline-block">deals</span>
+          </span>
+        </button>
+      </div>
+    </div>
+    
+    <ng-container *ngIf="isLoading; else elseTemplate">
+      <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+            <div class="loaderContainer">
+              <div class="loader"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!-- <button [routerLink]="['/deals/existingTabs']">existingTabs</bu'p97tton> -->
+     
+    <ng-template #elseTemplate>
+        <div class="pad-30 pt-0">
+      <router-outlet></router-outlet>
+    </div>
+    </ng-template>
+
+  </div>
+</div>

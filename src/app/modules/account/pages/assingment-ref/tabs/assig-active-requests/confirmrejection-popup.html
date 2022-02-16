@@ -1,0 +1,30 @@
+<div class="col-12 float-left  no_pad popup-container ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-11 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title>Reject account</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+                mat-dialog-close ></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey1"></div>
+        <div class="col-12 float-left  no_pad">
+            <span class="col-12 float-left  no_pad logo-hd-popup2 padt-20">Are you sure you want to reject the creation of account? </span>
+        </div> 
+        <div class="col-12 no_pad float-left"> 
+            <!--<div class="customized-select paddtop-25">
+                <span class="mdi mdi-chevron-down color-azure caretpopup"></span>
+                <select id="CoversationT1" role="listbox" class="marbtm-45" [(ngModel)]="selectBox">
+                    <option value="{{item.id}}" *ngFor="let item of data.configdata[accservive.cachedArray[0].subProp[1]]">{{item.name}}</option>
+                   
+                </select>
+            </div>-->
+        </div>
+        <div class="col-12 float-left  no_pad">
+            <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text-popup"
+                id="text3" name="text" [(ngModel)]="overallcomment" type="text" placeholder="Type here"></textarea>
+        </div>
+    </div>
+    <div class="col-12 float-left no_pad">
+        <button aria-label="done" class="col-12 float-left btndef-none no_pad confrm-btn"  (click)="ConfirmComment();" >Done</button>
+    </div>
+</div>
+

@@ -1,0 +1,401 @@
+// alex css starts
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+$DarkBlack : #2e2e2e;
+
+.h-178 {
+  height: 227px;
+}
+
+.mt-126{
+  margin-top: 126px;
+}
+.card {
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 0px !important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.pad-20 {
+  padding: 20px 20px;
+}
+.heading-level-two {
+  font-family:WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color:$White;
+  letter-spacing: -0.4px;
+}
+.m-right16 {
+  margin-right: 16px;
+}
+.m-left13 {
+  margin-left: 13px;
+}
+.m-left16 {
+  margin-left: 16px;
+}
+.brudcrumbs {
+  // position: relative;
+  // left: 8px;
+  // bottom: 18px;
+  opacity: 0.8;
+  font-size: 12px;
+  color: #e7ebf2;
+}
+.heading-custom {
+  position: relative;
+  left: 30px;
+}
+
+.mdi-keyboard-backspace:before {
+  content: "\F30D";
+  font-size: 22px;
+  position: relative;
+  bottom: 4px;
+  color: #ffff;
+  // position: relative;
+  // bottom: 40px;
+}
+
+.web-alpha-caret {
+  color: #ffff;
+  position: absolute;
+}
+.d-flex {
+  display: flex;
+}
+.pad-create-lead {
+  padding: 3px 13px 20px 13px;
+}
+.heading-level-two{
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color:$DarkBlack
+}
+.border-bottm{
+  border: 1px solid #d8d8d8;
+  height: 2px;
+  margin: 5px 25px 0 25px;
+}
+.mdi-magnify:before{
+  color: $Azure ;
+  font-size: 18px;
+  right: 26px;
+  position: absolute;
+  bottom: 5px;
+}
+.create-mt20 {
+  margin-top: 20px;
+}
+.mar-b30 {
+  margin-bottom: 30px;
+}
+.pad-top20 {
+  padding: 20px 0px 24px 0px;
+}
+.customized-input {
+  input {
+      border: 1.5px solid #e5e5e5;
+      &:focus {
+        border: 1.5px solid  $Azure;
+        outline: none;
+      }
+  }
+  input::placeholder {
+    color: #a7a4a4;
+  }
+}
+.customized-select {
+  position: relative;
+  select {
+    width: 100%;
+    min-height: 40px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    padding: 2px 5px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    &:focus {
+      outline: none;
+      border-color:$Azure;
+    }
+  }
+  select::-ms-expand {
+    // for IE
+    display: none !important;
+  }
+  .caret {
+    top: 17px;
+    right: 16px;
+  }
+}
+.primary-button {
+ 
+  padding: 5px 18px;
+}
+.show-more {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2f81ff;
+}
+::ng-deep .customized-checkbox:first-child .matcheck .mat-checkbox-frame {
+  border-color: #2f81ff !important;
+}
+
+::ng-deep .customized-checkbox:first-child .matcheck.mat-checkbox-checked .mat-checkbox-background {
+  background-color: #2f81ff !important;
+}
+.mdi-download:before {
+  content: "\F1DA";
+  font-size: 22px;
+}
+
+.pt-10{
+  padding-top: 18px;
+  padding-bottom: 9px;
+}
+
+
+//alex css ends
+
+
+
+// Usha disale css starts
+
+.scrollHeight2 {
+  max-height: 250px;
+  overflow-x: hidden;
+  margin: 10px 0px;
+  height: 200px !important;
+  .ps__rail-x {
+    display: none;
+  }
+
+  .ps__thumb-y {
+      height: 100px !important;
+      right: 0px !important;
+  }
+}
+
+// .custom-select-checkbox{
+
+//   .border-azure{
+//     border: 1.5px solid $Azure
+//   }
+
+//   .border-marble{
+//     border: 1.5px solid #d8d8d8;
+//   }
+
+//   .select-input{
+
+ 
+//     font-family: WiproAkkuratTT-Bold;
+//     color:#4a4a4a;
+//     font-size: 14px;
+//     border-radius: 4px;
+
+//     &::placeholder{
+//     font-family: WiproAkkuratTT-Bold;
+//     color:#9b9b9b;
+//     font-size: 14px;
+//     }
+
+//   }
+
+// .multi-check-select {
+//   border-radius: 4px;
+//   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+//   background-color: #ffffff;
+//   position: absolute;
+//   top:64px;
+//   z-index: 9;
+
+//   ul{
+//     li{
+//       list-style-type: none;
+//       height: 40px;
+//       font-family: WiproAkkuratTT-Bold;
+//       font-size: 14px;
+//       color:#000000;
+//       .mat-checkbox {
+        
+//         font-family: WiproAkkuratTT-Bold;
+//         font-size: 14px;
+//         color:#000000;
+
+//         span{
+//           font-family: WiproAkkuratTT-Bold;
+//           font-size: 14px;
+//           color:#000000;
+//         }
+       
+//       }
+//     }
+//   }
+
+// }
+
+// .rotate-180{
+//   transform: rotate(180deg);
+// }
+
+//   .right-26{
+//     right: 26px;
+// }
+// .check-content{
+//   font-family: WiproAkkuratTT-Bold;
+//   font-size: 12px;
+
+// }
+// .color-wash{
+//   color:#9f9f9f;
+// }
+
+// .br-4-0 {
+//   border-radius: 4px 4px 0px 0px;
+// }
+
+// .pt-10{
+//   padding-top: 10px;
+// }
+
+// .close-container{
+//     width: 14px;
+//     height: 14px;
+//     display: inline-block;
+//     line-height: 14px;
+//     border-radius: 4px;
+// }
+
+// }
+
+
+// .multi-check {
+//   // background-color: $White;
+//   // border-radius: 4px;
+//   // box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.3);
+//   position: absolute;
+//   z-index: 9;
+//   z-index: 9;
+//   width: 390px;
+//   top: 66px;
+//   left: 15px;
+// }
+
+// .in-value {
+//   font-weight: normal;
+//   color: $Black;
+//   &:focus {
+//     outline: none;
+//     border-color: $Azure;
+//   }
+// }    
+
+
+// Usha Disale css ends
+.pl20 li{
+  padding-left: 18px;
+}
+.pt10{
+  padding-top: 10px;
+}
+.sort-opened[_ngcontent-c10] span[_ngcontent-c10] {
+  color: #000000 !important;
+}
+.complex_table[_ngcontent-c10] .mdi-close[_ngcontent-c10] {
+  font-size: 15px;
+}
+ .mdi-close {
+  width: 14px;
+  height: 14px;
+  background: #d7d7d7;
+  margin: 0px 5px;
+}
+.multi-check .mdi-close:before {
+  color: #4a4a4a;
+}
+
+// Pradeep changes 10-05-2019
+.radio-fontfamly{
+  color: #2f81ff;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Regular";
+}
+.pad-btm6{
+  padding-bottom: 6px;
+}
+.label-font{
+  font-family: "WiproAkkuratTT-Bold";
+  font-size: 16px;
+}
+
+.customized-input input::placeholder {
+  color: #4a4a4a !important;
+}
+
+ .width-80{
+   width: 80px;
+ }
+
+ .pad-10-20{
+   padding: 10px 20px !important;
+ }
+ .text-center{
+   text-align:center !important;
+ }
+ .widheight{
+  width: 100% !important;
+  height: 55px !important;
+ }
+
+ //loader code start*
+.loader {
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+}
+.loaderContainer {
+width: 100%;
+top:0em;
+position: absolute;
+height: 100%;
+z-index: 9999;
+background: white;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+//loader code end*

@@ -1,0 +1,167 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab "
+        [ngClass]="sidebar?service.sideTrans ? 'main-containt-280-sideleads' : 'main-containt-sideleads':''">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left opportunity-landing-container no_pad">
+            <div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 float-left no_pad heading">
+                <h1 class="heading-level-one mb-0"> Opportunities </h1>
+                <p *ngIf="sidebar"> <span class="cursp" (click)='accountListNav()'> Account list>  </span>  <span class="cursp" (click)='accountNav()'>{{accountName}} </span> >Opportunities</p>
+            </div>
+
+            <!-- web buttons starts here -->
+            <div class="float-right disp-flex responsive-btn-div web-action-button web-button mr10">
+                 <!-- more actions starts here -->
+                <div class="cust-dropdown-btn mr10 no_pad col-md-6">
+                    <button class="primary-button pl90 hoverNone btnrespon borderless pad-0-10 btn-block h-40 std pos-rel leftNeg20
+                 responsive-btn-div-button color-azure d-flex justify-content-start align-items-center "
+                        [ngClass]="{'show-action' : more_clicked, 'disabledclass' : CreateTabFinder  }"
+                        
+                        (click)="toggleContent()"
+                        (clickOutside)="closeContent()" [attr.aria-expanded]="showContent">
+                        <div class="mobileBottom">
+                            <!-- <span class="mdi mdi-dots-vertical m-r-8 dot-respon left60 mdiButton">
+                            </span> -->
+                             <span class="more-respon Actionclass ">More actions</span>
+                            <span class="caret Caretblock caret-respon color-azure caretNone">
+                            </span>
+                        </div>
+                    </button>
+                    <ng-template [ngIf]="showContent">
+                        <ul
+                            class=" dropdown-content width213 pad-0-10 pos-abs z-ind-99 content leftWidth respon-top no_pad b-top more-click-content">
+                            <a [routerLink]="['/opportunity/createopp/opportunityfinder']">
+                                <li (click)='finderNavigateTo()'
+                                    class="list_names border_property mdi mdi-database-search border-botm">
+                                    Opportunity finder</li>
+                            </a>
+                            <!-- <a [routerLink]="['/opportunity/obforecast']" *ngIf="!sidebar">
+                                <li class="list_names border_property mdi mdi-trending-up border-botm">
+                                    OB forecast</li>
+                            </a> -->
+                            <!-- <a [routerLink]="['/opportunity/ReopenApprovals']" *ngIf="sidebar">
+                                <li class="list_names border_property mdi mdi-vector-intersection border-botm">
+                                    Reopen approvals</li>
+                            </a> -->
+                        </ul>
+                    </ng-template>
+                </div>
+                 <!-- more actions ends here -->
+
+                 <!-- create opportunity starts here -->
+                <div class="cust-dropdown-btn mr10 no_pad col-md-6">
+                    <button class="primary-button hoverNone btnrespon borderless pad-0-10 btn-block h-40 std pos-rel leftNeg20 min-width-161
+                 responsive-btn-div-button color-azure d-flex justify-content-start align-items-center"
+                        [ngClass]="{'show-action' : more_clicked, 'disabledclass' : CreateOppTab || accountCreateTab } "
+                        aria-describedby="sr_accessible" (click)="more_clicked = !more_clicked"
+                        (keypress)="more_clicked = !more_clicked" (keydown.enter)="more_clicked = !more_clicked"
+                        (keyup.enter)="more_clicked = !more_clicked" (clickOutside)="more_clicked = false"
+                        [attr.aria-label]="more_clicked ? 'create opportunity selected menu button expanded sub menu' : 'create opportunity menu button collapsed sub menu'">
+                        <div class="mobileBottom">
+                            <span class="mdi mdi-vector-difference dot-respon mdiButton">
+                                <!-- [ngClass]="more_clicked?'show-action':''"  [ngClass]="CreateOppTab2 ?'':'disabledclass'" -->
+                            </span> <span class="more-respon Actionclass left18">Create opportunity</span>
+                            <span class="caret Caretblock caret-respon color-azure caretNone left5"></span>
+                        </div>
+                    </button>
+                    <p class="sr-only" id="sr_accessible">On selecting an option by enter through tab focus from the
+                        list will navigate to the particular page</p>
+                    <ng-template [ngIf]="more_clicked">
+                        <ul class="dropdown-content  pos-abs z-ind-99 leftWidth2  top216 respon-top opportunity-content b-top "
+                            id="menucontainer" role="listbox">
+                            <a (click)="navigateTo('new')" role="option" tabindex="0">
+                                <li class=" border_property mdi mdi-vector-difference-ab">New</li>
+                            </a>
+                            <!-- [routerLink]="['/opportunity/newopportunity']"  -->
+                            <a role="option" tabindex="0" (click)="navigateTo('renewal')">
+                                <li class="border_property mdi mdi-autorenew"> Renewal</li>
+                            </a>
+                            <!-- [routerLink]="['/opportunity/renewal']" -->
+                            <a role="option" tabindex="0" (click)="navigateTo('incremental')">
+                                <li class="border_property mdi mdi-trending-up">Incremental</li>
+                            </a>
+                            <!-- [routerLink]="['/opportunity/incremental']" -->
+                        </ul>
+                    </ng-template>
+                </div>
+                 <!-- create opportunity starts here -->
+            </div>
+            <!-- web buttons ends here -->
+        </div>
+    </div>
+</div>
+
+<!-- main container starts here -->
+<div
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad opportunity-landing-container mobile-mar-150" [ngClass]="sidebar?'mar-top-150':''">
+    <ng-container *ngIf="isLoading">
+        <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                    <div class="loaderContainer">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div [ngClass]="service.topbuttons == true && service.tableRecordsChecked ? 'h-425':'h-473'"
+        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night">
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 top-24"
+        [ngClass]="sidebar?service.sideTrans ? 'main-containt-280-sideleads' : 'main-containt-sideleads':''">
+        <router-outlet></router-outlet>
+    </div>
+  <!-- mobile buttons starts here -->
+  <div class="float-left col-12 mobile-buttons mobile-buttons-opp bg-azure mobile-sticky-btns no_pad">
+    <button class="primary-button borderless h-67" type="button" [attr.aria-expanded]="createshowmore" (click)="createshowmore = !createshowmore"
+        (clickOutside)="createshowmore = false"
+                    [ngClass]="{'show-action' : more_clicked, 'disabledclass' : CreateOppTab || accountCreateTab} "
+        
+         >
+        <span class="mdi mdi-vector-difference pr5 w-100 float-left"></span>Create opportunity
+    </button>
+    <button class="primary-button borderless h-67" type="button" [attr.aria-expanded]="showmore" (click)="showmore = !showmore"
+        (clickOutside)="showmore = false"
+                    [ngClass]="{'show-action' : more_clicked, 'disabledclass' : CreateTabFinder}"
+      
+        >
+        <span class="mdi mdi-dots-vertical pr5 w-100 float-left"></span>More actions
+    </button>
+    <div class="pos-abs group-content-phone float-right left0" *ngIf="createshowmore">
+        <ul class=" dropdown-content-phone pad-0-10 z-ind-99 respon-top no_pad">
+            <a (click)="navigateTo('new')">
+                <li class=" h-40 cp color-azure">New</li>
+            </a>
+            <!-- [routerLink]="['/opportunity/newopportunity']"  -->
+            <a (click)="navigateTo('renewal')">
+                <li class="h-40 cp color-azure">Renewal</li>
+            </a>
+            <!-- [routerLink]="['/opportunity/renewal']" -->
+            <a (click)="navigateTo('incremental')">
+                <li class="h-40 cp color-azure">Incremental</li>
+            </a>
+            <!-- [routerLink]="['/opportunity/incremental']"  -->
+        </ul>
+    </div>
+    <div class="pos-abs group-content-phone float-right" *ngIf="showmore">
+        <ul class=" dropdown-content-phone pad-0-10 z-ind-99 respon-top no_pad">
+            <a [routerLink]="['/opportunity/createopp/opportunityfinder']">
+                <li (click)='finderNavigateTo()' class="h-40 cp color-azure">
+                    Opportunity finder</li>
+            </a>
+            <!-- <a [routerLink]="['/opportunity/obforecast']">
+                <li class="h-40 cp color-azure">
+                    OB forecast</li>
+            </a> -->
+            <!--<a [routerLink]="['/opportunity/ReopenApprovals']">
+                                    <li class="h-40 cp color-azure"> 
+                                    Reopen opportunity</li></a>-->
+        </ul>
+    </div>
+</div>
+<!-- mobile buttons ends here -->
+</div>
+
+  
+<!-- main container ends here -->

@@ -1,0 +1,96 @@
+<div class="col-12 no_pad whiteBackground">
+  <div class="col-12 no_pad float-left">
+    <div class="col-12 cardPadd15">
+      <div class="float-left col-12 no_pad">
+        <mat-accordion class="col-12 no_pad float-left">
+          <mat-expansion-panel class="col-12 no_pad float-left" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Accounts
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="col-12 float-left no_pad w-100 mb20">
+              <button class="col-6 no_pad float-left btn-block-left" [ngClass]="{active: RecentOpened}"
+                (click)="onClick()">
+                <span class="Btn-text mdi mdi-restore-clock">Recently opened</span>
+              </button>
+              <button class="col-6 no_pad float-left btn-block-right" [ngClass]="{active: !RecentOpened}"
+                (click)="onClick()">
+                <span class="Btn-text mdi mdi-sync">Frequently visited</span>
+              </button>
+            </div>
+            <div *ngIf="RecentOpened">
+              <p class="width100  message mt10"> Showing 5 recently visited accounts</p>
+              <div class="width100 tile">
+                <perfect-scrollbar style="max-height:250px;">
+                  <!-- <div class="loaderContainer" *ngIf="isLoadingRecentlyAccounts">
+                    <div class="loader"></div>
+                  </div> -->
+                  <div class="col-12 no_pad inner-tiles"
+                    *ngFor="let details of recentlyOpened | slice:0:5; let i=index">
+                    <div class="col-12 no_pad tiles-btm-brder">
+                      <div class="float-left col-12 no_pad">
+                        <span class="col-12 no_pad float-left tiles-span blue-txt color-azure max-230 ellipses"
+                          title="{{details.accountName}}">{{details.accountName}}</span>
+                      </div>
+                      <div class="float-left col-12 no_pad">
+                        <label for="" class="col-6 no_pad float-left tiles-label">Account ID</label>
+                        <span class="col-6 no_pad float-left tiles-span-sub ellipses"
+                          title="{{details.accountID}}">{{details.accountID}}</span>
+                      </div>
+                      <div class="float-left col-12 no_pad">
+                        <label for="" class="col-6 no_pad float-left tiles-label">Account owner</label>
+                        <span class="col-6 no_pad float-left tiles-span-sub ellipses"
+                          title="{{details.AccountOwner}}">{{details.AccountOwner}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="noRecordsFound" *ngIf="recentlyOpened.length === 0">
+                    No records found.
+                  </div>
+                </perfect-scrollbar>
+              </div>
+            </div>
+            <div *ngIf="!RecentOpened">
+              <p class="width100 message mt10">Showing 5 frequently visited accounts in last quarter.</p>
+              <div class="width100 tile">
+                <perfect-scrollbar  style="max-height:250px;">
+                  <!-- <div class="loaderContainer" *ngIf="isLoadingFrequentlyAccounts">
+                    <div class="loader"></div>
+                  </div> -->
+                  <div class="col-12 no_pad inner-tiles"
+                    *ngFor="let details of frequentlyVisited | slice:0:5; let i=index">
+                    <div class="col-12 no_pad tiles-btm-brder">
+                      <div class="float-left col-12 no_pad">
+                        <span class="col-12 no_pad float-left tiles-span blue-txt color-azure max-230 ellipses"
+                          title="{{details.accountName}}">{{details.accountName}}</span>
+                      </div>
+                      <div class="float-left col-12 no_pad">
+                        <label for="" class="col-6 no_pad float-left tiles-label">Account ID</label>
+                        <span class="col-6 no_pad float-left tiles-span-sub ellipses"
+                          title="{{details.accountID}}">{{details.accountID}}</span>
+                      </div>
+                      <div class="float-left col-12 no_pad">
+                        <label for="" class="col-6 no_pad float-left tiles-label">Account Owner</label>
+                        <span class="col-6 no_pad float-left tiles-span-sub ellipses"
+                          title="{{details.accountOwner}}">{{details.accountOwner}}</span>
+                      </div>
+                      <div class="float-left col-12 no_pad">
+                        <label for="" class="col-6 no_pad float-left tiles-label">Number of visits</label>
+                        <span class="col-6 no_pad float-left tiles-span-sub ellipses"
+                          title="{{details.accountCount}}">{{details.accountCount}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="noRecordsFound" *ngIf="frequentlyVisited.length === 0">
+                    No records found.
+                  </div>
+                </perfect-scrollbar>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

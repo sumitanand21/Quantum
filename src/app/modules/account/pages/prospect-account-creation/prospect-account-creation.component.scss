@@ -1,0 +1,145 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #0e3570;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+
+.prospect-container{
+
+.bg-mid_night{
+    background-color: $MidNight;
+}
+
+
+
+}
+
+.h-235 {
+    height: 235px;
+}
+
+.pad-30{
+    padding:30px;
+    
+}
+
+.top-180{
+    position: relative;
+    top: 180px;
+}
+
+.card-content{
+     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1); 
+    border: 0px !important; 
+    margin-bottom: 60px;
+
+    .label-form{
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 12px;
+        line-height: 1.83;
+        color: #4a4a4a;
+        margin-bottom: 4px;
+    }
+
+    .error-message{
+        font-size:13px;
+    }
+}
+
+.std {
+    padding: 9px 5px;
+    min-width: 110px;
+}
+
+.top64{
+    top:64px;
+}
+
+.h-40{
+     min-height: 40px;
+     }
+.CompanyName .mdi-magnify:before {
+    color: #2f81ff;
+    font-size: 20px;
+    right: 10px;
+    position: absolute;
+    top: 32px;
+}
+
+.padd-top-130{
+    padding-top:100px !important;
+  }
+  .h-335{
+    height:332px;
+  }
+  .padd-top-65 {
+      padding-top:65px !important;
+  }
+  
+  .pad-30{
+    padding:30px;        
+}
+.pt-20 {
+    padding-top:20px;
+}
+.mt-50{
+    margin-top: 50px
+}
+
+.ml5{
+    margin-left: 5px;
+}
+.min-text-height-170{
+    min-height: 170px;
+    resize: none;
+}
+.mb-30{
+    margin-bottom: 30px;
+}
+
+.p-4-10{
+    padding: 4px 10px 8px 0px;
+}
+
+.pad-10{
+    padding: 10px 10px;
+}
+
+.list-group-item{
+    border: 0px !important;
+}
+
+.sort-dropdown{
+    li{
+        &:hover{
+            background-color: #d9e9ff !important
+        }
+    }
+}
+
+.mb2{
+    margin-bottom: 2px;
+}
+
+.border-2{
+    border-right: 2px solid #2f81ff !important;
+}
+
+.b-bottom-2{
+    border-bottom: 2px solid !important;
+}

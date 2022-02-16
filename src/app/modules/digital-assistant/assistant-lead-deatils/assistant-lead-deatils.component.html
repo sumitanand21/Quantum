@@ -1,0 +1,61 @@
+<div class="col-xs-12 no_pad whiteBackground">
+
+  <div class="col-xs-12 no_pad float_lft">
+    <div class="col-12 cardPadd15">
+      <div class="float_lft col-12 no_pad">
+        <mat-accordion class="col-12 no_pad float_lft">
+          <!--Sprint 1 Lead details page DA starts here-->
+          <mat-expansion-panel class="col-12 no_pad float_lft" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span> Customer contacts <span
+                    *ngIf="CustomerContactCount!==-1">({{CustomerContactCount}})</span></span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="width100">
+              <p class="width100" *ngIf="verticalName!==''">List of Wipro Hunting Managers for {{verticalName}}.</p>
+              <table class="col-12 no_pad float_lft customer-contact-table" style="display: block;" *ngIf="huntingManagerList.length >0">
+                <thead>
+                  <tr>
+                    <th class="col-7 no_pad float-left">Hunting manager</th>
+                    <th class="col-2 no_pad float-left">Active acc.</th>
+                    <th class="col-3 no_pad float-left">Reserved acc.</th>
+                  </tr>
+                </thead>
+                <perfect-scrollbar class="viewport" style="max-height:200px;height:200px;">
+                <tbody>
+                  <tr *ngFor="let contact of huntingManagerList ; let i=index">
+                    <td class="col-7 no_pad float-left">
+                      <div class="col-12 no_pad float-left" title="{{contact.huntingManagerName}}">
+                        <span class="oval3 circle_clr float-left" [ngClass]="contact.colorName" type="button"
+                          id="circle_clr" style="height:40px;color:#ffffff;border:none">
+                          {{contact.initials | uppercase }}
+                        </span>
+                        <div class="col-8 no_pad border_property float-left" role="button" tabindex="0"
+                          aria-label="user info">
+                          <span class="col-12 head float-left ellipses">
+                            {{contact.huntingManagerName}}
+                          </span>
+                          <span class="col-12 float-left sub_head">
+                            {{contact.JobTitle ? contact.JobTitle : ''}}
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-2 no_pad float-left font-bold">{{contact.activeAccounts}}</td>
+                    <td class="col-3 no_pad float-left font-bold">{{contact.reservedCounts}}</td>
+                  </tr>
+                </tbody>
+              </perfect-scrollbar>
+              </table>
+              <div class="noRecordsFound" *ngIf="huntingManagerList.length === 0">
+                No records found.
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <!--Sprint 1 Lead details page DA ends here-->
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

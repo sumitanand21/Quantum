@@ -1,0 +1,1085 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$LabelGrey: #4a4a4a;
+$DarkBlack: #2e2e2e;
+
+.error {
+  border: 1.5px solid $RubyRed !important;
+}
+.new-container {
+  .input-border-left {
+    border-left: none !important;
+  }
+  .border-btm {
+    border-bottom: 2px solid;
+  }
+  .border-right {
+    border-right: 2px solid $Azure !important;
+  }
+  .z-ind-9999 {
+    z-index: 8;
+  }
+
+  .z-ind-99 {
+    z-index: 8;
+  }
+  .z-ind-9 {
+    z-index: 9;
+  }
+
+  .mt-8 {
+    margin-top: 8px;
+  }
+
+  .top62 {
+    top: 62px;
+  }
+  .top64 {
+    top: 64px;
+  }
+  .top66 {
+    top: 66px;
+  }
+
+  .pad-30 {
+    padding: 30px;
+  }
+  .mr10 {
+    margin-right: 10px;
+  }
+  .h-40 {
+    min-height: 40px;
+  }
+  .heading-level-one {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 24px;
+    color: $White;
+    margin-top: 5px;
+
+    small {
+      font-family: "WiproAkkuratTT-Regular";
+      font-size: 14px;
+      padding: 0 30px;
+    }
+  }
+  .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+  }
+  .borderless {
+    border: none !important;
+  }
+
+  .h-180 {
+    height: 220px;
+  }
+  .pad-30 {
+    padding: 30px;
+  }
+
+  .card {
+    border-radius: 5px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: $White;
+  }
+
+  .heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color: $DarkBlack;
+  }
+
+  .heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: $Black;
+  }
+
+  .divider {
+    border: 1px solid $Marble;
+  }
+
+  .mt10 {
+    margin-top: 10px;
+  }
+  .mb5 {
+    margin-bottom: 5px !important;
+  }
+  .mt20 {
+    margin-top: 20px;
+  }
+  .mt15 {
+    margin-top: 15px;
+  }
+  .mt40 {
+    margin-top: 40px;
+  }
+  .plb-20-20 {
+    padding: 0px 20px 20px 0px;
+  }
+  .checkbox-label {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: $Metal;
+    line-height: 1.43;
+    letter-spacing: 0.3px;
+  }
+
+  .label-form {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    line-height: 1.83;
+    color: $Metal;
+    margin-bottom: 4px;
+    width: 100%;
+  }
+
+  .CompanyName {
+    .mdi-magnify:before {
+      color: $Azure;
+      font-size: 20px;
+      right: 10px;
+      position: absolute;
+      bottom: 5px;
+    }
+  }
+
+  .h-40 {
+    height: 40px;
+  }
+
+  .w-110 {
+    width: 110px;
+  }
+
+  .attach-btn {
+    height: 40px;
+    width: 110px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+  }
+
+  .add-btn {
+    height: 40px;
+    border-radius: 4px 0 0 4px;
+    border: 1.5px solid $Azure;
+    padding: 3px 6px;
+    background: $White;
+    font-family: WiproAkkuratTT-Bold;
+    color: $Azure;
+    font-size: 18px;
+    z-index: 1;
+    outline: none;
+  }
+
+  .attach-icon {
+    width: 18px;
+    height: 18px;
+    transform: rotate(-90deg);
+    text-align: center;
+    position: relative;
+    right: 6px;
+    font-size: 18px;
+  }
+
+  .record-icon {
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    bottom: 5px;
+    right: 3px;
+  }
+
+  .text-area-content1 {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+    resize: none;
+    border: 1.5px solid $Marble;
+    border-radius: 2px;
+    background-color: #ffffff;
+    height: 270px;
+    padding: 10px;
+  }
+  .rel-top-18 {
+    position: relative;
+    top: -18px;
+  }
+
+  .label-input {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+    padding-right: 33px;
+
+    &:focus {
+      border-color: $Azure !important;
+      outline: none;
+    }
+  }
+
+  .customized-input {
+    input {
+      &:focus {
+        border: 1.5px solid $Azure !important;
+        outline: none;
+      }
+    }
+  }
+  .list-group-item {
+    cursor: pointer;
+    font-size: 12px;
+    color: $Azure;
+    border: none;
+  }
+
+  .top70 {
+    top: 70px;
+  }
+
+  .list-group-item:hover {
+    background-color: $River;
+  }
+
+  .customized-select {
+    position: relative;
+    select {
+      width: 100%;
+      min-height: 40px;
+      border-radius: 5px;
+      // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+      border: 1.5px solid rgba(0, 0, 0, 0.1);
+      padding: 2px 5px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+
+      &:focus {
+        outline: none;
+        border-color: $Azure;
+      }
+    }
+    select::-ms-expand {
+      display: none !important;
+    }
+    .caret {
+      top: 17px;
+      right: 16px;
+    }
+  }
+
+  .record-btn {
+    border: 1.5px solid $Marble;
+    color: $MetalLight;
+    width: 91px;
+    height: 40px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 8px 5px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .record-btn-active {
+    border: 1.5px solid $Azure;
+    color: $Azure;
+    width: 91px;
+    height: 40px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 8px 5px;
+    margin-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: $White;
+      background: $Azure;
+    }
+  }
+  /********** style for auto complete list start ***************/
+  .list-name {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .sub-list {
+    font-size: 10px;
+    color: #9b9b9b;
+    font-family: WiproAkkuratTT-Regular;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.autocomplete-box {
+  top: 0px;
+  font-size: 14px;
+  color: black;
+  background-color: white;
+  border: 1.5px solid $Azure;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: 0.2s;
+
+  .list-group-item {
+    cursor: pointer;
+    height: 50px;
+    padding: 10px;
+  }
+
+  .db-search {
+    height: 40px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #d9e9ff;
+    }
+    button {
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      color: $Azure;
+      outline: none;
+      border: none;
+      background: transparent;
+      text-align: left;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .list-box:hover {
+    background-color: #d9e9ff;
+    cursor: pointer;
+  }
+
+  .btn-none {
+    outline: none;
+    border: none;
+    background: transparent;
+  }
+}
+.z-ind-9 {
+  z-index: 9;
+}
+
+/********** style for auto complete list end ***************/
+
+.p-2-10 {
+  padding: 2px 10px 0px 10px;
+}
+.heading-sub {
+  opacity: 0.8;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px;
+  line-height: 0;
+  color: #e7ebf2;
+}
+.pad-conversation {
+  padding: 18px 30px 30px 30px;
+}
+.btnedit {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: #d9e9ff;
+}
+.btn-sub-mdi {
+  font-size: 16px;
+  text-align: center;
+  color: $Azure;
+}
+.mdi-delete:before {
+  position: relative;
+  right: 8px;
+}
+.mdi-star:before {
+  position: relative;
+  right: 8px;
+}
+.mdi-share-variant:before {
+  position: relative;
+  right: 8px;
+}
+.mt50 {
+  margin: 50px 0 0 0;
+}
+.pad-top-8 {
+  padding-top: 8px;
+}
+.converstion-name {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px !important;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
+  color: $MetalLight !important;
+}
+.converstion-sub-text {
+  width: 196px;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: $DarkBlack;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  // text-transform: capitalize;
+}
+.naming-tags {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+.child-middle {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.bg-azure {
+  background: $Azure;
+}
+.bg-blue {
+  background: #0e356f;
+}
+.bg-green {
+  background: $Green;
+}
+.bg-pink {
+  background: #ee3341;
+}
+
+.initials {
+  color: $White;
+}
+.name {
+  height: 29px;
+  padding: 5px 3px 3px 10px !important;
+  small {
+    position: relative;
+    bottom: 8px;
+    font-size: 10px;
+    color: #9b9b9b;
+  }
+  .tag {
+    font-size: 12px;
+  }
+}
+.button-key {
+  width: 54px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1.5px solid #2f81ff;
+  display: inline-block;
+  color: #2f81ff;
+  text-align: center;
+  margin-top: 15px;
+  padding-bottom: 20px;
+  margin-right: 50px;
+}
+.converstion-hyperlink {
+  width: 300px;
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
+  color: $Azure;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+.checkbox-disable-text {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #4a4a4a;
+}
+.left-50 {
+  left: 50px;
+}
+.naming-tags-square {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px 0 0 4px;
+}
+.name-sq {
+  height: 40px;
+  border-radius: 0 4px 4px 0;
+  align-items: center;
+  display: flex;
+  .mdi {
+    padding: 0 0 0 10px;
+  }
+  .right-0 {
+    right: 0;
+  }
+}
+.pos-rel {
+  position: relative;
+}
+.pl10 {
+  padding-left: 10px;
+}
+.padLR-10 {
+  padding: 0px 10px;
+}
+.border-std {
+  border: 1.5px solid;
+}
+.color-label_gray {
+  color: $LabelGrey;
+}
+.edit-btn {
+  min-width: 88px !important;
+}
+.suggestion-box {
+  border: 1.5px solid $Azure;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  z-index: 8;
+}
+.top64 {
+  top: 64px;
+}
+.cust-label-input {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #4a4a4a;
+  &:focus {
+    border: 1.5px solid $Azure !important;
+    outline: none;
+  }
+}
+.input-text {
+  border-radius: 4px;
+  // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border: 1.5px solid #d8d8d8;
+}
+/********************Datepicker Style Starts****************************/
+.label_heading {
+  opacity: 0.87;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
+  color: $LabelGrey;
+}
+.cal_brdr {
+  .mat-form-field-flex {
+    background-color: #fff;
+    border: 1.5px solid #ccc;
+    border-radius: 4px;
+  }
+  .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.4375em 0;
+    padding-left: 10px;
+    padding-right: 5px;
+    height: 40px;
+  }
+  .mat-form-field-infix {
+    position: relative;
+    border: 0;
+    padding: 3px;
+  }
+  .mdi-calendar-blank:before {
+    color: #2f81ff;
+    font-size: 20px;
+    position: relative;
+  }
+  .mat-icon-button {
+    position: relative;
+    outline: none;
+  }
+  .mat-icon-button:hover {
+    box-shadow: none;
+  }
+  .mat-focused {
+    border-color: transparent !important;
+  }
+}
+
+.mat-form-field > .mat-form-field-wrapper > .mat-form-field-underline > .mat-form-field-ripple {
+  background: $White !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  height: 0px;
+}
+.pos-rel {
+  position: relative;
+}
+.mat-button-focus-overlay {
+  background: none !important;
+}
+.cust_calan {
+  input {
+    border: 1.5px solid #d8d8d8 !important;
+    border-radius: 4px;
+    outline: none;
+    padding-left: 8px;
+    padding: 6px;
+  }
+  .mat-datepicker-toggle {
+    position: absolute;
+    right: 10px;
+  }
+}
+.mat-calendar-header {
+  background-color: #103f86;
+  padding: 1px 0 1px 0 !important;
+  margin-bottom: 12px;
+  border-radius: 4px 4px 0px 0px;
+}
+.mat-calendar-controls {
+  display: flex;
+  margin: 3% calc(33% / 7 - 16px) !important;
+}
+.mat-calendar-previous-button {
+  right: 15em;
+  color: $White !important;
+}
+.mat-calendar-next-button {
+  color: $White !important;
+  right: 0.6em;
+}
+.mat-button .mat-button-wrapper > * {
+  display: none !important;
+}
+.mat-calendar-period-button {
+  min-width: 0;
+  left: 6.8em;
+  color: white;
+  box-shadow: none !important;
+}
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button {
+  box-shadow: none !important;
+}
+.width-280 {
+  width: 280px;
+}
+.mat-datepicker-content {
+  margin-top: 10px;
+}
+.mat-calendar-body-selected {
+  background-color: #2f81ff !important;
+  color: $White !important;
+  border: none !important;
+}
+.mat-calendar-body-today:not(.mat-calendar-body-selected) {
+  background-color: $River !important;
+  color: black !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+}
+.margin-top-20 {
+  margin-top: 20px;
+}
+/********************Datepicker Style ends****************************/
+.add-btn {
+  height: 40px;
+  border-radius: 4px;
+  border: 1.5px solid #d8d8d8;
+  padding: 3px 6px;
+  background: $White;
+  color: #9b9b9b;
+  font-size: 18px;
+  outline: none;
+  &:focus,
+  &:hover {
+    border-color: $Azure;
+    font-family: WiproAkkuratTT-Bold;
+    color: $Azure;
+    outline: none;
+    z-index: 1;
+  }
+}
+.top40 {
+  top: 40px;
+}
+.bluebox {
+  height: 40px;
+  background: #2f81ff;
+  color: #0e356f;
+}
+
+.attach-icon {
+  width: 18px;
+  height: 18px;
+  transform: rotate(-90deg);
+  text-align: center;
+  position: relative;
+  right: 6px;
+  font-size: 18px;
+}
+
+.record-icon {
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+  bottom: 5px;
+  right: 3px;
+}
+
+.text-area-content {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #4a4a4a;
+  resize: none;
+  border: 1.5px solid $Marble;
+  border-radius: 4px;
+  background-color: #ffffff;
+  height: 170px;
+  padding: 10px;
+  outline: none;
+
+  &:focus {
+    border-color: $Azure;
+  }
+}
+.rel-top-18 {
+  position: relative;
+  top: -18px;
+}
+.button-key-edit {
+  width: 54px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1.5px solid #2f81ff;
+  display: inline-block;
+  color: #2f81ff;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.selected-contact .mdi-close{
+  padding-top: 1px !important;
+}
+
+.tagged-box {
+  height: 40px;
+  border-radius: 4px;
+  color: #2f81ff;
+  background-color: #d9e9ff;
+  padding: 10px 5px 0px 10px;
+  width: auto;
+  margin: 5px 0;
+}
+.close-lead {
+  color: $Azure;
+  font-size: 16px;
+}
+.bor-rad-cust {
+  border-radius: 0 4px 4px 0 !important;
+}
+select option {
+  line-height: 20px;
+}
+.mdi-pencil:before {
+  margin-right: 5px;
+}
+.new-container {
+  .cust_autoComplete {
+    input {
+      border: 1.5px solid #d8d8d8;
+      position: relative;
+      border-radius: 4px;
+      padding-right: 35px;
+    }
+  }
+}
+.mobile-buttons {
+  display: none;
+}
+.mobile-blue {
+  color: white;
+  font-size: 22px;
+  height: 30px;
+}
+.bluetxt {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 10px;
+  text-align: center;
+  color: #ffffff;
+  right: 8px;
+}
+.paddingblue {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.cancel-btn {
+  height: 50px;
+  background: $River;
+  color: $Azure;
+  padding: 14px;
+  font-size: 14px;
+  font-family: WiproAkkuratTT-Bold;
+  border: none;
+}
+.save-btn {
+  height: 50px;
+  background: $Azure;
+  color: $White;
+  padding: 14px;
+  font-size: 14px;
+  font-family: WiproAkkuratTT-Bold;
+  border: none;
+}
+.sort-dropdown {
+  background: white;
+}
+.p-4-10 {
+  padding: 4px 10px 4px 10px;
+}
+.btn-key{
+  width: 54px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1.5px solid $Azure;
+  display: inline-block;
+  text-align: center;
+
+  margin-top: 9px;
+  margin-left: 35px;
+}
+/********** style for auto complete list start ***************/
+.list-name {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #000000;
+}
+
+.sub-list {
+  font-size: 10px;
+  color: #9b9b9b;
+  font-family: WiproAkkuratTT-Regular;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.autocomplete-box {
+  top: 0px;
+  font-size: 14px;
+  color: black;
+  background-color: white;
+  border: 1.5px solid $Azure;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: 0.2s;
+
+  .list-group-item {
+    cursor: pointer;
+    height: 50px;
+    padding: 10px;
+  }
+
+  .db-search {
+    height: 40px;
+    cursor: pointer;
+    list-style-type: none;
+
+    &:hover {
+      background-color: #d9e9ff;
+    }
+    button {
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      color: $Azure;
+      outline: none;
+      border: none;
+      background: transparent;
+      text-align: left;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .list-box:hover {
+    background-color: #d9e9ff;
+    cursor: pointer;
+  }
+
+  .btn-none {
+    outline: none;
+    border: none;
+    background: transparent;
+  }
+}
+.z-ind-9 {
+  z-index: 9;
+}
+
+/********** style for auto complete list end ***************/
+.disable-input {
+  background-color: #f3f3f3;
+}
+.pad-l-20 {
+  padding: 0 20px 0 0;
+}
+.fixd-btm {
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+}
+.edit-mobile {
+  display: none;
+}
+.remarks-text {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  line-height: 1.57;
+  color: #343434;
+}
+.remarks-header {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 16px;
+  color: #525252;
+}
+.pad-40-remarks {
+  padding: 20px 30px;
+}
+.brd-btm {
+  border-bottom: 1.5px solid #d8d8d8;
+}
+.margin-btm5 {
+  margin-bottom: 5px !important;
+}
+
+.plb-60-20 {
+  padding: 0 60px 20px 0;
+}
+
+.loader {
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+.loaderContainer {
+  width: 100%;
+  top: 0em;
+  position: absolute;
+  height: 100%;
+  z-index: 9999;
+  //   background: white;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.mb15 {
+  margin-bottom: 15px !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+.tag-first {
+  color: #e7ebf2;
+  padding-left: 35px;
+  opacity: 0.8;
+  padding-top: 10px;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px;
+}
+.tag {
+  color: #e7ebf2;
+  opacity: 0.8;
+  padding-top: 10px;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px;
+}
+.pt7 {
+  color: #e7ebf2;
+  opacity: 0.8;
+  padding-top: 7px;
+}
+.mt90 {
+  margin-top: 110px;
+}
+.top-21{
+  top:21px;
+}
+.remarks-card{
+  margin-bottom: 0px !important;
+}
+.w-80.name {
+  width: 64%; //mar-14
+  padding: 10px 3px 3px 10px !important;
+}
+.w-94 {
+  width: 100%;
+}
+.width-90{
+  width: 100% !important;
+}
+.selected-tags  //mar-14
+ {
+  .p-4-10 {
+    padding: 6px 10px 4px 10px !important;
+  }
+}
+.blue-text-pop{
+  width: 90%;
+}
+.back-arrow {
+  color: white;
+  font-size: 22px;
+  position: absolute;
+  left:0px;
+}
+.ML30{
+  margin-left :30px;
+}

@@ -1,0 +1,295 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+
+.h-275 {
+    height: 275px;
+  }
+.pt100 {
+    padding-top: 152px;
+  }
+  .heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #00000054;
+    letter-spacing: -0.4px;
+  }
+  .heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: $Black;
+    letter-spacing: -0.4px;
+  }
+  .brudcrumbs {
+    position: relative;
+    left: 7px;
+    bottom: 2px;
+    opacity: 0.8;
+    font-size: 12px;
+    color: #e7ebf2;
+  }
+  .heading-custom {
+    position: relative;
+    left: 6px;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+.primary-button.std {
+padding: 9px 5px;
+min-width: 110px;
+}
+.primary-button {
+    padding: 5px 5px !important;
+}
+.h-40{
+    height:40px;
+}
+.mr10{
+    margin-right: 10px ;
+}
+.borderless {
+    border:none !important;
+}
+.pad-top150{
+    padding-top: 150px !important;
+    }
+.plb-60-20 {
+    // padding: 0 55px 20px 5px;
+       padding:  15px 40px 10px 10px;
+}
+.pad-22{
+    padding-bottom: 22px;
+}
+.mr-btm10{
+    margin-bottom: 16px;
+}
+.customized-calandar{
+    display: flex;
+    input{
+        height: 40px;
+        border-radius: 4px;
+        border: 1.5px solid $Marble;
+        padding: 0 8px;
+        &:focus{
+            border-color:  $Azure;
+        }
+    }
+    .mat-datepicker-toggle{
+        position: absolute !important;
+        right: 7px;
+        height: 40px;
+        width: 40px;
+    }
+  }
+
+  .radio-fontfamly{
+    color: #2f81ff;
+    font-size: 14px;
+    font-family: "WiproAkkuratTT-Regular";
+  }
+  .w-88{
+      width: 86%;
+  }
+  .w-12{
+    width: 11%;
+    margin-left: 7px;
+    font-weight: bold;
+    padding: 1px 8px !important;
+  }
+
+  .btn-block {
+    display: block;
+    width: 50%;
+}
+.mdi-attachment:before {
+    transform: rotate(270deg);
+    right: 3px;
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+// Usha css starts
+.mtb-6 {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+.fsize-22 {
+    font-size: 22px !important;
+}
+.primary-button:hover {
+    background: #2f81ff !important;
+    color: white !important;
+}
+.popup-container {
+    .popup-hd{
+        padding: 15px 0px 10px 0px;
+        .popup-hd-txt {
+            font-size: 22px;
+        }
+    }
+    .blue-col {
+        color: #103f86 !important;
+    }
+    .customized-select .caret {
+        top: 17px;
+        right: 16px;
+    }
+    .overall-tcv {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 16px;
+        color: $Black;
+        padding-top: 10px;
+    }
+    .primary-button {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 1px 8px 0px 9px !important;
+    }
+    .pdlr-20-0 {
+        padding-left: 20px;
+        padding-right: 0px;
+    }
+    .bg-blue {
+        height: 50px;
+        background-color: $River;
+        padding: 15px;
+        color: #103f86;
+        font-family: WiproAkkuratTT-Bold;        
+    }
+    .pdtb-10-10 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .border-blue {
+        border: 2px solid $River;
+        border-radius: 4px;
+        box-shadow: 1px 1px 5px 0px #888888;
+    }
+    .mbot-12 {
+        margin-bottom: 12px;
+    }
+    .blue_circle_replay {
+        float: right;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #d9e9ff;
+        position: relative;
+        text-align: center;
+        color: #2f81ff;
+      margin-left: 10px;
+    }
+    .blue_circle_replay:hover {
+        float: right;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #2f81ff;
+        position: relative;
+        color: #ffffff;
+        .blue_circle_replay_img {
+            color: #ffffff;
+        }
+    }
+    .plb-55-20-15 {
+        padding: 0 55px 20px 15px;
+    }
+    .plb-60-20 {
+        // padding: 0 55px 20px 5px;
+           padding:  20px 40px 0px 10px;
+    }
+    textarea {
+        border: 1.5px solid #d8d8d8;
+    }
+    .height90 {
+        height: 90px;
+    }
+    .bottom-0 {
+        bottom: 0px !important;
+    }
+    .delete-button {
+        top: 5px;
+    }
+    .mtb-5-6 {
+        margin-top: 5px;
+        margin-bottom: 6px;
+    }
+}
+.attach-doc {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+}
+/*****************file upload CSS starts from here ***************************/
+.file_ip
+{
+    width: 50%;
+    position: absolute;
+    // top: 6px;
+    opacity: 0;
+    z-index: 99;
+    left: 0;
+}
+
+.uploaded_doc
+{
+    padding: 5px 0px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 4px;
+    background: #f8f9fa;
+    font-size: 12px;
+    margin-top: 35px;
+    width: 100%;
+    height: 42px;
+    border: 2px solid #2f81ff;
+}
+.uploaded_text{
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #000;
+}
+.del_upload
+{
+    color: #2f81ff;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    position: relative;
+    font-weight: bold;
+}
+.htpos-left {
+    position: absolute;
+    left: 50px;
+    height: auto;
+}
+.doc-img {
+    bottom: 0px;
+    left: -1px;
+    position: absolute;
+}
+.pad-5 {
+    padding: 5px;
+}

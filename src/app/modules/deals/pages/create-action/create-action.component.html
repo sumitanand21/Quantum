@@ -1,0 +1,116 @@
+<ng-container *ngIf="isLoading">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+              <div class="loaderContainer">
+                  <div class="loader"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+</ng-container>
+
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab new-container">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 no_pad float-left">
+        <span class="float-left mdi mdi-keyboard-backspace cp mr10" (click)="routerTab()" role="button" tabindex="0" aria-label="back"></span>
+      <h1 class="float-left heading-level-one mb-0">{{actionName}}</h1>
+    </div>
+    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad" *ngIf="router.url.includes('/deals/TrackerEditPage')">
+        <div class="float-right disp-flex save-cancel-responsive">
+            <button
+            class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+            [routerLink]="['/deals/existingTabs/calendar']">Cancel</button>
+          <button class="primary-button borderless h-40 std save-responsive-btn button-wd50">Save</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container pad-top-90">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-180"> </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 ">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad  mt40" *ngIf="router.url.includes('/deals/createAction')">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt20 ">
+        <h2 class="heading-level-two"> Overview </h2>
+        <div class="divider mt15"> </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt10">
+
+
+            <div class="col-lg-4 col-md-6 col-12 padbox-0-100-10 float-left label-content" *ngFor="let data of summary;let i=index">
+              <div class="w-100">
+                <label for="OppSum{{i}}" class="w-100">{{data.label}}
+                </label>
+                <p id="OppSum{{i}}" class="{{data.blueclr}}">{{data.content}}</p>
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-6 col-12 padbox-0-100-10 float-left label-content">
+              <div class="w-100">
+                <label for="desp" class="w-100">Description
+                </label>
+                <p id="desp" class="">{{description}} </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-create-new-action *ngIf="router.url.includes('/deals/TrackerEditPage')"></app-create-new-action>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad  " [ngClass]="router.url.includes('/deals/createAction') ? 'mt40' : ''">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt20 ">
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+          <h2 class="heading-level-three"> Collboration log </h2>
+
+          <iframe class="col-11 float-left no_pad standard-border color-azure" [src]="collebrationURL" style="height: 350px;"></iframe>
+        </div>
+        <div *ngIf="defaultAction" class="col-12 col-sm-12 col-md-8 col-lg-4 col-xl-4 float-left no_pad" (clickOutside)="closeContent()">
+          <h2 class="col-11 float-left no_pad heading-level-three"> Document history </h2>
+          <!-- <span class="mdi mdi-dots-vertical m-r-8 more"></span> -->
+          
+          <div class="col-12 float-left no_pad mt18" *ngFor="let document of documentDetails">
+            <div class="col-12 float-left no_pad date-deatil pos-rel">
+              <div class="col-12 float-left no_pad "></div>
+              <span>{{document.CreatedOn | date:'d MMM, y, h:mm a'}}</span>
+            </div>
+            <div class="col-12 float-left no_pad attach-box">
+              <div class="float-right">
+                <div class="float-left naming-tags-square pad-7 child-middle bg-azure">
+                  <span class="initials mdi mdi-file-document font-20" id="inti_name-kb"></span>
+                </div>
+                <label for="inti_name-kb " class="float-left pos-rel pl10 name-sq padLR-10 border-std color-azure mx-width-90per">
+                  <div class="tag color-label_gray padding-left5 ellipses " title="">
+                    {{(document.Name.length>15)? (document.Name | slice:20:35)+'...':(document.Name)}}
+                  </div>
+                  <!-- <span class="mdi mdi-dots-vertical m-r-8 more" [ngClass]="showContent?'show-action':''" (click)="downloadDocument(document.Url)" (clickOutside)="closeContent()"></span> -->
+                  <span class="mdi mdi-dots-vertical m-r-8 more cp" role="button" tabindex="0" aria-lebel="more options" [ngClass]="showContent?'show-action':''" (click)="toggleContent(document.Id)"></span>
+                </label>
+                
+                <div *ngIf="showContent == document.Id" class="pos-rel chat-cust-dropdown-btn">
+                  <ul class=" dropdown-content pad-0-10 pos-abs z-ind-99 top-2 respon-top b-top doc-histryPos">
+                    <li class="color-azure">
+                      <span class=" mdi mdi-download m-r-5"> </span>
+                      <span (click)="downloadDocument(document.Url)">Download</span>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+</div>

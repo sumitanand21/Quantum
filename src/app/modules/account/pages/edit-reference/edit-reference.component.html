@@ -1,0 +1,634 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="col-12 float-left padding-lr15" *ngIf="isLoading">
+        <ng-container >
+            <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <div class="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+                </div>
+            </div>      </div>
+        </ng-container>
+    </div> 
+    <div class="float-left col-12 header-action-tab main-containtnoSide" [ngClass]="userdat.chatBot? 'chat-bot-1100' : ''">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt10 no_pad ">
+            <div class="ccol-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+                <h1 class="heading-level-one float-left"><span class="mdi mdi-arrow-left cp mr10" (click)="goBack()"></span>View reference</h1>
+            </div>
+            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad">
+                <div class="float-right disp-flex save-cancel-responsive">
+                    <!--<button class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50 btn-format" (click)="goBack()">Cancel</button>
+                    <button class="primary-button borderless h-40 mr10 std cancel-responsived-btn button-wd50 btn-format" (click)="Opensavereference()">Save</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- main div starts here -->
+<div class="col-12 float-left no_pad conversation-landing complex_table ">
+    <div class="col-12 pos-abs bg-mid_night h-240 pad-30"></div>
+    <div class="col-12 pad-30 float-left pad-30 padd-top-130 scroll-middle-ios" [formGroup]="editRefForm">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card mt22 margin-btm55 no_pad new-container">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left ">
+                    <h2 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad heading-level-three pad-top-8 txt-color">
+                        Assignment reference details</h2>
+                    <span class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad">{{refDetails?.Name}} | {{refDetails?.Number}}</span>
+                </div>
+            </div>
+
+            <span class="border-bottm"></span>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead" [ngClass]="wiproContact2 && contactNameSwitch && selectedOwner?.length < 3 ?'pb-200':''">
+
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt20 ">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="q"> RA number</label>
+                        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad acc_txtarea" id="q">{{refDetails?.RANumber || "NA"}}</span>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt20 ">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="w">Owner</label>
+                        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad acc_txtarea" id="w">{{refDetails?.Owner?.FullName || "NA"}}</span>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt20 ">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="e">SBU</label>
+                        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad acc_txtarea" id="e">{{refDetails?.SBU?.Name || "NA"}}</span>
+                    </div>
+
+                    <!-- Select Vertical starts -->
+                    <!--<div class="col-10 col-sm-11 col-md-6 col-lg-4 col-xl-4 float-left mt20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationT1t"
+            class="label-form">Vertical</label>  
+          <div class="customized-select">
+            <span class="caret color-azure drpdown-icon"></span>
+            <select id="CoversationT1t" role="listbox" class="pad-left10" [(ngModel)]="editRefObj.Vertical">
+              <option *ngFor="let vertical of editRefDropdownList.Vertical" value="vertical">{{vertical.Name}}</option>-->
+                    <!--<option value="Virtual conversation">New Delhi</option>
+              <option value="Telephonic Conversation">Mumbai</option>-->
+                    <!--</select>
+          </div>
+            <popover-content #myPopover1 title="Comments - Vertical"
+                 placement="right" [animation]="false" [closeOnClickOutside]="true"
+                 [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                 <span class="">
+                     <div class="textarea_readonly">
+                         <textarea class="form-control vision_txt_area_placeholder"
+                             [(ngModel)]="editable.comment" #newListItem1
+                             name="newListItem1" rows="6"
+                             placeholder="Write your comments here.."></textarea>
+                     </div>
+                     <button type="button" class="btn pull-left cancel_but"
+                         (click)="editable.GrowthPositionInAccountClicked = false;myPopover1.hide(); editable.comment =''">Cancel
+                     </button>
+                     <button type="button" [disabled]="newListItem1.value.length < 1"
+                         [ngClass]="newListItem1.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                         (click)="editable.GrowthPositionSubmitted = true;editable.GrowthPositionInAccountClicked = false;myPopover1.hide(); savecomments(editable)">Submit</button>
+                 </span>
+             </popover-content>
+        </div>-->
+                    <!-- Select Vertical ends -->
+
+                    <!-- Select Sub-Vertical starts -->
+                    <!--<div class="col-10 col-sm-11 col-md-6 col-lg-4 col-xl-4 float-left mt20">
+         <div (clickOutside)="editable.GrowthPositionInAccountClicked =false">
+         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad width_message2"> 
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="a"
+            class="label-form">Sub-vertical</label>
+              <button [popoverOnHover]="false"
+                 [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true"
+                 [popover]="myPopover1" (click)="toggleComment()"
+                 (keypress)="toggleComment()" class="button_messagespophover top_pos">
+
+                 <span [ngClass]="(editable.GrowthPositionSubmitted && editable.comment !== '') ?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                     <span class="sr-only">{{editable.accountName}}</span>
+                 </span>
+             </button>
+          <div class="customized-select">
+            <span class="caret color-azure drpdown-icon"></span>
+            <select id="a" role="listbox" class="pad-left10" [(ngModel)]="editRefObj.SubVertical">
+              <option *ngFor="let subvertical of editRefDropdownList.SubVertical" value="subVertical">{{subVertical.Name}}</option>-->
+                    <!--<option value="Virtual conversation">New Delhi</option>
+              <option value="Telephonic Conversation">Mumbai</option>-->
+                    <!--</select>
+          </div>
+              <popover-content #myPopover1 title="Comments - Vertical"
+                 placement="right" [animation]="false" [closeOnClickOutside]="true"
+                 [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                 <span class="">
+                     <div class="textarea_readonly">
+                         <textarea class="form-control vision_txt_area_placeholder"
+                             [(ngModel)]="editable.comment" #newListItem1
+                             name="newListItem1" rows="6"
+                             placeholder="Write your comments here.."></textarea>
+                     </div>
+                     <button type="button" class="btn pull-left cancel_but"
+                         (click)="editable.GrowthPositionInAccountClicked = false;myPopover1.hide(); editable.comment =''">Cancel
+                     </button>
+                     <button type="button" [disabled]="newListItem1.value.length < 1"
+                         [ngClass]="newListItem1.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                         (click)="editable.GrowthPositionSubmitted = true;editable.GrowthPositionInAccountClicked = false;myPopover1.hide(); savecomments(editable)">Submit</button>
+                 </span>
+             </popover-content>
+          </div>
+         </div>-->
+
+                    <!--</div>-->
+                    <!-- Select sub-Vertical ends -->
+                    <!--vertical is there -->
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt20">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName pos-rel">
+                            <!--<span class="asteriq"> * </span>-->
+                            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contact1Name" class="label-form"> Vertical </label>
+                            <!-- <button [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover1" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos"> -->
+
+                        <!--<span [ngClass]="(editable[0].RequestHistoryComments.length>0 || editable[0].GrowthPositionSubmitted && comment) ?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                            <span class="sr-only">Vertical </span>
+                        </span>-->
+                    <!-- </button> -->
+                            <input disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="contact1Name" name="contact1Name" autocomplete="off" type="text" formControlName="Vertical" [(ngModel)]="editRefObj['Vertical']['Name']" placeholder="Search vertical"
+                                (clickOutside)="contact1NameSwitch = false" (click)="contact1NameSwitch = true;VerticalandSBU(editRefObj['Vertical']['Name'])" (keyup)="contact1NameSwitch = true;VerticalandSBU(editRefObj['Vertical']['Name'])" [ngClass]="editFormsubmitted && editAssignRefForm.Vertical.errors && editAssignRefForm.Vertical.errors.required ? 'border-pink':'border-gray'"
+                                required>
+
+                            <!--<p *ngIf="submitted && !editRefObj['Vertical']['Name']" class="error-message custom-label">Vertical is required</p>-->
+                            <p *ngIf="editFormsubmitted && editAssignRefForm.Vertical.errors && editAssignRefForm.Vertical.errors.required" class="error-message custom-label">Vertical is required</p>
+                            <span class="mdi mdi-magnify"></span>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btmblue border-right float-left top-73 top64left no_pad standard-border color-azure
+            suggestion-box pos-abs z-ind-99 border-leftdrop" *ngIf="editRefDropdownList.Vertical && contact1NameSwitch">
+                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                    <span class="w-100 z-ind-9 float-left bg-white">
+                  <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                    [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                
+                  <li class="h-50 p-4-10 "
+                    (click)="appendVertical(item,ind); contact1NameSwitch = false;SubVerticalByVertical(editRefObj['Vertical']['Name']);"
+                    *ngFor="let item of editRefDropdownList.Vertical; let ind = index">
+
+                    <label for="inti_name" class="float-left name">
+                      <span class="d-block list-name">{{item.Name}}</span>
+                                    </label>
+                                    </li>
+                                    <li class="d-block list-name h-40 p-10" *ngIf="contact1NameSwitch && editRefDropdownList.Vertical['message']&& !isActivityGroupSearchLoading">
+                                        {{editRefDropdownList.Vertical['message']}} </li>
+                                    </ul>
+                                    </span>
+                                </perfect-scrollbar>
+                            </div>
+                            <!-- comments added by start-->                            
+                            <!--<popover-content #myPopover1 title="Comments - Vertical" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                                <div *ngIf="editable[0].RequestHistoryComments" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left no_pad ">
+                                    <div class="scroll-window" slimScroll>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad padtop legend1 mb20" *ngFor="let item of editable[0].RequestHistoryComments">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11 float-left no_pad">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                                    <p class="pstyles_acc"><b class="bstyles_acc">{{(item.CommentedBy && item.CommentedBy.FullName)?item.CommentedBy.FullName:'NA'}}</b> ({{item.CommentedOn| date: 'dd MMM yyyy' }} at {{item.CommentedOn | date: 'HH:mm ' }})
+                                                    </p>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                                    <p>{{item.Comment}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                
+                                <span class="">
+                     <div class="textarea_readonly">
+                         <textarea class="form-control vision_txt_area_placeholder"
+                             [(ngModel)]="comment" formControlName="comment" #newListItem1
+                             name="newListItem1" rows="6"
+                             placeholder="Write your comments here.."></textarea>
+                     </div>
+                     <button type="button" class="btn pull-left cancel_but"
+                         (click)="editable[0].GrowthPositionInAccountClicked = false;myPopover1.hide(); comment =''">Cancel
+                     </button>
+                     <button type="button" [disabled]="newListItem1.value.length < 1"
+                         [ngClass]="newListItem1.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                         (click)="editable[0].GrowthPositionSubmitted = true;editable[0].GrowthPositionInAccountClicked = false;myPopover1.hide(); savecomments($event, comment, 'vertical_name')">Submit</button>
+                 </span>
+                            </popover-content>-->
+                                <!-- comments added by end -->
+                            
+                        </div>
+                    </div>
+
+                    <!--sub vertical here-->
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt20">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName pos-rel">
+                            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactName2" class="label-form">Sub vertical  </label>
+                            <!-- <button [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover2" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos"> -->
+
+                        <!--<span [ngClass]="(editable[1].RequestHistoryComments.length>0 || editable[1].GrowthPositionSubmitted && comment1) ?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                            <span class="sr-only">{{editable.accountName}}</span>
+                        </span>-->
+                <!-- </button> -->
+                            <input disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="contactName2" name="contactName2" autocomplete="off" type="text" formControlName="SubVertical" [(ngModel)]="editRefObj['SubVertical']['Name']" placeholder="Search sub-vertical"
+                                (clickOutside)="contactNameSwitch2 = false" (click)="contactNameSwitch2 = true;SubVerticalByVertical(editRefObj['SubVertical']['Name'])" (keyup)="contactNameSwitch2 = true;SubVerticalByVertical(editRefObj['SubVertical']['Name'])"
+                                [ngClass]="editFormsubmitted&& editAssignRefForm.SubVertical.errors && editAssignRefForm.SubVertical.errors.required ? 'border-pink':'border-gray'" required>
+
+                            <!--<p *ngIf="editFormsubmitted&& !editRefObj['SubVertical']['Name']" class="error-message custom-label">Sub vertical is required</p>-->
+                            <p *ngIf="editFormsubmitted && editAssignRefForm.SubVertical.errors && editAssignRefForm.SubVertical.errors.required" class="error-message custom-label">Sub Vertical is required</p>
+                            <span class="mdi mdi-magnify"></span>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btmblue border-right float-left top-73 top64left no_pad standard-border color-azure
+             suggestion-box pos-abs z-ind-99 border-leftdrop" *ngIf="editRefDropdownList.SubVertical && contactNameSwitch2">
+                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                    <span class="w-100 z-ind-9 float-left bg-white">
+                  <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                    [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                  <li class="h-50 p-4-10 " (click)="appendSubvertical(item,ind)"
+                    *ngFor="let item of editRefDropdownList.SubVertical; let ind = index">
+                <label for="inti_name" class="float-left name">
+                      <span class="d-block list-name">{{item.Name}}</span>
+                                    <!--<span class="d-block sub-list">{{item.designation}}</span>-->
+                                    </label>
+                                    </li>
+                                    <li class="d-block list-name h-40 p-10" *ngIf="contactNameSwitch2 && editRefDropdownList.SubVertical['message'] && !isActivityGroupSearchLoading">
+                                        {{editRefDropdownList.SubVertical['message']}} </li>
+                                    </ul>
+                                    </span>
+                                </perfect-scrollbar>
+                            </div>
+                            <!--<popover-content #myPopover2 title="Comments - Vertical" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">-->
+                                <!-- comments added by start-->
+                                <!--<div *ngFor="let attr of refDetails?.AccountAttribute">-->
+                                <!--<div *ngIf="attr.AttributeName == 'subvertical_name'"-->
+                                <!--<div *ngIf="editable[1].RequestHistoryComments" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left no_pad ">
+                                    <div class="scroll-window" slimScroll>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad padtop legend1 mb20" *ngFor="let item of editable[1].RequestHistoryComments">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11 float-left no_pad">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                                    <p class="pstyles_acc"><b class="bstyles_acc">{{(item.CommentedBy && item.CommentedBy.FullName)?item.CommentedBy.FullName:'NA'}}</b> ({{item.CommentedOn| date: 'dd MMM yyyy' }} at {{item.CommentedOn | date: 'HH:mm ' }})
+                                                    </p>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                                    <p>{{item.Comment}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>-->
+                                <!--</div>-->
+                                <!-- comments added by end -->
+                                <!--<span class="">
+                     <div class="textarea_readonly">
+                         <textarea class="form-control vision_txt_area_placeholder"
+                             [(ngModel)]="comment1" formControlName="comment1" #newListItem2
+                             name="newListItem2" rows="6"
+                             placeholder="Write your comments here.."></textarea>
+                     </div>
+                     <button type="button" class="btn pull-left cancel_but"
+                         (click)="editable[1].GrowthPositionInAccountClicked = false;myPopover2.hide(); comment1 =''">Cancel
+                     </button>
+                     <button type="button" [disabled]="newListItem2.value.length < 1"
+                         [ngClass]="newListItem2.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                         (click)="editable[1].GrowthPositionSubmitted = true;editable[1].GrowthPositionInAccountClicked = false;myPopover2.hide(); savecomments($event, comment1, 'subvertical_name')">Submit</button>
+                 </span>
+                            </popover-content>-->
+                        </div>
+                    </div>
+                    <!-- Select CBU starts -->
+                    <!--<div class="col-12 col-sm-11 col-md-6 col-lg-4 col-xl-4 float-left custom-cbu" *ngIf="filterCheckBox.length>0">-->
+                        <!-- mt25 -->
+                        <!--<label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="b"
+            class="label-form" *ngIf="filterCheckBox.length==0">CBU<span class="asteriq"> * </span></label>-->
+                        <!-- <button [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover3" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_poscbu pop-btn"> -->
+
+                        <!--<span [ngClass]="(editable[2].RequestHistoryComments.length>0 || editable[2].GrowthPositionSubmitted && comment2) ?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                            <span class="sr-only">{{editable.accountName}}</span>
+                        </span>-->
+                    <!-- </button> -->
+                        <!--<div class="col-12 float-left no_pad customized-select multi_select_cbu">-->
+                            <!--<span class="caret color-azure drpdown-icon"></span>
+            <select id="b" role="listbox" class="pad-left10">
+              <option *ngFor = "let cbu of refDetails?.CustomerBusinessUnit" value="cbu?.MapGuid"> {{cbu?.Name}}</option>
+            </select>-->
+                            <!--<app-multi-select-checkbox [Source]="filterCheckBox" [printAsterisk]="printAsterisk" (selectedContent)="appendCBU($event)" [label]="'CBU'" [Placeholder]="'Search'" [cbuReadOnly]="true">
+                            </app-multi-select-checkbox>
+                            <p *ngIf="(editFormsubmitted && (editRefObj.CustomerBusinessUnit.length==0))" class="error-message custom-msg">
+                                Cbu is required</p>
+                        </div>-->
+                        <!--<div class="col-12 float-left no_pad customized-select multi_select_cbu" *ngIf="filterCheckBox.length==0">
+            <span class="caret color-azure drpdown-icon"></span>
+            <select formControlName="Cbu" id="b" role="listbox" class="pad-left10" [ngClass]="editFormsubmitted && editAssignRefForm.Cbu.errors && editAssignRefForm.Cbu.errors.required ? 'border-pink':'border-gray'">
+              <option value="">No record found</option>
+            </select>
+            <p *ngIf="editFormsubmitted && editAssignRefForm.Cbu.errors && editAssignRefForm.Cbu.errors.required" class="error-message custom-msg">Cbu is required</p>            
+          </div>-->
+                        <!--<popover-content #myPopover3 title="Comments - Vertical" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">-->
+                            <!-- comments added by start-->
+                            <!--<div *ngFor="let attr of refDetails?.AccountAttribute">-->
+                            <!--<div *ngIf="editable[2].RequestHistoryComments" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left no_pad ">
+                                <div class="scroll-window" slimScroll>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad padtop legend1 mb20" *ngFor="let item of editable[2].RequestHistoryComments">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11 float-left no_pad">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                                <p class="pstyles_acc"><b class="bstyles_acc">{{(item.CommentedBy && item.CommentedBy.FullName)?item.CommentedBy.FullName:'NA'}}</b> ({{item.CommentedOn| date: 'dd MMM yyyy' }} at {{item.CommentedOn | date: 'HH:mm ' }})
+                                                </p>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                                <p>{{item.Comment}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>-->
+                            <!--</div>-->
+                            <!-- comments added by end -->
+                            <!--<span class="">
+                     <div class="textarea_readonly">
+                         <textarea class="form-control vision_txt_area_placeholder"
+                             [(ngModel)]="comment2" formControlName="comment2" #newListItem3
+                             name="newListItem3" rows="6"
+                             placeholder="Write your comments here.."></textarea>
+                     </div>
+                     <button type="button" class="btn pull-left cancel_but"
+                         (click)="editable[2].GrowthPositionInAccountClicked = false;myPopover3.hide(); comment2 =''">Cancel
+                     </button>
+                     <button type="button" [disabled]="newListItem3.value.length < 1"
+                         [ngClass]="newListItem3.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                         (click)="editable[2].GrowthPositionSubmitted = true;editable[2].GrowthPositionInAccountClicked = false;myPopover3.hide(); savecomments($event, comment2, 'trendsnanalysis_noofcbu')">Submit</button>
+                 </span>
+                        </popover-content>-->
+                    <!--</div>-->
+                    <div class="col-12 col-sm-11 col-md-6 col-lg-4 col-xl-4 float-left custom-cbu mt20">
+                        <!-- mt25 -->
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="b" class="label-form mb6Editref">CBU</label>
+                        <div class="col-12 float-left no_pad customized-select multi_select_cbu">
+                            <span class="caret color-disabled drpdown-icon" ></span>
+                            <select disabled id="b" role="listbox" class="pad-left10" [ngClass]="(editFormsubmitted && (filterCheckBox.length==0)) ? 'border-pink':'border-gray'">
+              <option value="">All</option>
+            </select>
+                            <!--<p *ngIf="(editFormsubmitted && (filterCheckBox.length==0))" class="error-message custom-msg">Cbu is required</p>-->
+                        </div>
+                    </div>
+                    <!-- Select CBU ends -->
+
+                    <!--Geo autocomplete starts-->
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt20">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName pos-rel">
+                            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactGeo" class="label-form"> Geo </label>
+                            <!-- <button [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover4" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos"> -->
+
+                        <!--<span [ngClass]="(editable[3].RequestHistoryComments.length>0 || editable[3].GrowthPositionSubmitted && comment3) ?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                            <span class="sr-only">{{editable.accountName}}</span>
+                        </span>-->
+                    <!-- </button> -->
+                            <input disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="contactGeo" formControlName="Geo" name="contactGeo" autocomplete="off" type="text" [(ngModel)]="editRefObj['Address']['Geo']['Name']" placeholder="Search geo"
+                                (click)="linkedGeoSwitch = true;GetGeographyByName(editRefObj['Address']['Geo']['Name'])" (clickOutside)="linkedGeoSwitch= false" (keyup)="linkedGeoSwitch = true;GetGeographyByName(editRefObj['Address']['Geo']['Name'])" [ngClass]="editFormsubmitted && editAssignRefForm.Geo.errors && editAssignRefForm.Geo.errors.required ? 'border-pink':'border-gray'"
+                                required>
+                            <p *ngIf="editFormsubmitted && editAssignRefForm.Geo.errors && editAssignRefForm.Geo.errors.required" class="error-message custom-label">Geo is required</p>
+
+                            <span class="mdi mdi-magnify"></span>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top-73 top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="editRefDropdownList.Geo && linkedGeoSwitch">
+                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                    <span class="w-100 z-ind-9 float-left bg-white">
+                  <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                  [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                  <li class="list-group-item h-50 p-4-10 " (keypress)="appendGeo(item, ind)" (click)="appendGeo(item, ind)"
+                   *ngFor="let item of editRefDropdownList.Geo |filter:editRefObj['Address']['Geo']['Name']; let ind = index">
+
+                    <div class="float-left naming-tags child-middle bg-azure">
+                      <span class="initials">{{item.Name | firstWord}}</span>
+                            </div>
+                            <label for="inti_name" class="float-left name">
+                      <span class="d-block list-name" matTooltip="{{item.Name}}">{{item.Name}}</span>
+                      <!--<span class="d-block sub-list">{{item.designation}}</span>-->
+                    </label>
+                            </li>
+                            <li class="d-block list-name h-40 p-10" *ngIf="(editRefDropdownList.Geo |filter:editRefObj['Address']['Geo']['Name']).length == 0 && !isActivityGroupSearchLoading">
+                                No record found </li>
+                            </ul>
+                            </span>
+                            </perfect-scrollbar>
+                        </div>
+                        <!--<popover-content #myPopover4 title="Comments - Vertical" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">-->
+                            <!-- comments added by start-->
+                            <!--<div *ngFor="let attr of refDetails?.AccountAttribute">-->
+                            <!--<div *ngIf="editable[3].RequestHistoryComments" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left no_pad ">
+                                <div class="scroll-window" slimScroll>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad padtop legend1 mb20" *ngFor="let item of editable[3].RequestHistoryComments">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11 float-left no_pad">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                                <p class="pstyles_acc"><b class="bstyles_acc">{{(item.CommentedBy && item.CommentedBy.FullName)?item.CommentedBy.FullName:'NA'}}</b> ({{item.CommentedOn| date: 'dd MMM yyyy' }} at {{item.CommentedOn | date: 'HH:mm ' }})
+                                                </p>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                                <p>{{item.Comment}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>-->
+                            <!--</div>-->
+                            <!-- comments added by end -->
+                            <!--<span class="">
+                     <div class="textarea_readonly">
+                         <textarea class="form-control vision_txt_area_placeholder"
+                             [(ngModel)]="comment3" formControlName="comment3" #newListItem4
+                             name="newListItem4" rows="6"
+                             placeholder="Write your comments here.."></textarea>
+                     </div>
+                     <button type="button" class="btn pull-left cancel_but"
+                         (click)="editable[3].GrowthPositionInAccountClicked = false;myPopover4.hide(); comment3 =''">Cancel
+                     </button>
+                     <button type="button" [disabled]="newListItem4.value.length < 1"
+                         [ngClass]="newListItem4.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                         (click)="editable[3].GrowthPositionSubmitted = true;editable[3].GrowthPositionInAccountClicked = false;myPopover4.hide(); savecomments($event, comment3, 'geo_name')">Submit</button>
+                 </span>
+                        </popover-content>-->
+                    </div>
+                </div>
+                <!--Geo autocomplete ends-->
+                <!--Region autocomplete starts-->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt20">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName pos-rel">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactRegion" class="label-form"> Region</label>
+                        <!-- <button [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover5" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos"> -->
+
+                  <!--<span [ngClass]="(editable[4].RequestHistoryComments.length>0 || (editable[4].GrowthPositionSubmitted && comment4)) ?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                      <span class="sr-only">{{editable.accountName}}</span>
+                  </span>-->
+              <!-- </button> -->
+                        <input disabled class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="contactRegion" formControlName="Region" name="contactRegion" autocomplete="off" type="text" [(ngModel)]="editRefObj['Address']['Region']['Name']" placeholder="Search region"
+                            [ngClass]="editFormsubmitted && editAssignRefForm.Region.errors && editAssignRefForm.Region.errors.required ? 'border-pink':'border-gray'" (clickOutside)="linkedRegionSwitch= false" (click)="linkedRegionSwitch = true;RegionByGeo(editRefObj['Address']['Region']['Name'])"
+                            (keyup)="linkedRegionSwitch = true;RegionByGeo(editRefObj['Address']['Region']['Name'])" required>
+                        <p *ngIf="editFormsubmitted && editAssignRefForm.Region.errors && editAssignRefForm.Region.errors.required" class="error-message custom-label">Region is required</p>
+
+                        <span class="mdi mdi-magnify"></span>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top-73 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="editRefDropdownList.Region && linkedRegionSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                  <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                  [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                  <li class="list-group-item h-50 p-4-10 " (keypress)="appendRegionByGeo(item, ind)" (click)="appendRegionByGeo(item, ind)"
+                   *ngFor="let item of editRefDropdownList.Region |filter:editRefObj['Address']['Region']['Name']; let ind = index">
+
+                    <div class="float-left naming-tags child-middle bg-azure">
+                      <span class="initials">{{item.Name | firstWord}}</span>
+                        </div>
+                        <label for="inti_name" class="float-left name">
+                      <span class="d-block list-name" matTooltip="{{item.Name}}">{{item.Name}}</span>
+                      <!--<span class="d-block sub-list">{{item.designation}}</span>-->
+                    </label>
+                        </li>
+                        <li class="d-block list-name h-40 p-10" *ngIf="(editRefDropdownList.Region |filter:editRefObj['Address']['Region']['Name']).length == 0 && !isActivityGroupSearchLoading">
+                            No record found </li>
+                        </ul>
+                        </span>
+                        </perfect-scrollbar>
+                    </div>
+                    <!--<popover-content #myPopover5 title="Comments - Vertical" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">-->
+                        <!-- comments added by start-->
+                        <!--<div *ngFor="let attr of refDetails?.AccountAttribute">-->
+                        <!--<div *ngIf="editable[4].RequestHistoryComments" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left no_pad ">
+                            <div class="scroll-window" slimScroll>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad padtop legend1 mb20" *ngFor="let item of editable[4].RequestHistoryComments">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11 float-left no_pad">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                            <p class="pstyles_acc"><b class="bstyles_acc">{{(item.CommentedBy && item.CommentedBy.FullName)?item.CommentedBy.FullName:'NA'}}</b> ({{item.CommentedOn| date: 'dd MMM yyyy' }} at {{item.CommentedOn | date: 'HH:mm ' }})
+                                            </p>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+                                            <p>{{item.Comment}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>-->
+                        <!--</div>-->
+                        <!-- comments added by end -->
+                        <!--<span class="">
+                     <div class="textarea_readonly">
+                         <textarea class="form-control vision_txt_area_placeholder"
+                             [(ngModel)]="comment4" formControlName="comment4" #newListItem5
+                             name="newListItem5" rows="6"
+                             placeholder="Write your comments here.."></textarea>
+                     </div>
+                     <button type="button" class="btn pull-left cancel_but"
+                         (click)="editable[4].GrowthPositionInAccountClicked = false;myPopover5.hide(); comment4 =''">Cancel
+                     </button>
+                     <button type="button" [disabled]="newListItem5.value.length < 1"
+                         [ngClass]="newListItem5.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                         (click)="editable[4].GrowthPositionSubmitted = true;editable[4].GrowthPositionInAccountClicked = false;myPopover5.hide(); savecomments($event, comment4, 'address_region_name')">Submit</button>
+                 </span>
+                    </popover-content>-->
+                </div>
+            </div>
+            <!--Region autocomplete ends-->
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt30 mb30">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="r">Primary</label>
+                <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad acc_txtarea" id="r">{{refDetails?.IsPrimary ? 'Yes': 'No' }}</span>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left mt20 ">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="t">Status</label>
+                <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad acc_txtarea" id="t">{{refDetails?.Status?.Value || "NA"}}</span>
+            </div>
+
+       <!--Secondary account owner auto complete start -->
+        <div class="ol-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left mt20 " 
+        [ngClass]=" adjustHeight()">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactName2"
+            class="label-form" matTooltip="Add a Secondary Account owner for the account">Secondary account owners</label>
+          <!-- <input #ownerdata class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="contactName2"
+            name="contactName2" autocomplete="off" type="text" formControlName="secondaryOwner" [(ngModel)]="contactName2" placeholder="Search secondary account owner"
+            (clickOutside)="contactNameSwitch=false" (keyup)="contactNameSwitch = true;accountOwnerSearch(contactName2)" (click)="contactNameSwitch = true;accountOwnerSearch(contactName2)"> -->
+            <input appKeyListControl #ownerList (arrowDown)="arrowkeyLocation=$event"
+                (keyup.enter)="wiproContact2?.length+1 == arrowkeyLocation?openadvancetabs('secondaryowner',wiproContact2, ownerList.value):ownerList.value=wiproContact2[arrowkeyLocation].Name;OwnerName=wiproContact2[arrowkeyLocation].Name; appendOwner(wiproContact2);contactNameSwitch=false;arrowkeyLocation=0;"
+                [attr.data-arrayMaxLength]="wiproContact2?.length" [attr.data-isDownBtn]=true type="text" role="combobox"
+                aria-autocomplete="list" [attr.aria-expanded]="contactNameSwitch?true:false" aria-owns="read"
+                [attr.aria-activedescendant]="wiproContact2?.length+1 == arrowkeyLocation ?'adls'+arrowkeyLocation:arrowkeyLocation"
+                autocomplete="false" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                id="contactName2" name="contactName2"
+                (intialLoadData)="contactNameSwitch = true ; accountOwnerSearch(ownerList.value);arrowkeyLocation=0"
+                placeholder="Search secondary account owner" formControlName="secondaryOwner" (keydown.Tab)="contactNameSwitch=false"
+                (keydown.shift.Tab)="contactNameSwitch=false" [dataManipulate]="true" (clickOutside)="contactNameSwitch=false"
+                (input)="contactNameSwitch = true ; accountOwnerSearch(ownerList.value)" [attr.data-selectedvalue]="OwnerName"
+                matTooltip="{{ownerList.value}}" [attr.aria-label]="'Parents name edit selected' + wiproContact2 ">
+            <span class="mdi mdi-magnify"></span>
+
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm bordersecondary float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg border-left"
+            *ngIf="wiproContact2 && contactNameSwitch">
+            <perfect-scrollbar style="max-height:180px" class="z-ind-9">
+              <span class="w-100 z-ind-9 float-left bg-white">
+                <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                >
+                <!-- [ngClass]="{'loader-search':isActivityGroupSearchLoading }" -->
+                <span class="loader-search" *ngIf="isActivityGroupSearchLoading"> </span>
+                <li class="list-group-item h-50 p-4-10 " (click)="appendOwner(item,index)"
+                  *ngFor="let item of wiproContact2; let index=index;">
+
+                  <div class="float-left naming-tags child-middle bg-azure">
+                    <span class="initials">{{item.initials }} </span>
+                  </div>
+                  <label for="inti_name" class="float-left name">
+                    <span class="d-block list-name" matTooltip="{{item.Name}}">{{item.Name}}</span>
+                    <span class="d-block sub-list">{{item.designation}}</span>
+                  </label>
+                </li>
+                <li class="d-block list-name h-40 p-10" *ngIf="wiproContact2.length == 0 && !isActivityGroupSearchLoading"> No record found </li>
+              </ul>
+              </span>
+            </perfect-scrollbar>
+            <span class="db-search">
+                <button id="adls{{wiproContact2?.length+1}}" tabindex="0"
+                    (click)="openadvancetabs('secondaryowner',wiproContact2, ownerList.value)"
+                    (keypress)="openadvancetabs('secondaryowner',wiproContact2, ownerList.value)" type="button"
+                    aria-disabled="false" [attr.data-count]="arrowkeyLocation" class="button-search"
+                    [class.active]="wiproContact2?.length+1 == arrowkeyLocation">
+                    <span class="mdi mdi-file-outline"></span> Advance look up
+                </button>
+            </span>
+          </div>
+        </div>
+        <!-- <div class="d-block no-record-msg p-10" *ngIf="wiproContact2['message'] && contactNameSwitch2">
+            <span class="col-12 float-left no_pad">  {{wiproContact2['message']}} </span>
+            <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12">Ensure that you have typed correct legal entity name</span>
+        </div>  -->
+        <div
+        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact selected-tags">
+        <!--<span class="col-12 float-left no_pad selected-txt " *ngIf="selectedOwner.length > 0"> {{ selectedOwner.length}} secondary owner(s) selected </span>-->
+         <perfect-scrollbar style="max-height:180px" class="z-ind-9">
+          
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mail-box-text tagged-box mt-10 no_pad mr10  d-flex"
+                *ngFor="let item of selectedOwner; let ind=index">
+                <div class="float-left col-2  no_pad child-middle bg-azure br-4-0-0-4 initial-text">
+                    <span class="initials">{{item.initials }} </span>
+                  </div>
+              <div class="col-10 float-left no_pad selected-Owner"> 
+                <label for="inti_name" class="float-left name col-10 float-left no_pad">
+                    <span
+                        class="d-block color-azure mr10 float-left ellipses w-100">{{item.Name}}</span>
+                </label>
+                <span *ngIf="isEditPermission" role="button" tabindex="0" aria-label="delete"
+                    class="mdi mdi-close close-lead float-right cp col-2 float-left no_pad " (click)="removeOwner(item, ind)"></span>
+                  </div>    
+            </div> 
+         </perfect-scrollbar>
+        <!-- </div> -->
+        </div>
+        </div>
+       <!-- Secondary account owner autocomplete end -->
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- main div ends here -->

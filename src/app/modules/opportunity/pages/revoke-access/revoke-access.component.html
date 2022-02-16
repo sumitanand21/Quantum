@@ -1,0 +1,54 @@
+<div>
+  <ng-container *ngIf="isLoading">
+                        <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+                          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+                              <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                                  <div class="loaderContainer">
+                                      <div class="loader"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </ng-container>
+  <div class="top-header top-head-index" [ngClass]="dataService.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab opportunityPage new-container">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 float-left no_pad">
+          <button class="mdi mdi-keyboard-backspace cursor-pointer float-left back-buttonbg" (click)="goBack()" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+          <h1 class="heading-level-one heading-custom">Revoke opportunity access</h1>
+          <span class="brudcrumbs">Opportunities</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div clas="col-12 float-left no_pad ">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-390 new-container">
+    </div>
+    <div class="col-12 float-left padng-30 mar_top_100">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+              <h2 class="col-6 float-left heading-level-two color-white padng-30 no_pad padding-left0 padt-0">Access users (07)</h2>
+              <div class="col-6 float-left no_pad">
+              </div>
+              <div class="parent-container">
+                  <app-single-table
+                  [TableName]="'RevokeAccess'"
+                  [TableCollection]="RevokeAccessTable" 
+                  [IsActionFixed]= true 
+                  [IsFreezedColumn]= true 
+                  [IscheckBoxRequired]= true 
+                  [IsRevokeAccess]=true
+                  [IsCustomizeTable] = true
+                  [totalTableCount]="tableTotalCount"
+                  [serviceSearch]=true>
+                </app-single-table>
+    
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>

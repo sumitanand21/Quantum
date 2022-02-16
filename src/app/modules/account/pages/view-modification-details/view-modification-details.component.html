@@ -1,0 +1,531 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab ">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt10 mb10 no_pad new-container">
+            <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+                <button class="no_pad mdi mdi-keyboard-backspace backspace_button cp" aria-label="Back" (keypress)="goBack()" (click)="goBack()"></button>
+                <h1 class="heading-level-one-ref">
+                    {{title}}
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-203 h-203Mobile">
+    </div>
+    <!-- First condition starts here-->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 top-13 pad15px padd-top-130 scroll-middle-ios-100vh">
+        <!--History overview starts here ***SAI***-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card marin-bottom0 cardMobile mt45 mt45Mobile no_pad" *ngIf="route_from != 'assign_ref'">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+                    <h2 class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-two pad-top-8">
+                        History overview - Acc no. {{accountDetails.Number?accountDetails.Number:"NA"}}</h2>
+                </div>
+            </div>
+            <span class="border-bottm"></span>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead2 ">
+                <div class="scroll-window" slimScroll>
+
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad legend1 expand-ryt-section  width100-max">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 float-left no_pad ">
+                            <div class="col-12 no_pad float-left" *ngIf="accountDetails.OverAllComments && accountDetails.OverAllComments.length>0">
+                                <!-- <perfect-scrollbar style="max-height:300px">-->
+                                <div class="col-12 float-left no_pad mt10" *ngFor="let item of accountDetails.OverAllComments">
+
+                                    <div class="col-12 float-left no_pad padb-20 linehight">
+                                        <div class="col-12 no_pad float-left">
+                                            <span class="text-dark text-bold">Status: {{item.Status.Value}}</span>
+                                            <span class="txt-style1">
+                                                <span>(</span>{{item.CommentedOn | date: 'dd MMM yyyy' }} at {{item.CommentedOn | date: 'HH:mm' }}<span>)</span></span>
+
+                                        </div>
+
+                                        <div class="col-12 no_pad float-left">
+                                            <span class="text-dark text-bold">Comments: </span>
+                                            <span class="txt-style1">{{item.Comment? item.Comment : "NA"}}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--</perfect-scrollbar>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad padtop legend1 mt20">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 float-left no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+              <p><b>Status: Account requested</b> (12 Jan 2019 at 15:20)</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+              <p class="text_emptycomments"><b>Reason Code:</b>Account creation</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad AddtitionalCom_fonts">
+              <p><b>Comments:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div> </div>-->
+                </div>
+            </div>
+
+        </div>
+        <!--History overview ends here ***SAI*** -->
+
+        <!-- assignment reference view starts here -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card mt30 marin-bottom0 no_pad margin_top80_mobile margin_top101" *ngIf="route_from == 'assign_ref'">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+                    <h2 class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-two pad-top-8">Reference creation - comments (Requestor)</h2>
+                </div>
+            </div>
+
+            <span class="border-bottm"></span>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead2 ">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 float-left no_pad padtop legend1">
+                    <!-- {{accountDetails?.Comment || "NA"}} -->
+                    <div class="col-12 float-left no_pad padb-20">
+                        <div class="col-12 no_pad float-left">
+                            <span class="text-dark text-bold"><b>Status: {{(accountDetails.Status && accountDetails.Status.Value) ?accountDetails.Status.Value: "NA" }}</b></span>
+                            <span class="txt-style1">
+                                <span>(</span>{{accountDetails.CreatedOn | date: 'dd MMM yyyy' }} at {{accountDetails.CreatedOn | date: 'HH:mm' }}<span>)</span></span>
+
+                        </div>
+
+                        <div class="col-12 no_pad float-left">
+                            <span class="text-dark text-bold"> <b>Comments:</b></span>
+                            <span class="txt-style1">{{accountDetails.Comment? accountDetails.Comment : "NA"}}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card marin-bottom0 cardMobile mt20 no_pad" *ngIf="route_from == 'assign_ref'">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left padding_left_ref">
+                    <h2 class="col-10 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-three thirdcon pad-top-8">
+                        Assignment reference details</h2>
+                    <!--<div class="col-xs-2 no_pad count_cls">
+                    <span class="count_txt">0</span>
+                 </div>-->
+                    <span class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-12 float-left no_pad">{{getdecodevalue(accountDetails?.Name) || "Account Name"}}
+                                | {{accountDetails?.Number || "Account Number"}}</span>
+                </div>
+            </div>
+
+            <span class="border-bottm"></span>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead pad-create-leadMobile">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text1">Owner</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input label-input" id="text1" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[0]?.data_content}}" disabled>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text2">SBU</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text2" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[1]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text3">Vertical</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text3" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[7]?.data_content || 'NA'}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text4">Sub-vertical</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text4" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[3]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text5">CBU</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text5" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[4]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text6">Geo</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text6" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[2]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text7">Region</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text7" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[5]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder  mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text8">Country</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text7" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[8]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text9">State</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text9" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[8]?.data_content}}" disabled placeholder="state">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text10">City</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text10" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[12]?.data_content}}" disabled placeholder="city">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder  mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text11">Parent Account</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text11" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[6]?.data_content}}" disabled placeholder="parent account">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text12">Ultimate parent account</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text12" name="text" type="text" value="{{WithoutInputFields_AssignmentDetails[10]?.data_content}}" disabled placeholder="ultimate">
+                    </div> -->
+
+
+            </div>
+        </div>
+        <!--assignment ref view ends-->
+        <!-- Account details field starts from here-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card marin-bottom0 cardMobile mt20 no_pad" *ngIf="route_from != 'assign_ref'">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+                    <h3 class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-three pad-top-8">Account details
+                    </h3>
+                </div>
+            </div>
+            <span class="border-bottm"></span>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead pad-create-leadMobile">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text1"  matTooltip="Name given to the account within CRM, should ideally be same as the legal entity name.">Account name</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input label-input" id="text1" name="text" type="text" value="{{getdecodevalue(WithoutInputFields_Accountdetails[0]?.data_content)}}" disabled>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text4">Account
+            number</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text4" name="text" type="text" value="{{WithoutInputFields_Accountdetails[6]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text7">Account type</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text7" name="text" type="text" value="{{WithoutInputFields_Accountdetails[8]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="Legalentityname"  matTooltip="The legal entity name of the account. Will be fetched from D&B where available">Legal entity name</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="Legalentityname" name="text" type="text" value="{{getdecodevalue(WithoutInputFields_Accountdetails[9]?.data_content)}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text2">Proposed account type</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text2" name="text" type="text" value="{{WithoutInputFields_Accountdetails[4]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <!-- Select DROPDOWN STARTS 
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  mt20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+            for="CoversationType2" placeholder="Select lead source">Proposed Account Type </label>
+          <div class="customized-select ">
+            <span class="caret color-azure"></span>
+            <select id="CoversationType2" role="listbox" class="dropdown-bg pad-left10" value = "{{WithoutInputFields_Accountdetails[4]?.data_content}}" [disabled]="butDisabled">
+              <option value="Face to Face one">Mega Gama</option>
+              <option value="Face to Face">SBU 1</option>
+              <option value="Virtual Meeting">SBU 2</option>
+              <option value="Telephonic Conversation">SBU 3</option>
+            </select>
+          </div>
+        </div>
+         Select DROPDOWN ENDS -->
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text5">Parent
+            account</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text5" name="text" type="text" value="{{WithoutInputFields_Accountdetails[2]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder  mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text8">Ultimate parent account </label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text8" name="text" type="text" value="{{WithoutInputFields_Accountdetails[3]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text3">Account
+            classification</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text3" name="text" type="text" value="{{WithoutInputFields_Accountdetails[5]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text6">Proposed account classification</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text6" name="text" type="text" value="{{WithoutInputFields_Accountdetails[7]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text9" matTooltip="Defines the Unique Number from Duns and Bradstreet for each legal entity">Duns
+          number</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text9" name="text" type="text" value="{{WithoutInputFields_Accountdetails[1]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <!-- Select DROPDOWN STARTS 
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  mt20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+            for="CoversationType3" placeholder="Select lead source"> Account Type </label>
+          <div class="customized-select ">
+            <span class="caret color-azure"></span>
+            <select id="CoversationType3" role="listbox" class="dropdown-bg pad-left10" value = "{{WithoutInputFields_Accountdetails[1]?.data_content}}" [disabled]="butDisabled">
+              <option value="Face to Face one">Mega Gama</option>
+              <option value="Face to Face">SBU 1</option>
+              <option value="Virtual Meeting">SBU 2</option>
+              <option value="Telephonic Conversation">SBU 3</option>
+            </select>
+          </div>
+        </div>
+         Select DROPDOWN ENDS -->
+
+            </div>
+        </div>
+        <!-- Accounts details field ends here-->
+
+        <!-- Ownerships details field starts from here-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card marin-bottom0 cardMobile mt20 no_pad" *ngIf="route_from != 'assign_ref'">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+                    <h3 class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-three pad-top-8">
+                        Ownership details
+                    </h3>
+                </div>
+            </div>
+            <span class="border-bottm"></span>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-leadMobile pad-create-lead">
+                <div class="col-12 float-left no_pad">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text10">SBU</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input label-input" id="text10" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[0]?.data_content}}" placeholder="" disabled>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text-label2">Vertical</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text-label2" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[5]?.data_content}}" disabled placeholder="">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text-label5">Sub vertical</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text-label5" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[8]?.data_content}}" disabled placeholder="">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text11">Account delivery head</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text11" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[1]?.data_content}}" disabled placeholder="">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text11q">Vertical delivery head</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text11q" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[2]?.data_content}}" disabled placeholder="">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text11q">Account delivery manager</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text11q" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[3]?.data_content}}" disabled placeholder="">
+                    </div>
+                    <div class="col-12 float-left no_pad">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text-label3">Account owner</label>
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input border-yellow" id="text-label3" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[6]?.data_content}}" disabled placeholder="">
+                        </div>
+
+                        <!--autocomplete-->
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left mt20">
+                            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad search-disable">
+                                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ConversationName5" class="label-form">
+                                    Standby Account Owner </label>
+                                <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left disable-input label-input" id="ConversationName5" name="ConversationName" type="text" value="{{WithoutInputFields_OwnershipDetails[9]?.data_content}}" placeholder="" [disabled]="butDisabled">
+                                <span class="mdi mdi-magnify search-icon"></span>
+                            </form>
+                        </div>
+                        <!--autocomplete-->
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text-label1a">Geo</label>
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text-label1a" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[4]?.data_content}}" disabled placeholder="">
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder ">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text-label4">Region</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input border-yellow" id="text-label4" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[7]?.data_content}}" disabled placeholder="">
+                    </div>
+                    <!-- country sub-country start -->
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder ">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="Country">Country</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input border-yellow" id="text-label4" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[13]?.data_content}}" disabled placeholder="">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder ">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="Country-sub-division">Country sub-division</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input border-yellow" id="Country-sub-division" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[11]?.data_content}}" disabled placeholder="">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="Cityregion">City region</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input border-yellow" id="Cityregion" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[12]?.data_content}}" disabled placeholder="">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="Cluster">Cluster</label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input border-yellow" id="Cluster" name="text" type="text" value="{{WithoutInputFields_OwnershipDetails[10]?.data_content}}" disabled placeholder="">
+                    </div>
+                    <!-- country sub-country end-->
+                    <!-- Select DROPDOWN STARTS 
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  mt20">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                for="CoversationType4" placeholder="Select lead source">Region</label>
+              <div class="customized-select ">
+                <span class="caret color-azure"></span>
+                <select id="CoversationType4" role="listbox" class="dropdown-bg pad-left10" [disabled]="butDisabled">
+                  <option value="Face to Face one">India</option>
+                  <option value="Face to Face">SBU 1</option>
+                  <option value="Virtual Meeting">SBU 2</option>
+                  <option value="Telephonic Conversation">SBU 3</option>
+                </select>
+              </div>
+            </div>
+            Select DROPDOWN ENDS -->
+
+                </div>
+            </div>
+        </div>
+        <!-- Ownerships details field ends here.-->
+
+        <!-- Credit details field starts from here-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card marin-bottom0 cardMobile mt20 no_pad" *ngIf="route_from != 'assign_ref'">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+                    <h3 class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-three pad-top-8">Credit Details
+                    </h3>
+                </div>
+            </div>
+            <span class="border-bottm"></span>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-leadMobile pad-create-lead">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text-label6"  matTooltip="D&B's Marketing risk scores predict the likelihood of a firm paying in a severely delinquent manner (90+ days past terms) over the next 12 months">Market risk score</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input label-input" id="text-label6" name="text" type="text" value="{{WithoutInputFields_CreditDetails[0]?.data_content}}" placeholder="" disabled>
+                </div>
+
+                <!--<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form " for="text-label7">Credit Score Commentary</label>
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input border-yellow"
+                id="text-label7" name="text" type="text" value = "{{WithoutInputFields_CreditDetails[1]?.data_content}}" disabled placeholder="30">
+            </div>
+    
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="text-label8">Legal Structure(Partner, Corporation etc.)</label>
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input"
+                id="text-label8" name="text" type="text" value = "{{WithoutInputFields_CreditDetails[2]?.data_content}}" disabled placeholder="Format 1">
+            </div>-->
+
+            </div>
+        </div>
+        <!-- Credit details field ends  here-->
+
+        <!-- Engagement details field starts from here-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card cardMobile mt20 no_pad" *ngIf="route_from != 'assign_ref'">
+
+
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+                    <h3 class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-three pad-top-8">Engagement details
+                    </h3>
+                </div>
+            </div>
+            <span class="border-bottm"></span>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-leadMobile pad-create-lead">
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form mb5" for="text-label9">Account category</label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text-label9" name="text" type="text" value="{{WithoutInputFields_EngagementDetails[0]?.data_content}}" disabled placeholder="">
+                </div>
+
+                <!--   
+               Select DROPDOWN STARTS 
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  mt20">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                  for="CoversationType-1" placeholder="Select lead source">Account Category</label>
+                <div class="customized-select ">
+                  <span class="caret color-azure"></span>
+                  <select id="CoversationType-1" role="listbox" class="dropdown-bg pad-left10" [disabled]="butDisabled">
+                    <option value="Face to Face one"></option>
+                    <option value="Face to Face">SBU 1</option>
+                    <option value="Virtual Meeting">SBU 2</option>
+                    <option value="Telephonic Conversation">SBU 3</option>
+                  </select>
+                </div>
+              </div>
+              Select DROPDOWN ENDS -->
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt-10">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form mb-0" for="text-label10" id="keyconGov">Goverment account
+                        <span class="mdi mdi-information-outline info-icon" tabindex="0" aria-labelledby="atool atoola"></span>
+                        <div class="toolTipDiv" >
+                            <span class="toolTipSpan" role="tooltip" id="atool">Government accounts means and include agencies operating through state-owned
+                              and state-controlled entities including the following:</span>
+                            <ul class="toolTipUl" role="tooltip" id="atoola">
+                                <li class="toolTipLi">Public sector undertakings</li>
+                                <li class="toolTipLi">Government run enterprises</li>
+                                <li class="toolTipLi">Enterprises where key officers and directors are appointed by the government.
+                                </li>
+                                <li class="toolTipLi">Government funded /grants organizations</li>
+                                <li class="toolTipLi">Enterprises is widely perceived and understood to be performing governmental functions
+                                </li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text-label10" name="text" type="text" value="{{WithoutInputFields_EngagementDetails[1]?.data_content}}" disabled placeholder="">
+              </div>
+                <!-- Select DROPDOWN STARTS 
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  mt20">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                    for="CoversationType-2" placeholder="Select lead source">Goverment Account </label>
+                  <div class="customized-select ">
+                    <span class="caret color-azure"></span>
+                    <select id="CoversationType-2" role="listbox" class="dropdown-bg pad-left10" [disabled]="butDisabled">
+                      <option value="Face to Face one"></option>
+                      <option value="Face to Face">SBU 1</option>
+                      <option value="Virtual Meeting">SBU 2</option>
+                      <option value="Telephonic Conversation">SBU 3</option>
+                    </select>
+                  </div>
+                </div>
+                Select DROPDOWN ENDS -->
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt-10">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form mb-0" for="text-label11w">New age business 
+                        <span class="mdi mdi-information-outline info-icon" matTooltip="Marks the account as a New Age Business account to keep focus on these accounts. New Age Businesses are accounts which could be potential unicorns, and could soon be your top customers."></span>
+                    </label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text disable-input" id="text-label11w" name="text" type="text" value="{{WithoutInputFields_EngagementDetails[2]?.data_content}}" disabled placeholder="-">
+                </div>
+                <!-- Select DROPDOWN STARTS 
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  mt20">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                  for="CoversationType-3" placeholder="Select lead source"> New Age Business </label>
+                <div class="customized-select ">
+                  <span class="caret color-azure"></span>
+                  <select id="CoversationType-3" role="listbox" class="dropdown-bg pad-left10" [disabled]="butDisabled">
+                    <option value="Face to Face one"></option>
+                    <option value="Face to Face">SBU 1</option>
+                    <option value="Virtual Meeting">SBU 2</option>
+                    <option value="Telephonic Conversation">SBU 3</option>
+                  </select>
+                </div>
+              </div>
+              Select DROPDOWN ENDS -->
+                <!-- Pursued opportunity scope/tenure/other remarks text area start -->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left input-placeholder mt20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="PursuedOpportunity">Pursued opportunity scope/tenure/other remarks</label>
+                    <textarea class="form-control vision_txt_area_placeholder disable-input" id="PursuedOpportunity" rows="4" disabled placeholder=""> {{WithoutInputFields_EngagementDetails[3]?.data_content}}</textarea>
+                </div>
+                <!-- Pursued opportunity scope/tenure/other remarks  text area end -->
+
+            </div>
+        </div>
+        <!-- Engagement details field ends here-->
+
+    </div>
+</div>

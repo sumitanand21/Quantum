@@ -1,0 +1,33 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left unqualified-padding"> 
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left card no_pad mt40 mt20 mb20 ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 card-content float-left pad-30 padd-15-top">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-3  float-left main-score  pr0">
+        <div class="head" id="head">7/10</div>
+        <label for="head">Lead score</label>
+        <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+      </div>
+      <div class="col-12 col-sm-12 col-md-7 col-lg-7  float-right description-div">
+        <label for="ScoreSummary">Score summary </label>
+        <p class="summary">Closing this conversation as the parent company leadership has a different opinion There are many variations of passages
+          of Lorem Ipsum available, but the majority have suffered alteration.</p>
+      </div>
+    </div>
+  </div>
+  <h3 class="heading-level-three float-left">Score Parameters</h3>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left card no_pad margin-top-10 parameterCard" *ngFor="let data of parameterCard">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 card-content float-left pad-30 padd-15-top" >
+      <h4>{{data.head}}</h4>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-3  float-left progress-div pr0">
+        <label for="head " class="overall">Overall</label>
+        <div class="score pb40" id="head">{{data.overall}}</div>
+        <mat-progress-bar class="progress-bar" mode="determinate" [value]="60"></mat-progress-bar>
+      </div>
+      <ul class="col-12 col-sm-12 col-md-8 col-lg-8  float-right ">
+        <li class="col-12 col-sm-12 col-md-4 col-lg-4  float-left" *ngFor="let dat of data.content">
+          <label for="acc_interaction">{{dat.key}}</label>
+          <p class="acc_interaction">{{dat.value}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

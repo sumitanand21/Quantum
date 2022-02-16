@@ -1,0 +1,59 @@
+<div class="mobile-display no-data">
+  <div><b class="">Not available for mobile</b></div>
+</div>
+<div class="col-12 float-left commercial-landing no_pad web-display">
+  <div class="col-12 ptop-20 no_pad vertical-btns-div flex-tab" *ngIf="tabVisibility">
+    <div
+      class="col-lg-11 col-md-8 col-12 no_pad flex-tab-width web-tab max-wid-tabDeal"
+    >
+        <button
+          class="col-lg-3 col-sm-4 col-md-4 col-4 sub-vertical-but brd-right0 "
+          [routerLink]="['uploadRLS']"
+          routerLinkActive="active"
+        >
+          <span
+            class="no_pad mdi mdi-folder-upload calin-select-all pr5 pos_rel top-2"
+          ></span>
+          <span class=" no_pad btntxt-s pos-btn"> Upload RLS</span>
+        </button>
+
+        <button
+          class="col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-right0 border-rad-none"
+          [routerLink]="['viewEdit']"
+          routerLinkActive="active"
+        >
+          <span
+            class="no_pad calin-select-all mdi mdi-calendar-edit pr5 pos_rel top-2"
+          ></span>
+          <span class=" no_pad btntxt-s pos-btn"> View/Edit</span>
+        </button>
+
+        <button
+          class="col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-right0 border-rad-none"
+          [routerLink]="['calculate']"
+          routerLinkActive="active"
+        >
+          <span
+            class="no_pad calin-select-all mdi mdi-calculator pr5 pos_rel top-2"
+          ></span>
+          <span class=" no_pad btntxt-s pos-btn"> Calculate</span>
+        </button>
+
+        <button
+          [disabled]="showMngMilestoneBtn == false"
+          class="col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but"
+          [routerLink]="['milestone']"
+          routerLinkActive="active"
+        >
+          <span
+            class="no_pad calin-select-all mdi mdi-flag-checkered pr5 pos_rel top-2"
+          ></span>
+          <span class=" no_pad btntxt-s pos-btn"> Milestone</span>
+        </button>
+    </div>
+  </div>
+
+  <div class="sm-hide">
+    <router-outlet></router-outlet>
+  </div>
+</div>

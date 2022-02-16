@@ -1,0 +1,149 @@
+<div class="col-xs-12 no_pad">
+  <div class="col-xs-12 no_pad ChatBOT_container">
+    <div class="posF col-xs-12 no_pad">
+      <div class="col-xs-12 no_pad chatInDiv">
+        <div id="wrapper">
+          <div class="small-chat-box col-xs-12 no_pad" id="slidelefttoright">
+            <div style="border-radius: 10px;opacity: 1px;display: block">
+              <div class="col-xs-12 no_pad chatBotBackground">
+                <div class="col-xs-12 no_pad h-120" align="center">
+                  <img class="topimg" src="assets/images/group-10.png" />
+                </div>
+                <mat-tab-group class="col-xs-12 no_pad chatTabs" (selectedTabChange)="tabChanged($event)">
+                  <mat-tab label="Assistant" class="col-xs-6 no_pad">
+                    <div class="col-xs-12 padd15 bxShadow">
+                      <div class="col-xs-12 no_pad " style='padding-bottom:5px'>
+                        <input type="text" class="col-xs-10 form-control form_ctrl search-input"
+                          (click)="openSearchList()" (keypress)="faqQuestion($event)" [(ngModel)]="searchKeys"
+                          (clickOutside)="onClickOutside()" id="user-message" x-webkit-speech
+                          placeholder="How can I help you today?">
+                        <button class="col-xs-2 speech" type="button" aria-labelledby="hide-on-desktop"
+                          title="Send message to Ella" (click)="isPlay = !isPlay;openRecord()">
+                          <span *ngIf="isPlay" class="mdi mdi-pause record-icon"></span>
+                          <span *ngIf="!isPlay" class="mdi mdi-microphone record-icon"></span>
+                        </button>
+                        <div class="col-11 search-results no_pad" *ngIf="searchList">
+                          <ul class="col-12  no_pad">
+                            <perfect-scrollbar style="max-height:200px">
+                              <li (click)="closeSearchList(list)"
+                                *ngFor="let list of globalService.questions| filterQuestions:searchKeys">{{list}}
+                              </li>
+                              <li *ngIf="(globalService.questions | filterQuestions:searchKeys).length ==0">Not found
+                              </li>
+                            </perfect-scrollbar>
+                          </ul>
+                          <!-- <button class="col-xs-12 float_lft show-more-btn" (click)="showFAQ()">Show more FAQs</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <perfect-scrollbar class="col-xs-12 no_pad float_lft scroll-chat">
+                      <div class="col-12 no_pad float_lft" *ngIf="faqSection">
+                        <div *ngFor="let chatData of globalService.chatList; let i = index"
+                          class="col-12 float_lft cardPadd15">
+                          <div *ngIf="chatData.userType == 'Bot'" class="col-12 float_lft">
+                            <img src="assets/images/dadefault.svg" alt="" class="float_rght chat-image">
+                            <div class="float_rght col-9 wipro-chat">
+                              <span class="float_lft chat-main-text">{{chatData.displayName}}</span>
+                              <span class="float_rght chat-date">{{chatData.dateTime | date:'shortTime'}}</span>
+                              <!-- <p class="col-xs-12 no_pad chat-desc">{{chatData.data}}</p> -->
+                              <p class="col-12 no_pad chat-desc float_lft" bind-innerHTML="chatData.data"></p>
+                              <div class="col-12 no_pad float_lft mt10"
+                                *ngIf="chatData.isHelpLine || chatData.isSession">
+                                <button class="yes-btn" (click)="onClickYes(chatData.isHelpLine,chatData.isSession, i)">
+                                  Yes
+                                </button>
+                                <button class="no-btn" (click)="onClickNo(chatData.isHelpLine,chatData.isSession, i)">
+                                  No
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div *ngIf="chatData.userType == 'User'" class="col-12 float_lft mt20">
+                            <img src="" alt="" class="float_lft chat-image-left">
+                            <div class="float_lft col-xs-9 user-chat">
+                              <span class="float_lft chat-main-text">{{chatData.displayName}}</span>
+                              <span class="float_rght chat-date">{{chatData.dateTime | date:'shortTime'}}</span>
+                              <p class="col-xs-12 no_pad chat-desc">{{chatData.data}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <app-assistnt-defult-message></app-assistnt-defult-message> -->
+                      <div [ngSwitch]="true">
+                        <div *ngSwitchCase="router.url.includes('/activities/meetingInfo')">
+                          <app-assistant-meeting-details>
+                          </app-assistant-meeting-details>
+                        </div>
+
+                        <div *ngSwitchCase="router.url.includes('/leads/leadDetails/leadDetailsInfo')">
+                          <app-assistant-lead-deatils [loginUserId]="loginUserId">
+                          </app-assistant-lead-deatils>
+                        </div>
+
+                        <div *ngSwitchCase="router.url.includes('/accounts/accountlist')">
+                          <app-assistant-account-list [loginUserId]="loginUserId">
+                          </app-assistant-account-list>
+                        </div>
+
+                        <div *ngSwitchCase="router.url.includes('/accounts/accountdetails')">
+                          <app-assistant-account-details></app-assistant-account-details>
+                        </div>
+
+                        <div *ngSwitchCase="router.url.includes('/opportunity/allopportunity')">
+                          <app-assistant-opportunity-list [loginUserId]="loginUserId">
+                          </app-assistant-opportunity-list>
+                        </div>
+
+                        <div
+                          *ngSwitchCase="router.url.includes('/opportunity/opportunityview/overview') || router.url.includes('opportunity/opportunityview/businesssolution') || router.url.includes('opportunity/opportunityview/team') || router.url.includes('opportunity/opportunityview/competitor') || router.url.includes('opportunity/opportunityview/deal')">
+                          <app-assistant-opportunity-overview>
+                          </app-assistant-opportunity-overview>
+                        </div>
+
+                        <div
+                          *ngSwitchCase="router.url.includes('/opportunity/opportunityview/order') || router.url.includes('/opportunity/opportunityview/lossreasons') || router.url.includes('/opportunity/opportunityview/closereason')">
+                          <app-assistant-order-details>
+                          </app-assistant-order-details>
+                        </div>
+                        
+                        <div *ngSwitchDefault>
+                          <app-assistnt-defult-message></app-assistnt-defult-message>
+                        </div>
+                      </div>
+                      <!-- <app-assistant-account-list *ngIf="router.url.includes('/accounts/accountlist')"
+                        [loginUserId]="loginUserId">
+                      </app-assistant-account-list>
+                      <app-assistant-account-details *ngIf="router.url.includes('/accounts/accountdetails')">
+                      </app-assistant-account-details>
+                      <app-assistant-opportunity-list *ngIf="router.url.includes('/opportunity/allopportunity')"
+                        [loginUserId]="loginUserId">
+                      </app-assistant-opportunity-list>
+                      <app-assistant-opportunity-overview
+                        *ngIf="router.url.includes('/opportunity/opportunityview/overview') || router.url.includes('opportunity/opportunityview/businesssolution') || router.url.includes('opportunity/opportunityview/team') || router.url.includes('opportunity/opportunityview/competitor') || router.url.includes('opportunity/opportunityview/deal')">
+                      </app-assistant-opportunity-overview>
+                      <app-assistant-meeting-details *ngIf="router.url.includes('/activities/meetingInfo')">
+                      </app-assistant-meeting-details>
+                      <app-assistant-order-details
+                        *ngIf="router.url.includes('/opportunity/opportunityview/order') || router.url.includes('/opportunity/opportunityview/lossreasons') || router.url.includes('/opportunity/opportunityview/closereason')">
+                      </app-assistant-order-details>
+                      <app-assistant-lead-deatils *ngIf="router.url.includes('/leads/leadDetails/leadDetailsInfo')"
+                        [loginUserId]="loginUserId">
+                      </app-assistant-lead-deatils> -->
+                    </perfect-scrollbar>
+                  </mat-tab>
+                  <mat-tab label="Collaborate" class="col-xs-6 no_pad">
+                    <form hidden="hidden" id="wittyChatFormId" name="wittyChatForm" action={{collaborationUrl}}
+                      method="POST" target="wittyChatFrame">
+                      <input name="signed_request" id="signed_request" [value]="signed_request">
+                    </form>
+                    <app-assistant-collaboration></app-assistant-collaboration>
+                  </mat-tab>
+                </mat-tab-group>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

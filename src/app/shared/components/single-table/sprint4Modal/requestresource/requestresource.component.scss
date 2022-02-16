@@ -1,0 +1,128 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$MetalLight: #9b9b9b;
+$Metal: #4a4a4a;
+$Black: #000000;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+
+.popup-container {
+    .popup-hd
+    {
+        padding: 15px 0px 10px 0px;
+    }
+    .NominationStart-label{
+        padding-top: 15px;
+    }
+    .popup-hd-txt
+    {
+        margin: 0;
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 17px;
+        color: $Black !important;
+        font-weight: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        padding-top: 3px;
+    }
+  
+    .mtb-5 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+  
+    .hd-lbl {
+        color: $MetalLight;
+        font-family: WiproAkkuratTT-Regular;
+    }
+  
+    .note {
+        font-size: 12px;
+        color: #4a4a4a;
+        margin-bottom: 5px;
+        font-family: WiproAkkuratTT-Regular;
+    }
+  
+    .hd-val {
+        color: $Black;
+        font-family: WiproAkkuratTT-Regular;
+    }
+  
+    .add-cont {
+        color: $LabelGrey;
+        font-family: WiproAkkuratTT-Regular;
+        margin-top: 20px;       
+    }
+  
+    .txt-area {
+        border-radius: 4px;
+        padding: 10px;
+        font-family: WiproAkkuratTT-Regular;
+      margin-bottom: 10px;
+        // color: $MetalLight;
+    }
+   
+    .discard-close-btn {
+        font-size: 20px;
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+        font-weight: bold;
+    }
+  
+    input {
+        height: 40px;
+        border-radius: 4px;
+        border: 1.5px solid #d8d8d8;
+        padding: 3px 6px;
+        font-size: 14px;
+        &:focus{
+          border-color: $Azure;
+        }
+    } 
+    .bg-gray {
+        background: #f5f5f5;
+    }
+  
+    .in-value {
+        font-weight: normal;
+        color: $Black;       
+    }
+
+      .btm-10 {
+        bottom: 10px;
+      }
+  
+    .fsize-12 {
+      font-size: 12px;
+    }
+  
+    .txt-area {
+        padding: 5px;
+        font-family: WiproAkkuratTT-Regular;
+        margin-bottom: 10px;
+        font-size: 13px;
+        resize: vertical;
+    }
+
+    .input-text-popup {
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: 1.5px solid #d8d8d8;
+        bottom: 25px;
+        height: 130px;
+        &:focus {
+          outline: none;
+          border-color: $Azure;
+        }
+      }
+
+      .disabledBtn {
+        pointer-events: none;
+        background-color: rgba(0,0,0,.12);
+        color: rgba(0,0,0,.26);
+        box-shadow: 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.14), 0 0 0 0 rgba(0,0,0,.12);
+    }
+  }

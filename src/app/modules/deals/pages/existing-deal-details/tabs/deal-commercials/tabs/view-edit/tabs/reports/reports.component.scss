@@ -1,0 +1,128 @@
+.deal-reports-container
+{
+    margin-top: 30px;
+    .deal-head-txt
+    {
+        padding: 0 40px;
+        margin-bottom: 79px;
+    }
+    .mar-botm22
+    {
+        margin-bottom: 22px;
+    }
+    .pad20
+    {
+        padding: 20px;
+    }
+    // .w-130
+    // {
+    //     width: 130px;
+    // }
+    .mr10
+    {
+        margin-right: 10px
+    }
+    .btns
+    {
+        margin-top: 28px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .customized-select select{
+        color: #868282;
+    }
+    .label-content
+    {
+        label {
+            color: #6f6f6f;
+            opacity: 0.87;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            color: #6f6f6f;
+            margin-bottom: 5px;
+        }
+        p {
+            font-family: WiproAkkuratTT-Bold;
+        }
+    }
+    .rate-table
+    {
+        tbody tr:nth-of-type(even)
+        {
+            background: #cccccc21;
+            float: left;
+            width: 100%;
+        }
+    }
+   
+    .non-editDet
+    {
+        border-top: solid 1px #d7d7d7;
+        padding-top: 30px;
+        margin-top: 10px;
+    }
+    .rookie-table
+    {
+        thead {
+            background: #d9e9ff;
+        }
+        th {
+            font-size: 12px;
+            padding: 15px 0px 15px 36px;
+          }
+          td {
+            padding: 15px 0px 15px 36px;
+          }
+          tbody tr:nth-of-type(even)
+          {
+              background: #cccccc21;
+              
+          }
+    }
+    .tabl-head
+    {
+        margin: 22px 0;
+    }
+}
+.error-pos{
+    position: relative;
+    bottom: 4px;
+  }
+  
+.loader {
+    margin: 200px auto;
+    border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 6px solid #3498db;
+    width: 64px;
+    height: 64px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  
+  }
+  .loaderContainer {
+    width: 100%;
+    top:0em;
+    position: absolute;
+    height: 100%;
+    z-index: 9999;
+    background: white;
+    }
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-opportunity suspendPop" alert="dialog" tabindex="0">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt">Alert</span>
+            <button class="col-1 float-left no_pad border-0 mdi mdi-window-close close-icn cp" aria-label="close"
+                [mat-dialog-close]="false"></button>
+        </div>
+    </div>
+    <div class="col-12 float-left border-bottom-grey no_pad "></div>
+    <div class="col-12 float-left pad-20-pop">
+        <div class="col-12 float-left convo-name mt5 pl25" *ngIf="isSave">Are you sure you want to save the data?</div>
+        <div class="col-12 float-left convo-name mt5 pl25" *ngIf="isDelete">Are you sure you want to Delete the RLS?</div>    
+        <div class="col-12 float-left convo-name mt5 pl25" *ngIf="isDeleteLine">Unsaved data(if any) will be deleted, Are you sure you want to proceed?</div>        
+        <div class="col-12 float-left convo-name mt5 pl25" *ngIf="isRevert"> Do you want to REVERT RLS?</div>
+        <div class="col-12 float-left convo-name mt5 pl25" *ngIf="isProceed"> Do you want to proceed?</div>
+        <div class="col-12 float-left convo-name mt5 pl25" *ngIf="isIPSave">This change will affect related columns in RLS. Are you sure you want to proceed?</div>
+    </div>
+    <div class="col-12 float-left no_pad">
+            <button aria-label="Cancel" class="col-6 float-left border-0 no_pad cancel-btn"
+            [mat-dialog-close]="false">Cancel</button>
+        <button aria-label="OK" class="col-6 float-left  border-0 no_pad confrm-btn mt15"
+            [mat-dialog-close]="true">OK</button>
+        
+    </div>
+</div>

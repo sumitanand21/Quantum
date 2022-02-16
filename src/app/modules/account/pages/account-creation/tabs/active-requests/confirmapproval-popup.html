@@ -1,0 +1,81 @@
+<div class="col-12 float-left  no_pad popup-container accountOwn ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd ">
+            <span class="col-11 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title>Confirm approval</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey1"></div>
+        <div class="col-12 float-left  no_pad">
+            <span class="col-12 float-left  no_pad logo-hd-popup1 padt-20">Are you sure you want to confirm the creation of  <span>{{data.itemData.Name}}</span>            and add it to current hunting accounts? </span>
+        </div>
+        <!--<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 plb-60-20 sections-pad-20 float-left no_pad ">
+            <div class="float-left  customized-input slidetoggle customized-slider">
+              <mat-slide-toggle checked="true">Private equity owned</mat-slide-toggle>
+            </div>
+          </div>-->
+        <div class="col-12 no_pad float-left">
+
+            <!--<form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left margin30 no_pad  CompanyName pt30">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="customerName"
+                    class="label-form">Private equity account </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input br-0-4"
+                        id="customerName" name="customerName" type="text" autocomplete="off"  (keyup)="onButtonClick();contactNameSwitch = true"
+                        [(ngModel)]="customerName" placeholder="Enter private equity account" (clickOutside)="customerNameclose()"
+                        (click)="customerNameSwitch = true">
+                    <span class="mdi mdi-magnify"></span>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box  border-bottom-4   color-azure z-ind-9"
+                *ngIf="customerName && customerNameSwitch">
+                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                    <ul class=" list-group mr2 sort-dropdown">
+                        <li class="list-group-item h-50 p-4-10 " (click)="appendcustomer(item)"
+                            *ngFor="let item of data.configdata[accservive.cachedArray[0].subProp[0]]">
+        
+                            <div class="float-left naming-tags child-middle bg-ash">
+                               <span class="initials">{{item.initials}}</span> 
+                            </div>
+                            <label for="inti_name" class="float-left name">
+                                <span class="d-block list-name">{{item.name}}</span>
+                                <span class="d-block sub-list">{{item.designation}}</span>
+                            </label>
+                        </li>
+        
+                        <li class="d-block list-name h-40 p-10" *ngIf="(data.configdata[accservive.cachedArray[0].subProp[0]]).length == 0">
+                            No record found </li>
+                    </ul>
+        
+                </perfect-scrollbar>
+            </div>
+                </form>-->
+            <!--<perfect-scrollbar style="max-height:180px">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pr0 mt-10 p-4-10 cp no_pad"
+                                *ngFor="let item of selectedCustomer" >
+                                <div class="float-left naming-tags child-middle bg-ash">
+                                    <span class="initials">{{item.initials}}</span>
+                                </div>
+                                <label for="inti_name" class="float-left name">
+                                    <span class="d-block list-name">{{item.contact}}</span>
+                                    <span class="d-block sub-list">{{item.designation}}</span>
+                                </label>
+                                <span class="float-right mdi mdi-close cp" (click)="closeDiv(item)"></span>
+                
+                
+                            </div>
+                
+                
+                        </div>
+                    </perfect-scrollbar>-->
+
+            <div class="col-12 float-left  no_pad">
+                <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text-popup" id="text3" name="text"
+                    [(ngModel)]="overallcomment" type="text" placeholder="Type here"></textarea>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12 float-left no_pad mt30">
+        <button aria-label="Confirm" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="ConfirmComment();">Confirm</button>
+    </div>
+</div>

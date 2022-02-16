@@ -1,0 +1,99 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity order-tab">
+
+    <div class="col-12 float-left container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-11 float-left no_pad popup-hd-txt col-size" mat-dialog-title>Do you want to submit the order for approval?
+            </span>
+            <button class="col-1 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn close-icn" aria-label="close"
+                mat-dialog-close (click)="onNoClick()"></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+        <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad submitchange">
+            <div *ngIf="data.signedStatus=='No' && data.showDH"
+                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-left mt-20 customized-select mobile-select-box">
+                <!-- <span class="caret color-azure"></span> -->
+                <label for="sdh_adh_vdh" class="float-right w-100 label-form">ADH/VDH/SDH</label>
+                <select id="sdh_adh_vdh" role="listbox" class="ellipses"
+                    (change)="selectedValueofOrderApproval($event.target.value, 'dhId')">
+                    <option hidden value="">Select</option>
+                    <option *ngFor="let nonWtData of data.getAdhBdhForWt" [value]="nonWtData.ApproverId">
+                        {{nonWtData.ApproverName }}</option>
+
+                    <!--<option value="Eventtype2">Service 2</option>-->
+                </select>
+            </div>
+            <div *ngIf="data.signedStatus=='No' && data.showDH"
+                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-left mt20 customized-select pr-10 mt-20-mob web-select-box h100">
+
+                <label for="sdh_adh_vdh" class="float-right w-100 label-form">ADH/VDH/SDH</label>
+                <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>Select ADH/VDH/SDH</mat-label>
+                    <mat-select disableOptionCentering panelClass="Select-panel-class"
+                        (selectionChange)="selectedValueofOrderApproval($event.value, 'dhId')"
+                        class="select-focus ellipses" role="listbox">
+                        <mat-option hidden value="">Select</mat-option>
+                        <mat-option *ngFor="let nonWtData of data.getAdhBdhForWt" [value]="nonWtData.ApproverId">
+                            {{nonWtData.ApproverName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="data.showBFM" [ngClass]="data.showDH ? 'float-right':''"
+                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad mt-20 mobile-select-box customized-select">
+                <label for="approver"  [ngClass]="data.showDH ? 'float-right':''" class="w-100 label-form">Finance team</label>
+                <span class="caret color-azure"></span>
+                <select id="approver" role="listbox" class="ellipses"
+                    [(ngModel)]="BFM_Data" (change)="selectedValueofOrderApproval($event.target.value, 'bfmId')">
+                    <option hidden value="" disabled>Select </option>
+                    <option *ngFor="let notWtFinanceData of data.finanaceTeamForNonWt"
+                        [value]="notWtFinanceData.systemuserid">
+                        {{notWtFinanceData.FullName}}</option>
+                </select>
+            </div>
+            <div *ngIf="data.showBFM" [ngClass]="data.showDH ? 'float-right':''"
+                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad mt20 customized-select web-select-box h100">
+                <label for="approver"  [ngClass]="data.showDH ? 'float-right':''" class="w-100 label-form">Finance team</label>
+                <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>select finance team</mat-label>
+                    <mat-select disableOptionCentering panelClass="Select-panel-class" name="Projection"
+                        [(ngModel)]="BFM_Data" id="approver"
+                        (selectionChange)="selectedValueofOrderApproval($event.value, 'bfmId')"
+                        class="select-focus ellipses" role="listbox">
+                        <mat-option hidden value="">Select</mat-option>
+                        <mat-option *ngFor="let notWtFinanceData of data.finanaceTeamForNonWt"
+                            [value]="notWtFinanceData.systemuserid">
+                            {{notWtFinanceData.FullName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left mt10 no_pad">
+            <div class="col-12 float-left no_pad">
+                <label class="float-left w-100 label-form">Re-submission comment*
+                </label>
+                <textarea required class="txt-area" [appAlphaNumeric] = "'alphanumeric'" maxlength="500" rows="6" cols="51" placeholder="Enter your comment" [(ngModel)]="reSubmissionReason"></textarea>
+            </div>
+        </div>
+
+
+        <div class="col-12 float-left no_pad mt10">
+            <span class="col-12 float-left bordr-top no_pad">
+                    Your order will be submitted for approval, however OB distribution section will
+                    be open for validation & update upto 3 days from the order approval.</span>
+        </div>
+
+
+
+    </div>
+
+
+     <div class="col-12 float-left no_pad">
+        <button aria-label="Cancel" class="col-6 float-left btndef-none no_pad discard-btn" mat-dialog-close
+            (click)="onSave('NO')">Cancel</button>
+        <button aria-label="submit" class="col-6 float-left btndef-none no_pad confrm-btn mt15 searchButton"
+            [disabled]="!reSubmissionReason" (click)="onSave('YES')">Submit</button>
+    </div>
+</div>

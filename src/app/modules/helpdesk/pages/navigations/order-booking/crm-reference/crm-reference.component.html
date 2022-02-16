@@ -1,0 +1,219 @@
+<!--grandparent-->
+<div class="no_pad float-left col-12 col-lg-12 col-xl-12">
+  <div class="no_pad float-left col-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12 blue-patch"></div>
+  <!--bluepatch-->
+
+
+  <div class="col-12 col-xs-12 col-sm-12 col-lg-12 col-xl-12 div_container">
+    <!--parent of both divs-->
+    <div class="float-left col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card padBtLf">
+      <!--upper div-->
+      <span class="back-arrow-helpdesk mdi mdi-arrow-left" (click)="goback()"></span>
+
+      <span class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 div-heading">CRM reference number from Order
+        number
+      </span>
+
+      <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+        <!--order number textbox-->
+        <div class="col-6 col-xs-9 col-sm-9 col-md-7 col-lg-6 col-xl-6 float-left">
+          <div class="customized-input">
+            <label for="OrderNumber" class="label-form w-100">Order number*</label>
+            <div class="pos-rel w-100 float-left no_pad">
+              <input id="OrderNumber" type="text" [(ngModel)]="Order" class=" inputbox" 
+              placeholder="Enter order number">
+            </div>
+          </div>
+        </div>
+        <!--ending order number textbox-->
+
+        <!--Search web button-->
+        <div class="col-6 col-md-5 col-lg-6 col-xl-6 float-left no_pad">
+          <button class="searchButton searchmob" [disabled]="!Order" (click)="searchCrm()"  >
+            Search
+          </button>
+        </div>
+ 
+        <!--Ending Search web button-->
+      </div>
+    </div>
+    <!--end upper div-->
+
+    <div class="float-left no_pad col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card">
+      <!--2nd div-->
+      <div class="float-left col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt20 pl25">
+        <!--upperhalf-->
+        <p class="heading">Details</p>
+
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left border-bottom-grey "></div>
+
+        <div class="mt20 col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+          <!--for all details-->
+          <!--order number textbox-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-6 float-left plb-60-20 pos-rel mt-20-mob h-65-non-edit">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail">
+                Order Number </div>
+              <!-- <div>NA</div> -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+                {{CrmRefObject.OrderNumber? CrmRefObject.OrderNumber : '-' }}</div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+              </div>
+            </div>
+          </div>
+          <!--ending order number textbox-->
+
+          <!--opportunity number textbox-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-6 float-left plb-60-20 pos-rel mt-20-mob h-65-non-edit">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail">
+                Opportunity Number </div>
+              <!-- <div>NA</div> -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+                {{CrmRefObject.OpportunityNumber? CrmRefObject.OpportunityNumber : '-' }}</div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+              </div>
+            </div>
+          </div>
+          <!--ending opportunity number textbox-->
+
+          <!--opportunity Name textbox-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-6 float-left plb-60-20 pos-rel mt-20-mob h-65-non-edit">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail">
+                Opportunity Name </div>
+              <!-- <div>NA</div> -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+                {{CrmRefObject.OpportunityName? CrmRefObject.OpportunityName : '-' }}</div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+              </div>
+            </div>
+          </div>
+          <!--ending opportunity Name textbox-->
+
+          <!--opportunity Forecast textbox-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-6 float-left plb-60-20 pos-rel mt-20-mob h-65-non-edit">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail">
+                Opportunity Forecast </div>
+              <!-- <div>NA</div> -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+                {{CrmRefObject.OpportunityForecastName? CrmRefObject.OpportunityForecastName : '-' }}
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+              </div>
+            </div>
+          </div>
+          <!--ending opportunity Forecast textbox-->
+
+          <!--Project Creation Flag textbox-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-6 float-left plb-60-20 pos-rel mt-20-mob h-65-non-edit">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail">
+                Project Creation Flag </div>
+              <!-- <div>NA</div> -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text-f17">
+                {{CrmRefObject.ProjectFlag? CrmRefObject.ProjectFlag : '-' }}
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+              </div>
+            </div>
+          </div>
+          <!--ending Project Creation Flag textbox-->
+
+          <!--Account number textbox-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-6 float-left plb-60-20 pos-rel mt-20-mob h-65-non-edit">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail">
+                Account Number </div>
+              <!-- <div>NA</div> -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+                {{CrmRefObject.AccountNumber? CrmRefObject.AccountNumber : '-' }}
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+              </div>
+            </div>
+          </div>
+          <!--ending Account number textbox-->
+
+          <!--Account Name textbox-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-6 float-left plb-60-20 pos-rel mt-20-mob h-65-non-edit">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail">
+                Account Name </div>
+              <!-- <div>NA</div> -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+                {{CrmRefObject.AccountName? CrmRefObject.AccountName : '-' }}
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+              </div>
+            </div>
+          </div>
+          <!--ending Account Name textbox-->
+
+          <!--CRM Reference Number textbox-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-6 float-left plb-60-20 pos-rel mt-20-mob h-65-non-edit">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail">
+                CRM Reference Number </div>
+              <!-- <div>NA</div> -->
+              <div class="col-4 col-xs-5 col-sm-6 col-md-8 col-lg-4 col-xl-4 float-left no_pad orderdetail-sub-text-f17">
+                {{CrmRefObject.CRMReference? CrmRefObject.CRMReference : '-' }}
+              </div>
+              <div class="col-6 col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 float-left no_pad">
+                <span>
+                  <button (click)="copyCRM(CrmRefObject.CRMReference)" class="mdi mdi-content-copy copy-btn" [disabled]="CrmRefObject.CRMReference==''">
+                    
+                  </button>
+                </span>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad orderdetail-sub-text">
+              </div>
+            </div>
+          </div>
+          <!--ending CRM Reference Number textbox-->
+
+        </div>
+
+
+      </div>
+      <!--end upperhalf-->
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text_div">
+        <!--bottom text-->
+        <ol type="1" class="mt20 mb20">
+          <li class="text_bullet">
+            If the project creation flag is ’N’,
+            <br>
+            <span class="text_bullet_regular">
+              Then check on how it can be pushed as ‘Y’ based on the Opportunity Forecast as per the PSC process
+            </span>
+          </li>
+          <li class="text_bullet">
+            If the project creation flag is ’Y’, and the user still says that it can’t be seen in CPRO or entry doesn’t
+            exists then
+            <ol type="a" class="pl15">
+              <li class="text_bullet_regular">
+                Ask the user to refresh the project screen
+              </li>
+              <li class="text_bullet_regular">
+                If the problem still and persists, push the opportunity manually and follow step 2
+              </li>
+              <li class="text_bullet_regular">
+                If the problem still persists after 2(b), then ask. the user to contact CPRO helpdesk team
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+
+      <!--end bottom text-->
+    </div>
+    <!--end 2nd div-->
+
+
+  </div>
+  <!--end parent of both divs-->
+
+
+
+</div><!-- end of grandparent-->

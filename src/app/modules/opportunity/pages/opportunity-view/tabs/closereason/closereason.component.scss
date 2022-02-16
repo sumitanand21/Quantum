@@ -1,0 +1,450 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+
+
+.customized-calandar{
+    display: flex;
+    input{
+        height: 40px;
+        border-radius: 4px;
+        border: 1.5px solid $Marble;
+        padding: 0 8px;
+        &:focus{
+            border-color:  $Azure;
+        }
+    }
+    .mat-datepicker-toggle{
+        position: absolute !important;
+        right: 7px;
+        height: 40px;
+        width: 40px;
+    }
+  }
+
+  thead{
+    background: #d9e9ff;
+    color: #103f86;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 12px;
+  }
+  .customized-select{
+      position: relative;
+      select{
+      width: 100%;
+      min-height: 40px;
+      border-radius: 5px;
+      // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+      border: 1.5px solid rgba(0, 0, 0, 0.1);
+      padding: 2px 5px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+
+      &:focus{
+      outline: none;
+      border-color:$Azure;
+      }
+      }
+      select::-ms-expand {
+      // for IE
+      display: none !important;
+      }
+      .caret{
+      top: 17px;
+      right: 16px;
+      }
+      }       
+
+  
+.orangeborder{
+      border: 2px solid orangered !important;
+
+    }
+
+.validation-text{
+  font-family: WiproAkkuratTT-Bold;
+  background: transparent !important;
+  color: orangered !important;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.pad-create-lead{
+  padding:5px 30px 10px 30px;
+
+}
+
+.pad-top-8{
+  padding-top: 8px;
+}
+.input-text{
+  border-radius: 4px;
+  // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border: 1.5px solid #d8d8d8;
+  padding: 10px 10px 0;
+  resize: none;
+  // line-height: 4px;
+  height: 46px;
+}
+select option { 
+  line-height: 20px;
+}
+.mt21{
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 25px;
+}
+.top-3{
+  top: 3px;
+}
+
+.tableclass{
+
+  .topdrop64 {
+         top: 39px;
+         min-width: 278px !important;
+         z-index: 5;
+  }
+  .cust_autoComplete input{
+    border: 1.5px solid #d8d8d8;
+    position: relative;
+    border-radius: 4px;
+}
+
+  .pad-30{
+    padding: 26px 30px;
+}
+.pad-15-30{
+    padding: 0px 30px;
+}
+.new-container{
+ .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+    margin: 0;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.h-40 {
+    height: 40px;
+}
+.cardsHead {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: #000000;
+}
+}
+.colorWhite{
+   color: $Marble;
+}
+.bluebox{
+    background: $Azure;
+    
+    border-radius: 5px;
+    margin-right:10px;
+    width: calc(25% - 13px);
+    margin-right: 13px;
+}
+.centerContent{
+    float: none;
+    margin: 0 auto;
+    color: $White;
+    padding-top: 22px;
+    padding-bottom: 14px;
+}
+.w100{
+    width: 100px;
+}
+.font12{
+    font-size: 12px;
+}
+.circleImg {
+  width: 40px;
+  height: 40px;
+  background: $White;
+  border-radius: 20px;
+margin-bottom: 10px !important;
+
+}
+
+}
+.border-btm{
+    border-bottom: 1.3px solid #9e9e9e47;
+    }
+    .btn-block {
+        display: block;
+        width: 75%;
+    }
+
+    .mdi-attachment:before {
+        transform: rotate(270deg);
+        right: 8px;
+        position: relative;
+        font-weight: bold;
+    }
+
+    /*****************file upload CSS starts from here ***************************/
+.upld_ip
+{
+  border: none;
+      border-bottom: 1px solid #8a8888;
+}
+.upld_div
+{
+    position: relative;
+    margin-top: 20px;
+}
+.upld_div .icon-upload{
+    position: absolute;
+    right: 0px;
+    color: #989898;
+    bottom: 26px;
+    font-size: 22px;
+    top: 0em;
+    background: transparent;
+    border: none;
+}
+.file_ip
+{
+    width: 50%;
+    position: absolute;
+    // top: 6px;
+    opacity: 0;
+    z-index: 99;
+    left: 0;
+}
+.icon-file_upload{
+  background:transparent;
+  border:none;
+}
+.uploaded_doc
+{
+  padding: 5px 0px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 4px;
+    background: #f8f9fa;
+    font-size: 12px;
+    margin-top: 17px;
+    width: 100%;
+    height: 42px;
+    border: 2px solid #2f81ff;
+    
+}
+.uploaded_doc_25
+{
+    position: relative;
+    padding: 5px 5px 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 3px;
+    background: #ededed;
+    font-size: 12px;
+    margin-top: 10px;
+    width: 19.33%;
+    float: left;
+}
+.uploaded_doc1
+{
+    position: relative;
+    padding: 5px 5px 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 3px;
+    background: #ededed;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.uploaded_text{
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #000;
+}
+.del_upload
+{
+  color: #2f81ff;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    opacity: 0.6;
+    font-size: 16px;
+    position: relative;
+}
+.upld_ip::-webkit-input-placeholder { /* Chrome */
+  color: $Black;
+  font-size: 14px;
+}
+.upld_ip:-ms-input-placeholder { /* IE 10+ */
+  color: $Black;
+  font-size: 14px;
+}
+.upld_ip::-moz-placeholder { /* Firefox 19+ */
+  color: $Black;
+  opacity: 1;
+  font-size: 14px;
+}
+.upld_ip:-moz-placeholder { /* Firefox 4 - 18 */
+  color: $Black;
+  opacity: 1;
+  font-size: 14px;
+}
+.infoFile{
+  color: $Black;
+  opacity: 0.6;
+  font-family: WiproAkkuratTT-Regular !important;
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+.charCount{
+  color: $Black;
+  opacity: 0.7;
+  font-size: 13px;
+  font-family: WiproAkkuratTT-Regular;
+  position: relative;
+  top: -8px;
+}
+.mt81
+{
+  margin-top: 81px;
+}
+
+.htpos-left {
+position: absolute;
+left: 50px;
+height: auto;
+}
+
+.doc-img {
+bottom: 0px;
+left: -1px;
+position: absolute;
+}
+
+.pad-5 {
+padding: 5px;
+}
+.text-heading{
+  font-size: 14px;
+  padding-top: 10px;
+  font-family: WiproAkkuratTT-Bold;
+}
+
+.customized-input input {
+  &:focus {
+    border-color: $Azure !important;
+ }
+}
+.bgnone{
+  background-color: #fff !important;
+  color:#212529 !important;
+  font-family: "WiproAkkuratTT-Regular" !important;
+    font-size: 14px !important;
+}
+
+
+
+@media screen and (max-width: 823px){
+  table {
+    border: 0;
+  }
+  table caption {
+    font-size: 1.3em;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  table tr:not(:first-child) {
+    border-top: 20px solid #f9f9f9;
+  }
+  table tr {
+    margin-bottom: 0.625em;
+    height: auto !important;
+    // display: inline-block !important;
+    // height: auto !important;
+    position: relative;
+    background-color: white !important;
+    touch-action: pan-y !important;
+  }
+  table td {
+    display: inline-grid;
+    text-align: left;
+    width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    touch-action: pan-y !important;
+  }
+  table th.actionColumn {
+    display: inline-grid;
+    text-align: left;
+    //width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    padding-right: 0px;
+  }
+  table tr th {
+    display: inline-grid;
+    text-align: left;
+    width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    touch-action: pan-y !important;
+    padding-right: 0px;
+  }
+  table td::before,
+  table tr th::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    color: #9b9b9b;
+    margin-bottom: 5px;
+  }
+  table th.actionColumn {
+    border-bottom: 0;
+    overflow-x: auto;
+  }
+  .padleftright10{
+    padding-left:10px !important;
+    padding-right:10px !important;
+  }
+  .dispnone{
+    display: none !important;
+  }
+}

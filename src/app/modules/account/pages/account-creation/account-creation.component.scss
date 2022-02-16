@@ -1,0 +1,444 @@
+$Azure : #2f81ff;
+$White : #ffffff;
+$MidNight : #103f86;
+$LightBlue:#2f81ff;
+
+.account-creation-landing 
+{
+            .sub-heading
+            {
+              position: absolute;
+              left: 30px;
+              height: 16px;
+              opacity: 0.6;
+              font-family: WiproAkkuratTT-Regular;
+              font-size: 12px;
+              font-weight: normal;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: 1.33;
+              letter-spacing: normal;
+              color: #e7ebf2;
+              float: left;
+              top: 40px;
+
+              a{
+              
+                font-family: WiproAkkuratTT-Regular;
+                font-size: 12px;
+                color: #e7ebf2;
+              }
+            }
+            .h-380 // blue patch height
+            {
+            height: 350px;
+            }
+            .w-210
+            {
+              width: 210px;
+            }
+           .pad-30{
+            padding: 30px;
+            }
+            .padb-0
+            {
+              padding-bottom: 0px !important
+            }
+            .pad-left-right-10
+            {
+              padding-left: 10px !important;
+              padding-right: 10px !important;
+            }
+            .mr10{
+            margin-right: 10px;
+            }
+            .pos_rel
+            {
+              position: relative;
+            }
+            .top-5
+            {
+              top: 5px;
+            }
+            .top-2
+            {
+              top: 2px;
+            }
+            .h-40{
+            min-height: 40px;
+            }
+            .heading-level-one-account{
+             
+            font-family:WiproAkkuratTT-Bold;
+            font-size: 24px;
+            color:$White;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 0;
+            min-width: 70px;
+             
+            small{
+            font-family: 'WiproAkkuratTT-Regular';
+            font-size: 14px;
+            padding: 0 30px;
+            }
+            }
+            .heading-level-two
+            {
+                font-family:WiproAkkuratTT-Bold;
+                font-size: 20px;
+                color:$White;
+                letter-spacing: -0.4px;
+            }
+            .primary-button.std{
+            padding: 9px 5px;
+            min-width: 110px;
+            margin: 0;
+            }
+            .borderless{
+            border:none !important;
+            }
+            .w-180
+            {
+                width: 180px;
+            }
+            .w-184
+            {
+                width: 184px;
+            }
+            .w-140
+            {
+                width: 140px;
+            }
+            .pr5
+            {
+                padding-right: 5px !important;
+            }
+            .bg-transparent
+            {
+                background: transparent;
+            }
+            .pr10
+            {
+                padding-right: 10px !important;
+            }
+            .convo-tag
+            {
+                position: absolute;
+                left: 45px;
+                width: 80px;
+                height: 16px;
+                opacity: 0.6;
+                font-family: WiproAkkuratTT-Regular;
+                font-size: 12px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.33;
+                letter-spacing: normal;
+                color: #e7ebf2;
+                float: left;
+                top: 60px;
+            }
+            // tab style starts 
+            .main-content{
+                z-index: -1;
+                }
+                button{
+                  cursor: pointer;
+                  &:hover{
+                    // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+                    background: $White;
+                    color: $Azure;
+                  }
+                }
+            .vertical-btns-div {
+                margin: 15px 0px 0px 0px;
+               }
+               .btn-tabs-active{
+                background-color:$MidNight ;
+                text-align: center;
+                border: solid 1.5px #ffffff;
+                color:$Azure;
+                border-radius: 5px;
+                font-family:WiproAkkuratTT-Bold;
+                padding: 25px 20px;  
+              }
+              .sub-vertical-but.active {
+                background: #fff;
+                color: $Azure; 
+                outline: none;        
+                .btntxt-s{
+                    color: $Azure;
+                    position: relative;
+                    top: -2px;
+                }
+              }
+              .btntxt-s
+              {
+                position: relative;
+                top: -2px;
+              }
+              .sub-vertical-but:active {
+                background: #fff;
+                color: $Azure; 
+                outline: none;
+              }
+              .sub-vertical-but {
+                font-family: WiproAkkuratTT-Bold;
+                background: transparent;
+                border: none;
+                font-size: 0.85em;
+                color: #fff;
+                // padding: 7px 6px;
+                font-weight: bold;
+                border: 1.5px solid #fff;
+                outline: none;
+                width:100%;
+                padding: 5px;
+              }
+            .calin-select-all{
+                font-size: 17px;
+                text-align: center;
+                padding-right: 5px;
+               }
+               .brd-left0{
+                border-left: 0px !important;
+                border-radius: 0px 5px 5px 0px;
+              }
+              .brd-right0{
+                border-right: 0px !important;
+                border-radius: 5px 0px 0px 5px;
+              }
+              .brd-right{
+                border-radius: 5px 0px 0px 5px;
+              }
+              .brd_r0{
+                border-right: 0px !important;
+              }
+              .flex-tab{
+                display: flex;
+                justify-content: center
+              }
+              .flex-tab-width{
+                display:flex;
+                width:100%;
+                justify-content: center;
+              }
+              .heading-tab{
+                font-family: WiproAkkuratTT-Bold;
+                text-align: left;
+                margin-top: 30px;
+                font-size:24px;
+                
+              }
+              .top-20{
+                top:20px;
+              }
+            
+            .btn-tabs-active-white {
+              text-align: center;
+              border: solid 1.5px #ffffff;
+              color: #2f81ff;
+              border-radius: 5px;
+              font-family: WiproAkkuratTT-Bold;
+              padding: 25px 20px;
+            }
+            .sub-vertical-but-white{
+              font-family: WiproAkkuratTT-Bold;
+              background:  $White;
+              border: none;
+              font-size: 0.85em;
+              color: #2f81ff;
+              font-weight: bold;
+              border: 1.5px solid #2f81ff;
+              outline: none;
+              width: 100%;
+              padding:5px;
+            }
+            .sub-vertical-but-white.active{
+              background: #2f81ff;
+              color: #fff;
+              outline: none;
+            }
+            .sub-vertical-but-white.active {
+              .btntxt-s{
+                color: #fff;
+                position: relative;
+                top: -2px;
+              }
+           
+             
+            }
+            .pt40
+            {
+                padding-top: 40px;
+            }
+            // tab style ends
+    
+            // search box
+            input
+            {
+                background: transparent;
+            }
+            input::placeholder {
+                color: $White !important;
+            }
+            .w105
+            {
+                width: 105px;
+            }
+            .w180
+            {
+                width: 180px;
+            }
+            // search box
+
+                    // responsive class starts 29/01
+        .mobile-action-button
+        {
+          display: none;
+        }
+        .mobile-dropdown
+        {
+          display: none;
+        }
+        .mobile-table
+        {
+          display: none;
+        }
+        .mobile-tab
+        {
+          display: none;
+        }
+  // responsive class ends 29/01
+
+  //more options css
+  ul
+  {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    width: 165px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    padding: 0px 12px;
+    margin: 0px;
+    list-style-type: none;
+  }
+  ul li:hover{
+    background-color: #d9e9ff;
+    font-family: WiproAkkuratTT-Bold;
+  }
+
+  ul .border_property {
+    border-bottom: 1px solid #ffffff2e;
+}
+
+ul .list_names {
+  cursor: pointer;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.1px;
+  color: #4a4a4a;
+  padding: 10px 10px;
+}
+.posR {
+  position: relative;
+}
+.w140 {
+  width: 165px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.caret[_ngcontent-c10] {
+  top: 16px !important;
+}
+.caret.up {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.caret {
+  display: inline-block;
+  float: right;
+  position: relative;
+  top: 17px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 5px dashed;
+  border-right: 5px solid #52494900;
+  border-left: 5px solid transparent;
+  z-index: 99;
+  color: #2f81ff;
+  pointer-events: none;
+}
+.mdi-dots-horizontal {
+  font-size: 18px;
+  position: relative;
+  top: -2px;
+  right: 1px;
+  position: absolute;
+  top: 8px;
+  z-index: 9;
+  left: 5px;
+}
+.btnSelect {
+  text-align: left;
+  color: #2f81ff;
+  font-family: 'WiproAkkuratTT-Bold';
+  min-height: 40px;
+  position: relative;
+  padding-left: 25px;
+  padding-top: 9px;
+  outline: none;
+  border: none !important;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  border-radius: 0px;
+}
+[role="button"] {
+  cursor: pointer;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+
+}
+
+/*chethana heander css starts*/
+.padd-top-130{
+  padding-top: 120px !important;
+}
+.header-action-tab {
+    padding: 12px 30px;
+    margin: 10px 0px;
+}
+.h-463{
+  height:352px;
+} //Bug 129524
+.h-388{
+  height:362px;
+} //Bug 129524
+/*chethana heander css ends*/

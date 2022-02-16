@@ -1,0 +1,339 @@
+$white: #ffffff;
+$FadedWhite: #fafbfc;
+$Grey: #9b9b9b;
+$DarkGrey: #4a4a4a;
+$BorderGrey: #979797;
+$LightGrey: #b1b1b1;
+$MidGrey: #343434;
+$footer-border: #d5d2d2;
+$Standardblue: #0e3570;
+$LightBlue: #2f81ff;
+$FadedBlue: #879fc2;
+$OpacityBlue: #eef5ff;
+$StandardGreen: #6dc24b;
+$LightGreen: #c5e7b7;
+$FontGreen: #24ac51;
+$Black: #000000;
+$StandardRed: #ef3341;
+$StandardYellow: #ffda29;
+$managerLoginBorder: rgba(0, 0, 0, 0.08);
+$managerFormBorder: rgba(0, 0, 0, 0.15);
+$loginLabel: #9b9b9b;
+$loginBtn: #2f81ff;
+$LighterGrey: #e5e5e5;
+$nominationBlack: #353535;
+$preproposebtn: rgba(234, 246, 238, 0.8);
+
+$error_text: red;
+$warmBlue: #306bd8;
+$greyish: #a6a6a6;
+$lightblue: #d9e9ff;
+
+$statusBlue: #708cb6;
+$dullWhite: #e7ebf2;
+$labelGrey: #6f6f6f;
+$valueGrey: #cfcfcf;
+$darkBlue: #103f86;
+
+$BlueSoftBG: #eaf2ff;
+$DeepBlue: #2f81ff;
+$MetalLight: #9b9b9b;
+$Metal: #4a4a4a;
+$DarkBlack: #2e2e2e;
+//scroll table css starts
+
+.zui-table tbody tr:nth-child(odd) {
+  background-color: #f5f5f5 !important;
+}
+.zui-table tbody tr:nth-child(odd) td.zui-sticky-col {
+  background-color: #f5f5f5 !important;
+}
+
+.pagination-status {
+  button {
+    color: lightgray;
+    margin-right: 5px;
+    border: 1.5px solid lightgray;
+    font-family: "WiproAkkuratTT-Regular";
+  }
+}
+.current {
+  background: white;
+  color: #2f81ff !important;
+}
+.mr5 {
+  margin-right: 5px;
+}
+.color-grey {
+  color: lightgray;
+  font-family: "WiproAkkuratTT-Regular";
+}
+.color-azure {
+  color: #2f81ff !important;
+}
+.helpdesk-select {
+  border: none;
+  color: #2f81ff;
+  width: 112px;
+  position: absolute;
+  left: 22px;
+  padding-left: 25px;
+  height: 28px;
+}
+.disabled-select {
+  // border: 1.5px solid #d8d8d8 !important;
+  color: #d8d8d8 !important;
+  pointer-events: none;
+  opacity: 1;
+}
+.disabled-span {
+  color: #d8d8d8 !important;
+  pointer-events: none;
+  opacity: 1;
+}
+.helpdesk_pagination {
+  position: relative;
+  z-index: 1;
+}
+.pagin-help {
+  border: 1.5px solid #2f81ff;
+  border-radius: 4px;
+  padding: 7px;
+  margin-left: 20px;
+  color: #2f81ff;
+  width: 116px;
+}
+.pagin-help-disabled {
+  border: 1.5px solid #d8d8d8 !important;
+  pointer-events: none;
+  opacity: 1;
+}
+.mdi-icon {
+  color: #000000;
+  font-family: "WiproAkkuratTT-Bold";
+  font-size: 24px;
+  position: relative;
+  top: 3px;
+  margin-right: 5px;
+}
+.drop_pagination {
+  height: 40px;
+  width: 120px;
+  border: 1px solid lightgray !important;
+  border-radius: 4px;
+  padding: 0px 2px 0px 25px;
+  color: lightgray;
+  background-color: white;
+  -webkit-appearance: none;
+}
+//scroll table css ends
+.mt20 {
+  margin-top: 20px;
+}
+// alex css starts
+$White: #ffffff;
+$MetalLight: #9b9b9b;
+$Metal: #4a4a4a;
+$DarkBlack: #2e2e2e;
+
+.h-178 {
+  height: 227px;
+}
+
+.mt-126 {
+  margin-top: 126px;
+}
+.card {
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 0px !important;
+}
+.heading-level-two {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color: $White;
+  letter-spacing: -0.4px;
+}
+
+.heading-level-two {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color: $DarkBlack;
+}
+
+.pt-10 {
+  padding-top: 18px;
+  padding-bottom: 9px;
+}
+.zui-table {
+  border: none;
+  border-collapse: separate;
+  border-spacing: 0;
+  font: normal 13px Arial, sans-serif;
+  width: 100%;
+}
+.zui-table thead th {
+  background-color: #ddefef;
+  border: none;
+  padding: 15px 20px;
+  color: #103f86;
+  text-align: left;
+  text-shadow: 1px 1px 1px #fff;
+  white-space: nowrap;
+}
+.zui-table tbody td {
+  color: black;
+  padding: 15px 20px;
+  text-shadow: 1px 1px 1px #fff;
+  white-space: nowrap;
+}
+.zui-wrapper {
+  position: relative;
+}
+.zui-scroller {
+  overflow-y: visible;
+  padding-bottom: 5px;
+  width: 100%;
+}
+.zui-table .zui-sticky-col {
+  border-left: solid 1px #ddefef;
+  left: 0;
+  position: sticky;
+  top: auto;
+  min-width: 200px;
+  color: #2f81ff;
+  background-color: #fff;
+}
+
+.span_cls {
+  line-height: 1.5;
+  white-space: normal;
+  max-width: 130px;
+  float: left;
+}
+.width_200 {
+  max-width: 200px !important;
+  min-width: 200px !important;
+}
+.ml5 {
+  margin-left: 5px;
+}
+
+.no-record {
+  background: transparent !important;
+  box-shadow: 0px 0px !important;
+  // position: relative;
+  left: 0;
+  width: 100%;
+  top: -300px;
+  float: left;
+}
+.blue_circle_img {
+  color: #2f81ff;
+  font-weight: normal;
+  font-size: 19px;
+  position: absolute;
+  left: 5px;
+  top: -7px;
+  visibility: visible;
+  // top: -25px;
+}
+.blue_circle {
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #d9e9ff;
+  position: relative;
+  left: 10px;
+  // right: 11px;
+  // margin-right: 10px;
+  // top: 25px;
+}
+.blue_circle:hover {
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #2f81ff;
+  position: relative;
+  top: 2px;
+  // right: 11px;
+  color: #ffffff;
+  //  top: 25px;
+  .blue_circle_img {
+    color: #ffffff;
+  }
+}
+
+.blue_circle_replay_img {
+  color: #2f81ff;
+  font-weight: normal;
+  font-size: 17px;
+  position: relative;
+  visibility: visible;
+  left: 0px;
+}
+.blue_circle_replay_img_block {
+  color: #2f81ff;
+  font-weight: normal;
+  font-size: 14px;
+  position: relative;
+  top: -7px;
+  visibility: visible;
+  left: 0px;
+}
+.blue_circle_replay_block{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #d9e9ff;
+  position: relative;
+  text-align: center;
+}
+.blue_circle_replay_block:hover {
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #2f81ff;
+  position: relative;
+
+  color: #ffffff;
+
+  .blue_circle_replay_img_block {
+    color: #ffffff;
+  }
+}
+
+.blue_circle_replay {
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #d9e9ff;
+  position: relative;
+  text-align: center;
+}
+.blue_circle_replay:hover {
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #2f81ff;
+  position: relative;
+
+  color: #ffffff;
+
+  .blue_circle_replay_img {
+    color: #ffffff;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .mob-delIcon{
+    justify-content: center;
+  }
+}
+ .mobile-del-icon-text{
+    display: none;
+  }

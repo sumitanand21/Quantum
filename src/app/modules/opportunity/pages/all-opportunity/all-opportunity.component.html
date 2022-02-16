@@ -1,0 +1,143 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab opportunity-landing-container opportunityPage">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+            <div class="col-12 col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 float-left no_pad">
+
+                <button class="mdi mdi-keyboard-backspace cursor-pointer float-left back-buttonbg pt0 no_pad" (click)="goBack()" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+                <h1 class="heading-level-one mb-0 mt5"> All opportunity views </h1>
+                <p class="brudcrumbs">Sales > Opportunities > More views</p>
+            </div>
+            <div class="float-right disp-flex responsive-btn-div web-action-button mr10 mt5">
+                <!-- MORE ACTION BUTTONS STARTS -->
+                <!-- <div class="cust-dropdown-btn mr10 no_pad col-md-6">
+                    <button class="primary-button pl90 hoverNone btnrespon borderless pad-0-10 btn-block h-40 std pos-rel min-width-161
+                           responsive-btn-div-button color-azure d-flex justify-content-start align-items-center "
+                        [ngClass]="showContent?'show-action':''" (click)="toggleContent()"
+                        (clickOutside)="closeContent()">
+                        <div class="mobileBottom">
+
+                            <span class="mdi mdi-dots-vertical m-r-8 dot-respon left60 mdiButton">
+
+                            </span> <span class="more-respon Actionclass">More actions</span>
+                            <span class="caret Caretblock caret-respon color-azure caretNone">
+                            </span>
+                        </div>
+                    </button>
+                    <ng-template [ngIf]="showContent">
+                        <ul
+                            class=" dropdown-content width213 pad-0-10 pos-abs z-ind-99 content leftWidth respon-top no_pad b-top more-click-content">
+                            <a [routerLink]="['/opportunity/opportunityfinder']">
+                                <li class="list_names border_property mdi mdi-database-search border-botm">
+                                    Opportunity finder</li>
+                            </a>
+                            <a [routerLink]="['/opportunity/ReopenApprovals']">
+                                <li class="list_names border_property mdi mdi-vector-intersection border-botm">
+                                    Reopen opportunity</li>
+                            </a>
+                        </ul>
+                    </ng-template>
+                </div> -->
+
+
+                <!-- MORE ACTION BUTTONS ends -->
+                <!-- create-opportunity -->
+                <!-- <div class="cust-dropdown-btn mr10 no_pad col-md-6">
+                    <button class="primary-button hoverNone btnrespon borderless pad-0-10 btn-block h-40 std pos-rel min-width-161
+                           responsive-btn-div-button color-azure d-flex justify-content-start align-items-center"
+                        [ngClass]="{'show-action' : more_clicked, 'disabledclass' : !CreateOppTab}"
+                        (click)="more_clicked = !more_clicked" (clickOutside)="more_clicked = false">
+                        <div class="mobileBottom">
+                            <span class="mdi mdi-vector-difference-ab dot-respon mdiButton">
+                            </span> <span class="more-respon Actionclass left18">Create opportunity</span>
+                            <span class="caret Caretblock caret-respon color-azure caretNone left5"></span>
+                        </div>
+                    </button>
+                    <ng-template [ngIf]="more_clicked">
+                        <ul class="dropdown-content  pos-abs z-ind-99 leftWidth2  top216 respon-top opportunity-content b-top "
+                            id="menucontainer">
+                            <a [routerLink]="['/opportunity/newopportunity']">
+                                <li class=" border_property mdi mdi-vector-difference-ab">New</li>
+                            </a>
+                            <a [routerLink]="['/opportunity/renewal']">
+                                <li class="border_property mdi mdi-autorenew">Renewal</li>
+                            </a>
+                            <a [routerLink]="['/opportunity/incremental']">
+                                <li class="border_property mdi mdi-trending-up">Incremental</li>
+                            </a>
+                        </ul>
+                    </ng-template>
+                </div> -->
+
+                <!-- mobile buttons starts here -->
+                <div class="float-left col-12 mobile-buttons mobile-buttons-opp bg-azure mobile-sticky-btns">
+                    <!-- <button class=" borderless w-150" type="button" (click)="showmore = !showmore"
+                        (clickOutside)="showmore = false"
+                        [ngClass]="showmore?'active-button':' primary-button primary-button-opp-landing'">
+                        <span class="mdi mdi-dots-vertical pr5 w-100 float-left"></span>More actions
+                    </button>
+                    <button class=" borderless w-150" type="button" (click)="createshowmore = !createshowmore"
+                        (clickOutside)="createshowmore = false"
+                        [ngClass]="createshowmore?'active-button':'primary-button primary-button-opp-landing'">
+                        <span class="mdi mdi-vector-difference-ab pr5 w-100 float-left"></span>Create opportunity
+                    </button> -->
+                    <!-- <div class="pos-abs group-content-create float-right " *ngIf="createshowmore">
+                        <ul class=" dropdown-content-phone pad-0-10 z-ind-99 respon-top no_pad">
+                            <a [routerLink]="['/opportunity/newopportunity']">
+                                <li class=" h-40 cp color-azure">New</li>
+                            </a>
+                            <a [routerLink]="['/opportunity/renewal']">
+                                <li class="h-40 cp color-azure">Renewal</li>
+                            </a>
+                            <a [routerLink]="['/opportunity/incremental']">
+                                <li class="h-40 cp color-azure">Incremental</li>
+                            </a>
+                        </ul>
+                    </div> -->
+                    <!-- <div class="pos-abs group-content-more float-right " *ngIf="showmore">
+                        <ul class=" dropdown-content-phone pad-0-10 z-ind-99 respon-top no_pad">
+                            <a [routerLink]="['/opportunity/opportunityfinder']">
+                                <li class="h-40 cp color-azure">
+                                    Opportunity finder</li>
+                            </a>
+                            <a [routerLink]="['/opportunity/ReopenApprovals']">
+                                <li class="h-40 cp color-azure">
+                                    Reopen opportunity</li>
+                            </a>
+                        </ul>
+                    </div> -->
+                </div>
+                <!-- mobile buttons ends here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="h-473 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night">
+</div>
+
+<div class="col-12 float-left padng-30">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad float-left ">
+                <!-- <h2 class="col-12 float-left heading-level-two color-white padng-30 padt-0 pad-left-10">{{totalviews}} Custom views </h2> -->
+                <div class="col-lg-12 col-sm-12 col-md-12 col-12 float-left visibility_cls mt10">
+<div class="col-6 no_pad float-left">
+    <span class="col-12 float-right viewsSpan no_pad">Views ({{totalRecordCount}})</span>
+</div>
+            <div class="col-6 no_pad float-left">
+    
+                     <button class="borderless no_pad btn-align-right primary-button h-40 std1 add-btn-design float-right white-boreder no_pad w-155" (click)="createnewviewcrm();">
+                    <span class="mdi mdi-eye-plus pad-right"></span><span class="create-btn">Create new view</span></button>
+                
+                </div>
+            </div>
+            <div class="col-12 float-left no_pad mt20" *ngIf="data.length>0">
+                    <app-more-view [IsShare]=false [IsEdit]=false [IsDelete]=true [IsPin]=false [TableData]="data" [HeaderTableData]="headerData"
+                        (detectActionValue)="performChildAction($event)"></app-more-view>
+                </div>
+                <!-- cards view ends here -->
+          
+            </div>
+        </div>
+    </div>

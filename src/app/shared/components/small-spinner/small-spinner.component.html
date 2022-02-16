@@ -1,0 +1,13 @@
+<div [hidden]="!isLoading" class="text-xs-center">
+    <!-- <h2><i class="fa fa-cog fa-spin fa-lg"></i> Henter data</h2> -->
+</div>
+
+<!-- <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad"> -->
+            <div *ngIf="isLoading" class="loaderContainer">
+                <div class="loader"></div>
+            </div>
+        <!-- </div>
+    </div>
+</div> -->

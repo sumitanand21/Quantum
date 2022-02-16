@@ -1,0 +1,66 @@
+
+<div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad float-left pad-25">
+          <!-- <h2 class="col-10 no_pad float-left heading-level-two color-white padding-left0">15 Activities</h2> -->
+          <div class="col-2 float-left new-action-btn no_pad">
+            <button class="col-6 float-right mdi mdi-link-variant standard-border bg-transparent color-white btn-block h-100 ellipses " >
+                <!-- [routerLink]="['/conversations/newaction']" -->
+                <span class="ellipses w-80per btn-lable pl5">Link Activities </span>
+                <span class="sr-only">selected</span>
+            </button>
+        </div>
+        </div>
+
+
+          <div class="parent-container" *ngIf="childConvoActivityTable.length>0">
+              <app-single-table 
+              (detectActionValue)="performTableChildAction($event)" 
+              [TableName]="'childConversationActivity'"
+              [TableCollection]="childConvoActivityTable" 
+              [IscheckBoxRequired]= true 
+              [IsActionFixed]= true 
+              [IsFreezedColumn]= true 
+              [IsCustomizeTable] = true
+              
+              [IsLink]= true
+              > </app-single-table>
+          </div>
+
+
+      
+  </div>
+
+
+</div>
+
+
+
+<!--- use the below flags to enable buttons in respective tables using property binding [yourChoice] = true -->
+
+<!--
+IsShare :boolean;
+IsReplicate :boolean;
+IsFavorite :boolean;
+IsCampaign :boolean;
+IsCreateLead :boolean;
+IsArchive :boolean;
+IsDelete :boolean;
+IsRestore :boolean;
+IsNurture :boolean;
+IsDisqualify :boolean;
+IsQualify :boolean;
+IsCreateOpportunity :boolean;
+
+-->
+
+<!-- @output from child table to parent listen actions
+
+(detectActionValue)="performTableChildAction($event)"
+detectActionValue is emitted from child which has
+row specific data & action indicating action to be performed like delete or favourite
+
+format of (detectActionValue) will be : {objectRowData: (whole row item), action: (delete or favourite etc)}
+-->
+
+<!-- For white container table, please pass this input :([bgParentColor]="'bgWhiteContainer'")-->

@@ -1,0 +1,221 @@
+<div class="col-12 no_pad float-left zindex_popup">
+    <!-- sprint 3 class col-12 no_pad float-left zindex_popup added-->
+    <div class="collapser">
+        <button [attr.aria-label]="service.sideTrans ? 'expanded left navigation': 'collapsed left navigation'" [ngClass]="service.sideTrans ? 'icon-slide mdi mdi-chevron-left':'mdi mdi-chevron-right'" class="posA sidenav-icn" (click)="service.sideTrans=!service.sideTrans;service.chatBot = false;"></button>
+    </div>
+
+    <div class="position-fixed">
+
+        <div id="mySidenav" class="sideBar sidenav" [ngClass]="service.sideTrans ? 'sideBarExpand':''">
+            <!-- Fixing UI issues after integration with development branch-->
+            <a style="padding-left:0px;" *ngIf="router.url.includes('/leads')">
+                <!--Side nav not required in opportunity module-->
+
+                <div class="col-xs-12 no_pad disp-flex">
+                    <span class="col-xs-4 cp btn_none"></span>
+                    <span [ngClass]="service.sideTrans ? 'Account-Details acchd ':'Account-Details hidden'">
+                        <p class="ac-head"></p>
+                        <p class="ac-desc"></p>
+                    </span>
+
+                </div>
+            </a>
+
+            <!-- sprint 3 dashboard icon starts-->
+            <a style="padding-left:0px;" *ngIf="router.url.includes('/accounts')">
+                <div class="col-xs-12 no_pad disp-flex">
+                    <span class="col-xs-4 appleCircle cp btn_none">{{accStoreData.Name ? (accStoreData.Name[0] | uppercase) :''}}</span>
+                    <span [ngClass]="service.sideTrans ? 'Account-Details acchd_sp ':'Account-Details hidden'">
+                        <p class="ac-head ellipses w-167 mb-0" matTooltip="{{accStoreData.Name ?accStoreData.Name :''}}">
+                            {{accStoreData.Name ?accStoreData.Name :''}}</p>
+                        <p class="ac-desc ellipses w-167 mb-0"
+                            matTooltip=" {{accStoreData.Status ?accStoreData.Status : 'Active'}}/{{accStoreData.Classification ?accStoreData.Classification : ''}}">
+                            {{accStoreData.Status ?accStoreData.Status : 'Active'}}/{{accStoreData.Classification ?accStoreData.Classification : ''}}
+                        </p>
+                    </span>
+                </div>
+            </a>
+            <!-- sprint 3 dashboard icon ends-->
+
+            <!-- Fixing UI issues after integration with development branch-->
+            <!--Side nav not required in opportunity module-->
+            <a class="mdi mdi-rounded-corner" [routerLink]="['/leads/unqalified']" *ngIf="router.url.includes('/leads')" routerLinkActive="active-link" matTooltipPosition="right" [matTooltip]="service.sideTrans ? null:'Create lead'">
+                <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'"> lead</span>
+                <span id="menu1" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> lead </span>
+            </a>
+            <a class="mdi mdi-vector-difference-ab" (click)="sideNavtrue()" *ngIf="router.url.includes('/leads')" routerLinkActive="active-link" [routerLink]="['/opportunity/allopportunity']" matTooltipPosition="right" [matTooltip]="service.sideTrans ? null:'Convert to opportunity'">
+                <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Convert to
+                    opportunity</span>
+                <span id="menu2" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Convert to opportunity
+                </span>
+            </a>
+            <a class="mdi mdi-checkbox-multiple-marked-outline" *ngIf="router.url.includes('/leads')" [routerLink]="['/contacts']" routerLinkActive="active-link" matTooltipPosition="right" [matTooltip]="service.sideTrans ? null:'Contacts'">
+                <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Order booking</span>
+                <span id="menu3" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Order boking </span>
+            </a>
+
+            <!-- sprint 3 left nav icons starts-->
+            <!-- <perfect-scrollbar class="height475 mt-25"> -->
+            <div class="col-12 float-left sprint-three no_pad">
+                <a class="mdi mdi-view-dashboard" role="tab" tabindex="0" (click)="activeDashboard()" [attr.aria-selected]="dashboardDetails" *ngIf="router.url.includes('/accounts')" routerLink="/accounts/accountdetails/DashboardDetails" routerLinkActive="active-link"
+                    [matTooltip]="service.sideTrans ? null:'Dashboard details'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Dashboard
+                    </span>
+                    <!-- <label class="tooltiptext" for="menu1">Account details</label> -->
+                    <span id="menu0" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'">Dashboard
+                    </span>
+                </a>
+                <a class="mdi mdi-information-outline" role="tab" tabindex="0" [attr.aria-selected]="acoountDetails" *ngIf="router.url.includes('/accounts')" routerLinkActive="active-link" [routerLink]="['/accounts/accountdetails']" (click)="service.setSideBarData('1');activeAccount()"
+                    [matTooltip]="service.sideTrans ? null:'Account details'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Account
+                        Details</span>
+                    <!-- <label class="tooltiptext" for="menu1">Account details</label> -->
+                    <span id="menu1" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Account Details </span>
+                </a>
+                <a (click)="sideNavtrue();openNav();leadsNav()" role="tab" tabindex="0" [attr.aria-selected]="leads" [ngClass]="showLeads ? 'mdi mdi-rounded-corner': 'mdi mdi-rounded-corner sidenavdisabled'" routerLinkActive="" *ngIf="router.url.includes('/accounts')"
+                    [matTooltip]="service.sideTrans ? null:'Leads'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Lead</span>
+                    <span id="menu8" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Lead </span>
+                </a>
+                <a [ngClass]="showOppo ? 'mdi mdi-vector-difference-ab' : 'mdi mdi-vector-difference-ab sidenavdisabled'" routerLinkActive="active-link" role="tab" tabindex="0" (click)="sideNavtrue();openNav();redirectToOppLead()" [attr.aria-selected]="leadOppDetails"
+                    *ngIf="router.url.includes('/accounts')" [matTooltip]="service.sideTrans ? null:'Opportunities'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Opportunities</span>
+                    <span id="menu3" [ngClass]="service.sideTrans ? 'Account-Details ml-28':'hidden'">Opportunities </span>
+                </a>
+                <a (click)="sideNavtrue();openNav();orderNav();" role="tab" tabindex="0" [attr.aria-selected]="orders" [ngClass]="showOrder ? 'mdi mdi-cube-outline': 'mdi mdi-cube-outline sidenavdisabled'" routerLinkActive="active-link" *ngIf="router.url.includes('/accounts')"
+                    [matTooltip]="service.sideTrans ? null:'Orders'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Orders</span>
+                    <!-- <label class="tooltiptext" for="menu10" >Orders</label> -->
+                    <span id="menu10" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Orders </span>
+                </a>
+                <a class="mdi mdi-contact-mail" role="tab" tabindex="0" [attr.aria-selected]="contactDetailstab" (click)="sideNavtrue();activeContacts()" [routerLink]="['/accounts/contacts/accountcontacts']" routerLinkActive="active-link" *ngIf="router.url.includes('/accounts')"
+                    [matTooltip]="service.sideTrans ? null:'Contacts'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Contacts</span>
+                    <!-- <label class="tooltiptext" for="menu5">Reports</label> -->
+                    <span id="menu5" [ngClass]="service.sideTrans ? 'Account-Details ml-29':'hidden'">Contacts</span>
+                </a>
+
+
+                <!-- activeManageLog(); -->
+
+                <!-- activeLeads(); -->
+
+
+
+
+                <a [ngClass]="showContract ? 'mdi mdi-square-edit-outline': 'mdi mdi-square-edit-outline sidenavdisabled'" role="tab" tabindex="0" [attr.aria-selected]="contractDetails" (click)="sideNavtrue();openIcertis();activeContracts()" routerLinkActive="active-link"
+                    *ngIf="router.url.includes('/accounts')" [matTooltip]="service.sideTrans ? null:'Contracts'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Contracts</span>
+                    <span id="menu4" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Contracts</span>
+                </a>
+                <a (click)="sideNavtrue();openNav()" role="tab" tabindex="0" [attr.aria-selected]="managementLog" [routerLink]="['/accounts/managementlog']" [ngClass]="showmgtLog ? 'mdi mdi-clipboard-check-outline': 'mdi mdi-clipboard-check-outline sidenavdisabled'"
+                    routerLinkActive="active-link" *ngIf="router.url.includes('/accounts')" [matTooltip]="service.sideTrans ? null:'Management log'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Management
+                        Log</span>
+                    <!-- <label class="tooltiptext" for="menu6" >Account plans</label> -->
+                    <span id="menu6" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Management Log </span>
+                </a>
+                <!-- [ngClass]="showmgtLog ? 'mdi mdi-comment-account-outline': 'mdi mdi-comment-account-outline sidenavdisabled'" -->
+                <a (click)="sideNavtrue();openNav();activitiesNav()" role="tab" tabindex="0" [attr.aria-selected]="activities" [routerLink]="['/accounts/']" class="mdi mdi-comment-account-outline" routerLinkActive="" *ngIf="router.url.includes('/accounts')" [matTooltip]="service.sideTrans ? null:'Activities'"
+                    matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Activities</span>
+                    <!-- <label class="tooltiptext" for="menu9" >Activities</label> -->
+                    <span id="menu9" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Activities </span>
+                </a>
+                <!-- [ngClass]="true ? '': 'mdi mdi-note-multiple-outline sidenavdisabled'" -->
+                <a (click)="sideNavtrue();openNav();" role="tab" tabindex="0" [attr.aria-selected]="managementLog" [routerLink]="['/accounts/accountdetails/accountdetailstwo']" class="mdi mdi-note-multiple-outline" routerLinkActive="active-link" *ngIf="router.url.includes('/accounts')"
+                    [matTooltip]="service.sideTrans ? null:'Notes'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Notes</span>
+                    <!-- <label class="tooltiptext" for="menu6" >Account plans</label> -->
+                    <span id="menu7" [ngClass]="service.sideTrans ? 'Account-Details ml-28':'hidden'">Notes</span>
+                </a>
+                <!-- <a class="mdi mdi-account-outline" routerLinkActive="active-link" role="tab" tabindex="0"
+                    (click)="activeCustomers();showCustomer()" [attr.aria-selected]="customeDetails"
+                    *ngIf="router.url.includes('/accounts')" [matTooltip]="service.sideTrans ? null:'Customer details'"
+                    matTooltipPosition="right" [routerLink]="['/accounts/accountdetails']">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Customer
+                        details</span>
+                     <label class="tooltiptext" for="menu2">Customer details</label> -
+                    <span id="menu2" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Customer details
+                    </span>
+                </a> -->
+
+                <!-- <a class="mdi mdi-square-edit-outline" (click)="sideNavtrue();openIcertis();"
+          [routerLink]="['/accounts/contracts/pendingrequests']" routerLinkActive="active-link"
+          *ngIf="router.url.includes('/accounts')" [matTooltip]="service.sideTrans ? null:'Contracts'"
+          matTooltipPosition="right">
+          <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Contracts</span>
+          <span id="menu4" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Contracts</span>
+        </a> sidenavdisabled -->
+                <!-- activeManageLog() -->
+                <a (click)="openNav();activeAccountPlans();openAccountPlan()" [ngClass]="isHuntingorExisting ? 'mdi mdi-calendar-text' : 'mdi mdi-calendar-text sidenavdisabled'" role="tab" tabindex="0" [attr.aria-selected]="accountPlans" routerLinkActive="active-link"
+                    *ngIf="router.url.includes('/accounts')" [matTooltip]="service.sideTrans ? null:'Account plans'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">account
+                        Plans</span>
+                    <span id="menu6" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Account Plans </span>
+                </a>
+                <a (click)="sideNavtrue();activeTeams();openNav()" role="tab" tabindex="0" [attr.aria-selected]="teamDetails" [routerLink]="['/accounts/teams/incentive']" [ngClass]="showTeams ? 'mdi mdi-account-outline': 'mdi mdi-account-outline sidenavdisabled'" class=""
+                    routerLinkActive="active-link" *ngIf="router.url.includes('/accounts')" [matTooltip]="service.sideTrans ? null:'Teams'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Account Teams</span>
+                    <!-- <label class="tooltiptext" for="menu6" >Account plans</label> -->
+                    <span id="menu6" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Account Teams </span>
+                </a>
+
+
+
+
+                <!-- <a class="mdi mdi-comment-account-outline " role="tab" [attr.aria-selected]="notesDetails" routerLinkActive="active-link"
+          *ngIf="router.url.includes('/accounts')" (click)="openNav();activeNotes()"
+          [matTooltip]="service.sideTrans ? null:'Notes & conversation'" matTooltipPosition="right">
+          <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Notes & conversation</span>
+          <span id="menu6" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Notes & conversation </span>
+        </a> -->
+
+
+                <!-- <a class="mdi mdi-note-outline" role="tab" [attr.aria-selected]="reportDetails" routerLinkActive="active-link" *ngIf="router.url.includes('/accounts')"
+          (click)="openNav();activeReports()" [matTooltip]="service.sideTrans ? null:'Reports'" matTooltipPosition="right">
+          <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Reports</span>
+          <span id="menu6" [ngClass]="service.sideTrans ? 'Account-Details'n:'hidden'"> Reports </span>
+        </a> -->
+                <!-- sprint 4 + 7 starts here -->
+                <!-- <a class="mdi mdi-checkbox-multiple-marked-outline"
+                    *ngIf="router.url.includes('/order/orderlistbfmchild') || router.url.includes('/order/orderdetails')"
+                    routerLink="/order/orderlistbfmchild/userdeclarations" routerLinkActive="active-link"
+                    [matTooltip]="service.sideTrans ? null:'Review'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Review</span>
+                   
+                    <span id="menu1" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'">Review </span>
+                </a>
+                <a class="mdi mdi-tab-plus" (click)="projectService.editProject = false " routerLinkActive="active-link"
+                    *ngIf="(router.url.includes('/order/orderlistbfmchild') || router.url.includes('/order/orderdetails'))"
+                    routerLink="/order/orderdetails/order" [matTooltip]="service.sideTrans ? null:'Order details'"
+                    matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Order details</span>
+                
+                    <span id="menu4" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'">Order details </span>
+                </a> -->
+                <!-- sprint 4 + 7 ends here  -->
+            </div>
+            <!-- </perfect-scrollbar> -->
+            <!-- sprint 3 left nav icons ends-->
+            <!--<perfect-scrollbar class="height450" *ngIf="isprospectCheck">
+                <a class="mdi mdi-information-outline" role="tab" [attr.aria-selected]="acoountDetails" *ngIf="router.url.includes('/accounts')" routerLinkActive="active-link" [routerLink]="['/accounts/accountdetails']" (click)="service.setSideBarData('1');activeAccount()"
+                    [matTooltip]="service.sideTrans ? null:'Account details'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">account details</span>
+                    <span id="menu1" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Account details </span>
+                </a>
+                <a (click)="sideNavtrue();activeTeams()" role="tab" [attr.aria-selected]="teamDetails" [routerLink]="['/accounts/teams/incentive']" [ngClass]="showTeams ? 'mdi mdi-account-group': 'mdi mdi-account-group sidenavdisabled'" class="" routerLinkActive="active-link"
+                    *ngIf="router.url.includes('/accounts')" (click)="openNav()" [matTooltip]="service.sideTrans ? null:'Teams'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">Teams</span>
+                    <span id="menu6" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> Teams </span>
+                </a>                
+                <a (click)="sideNavtrue();activeManageLog()" role="tab" [attr.aria-selected]="managementLog" [routerLink]="['/accounts/accountdetailstwo']" [ngClass]="showmgtLog ? 'mdi mdi-comment-account-outline': 'mdi mdi-comment-account-outline sidenavdisabled'" routerLinkActive="active-link"
+                    *ngIf="router.url.includes('/accounts')" (click)="openNav()" [matTooltip]="service.sideTrans ? null:'account details two'" matTooltipPosition="right">
+                    <span class="sr-only" [ngClass]="service.sideTrans ? 'disp_none': 'disp_block'">account details two</span>
+                    <span id="menu7" [ngClass]="service.sideTrans ? 'Account-Details':'hidden'"> account details two </span>
+                </a>                 
+            </perfect-scrollbar>-->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-opportunity deal-qualify">
+
+        <div class="col-12 float-left  container-dialog">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Estimated closure date</span>
+                <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close close-icn discard-close-btn" aria-label="close" mat-dialog-close
+                    ></button>
+            </div>
+    
+            <div class="col-12 float-left border-bottom-grey"></div>
+    
+            <div class="col-12 float-left no_pad closure-date">
+                <label class="col-12 float-left  no_pad mt10 fsize-12 hd-val" for="value">Estimated closure date *</label>
+                <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                    <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad customized-calandar">
+                        <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left border-gray w-100 in-value" id="calStart"
+                       [min]="startDate"       title="{{dateVal | date:'dd-MMM-yyyy' }}" [(ngModel)]="dateVal" [matDatepicker]="picker1"
+                            placeholder="" (click)="picker1.open()" (keypress)="picker1.open()" readonly>
+                     
+<!--
+    <input type="text" id="ND1"  title="DD-MMM-YYYY" class="text-style-1  inputt" [(ngModel)]="dateVal" title="DD-MMM-YYYY open calendar" [matDatepicker]="pickerNomi1" (keypress)="pickerNomi1.open()"
+                                  (click)="pickerNomi1.open()"  [min]="startDate" placeholder="{{li.StartDateOn}}"
+                                  />
+-->
+
+                        <mat-datepicker-toggle matSuffix [for]="picker1" tabindex="0" aria-label="calender" (click)="picker1.open()" (keypress)="picker1.open()">
+                            <span class="mdi mdi-calendar-blank float-right no_pad date-pick" matDatepickerToggleIcon></span>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-12 float-left border-bottom-grey bt-25"></div>
+    
+            <div class="col-12 float-left  no_pad" style="top: -10px">
+                <span class="col-12 float-left  no_pad add-cont mt-0">This will change the estimated closure date for this opportunity.
+                </span>
+            </div>
+        </div>
+    
+        <div class="col-12 float-left no_pad ">
+            <button aria-label="save" [disabled] = "!dateVal" 
+             [ngClass] = "(!dateVal)?'disableAssign':''"   (click)='save()' class="col-12 float-left btndef-none no_pad confrm-btn"  
+               >Save</button>
+        </div>
+    
+    </div>

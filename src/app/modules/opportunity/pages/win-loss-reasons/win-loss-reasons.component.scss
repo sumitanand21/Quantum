@@ -1,0 +1,149 @@
+// alex css starts
+$White: #ffffff;
+$MetalLight: #9b9b9b;
+$Metal: #4a4a4a;
+$DarkBlack : #2e2e2e;
+
+.h-178 {
+  height: 227px;
+}
+
+.mt-126{
+  margin-top: 126px;
+}
+.card {
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 0px !important;
+}
+.heading-level-two {
+  font-family:WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color:$White;
+  letter-spacing: -0.4px;
+}
+.brudcrumbs {
+  // position: relative;
+  // left: 8px;
+  // bottom: 18px;
+  opacity: 0.8;
+  font-size: 12px;
+  color: #e7ebf2;
+}
+.mdi-keyboard-backspace:before {
+  content: "\F30D";
+  font-size: 22px;
+  position: relative;
+  bottom: 4px;
+  color: #ffff;
+  // position: relative;
+  // bottom: 40px;
+}
+.pad-create-lead {
+  padding: 3px 13px 20px 13px;
+}
+.heading-level-two{
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color:$DarkBlack
+}
+
+.pt-10{
+  padding-top: 18px;
+  padding-bottom: 9px;
+}
+.zui-table {
+    border: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+    width: 100%;
+  }
+  .zui-table thead th {
+    background-color: #DDEFEF;
+    border: none;
+    color: #2f81ff;
+    padding: 20px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+    white-space: nowrap;
+  }
+  .zui-table tbody td {
+    color: $MetalLight;
+    padding: 20px;
+    text-shadow: 1px 1px 1px #fff;
+    white-space: nowrap;
+    background: white;
+  }
+  .zui-wrapper {
+    position: relative;
+  }
+  .zui-scroller {
+    overflow-y: visible;
+    padding-bottom: 5px;
+    width: 100%;
+  }
+  .zui-table .zui-sticky-col {
+    border-left: solid 1px #DDEFEF;
+    left: 0;
+    position: sticky;
+    top: auto;
+    min-width: 200px;
+    color: #2f81ff!important;
+    font-weight: 600;
+    background-color: #fff;
+  }
+  .white_circle_replay{
+    float: right;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: relative;
+    text-align: center;
+    color: #2f81ff;
+    bottom: 3px;
+    margin-left: 20px;
+  }
+  .mdi-pencil:before {
+    content: "\F3EB";
+    position: relative;
+    top: 2px;
+}
+.span_cls{
+  line-height: 1.5;
+    white-space: normal;
+}
+.width_400{
+  max-width: 400px!important;
+  min-width: 400px!important;
+}
+.width_200{
+  max-width: 200px!important;
+  min-width: 200px!important;
+}
+  .first-tbl{
+    .zui-table  tbody tr td{
+      background-color: #f5f5f5!important;
+    }
+    .zui-table  tbody tr td:nth-child(4n){
+      background-color: #fff!important;
+    }
+    .zui-table  tbody tr td:nth-child(4n+1){
+      background-color: #fff!important;
+    }
+  }
+  .sec-tbl{
+    .zui-table  tbody tr td:nth-child(2n){
+      background-color: #f5f5f5!important;
+    }
+  }
+  .third-tbl{
+    table  tbody tr td:nth-child(2n){
+      background-color: #f5f5f5!important;
+    }
+  }
+  .fourth-tbl{
+    .zui-table  tbody tr td:nth-child(2n){
+      background-color: #f5f5f5!important;
+    }
+  }

@@ -1,0 +1,37 @@
+<div class="pop-over">
+  <div class="col-12 float-left head-part customized-input ip-check">
+    <span role="button" class="mdi mdi-keyboard-backspace float-left cp"
+      (click)="navigateUp()"></span>
+    <div class="d-flex" *ngIf="folder">
+      <input type="text" class="border-azure w-100 font-bold" [(ngModel)]="popFoldername" />
+      <span role="button" (click)="onCreateFolder()" class="cp mdi mdi-check"></span>
+    </div>
+    <h3 class="heading-level-three float-left ellipses" *ngIf="!folder">{{dirPathName}}</h3>
+    <span role="button" class="mdi mdi-close float-right cp" (click)="closePop()" *ngIf="!folder"></span>
+
+
+  </div>
+
+
+  <div class="col-12 float-left no_pad">
+    <div class="float-left col-12 create-folder-div" *ngIf="folderElement.length == 0">
+      Create a new folder in '{{dirPathName}}'
+    </div>
+    <ul>
+      <li class="" *ngFor="let data of folderElement;let i=index">
+        <button class="w-100 font-bold mdi mdi-folder" (click)="navigate(data)">{{data.name}}
+          <span class="float-right">></span>
+        </button>
+      </li>
+    </ul>
+    <div class="col-12 float-left bottom-actions-bar">
+      <button [disabled]="folder"
+        class="standard-border h-40 ellipses bg-transperent color-white float-left btn-outlines font-bold"
+        (click)="onMoveFile()">Move
+        here
+      </button>
+      <button [disabled]="folder" class="mdi mdi-folder-plus btn-icon float-right btn-none"
+        (click)="createRow()"></button>
+    </div>
+  </div>
+</div>

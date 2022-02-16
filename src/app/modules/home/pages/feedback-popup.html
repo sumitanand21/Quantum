@@ -1,0 +1,25 @@
+<div class="col-12 float-left  no_pad popup-container newchildconvo ">
+
+  <div class="col-12 float-left  container-dialog">
+    <div class="col-12 float-left  no_pad popup-hd">
+      <span class="col-10 float-left  no_pad feedback-pop-head" mat-dialog-title>Submit feedback</span>
+      <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close"
+        mat-dialog-close></button>
+    </div>
+    <div class="col-12 float-left border-bottom-grey "></div>
+    <p class="float-left col-12  no_pad feedback-desc">We have already captured a screenshot of the current page as part
+      of the feedback.</p>
+
+    <div class="float-left col-12 no_pad">
+      <label for="feebbacktext" class="feedbackText col-12 no_pad float-left">Provide your feedback below</label>
+      <textarea name="" [(ngModel)]="dialogueData.feedbackText" id="feebbacktext"
+        class="feedback-textarea col-12 float-left"></textarea>
+    </div>
+
+  </div>
+
+  <div class="col-12 float-left no_pad mt30">
+    <button aria-label="done" class="col-12 float-left btndef-none no_pad confrm-btn" [mat-dialog-close]="dialogueData">Done</button>
+  </div>
+
+</div>

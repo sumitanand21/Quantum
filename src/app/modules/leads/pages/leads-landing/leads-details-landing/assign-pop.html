@@ -1,0 +1,87 @@
+<div class="col-12 float-left  no_pad popup-container newchildconvo ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Assign lead</span>
+            <button type="button" class="float-left no_pad btndef-none mdi mdi-window-close close-icn cp"
+                aria-label="close" mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey "></div>
+        <div class="col-12 float-left pad-20-pop">
+            <div class="convo-name-title">Lead name</div>
+            <div class="convo-name mt5 ellipses">{{detailsLeadName}}</div>
+        </div>
+        <div class="col-12 float-left border-bottom-grey mb20"></div>
+        <!--Potential Wipro solutions  autocomplete starts -->
+        <form [formGroup]="AcssignForm" class="assign-led-pop">
+            <div class="col-12  no_pad float-left" [ngClass]="solutionSwitch?'mh150':''">
+                <div class="col-12  float-left  cust_autoComplete pos-rel no_pad">
+                    <div class="col-12  float-left no_pad CompanyName">
+
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                            appKeyListControl #searchOwnerList (arrowDown)="arrowkeyLocation=$event"
+                            (keyup.enter)="searchOwnerList.value=OwnerArray[arrowkeyLocation].FullName; appendsolution(OwnerArray[arrowkeyLocation].FullName,OwnerArray[arrowkeyLocation], 0);solutionSwitch=false"
+                            [attr.data-arrayMaxLength]="OwnerArray?.length" [attr.data-isDownBtn]=true
+                            (input)="solutionSwitch=true" role="combobox" aria-autocomplete="list"
+                            [attr.aria-expanded]="solutionSwitch?true:false" aria-owns="read"
+                            [attr.aria-activedescendant]="arrowkeyLocation" 
+                            id="owner" name="owner" autocomplete="off"
+                            type="text" formControlName="owner" placeholder="Search people to assign lead"
+                            (clickOutside)="solutionleadclose()" (click)="solutionSwitch = true;callTempAssignleadSearch();invalidlead=false">
+                        <div class="error-modal float-left col-12" *ngIf="invalidlead">Please select valid lead owner
+                        </div>
+                        <span class="mdi mdi-magnify"></span>
+                        <div class="assign-brdr col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                            *ngIf="solutionSwitch"
+                            [attr.focus]="AcssignForm.value.owner && solutionSwitch">
+                            <perfect-scrollbar style="max-height:90px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                                    <ul class=" list-group mr2  sort-dropdown"  role="listbox" id="read"
+                                        [ngClass]="{'loader-search':isAssignLeadLoading }">
+                                        <li id="{{i}}" tabindex="0" role="option" class="list-group-item h-40 p-4-10 "
+                                            (click)="appendsolution(item.FullName, item, i)"
+                                            [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                                            *ngFor="let item of OwnerArray; let i = index">
+                                            <label for="inti_name" class="float-left name w-80">
+                                                <span class="d-block list-name ellipses" matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                                                <span class="d-block sub-list">{{item.Designation}}</span>
+                                            </label>
+
+                                        </li>
+                                        <li class="d-block list-name h-40 p-10"
+                                            *ngIf="OwnerArray?.length == 0  && !isAssignLeadLoading">
+                                            No record found </li>
+                                    </ul>
+                                </span>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                    <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact selected-tags mb20">
+                        <perfect-scrollbar style="max-height:200px">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tagged-box mt-10 no_pad mr10  d-flex"
+                                *ngFor="let item of selectedsolution; let i=index">
+                                <label for="inti_name" class="float-left  w-100">
+                                    <span
+                                        class="initial-assign float-left">{{item.FullName | firstWord | uppercase}}</span>
+                                    <span class="d-block color-azure ml10 float-left ellipses text-assign"
+                                        title="{{item.FullName}}"  matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                                </label>
+                                <span role="button" tabindex="0" aria-label="delete"
+                                    class="mdi mdi-close close-lead float-right cp" (click)="delinkAssign(i)"></span>
+                            </div>
+                        </perfect-scrollbar>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!--Potential Wipro solutions  autocomplete ends-->
+
+
+        <div class="col-12 float-left border-bottom-grey mt10" *ngIf="selectedsolution.length>0 && LeadOwnerName != undefined"></div>
+        <div class="float-left convo-name-title mt20" *ngIf="selectedsolution.length>0 && LeadOwnerName != undefined">Are you sure you want to assign the ownership to {{LeadOwnerName}} for this lead?</div>
+    </div>
+    <div class="col-12 float-left no_pad ">
+        <button aria-label="assign" class="col-12 float-left btndef-none no_pad confrm-btn"
+            (click)="CreateActivity()">Assign</button>
+    </div>
+</div>

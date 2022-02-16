@@ -1,0 +1,60 @@
+<form [formGroup]="archiveForm">
+<div class="col-12 float-left  no_pad popup-container newchildconvo ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Archive conversation</span>
+            <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey "></div>
+        <div class="col-12 float-left pad-20-pop">
+            <div class="convo-name-title">conversation name</div>
+            <div class="convo-name mt5">{{name}}</div>
+        </div>
+        <div class="col-12 float-left border-bottom-grey"></div>
+        <!--datepicker starts-->
+        <div class="col-12  float-left  pad-20-pop ">
+            <label class="col-12 convo-name-title float-left no_pad" for="calStart">Set reminder to re-open this activity *
+                    <!-- <div *ngIf="formError.date.invalid && (formError.date.dirty || formError.date.touched)" class="alert alert-danger">
+                            <div *ngIf="formError.date.errors.required">
+                                date is required.
+                            </div>
+                        </div> -->
+                 </label>
+            <div class=" col-12  float-left no_pad pos-rel">
+                <div class="col-12  float-left no_pad cal_brdr">
+                    <div class="col-12  float-left no_pad cust_calan customized-input">
+                        <input class="col-12  float-left " readonly id="calStart" (click)="picker6.open()" (keypress)="picker6.open()" [matDatepicker]="picker6" title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY" formControlName="date"
+                        [ngClass]="{'error': this.archiveForm.controls['date'].touched && !this.archiveForm.controls['date'].valid}">
+                        <mat-datepicker-toggle matSuffix [for]="picker6">
+                            <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker6></mat-datepicker>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--datepicker ends-->
+        <div class="convo-name-title" id="archive">Archive remarks * 
+                <span class="label-form" *ngIf= "textValue.value.length == 0">  (2000 characters)</span>
+                <span class="label-form" *ngIf= "textValue.value.length > 0 && textValue.value.length < 1999">  ({{ 2000 - textValue.value.length}} characters left)</span>
+                <span class="label-form" *ngIf= "textValue.value.length === 1999 || textValue.value.length === 2000">  ({{ 2000 - textValue.value.length}} character left)</span>
+            <!-- <div *ngIf="formError.remarks.invalid && (formError.remarks.dirty || formError.remarks.touched)" class="alert alert-danger">
+                <div *ngIf="formError.remarks.errors.required">
+                    Remarks is required.
+                </div>
+            </div> -->
+        </div>
+        <textarea  class="col-12 float-left mt10 pop-area" aria-labelledby="archive" 
+        placeholder="Enter archive remarks " formControlName="remarks" #textValue
+        [ngClass]="{'error': this.archiveForm.controls['remarks'].touched && !this.archiveForm.controls['remarks'].valid}"></textarea>
+        <div class="col-12 float-left border-bottom-grey mt20"></div>
+        <div class="float-left convo-name-title desc-color mt10">This conversation will be archived.</div>
+    </div>
+
+    <div class="col-12 float-left no_pad mt30">
+        <button aria-label="Archive" class="col-12 float-left btndef-none no_pad confrm-btn" [mat-dialog-close]="this.archiveForm.valid" formControlName="Remarks" (click)="archivedConversation()">Archive</button>
+    </div>
+</div>
+</form>

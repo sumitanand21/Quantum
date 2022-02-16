@@ -1,0 +1,329 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab opportunityPage new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 float-left no_pad">
+
+        <h1 class="heading-level-one heading-custom">New contract</h1>
+        <span class="brudcrumbs">Sales > opportunities > Contracts</span>
+      </div>
+
+      <div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 float-left no_pad">
+        <div class="float-right disp-flex save-cancel-responsive">
+          <button aria-label="Cancel" class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50" (click)="goBack()">Cancel</button>
+          <button aria-label="Save" class="primary-button borderless h-40 std save-responsive-btn button-wd50" (click)="goBack()">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div clas="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-contract">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad bg-mid_night pos-abs h-275"></div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 pad-top150">
+
+    <div class="col-12 float-left card ">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content no_pad float-left pad-create-lead mb20">
+
+        <!-- Select radio STARTS -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form mt20">Select the type of contract creation *
+          </label>
+          <mat-radio-group class="float-left mtb-6" aria-labelledby="key">
+            <mat-radio-button value="yes" class="pr30 label-form-blue radio-fontfamly">New</mat-radio-button>
+            <mat-radio-button value="no" class="label-form-blue radio-fontfamly" [checked]="isPrivate">Update
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <!-- Select radio ENDS -->
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+
+          <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 float-left plb-60-20">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left customized-input">
+              <label for="estimatedRFI" class="w-100 label-form">Agreement name</label>
+              <input id="estimatedRFI" type="text" class="border-gray w-100" value="" placeholder="Enter">
+            </div>
+          </div>
+
+          <!-- Select DROPDOWN STARTS MSA-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label for="select1" class="w-100 label-form">MSA* </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="select1" role="listbox" required>
+                <option value="">Select</option>
+                <option value="Source 1">Source 1</option>
+                <option value="Source 2">Source 2</option>
+                <option value="Source 3">Source 3</option>
+              </select>
+            </div>
+          </div>
+          <!-- Select DROPDOWN STARTS ends here-->
+
+          <!-- Select DROPDOWN STARTS Agreement type-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label for="select1" class="w-100 label-form">Agreement type* </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="select1" role="listbox" required>
+                <option value="">Select</option>
+                <option value="Source 1">Source 1</option>
+                <option value="Source 2">Source 2</option>
+                <option value="Source 3">Source 3</option>
+              </select>
+            </div>
+          </div>
+          <!-- Select DROPDOWN STARTS Agreement type-->
+
+          <!-- Select DROPDOWN STARTS Wipro contracting entity-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label for="select1" class="w-100 label-form">Wipro contracting entity* </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="select1" role="listbox" required>
+                <option value="">Select</option>
+                <option value="Source 1">Source 1</option>
+                <option value="Source 2">Source 2</option>
+                <option value="Source 3">Source 3</option>
+              </select>
+            </div>
+          </div>
+          <!-- Select DROPDOWN STARTS Wipro contracting entity-->
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left customized-input">
+              <label for="estimatedRFI" class="w-100 label-form">PO number</label>
+              <input id="estimatedRFI" type="text" class="border-gray w-88" value="" placeholder="Enter">
+              <button aria-label="add" class="primary-button d-flex align-items-center float-right h-40 fsize-22 w-12">
+                <span class="mdi mdi-plus"></span>
+            </button>
+            </div>
+          </div>
+
+          <!-- Select radio STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form">Is the document contractual in nature?
+            </label>
+            <mat-radio-group class="float-left mtb-6" aria-labelledby="key">
+              <mat-radio-button value="yes" class="pr30 label-form-blue radio-fontfamly">Yes</mat-radio-button>
+              <mat-radio-button value="no" class="label-form-blue radio-fontfamly" [checked]="isPrivate">No
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <!-- Select radio ENDS -->
+
+          <!-- Select DROPDOWN STARTS Wipro contracting entity-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label for="select1" class="w-100 label-form">Staff augmentation service *</label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="select1" role="listbox" required>
+                <option value="">Select</option>
+                <option value="Source 1">Source 1</option>
+                <option value="Source 2">Source 2</option>
+                <option value="Source 3">Source 3</option>
+              </select>
+            </div>
+          </div>
+          <!-- Select DROPDOWN STARTS Wipro contracting entity-->
+
+          <!-- Select radio STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form">Wipro proprietary IP
+            </label>
+            <mat-radio-group class="float-left mtb-6" aria-labelledby="key">
+              <mat-radio-button value="yes" class="pr30 label-form-blue radio-fontfamly">Yes</mat-radio-button>
+              <mat-radio-button value="no" class="label-form-blue radio-fontfamly" [checked]="isPrivate">No
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <!-- Select radio ENDS -->
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left customized-input">
+              <label for="estimatedRFI" class="w-100 label-form">Wipro IP name</label>
+              <input id="estimatedRFI" type="text" class="border-gray w-100" value="" placeholder="Enter">
+
+            </div>
+          </div>
+
+          <!-- Select DROPDOWN STARTS Wipro contracting entity-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label for="select1" class="w-100 label-form">Who has to sign the document *</label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="select1" role="listbox" required>
+                <option value="">Select</option>
+                <option value="Source 1">Source 1</option>
+                <option value="Source 2">Source 2</option>
+                <option value="Source 3">Source 3</option>
+              </select>
+            </div>
+          </div>
+          <!-- Select DROPDOWN STARTS Wipro contracting entity-->
+
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label for="calStart" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad label_heading">Document end date *
+            </label>
+            <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr customized-calandar">
+              <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart" 
+                required [matDatepicker]="picker1" title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY">
+              <mat-datepicker-toggle matSuffix [for]="picker1" tabindex="0" aria-label="calender" (click)="picker1.open()" (keypress)="picker1.open()">
+                <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label for="calStart" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad label_heading">Document start date *</label>
+            <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr customized-calandar">
+              <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart1"
+                required [matDatepicker]="picker2" title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY">
+              <mat-datepicker-toggle matSuffix [for]="picker2" tabindex="0" aria-label="calender" (click)="picker2.open()" (keypress)="picker2.open()">
+                <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+
+          <!--BDM Primary account owner autocomplete starts here-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 ">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad " for="primaryAW" class="label-form">BDM Primary account owner * </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                <div class="flex-grow-1">
+                  <app-auto-complete-select [requiredField]="true" [source]="wiproContactArray" (content)="wiproContact($event)" [dataSource]="'Accountname'" [Placeholder]="'Search'"
+                    [IsSpecialBtn]=false [IsinitialsView]=true [showSelected]=true [IsSearchDatabase]=false >
+                  </app-auto-complete-select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--BDM Primary account ownerautocomplete ends here-->
+
+          <!--Account delivery head autocomplete starts here-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 ">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad " for="accountDH" class="label-form">Account delivery head * </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                <div class="flex-grow-1">
+                  <app-auto-complete-select [requiredField]="true" [source]="wiproContactArray" (content)="wiproContact($event)" [dataSource]="'Accountname'" [Placeholder]="'Search'"
+                    [IsSpecialBtn]=false [IsinitialsView]=true [showSelected]=true [IsSearchDatabase]=false >
+                  </app-auto-complete-select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--Account delivery head autocomplete ends here-->
+
+          <!--Account BFM autocomplete starts here-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 ">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad " for="accountBFM" class="label-form">Account BFM* </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                <div class="flex-grow-1">
+                  <app-auto-complete-select [requiredField]="true" [source]="wiproContactArray" (content)="wiproContact($event)" [dataSource]="'Accountname'" [Placeholder]="'Search'"
+                    [IsSpecialBtn]=false [IsinitialsView]=true [showSelected]=true [IsSearchDatabase]=false >
+                  </app-auto-complete-select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--Account BFM autocomplete ends here-->
+
+          <!--Vertical delivery headautocomplete starts here-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 ">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad " for="verticalDH" class="label-form">Vertical delivery head * </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                <div class="flex-grow-1">
+                  <app-auto-complete-select [requiredField]="true" [source]="wiproContactArray" (content)="wiproContact($event)" [dataSource]="'Accountname'" [Placeholder]="'Search'"
+                    [IsSpecialBtn]=false [IsinitialsView]=true [showSelected]=true [IsSearchDatabase]=false >
+                  </app-auto-complete-select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--Vertical delivery head autocomplete ends here-->
+
+          <!--Account delivery head autocomplete starts here-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 ">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad " for="accountDeliveryH" class="label-form">Account delivery head * </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                <div class="flex-grow-1">
+                  <app-auto-complete-select [requiredField]="true" [source]="wiproContactArray" (content)="wiproContact($event)" [dataSource]="'Accountname'" [Placeholder]="'Search'"
+                    [IsSpecialBtn]=false [IsinitialsView]=true [showSelected]=true [IsSearchDatabase]=false >
+                  </app-auto-complete-select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--Account delivery head autocomplete ends here-->
+
+          <!--Delivery mangerautocomplete starts here-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 ">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad " for="deliveryM" class="label-form">Delivery manger * </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                <div class="flex-grow-1">
+                  <app-auto-complete-select [requiredField]="true" [source]="wiproContactArray" (content)="wiproContact($event)" [dataSource]="'Accountname'" [Placeholder]="'Search'"
+                    [IsSpecialBtn]=false [IsinitialsView]=true [showSelected]=true [IsSearchDatabase]=false >
+                  </app-auto-complete-select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--Delivery manger autocomplete ends here-->
+
+          <!-- Select radio STARTS -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form">Does this document require a signature?
+            </label>
+            <mat-radio-group class="float-left mtb-6" aria-labelledby="key">
+              <mat-radio-button value="yes" class="pr30 label-form-blue radio-fontfamly">Yes</mat-radio-button>
+              <mat-radio-button value="no" class="label-form-blue radio-fontfamly" [checked]="isPrivate">No
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <!-- Select radio ENDS -->
+
+          <!-- Select DROPDOWN STARTS Wipro contracting entity-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20">
+            <label for="select1" class="w-100 label-form">Staff augmentation service *</label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="select1" role="listbox" required>
+                <option value="">Select</option>
+                <option value="Source 1">Source 1</option>
+                <option value="Source 2">Source 2</option>
+                <option value="Source 3">Source 3</option>
+              </select>
+            </div>
+          </div>
+          <!-- Select DROPDOWN STARTS Wipro contracting entity-->
+
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left mt20 no_pad">
+          <div class=" float-left no_pad">
+            <label class="col-12 no_pad float-left attach-doc">Document</label>
+            <button aria-label="Upload" class="primary-button btn-block h-40" (click)="openExecuteContractPopup()">
+              <span class="mdi mdi-attachment"></span>Upload</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
