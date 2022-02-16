@@ -1,0 +1,53 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad">
+      <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+        <h1 class="heading-level-one mtop6">Reports
+        </h1>
+
+      </div>
+      <div class="float-right disp-flex responsive-btn-div web-action-button web-buttons">
+
+      <button
+          class="primary-button borderless button-wd100 h-40  mr10 responsive-btn-div-button activity-home-mblbtns pad-8-10"
+          [routerLink]="['/reports/moreRecords/availableRecords']">
+          <span class="mdi mdi-file-outline pr5"></span>View more reports
+      </button>
+     
+
+  </div>
+    </div>
+  </div>
+</div>
+<div class="col-12 float-left no_pad conversation-landing complex_table">
+  <div class="col-12 pos-abs bg-mid_night blue-back-ht  pad-30"></div>
+  <div class="col-12 padding-30 float-left mar-top-100">
+    <!-- INPUT BOX STARTS -->
+    <div class="col-3 no_pad float-left mb20 ">
+      <div class="input-box float-left pos-rel" (clickOutside)="OutsideInput()">
+        <span class="mdi mdi-magnify color-white"  (click)="inputClick(searchItem)"></span>
+
+        <input class="standard-border color-white " [ngClass]="expand? 'w180':'w105'" (keyup)="inputClick(searchItem)" (click)="inputClick(searchItem)"
+          placeholder="Search" name="searchItem" [(ngModel)]="searchItem">
+        <span class="mdi mdi-close color-white z-ind-8" tabindex="0" role="button" (click)="close()" (keypress)="close()"
+          [ngClass]="expand? 'visible':'opacity-0'">
+          <span class="sr-only">close</span>
+        </span>
+      </div>
+    </div>
+    <!-- INPUT BOX ENDS -->
+  </div>
+  <div class="col-12 float-left padd-btm50">
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 float-left padding15"  *ngFor="let items of reportsDetails | filter : searchItem">
+      <div class="col-12 float-left back-white">
+          <h2 class="col-12 float-left no_pad report-header">{{items.Title}}</h2>
+          <p class="col-12 float-left no_pad report-desc">{{items.Description}}</p>
+          <button class="report-btn" (click)="navtoReport(items.Url)" >View report</button>
+      </div>
+    </div>   
+ 
+  </div>
+
+
+</div>

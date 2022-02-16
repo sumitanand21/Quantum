@@ -1,0 +1,346 @@
+$Azure : #2f81ff;
+$White : #ffffff;
+$MidNight : #103f86;
+$LightBlue:#2f81ff;
+$MetalLight: #9b9b9b;
+$Marble: #d8d8d8;
+*
+{
+  outline: none;
+}
+
+.conversation-landing // parent class "conversationLanding" starts here
+{
+  .cp_notallowed
+  {
+    cursor: not-allowed;
+  }
+  .opac4
+  {
+    opacity: 0.4;
+  }
+            .h-380 // blue patch height
+            {
+            height: 380px;
+            }
+            .h-415 // blue patch height
+            {
+            height: 205px;
+            }
+            .pad-left-right-10
+            {
+              padding-left: 10px !important;
+              padding-right: 10px !important;
+            }
+           .pad-30{
+            padding: 30px;
+            }         
+            .mr10{
+            margin-right: 10px !important;
+            }
+            .h-40{
+            min-height: 40px;
+            }
+            .heading-level-one{
+             
+            font-family:WiproAkkuratTT-Bold;
+            font-size: 24px;
+            color:$White;
+             
+            small{
+            font-family: 'WiproAkkuratTT-Regular';
+            font-size: 14px;
+            padding: 0 30px;
+            }
+            }
+            .heading-level-two
+            {
+                font-family:WiproAkkuratTT-Bold;
+                font-size: 20px;
+                // color:$White;
+                color: #4a4a4a;
+                letter-spacing: -0.4px;
+            }
+            .primary-button.std{
+            padding: 9px 5px;
+            min-width: 110px;
+            margin: 0;
+            }
+            .borderless{
+            border:none !important;
+            }
+            .w-180
+            {
+                width: 180px;
+            }
+            .pr5
+            {
+                padding-right: 5px !important;
+            }
+            .bg-transparent
+            {
+                background: transparent;
+            }
+            .pr10
+            {
+                padding-right: 10px !important;
+            }
+            // tab style starts 
+            .main-content{
+                z-index: -1;
+                }
+                button{
+                  cursor: pointer;
+                  &:hover{box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);}
+                }
+            .vertical-btns-div {
+                margin: 15px 0px 0px 0px;
+               }
+               .btn-tabs-active{
+                background-color:$MidNight ;
+                text-align: center;
+                border: solid 1.5px #ffffff;
+                color:$Azure;
+                border-radius: 5px;
+                font-family:WiproAkkuratTT-Bold;
+                padding: 25px 20px;  
+              }
+              .sub-vertical-but.active {
+                background: #fff;
+                color: $Azure; 
+                outline: none;        
+                .btntxt-s{
+                    color: $Azure;
+                }
+              }
+              .sub-vertical-but:active {
+                background: #fff;
+                color: $Azure; 
+                outline: none;
+              }
+              .sub-vertical-but {
+                font-family: WiproAkkuratTT-Bold;
+                background: transparent;
+                border: none;
+                font-size: 0.85em;
+                color: #fff;
+                // padding: 7px 6px;
+                font-weight: bold;
+                border: 1.5px solid #fff;
+                outline: none;
+                width:100%;
+                padding: 5px;
+              }
+            .calin-select-all{
+                font-size: 17px;
+                text-align: center;
+                padding-right: 5px;
+               }
+               .brd-left0{
+                border-left: 0px !important;
+                border-radius: 0px 5px 5px 0px;
+              }
+              .brd-right0{
+                border-right: 0px !important;
+                border-radius: 5px 0px 0px 5px;
+              }
+              .brd-right{
+                border-radius: 5px 0px 0px 5px;
+              }
+              .brd_r0{
+                border-right: 0px !important;
+              }
+              .flex-tab{
+                display: flex;
+                justify-content: center
+              }
+              .flex-tab-width{
+                display:flex;
+                width:100%;
+                justify-content: center;
+              }
+    
+            
+
+            .sub-vertical-but-white{
+              font-family: WiproAkkuratTT-Bold;
+              background:  $White;
+              border: none;
+              font-size: 0.85em;
+              color: #2f81ff;
+              font-weight: bold;
+              border: 1.5px solid #2f81ff;
+              outline: none;
+              width: 100%;
+              padding:5px;
+            }
+            .sub-vertical-but-white.active{
+              background: #2f81ff;
+              color: #fff;
+              outline: none;
+            }
+            .sub-vertical-but-white.active {
+              .btntxt-s{
+                color: #fff;
+              }
+             
+            }
+   
+                  
+        
+                     
+}
+// parent class "conversationLanding" ends here
+
+// Pradeep styles from
+.image-alighn {
+  text-align: center;
+  position: relative;      
+  justify-content: center;
+  padding-top: 30px;
+}
+.top-30{
+top:30px;
+}
+    .white-back{
+        background-color: #f9f9f9;
+    }
+    .zindex{
+        z-index: 9999;
+    }
+    .border-rd{
+        border-radius: 50%;
+        border: 5px solid #f9f9f9;
+    }
+    .icon-btnbottm { 
+        position: relative;
+        bottom: 2px;
+    }
+
+.mdi-icon-fontsz {
+        font-size: 15px;
+    }    
+    .convo-tag
+    {
+        position: absolute;
+        left: 65px;
+        width: 200px;
+        height: 16px;
+        opacity: 0.6;
+        font-family: WiproAkkuratTT-Regular;
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #e7ebf2;
+        float: left;
+        top: 43px;
+    }  
+                             
+ .contact-business-card{
+  height: 10em;
+  width: 10em;
+  margin-bottom: 20px;
+}
+.color-black{
+  color: black !important;
+}
+.color-white{
+color: #2f81ff !important;
+}
+.mdi-arrow-left {
+  font-size: 22px;
+  position: relative;
+  bottom: 5px;
+  color: white !important;
+}
+.btn-down-leads{
+
+  padding: 3px 8px 5px 8px !important;
+  height: 40px;   
+  width: 40px;   
+  border-radius: 4px;   
+  right: 30px;   
+  font-size: 21px !important;   
+  position: absolute;   
+  z-index: 1;   
+  cursor: pointer;  
+  top: 20px;
+  right: 0px; 
+  }
+
+  
+//   .loader {
+//     top:100px;
+//     margin: 200px auto;
+//     border: 6px solid #f3f3f3;
+//     border-radius: 50%;
+//     border-top: 6px solid #3498db;
+//     width: 64px;
+//     height: 64px;
+//     -webkit-animation: spin 2s linear infinite; /* Safari */
+//     animation: spin 2s linear infinite;
+  
+// }
+// .loaderContainer {
+
+//   width: 100%;
+//   top:0em;
+//   position: absolute;
+//   height: 100%;
+//   z-index: 9999;
+//   background: white;
+// }
+.loader {
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+}
+.loaderContainer {
+width: 100%;
+top:0em;
+position: absolute;
+height: 100%;
+z-index: 9999;
+background: white;
+}
+.grey-circle{
+  padding-top: 39px;
+  color: #2f81ff;
+  font-family: WiproAkkuratTT-Bold;
+}
+.mdi-camera{
+  font-size: 28px;
+}
+.top-21{
+  top:25px;
+}
+.tag-first {
+  color: #e7ebf2;
+  padding-left: 35px;
+  opacity: 0.8;
+  padding-top: 10px;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px;
+}
+.pt7
+{
+  color: #e7ebf2;
+  opacity: 0.8;
+  padding-top: 7px;
+}
+.tag{
+  color: #e7ebf2;
+  opacity: 0.8;
+  padding-top: 10px;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px;
+}

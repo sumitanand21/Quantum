@@ -1,0 +1,77 @@
+<div *ngIf="!cbudeactivation && !sapCodeExists" class="col-12 float-left  no_pad popup-container ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd pad-botton-25">
+            <span class="col-10 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title *ngIf="!IsOpportunitiesTagged">
+
+                    Once you disable this reference,it cannot be enabled again 
+                    and will be remove from the list of reference
+
+                </span>
+
+            <span class="col-10 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title *ngIf="IsOpportunitiesTagged">
+
+                        Since an opportunity is tagged to the reference owner and 
+                        this assignment reference cannot be disabled 
+    
+                    </span>
+
+            <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+        </div>
+
+
+    </div>
+
+    <div class="col-12 float-left pad-left-25 pad-botton-25">
+
+        <span class="body-content" *ngIf="!IsOpportunitiesTagged"> Are you sure you want to continue ? </span>
+
+        <span class="body-content" *ngIf="IsOpportunitiesTagged"> Please transfer the opportunities to relevant person to take this action </span>
+
+    </div>
+    <div class="col-12 float-left no_pad" *ngIf="IsOpportunitiesTagged">
+        <button aria-label="confirm" class="col-12 float-left btndef-none no_pad confrm-btn" mat-dialog-close>Close</button>
+    </div>
+
+    <div class="col-12 float-left no_pad ">
+        <button aria-label="No" class="col-6 float-left no_pad cancel-btn " *ngIf="!IsOpportunitiesTagged" mat-dialog-close>No</button>
+        <button aria-label="yes" (click)="deactivateReference()" *ngIf="!IsOpportunitiesTagged" class="col-6 float-left btndef-none no_pad confrm-btn mr0">Yes</button>
+    </div>
+
+</div>
+
+<!--  this is for CBU deactivation-->
+<div *ngIf="cbudeactivation && !sapCodeExists" class="col-12 float-left  no_pad popup-container ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd pad-botton-25">
+
+            <span class="col-10 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title *ngIf="!IsOpportunitiesTagged">
+
+                Since an opportunity is tagged ,  
+                        this Customer Business Unit cannot be deactivated. 
+
+            </span>
+            <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+
+        </div>
+    </div>
+</div>
+
+<!--  this is for Sap code exists alert-->
+
+<div *ngIf="sapCodeExists && !cbudeactivation" class="col-12 float-left  no_pad popup-container ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd pad-botton-25">
+
+            <span class="col-10 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title>
+                Sap customer code exists for this account.          
+                Are you sure, you still want to make this a Hunting Account?
+            </span>
+            <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+
+            <!-- <div class="col-12 float-left no_pad ">
+                <button aria-label="No" class="col-6 float-left no_pad cancel-btn " mat-dialog-close>No</button>
+                <button aria-label="yes" class="col-6 float-left btndef-none no_pad confrm-btn mr0" mat-dialog-close>Yes</button>
+            </div> -->
+        </div>
+    </div>
+</div>

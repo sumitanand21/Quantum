@@ -1,0 +1,131 @@
+$Azure : #2f81ff;
+$White : #ffffff;
+$River : #d9e9ff;
+$MetalLight : #9b9b9b;
+$MidNight : #103f86;
+$Metal : #4a4a4a;
+$Black : #000000;
+$Orange : #f58323;
+$RubyRed : #ef3341;
+$Green : #6dc24b;
+$Wash : #9f9f9f;
+$MidGrey:#343434;
+$Assistant-blue: #E5F0FF;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$DarkBlack : #2e2e2e;
+
+.h-170{
+    height: 170px;
+}
+.mr10{
+    margin-right: 10px !important;
+}
+.plb-60-20{
+    padding: 0 60px 20px 0
+}
+.h-40{
+    min-height: 40px;
+}
+.pr-100{
+    padding-right: 100px;
+}
+.heading-level-two{
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    letter-spacing: -0.4px;
+}
+.heading-level-one{
+
+   font-family:WiproAkkuratTT-Bold;
+   font-size: 24px;
+   color:$DarkBlack;
+
+    small{
+        font-family: 'WiproAkkuratTT-Regular';
+        font-size: 14px;
+        padding: 0 30px;
+    }
+}
+.heading-level-one-log{
+
+    font-family:WiproAkkuratTT-Bold;
+    font-size: 24px;
+    color:$DarkBlack;
+    max-width: 100% !important;
+ 
+     small{
+         font-family: 'WiproAkkuratTT-Regular';
+         font-size: 14px;
+         padding: 0 30px;
+     }
+ }
+.header-level-three{
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    float: left;
+    padding: 0;
+}
+.primary-button.std{
+    padding: 7px 0;
+    min-width: 88px;
+    height: 40px;
+    margin: 0;
+}
+.pad-95{
+    padding:0 95px 100px 95px;
+}
+.small-text{
+    color:$Azure !important;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'WiproAkkuratTT-Regular';
+}
+.small-tex{
+    font-size: 16px;
+    font-family: 'WiproAkkuratTT-Regular';
+}
+.relation-number{
+    font-size: 42px;
+    color: $MidNight;
+    font-family: 'WiproAkkuratTT-Bold';
+}
+.box-saahdow {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+}
+.padboxall-18{
+    padding: 20px 30px 20px 30px;
+}
+.martop-5{
+margin-top: 5px;
+}
+.mdi-pencil:before {
+    margin-right: 5px;
+}
+.loaderContainer {
+    width: 100%;
+    top:0em;
+    position: absolute;
+    height: 100%;
+    z-index: 9999;
+    background: white;
+  }
+  .loader {
+    top:-100px;
+    margin: 200px auto;
+    border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 6px solid #3498db;
+    width: 64px;
+    height: 64px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  
+  }
+  .ml5{
+      margin-left: 5px;
+  }
+  .card {
+
+    margin-bottom: 10px !important;
+  }

@@ -1,0 +1,552 @@
+<div class="col-12 float-left complex_table no_pad pt0 {{classNameCss}}" [ngClass]="bgParentColor">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad child-conversation-landing">
+    <div class="col-6 float-right no_pad mb20" *ngIf="IsAddMember">
+      <button
+        class="btn-down-leads mdi mdi-download float-right mb10 standard-border bg-transparent color-white ml10 downloadBtn"
+        *ngIf="IsDownload" matTooltip="Export to CSV" aria-label="download"
+        [attr.disabled]="config.totalItems == 0 ?'disabled':null" (click)="exportToCSV()"></button>
+      <button type="button" *ngIf="!hideAddNewMember"
+        [ngClass]="addNewMemFlag?'enableAddNewMember':'disableAddNewMember'"
+        class="primary_white_note float-right ml10 ml50" (click)="addRowTable()" [disabled]="createRow"><span
+          class="mdi mdi-plus"></span>
+        Add member</button>
+    </div>
+    <!-- buttons sprint5 starts -->
+    <div class="float-right col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 commonActionBlock comn-btns"
+      *ngIf="IsButtons && tabVisibility">
+      <div class="pos-rel float-right">
+        <button id="actions" (click)="more = !more" *ngIf="checkTopVisibility('topMoreVisibility')"
+          class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns" aria-label="More actions"
+          matTooltip="More actions">
+          <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-dots-vertical"></span>
+        </button>
+        <ul class="pos-abs more-options" *ngIf="more" role="listbox">
+          <li>More options <span class="mdi mdi-close cp" (click)="more = false" role="button"
+              aria-label="close"></span> </li>
+          <li (click)="more = false;generalSelectedAction(item,'moreAction')" *ngFor="let item of ConfigData.moreData"
+            role="option">
+            <button>{{item.name}}</button>
+          </li>
+
+        </ul>
+      </div>
+      <button id="delete" class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns" aria-label="delete"
+        matTooltip="Delete" *ngIf="checkTopVisibility('topDeleteVisibility')" (click)="deleteTableRow()"
+        [disabled]="!isTableRowChecked">
+        <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-delete"></span>
+      </button>
+      <!-- <button id="expand" class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns" aria-label="expand"
+        matTooltip="Expand">
+        <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-arrow-expand"></span>
+      </button> -->
+      <button id="copy" class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns" aria-label="copy"
+        (click)="copyTableRows()" *ngIf="checkTopVisibility('topCopyVisibility')" matTooltip="Copy"
+        [disabled]="!isTableRowChecked">
+        <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-content-copy"></span>
+      </button>
+      <button id="Edit" class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns"
+        *ngIf="checkTopVisibility('topEditVisibility')" aria-label="Edit" [matTooltip]="editWholeDeal ? 'Edit' : 'Save'"
+        (click)="editWholeTable()">
+        <span class="col-xs-12 nopad blue_circle_replay_img mdi "
+          [ngClass]="editWholeDeal ? 'mdi-pencil' : 'mdi-content-save'"></span>
+      </button>
+      <button id="Close" class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns"
+        *ngIf="!editWholeDeal" aria-label="Edit" [matTooltip]="'Cancel'" (click)="cancelAll();">
+        <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi mdi-close"></span>
+      </button>
+      <button id="refresh" class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns"
+        aria-label="Update" matTooltip="Update" (click)="openPeriod()"
+        *ngIf="checkTopVisibility('topRefreshVisibility')" [disabled]="!isTableRowChecked">
+        <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-refresh"></span>
+      </button>
+      <button id="plus" class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns" aria-label="plus"
+        matTooltip="Add" (click)="generateNewRowDataRLS()" *ngIf="checkTopVisibility('topPlusVisibility')">
+        <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-plus"></span>
+      </button>
+    </div>
+    <!-- buttons sprint5 ends -->
+
+  </div>
+  <!-- *ngIf="userdat.tableRecordsChecked" -->
+  <!--______________________________________________table starts here___________________________________________-->
+
+  <div class="col-12 col-lg-12 col-sm-12 col-md-12 mobt20 no_pad float-left">
+    <div class="add_planning_membersthree float-left width100" [ngClass]="!IsActionFixed ? 'actionColumNotFixed' : ''">
+      <div class="table-layout table-layout_divStruct" id="Editable_Exp">
+
+        <perfect-scrollbar [ngClass]="fixedClass" class="rls" style="min-height: 125px !important;max-height: 300px;">
+          <table class="table1 expansionInput width100"
+            summary="This table contains interactive elements, hence kindly use arrow keys and tabs in addition to use table navigations commands">
+            <thead>
+              <tr>
+                <th *ngFor="let item of headerData ;index as i"
+                  class="pad-left-10 customized-checkbox cp fixedhead{{i}} " [hidden]="!item.isFixed">
+                  <span class="pad-left-10 minus-checkbox float-left ellipses" *ngIf="i==0">
+                    <mat-checkbox class="float-left padright10  matcheck" aria-label="select all"
+                      [(ngModel)]="selectedAll" [disabled]="!checkforRoweditable()" (change)="selectAll()"
+                      *ngIf="isCheckBoxRequired">
+                    </mat-checkbox>
+                    <span *ngIf="i==0" class="serialNumberHead float-left">
+                      SL #</span>
+                    <span class="">{{item.title}}</span>
+                  </span>
+                </th>
+                <th *ngFor="let item of headerData;" [hidden]="item.isFixed"
+                  [ngClass]="item.title == 'Count' || item.title == 'Duration'? 'min-w-208':''">
+
+                  <div class="float-left w-100">{{item.title}}
+                  </div>
+
+                  <!-- <div class="headerAction" *ngIf="IsEditWholeTable && headerData.length==item.order">
+                                      <button type="button" id="Edit"
+                                          class="btn-none blue_circle_replay commonActionBtn pad_left_0 cp rls-btns"
+                                          aria-label="Edit" [matTooltip]="editWholeDeal ? 'Edit' : 'Save'"
+                                          (click)="editWholeTable()">
+                                          <span class="col-xs-12 nopad blue_circle_replay_img mdi "
+                                              [ngClass]="editWholeDeal ? 'mdi-pencil' : 'mdi-content-save'"></span>
+                                      </button>
+                                  </div> -->
+                </th>
+              </tr>
+            </thead>
+            <tbody class="margin_bot customized-checkbox" *ngFor="let tableData of userArray; let i = index">
+              <tr *ngIf="!tableData.isRowEditable">
+                <th class="first_text" data-label=" ">
+                  <div role="button" class="cp row_ellipses float-left d-flex  {{headerData[0].className}}"
+                    tabindex="0">
+                    <mat-checkbox class="float-left padright10 matcheck z-ind-9" [(ngModel)]="tableData.isCheccked"
+                      [disabled]="!tableData.RowEditable" (change)="checkIfAllSelected(i,tableData)"
+                      *ngIf="isCheckBoxRequired">
+                    </mat-checkbox>
+                    <span class="serialNumberRow  float-left">
+                      {{tableData.index}}</span>
+
+                    <span (click)="generalSelectedAction(tableData,headerData[0].name)"
+                      title="{{headerData[0].allias ? tableData[headerData[0].name].name:tableData[headerData[0].name]}}"
+                      class="pad10 ellipses float-left w-150 headerWidth">{{headerData[0].allias ? tableData[headerData[0].name].name:tableData[headerData[0].name]}}</span>
+
+
+                  </div>
+
+                </th>
+                <td *ngFor="let headerItem of normalColumn; let j = index" [attr.data-label]="normalColumn[j].title"
+                  class="tooltipcls  row_ellipses {{headerItem?.className}}">
+
+                  <span *ngIf="headerItem.isDecs" class="normalRow pad25right">
+                    {{tableData[normalColumn[j].DescTitle]}}
+                  </span>
+                  <span
+                    title="{{normalColumn[j].allias ? tableData[normalColumn[j].name].name:tableData[normalColumn[j].name]}}"
+                    class="normalRow">
+                    {{normalColumn[j].allias ? tableData[normalColumn[j].name].name:tableData[normalColumn[j].name]}}
+                  </span>
+
+
+
+                </td>
+              </tr>
+
+              <!--Kiran April15-->
+              <tr class="responsiveInlineRow" *ngIf="tableData.isRowEditable">
+                <td class="{{getClassByValue(ij)}}" [attr.data-label]="fixedColumn[ij].title"
+                  [attr.data-label]="fixedColumn[ij].title" *ngFor=" let items of fixedColumn; index as ij"
+                  [ngClass]="tableData.isRowEditable? 'fixedColumnInline': ''">
+                  <div role="button" class="cp row_ellipses float-left d-flex w-50px {{headerData[0].className}}"
+                    *ngIf="ij==0" tabindex="0">
+                    <mat-checkbox class="float-left padright10 matcheck z-ind-9" [(ngModel)]="tableData.isCheccked"
+                      (change)="checkIfAllSelected(i,tableData)" *ngIf="isCheckBoxRequired">
+                    </mat-checkbox>
+                    <span *ngIf="IsSerialNo" class="serialNumberRow  float-left">
+                      {{tableData.index}}</span>
+                  </div>
+                  <div class="editableSelect w-100 customized-select"
+                    *ngIf="items.controltype == 'select' && tableData.isDefault != true">
+                    <div class="float-right pos-rel">
+                      <span class="caret color-azure zindex-0"></span>
+                      <select name="tableData{{i}}{{ij}}" role="listbox"
+                        class="min-w-inline {{IsSerialNo?'customFixedErrorSelect':''}}" required
+                        [(ngModel)]="tableData[fixedColumn[ij].name].id"
+                        (change)="loadCascadeData(tableData,fixedColumn[ij]);tableData[fixedColumn[ij].validation]=false"
+                        [ngClass]="tableData.stageObject ?'mdi mdi-content-copy':'mdi mdi-calendar-blank'">
+                        <option value="-1" selected disabled>Select</option>
+                        <option [hidden]="item.id==''" value="{{item.id}}"
+                          *ngFor="let item of ConfigData[fixedColumn[ij].name]">{{item.name}}
+                        </option>
+                      </select>
+                      <p *ngIf="items.IsRequired && tableData[fixedColumn[ij].validation]"
+                        class="error-message ellipses" title="{{tableData[items.ErrorMessage]}}">
+                        <span class="float-left w-100px ellipses">{{tableData[items.ErrorMessage]}}</span></p>
+                    </div>
+                  </div>
+
+                  <div class="editableInput customized-input" *ngIf="items.controltype == 'readonly'">
+                    <span title="{{tableData[fixedColumn[ij].name]}}" class="normalRow">
+                      {{tableData[fixedColumn[ij].name]}}
+                    </span>
+                    <!-- <input type="text" [(ngModel)]="tableData[normalColumn[ij].name]" readonly class="border-gray w-100 min-w-inline" value="" placeholder="Enter text"> -->
+                  </div>
+
+                  <div class="editableInput {{IsSerialNo?'customFixedError':''}} " *ngIf="items.controltype == 'text'">
+                    <input name="tableData{{i}}{{ij}}" type="text" [(ngModel)]="tableData[fixedColumn[ij].name]"
+                      (input)="tableData[fixedColumn[ij].validation]=false" class="border-gray w-100 min-w-inline"
+                      value="" placeholder="Enter text"
+                      [ngClass]="tableData.stageObject ?'mdi mdi-content-copy':'mdi mdi-calendar-blank'">
+                    <p *ngIf="items.IsRequired && tableData[fixedColumn[ij].validation]" class="error-message"
+                      title="{{tableData[items.ErrorMessage]}}">
+                      <span>{{tableData[items.ErrorMessage]}}</span></p>
+                  </div>
+                  <div class="editableDatePicker" *ngIf="items.controltype == 'date'">
+                    <div class="no_pad cal_brdr">
+                      <div class="no_pad customized-calandar">
+                        <input name="tableData{{i}}{{ij}}" class="border-gray w-100 min-w-inline" id="calStart"
+                          (click)="picker.open()" [(ngModel)]="tableData[fixedColumn[ij].name]"
+                          (keypress)="picker.open()" [matDatepicker]="picker" title="DD-MMM-YYYY"
+                          placeholder="DD-MMM-YYYY" [min]="today" [max]="estClosureDate"
+                          (dateChange)="checkValidation('date',tableData[fixedColumn[ij].name],items);tableData[fixedColumn[ij].validation]=false"
+                          [ngClass]="tableData.stageObject ?'mdi mdi-content-copy':'mdi mdi-calendar-blank'">
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                          <span class="mdi mdi-calendar-blank no_pad posDate" matDatepickerToggleIcon></span>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <p *ngIf="items.IsRequired && tableData[fixedColumn[ij].validation]" class="error-message"
+                          title="{{tableData[items.ErrorMessage]}}">
+                          <span>{{tableData[items.ErrorMessage]}}</span></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="editableInput pos-rel" *ngIf="items.controltype == 'number'">
+                    <input type="number" min="0" step=".01"
+                      onkeypress="return event.keyCode !== 101 && event.keyCode !==43 && event.keyCode !== 45 && event.keyCode !== 69"
+                      [(ngModel)]="tableData[fixedColumn[ij].name]"
+                      (input)="items.isCost ? updateCostData(tableData,items):'';tableData[fixedColumn[ij].validation]=false"
+                      class="border-gray w-100 min-w-inline" value="" placeholder="Enter number"
+                        [ngClass]="  tableData.stageObject ?'mdi mdi-content-copy':'mdi mdi-calendar-blank'">
+                    <p *ngIf="items.IsRequired && tableData[fixedColumn[ij].validation]" class="error-message"
+                      title="{{tableData[items.ErrorMessage]}}">
+                      <span>{{tableData[items.ErrorMessage]}}</span></p>
+                  </div>
+                  <div class="editableText customized-input" *ngIf="items.controltype == 'label'">
+                    <input type="text" class="border-gray w-100 min-w-inline" value=""
+                      [(ngModel)]="tableData[fixedColumn[ij].name]"
+                      (input)="tableData[fixedColumn[ij].validation]=false"
+                      [ngClass]="tableData.stageObject ?'mdi mdi-content-copy':'mdi mdi-calendar-blank'">
+                    <p *ngIf="items.IsRequired && tableData[fixedColumn[ij].validation]" class="error-message"
+                      title="{{tableData[items.ErrorMessage]}}">
+                      <span>{{tableData[items.ErrorMessage]}}</span></p>
+                  </div>
+                  <div class="editableSwitch customized-slider" *ngIf="items.controltype == 'switch'">
+
+                    <mat-slide-toggle name="tableData{{i}}{{ij}}" [checked]="useDefault"
+                      [(ngModel)]="tableData[fixedColumn[ij].name]"></mat-slide-toggle>
+                  </div>
+
+
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad editableAutoComplete"
+                    *ngIf="items.controltype == 'autocomplete'">
+                    <div class="pos-rel float-left no_pad CompanyName">
+                      <input
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input ellipses min-w-inline pos-rel  "
+                        name="tableData{{i}}{{ij}}" appKeyListControl (arrowDown)="arrowkeyLocation=$event"
+                        (keyup.enter)="autoC.value=ConfigData[fixedColumn[ij].name][arrowkeyLocation].name;
+                              selectedAutocompleteInputRow(tableData,ConfigData[fixedColumn[ij].name][arrowkeyLocation],fixedColumn[ij]);tableData.closePopUp=false;arrowkeyLocation=0"
+                        [attr.data-arrayMaxLength]="ConfigData[fixedColumn[ij].name]?.length"
+                        id="autocompleteFixed{{i}}" role="combobox" aria-autocomplete="list"
+                        [attr.aria-expanded]="items.closePopUp?true:false" aria-owns="read"
+                        [attr.aria-activedescendant]="arrowkeyLocation" autocomplete="false" type="text"
+                        placeholder="Search" #autoC (clickOutside)="tableData.closePopUp=false;items.closePopUp=false"
+                        (input)="autoSearch(autoC.value,fixedColumn[ij].name);tableData.closePopUp=true;items.closePopUp = true;tableData[fixedColumn[ij].validation]=false"
+                        (click)="tableData.closePopUp=true;items.closePopUp = true;"
+                        [ngModel]="tableData[fixedColumn[ij].name].name" required aria-describedby="initInstr"
+                        aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant=""
+                        [disabled]="getRelationData(items,tableData)"
+                        [ngClass]="tableData.stageObject ?'mdi mdi-content-copy':'mdi mdi-calendar-blank'">
+                      <span class="mdi mdi-magnify" *ngIf="!items.closePopUp"></span>
+                      <span class="mdi mdi-close" *ngIf="items.closePopUp" (click)="autoC.value=''"></span>
+                      <p *ngIf="items.IsRequired && tableData[fixedColumn[ij].validation]" class="error-message"
+                        title="{{tableData[items.ErrorMessage]}}">
+                        <span>{{tableData[items.ErrorMessage]}}</span></p>
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border top43 color-azure z-ind-9 bg-white"
+                        *ngIf="items.closePopUp && tableData.closePopUp"
+                        [attr.focus]="items.closePopUp && tableData.closePopUp">
+                        <perfect-scrollbar style="max-height:160px" class="scrollHeight">
+                          <ul class=" list-group mr2 sort-dropdown" id="headerResults" role="listbox" tabindex="0">
+
+                            <li class="list-group-item h-50 p-4-0 "
+                              *ngFor="let item of ConfigData[fixedColumn[ij].name];index as j"
+                              (click)="autoC.value=item.name;selectedAutocompleteInputRow(tableData,item,fixedColumn[ij])"
+                              title="{{item.name}}" id="{{j}}" tabindex="0" role="option"
+                              [class.active]="j==arrowkeyLocation" aria-disabled="false" aria-selected="false">
+                              <label for="headName" class="float-left name editableAutocomplete">
+                                <span class="d-block list-name ellipses">{{item.name}}</span>
+                              </label>
+                            </li>
+                            <li class="d-block list-name h-40 p-10"
+                              *ngIf="ConfigData[fixedColumn[ij].name].length == 0">
+                              No record found </li>
+                          </ul>
+
+                        </perfect-scrollbar>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="" [attr.data-label]="normalColumn[ij].title"
+                  *ngFor=" let items of normalColumn; index as ij">
+                  <div class="editableSelect w-100 customized-select" *ngIf="items.controltype == 'select'">
+                    <span class="caret color-azure zindex-0"></span>
+                    <select name="tableData{{i}}{{ij+1}}" [disabled]="tableData[normalColumn[ij].isDisable]"
+                      role="listbox" class="min-w-inline" required [(ngModel)]="tableData[normalColumn[ij].name].id"
+                      (change)="loadCascadeData(tableData,normalColumn[ij]);tableData[normalColumn[ij].validation]=false"
+                      [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''">
+                      <option value="-1">Select</option>
+                      <option [hidden]="item.id==''" value="{{item.id}}"
+                        *ngFor="let item of ConfigData[normalColumn[ij].name]">{{item.name}}
+                      </option>
+                    </select>
+                    <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                      title="{{tableData[items.ErrorMessage]}}">
+                      <span>{{tableData[items.ErrorMessage]}}</span></p>
+                  </div>
+
+                  <div class="editableSelect w-100 customized-select" *ngIf="items.controltype == 'cascadingDrop'">
+                    <span class="caret color-azure zindex-0"></span>
+                    <select name="tableData{{i}}{{ij+1}}" role="listbox" class="min-w-inline" required
+                      [(ngModel)]="tableData[normalColumn[ij].name].id"
+                      (click)="checkDataApiCall(tableData,normalColumn[ij])"
+                      (change)="loadCascadeData(tableData,normalColumn[ij]);tableData[normalColumn[ij].validation]=false"
+                      [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''">
+                      <option value="-1" disabled>Select</option>
+                      <option value="{{item.id}}" *ngFor="let item of tableData[normalColumn[ij].cascade]">{{item.name}}
+                      </option>
+                    </select>
+                    <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                      title="{{tableData[items.ErrorMessage]}}">
+                      <span>{{tableData[items.ErrorMessage]}}</span></p>
+                  </div>
+
+                  <div class="editableInput customized-input" *ngIf="items.controltype == 'text'">
+                    <input type="text" [(ngModel)]="tableData[normalColumn[ij].name]"
+                      class="border-gray w-100 min-w-inline" value="" placeholder="Enter text"
+                      (input)="tableData[normalColumn[ij].validation]=false"
+                      [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''">
+                    <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                      title="{{tableData[items.ErrorMessage]}}">
+                      <span>{{tableData[items.ErrorMessage]}}</span></p>
+                  </div>
+
+                  <div class="editableInput customized-input" *ngIf="items.controltype == 'readonly'">
+                    <span title="{{tableData[normalColumn[ij].name]}}" class="normalRow">
+                      {{tableData[normalColumn[ij].name]}}
+                    </span>
+                    <!-- <input type="text" [(ngModel)]="tableData[normalColumn[ij].name]" readonly class="border-gray w-100 min-w-inline" value="" placeholder="Enter text"> -->
+                  </div>
+                  <div class="editableDatePicker" *ngIf="items.controltype == 'date'">
+                    <div class="no_pad cal_brdr">
+                      <div class="no_pad customized-calandar">
+                        <input name="tableData{{i}}{{ij+1}}" class="border-gray w-100 min-w-inline" id="calStart"
+                          (click)="picker.open()" [(ngModel)]="tableData[normalColumn[ij].name]"
+                          (keypress)="picker.open()" [matDatepicker]="picker" title="DD-MMM-YYYY"
+                          placeholder="DD-MMM-YYYY" [min]="today" [max]="estClosureDate" required
+                          [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''"
+                          (dateChange)="checkValidation('date',tableData[normalColumn[ij].name],items);tableData[normalColumn[ij].validation]=false">
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                          <span class="mdi mdi-calendar-blank no_pad posDate" matDatepickerToggleIcon></span>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                          title="{{tableData[items.ErrorMessage]}}">
+                          <span>{{tableData[items.ErrorMessage]}}</span></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="editableInput pos-rel" [ngClass]="{padd95: items.isDecs}"
+                    *ngIf="items.controltype == 'number'">
+                    <span *ngIf="items.isDecs" class="normalRow "
+                      [ngClass]="{pad25right: tableData[items.DescTitle]!='' && tableData[items.DescTitle]!=null && tableData[items.DescTitle]!=undefined}">
+                      {{tableData[items.DescTitle]}}
+                    </span>
+                    <div class="pos-rel" [ngClass]="tableData[items.DescTitle] ? 'align-right':''">
+                      <div class="pos-rel errormsg-align">
+                        <input type="number" class="border-gray w-100 min-w-inline" min="0" name="numberbox"
+                          [(ngModel)]="tableData[normalColumn[ij].name]" specialIsAlphaNumeric
+                          [attr.data-type]="'decimalWithNegativeValue'" placeholder="Enter number" name="numberBox"
+                          value="" [attr.disabled]="checkforDisable(tableData[items.DescTitle],items.isDecs,tableData,items)"
+                          (input)="items.isVar?updateTotalData(tableData,items): items.isCost?updateCostData(tableData,items) : '';tableData[normalColumn[ij].validation]=false"
+                          [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''">
+                        <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                          title="{{tableData[items.ErrorMessage]}}">
+                          <span>{{tableData[items.ErrorMessage]}}</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="editableInput pos-rel" *ngIf="items.controltype == 'percentage'">
+                    <input type="number" [(ngModel)]="tableData[normalColumn[ij].name]"
+                      class="border-gray w-100 min-w-inline" value="" step=".01"
+                      onkeypress="return event.keyCode !== 101 && event.keyCode !==43 && event.keyCode !== 45 && event.keyCode !== 69"
+                      placeholder="Enter number" (input)="tableData[normalColumn[ij].validation]=false"
+                      [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''">
+                    <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                      title="{{tableData[items.ErrorMessage]}}">
+                      <span>{{tableData[items.ErrorMessage]}}</span></p>
+                  </div>
+                  <div class="editableText customized-input" *ngIf="items.controltype == 'label'">
+                    <input type="text" class="border-gray w-100 min-w-inline" value=""
+                      [(ngModel)]="tableData[normalColumn[ij].name]"
+                      (input)="tableData[normalColumn[ij].validation]=false"
+                      [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''">
+                    <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                      title="{{tableData[items.ErrorMessage]}}">
+                      <span>{{tableData[items.ErrorMessage]}}</span></p>
+                  </div>
+                  <div class="editableSwitch customized-slider" *ngIf="items.controltype == 'switch'">
+                    <mat-slide-toggle name="tableData{{i}}{{ij+1}}" [checked]="useDefault"
+                      [(ngModel)]="tableData[normalColumn[ij].name]"></mat-slide-toggle>
+                  </div>
+
+
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad editableAutoComplete"
+                    *ngIf="items.controltype == 'autocomplete'">
+                    <div class="pos-rel float-left no_pad CompanyName"
+                      (clickOutside)="tableData.closePopUp=false;items.closePopUp=false">
+                      <input
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input ellipses min-w-inline pos-rel "
+                        name="tableData{{i}}{{ij+1}}" appKeyListControl (arrowDown)="arrowkeyLocation=$event"
+                        (keyup.enter)="
+                        selectedLocalAutocompleteInputRow(tableData,normalColumn[ij].name,arrowkeyLocation,auto.value);tableData.closePopUp=false;arrowkeyLocation=0"
+                        attr.data-arrayMaxLength=" {{ calculateDataMaxLength(ConfigData[normalColumn[ij].name],auto.value) }} "
+                        id="autocomplete{{i}}{{ij}}" role="combobox" aria-autocomplete="list"
+                        [attr.aria-expanded]="items.closePopUp?true:false" aria-owns="read"
+                        [attr.aria-activedescendant]="arrowkeyLocation" autocomplete="false" type="text"
+                        placeholder="Search" #auto (keypress)="tableData.closePopUp=true;items.closePopUp = true"
+                        (input)="loadCascadeAutoComplete(tableData,normalColumn[ij],auto.value);checkValidation('id',tableData[normalColumn[ij].name],items);tableData[normalColumn[ij].validation]=false"
+                        (click)="tableData.closePopUp=true;items.closePopUp = true;"
+                        [ngModel]="tableData[normalColumn[ij].name].name" required aria-describedby="initInstr"
+                        aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant=""
+                        [disabled]="getRelationData(items,tableData)"
+                        [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''">
+                      <span class="mdi mdi-magnify" *ngIf="!tableData.closePopUp"></span>
+                      <span class="mdi mdi-close" *ngIf="tableData.closePopUp"
+                        (click)="clearSelValue(tableData,items.name)"></span>
+                      <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                        title="{{tableData[items.ErrorMessage]}}">
+                        <span>{{tableData[items.ErrorMessage]}}</span></p>
+
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border top43 color-azure z-ind-9 bg-white"
+                        *ngIf="items.closePopUp && tableData.closePopUp"
+                        [attr.focus]="items.closePopUp && tableData.closePopUp">
+                        <perfect-scrollbar style="max-height:160px" class="scrollHeight">
+                          <ul class=" list-group mr2 sort-dropdown" id="headerResults" role="listbox" tabindex="0">
+
+                            <li class="list-group-item h-50 p-4-0 "
+                              *ngFor="let item of tableData[normalColumn[ij].cascade];index as j"
+                              (click)="auto.value=item.name;selectedAutocompleteInputRow(tableData,item,normalColumn[ij]);tableData.closePopUp=false;"
+                              title="{{item.name}}" id="{{j}}" tabindex="0" role="option" aria-disabled="false"
+                              aria-selected="false" [class.active]="j==arrowkeyLocation">
+                              <label for="headName" class="float-left name editableAutocomplete">
+                                <span class="d-block list-name ellipses">{{item.name}}</span>
+                              </label>
+                            </li>
+                            <li class="d-block list-name h-40 p-10"
+                              *ngIf="tableData[normalColumn[ij].name].length == 0">
+                              No record found </li>
+                          </ul>
+
+                        </perfect-scrollbar>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad editableAutoComplete"
+                    *ngIf="items.controltype == 'cascadingAuto'">
+                    <div class="pos-rel float-left no_pad CompanyName"
+                      (clickOutside)="tableData.closePopUp=false;items.closePopUp=false">
+                      <input
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input ellipses min-w-inline pos-rel "
+                        name="tableData{{i}}{{ij+1}}" appKeyListControl (arrowDown)="arrowkeyLocation=$event"
+                        (keyup.enter)="auto.value=tableData[normalColumn[ij].cascade][arrowkeyLocation].name;
+                          selectedAutocompleteInputRow(tableData,tableData[normalColumn[ij].cascade][arrowkeyLocation],normalColumn[ij]);tableData.closePopUp=false;arrowkeyLocation=0"
+                        [attr.data-arrayMaxLength]="tableData[normalColumn[ij].cascade]?.length"
+                        id="cascadingAuto{{ij}}" role="combobox" aria-autocomplete="list"
+                        [attr.aria-expanded]="items.closePopUp?true:false" aria-owns="read"
+                        [attr.aria-activedescendant]="arrowkeyLocation" autocomplete="false" type="text"
+                        placeholder="Search" #auto (keypress)="tableData.closePopUp=true;items.closePopUp = true"
+                        (input)="loadCascadeAutoComplete(tableData,normalColumn[ij],auto.value);checkValidation('text',tableData[normalColumn[ij].name],items)"
+                        (click)="tableData.closePopUp=true;items.closePopUp = true;tableData[normalColumn[ij].validation]=false"
+                        [ngModel]="tableData[normalColumn[ij].name].name" required aria-describedby="initInstr"
+                        aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant=""
+                        [disabled]="getRelationData(items,tableData)"
+                        [ngClass]="items.IsRequired && tableData[normalColumn[ij].validation]?'error':''">
+                      <span class="mdi mdi-magnify" *ngIf="!tableData.closePopUp"></span>
+                      <span class="mdi mdi-close" *ngIf="tableData.closePopUp"
+                        (click)="clearSelValue(tableData,items.name)"></span>
+                      <p *ngIf="items.IsRequired && tableData[normalColumn[ij].validation]" class="error-message"
+                        title="{{tableData[items.ErrorMessage]}}">
+                        <span>{{tableData[items.ErrorMessage]}}</span></p>
+
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border top43 color-azure z-ind-9 bg-white"
+                        *ngIf="items.closePopUp && tableData.closePopUp"
+                        [attr.focus]="items.closePopUp && tableData.closePopUp">
+                        <perfect-scrollbar style="max-height:160px" class="scrollHeight">
+                          <ul class=" list-group mr2 sort-dropdown" id="headerResults" role="listbox" tabindex="0">
+
+                            <li class="list-group-item h-50 p-4-0 "
+                              *ngFor="let item of tableData[normalColumn[ij].cascade];index as j"
+                              (click)="auto.value=item.name;selectedAutocompleteInputRow(tableData,item,normalColumn[ij]);tableData.closePopUp=false;"
+                              title="{{item.name}}" id="{{j}}" tabindex="0" role="option" aria-disabled="false"
+                              aria-selected="false" [class.active]="j==arrowkeyLocation">
+                              <label for="headName" class="float-left name editableAutocomplete">
+                                <span class="d-block list-name ellipses">{{item.name}}</span>
+                              </label>
+                            </li>
+                            <li class="d-block list-name h-40 p-10"
+                              *ngIf="tableData[normalColumn[ij].cascade].length == 0">
+                              No record found </li>
+                          </ul>
+
+                        </perfect-scrollbar>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!--End Kiran April15-->
+
+            </tbody>
+            <tbody *ngIf="!editWholeDeal" class="hideWhenIP">
+              <tr *ngFor="let item of totalTableData">
+                <td *ngFor="let headerItem of headerData; let j = index">
+                  <span *ngIf="headerItem.isVar">{{item[headerItem.name]}}</span>
+                  <span *ngIf="headerItem.isSum">Total:</span>
+                </td>
+              </tr>
+            </tbody>
+            <!-- <tbody>
+                        <tr *ngIf="(userArray | multiValueFilter : filterBox).length == 0 && !createRow">
+                            <td [colSpan]="headerData.length + 1" style="text-align:center"> No records found </td>
+                        </tr>
+                    </tbody> -->
+            <!-- <div *ngIf="DummyOverlay" id="overlay" (click)="off()"></div> -->
+          </table>
+        </perfect-scrollbar>
+
+      </div>
+
+      <div class="no-record" *ngIf="userArray?.length == 0">
+        <p style="text-align:center"> No record found </p>
+      </div>
+
+    </div>
+  </div>
+  <!--_________________________________________table ends here______________________________________________________-->
+</div>
+
+<div class="loaderContainer" *ngIf="isLoading">
+  <div class="loader"></div>
+</div>

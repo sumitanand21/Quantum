@@ -1,0 +1,245 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity">
+
+  <div class="col-12 float-left container-dialog">
+    <div class="col-12 float-left  no_pad popup-hd">
+      <span class="col-10 float-left no_pad popup-hd-txt col-size" mat-dialog-title>PO details
+      </span>
+      <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close close-icn discard-close-btn"
+        aria-label="close" mat-dialog-close></button>
+    </div>
+
+    <div class="col-12 float-left border-bottom-grey"></div>
+    <div class="col-12 no_pad float-left mt10 po-details">
+
+      <div class="col-6 float-left no_pad text-style"> <span class="accordian-title PODetailsHead col-6 no_pad">
+          PO details ({{popup_data.length ? popup_data.length : 0}}) </span></div>
+      <div class="col-6 float-right no_pad">
+        <button aria-label="Add" [disabled]="readOnlyFlag" (click)="addpopupbtn()"
+          class="float-right primary-button h-40 std save-responsive-btn button-wd50 font-12 btn-mobile">+ Add </button>
+        <!--<button aria-label="upload .xls sheet" class="float-right primary-button h-40 std mr10 save-responsive-btn button-wd50 font-12"> Upload .xls
+          sheet </button>-->
+        <!--<button aria-label="download template" class="float-right primary-button h-40 std mr10 save-responsive-btn button-wd50 font-12"> Download
+          template </button>-->
+      </div>
+
+    </div>
+
+
+
+    <div class="col-12 float-left no_pad">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad normal_table mt10 mob-mb-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-26 service-tab pad-0">
+
+          <!-- expansion data starts here -->
+          <div class="col-12 no_pad float-left btop_withoutpadding potable_changes">
+            <!-- Table starts here -->
+            <div class="col-12 float-left no_pad overflowscroll po-details">
+              <perfect-scrollbar style="max-height:340px;min-height: 210px;">
+                <table class="table-podetails table table-borderless">
+                  <thead>
+                    <tr>
+                      <th class="width-20 no-wrap">PO number*</th>
+                      <th class="width-20 no-wrap">PO value*</th>
+                      <th class="width-20 no-wrap">Currency*</th>
+                      <th class="width-20 no-wrap">Start date*</th>
+                      <th class="width-20 no-wrap">End date*</th>
+                      <th class="width-20 no-wrap">Value with tax*</th>      
+                      <th class="width-20 no-wrap">PO issuance date*</th>                
+                      <th class="width-20 no-wrap">Signed date*</th>
+                      <th class="width-30 no-wrap">Remarks</th>
+                      <th class="width-10">
+                        <button aria-label="Add" [disabled]="readOnlyFlag" (click)="addpopupbtn()"
+                          class="float-right primary-button h-40 std save-responsive-btn button-wd50 font-12">+ Add
+                        </button>
+
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr *ngIf="popup_data.length == 0">
+                      <td></td>
+                      <td></td>
+                      <td>No data found!</td>
+                    </tr>
+                    <tr *ngFor="let podetail of popup_data;let i=index">
+                      <td class="display-none"></td>
+                      <td [attr.data-label]="'PO number*'" class="mt10 width-20">
+                        <div class="customized-input">
+                          <label for="field1" class=""> </label>
+                          <input [disabled]="readOnlyFlag" id="field1" name="po_flag{{podetail.FrontEndID}}" type="text"  [appAlphaNumeric] = "'ordertype'"
+                            [(ngModel)]="podetail.Wipro_PONumber" class="border-gray w-100" placeholder="Enter PO no."
+                            [ngClass]="!podetail.Wipro_PONumber && submitFlag ? 'orangeborder' : ''" maxlength="100">
+                        </div>
+                      </td>
+
+                      <td [attr.data-label]="'PO value*'" class="width-20 mt10">
+                        <div class="customized-input">
+                          <input [disabled]="readOnlyFlag" id="field2" name="po_Val_flag{{podetail.FrontEndID}}"
+                            type="text" [(ngModel)]="podetail.POValue" class="border-gray  inputfixed-width-po"
+                            [oldValue]="podetail.POValue" decimalnumberslimitOnly [allowNegative]="true" [maxlengthVal]="11"
+                            placeholder="Enter PO value" (blur)="oninputOfPOValue($event)"
+                            min="0" [ngClass]="!podetail.POValue && submitFlag ? 'orangeborder' : ''">
+                          <!--pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==17) return false;"
+                             oninput="validity.valid||(value='')"-->
+                        </div>
+                      </td>
+
+                      <td [attr.data-label]="'Currency*'" class="width-20 mt10 pb-0">
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left  cust_autoComplete pos-rel plb-60-20 mrnbot-10 height90"
+                          [ngClass]="!podetail.POCurrencyId && submitFlag ? 'orangeborder' : ''">
+                          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                            <div
+                              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left no_pad cust_autoComplete pos-rel inputfixed-width-po">
+                              <div
+                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad currencysearch">
+                                <!-- <label for="field1" class=""> </label>  -->
+                                <div class="flex-grow-1">
+
+                                  <app-auto-complete-select [requiredField]="false" [source]="currencyCodeArr" [dataHeader]="CurrencydataHeader"
+                                    [selectedObj]="podetail.selectedCurrencyObj" (content)="currencyCode($event)"
+                                    [labelName]="'Currency'" [Placeholder]="'Enter currency'" [IsinitialsView]=false
+                                    [IsApiCall]=true (advanceLookUp)="advanceLookUpSearch($event,i)"
+                                    (SelectedData)="selectedValueCurrency($event,podetail)"
+                                    [isSearchLoader]='isSearchLoader' [details]="podetail.POCurrency"
+                                    [detailsId]="podetail.POCurrencyId" [Isdisabled]="readOnlyFlag">
+                                  </app-auto-complete-select>
+
+                                </div>
+                              </div>
+                            </div>
+
+                          </form>
+                        </div>
+                      </td>
+
+
+                      <td [attr.data-label]="'Start date*'" class="width-20 mt10">
+                        <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                          <div
+                            class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                            <input [disabled]="readOnlyFlag" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left inputfixed-width-po "
+                              id="Startdate" name="po_Startdate{{podetail.FrontEndID}}" (click)="picker2.open()"
+                              (keypress)="picker2.open()" [(ngModel)]="podetail.Wipro_StartDate"
+                              [matDatepicker]="picker2" title="DD-MMM-YYYY" [min]="signedMinDate" placeholder="DD-MMM-YYYY"
+                              [ngClass]="!podetail.Wipro_StartDate && submitFlag? 'orangeborder' : ''" readonly>
+                            <mat-datepicker-toggle matSuffix [for]="picker2" disabled (click)="picker2.open()"
+                              (keypress)="picker2.open()">
+                              <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td [attr.data-label]="'End date*'" class="width-20 mt10">
+                        <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                          <div
+                            class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                            <input [disabled]="readOnlyFlag" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left inputfixed-width-po "
+                              id="Enddate" name="po_Enddate{{podetail.FrontEndID}}" (click)="picker3.open()"
+                              (keypress)="picker3.open()" [(ngModel)]="podetail.Wipro_EndDate"
+                              [matDatepicker]="picker3" title="DD-MMM-YYYY" [min]="podetail.Wipro_StartDate" placeholder="DD-MMM-YYYY"
+                              [ngClass]="!podetail.Wipro_EndDate && submitFlag? 'orangeborder' : ''" readonly>
+                            <mat-datepicker-toggle matSuffix [for]="picker3" disabled (click)="picker3.open()"
+                              (keypress)="picker3.open()">
+                              <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                          </div>
+                        </div>
+                      </td>
+
+                    <td [attr.data-label]="'Value with tax*'" class="width-20 mobile-no_pad no_pad">
+                        <div class="customized-input">
+                            <input [disabled]="readOnlyFlag" id="Valuewithtax" type="text" class="border-gray inputfixed-width-po mob_width100" [ngClass]="!podetail.Wipro_ValuewithoutTax && submitFlag? 'orangeborder' : ''"
+                             name="Value" placeholder="00.00" [(ngModel)]="podetail.Wipro_ValuewithoutTax" >
+                        </div>
+                    </td>
+
+                    <td [attr.data-label]="'PO issuance date*'" class="width-20 mt10">
+                      <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                        <div
+                          class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                          <input [disabled]="readOnlyFlag" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left inputfixed-width-po "
+                            id="POissuancedate" name="po_POissuancedate{{podetail.FrontEndID}}" (click)="picker4.open()"
+                            (keypress)="picker4.open()" [(ngModel)]="podetail.Wipro_POIssuanceDate"
+                            [matDatepicker]="picker4" title="DD-MMM-YYYY" [min]="signedMinDate" placeholder="DD-MMM-YYYY"
+                            [ngClass]="!podetail.Wipro_POIssuanceDate && submitFlag? 'orangeborder' : ''" readonly>
+                          <mat-datepicker-toggle matSuffix [for]="picker4" disabled (click)="picker4.open()"
+                            (keypress)="picker4.open()">
+                            <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker4></mat-datepicker>
+                        </div>
+                      </div>
+                    </td>
+
+                      <td [attr.data-label]="'Signed date*'" class="width-20 mt10">
+                        <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                          <div
+                            class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                            <input [disabled]="readOnlyFlag" class="col-12 col-lg-12 col-sm-12 col-md-12 float-left inputfixed-width-po "
+                              id="Startdate" name="signed_flag{{podetail.FrontEndID}}" (click)="picker1.open()"
+                              (keypress)="picker1.open()" [(ngModel)]="podetail.Wipro_SignedDate"
+                              [matDatepicker]="picker1" title="DD-MMM-YYYY" [min]="signedMinDate" [max]="signedMaxDate" placeholder="DD-MMM-YYYY"
+                              [ngClass]="!podetail.Wipro_SignedDate && submitFlag? 'orangeborder' : ''" readonly>
+                            <mat-datepicker-toggle matSuffix [for]="picker1" disabled (click)="picker1.open()"
+                              (keypress)="picker1.open()">
+                              <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                          </div>
+                        </div>
+                      </td>
+                      <td [attr.data-label]="'Remarks'" class="mt10">
+                        <div class="customized-input">
+                          <label for="field1" class=""> </label>
+                          <input [disabled]="readOnlyFlag" id="field1" type="text" name="remarks{{podetail.FrontEndID}}" [appAlphaNumeric] = "'alphanumeric'"
+                            [(ngModel)]="podetail.Wipro_Remarks" maxlength="2000"class="border-gray" placeholder="Write remarks">
+                        </div>
+                      </td>
+
+                      <td
+                        class="width-10 no_pad display_flex btn-pos mt10 del-btn float-right mobile-align commonActionBlock">
+                        <button [disabled]="readOnlyFlag"
+                          class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn float-right"
+                          aria-label="delete" matTooltip="delete" (click)="deletePoDetails(podetail,i)">
+                          <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                        </button>
+                      </td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+              </perfect-scrollbar>
+            </div>
+            <!-- Table ends here -->
+          </div>
+
+
+        </div>
+        <!-- service lines panel ends here -->
+      </div>
+
+
+    </div>
+    <p *ngIf="diferentCurrenciesFlag" class="col-12 no_pad float-left font-12 mb-0">
+      <span class="error-red">Error : </span> PO with different currencies cannot be booked together. Please book an
+      Amendment!
+    </p>
+  </div>
+
+
+  <div class="col-12 float-left no_pad">
+    <button aria-label="Cancel" class="col-6 float-left no_pad btndef-none discard-btn"
+      mat-dialog-close>Cancel</button>
+    <button aria-label="Save" [disabled]="readOnlyFlag || popup_data.length == 0"
+      class="col-6 float-left no_pad btndef-none confrm-btn mt15"
+      [ngClass]="(readOnlyFlag || popup_data.length == 0) ? 'disabled-btn' : ''"
+      (click)="savePODetailsFunc()">Save</button>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="col-12 float-left  no_pad popup-container newchildconvo ">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt margin-btm0" mat-dialog-title>Trace your retagged order
+                ID</span>
+            <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey "></div>
+        <div class="float-left no_pad col-12 mt10 traceID">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 pos-rel customized-input">
+                <label for="ordertype" class="w-100 label-form">Trace order ID</label>
+                <input id="license" type="text" class="border-gray w-100" [(ngModel)]="OrderNumber" (keyup)="$event.keyCode == 13 ? getTrackOrderOnOrderNumber(OrderNumber) : null">
+                <span class="mdi mdi-magnify"></span>
+            </div>
+        </div>
+        <div class="float-left col-12 no_pad">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 customized-input">
+                <label for="ordertype" class="w-100 label-form">Old order ID</label>
+                <input id="license" type="text" class="border-gray w-100" [(ngModel)]="previouValue" disabled>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 customized-input">
+                <label for="ordertype" class="w-100 label-form">New order ID</label>
+                <input id="license" type="text" class="border-gray w-100" [(ngModel)]="newValue" disabled>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="col-12 float-left no_pad mt10">
+        <button aria-label="ok" class="col-12 float-left btndef-none no_pad confrm-btn mr0" mat-dialog-close>Ok</button>
+    </div>
+
+</div>

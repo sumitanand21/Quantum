@@ -1,0 +1,126 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab ">
+
+  <ng-container *ngIf="isLoading">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ng-container>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left opportunity-landing-container no_pad">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad">
+
+
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 float-left no_pad">
+          <h1 class="heading-level-one heading-custom">Select order for Incremental </h1>
+          <button class="mdi mdi-keyboard-backspace cursor-pointer back-buttonbg" (click)="goBack()" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+          <span class="brudcrumbs">Sales > Opportunities > Create opportunity</span>
+        </div>
+
+        <div class="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 float-left no_pad">
+          <div class="float-right disp-flex save-cancel-responsive">
+            <button class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+              (click)="goBack()">Cancel</button>
+            <button class="primary-button borderless h-40 std save-responsive-btn button-wd50"
+              (click)="createpop()">Create</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-178">
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad opportunity-landing-container ">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 top-24 mt-126">
+
+    <div class="col-12 float-left card no_pad pad-top20">
+      <div class="col-12 card-content float-left pad-create-lead1 pl10">
+        <div class="col-12 float-left ">
+          <h2 class="col-6 float-left no_pad heading-level-two pad-top-8">Search by</h2>
+        </div>
+      </div>
+      <span class="border-bottm"></span>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+
+            <!--Account name autocomplete starts here-->
+            <div
+              class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20 create-mt20 Vertical_Owner">
+
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="AccountName"
+                  class="label-form">Account name
+                  <span class="required">*
+                  </span>
+                </label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+
+                  <div class="flex-grow-1" [ngClass]="{ 'orangeborder': accNameFlag}">
+                         <app-auto-complete-select [requiredField]="true" [source]="AccountnameArray" [selectedObj]='selectedAccNameObj' (content)="wiproLinkedAGP($event)"
+                      (advanceLookUp)="advanceLookUpSearch($event)" [labelName]="'accountArr'" [titleName]="'Account name'" [IsApiCall]=true [details]="accountName"
+                      [detailsId]="accountId" (SelectedData)="SelectedAccountNameValue($event)" [dataHeader]='header' [Placeholder]="'Select account'"
+                      [showSelected]=false>
+                    </app-auto-complete-select>
+                      <p *ngIf="accNameFlag" class="col-12 no_pad float-left validation-text top50">Account name is mandatory.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--Account name autocomplete ends here-->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left customized-input create-mt20 pd0">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="orderNumber"
+                class="label-form">Order number</label>
+               <input [(ngModel)]="orderNumber" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text "
+                id="opportunityName" name="opportunityName" type="text" placeholder="Search by order number"
+                autocomplete="off">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left customized-input create-mt20 pd0">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="opportunityName"
+                class="label-form">Opportunity name / number</label>
+              <input [(ngModel)]="oppNameNo" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text "
+                id="opportunityName" name="opportunityName" type="text" placeholder="Enter opportunity name / number"
+                autocomplete="off">
+            </div>
+
+            <div class="col-12 float-left create-mt20 pd0">
+              <div class="col-6 float-left no_pad">
+                <button class="primary-button btn-block serachbutton" (click)="SearchtableData(paginationPageNoSearch)">Search</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="parent-container new-resp-tbl" *ngIf="renewal.length>0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 no_pad"> 
+            <label class="col-12 label-font float-left no_pad">Orders ({{tableTotalCount}})</label></div>
+      <app-single-table (detectActionValue)="performTableChildAction($event)" [TableName]="'renewal'"  (detectPageChangeData)="getNewTableData($event)" 
+        [TableCollection]="renewal"  [filterConfigData]="filterConfigData" [IsRadioRequired]=true [IsActionFixed]=false [IsFreezedColumn]=true
+        [IsAccessActivation]=true [IsCustomizeTable]=true [bgParentColor]="'bgWhiteContainer'" 
+          [serviceSearch]=true
+        [paginationPageNumber]="paginationPageNo"
+        [totalTableCount]="tableTotalCount">
+      </app-single-table>
+    </div>
+
+
+  </div>
+</div>

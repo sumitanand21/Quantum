@@ -1,0 +1,1175 @@
+$Azure : #2f81ff;
+$White : #ffffff;
+$River : #d9e9ff;
+$MetalLight : #9b9b9b;
+$MidNight : #103f86;
+$Metal : #4a4a4a;
+$Black : #000000;
+$Orange : #f58323;
+$RubyRed : #ef3341;
+$Green : #6dc24b;
+$Wash : #9f9f9f;
+$MidGrey:#343434;
+$Assistant-blue: #E5F0FF;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey : #4a4a4a;
+$BlueSoftBG : #eaf2ff;
+$ashGry: #708cb6;
+
+.h-250{
+    height:250px;
+}
+
+.h-50{
+    height:50px;
+}
+.height-100{
+    height: auto;
+    min-height: 80px;
+    display:flex; //chethana Oct 4th
+}
+.bg-mid_light {
+    background: #d9e9ff;
+}
+
+.borderless{
+    border:none !important;
+    }
+.padd-all{
+    padding: 10px 20px 10px 20px;
+}
+.heading-level-two{
+    font-size: 16px;
+    color: #4a4a4a !important;
+    padding: 15px;
+    font-family:WiproAkkuratTT-Bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width:400px;
+  }
+  .heading-level-four{
+    font-size: 16px;
+    color:$White;
+    padding: 15px;
+    font-family:WiproAkkuratTT-Bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width:400px;
+  }
+.pad-leftright{
+  padding: 20px 0px 0px 30px;
+}
+.pad-leftright1{
+    padding: 10px 0px 10px 30px;
+}
+
+.sub-text{
+    font-size: 14px;
+    font-family: WiproAkkuratTT-Bold;
+    padding-top: 3px;
+}
+.label-text{
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+.calin-select-all{   
+    font-size: 17px;
+    text-align: center;
+    padding-right: 10px;
+}
+
+.btn-tabs-with-active{
+text-align: center;
+// border: solid 1.5px #ffffff;
+color: #2f81ff;
+border-radius: 5px;
+font-family: WiproAkkuratTT-Bold;
+padding: 35px 20px;
+}
+
+.pad-left-30{
+    padding-left: 30px;
+}
+.mb15 {
+    margin-bottom: 15px;
+}
+.width-300{
+    width: 300px;
+}
+.padd-left40{
+    padding-left: 40px;
+}
+.btn-color{
+    border: 1px solid $Wash;
+    color: $Wash;
+}
+
+// ========================
+
+.h-40{
+    height: 40px;
+}
+
+.btn-format{
+    padding: 6px 5px;
+    min-width: 110px;
+}
+.customized-calandar{
+    display: flex;
+    input{
+        height: 40px;
+        border-radius: 4px;
+        border: 1.5px solid $Marble;
+        padding: 0 8px;
+        &:focus{
+            border-color:  $Azure;
+        }
+    }
+    .mat-datepicker-toggle{
+        position: absolute !important;
+        right: 7px;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.mdi-clock-outline:before { //chethana july 18th
+    color: #2f81ff;
+    font-size: 20px;
+    position: relative;
+    right: 27px;
+    z-index: 9;
+    top: 32px;
+}
+.clock_absolute{
+    position: absolute;
+    top:-4px;
+    right:-14px;
+}
+.CompanyName{
+    .mdi-magnify:before{
+        color: $Azure ;
+        font-size: 20px;
+        right: 20px;
+        position: absolute;
+        bottom: 5px;
+    }
+}
+.margin-top-5{
+    margin-top: 5px;
+}
+.border-leftdrop{
+    border-left: 2px solid #2f81ff !important;
+}
+.z-ind-99{
+    z-index:99
+}
+.color-azure{
+    color: $Azure ;
+}
+.top64{
+    top:64px;
+}
+.border-btm{
+    border-bottom: 2px solid;
+ }
+ .border-right{
+    border-right: 2px solid $Azure !important;
+}
+.sort-dropdown{
+    background: white;
+}
+.p-4-10{
+    padding:4px 10px 4px 10px ;
+}
+.list-group-item{
+    cursor: pointer;
+    font-size: 12px;
+    color: $Azure;
+    border:none;
+}
+
+.top70{
+    top:70px;
+}
+
+.list-group-item:hover{
+    background-color: $River;
+}
+.divider {
+    width: 98%;
+    margin-left: 10px;
+    border: 1px solid $Marble;
+}
+.namepartcipant{
+    height: 29px;
+    padding: 8px 3px 3px 10px;
+}
+
+.text-height-70{
+    height: 125px !important;
+}
+
+.pad-right-text{
+    padding-right: 50px;
+}
+
+.mdi-close
+{
+    // color: #ffffff;
+    font-size: 15px;
+    padding-right: 5px;
+}
+
+.pad-left-text{
+    padding-left: 50px;
+}
+
+.initial-text{
+    height: 40px;
+    width: 40px;
+    color: white;
+    background: #2f81ff;
+    border-radius: 2px;
+    padding: 10px;
+}
+.name-label{
+padding: 10px 5px 0px 5px;
+}
+
+.add-btn-format{
+    padding: 9px 5px;
+    min-width: 110px;
+    margin-top: 5px;
+}
+
+.p-4-10{
+  padding:4px 10px 4px 10px ;
+}
+.btn-key{
+    width: 54px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1.5px solid $Azure;
+    display:inline-block;
+    text-align: center;   
+    margin-top: 9px;
+    margin-left: 35px;
+}
+
+// from details-list
+/********** style for auto complete list start ***************/
+.list-name{
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+}
+
+.sub-list{
+    font-size: 10px;
+    color: #9b9b9b;
+    font-family: WiproAkkuratTT-Regular;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.autocomplete-box{
+    top:0px;
+    font-size: 14px;
+    color: Black;
+    background-color: white;
+    border: 1.5px solid $Azure;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: 0.2s;
+   
+    .list-group-item {
+        cursor: pointer;
+        height: 50px;
+        padding: 10px;
+    }
+
+    .db-search{
+        height: 40px;
+        cursor: pointer;
+
+        &:hover{
+            background-color: #d9e9ff ;
+           
+        }
+    button{
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        color: $Azure;
+        outline: none;
+        border: none;
+        background: transparent;
+        text-align: left;
+        width:100%;
+        height: 100%;
+    } 
+        
+    }
+        .list-box:hover{
+            background-color: #d9e9ff ;
+            cursor: pointer;
+        }
+    
+        .btn-none{
+            outline: none;
+            border: none;
+            background: transparent;
+        }
+}
+.z-ind-9{
+    z-index:9
+}
+
+.mail-box-text{
+    height: 40px;
+    border-radius: 4px;
+    color: $Azure;
+    background-color: #d9e9ff;
+    // padding: 10px 5px 0px 10px;
+    width: auto;
+    .mdi-close:before {
+      font-size: 20px;
+      cursor: pointer;
+      color: $Azure;
+      bottom: 2px;
+      position: relative;
+  }
+  .ml5{
+      margin-left: 5px;
+  }
+  }
+
+/********** style for auto complete list end ***************/  
+.blue_circle_button{
+width: 30px;
+height: 30px;
+border-radius: 50%;
+background-color: #d9e9ff;
+position: relative;
+text-align: center;
+}
+.blue_circle_button_img{
+    color: #2f81ff;
+    font-weight: 400;
+    font-size: 17px;
+    position: relative;
+    top: 0px;
+    visibility: visible;
+    left: 0;
+}
+.icon-center{
+    display: flex;
+    height: 125px;
+    align-items: center;
+   
+}
+
+.icon-delete{
+    display: flex;
+    align-items: center;
+    
+}
+.heading-level-three{
+    font-size: 12px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding-top: 8px;
+    color: $Azure;
+    font-family: WiproAkkuratTT-Bold;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+
+.mdi-download:before
+{
+    font-size: 16px !important;
+}
+.mdi-download:before
+{
+    font-size: 16px !important;
+    color: white;
+    position: relative;
+    bottom: 3px;
+}
+.add-btn-design{
+    padding: 9px 5px;
+    min-width: 45px;
+    margin-top: 5px;
+    background: transparent;
+}
+.add-btn-design:hover{
+    background: $White;
+    color: $Azure !important;
+}
+.add-btn-design:hover .mdi-content-save:before, .add-btn-design:hover .mdi-download:before{
+    color: $Azure !important;
+}
+.mdi-content-save:before {
+    font-size: 20px;
+    color: white;
+    position: relative;
+    bottom: 5px;
+}
+
+.white-boreder{
+    border: 2px solid white;
+    border-radius: 2px;
+}
+
+.sub-heading{
+    position: absolute;
+    height: 16px;
+    opacity: 0.6;
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #e7ebf2;
+    float: left;
+    top: 30px;
+}
+
+.mdi-attachment:before {
+    transform: rotate(270deg);
+    font-size: 16px;
+    position: relative;
+    right: 2px;
+}
+
+/*****************file upload CSS starts from here ***************************/
+// .upld_ip
+// {
+//   border: none;
+//       border-bottom: 1px solid #8a8888;
+// }
+// .upld_div
+// {
+//     position: relative;
+//     margin-top: 20px;
+// }
+// .upld_div .icon-upload{
+//     position: absolute;
+//     right: 0px;
+//     color: #989898;
+//     bottom: 26px;
+//     font-size: 22px;
+//     top: 0em;
+//     background: transparent;
+//     border: none;
+// }
+// .file_ip
+// {
+//     width: 50%;
+//     position: absolute;
+//     // top: 6px;
+//     opacity: 0;
+//     z-index: 99;
+//     left: 0;
+// }
+// .icon-file_upload{
+//   background:transparent;
+//   border:none;
+// }
+// .uploaded_doc
+// {
+//     position: relative;
+//     padding: 5px 5px 5px 10px;
+//     cursor: pointer;
+//     margin-right: 10px;
+//     border-radius: 3px;
+//     background: #ededed;
+//     font-size: 12px;
+//     margin-top: 10px;
+//     // width: 20%;
+//     // float: left;
+//     width: 15%;
+//     height: 50px;
+//     padding-top: 16px;
+    
+// }
+.uploaded_doc_25
+{
+    position: relative;
+    padding: 5px 5px 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 3px;
+    background: #ededed;
+    font-size: 12px;
+    margin-top: 10px;
+    width: 19.33%;
+    float: left;
+}
+.uploaded_doc1
+{
+    position: relative;
+    padding: 5px 5px 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 3px;
+    background: #ededed;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.uploaded_text{
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #000;
+}
+.uploaded_text:hover{
+    text-decoration: underline;
+    color: $Azure;
+
+}
+// .del_upload
+// {
+//     color: $Black;
+//     font-size: 14px;
+//     background: transparent;
+//     border: none;
+//     opacity: 0.6;
+//     font-size: 16px;
+//     position: relative;
+//     bottom: 5px;
+// }
+.upld_ip::-webkit-input-placeholder { /* Chrome */
+  color: $Black;
+  font-size: 14px;
+}
+.upld_ip:-ms-input-placeholder { /* IE 10+ */
+  color: $Black;
+  font-size: 14px;
+}
+.upld_ip::-moz-placeholder { /* Firefox 19+ */
+  color: $Black;
+  opacity: 1;
+  font-size: 14px;
+}
+.upld_ip:-moz-placeholder { /* Firefox 4 - 18 */
+  color: $Black;
+  opacity: 1;
+  font-size: 14px;
+}
+.infoFile{
+  color: $Black;
+  opacity: 0.6;
+  font-family: WiproAkkuratTT-Regular !important;
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+.charCount{
+  color: $Black;
+  opacity: 0.7;
+  font-size: 13px;
+  font-family: WiproAkkuratTT-Regular;
+  position: relative;
+  top: -8px;
+}
+
+
+
+// Time picker Pradeep
+
+   /* Time picker css */
+
+   .date-picker-container {
+    position: relative;
+
+.select-date {
+    position: absolute;
+    top: 5px;
+    background: $White;
+    z-index: 9999;
+    height: auto;
+    overflow: visible;
+    -webkit-transition: height 2s;
+    -moz-transition: height 2s;
+    transition: height 2s;
+    -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+.animated {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+.animated.infinite {
+    animation-iteration-count: infinite;
+}
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 10%, 0);
+    }
+}
+.slideInDown {
+    animation-name: slideInDown;
+}
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+}
+.fadeOutUp {
+    animation-name: fadeOutUp;
+}
+.disp-date {
+    z-index: 1;
+    background: transparent;
+    font-size: 14px;
+    font-family: WiproAkkuratTT-Regular;
+}
+// .disp-date:focus {
+//     border: 0;
+// }
+.disp-date ~ label{
+	top: -6px !important;
+	padding-left: 0;
+    padding-right: 0;
+    color: $Black;
+    font-size: 14px;
+}
+.styled-input .disp-date:focus ~ label, .styled-input .disp-date:valid ~ label{
+  top: -1.4rem !important;
+  font-size: 12px;
+  font-family: WiproAkkuratTT-Regular;
+}
+.date-picker-container .icon-time {
+    position: absolute;
+    right: 0px;
+    z-index: 9;
+    font-size: 18px;
+}
+.select-time {
+    top: 25px;
+}
+.select-time timepicker tbody>tr>td:nth-child(3) .glyphicon-chevron-up:before{
+    
+content:"Min" !important;
+    color: #a5a5a3;
+}
+/* .select-time timepicker tbody>tr:first-child>td:last-child:before{
+    
+content:"AM/PM" !important;
+    color: #a5a5a3;
+} */
+.select-time{
+    padding: 8px 20px;
+	z-index:999;
+}
+.select-time timepicker td input.form-control{
+	border:0;
+}
+.overlay-timepicker{
+	    position: fixed !important;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+	z-index:9;
+}
+/* Input and text area css */
+
+input:focus ~ label,
+textarea:focus ~ label,
+input:valid ~ label,
+textarea:valid ~ label {
+    color: $Black;
+    top: -2.25rem;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.styled-input {
+    margin: 20px 0 0rem;
+    position: relative;
+}
+.styled-input label {
+    color: $Black;
+    padding: 0rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    pointer-events: none;
+    font-family: WiproAkkuratTT-Regular;
+}
+.styled-input.wide {
+    width: 100%;
+}
+// input,
+// textarea {
+//     padding: 0rem 0;
+//     border: 0;
+//     width: 100%;
+//     border-bottom: 1px solid #949494;
+// }
+// input ~ span,
+// textarea ~ span {
+//     display: block;
+//     width: 0;
+//     height: 2px;
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     -webkit-transition: all 0.5s ease;
+//     transition: all 0.5s ease;
+// }
+textarea ~ span {
+    bottom: 3px;
+}
+input:focus,
+textarea:focus {
+    outline: 0;
+}
+input:focus ~ span,
+textarea:focus ~ span {
+    width: 100%;
+    -webkit-transition: all 0.075s ease;
+    transition: all 0.075s ease;
+}
+}
+.padd-top-130{
+    padding-top: 140px !important;
+  }
+  .pbl30{
+      padding-left: 30px;
+  }
+
+//   .display_nonetime{
+//       display:none;
+//   }
+/****************timepicker css ends here****************************/
+/****************uploader css starts chethana june 21th****************************/
+.upload_container-opportunity
+{
+  .hero{
+    background: transparent;
+    }
+    .upload-box{
+    width: 100%;
+      height: auto;
+      //display: inline-block;
+     // background: #2C3139;
+    }
+    .upload-box-header{
+        width: 100%;
+        height: 50px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background: #3A414A;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .control-circles{
+      padding-left: 15px;
+      height: 14px;
+    }
+    .circle{
+        display: inline-block;
+        margin: 0 4px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;  
+      }
+    .circle .is-green{
+       background: #6CEFBD;
+    }
+    .circle .is-yellow{
+       background: #FFE28B;
+    }
+   .circle .is-red{
+      background: #FF7080;
+    }
+   .header-title h2 +unselectable{
+      font-size: 18px;
+      font-weight: 400;
+      color: #8793A2;
+    }
+   .gh-icon{
+      padding-right: 15px;
+    }
+  .gh-icon i{
+        font-size: 24px;
+      color: #8793A2;
+      margin-right: 5px;
+      margin-left: 36px;
+      cursor: pointer;
+     }
+   .upload-item, .drop-container{
+      width: 100%;
+      height: auto;
+      //box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      float: left;
+    }
+   .drop-container{
+       // display: flex;
+       align-items: center;
+       justify-content: center;
+       box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+       background:  #eeeeee;
+    }
+   p{
+      font-size: 16px;
+      font-weight: 400;
+      color: #8793A2;
+    }
+    .drag_txt
+    {
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.57;
+      letter-spacing: normal;
+      color: #2f81ff;
+     font-family: WiproAkkuratTT-Regular;
+     text-align: center;
+     margin-bottom: 30px;
+    }
+   .upload-button{
+     display: inline-block;
+     border: none;
+     outline: none;
+     cursor: pointer;
+     font-family: WiproAkkuratTT-Bold;
+     font-weight: bold;
+    }
+    input{
+      display: none;
+    }
+    .upload-item{
+      display: flex;
+      align-items: center;
+      //padding: 0 30px;
+      margin-bottom: 10px;
+     
+    }
+    .upload-item:first-child
+    {
+      margin-top: 12px;
+    }
+    .upload-item:last-child
+    {
+      margin-bottom: 30px;
+    }
+    .upload-item-content{
+      // width: 100%;
+    }
+    .filename{
+      display: flex;
+      align-items: center;
+    
+    }
+    .filename i{
+      color: #8793A2;
+      opacity: .8;
+      font-size: 24px;
+      margin-right: 5px;
+    }
+    //           .filename span{
+    // color: #8793A2;
+    //             font-size: 14px;
+    //             font-weight: 400;
+    //           }
+
+    .progress-content{
+      display: flex;
+      align-items: center;
+      margin: 3px 30px 0px 7px;
+    }
+    .progress{
+       display: block;
+       position: relative;
+       width: 100%;
+       height: 8px;
+       border-radius: 28px;
+       background: #d7d7d7;
+       margin-bottom: 0;
+     }
+     .bar{
+       position: absolute;
+       top: 0;
+       left: 0;
+       height: 12px;
+      // background: linear-gradient(90deg, rgba(19,235,255,1) 0%, rgba(108,239,189,1) 100%);
+      background: #417505;
+     
+    }
+    .bar .is-done{
+         background: #6CEFBD;
+     }
+    .progress-text-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 4px 7px 0;
+    }
+    .progress-text{
+      font-size: 11px;
+      //font-weight: 600;
+      color: #9b9b9b;
+      transition: color 200ms ease-out;
+      font-family: WiproAkkuratTT-Regular;
+    }
+    .progress-text .is-done{
+    color: #7ed321;
+    }
+    .grn_clr
+    {
+      color: #7ed321;
+    }
+    .speed-and-eta-text{
+      font-size: 13px;
+      font-weight: 600;
+      color: #8793A2;
+    }
+    .upload_card
+    {
+      border-radius: 5px;
+      box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+    }
+    .extension
+    {
+      padding: 23px 10px;
+      background-color: #417505;
+      border-radius: 5px 0px 0px 5px;
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 14px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #ffffff;
+      text-transform: uppercase;
+      width: 60px;
+    }
+    .cntnt_name
+    {
+      letter-spacing: 0.4px;
+      color: #000000;
+      font-size: 12px;
+      font-family: WiproAkkuratTT-Regular;
+      padding-top: 10px;
+    }
+    .file_img
+    {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+    // .uploding_div
+    // {
+    //   padding: 12px 25px 30px 25px;
+    // }   
+}
+/****************uploader css ends chethana june 21th****************************/
+.mdi-magnify:before {
+    content: "\F349";
+    color: #2f81ff;
+    font-size: 20px;
+    right: 20px;
+    position: absolute;
+    bottom: 5px;
+}
+.error-message.custom-msgtime { //chethana july 15th
+    top: 64px;
+    right: 15px;
+    width: 92%;
+}
+.error-message.custom-msgdate {//chethana july 15th
+    top: 37px;
+    right: 0px;
+    width: 100%;
+}
+
+
+// Pradeep changes for file upload
+
+ /*****************file upload CSS starts from here ***************************/
+   .upld_ip
+   {
+     border: none;
+         border-bottom: 1px solid #8a8888;
+   }
+   .upld_div
+   {
+       position: relative;
+       margin-top: 20px;
+   }
+   .upld_div .icon-upload{
+       position: absolute;
+       right: 0px;
+       color: #989898;
+       bottom: 26px;
+       font-size: 22px;
+       top: 0em;
+       background: transparent;
+       border: none;
+   }
+   .file_ip
+   {
+       width: 50%;
+       position: absolute;
+       // top: 6px;
+       opacity: 0;
+       z-index: 99;
+       left: 0;
+   }
+   .icon-file_upload{
+     background:transparent;
+     border:none;
+   }
+   .uploaded_doc
+   {
+     padding: 5px 0px;
+       cursor: pointer;
+      //  margin-right: 10px;
+       border-radius: 4px;
+       background: #f8f9fa;
+       font-size: 12px;
+      //  margin-top: 17px;
+       width: 100%;
+       height: 42px;
+       border: 2px solid #2f81ff;
+       
+   }
+  .del_upload
+   {
+     color: #2f81ff;
+       font-size: 14px;
+       background: transparent;
+       border: none;
+       opacity: 0.6;
+       font-size: 16px;
+       position: relative;
+   }
+   .mt81
+   {
+     margin-top: 81px;
+   }
+   
+   .htpos-left {
+   position: absolute;
+   left: 50px;
+   height: auto;
+   }
+   
+   .doc-img {
+   bottom: 0px;
+   left: -1px;
+   position: absolute;
+   }
+   
+   .pad-5 {
+   padding: 5px;
+   }
+   
+   .mdi-window-close:before {
+    padding-left: 10px;
+}
+
+
+.mdi-download {
+    // display: none;
+    cursor: pointer;
+}
+.download-uploaded-file:hover .mdi-download {
+    display: block;
+}
+.download-uploaded-file:hover .mdi-file-document {
+    display: none;
+}
+.down_btn{
+ display: none; 
+ cursor: pointer; 
+}
+.card { //chethana Aug 13th
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    border: 0px !important;
+    margin-bottom: 0px !important;
+}
+.width_92{
+    max-width: 92.666667%;
+}
+.border-pink{
+    border-color: $RubyRed !important; 
+}
+.width_368{
+    max-width: 368px !important;
+    width:368px !important;
+}
+//media query only for safari browser samee start 
+@media not all and (min-resolution:.001dpcm) { 
+    /* your code for Safari Desktop & Mobile */
+    .mac-width{
+        min-width: 100% !important;
+    }
+    .width_368{
+        max-width: 100%px !important;
+        width:100%px !important;
+    }
+    
+    /* end */
+  }
+
+  .disabled-btn-account{
+      border: 1.5px solid #d8d8d8;
+      color: #9b9b9b !important;
+      pointer-events: none;
+      opacity: 1;
+
+  }
+
+  .disable-select{
+      select{
+      color: #9b9b9b !important;
+      pointer-events: none;
+      }
+  
+  span{
+    color: #9b9b9b !important;
+  }
+}
+
+span.mdi.mdi-close.auto-close {
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+  }
+  .displayblock_mangeMobile{
+    display: none;
+  }
+ 

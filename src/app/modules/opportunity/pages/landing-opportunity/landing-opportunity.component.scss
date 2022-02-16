@@ -1,0 +1,542 @@
+.h-473 {
+  height: 287px;
+}
+.h-425
+{
+  height:370px;
+}
+.opportunity-landing-container {
+  .borderless {
+    border: none !important;
+  }
+
+  .mb-0 {
+    margin-bottom: 0px;
+  }
+  .h-150 {
+    height: 150px;
+  }
+  .h-360 {
+    height: 473px;
+  }
+
+  .border-none {
+    border: none;
+  }
+  .w-145 {
+    width: 145px;
+  }
+  .pad-30 {
+    padding: 20px 30px 30px 30px;
+  }
+  .h-40 {
+    height: 40px;
+  }
+
+  .d-inline-w-h-20 {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+
+  .d-inline-w-h-16-14 {
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    font-size: 12px;
+  }
+  .mleft-5 {
+    margin-left: 5px;
+  }
+
+  .logo {
+    text-align: center;
+    font-size: 14px;
+  }
+  .sub-vertical-but {
+    padding: 5px 0px !important;
+  }
+}
+.pr5 {
+  padding-right: 5px;
+}
+.w-110 {
+  width: 110px;
+}
+//more options css
+ul {
+  position: absolute;
+  z-index: 1;
+  right: 1px;
+  width: 180px;
+  background-color: #ffffff;
+  padding: 0px 12px;
+  margin: 0px;
+  border-top: none !important;
+  top: 39px;
+  list-style-type: none;
+
+  /* border-radius: 5px 0px 5px 5px; */
+}
+.current_position {
+  ul {
+    li {
+      font-weight: bold;
+    }
+  }
+}
+// ul li:hover{
+//   background-color: #d9e9ff;
+//   font-family: WiproAkkuratTT-Bold;
+//   border-radius: 4px;
+//   color: #2f81ff !important;
+//   border-bottom: 0.3px solid #2f81fffc;
+// }
+
+ul .border_property {
+  border-bottom: 1px solid #ffffff2e;
+}
+
+ul .list_names {
+  cursor: pointer;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.1px;
+  color: #4a4a4a;
+  padding: 10px 10px;
+}
+.posR {
+  position: relative;
+}
+.w140 {
+  width: 182px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.mt2 {
+  margin-top: 2px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.caret {
+  top: 16px !important;
+}
+.caret.up {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.caret {
+  display: inline-block;
+  float: right;
+  position: relative;
+  top: 17px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 5px dashed;
+  border-right: 5px solid #52494900;
+  border-left: 5px solid transparent;
+  z-index: 8;
+  color: #2f81ff;
+  pointer-events: none;
+}
+.mdi-dots-horizontal {
+  font-size: 18px;
+  position: relative;
+  top: -2px;
+  right: 1px;
+  position: absolute;
+  top: 8px;
+  z-index: 8;
+  left: -132px;
+}
+.btnSelect {
+  text-align: left;
+  color: #2f81ff;
+  font-family: "WiproAkkuratTT-Bold";
+  min-height: 40px;
+  position: relative;
+  padding-left: 25px;
+  padding-top: 9px;
+  outline: none;
+  border: none !important;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #2f81ff;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  border-radius: 4px;
+}
+[role="button"] {
+  cursor: pointer;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.cp {
+  cursor: pointer;
+}
+.blue_border {
+  width: 100%;
+  padding: 0px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  border: 1px solid #2f81fffc !important;
+}
+.blue_border {
+  &:focus {
+    width: 100%;
+    padding: 0px;
+    border: 2px solid #2f81ff !important;
+    border-radius: 4px;
+  }
+}
+// more option css ends
+.export-btn {
+  // position: absolute;
+  // right: 30px;
+  // margin-top: 25px;
+  z-index: 9;
+}
+.opportunityPage {
+  .heading p {
+    color: #e7ebf2;
+    opacity: 0.8;
+    font-family: WiproAkkuratTT-Regular;
+    cursor: default;
+  }
+  li {
+    color: #2f81ff !important;
+    border-bottom: 0.3px solid #2f81fffc;
+    border-radius: 5px;
+  }
+  ul:hover {
+    border-radius: 5px 0px 5px 5px;
+  }
+  .ul {
+    border-radius: 5px 0 5px 5px;
+  }
+  .borderRadius {
+    border-radius: 4px 4px 0 0;
+  }
+}
+.primary-button {
+  padding: 8px 12px !important;
+}
+
+.opportunity-landing-container {
+  .heading p {
+    color: #e7ebf2;
+    opacity: 0.8;
+    font-family: WiproAkkuratTT-Regular;
+    cursor: default;
+    margin-bottom: 0;
+  }
+
+  ul:hover {
+    border-radius: 5px 0px 5px 5px;
+  }
+  .ul {
+    border-radius: 5px 0 5px 5px;
+  }
+  .borderRadius {
+    border-radius: 4px 4px 0 0;
+  }
+}
+
+.downloadButton {
+  background: transparent !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+}
+// .mar-top-100 {
+//   margin-top: 120px;
+// }
+.mdi-vector-difference:before {
+  content: "\F55A";
+  padding-right: 6px;
+}
+.mdi-vector-difference-ab:before {
+  content: "\F55B";
+  padding-right: 6px;
+}
+
+.mdi-vector-intersection:before {
+  content: "\F55D";
+  padding-right: 6px;
+}
+
+.form-control ul li {
+  border-bottom: 1px solid red !important;
+}
+.buideletes {
+  margin-right: 0px;
+  float: left;
+  width: 100%;
+}
+// .mdi-phone:before,
+// .mdi-chart-line-variant:before,
+// .mdi-autorenew:before,
+// .mdi-phone:before {
+//   margin-right: 10px;
+// }
+.Caretblock {
+  top: 8px !important;
+  left: 31px;
+}
+.left5
+{
+  left :5px !important;
+}
+.Caretblock:hover {
+  color: #2f81ff;
+}
+.primary-button:hover {
+  background-color: #2f81ff;
+  color: #fff;
+}
+
+.content {
+  right: 20px;
+  border-radius: 4px 0px 4px 4px;
+  top: 37px;
+}
+
+.more-click-content {
+  li {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #2f81ff;
+    &:hover {
+      background-color: #d9e9ff;
+      border-radius: 4px;
+    }
+  }
+
+  .mdi:before {
+    padding-right: 5px;
+    font-size: 18px;
+  }
+}
+
+.opportunity-content {
+  width: 182px;
+  right: -1px;
+  top: 38px;
+  padding: 0px;
+
+  li {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #2f81ff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: solid 1px #d9e9ff;
+    &:hover {
+      background-color: #d9e9ff;
+    }
+  }
+  li:last-child{
+    border: none;
+  }
+
+  .mdi:before {
+    padding-right: 5px;
+    font-size: 18px;
+  }
+}
+// Fixing UI issues after integration with development branch
+.min-width-161 {
+    min-width: 182px !important;
+  }
+  .leftNeg20
+  {
+    left: -20px;
+  }
+  .min-width-125 {
+    min-width: 125px !important;
+  }
+  .width213{
+    width: 213px !important;
+
+  }
+  a:hover {
+    color: unset !important;
+    text-decoration: none !important;
+    
+}
+.disabledclass{
+  pointer-events: none;
+  opacity: 0.9;
+  color: #9b9b9b!important;
+  background-color: #f9f9f9 !important;
+}
+
+// mobile buttons starts here
+.dropdown-content-phone{
+  background: white;
+  list-style: none;
+  border: 1.5px solid #2f81ff;
+  border-radius: 4px 4px 0px 0px ;
+  padding: 10px !important;
+}
+
+.group-content-more{
+  top:-103px;
+  animation: slide-down 0.8s ease
+}
+.group-content-create{
+  top:-143px;
+  right: 9px;
+  animation: slide-down 0.8s ease
+}
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(52px);
+    transform: scale(0,0);
+    transform-origin: bottom right;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    transform: scale(1,1);
+    transform-origin: bottom right;
+  }
+}
+@-webkit-keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(52px);
+    transform: scale(0,0);
+    transform-origin: bottom right;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    transform: scale(1,1);
+    transform-origin: bottom right;
+  }
+}
+.line-height{
+  border-bottom: 1.5px solid #d9e9ff;
+    margin-bottom: 5px;
+}
+.mobile-buttons .active-button{
+  background: white !important;
+  color:#2f81ff !important;
+  border-radius: 0px !important;
+  font-family: WiproAkkuratTT-Regular !important;
+  font-size: 13px !important;
+  width: 50% !important;
+  cursor: pointer;
+}
+.mar-r-10{
+  margin-right: 5px
+}
+.mobile-buttons-opp {
+  .primary-button {
+    width: 50% !important;
+  }
+  // .w-150
+  // {
+  // width :150px;
+  // }
+}
+@media screen and (max-width: 1023px) {
+.group-content-phone
+{
+  ul
+  {
+    position: unset;
+    border-top: 2px solid #2f81ff !important;
+    
+  }
+}
+.h-67
+{
+  height:64px !important;
+}
+.group-content-phone{
+  bottom: 55px;
+  right: 0px;
+  animation: slide-down 0.4s ease
+} 
+}
+.left0
+{
+  left: 0px !important;
+}
+.cursp{
+  cursor: pointer;
+}
+// mobile button ends here
+.disabledclass
+{
+  .caret
+  {
+    color: #9b9b9b !important;
+  }
+}
+.mar-top-150 {
+  margin-top: 30px !important;
+}
+@media screen and (min-width: 320px) and (max-width: 1240px) {
+// .mar-top-100 {
+//   margin-top: 120px !important;
+// }
+.mar-top-150 {
+  margin-top: 30px !important;
+}
+}
+
+//loader code start*
+.loader {
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+}
+.loaderContainer {
+width: 100%;
+top:0em;
+position: absolute;
+height: 100%;
+z-index: 9999;
+background: white;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+//loader code end*

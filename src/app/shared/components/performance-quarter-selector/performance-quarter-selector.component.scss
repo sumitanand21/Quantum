@@ -1,0 +1,255 @@
+// .performanceMainBlock {
+//     display: flex;
+//     justify-content: left;
+
+// }
+// .performSubDivisionBlock{
+//     display: flex;
+// }
+// .failQuarter {
+//     color: red;
+//     padding-right: 5px;
+// }
+// .successQuarter {
+//     color: green;
+//     padding-right: 5px;
+// }
+// .mat-card
+// {
+//     padding: 0px !important;
+//     margin: 0px 6px;
+//     width: 240px;
+// }
+// .mat-card-header
+// {
+//     background: #2f81ff;
+//     padding: 15px 0px;
+//     font-family: WiproAkkuratTT-Bold;
+//     font-size: 14px;
+//     border-top-left-radius: 4px;
+//     border-top-right-radius: 4px;
+// }
+// .mat-card:last-child .mat-card-header
+// {
+//     background: #d8d8d8 !important;
+//     padding: 15px 0px;
+//     font-family: WiproAkkuratTT-Bold;
+//     font-size: 14px;
+//     color:#103f86 !important;
+// }
+// .mat-card-title
+// {
+//     color: #ffffff;
+//     margin: 0px !important;
+// }
+// .mat-card:last-child .mat-card-title
+// {
+//     color: #103f86 !important;
+//     margin: 0px !important;
+// }
+// .mat-card-actions
+// {
+//     padding: 15px 10px !important;
+// }
+// .container_performance
+// {
+//     width: 100%;
+//     margin-bottom: 25px;
+// }
+// .heading_tag
+// {
+//     padding: 20px 5px;
+//     line-height: 1.38;
+//     letter-spacing: -0.2px;
+//     color: #000000;
+//     font-family: WiproAkkuratTT-Bold;
+//     font-size: 16px;
+// }
+// .tgtdata
+// {
+//     line-height: 1.38;
+//     letter-spacing: -0.2px;
+//     color: #000000;
+//     font-family: WiproAkkuratTT-Bold;
+//     font-size: 16px;
+// }
+// .achdata
+// {
+//     line-height: 1.38;
+//     letter-spacing: -0.2px;
+//     color: #000000;
+//     font-family: WiproAkkuratTT-Bold;
+//     font-size: 16px;
+// }
+// .tgt
+// {
+//     line-height: 1.38;
+//     letter-spacing: -0.2px;
+//     color: #000000;
+//     font-family: WiproAkkuratTT-Regular;
+//     font-size: 14px;
+// }
+// .ach
+// {
+//     line-height: 1.38;
+//     letter-spacing: -0.2px;
+//     color: #000000;
+//     font-family: WiproAkkuratTT-Regular;
+//     font-size: 14px;
+// }
+
+// .performanceMainBlock {
+//     display: flex;
+//     justify-content: left;
+
+// }
+// .performSubDivisionBlock{
+//     display: flex;
+// }
+.failQuarter {
+    color: red;
+    padding-right: 5px;
+}
+.successQuarter {
+    color: green;
+    padding-right: 5px;
+}
+.mat-card
+{
+    padding: 0px !important;
+    .mat-card-title{
+        color: #ffffff !important;
+    }
+    // margin: 0px 6px;
+    // // width: 240px;
+}
+.mat-card-header
+{
+    background: #2f81ff !important;
+    padding: 15px 0px;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    height: 40px;
+   
+}
+// .mat-card.Total-quarter .mat-card-header
+// {
+//     background: #d8d8d8 !important;
+//     padding: 15px 0px;
+//     font-family: WiproAkkuratTT-Bold;
+//     font-size: 14px;
+//     color:#103f86 !important;
+// }
+.mat-card-title
+{
+    color: #ffffff;
+    margin: 0px !important;
+    margin-bottom: 0px !important;
+}
+// .mat-card:last-child .mat-card-title
+// {
+//     color: #103f86 !important;
+//     margin: 0px !important;
+// }
+.mat-card-actions
+{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.container_performance
+{
+    width: 100%;
+    margin-bottom: 25px;
+}
+.heading_tag
+{
+    margin-bottom: 0px;
+    padding: 18px 5px 10px 16px;
+    line-height: 1.38;
+    letter-spacing: -0.2px;
+    color: #000000;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+}
+.tgtdata
+{
+    line-height: 1.38;
+    letter-spacing: -0.2px;
+    color: #000000;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+}
+.achdata
+{
+    line-height: 1.38;
+    letter-spacing: -0.2px;
+    color: #000000;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+}
+.tgt
+{
+    line-height: 1.38;
+    letter-spacing: -0.2px;
+    color: #000000;
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+}
+.ach
+{
+    line-height: 1.38;
+    letter-spacing: -0.2px;
+    color: #000000;
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+}
+
+.mat-card.Total-quarter .mat-card-header
+{
+    background: #d8d8d8 !important;
+    padding: 15px 0px;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color:#103f86 !important;
+}
+
+.mt-12{
+    margin-top:12px;
+}
+
+.performance-table{
+    .table {
+        thead th {
+        padding: 5px;
+    }
+    
+    tbody th{
+        padding: 5px;
+        font-weight: normal;
+    }
+    tbody td{
+        padding: 5px;
+        font-weight: bold;
+    }
+}
+}
+
+.performance-table-total{
+    .table {
+        thead th {
+            padding: 40px 5px 5px 5px;;
+    }
+    
+    tbody th{
+        padding: 25px 5px 5px 5px;
+        font-weight: normal;
+    }
+    tbody td{
+        padding: 25px 5px 5px 5px;
+        font-weight: bold;
+    }
+}
+}
+

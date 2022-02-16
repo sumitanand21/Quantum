@@ -1,0 +1,103 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-deals" role="alertdialog" tabindex="0">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Pull old RLS</span>
+            <button class="col-1 float-left no_pad border-0 mdi mdi-window-close close-icn" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey mb10"></div>
+
+        <div class="col-12 float-left no_pad mt10">
+            <mat-radio-group aria-label="Select an option" (change)=clear() [(ngModel)]="searchBy">
+                <mat-radio-button [value]="1" class="mr10">Opp Id</mat-radio-button>
+                <mat-radio-button [value]="2" class="mr10">Amendment No</mat-radio-button>
+                <mat-radio-button [value]="3" class="mr10">Pricing Id</mat-radio-button>
+            </mat-radio-group>
+
+            <!--autocomplete account name-->
+            <div class="col-12 no_pad float-left  cust_autoComplete pos-rel mt20">
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                        for="ConversationName">
+                        Opp Id / Amendment No / Pricing Id<span class="required"> *</span>
+
+                    </label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                        id="ConversationName" name="ConversationName" autocomplete="off" type="text" [(ngModel)]="id"
+                        placeholder="Search">
+                </form>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left search_Button">
+                    <button type="button" name="" id="" class="btn btn-primary" (click)="getData();" btn-lg
+                        btn-block>Search</button>
+                </div>
+            </div>
+
+            <!--autocomplete account name-->
+
+            <!-- Select DROPDOWN STARTS -->
+            <div class="col-12 no_pad float-left  mt20">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="SBU"
+                    class="label-form">
+                    Princing ID<span class="required"> *</span></label>
+                <div class="customized-select">
+                    <span class="caret color-azure"></span>
+                    <select id="SBU" [(ngModel)]="pricing" (change)="populateModule()">
+                        <option value="">Select pricing id</option>
+                        <option [value]="pricing.PricingID" *ngFor="let pricing of PricingNewList">{{pricing.PricingID}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <!-- Select DROPDOWN ENDS -->
+            <!-- Select DROPDOWN STARTS -->
+            <div class="col-12 no_pad float-left  mt20">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="SBU"
+                    class="label-form">
+                    Module name<span class="required"> *</span></label>
+                <div class="customized-select">
+                    <span class="caret color-azure"></span>
+                    <select id="SBU" [(ngModel)]="moduleId" (change)="populateRLS()">
+                        <option value="">Select Module Name</option>
+                        <option [value]="module.ModuleId" *ngFor="let module of ModuleList">{{module.ModuleName}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <!-- Select DROPDOWN ENDS -->
+            <!-- Select DROPDOWN STARTS -->
+            <div class="col-12 no_pad float-left  mt20">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="SBU"
+                    class="label-form">
+                    RLS name<span class="required"> *</span></label>
+                <div class="customized-select">
+                    <span class="caret color-azure"></span>
+                    <select id="SBU" [(ngModel)]="RlsID">
+                        <option value="">Select RLS Name</option>
+                        <option [value]="rls.RLSId" *ngFor="let rls of RLSlist">{{rls.RLSName}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Select DROPDOWN ENDS -->
+        </div>
+
+    </div>
+    <div class="col-12 float-left no_pad">
+        <button aria-label="Cancel" class="col-6 float-left border-0 no_pad discard-btn" type="button"
+            (click)="loadLRS(false)">Cancel</button>
+        <button aria-label="Load" class="col-6 float-left border-0 no_pad confrm-btn mr15" (click)="loadLRS(true)"
+            type="button">Load</button>
+    </div>
+</div>
+<ng-container *ngIf="isLoading">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <div class="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

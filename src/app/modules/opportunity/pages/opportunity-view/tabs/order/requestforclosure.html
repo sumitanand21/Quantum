@@ -1,0 +1,49 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity order-tab">
+
+        <div class="col-12 float-left container-dialog">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left no_pad popup-hd-txt col-size" mat-dialog-title>Request Foreclosure</span>
+                <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn close-icn" aria-label="close" mat-dialog-close (click)="onNoClick()"></button>
+            </div>
+    
+            <div class="col-12 float-left border-bottom-grey"></div>
+
+            <div class="col-12 float-left no_pad">
+    
+                    <div class="col-8 no_pad float-left mt-20 pr-10">
+                        <label for="approvalType" class="float-left w-100 label-form">Delivery manager </label>
+                        <div class="float-right w-100 customized-select">
+                         <select  *ngIf="data.status.WT==false" id="select1" role="listbox" class="ellipses" (change)="selectedValueofOrderApproval($event.target.value, 'dmId')">
+                      <option hidden value="Eventtype">Select </option>
+                     <option *ngFor="let nonWtDmData of data.DmNAMeForNonWt" [value]="nonWtDmData.AccountDMId">{{nonWtDmData.AccountDMName}}</option>
+                      <!--<option value="Eventtype2">Service 2</option>-->
+                    </select>
+                
+                        <input *ngIf="data.status.WT==true" class="col-12 float-left" placeholder="DM name" type="text" [value]="data.displayDMWt" disabled>
+                        <span class="caret color-azure"></span>
+                        </div>
+                    </div>
+               </div>
+    
+            <div class="col-12 float-left mt10 no_pad">
+                <div class="col-12 float-left no_pad mt10">
+                    <label class="float-left w-100 label-form">Reasons for foreclosure *
+                    </label>
+                    <textarea [(ngModel)]="foreClosureReason" [appAlphaNumeric] = "'alphanumeric'" required class="txt-area" maxlength="500" rows="6" cols="45" placeholder="Enter your comment"></textarea>
+                </div>
+            </div>
+
+            <div class="col-12 float-left mt10 mb-10 border-bottom-grey"></div>
+
+            <div class="col-12 no_pad float-left ">
+                <span class="col-12 no_pad float-left popup-text">This will send to DM for foreclosure.</span>
+            </div>
+        </div>
+    
+    
+        <div class="col-12 float-left no_pad">
+            <button aria-label="Cancel" class="col-6 float-left btndef-none no_pad discard-btn" mat-dialog-close (click)="onNoClick()"
+                (keypress)="onNoClick()">Cancel</button>
+            <button aria-label="Request" class="col-6 float-left btndef-none no_pad confrm-btn mt15"  (click)="openOrderApprovalPopup()">Request</button>
+        </div>
+    </div>

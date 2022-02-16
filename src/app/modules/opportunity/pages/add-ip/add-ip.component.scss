@@ -1,0 +1,502 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+
+.h-200 {
+  height: 228px;
+}
+.mt-33 {
+  margin-top: 33px;
+}
+.pad-lr-30 {
+  padding: 0 30px;
+}
+.pad-30 {
+  padding: 26px 30px 101px 30px;
+}
+.pad-15-30 {
+  padding: 0px 30px;
+}
+.primary-button.std {
+  padding: 9px 5px;
+  min-width: 110px;
+  margin: 0;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.h-40 {
+  height: 40px;
+}
+.cardsHead {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 16px;
+  color: #000000;
+}
+.colorWhite {
+  color: $Marble;
+}
+.bluebox {
+  background: $Azure;
+
+  border-radius: 5px;
+  margin-right: 10px;
+  width: calc(25% - 13px);
+  margin-right: 13px;
+}
+.centerContent {
+  float: none;
+  margin: 0 auto;
+  color: $White;
+  padding-top: 22px;
+  padding-bottom: 14px;
+}
+.w100 {
+  width: 100px;
+}
+.font12 {
+  font-size: 12px;
+}
+.circleImg {
+  width: 40px;
+  height: 40px;
+  background: $White;
+  border-radius: 20px;
+  margin-bottom: 10px !important;
+}
+.mdi-chevron-down:before {
+  content: "\F140";
+  font-size: 24px;
+  color: #000;
+  position: initial;
+  margin-top: -5px;
+  margin-left: -15px;
+  margin-right: 8px;
+}
+.mdi-chevron-right:before {
+  font-size: 24px;
+  color: #000;
+  position: initial;
+  margin-top: -5px;
+  margin-left: -15px;
+  margin-right: 8px;
+}
+.pl36 {
+  padding-left: 36px !important;
+}
+.Centerblock {
+  text-align: left;
+  float: none;
+  margin: 0 auto;
+}
+.mb20 {
+  margin-bottom: 20px !important;
+}
+
+.plb-60-20 {
+  padding: 0 55px 20px 5px;
+}
+.mt-20 {
+  margin-top: -18px;
+}
+.mb1 {
+  margin-bottom: 2px;
+}
+.heading-level-three {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 16px;
+  color: #000000;
+}
+.text-area-content {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+  color: #4a4a4a;
+  resize: none;
+  border: 1.5px solid #d8d8d8;
+  border-radius: 4px;
+  background-color: #ffffff;
+  height: 170px;
+  padding: 10px;
+  outline: none;
+}
+.attach-icon {
+  width: 18px;
+  height: 18px;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  text-align: center;
+  position: relative;
+  right: 6px;
+  font-size: 18px;
+}
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled="true"]).cdk-keyboard-focused,
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled="true"]).cdk-program-focused,
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
+  background: #fff;
+}
+.mat-expansion-panel-header {
+  padding: 30px 10px 30px 24px !important;
+}
+// sathish code start
+
+.margin_top_0 {
+  margin-top: 0px;
+}
+
+.pad_bottom_0 {
+  padding-bottom: 0px !important;
+}
+
+.margin_top_10 {
+  margin-top: 10px !important;
+}
+.padding_top_5 {
+  padding-top: 5px;
+}
+.padding_top_10 {
+  padding-top: 10px !important;
+}
+
+.downloadAllStyle {
+  color: #2f81ff;
+  font-family: "WiproAkkuratTT-Bold";
+  font-size: 14px;
+}
+
+.circleName {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  color: red;
+}
+.border_top {
+  border-top: 2px solid #d8d8d8;
+  padding-top: 20px;
+}
+.width_25 {
+  color: white;
+  width: 28px;
+  .mdi-keyboard-backspace {
+    font-size: 22px;
+    cursor: pointer;
+  }
+}
+.margin_bottom_0 {
+  margin-bottom: 0px;
+}
+.pr0 {
+  padding-right: 0 !important;
+}
+// sathish code end
+
+.add-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 4px 0px 0px 4px;
+  padding: 3px 6px;
+  background: $White;
+  border: 1.5px solid $Azure;
+  font-family: WiproAkkuratTT-Bold;
+  color: $Azure;
+  outline: none;
+  font-size: 18px;
+  // width:40px;
+}
+.add-btn:hover {
+  background: #2f81ff;
+  color: white;
+}
+
+/********** style for auto complete list start ***************/
+/********** style for auto complete list start ***************/
+.list-name {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #000000;
+}
+
+.sub-list {
+  font-size: 10px;
+  color: #9b9b9b;
+  font-family: WiproAkkuratTT-Regular;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.autocomplete-box {
+  top: 0px;
+  font-size: 14px;
+  color: black;
+  background-color: white;
+  border: 1.5px solid $Azure;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: 0.2s;
+
+  .list-group-item {
+    cursor: pointer;
+    height: 50px;
+    padding: 10px;
+  }
+
+  .db-search {
+    height: 40px;
+    cursor: pointer;
+    list-style-type: none;
+
+    &:hover {
+      background-color: #d9e9ff;
+    }
+    button {
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      color: $Azure;
+      outline: none;
+      border: none;
+      background: transparent;
+      text-align: left;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .list-box:hover {
+    background-color: #d9e9ff;
+    cursor: pointer;
+  }
+
+  .btn-none {
+    outline: none;
+    border: none;
+    background: transparent;
+  }
+}
+
+.bg{
+  background: transparent;
+  border: none;
+}
+
+// meghana classes
+.min_height60 {
+  min-height: 60px;
+}
+.accord-heading {
+  // position: absolute;
+  padding-top: 20px;
+}
+.bot10 {
+  bottom: 10px;
+}
+th {
+  background: #d9e9ff;
+  color: #103f86;
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+}
+.blue_circle_replay {
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #d9e9ff;
+  position: relative;
+  text-align: center;
+  color: #2f81ff;
+  margin-left: 10px;
+}
+.blue_circle_replay:hover {
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #2f81ff;
+  position: relative;
+
+  color: #ffffff;
+
+  .blue_circle_replay_img {
+    color: #ffffff;
+  }
+}
+.w-100 {
+  width: 100% !important;
+  font-size: 12px;
+}
+.display_flex {
+  display: flex;
+}
+tr {
+  white-space: nowrap;
+}
+td {
+  vertical-align: middle;
+  padding: 10px 5px !important;
+}
+.gray_back {
+  background: #f9f9f9 !important;
+}
+.trans_back {
+  background: transparent !important;
+}
+.disabled_check.customized-checkbox .mat-checkbox-frame {
+  border-color: #d8d8d8 !important;
+}
+.comp_tool {
+  font-family: "WiproAkkuratTT-Bold";
+  font-size: 12px;
+  color: #2f81ff;
+}
+.pb5 {
+  padding-bottom: 5px;
+}
+.pad_10 {
+  padding: 0px 10px !important;
+}
+.mdi-magnify:before {
+  color: #2f81ff;
+  font-size: 20px;
+  right: 5px;
+  position: absolute;
+  bottom: 9px;
+  background: #ffffff;
+}
+.top64 {
+  top: 39px;
+  min-width: 300px !important;
+  z-index: 5;
+}
+.pt100 {
+  padding-top: 135px;
+}
+.heading-level-two {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color: $White;
+  letter-spacing: -0.4px;
+}
+.brudcrumbs {
+  position: relative;
+  left: 7px;
+  top: 0px;
+  opacity: 0.8;
+  font-size: 12px;
+  color: #e7ebf2;
+}
+.heading-custom {
+  position: relative;
+  left: 6px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mdi-keyboard-backspace:before {
+  content: "\F30D";
+  font-size: 22px;
+  color: #ffff;
+  position: relative;
+  bottom: 4px;
+}
+.btop_withoutpadding {
+  border-top: 2px solid #d8d8d8;
+}
+
+.width120
+{
+    width: 120px !important;
+}
+.width125
+{
+    width: 125px !important;
+}
+.width80
+{
+    width: 80px !important;
+}
+.width95
+{
+    width: 95px !important;
+}
+.width10
+{
+    width: 10% !important;
+}
+.customized-select .caret
+{
+    right: 7px !important;
+    background: #ffffff !important;
+    height: 14px !important;
+}
+.mdi-dots-vertical:before{
+    position: relative;
+    left: -1px;
+    top: 0px;
+    font-size: 18px;
+}
+.mat-expansion-panel-body
+{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.mr10 {
+  margin-right: 10px !important;
+}
+.borderless{
+  border:none !important;
+  }
+  // css for validation starts here
+.validation-text
+{
+    font-size: 12px;
+    font-family: WiproAkkuratTT-Bold;
+    color: #ef3341;
+    position: absolute;
+    margin: 0px !important;
+}
+.orangeborder
+{
+    border: 2px solid #ef3341 !important;
+}
+.top40
+{
+  top:40px;
+}
+// css for validation ends here
+
+.new-container .disable-input + .mdi-magnify:before, input:disabled + .mdi-magnify:before {
+  background: #f9f9f9 !important;
+}
+.overflowInherit
+{
+  overflow: inherit !important;
+}
+.suggestion-box
+{
+  border-right: 2px solid #2f81ff !important;
+  border-bottom: 2px solid #2f81ff !important;
+}
+.right0
+{
+  right: 0px;
+}

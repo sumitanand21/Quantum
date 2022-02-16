@@ -1,0 +1,549 @@
+<form #myForm="ngForm">
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pr-10 new-container overview-page normal_table deal_uniformplaceholder floating-scroll dealScroll topNeg50 pad_bot_20">
+    <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-218"> </div> -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad" >
+      <!-- [ngClass]="service.sideTrans ? 'main-containt-250' : 'main-containt1'"> -->
+      <div class="col-12 no_pad float-left scroll-tabs">
+
+        <!-- readonly deal starts here -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad service-tab">
+          <mat-expansion-panel hideToggle="true" [expanded]="panelOpenState3" class="no_pad" (opened)="panelOpenState3= true"
+            (closed)="panelOpenState3 = false"  *ngIf = "disableFields == true">
+            <mat-expansion-panel-header class="min_height60">
+              <div class="min_height60 col-12 no_pad">
+                <div class="accord-heading col-12">
+                  <span
+                    [ngClass]="panelOpenState3 ? 'mdi mdi-chevron-down chevron-right float-left':'mdi mdi-chevron-right chevron-right float-left'"></span>
+                  <div class="float-left no_pad mob-busines-header w-80"> <span class="accordian-title cardsHead col-6 no_pad">
+                      Deal influencers</span></div>
+                </div>
+              </div>
+            </mat-expansion-panel-header>
+
+            <div class="col-12 no_pad float-left tableReadonly">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad btop_withoutpadding overflowscroll"
+                [ngClass]="!service.Summary_window ? '' : 'table-responsive'">
+                <!-- <perfect-scrollbar class=" minheight ">  -->
+                <!-- minheight -->
+                <table class="table table-borderless">
+                  <!-- class table-responsive removed-->
+                  <thead>
+                    <tr>
+                      <th>Influencing unit</th>
+                      <th>Event type/ name</th>
+                      <th>Event details</th>
+                      <th>Endorsement type </th>
+                      <th>Alliance BDM </th>
+                      <th>Delivery lead </th>
+                      <th>Comments</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of dealData">
+                      <td>{{data.WiproInfluencingunitValue? data.WiproInfluencingunitValue: "NA"}}</td>
+                      <td>{{data.WiproEventTypeEntityNameValue? data.WiproEventTypeEntityNameValue: "NA"}}</td>
+                      <td>{{data.WiproEventDetails? data.WiproEventDetails:"NA"}}</td>
+                      <td>{{data.WiproEndorsementTypeValue? data.WiproEndorsementTypeValue: "NA"}}</td>
+                      <td>{{data.AllianceBdm? data.AllianceBdm: "NA"}}</td>
+
+                      <!-- <td>{{data.WiproDeliveryName? data.WiproDeliveryName:"NA"}}</td> -->
+                      <td>{{data.DeliveryLeadNameText? data.DeliveryLeadNameText:"NA"}}</td>
+                      <td>{{data.WiproComments? data.WiproComments:"NA"}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- </perfect-scrollbar> -->
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </div>
+        <!-- read only deal ends here -->
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad service-tab mt30 mb80" *ngIf = "disableFields == false">
+
+        <mat-expansion-panel hideToggle="true" [expanded]="panelOpenState2" class="no_pad" (opened)="panelOpenState2 = true"
+          (closed)="panelOpenState2 = false">
+          <mat-expansion-panel-header class="min_height60">
+            <div class="min_height60 col-12 no_pad">
+              <div class="accord-heading col-12">
+                  <span
+                  [ngClass]="panelOpenState2 ? 'mdi mdi-chevron-down chevron-right float-left':'mdi mdi-chevron-right chevron-right float-left'"></span>
+                <div class="float-left no_pad mob-busines-header w-80"> <span class="accordian-title cardsHead col-6 no_pad">
+
+                    Deal influencers</span></div>
+                <div class="col-6 float-right no_pad bot10 mobile-button-width">
+                  <button aria-label="Add deal influencing unit" (click)="addcompetitor(); panelOpenState2 = false"
+                    class="primary-button h-40 std save-responsive-btn float-right pad_10" [disabled]="disableFields " [ngClass]= "disableFields?'addBtnDisable':''">+ Add
+                    deal influencer</button>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel-header>
+
+          <div class="col-12 no_pad float-left">
+            <!-- Table starts here -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad btop_withoutpadding overflowscroll" [ngClass]="!service.Summary_window ? '' : 'table-responsive'">
+                <!-- <perfect-scrollbar class="psMinWidth"> -->
+              <table class="table table-borderless"> <!-- class table-responsive removed-->
+                <thead>
+                  <tr>
+                    <!-- <th class="customized-checkbox">
+                      <mat-checkbox aria-label="select all" (change)="selectAll()" [(ngModel)]="selectedAll"></mat-checkbox>
+                    </th> -->
+                    <th>Influencing unit *</th>
+                    <th>Event type/ name *</th>
+                    <th>Event details *</th>
+                    <th>Endorsement type </th>
+                   <!-- added two additonal fields -->
+                    <th>Alliance BDM </th>
+                    <th>Delivery lead </th>
+                    <th>Comments</th>
+                    <th></th>
+
+                  </tr>
+                  <!-- <th>Influencing unit</th>
+                  <th>Event type/ name<span *ngIf= "deliveryledSelected==2">*</span></th>
+                  <th>Event details<span *ngIf= "eventDetailsMandatory==1">*</span> </th>
+                  <th>Endorsement type<span *ngIf= "allianceSelected==1">*</span> </th>
+                  <th>Alliance BDM <span *ngIf= "allianceSelected==1">*</span></th>
+                  <th>Delivery lead <span *ngIf= "deliveryledSelected==1">*</span></th>
+                  <th>Comments</th>
+                  <th></th> -->
+                </thead>
+                <tbody>
+
+                    <!-- *ngFor="let data of competitor_data"  -->
+                  <tr *ngFor="let data of dealData; let elementIndex = index" >
+                  <td class="display-none"></td>
+                    <td class="width-19" [attr.data-label]="'Influencing unit'">
+               
+                          <mat-form-field class="col-12 no_pad float-left ">
+                             
+                              <mat-select disableOptionCentering panelClass="Select-panel-class" #influencingunit
+                                class="select-focus mat-select {{service.getSelectedClass(data.WiproInfluencingunitValue)}}" [(ngModel)]="data.WiproInfluencingunitValue" name="{{elementIndex}} influenUnit" id="select1" role="listbox" (selectionChange)=" influencingUnitChange(data)"   [disabled]="disableFields || ( superCentralMarketingRole== true)" [ngClass]= "disableFields || superCentralMarketingRole== true?'cursorDisable':data.isMandatoryIU?'orangeborder':''" title="{{data.WiproInfluencingunitValue}}"  *ngIf= "(data.OpportunityDealInfluencersId!='' && getInfluencerLength >0) || superCentralMarketingRole == false" >
+                                <mat-option value="" disabled selected hidden>Select Influencing Unit</mat-option>
+                                <mat-option *ngFor= "let unit of influencingUnit"  [value]="unit.Label"  title="{{ unit.Label }}"> {{ unit.Label }}</mat-option>
+                                
+                              </mat-select>
+
+                              <mat-select disableOptionCentering panelClass="Select-panel-class" #influencingunit
+                              class="select-focus mat-select {{service.getSelectedClass(data.WiproInfluencingunitValue)}}" [(ngModel)]="data.WiproInfluencingunitValue" name="{{elementIndex}} influenUnit" id="select1" role="listbox" (selectionChange)=" influencingUnitChange(data)"   [disabled]="disableFields " [ngClass]= "disableFields?'cursorDisable':data.isMandatoryIU?'orangeborder':''" title="{{data.WiproInfluencingunitValue}}" *ngIf= "superCentralMarketingRole== true && data.OpportunityDealInfluencersId=='' " >
+                              <mat-option value="" disabled selected hidden>Select Influencing Unit</mat-option>
+                                <mat-option *ngFor= "let unit of influencingUnit1"  [value]="unit.Label"  title="{{ unit.Label }}"> {{ unit.Label }}</mat-option>
+                             
+                            </mat-select>
+                              <p *ngIf= "data.isMandatoryIU==true" title="Select influencing unit" class="error-message top-40">Select influencing unit</p>
+                            </mat-form-field>
+
+                      <!-- </div> -->
+                      <!-- Select DROPDOWN STARTS -->
+                    </td>
+
+                    <!-- *ngIf="influencingunit.value == 'Marketing' " -->
+                    <td class="width-19"  *ngIf="data.WiproInfluencingunitValue == 'Marketing' " [attr.data-label]="'Event type/ name'">
+                      <div class="customized-select">
+                       
+
+                        <mat-form-field class="col-12 no_pad float-left ">
+                            <!--<span class="caret color-azure"></span>-->
+                            <mat-select disableOptionCentering panelClass="Select-panel-class" #eventtype
+                              class="select-focus mat-select {{service.getSelectedClass(data.WiproEventTypeEntityNameValue)}}"  title="{{data.WiproEventTypeEntityNameValue}}" [(ngModel)]="data.WiproEventTypeEntityNameValue" name="{{elementIndex}} evenTypValue" id="select1" role="listbox" (selectionChange)=" eventTypeChange(data)"  [disabled]="disableFields || disableEventTypeName || data.WiproInfluencingunitValue=='' || ( superCentralMarketingRole== true)" [ngClass]= "disableFields || data.WiproInfluencingunitValue=='' || disableEventTypeName || superCentralMarketingRole== true?'cursorDisable':data.isMandatoryEventName?'orangeborder':''"  *ngIf= "(data.OpportunityDealInfluencersId!='' && getInfluencerLength >0) || superCentralMarketingRole == false">
+                              <mat-option value="" disabled selected hidden>Enter Event type/ name</mat-option>
+                              <!--<option [value]="1">Please Select Proper Account Name</option>-->
+
+                                <mat-option *ngFor= "let unit of eventTypeEntityName"  [value]="unit.Label" title="{{ unit.Label }}" > {{ unit.Label }}</mat-option>
+
+                              </mat-select>
+
+                              <mat-select disableOptionCentering panelClass="Select-panel-class" #eventtype
+                              class="select-focus mat-select {{service.getSelectedClass(data.WiproEventTypeEntityNameValue)}}"  title="{{data.WiproEventTypeEntityNameValue}}" [(ngModel)]="data.WiproEventTypeEntityNameValue" name="{{elementIndex}} evenTypValue" id="select1" role="listbox" (selectionChange)=" eventTypeChange(data)"  [disabled]="disableFields || disableEventTypeName || data.WiproInfluencingunitValue==''" [ngClass]= "disableFields || data.WiproInfluencingunitValue=='' || disableEventTypeName?'cursorDisable':data.isMandatoryEventName?'orangeborder':''"  *ngIf= "superCentralMarketingRole== true && data.OpportunityDealInfluencersId=='' ">
+                              <mat-option value="" disabled selected hidden>Enter Event type/ name</mat-option>
+                              <!--<option [value]="1">Please Select Proper Account Name</option>-->
+
+                                <mat-option *ngFor= "let unit of eventTypeEntityName1"  [value]="unit.Label" title="{{ unit.Label }}" > {{ unit.Label }}</mat-option>
+
+                              <!-- (data.OpportunityDealInfluencersId==''|| (data.OpportunityDealInfluencersId!='' && data.WiproInfluencingunitValue=='Marketing' && data.WiproEventTypeEntityNameValue=='Other Marketing-Activities'))?eventTypeEntityName1: -->
+
+                            </mat-select>
+                            <p *ngIf= "data.isMandatoryEventName==true" title="Select event type/name" class="error-message top-40">Select event type/name</p>
+                          </mat-form-field>
+                      </div>
+                    </td>
+
+                    <!-- *ngIf="influencingunit.value != 'Marketing'" -->
+                    <td  *ngIf="data.WiproInfluencingunitValue != 'Marketing'"  class="width-19" title ={{data.WiproEventTypeEntityNameValue}}  [attr.data-label]="'Event type/ name'">
+                      <!-- Event type autocomplete starts here-->
+                      <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad" (clickOutside)="eventtypeclose(data)">
+                      <!-- (clickOutside)="eventtypeclose(data)" -->
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+              class="label-form">Contracting country*</label> -->
+              <input appKeyListControl #eventType1
+                          (arrowDown)="arrowkeyLocation=$event"
+                          (keyup.enter)="appendevent(wiproevent[arrowkeyLocation], data);data.eventtypeSwitch=false;"
+                          [attr.data-arrayMaxLength]="wiproevent?.length"  [attr.data-isDownBtn]=true
+                           role="combobox" aria-autocomplete="list"
+                           [attr.aria-expanded]="data.eventtypeSwitch?true:false" aria-owns="read"
+                          [attr.aria-activedescendant]="arrowkeyLocation" id="eventTypeSearch{{elementIndex}}"
+                          (blur)= "eventTypeOutside(data)"
+
+
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+              name="data.WiproEventTypeEntityNameValue  {{elementIndex}}" autocomplete="off" type="text" [(ngModel)]="data.WiproEventTypeEntityNameValue"
+              placeholder="Enter event type" (click)="data.eventtypeSwitch = true; eventTypeName(data); service.Summary_window = false;" (input)= "data.eventtypeSwitch= true; eventTypeName(data)" [disabled]="disableFields || data.WiproInfluencingunitValue=='' || superCentralMarketingRole== true || data?.businessEnableFlag || data.WiproInfluencingunitValue=='Delivery Led'" [ngClass]= "disableFields || disableEventTypeName || data.WiproInfluencingunitValue =='Delivery Led' || data.WiproInfluencingunitValue==''  || superCentralMarketingRole== true?'cursorDisable':data.isMandatoryEventName?'orangeborder':''"
+                >
+                <!-- [disabled]="disableFields || disableEventTypeName" -->
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                        class= "col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure pos-abs z-ind-99 white-bg"
+                        *ngIf=" data.eventtypeSwitch"
+                        [ngClass]="(wiproevent |filter:data.WiproEventTypeEntityNameValue).length <= 1?'suggestion-box1':(wiproevent |filter:data.WiproEventTypeEntityNameValue).length == 2?'suggestion-box2':'suggestion-box h150'">
+                          <perfect-scrollbar [ngStyle]="(wiproevent |filter:data.WiproEventTypeEntityNameValue).length <= 1?{'max-height':'40px'}:(wiproevent |filter:data.WiproEventTypeEntityNameValue).length == 2?{'max-height':'80px'}:{'max-height':'105px'}" class="z-ind-9">
+                            <ul *ngIf="isSearchLoaderForOrder" role="listbox" class=" list-group color-azure  sort-dropdown mr2">
+                                  <li  class="liststyle_none loader-search"></li>
+                               </ul>
+                            <ul *ngIf="!isSearchLoaderForOrder" role="listbox"  class=" list-group sort-dropdown">
+
+                              <!-- *ngIf="!isSearchLoaderForOrder" -->
+                                <!-- id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation" -->
+                              <li   id="{{i}}" tabindex="0" role="listbox" [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                               class="list-group-item no_pad cursorPointer" *ngFor="let item of wiproevent |filter:data.WiproEventTypeEntityNameValue ; let i= index"
+                                (keypress)="appendevent(item,data)"
+                                (click)="appendevent(item,data); data.eventtypeSwitch=false;" 
+                                >
+                                <label for="inti_name" class="float-left name col-12 no_pad cursorPointer">
+                                  <span class="d-block list-name col-12 no_pad disp-flex"><span class="col-6 no_pad ellipses" title= "{{item.title}}">{{item.title}}</span><span *ngIf = "item.mapName" class="col-6 no_pad ellipses" title= "{{item.mapName}}"> | {{item.mapName}}</span></span>
+                                  <!-- <span class="d-block sub-list">{{item.subtitle}}</span> -->
+                                </label>
+                              </li>
+                              <li class="d-block list-name no-record"
+                              *ngIf="(wiproevent |filter:data.WiproEventTypeEntityNameValue).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                          <span *ngIf="data.WiproInfluencingunitValue != 'Service line'" class="db-search"  (click)="openadvancetabs('Event type',wiproevent, data.WiproEventTypeEntityNameValue, data)">
+                            <button id="{{wiproevent?.length+1}}" role="option" tabindex="0"
+                            [disabled]="(wiproevent |filter:data.WiproEventTypeEntityNameValue).length == 0 || isSearchLoaderForOrder "
+                            [ngClass]="(wiproevent |filter:data.WiproEventTypeEntityNameValue).length == 0  || isSearchLoaderForOrder?'disableAdlsBtn':''"
+
+                            aria-disabled="false" aria-label="Advance look up" type="button" class="button-search" [class.active]="wiproevent?.length+1 == arrowkeyLocation" >
+                              <span class="mdi mdi-file-outline"></span> Advance look up
+                            </button>
+                          </span>
+                          <span *ngIf="data.WiproInfluencingunitValue == 'Service line'"  class="db-search"  (click)="openadvancetabs('Service line',wiproevent, data.WiproEventTypeEntityNameValue, data)">
+                            <button id="{{wiproevent?.length+1}}" role="option" tabindex="0"
+                            [disabled]="(wiproevent |filter:data.WiproEventTypeEntityNameValue).length == 0 || isSearchLoaderForOrder "
+                            [ngClass]="(wiproevent |filter:data.WiproEventTypeEntityNameValue).length == 0  || isSearchLoaderForOrder?'disableAdlsBtn':''"
+
+                            aria-disabled="false" aria-label="Advance look up" type="button" class="button-search" [class.active]="wiproevent?.length+1 == arrowkeyLocation" >
+                              <span class="mdi mdi-file-outline"></span> Advance look up
+                            </button>
+                          </span>
+                        </div>
+
+                      </form>
+                      <p *ngIf= "data.isMandatoryEventName==true" title="Select event type/name" class="error-message top-40">Select event type/name</p>
+                    </div>
+                    <!--Event type autocomplete ends here-->
+                    </td>
+
+
+
+
+                 <!-- ********************************************* -->
+                 <!-- *ngIf="influencingunit.value == 'Marketing' && (eventtype.value == 'Event' || eventtype.value == 'Campaign')" -->
+                 <!-- <td class="width-19" *ngIf="data.WiproInfluencingunitValue == 'Marketing' && (data.WiproEventTypeEntityNameValue == 'Event' || data.WiproEventTypeEntityNameValue == 'Campaign')" title ={{data.WiproEventDetails}}> -->
+
+                    <td class="width-19" title ={{data.WiproEventDetails}} [attr.data-label]="'Event details'">
+                      <!-- Event type autocomplete starts here-->
+                      <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad"  (clickOutside)="eventtypeNameclose(data)">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+              class="label-form">Contracting country*</label> -->
+              <input appKeyListControl #eventType
+                          (arrowDown)="arrowkeyLocation=$event"
+                          (keyup.enter)="appendeventtype(wiproeventtype[arrowkeyLocation], data);data.eventtypeNameSwitch=false;"
+                          [attr.data-arrayMaxLength]="wiproeventtype?.length"  [attr.data-isDownBtn]=true
+                           role="combobox" aria-autocomplete="list"
+                           [attr.aria-expanded]="data.eventtypeNameSwitch?true:false" aria-owns="read"
+                          [attr.aria-activedescendant]="arrowkeyLocation" id="eventSearch{{elementIndex}}"
+
+              (blur)="eventDetailsOutside(data)"
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+              name="data.WiproEventDetails  {{elementIndex}}" autocomplete="off" type="text" [(ngModel)]="data.WiproEventDetails"
+              placeholder="Enter event details" (click)=" campaignEvent(data); data.eventtypeNameSwitch = true; service.Summary_window = false;" (input)= "data.eventtypeNameSwitch= true; campaignEvent(data) " 
+              [disabled]= "data?.businessEnableFlag || data.WiproInfluencingunitValue=='' ||  disableFields || ( data.WiproInfluencingunitValue=='Marketing' && (data.WiproEventTypeEntityNameValue == '' || data.WiproEventTypeEntityNameValue == 'MCI' || data.WiproEventTypeEntityNameValue == 'Media' || data.WiproEventTypeEntityNameValue == 'Customer visit' || data.WiproEventTypeEntityNameValue == 'Other Marketing-Activities')) || data.WiproInfluencingunitValue=='Service line' || data.WiproInfluencingunitValue=='Analyst' || data.WiproInfluencingunitValue=='Alliance' || data.WiproInfluencingunitValue=='PE owned entity' ||data.WiproInfluencingunitValue=='Delivery Led'  || superCentralMarketingRole== true" [ngClass]= "disableFields || ( data.WiproInfluencingunitValue=='Marketing' && (data.WiproEventTypeEntityNameValue == 'MCI' || data.WiproEventTypeEntityNameValue == 'Media' || data.WiproEventTypeEntityNameValue == 'Customer visit' || data.WiproEventTypeEntityNameValue == 'Other Marketing-Activities' )) || data.WiproInfluencingunitValue=='Service line' || data.WiproInfluencingunitValue=='Analyst' || data.WiproInfluencingunitValue=='Alliance' || data.WiproInfluencingunitValue=='PE owned entity' || data.WiproInfluencingunitValue=='' || data.WiproEventTypeEntityNameValue=='' || data.WiproInfluencingunitValue=='Delivery Led'  || superCentralMarketingRole== true ?'cursorDisable':data.isMandatoryEventDetails?'orangeborder':''"
+                >
+                <!-- || disableEventDetails -->
+                        <span class="mdi mdi-magnify"></span>
+                        <!-- data.WiproEventDetails &&  -->
+                        <div
+                        class= "col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure pos-abs z-ind-99 white-bg"
+                        *ngIf="data.eventtypeNameSwitch"
+                        [ngClass]="(wiproeventtype |filter:data.WiproEventDetails).length <= 1?'suggestion-box1':(wiproeventtype |filter:data.WiproEventDetails).length == 2?'suggestion-box2':'suggestion-box'" >
+                          <perfect-scrollbar [ngStyle]="(wiproeventtype |filter:data.WiproEventDetails).length <= 1?{'max-height':'40px'}:(wiproeventtype |filter:data.WiproEventDetails).length == 2?{'max-height':'70px'}:{'max-height':'70px'}" class="z-ind-9">
+                            <ul *ngIf="isSearchLoaderForOrder" class=" list-group color-azure  sort-dropdown mr2">
+                                  <li  class="liststyle_none loader-search"></li>
+                               </ul>
+                            <ul *ngIf="!isSearchLoaderForOrder" class=" list-group sort-dropdown">
+
+                                <!-- id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation" -->
+                              <li   id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                               class="list-group-item no_pad cursorPointer " *ngFor="let item of wiproeventtype |filter:data.WiproEventDetails ; let i= index"
+                                (keypress)="appendeventtype(item,data)"
+                                (click)="appendeventtype(item,data); data.eventtypeNameSwitch=false;" title= "{{item.Name}}"
+                                >
+                                <label for="inti_name" class="float-left name" class="cursorPointer">
+                                  <span class="d-block list-name">{{item.Name}}</span>
+                                  <!-- <span class="d-block sub-list">{{item.subtitle}}</span> -->
+                                </label>
+                              </li>
+                              <li class="d-block list-name no-record"
+                              *ngIf="(wiproeventtype |filter:data.WiproEventDetails).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                          <span class="db-search"  (click)="openadvancetabs('Campaign Event',wiproeventtype, data.WiproEventDetails, data)">
+                            <button id="{{wiproeventtype?.length+1}}" role="option" tabindex="0"
+                            [disabled]="(wiproeventtype |filter:data.WiproEventDetails).length == 0 || isSearchLoaderForOrder "
+                            [ngClass]="(wiproeventtype |filter:data.WiproEventDetails).length == 0  || isSearchLoaderForOrder?'disableAdlsBtn':''"
+                            aria-disabled="false" aria-label="Advance look up" type="button" class="button-search" [class.active]="wiproeventtype?.length+1 == arrowkeyLocation" >
+                              <span class="mdi mdi-file-outline"></span> Advance look up
+                            </button>
+                          </span>
+                        </div>
+
+                      </form>
+                      <p *ngIf= "data.isMandatoryEventDetails==true" title="Select event details" class="error-message top-40">Select event details</p>
+                    </div>
+                    <!--Event type autocomplete ends here-->
+                    </td>
+                  
+                    <td class="width-19" title ={{data.WiproEndorsementTypeValue}} [attr.data-label]="'Endorsement type'">
+
+                      <div class="customized-select">
+                          <!-- <span class="caret color-azure"></span>
+
+                          <select id="select1" role="listbox" name="eventDetailsEndrosmentType {{elementIndex}}" [(ngModel)]="data.WiproEndorsementTypeValue"  [ngClass]="(influencingunit.value != 'Alliance')?'disableEndrosementDropDown':data.isMandatoryEndrosmentType?'orangeborder':''"  (change)=endrosementTypeChange(data)  [disabled]="disableFields" >
+                              <option value="" disabled selected hidden>Select endorsement type</option>
+                            <option *ngFor= "let endroType of endorsementType" [ngValue]="endroType.Label"> {{endroType.Label}} </option>
+
+                          </select> -->
+
+
+                          <mat-form-field class="col-12 no_pad float-left ">
+
+                            <!-- [disabled]="disableFields || (influencingunit.value != 'Alliance')" [ngClass]="(influencingunit.value != 'Alliance')?'disableEndrosementDropDown':data.isMandatoryEndrosmentType?'orangeborder':''" -->
+                              <mat-select disableOptionCentering panelClass="Select-panel-class"
+                                class="select-focus mat-select {{service.getSelectedClass(data.WiproEndorsementTypeValue)}}"  title="{{data.WiproEndorsementTypeValue}}" [(ngModel)]="data.WiproEndorsementTypeValue" name="eventDetailsEndrosmentType {{elementIndex}}" id="select1" role="listbox" (selectionChange)=" endrosementTypeChange(data) "  [disabled]="disableFields || (data.WiproInfluencingunitValue != 'Alliance')  || superCentralMarketingRole== true" [ngClass]="(data.WiproInfluencingunitValue != 'Alliance'  || superCentralMarketingRole== true)?'disableEndrosementDropDown':data.isMandatoryEndrosmentType?'orangeborder':''">
+                                <mat-option value="" disabled selected hidden>Select endorsement type</mat-option>
+
+                                <mat-option *ngFor= "let endroType of endorsementType"  [value]="endroType.Label"   title= "{{endroType.Label}}"> {{endroType.Label }}</mat-option>
+
+                              </mat-select>
+                              <p *ngIf= "data.isMandatoryEndrosmentType==true" title="Select endorsement type" class="error-message top-40">Select endorsement type</p>
+                            </mat-form-field>
+                      </div>
+                      <!-- Select DROPDOWN STARTS -->
+                    </td>
+                    <!-- added two additonal fields starts here-->
+                    <td class="width-19" title ={{data.AllianceBdm}} [attr.data-label]="'Alliance BDM'">
+                      <!-- Alliance bdm autocomplete starts here-->
+                      <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad" (clickOutside)="allianceBdmclose(data)">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+              class="label-form">Contracting country*</label> -->
+              <!-- [ngClass]= "(influencingunit.value != 'Alliance')  || (influencingunit.value == 'Alliance' && data.WiproEventTypeEntityNameValue ==null ||  data.WiproEventTypeEntityNameValue =='' ) ?'disableEndrosementDropDown':data.isMandatoryAllianceBdm?'orangeborder':''" -->
+              <input appKeyListControl
+                          (arrowDown)="arrowkeyLocation=$event"
+                          (keyup.enter)="appendAllianceBdm(allianceBdmType[arrowkeyLocation], data);data.allianceBdmSwitch=false;"
+                          [attr.data-arrayMaxLength]="allianceBdmType?.length"  [attr.data-isDownBtn]=true
+                           role="combobox" aria-autocomplete="list"
+                           [attr.aria-expanded]="data.allianceBdmSwitch?true:false" aria-owns="read"
+                          [attr.aria-activedescendant]="arrowkeyLocation" id="allianceBdm{{elementIndex}}"
+
+              (blur)="allianceBdmOutside(data)"
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+              name="data.AllianceBdm  {{elementIndex}}" autocomplete="off" type="text" [(ngModel)]="data.AllianceBdm"
+              placeholder="Enter alliance BDM"  (click)=" getAllianceBdm(data); data.allianceBdmSwitch = true; service.Summary_window = false;" (input)= "data.allianceBdmSwitch= true; getAllianceBdm(data)"    [ngClass]= "(data.WiproInfluencingunitValue != 'Alliance')  || (data.WiproInfluencingunitValue == 'Alliance' && data.WiproEventTypeEntityNameValue ==null ||  data.WiproEventTypeEntityNameValue ==''  || superCentralMarketingRole== true ) ?'disableEndrosementDropDown':data.isMandatoryAllianceBdm?'orangeborder':''" [disabled]="disableFields || (data.WiproInfluencingunitValue != 'Alliance')  || (data.WiproInfluencingunitValue == 'Alliance' && data.WiproEventTypeEntityNameValue ==null ||  data.WiproEventTypeEntityNameValue ==''  || superCentralMarketingRole== true) "
+                >
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                        class= "col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure pos-abs z-ind-99 white-bg"
+                        *ngIf="data.allianceBdmSwitch"
+                        [ngClass]="(allianceBdmType |filter:data.AllianceBdm).length <= 1?'suggestion-box1':(allianceBdmType |filter:data.AllianceBdm).length == 2?'suggestion-box2':'suggestion-box h150'">
+                          <perfect-scrollbar [ngStyle]="(allianceBdmType |filter:data.AllianceBdm).length <= 1?{'max-height':'40px'}:(allianceBdmType |filter:data.AllianceBdm).length == 2?{'max-height':'80px'}:{'max-height':'105px'}" class="z-ind-9">
+                            <ul *ngIf="isSearchLoaderForOrder" class=" list-group color-azure  sort-dropdown mr2">
+                                  <li  class="liststyle_none loader-search"></li>
+                               </ul>
+                            <ul *ngIf="!isSearchLoaderForOrder" class=" list-group sort-dropdown">
+
+                                <!-- id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation" -->
+                              <li  id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                               class="list-group-item no_pad cursorPointer " *ngFor="let item of allianceBdmType |filter:data.AllianceBdm ; let i= index"
+                                (keypress)="appendAllianceBdm(item,data)"
+                                (click)="appendAllianceBdm(item,data); data.allianceBdmSwitch=false;"  title= "{{item.Name}}"
+                                >
+                                <label for="inti_name" class="float-left name" class="cursorPointer" >
+                                  <span class="d-block list-name">{{item.Name}}</span>
+                                  <!-- <span class="d-block sub-list">{{item.subtitle}}</span> -->
+                                </label>
+                              </li>
+                              <li class="d-block list-name no-record"
+                              *ngIf="(allianceBdmType |filter:data.AllianceBdm).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                          <span class="db-search" >
+                            <button id="{{allianceBdmType?.length+1}}" role="option" tabindex="0"
+                            [disabled]="(allianceBdmType |filter:data.AllianceBdm).length == 0 || isSearchLoaderForOrder "
+                            [ngClass]="(allianceBdmType |filter:data.AllianceBdm).length == 0  || isSearchLoaderForOrder?'disableAdlsBtn':''"
+
+                            aria-disabled="false" aria-label="Advance look up" type="button" class="button-search" [class.active]="allianceBdmType?.length+1 == arrowkeyLocation"
+                            (click)="openadvancetabs('Alliance Bdm',allianceBdmType, data.AllianceBdm, data)" >
+                              <span class="mdi mdi-file-outline"></span> Advance look up
+                            </button>
+                          </span>
+                        </div>
+
+                      </form>
+                      <p *ngIf= "data.isMandatoryAllianceBdm==true" title="Select alliance BDM" class="error-message top-40">Select alliance BDM</p>
+                    </div>
+                    <!--allince bdm autocomplete ends here-->
+                    </td>
+                    <td class="width-19" title ={{data.DeliveryLeadNameText}} [attr.data-label]="'Delivery lead'">
+                      <!-- delivery lead autocomplete starts here-->
+                      <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad" (clickOutside)="deliveryLedclose(data)" >
+                      <!-- <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+
+
+
+              <input appKeyListControl #eventType
+                          (arrowDown)="arrowkeyLocation=$event"
+                          (keyup.enter)="appendDeliveryLed(deliverytype[arrowkeyLocation], data);data.delieveryLedSwitch=false;"
+                          [attr.data-arrayMaxLength]="deliverytype?.length"  [attr.data-isDownBtn]=true
+                           role="combobox" aria-autocomplete="list"
+                           [attr.aria-expanded]="data.delieveryLedSwitch?true:false" aria-owns="read"
+                          [attr.aria-activedescendant]="arrowkeyLocation" id="deliveryLed{{elementIndex}}"
+
+
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+              name="data.WiproDeliveryName {{elementIndex}}" autocomplete="off" type="text" [(ngModel)]="data.WiproDeliveryName"
+              placeholder="Enter delivery lead" (click)=" getDeliveryLed(data); data.delieveryLedSwitch = true; service.Summary_window = false;" (input)= "data.delieveryLedSwitch= true; getDeliveryLed(data)" [disabled]="disableFields || data.WiproInfluencingunitValue != 'Delivery Led'"  [ngClass]=  " data.WiproInfluencingunitValue != 'Delivery Led'?'disableEndrosementDropDown':data.isMandatoryDeliveryLed?'orangeborder':''"
+                >
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                        class= "col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                        *ngIf="data.delieveryLedSwitch">
+                          <perfect-scrollbar style="max-height:80px" class="z-ind-9">
+                            <ul *ngIf="isSearchLoaderForOrder" class=" list-group color-azure  sort-dropdown mr2">
+                                  <li  class="liststyle_none loader-search"></li>
+                               </ul>
+                            <ul *ngIf="!isSearchLoaderForOrder" class=" list-group sort-dropdown">
+
+
+                              <li   id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                               class="list-group-item no_pad cursorPointer " *ngFor="let item of deliverytype |filter:data.DeliveryLeadNameText ; let i= index"
+                                (keypress)="appendDeliveryLed(item,data)"
+                                (click)="appendDeliveryLed(item,data); data.delieveryLedSwitch=false;" title= "{{item.FullName}}"
+                                >
+                                <label for="inti_name" class="float-left name" class="cursorPointer">
+                                  <span class="d-block list-name">{{item.FullName}}</span>
+
+                                </label>
+                              </li>
+                              <li class="d-block list-name no-record"
+                              *ngIf="(deliverytype |filter:data.DeliveryLeadNameText).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                          <span class="db-search" >
+                            <button id="{{deliverytype?.length+1}}" role="option" tabindex="0"
+                            aria-disabled="false" aria-label="Advance look up" type="button" class="button-search" [class.active]="deliverytype?.length+1 == arrowkeyLocation"
+                            (click)="openadvancetabs('Delivery lead',deliverytype, data.DeliveryLeadNameText, data)" >
+                              <span class="mdi mdi-file-outline"></span> Advance look up
+                            </button>
+                          </span>
+                        </div>
+
+                      </form> -->
+
+
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+
+                        <input appKeyListControl #eventType (arrowDown)="arrowkeyLocation=$event"  (keyup.enter)="appendDeliveryLed(deliverytype[arrowkeyLocation], data);data.delieveryLedSwitch=false;" [attr.data-arrayMaxLength]="deliverytype?.length"  [attr.data-isDownBtn]=true        role="combobox" aria-autocomplete="list" [attr.aria-expanded]="data.delieveryLedSwitch?true:false" aria-owns="read" [attr.aria-activedescendant]="arrowkeyLocation" id="deliveryLed{{elementIndex}}"  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" (blur)="deliveryLeadOutside(data)"
+                        name="data.DeliveryLeadNameText {{elementIndex}}" autocomplete="off" type="text" [(ngModel)]="data.DeliveryLeadNameText" placeholder="Enter delivery lead" (input)= "data.delieveryLedSwitch= true; getDeliveryLed(data)" (click)= "getDeliveryLed(data);data.delieveryLedSwitch= true" [disabled]="disableFields || data.WiproInfluencingunitValue != 'Delivery Led'  || superCentralMarketingRole== true"  [ngClass]=  " (data.WiproInfluencingunitValue != 'Delivery Led'  || superCentralMarketingRole== true)?'disableEndrosementDropDown':data.isMandatoryDeliveryLed?'orangeborder':''" >
+                        <!-- (click)="data.delieveryLedSwitch= true; getDeliveryLed(data)" -->
+
+                          <span class="mdi mdi-magnify"></span>
+                          <div
+                          class= "col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure pos-abs z-ind-99 white-bg"
+                          *ngIf="data.delieveryLedSwitch"
+                          [ngClass]="(deliverytype |filter:data.DeliveryLeadNameText).length <= 1?'suggestion-box1':(deliverytype |filter:data.DeliveryLeadNameText).length == 2?'suggestion-box2':'suggestion-box h153'">
+                            <perfect-scrollbar [ngStyle]="(deliverytype |filter:data.DeliveryLeadNameText).length <= 1?{'max-height':'40px'}:(deliverytype |filter:data.DeliveryLeadNameText).length == 2?{'max-height':'80px'}:{'max-height':'149px'}" class="z-ind-9">
+                              <ul *ngIf="isSearchLoaderForOrder" class=" list-group color-azure  sort-dropdown mr2">
+                                    <li  class="liststyle_none loader-search"></li>
+                                 </ul>
+                              <ul *ngIf="!isSearchLoaderForOrder" class=" list-group sort-dropdown">
+
+                                <li   id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                                 class="pt3 list-group-item no_pad cursorPointer " *ngFor="let item of deliverytype |filter:data.DeliveryLeadNameText ; let i= index" (keypress)="appendDeliveryLed(item,data)"               (click)="appendDeliveryLed(item,data); data.delieveryLedSwitch=false;" title= "{{item.DisplayName}}"
+                                  >
+                                  <label for="inti_name" class="mb0 float-left name" class="cursorPointer">
+                                    <span class="d-block list-name">{{item.DisplayName}}</span>
+                                    <span class="d-block sub-list">{{item.Email}}</span>
+                                  </label>
+                                </li>
+                                <li class="d-block list-name no-record"
+                                *ngIf="(deliverytype |filter:data.DeliveryLeadNameText).length == 0"> No record found </li>
+                              </ul>
+                            </perfect-scrollbar>
+                            <span class="db-search" >
+                              <!-- <button id="{{deliverytype?.length+1}}" role="option" tabindex="0"
+                              aria-disabled="false" aria-label="Advance look up" type="button" class="button-search" [class.active]="deliverytype?.length+1 == arrowkeyLocation" (click)="openadvancetabs('Delivery lead',deliverytype, data.DeliveryLeadNameText, data)" >
+                                <span class="mdi mdi-file-outline"></span> Advance look up
+                              </button> -->
+                            </span>
+                          </div>
+                        </form>
+
+                      <p *ngIf= "data.isMandatoryDeliveryLed==true" title="Select delivery lead" class="error-message top-40">Select delivery lead</p>
+                    </div>
+                    <!--Delivery lead autocomplete ends here-->
+                    </td>
+
+                      <!-- added two additonal fields ends here-->
+                    <td class="width-19" title ={{data.WiproComments}} [attr.data-label]="'Comments'">
+                      <div class="customized-input">
+                        <label for="field1" class=""> </label>
+                        <input id="field1" autocomplete="off" [appAlphaNumeric] = "'text'" name="comments {{elementIndex}}" type="text" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input ellipses" value="Comments goes here"
+                          placeholder="Enter comments" [(ngModel)]="data.WiproComments"  [disabled]="disableFields " [ngClass]= "disableFields ||  (superCentralMarketingRole== true && data.OpportunityDealInfluencersId !='' && getInfluencerLength>0)?'cursorDisable':''" maxlength="2000" >
+                      </div>
+                    </td>
+                    <td class="no_pad">
+                        <div class="mobile-align">
+                      <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="Delete"
+                        matTooltip="Delete" (click)="deletecompetitor(data,data.OpportunityDealInfluencersId, elementIndex)" [disabled]="disableFields  || (superCentralMarketingRole== true && data.OpportunityDealInfluencersId !='')" [ngClass]= "(disableFields || (superCentralMarketingRole== true && data.OpportunityDealInfluencersId !=''))?'btnDisable':''">
+                        <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                      </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- </perfect-scrollbar> -->
+            </div>
+            <!-- Table ends here -->
+          </div>
+        </mat-expansion-panel>
+
+      </div>
+      </div>
+    </div>
+  </div>
+  </form>

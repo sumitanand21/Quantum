@@ -1,0 +1,487 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab ">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left new-container mt10 no_pad mb10">
+      <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+        <h1 class="heading-level-one mtop6" title="Prospect account creation">
+          Prospect account creation 
+        </h1>
+         </div>
+
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad">
+        <div class="float-right disp-flex save-cancel-responsive">
+         <button class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50">Cancel</button>
+          <button class="primary-button borderless h-40 std save-responsive-btn button-wd50" (click)="openConfirmProspectPopup()" (keypress) = "openConfirmProspectPopup()">Save</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- main content starts here-->
+
+<div class="col-12 float-left no_pad prospect-container " >
+    <div  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-235 "></div>
+  
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30  padd-top-130">
+  
+    <div class="col-12 float-left card mt-50 " >
+    <form [formGroup]="Prospectform" class="mb-30">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  no_pad pt-20 float-left ">
+        <div class="col-12 float-left no_pad ">
+          <div class="col-12 float-left ">
+          <!-- first row start -->
+             <!-- Name input start -->
+        
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20">
+            <div 
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="Name"
+                class="label-form">Name <span class="required"> * </span></label>
+              <input
+                [ngClass]="{'error': Prospectform.get('Name').errors?.required && Prospectform.get('Name').touched}"
+                #CurrencyList role="combobox" aria-owns="read" 
+                aria-autocomplete="list" [attr.aria-expanded]="NameSwitch?true:false" (keyup.enter)="NameSwitch=false"
+                autocomplete="off" (keydown.Tab)="Nameclose()" 
+                [attr.data-isDownBtn]=true
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="Name"
+                autocomplete="off" type="text" placeholder="Search name" formControlName="Name"
+                (keydown)="NameSwitch=true" (input)="NameSwitch = true ; " (clickOutside)="Nameclose()">
+
+              <!-- matTooltip="{{CurrencyList.value}}" -->
+              <span class="mdi mdi-magnify"></span>
+            
+              <p *ngIf="Prospectform.get('Name').errors?.required && Prospectform.get('Name').touched"
+                class="error-message custom-msgaccount top64">Name is required</p>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure
+        suggestion-box pos-abs z-ind-99 border-2" *ngIf=" NameSwitch">
+                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                  <span class="w-100 z-ind-9 float-left bg-white">
+                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read">
+                      <li *ngFor="let item of accountName ;index as j" id="{{j}}" tabindex="0" role="option"
+                         aria-disabled="false" aria-selected="false"
+                        class="list-group-item h-40 p-4-10 "
+                        (click)="appendName(item)">
+
+                        <label for="inti_name" class="float-left name">
+                          <span class="d-block list-name">{{item.Name}}</span>
+                          <span class="sub-list d-block"> {{ item.Number}} |
+                              {{item.Owner}} | {{item.Type}} </span>
+                        </label>
+                      </li>
+                      <!-- <li class="d-block list-name h-40 p-10"
+                        *ngIf="currencyaccount['message'] && !isActivityGroupSearchLoading">
+                        No records found </li> -->
+
+                    </ul>
+                  </span>
+                </perfect-scrollbar>
+                <div class="db-search mb2">
+                  <button id="adls" role="option" tabindex="0" aria-disabled="false" type="button"
+                    class="button-search" (click)="openadvancetabs()" (keypress) = "openadvancetabs()">
+                    <span class="mdi mdi-file-outline"></span> Advance look up
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- name input end -->
+
+          <!-- vertical select start -->
+
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20
+    mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="Vertical"
+              class="label-form">Vertical <span class="required"> *</span>
+            </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select aria-required="true" formControlName="Vertical"
+                [ngClass]="{'error': Prospectform.get('Vertical').errors?.required && Prospectform.get('Vertical').touched}">
+                <option value="">Select vertical</option>
+                <option [value]="item.Id" *ngFor="let item of verticalData" matTooltip="{{item.Value}}">{{item.Value}}
+                </option>
+              </select>
+              <p class="error-message top-40"
+                *ngIf="Prospectform.get('Vertical').errors?.required && Prospectform.get('Vertical').touched">Vertical
+                is required</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left mt20 
+   web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationTypec3"
+              class="label-form">Vertical <span class="required"> *</span> </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select vertical</mat-label>
+              <mat-select aria-label="{{'Select vertical' }}" disableOptionCentering
+                panelClass="custom-Select-panel-class" class="select-focus" aria-required="true"
+                formControlName="Vertical"
+                [ngClass]="{'error': Prospectform.get('Vertical').errors?.required && Prospectform.get('Vertical').touched}">
+                <!-- formControlName="category" -->
+                <mat-option value="">Select vertical </mat-option>
+                <mat-option *ngFor="let item of verticalData" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </mat-option>
+              </mat-select>
+              <p class="error-message top-40"
+                *ngIf="Prospectform.get('Vertical').errors?.required && Prospectform.get('Vertical').touched">Vertical
+                is required</p>
+            </mat-form-field>
+          </div>
+          <!-- vertical select end -->
+
+          <!-- country autocomplete start-->
+
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4  create_pading float-left mt20">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName CompanyName1">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                for="ConversationNameountry" class="label-form">Country <span class="required"> * </span></label>
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                id="ConversationNameountry"  type="text"  autocomplete="off"
+                placeholder="Search country name" (keyup)="showCountry = true " (click)="showCountry = true "
+                (clickOutside)="showCountryClose()" formControlName="Country"
+                [ngClass]="{'error': Prospectform.get('Country').errors?.required && Prospectform.get('Country').touched}"
+                required>
+              <p *ngIf="Prospectform.get('Country').errors?.required && Prospectform.get('Country').touched"
+                class="error-message custom-labelDB">
+                Country is required</p>
+              <span class="mdi mdi-magnify"></span>
+
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left top64 no_pad standard-border color-azure 
+                     suggestion-box pos-abs z-ind-99 border-leftdrop  b-bottom-2" *ngIf="showCountry">
+                <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                  [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                  <perfect-scrollbar style="max-height:150px">
+                    <span class="w-100 z-ind-9 float-left bg-white"></span>
+                    <li class="list-group-item h-50 pad-10 " *ngFor="let item of countrycode "
+                      (click)="appendCountry(item)">
+                      <span class="d-block list-name">{{item.country}}</span>
+                    </li>
+                    <li class="d-block list-name h-40 p-10" *ngIf="(countrycode | filter:countryvalue).length == 0">
+                      No results found
+                    </li>
+                  </perfect-scrollbar>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+          <!-- country autocomplete end -->
+
+        </div> <!-- first row end -->
+
+        <div class="col-12 float-left ">
+          <!-- second row start-->
+          <!-- Country sub-division select start -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20
+    mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="State"
+              class="label-form">Country sub-division <span class="required"> *</span>
+            </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select aria-required="true" formControlName="CountrySubDivision"
+                [ngClass]="{'error': Prospectform.get('CountrySubDivision').errors?.required && Prospectform.get('CountrySubDivision').touched}">
+                <option value="">Select country sub-division</option>
+                <option [value]="item.Id" *ngFor="let item of CountryDivision" matTooltip="{{item.Value}}">{{item.Value}}
+                </option>
+              </select>
+              <p class="error-message top-40"
+                *ngIf="Prospectform.get('CountrySubDivision').errors?.required && Prospectform.get('CountrySubDivision').touched">
+                Country sub-division is required</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left mt20 
+   web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationTypec3"
+              class="label-form">Country sub-division <span class="required"> *</span> </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select country sub-division</mat-label>
+              <mat-select aria-label="{{'Select country sub-division' }}" disableOptionCentering
+                panelClass="custom-Select-panel-class" class="select-focus" aria-required="true"
+                formControlName="CountrySubDivision"
+                [ngClass]="{'error': Prospectform.get('CountrySubDivision').errors?.required && Prospectform.get('CountrySubDivision').touched}">
+                <!-- formControlName="category" -->
+                <mat-option value="">Select country sub-division </mat-option>
+                <mat-option *ngFor="let item of CountryDivision" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </mat-option>
+              </mat-select>
+              <p class="error-message top-40"
+                *ngIf="Prospectform.get('CountrySubDivision').errors?.required && Prospectform.get('CountrySubDivision').touched">
+                Country sub-division is required</p>
+            </mat-form-field>
+          </div>
+
+
+          <!-- Country sub-division select end -->
+
+          <!-- City region  start -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20
+    mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="State"
+              class="label-form">City region <span class="required"> *</span>
+            </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select aria-required="true" formControlName="CityRegion"
+                [ngClass]="{'error': Prospectform.get('CityRegion').errors?.required && Prospectform.get('CityRegion').touched}">
+                <option value="">Select city region </option>
+                <option [value]="item.Id" *ngFor="let item of City" matTooltip="{{item.Value}}">{{item.Value}}
+                </option>
+              </select>
+              <p class="error-message top-40"
+                *ngIf="Prospectform.get('CityRegion').errors?.required && Prospectform.get('CityRegion').touched">City
+                region is required</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left mt20 
+   web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationTypec3"
+              class="label-form">City region <span class="required"> *</span> </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select city region </mat-label>
+              <mat-select aria-label="{{'Select city region '}}" disableOptionCentering
+                panelClass="custom-Select-panel-class" class="select-focus" aria-required="true"
+                formControlName="CityRegion"
+                [ngClass]="{'error': Prospectform.get('CityRegion').errors?.required && Prospectform.get('CityRegion').touched}">
+                <!-- formControlName="category" -->
+                <mat-option value="">Select city region </mat-option>
+                <mat-option *ngFor="let item of City" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </mat-option>
+              </mat-select>
+              <p class="error-message top-40"
+                *ngIf="Prospectform.get('CityRegion').errors?.required && Prospectform.get('CityRegion').touched">City
+                region is required</p>
+            </mat-form-field>
+          </div>
+          <!-- City region  end -->
+
+
+          <!-- region start -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20
+    mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="State"
+              class="label-form">Region
+            </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select aria-required="true" formControlName="Region">
+                <option value="">Select Region</option>
+                <option [value]="item.Id" *ngFor="let item of RegionData" matTooltip="{{item.Value}}">{{item.Value}}
+                </option>
+              </select>
+
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left mt20 
+   web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationTypec3"
+              class="label-form">Region </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select Region</mat-label>
+              <mat-select aria-label="{{'Select vertical' }}" disableOptionCentering
+                panelClass="custom-Select-panel-class" class="select-focus" aria-required="true"
+                formControlName="Region">
+                <!-- formControlName="category" -->
+                <mat-option value="">Select Region </mat-option>
+                <mat-option *ngFor="let item of RegionData" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </mat-option>
+              </mat-select>
+
+            </mat-form-field>
+          </div>
+          <!-- region end -->
+
+        </div> <!-- second row end -->
+
+        <div class="col-12 float-left">
+          <!-- third row start -->
+
+          <!-- Geo start -->
+
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20
+    mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="State"
+              class="label-form">Geo
+            </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select aria-required="true" formControlName="Geo">
+                <option value="">Select Geo</option>
+                <option [value]="item.Id" *ngFor="let item of GeoData" matTooltip="{{item.Value}}">{{item.Value}}
+                </option>
+              </select>
+
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left mt20 
+   web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationTypec3"
+              class="label-form">Geo </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select Geo</mat-label>
+              <mat-select aria-label="{{'Select vertical'}}" disableOptionCentering
+                panelClass="custom-Select-panel-class" class="select-focus" aria-required="true" formControlName="Geo">
+                <!-- formControlName="category" -->
+                <mat-option value="">Select Geo </mat-option>
+                <mat-option *ngFor="let item of GeoData" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </mat-option>
+              </mat-select>
+
+            </mat-form-field>
+          </div>
+
+          <!-- Geo end -->
+
+          <!-- ownership type start -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20
+    mobile-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="State"
+              class="label-form"  matTooltip="The Ownership Type indicates the type of legal or structural entity of the CRM account.">Ownership type <span class="required"> *</span>
+            </label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select aria-required="true" formControlName="OwnershipType"
+                [ngClass]="{'error': Prospectform.get('OwnershipType').errors?.required && Prospectform.get('OwnershipType').touched}">
+                <option value="">Select Ownership type</option>
+                <option [value]="item.Id" *ngFor="let item of OwnershipData" matTooltip="{{item.Value}}">{{item.Value}}
+                </option>
+              </select>
+              <p class="error-message top-40"
+                *ngIf="Prospectform.get('OwnershipType').errors?.required && Prospectform.get('OwnershipType').touched">
+                Ownership type is required</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left mt20 
+   web-select-box">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationTypec3"
+              class="label-form"  matTooltip="The Ownership Type indicates the type of legal or structural entity of the CRM account.">Ownership type <span class="required"> *</span> </label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select Ownership type</mat-label>
+              <mat-select aria-label="{{'Select vertical' }}" disableOptionCentering
+                panelClass="custom-Select-panel-class" class="select-focus" aria-required="true"
+                formControlName="OwnershipType"
+                [ngClass]="{'error': Prospectform.get('OwnershipType').errors?.required && Prospectform.get('OwnershipType').touched}">
+                <!-- formControlName="category" -->
+                <mat-option value="">Select Ownership type </mat-option>
+                <mat-option *ngFor="let item of verticalData" [value]="item.Id" matTooltip="{{item.Value}}">
+                  {{item.Value}}
+                </mat-option>
+              </mat-select>
+              <p class="error-message top-40"
+                *ngIf="Prospectform.get('OwnershipType').errors?.required && Prospectform.get('OwnershipType').touched">
+                Ownership type is required</p>
+            </mat-form-field>
+          </div>
+          <!-- ownership type end -->
+
+          <!-- website input start -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="Website"
+              class="label-form">
+              Website
+
+            </label>
+            <div class="pos-rel w-100 float-left customized-input no_pad">
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text " id="Website"
+                type="text" placeholder="Enter Website" required formControlName="Website">
+
+            </div>
+          </div>
+          <!-- website input end -->
+
+        </div> <!-- third row end -->
+
+        <div class="col-12 float-left ">
+          <!-- fourth row start -->
+
+          <!-- E-mail ID input start -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  mt20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="Website"
+              class="label-form">
+              E-mail ID
+
+            </label>
+            <div class="pos-rel w-100 float-left customized-input no_pad">
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text " id="Website"
+                type="text" placeholder="Enter E-mail ID" required formControlName="Email">
+
+            </div>
+          </div>
+          <!-- E-mail ID input end -->
+
+          <!-- Select Phone STARTS -->
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left phone-number mt20
+              web-select-box" formArrayName="PhoneNumber" *ngFor="let number of PhoneNumber?.controls;let i=index">
+            <label for="phone" class="label-form w-100">Phone number &nbsp;
+              <span *ngIf="i === 0">{{i+1}}</span>
+              <span *ngIf="i > 0">{{i+1}}</span>
+            </label>
+            <div class="pos-rel col-12 float-left no_pad" [formGroupName]="i">
+              <div class="col-3 no_pad customized-select float-left">
+                <span class="caret color-azure"></span>
+                <select id="phone" role="listbox" formControlName="ContactType" #phoneType>
+                  <option value="">Select</option>
+                  <option value="Home">Home</option>
+                  <option value="work">Work</option>
+                  <!-- <option *ngFor="let item of phoneContactType" [value]="item.Id" matTooltip="{{item.Value}}">
+      {{item.Value}}
+  </option> -->
+                </select>
+              </div>
+              <div class="customized-input col-9 float-left no_pad">
+                <div (click)="PhoneNumberValidation(phoneType.value)" class="col-10 float-left no_pad ">
+                  <!-- specialIsAlphaNumeric -->
+                  <input [attr.data-type]="'mobileNumber'" input id="phone" type="text" #phoneNo class="border-gray"
+                    [attr.disabled]="phoneType.value==''?'disabled' : null" placeholder="Phone"
+                    formControlName="ContactNo" minlength="8" maxlength="15">
+                </div>
+
+
+                <div class="col-2 float-left pagination no_pad">
+                  <button aria-label="add contact" contactnumber.value='' phoneType.value=''
+                    class="standard-border color-azure mdi mdi-plus ml5" *ngIf="i == 0 ? true : false" type="button"
+                    (click)="addPhone()">
+                  </button>
+                  <button aria-label="Delete" class="standard-border color-azure mdi mdi-delete"
+                    *ngIf="i >0 ? true : false" type="button" (click)="deletePhone(i)"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Select Phone ENDS -->
+
+        </div> <!-- fourth row end -->
+
+        <div class="col-12 float-left">
+          <!-- fifth row start -->
+          <!-- Business description text area start -->
+          <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 float-left  mt20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="text2R"
+              class="label-form">Business description</label>
+            <div class="pos-rel w-100 float-left no_pad">
+              <textarea formControlName="BusinessDescription"
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text min-text-height-170"
+                id="text2R" name="text" type="text" placeholder="Enter business description"
+                ></textarea>
+              <!-- <p *ngIf="firstFormSubmitted && accForm.businessdescription.errors && accForm.businessdescription.errors.required"
+                        class="col-12 float-left  error-message-text-area ">Business description is required</p> -->
+            </div>
+          </div>
+          <!-- Business description text area end -->
+        </div> <!-- fifth row end -->
+
+
+      </div>
+    </div>
+  </form>
+
+
+</div>

@@ -1,0 +1,56 @@
+<ng-container *ngIf="isLoading">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <div class="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<div class="col-12 float-left padng-30">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad float-left">
+            <!-- <h2 class="col-12 float-left heading-level-two color-white padng-30 padt-0 pad-left-10">{{totalviews}} Custom views </h2> -->
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad float-left">
+                <!-- <div class="col-6 no_pad float-left manage-dropdown" *ngIf="tabList2?.length>0 && cardview && selectedTabId">
+                <app-custom-tab-dropdown  [tabList]="tabList2"
+                [selectedTab]="selectedTabId" [recordCount]="totalviews" (TabSelectEvent)="CustomDropdown($event)">
+            </app-custom-tab-dropdown>
+        </div> -->
+                <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 no_pad float-left"
+                    [ngClass]="!(tabList2?.length>0 && cardview && selectedTabId) ? 'offset-md-6':''">
+
+                    <button
+                        class="no_pad btn-align-right primary-button h-40 std1 add-btn-design float-right white-boreder no_pad w-155 margR10"
+                        (click)="createnewviewcrm();">
+                        <span class="mdi mdi-view-dashboard pad-right"></span><span class="create-btn">Create new
+                            view</span></button>
+
+                </div>
+            </div>
+            <div class="col-12 float-left no_pad" *ngIf="tableview">
+                <div class="parent-container" *ngIf="AccountCreationActiveRequestsTable.length > 0">
+                    <app-single-table (detectActionValue)="performTableChildAction($event)"
+                        [TableName]="'AccountCreationActiveRequests'"
+                        [TableCollection]="AccountCreationActiveRequestsTable" [IsFreezedColumn]=true
+                        [IsCustomizeTable]=true [IsTabList]="tabList" [IsTabList]="tabList2" [IsTabRequired]=true
+                        [SelectedTab]="selectedTabId" (selectedValue)="appendConversation($event)"
+                        [TabValueSelected]="selectedTabValue" [IsDownload]=userdat.getRoleAccess() [IsAccountsDownload]=true>
+                    </app-single-table>
+                </div>
+            </div>
+
+            <div class="col-12 float-left no_pad" *ngIf="data.length>0 && cardview">
+                <app-more-view [IsShare]=true [IsEdit]=true [IsDelete]=true [TableData]="data"
+                    [HeaderTableData]="headerData" (detectActionValue)="performChildAction($event)"></app-more-view>
+            </div>
+            <!-- cards view ends here -->
+
+        </div>
+        <!-- Here i need to put the second code -->
+
+
+    </div>
+</div>

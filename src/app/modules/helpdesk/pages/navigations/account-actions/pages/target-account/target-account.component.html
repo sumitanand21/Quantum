@@ -1,0 +1,52 @@
+<!-- <p>
+  target-account works!
+</p> -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20 margin-btm100">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad mt20">
+  
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt-15 ">
+      
+  
+          <h6 class="cardsHead heading-level-three">Target account</h6>
+  
+          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+  
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+              <div class="customized-input">
+                <label for="requested" class="converstion-name w-100">Selected vertical</label>
+                <div class="pos-rel w-100 float-left no_pad">
+                  <span class="col-12 sub-text-request float-left no_pad">{{sourceData?.Vertical?.Name || '-'}}</span>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <div clas="col-12 float-left no_pad ">
+      <div class="col-12 no_pad float-left mt20">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <div class="parent-container" *ngIf="targetAccountTableData.length>0">
+                    <app-single-table
+                    (detectActionValue)="performTableChildAction($event)"
+                    (detectPageChangeData)="getNewTableData($event)" 
+                    [TableName]="'TargetAccount'"
+                    [TableCollection]="targetAccountTableData"  
+                    [IsRadioRequired]= true
+                    [bgParentColor]="'bgWhiteContainer'"
+                    [IsCustomizeTable] = true
+                    [paginationPageNumber]="targetAccountTableRequest"
+                    [totalTableCount]="tableTotalCount"
+                    [serviceSearch]= true >
+                  </app-single-table>
+      
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

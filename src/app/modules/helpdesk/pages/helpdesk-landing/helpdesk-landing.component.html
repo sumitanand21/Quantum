@@ -1,0 +1,12 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+</div>
+  <div class="float-left col-12 col-md-12 col-xl-12 no_pad pos-rel">
+  <div class="col-12 col-md-12 col-xl-3 no_pad float-left helpdesk-part-nav" [ngClass]="service.hidehelpdesknav ? 'show-helpdesknav' : 'hide-helpdesknav'">
+    <app-helpdesk-nav></app-helpdesk-nav>
+  </div>
+  <div class="col-12 col-md-12 col-xl-9 float-right helpdesk-part-main no_pad" [ngClass]="[service.hidehelpdeskmain ? 'show-helpdeskmain': 'hide-helpdeskmain']">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

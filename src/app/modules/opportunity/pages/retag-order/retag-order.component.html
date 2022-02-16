@@ -1,0 +1,195 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab new-container">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+      <h1 class="heading-level-one mtop6"> Change order type</h1>
+    </div>
+    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad" *ngIf="changeType">
+      <div class="float-right disp-flex save-cancel-responsive web-buttons">
+        <button aria-label="cancel" class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+          (click)="goBacktoMain()">Cancel</button>
+        <button aria-label="Next" class="primary-button borderless h-40 std save-responsive-btn button-wd50"
+          (click)="gotoNextPage()">Next</button>
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad" *ngIf="verifyDetails">
+      <div class="float-right disp-flex save-cancel-responsive web-buttons">
+        <button aria-label="cancel" class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+          (click)="goBack()">Cancel</button>
+        <button aria-label="Confirm" class="primary-button borderless h-40 std save-responsive-btn button-wd50"
+          (click)="openConfirmPopup()">Confirm</button>
+      </div>
+    </div>
+    <div class="float-left col-12 mobile-buttons bg-azure mobile-sticky-btns" *ngIf="changeType">
+      <div class="float-right disp-flex save-cancel-responsive">
+        <button aria-label="cancel" class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+          (click)="goBacktoMain()">Cancel</button>
+        <button aria-label="Next" class="primary-button borderless h-40 std save-responsive-btn button-wd50"
+          (click)="gotoNextPage()">Next</button>
+      </div>
+    </div>
+    <div class="float-left col-12 mobile-buttons bg-azure mobile-sticky-btns" *ngIf="verifyDetails">
+      <div class="float-right disp-flex save-cancel-responsive">
+        <button aria-label="cancel" class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+          (click)="goBack()">Cancel</button>
+        <button aria-label="Confirm" class="primary-button borderless h-40 std save-responsive-btn button-wd50"
+          (click)="openConfirmPopup()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--main div starts here-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container respon create-lead-page retag-order-radio">
+  <div
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-180 res-position-rel">
+  </div>
+  <div
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pt-125 pad-30 top-13 pad-top-135 scroll-middle-ios">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad disp-flex center pad-stepper-mob">
+      <div class="col-6 col-sm-3 col-md-2 col-lg-2 col-xl-2 float-left no_pad ">
+        <button class="round-btn active del float-left">
+          <span class="float-left span-text">1</span>
+          <span class="float-left active-text">Change type</span>
+        </button>
+        <span class="float-left horizontal-bar-one" [ngClass]="twoactive?'active':''"></span>
+      </div>
+
+      <div class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1 float-left no_pad ">
+        <button class="round-btn" [attr.aria-selected]="twoactive ? true : '' " [ngClass]="twoactive?'active':''">
+          <span class="float-left span-text">2</span>
+          <span class="float-left text-step" [ngClass]="twoactive ?'active-text':''">Verify details
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12 float-left" *ngIf="changeType">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card mt60 pad-create-lead ">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left no_pad">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+            <h2 class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-left no_pad heading-level-three pad-top-8">
+              Select
+              order type </h2>
+          </div>
+          <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 no_pad float-left">
+            <p class="col-12 float-left no_pad font-12">Opportunity/Order is marked as "New". Please re-confirm that it
+              is
+              not
+              renewal or incremental. In-correct classification of the order may have an impact on the order-project
+              linkage and order-incentive</p>
+
+            <span class="col-12 no_pad float-left">Select the new opportunity type to change.</span>
+            <div class="col-12 no_pad float-left mt10">
+              <mat-radio-group [(ngModel)]="orderTypeForRetag" aria-label="Select an option">
+                <mat-radio-button [value]="'Renewal'"  [disabled]="orderTypeId.Incremental == parentOrderDetails.OrderTypeId" class="float-left no_pad font-12" matTooltip="Renewal opportunity of an ongoing project. Value or scope
+                  change within +/- 25% to be treated as renewal project. New
+                  SOW becomes operational from the end date of current SOW.
+                  This amendment would be linked to the base and would help in
+                  extending scope and / or the end date of projects tagged to the
+                  base/order" matTooltipPosition="left"></mat-radio-button><span class="mr-5 float-left" [ngClass]="orderTypeId.Incremental == parentOrderDetails.OrderTypeId?'element-disabled':''">Renewal</span>
+                <mat-radio-button [value]="'Incremental'" [disabled]="orderTypeId.Renewal == parentOrderDetails.OrderTypeId" class="float-left no_pad font-12"
+                  matTooltip="Incremental order is an enhancement order related to addition
+                of scope/people in existing running project. This amendment
+                would be linked to the base order and would help in extending
+                scope and/or the end date of projects tagged to the base order. An incremental order be tagged independently to a project" matTooltipPosition="left">
+                </mat-radio-button><span class="mr-5 float-left" [ngClass]="orderTypeId.Renewal == parentOrderDetails.OrderTypeId?'element-disabled':''" >Incremental</span>
+              </mat-radio-group>
+            </div>
+
+            <p class="col-12 no_pad float-left font-12 mt10"><b>Please note : </b>For an Incremental/Renewal engagement the
+              below criteria should satisfy.</p>
+            <p class="col-12 no_pad float-left font-12">For an incremental amendment, start date should fall after the
+              original base order start date. <br />
+              The invoice type of the original base order and the amendment should be the same. <br />
+              The original base order and the amendment should belong to the same amount, SAP customer code and same
+              contracting country.</p>
+          </div>
+        </div>
+
+      </div>
+      <!-- table -->
+      <div class="col-12 float-left complex_table pt0 no_pad mt20">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mt10">
+          <div class="col-12 no_pad float-left ">
+            <h3 class="col-12 float-left no_pad heading-level-two">
+              Orders ({{totalPageCount ? totalPageCount : 0}})
+            </h3>
+          </div>
+          <div class="col-lg-12 col-sm-12 col-md-12 col-12 float-left no_pad mt15 ">
+            <div class="col-12 parent-container no_pad">
+              <app-single-table *ngIf="ordersListForListingPage.length > 0" (detectActionValue)="performTableChildAction($event)" [TableName]="'allordersretag'"
+                (detectPageChangeData)="getNewTableData($event)" [TableCollection]="ordersListForListingPage"
+                [bgParentColor]="'bgWhiteContainer'" [IsRadioRequired]=true [IsFreezedColumn]=true 
+                [IsCustomizeTable]=true [totalTableCount]="totalPageCount" [IsDropBoxRequired]="false" [IsAcCheck]=true
+                [paginationPageNumber]="paginationPageNo" [IsDealCheck]=true [IsDealClose]=true [IsTabList]="tabList"
+                (selectedValue)="appendConversation($event)" [serviceSearch]=true [TabValueSelected]="selectedTabValue"
+                [filterConfigData]="filterConfigData" > </app-single-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card mt60 margin-btm55 pad-create-lead "
+      *ngIf="verifyDetails">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+          <p class="col-12 no_pad float-left">Your current {{diplayOrderOrAmendment}} will be converted to {{orderTypeForRetag}}. Please verify the
+            below details.</p>
+          <h2 class="col-12 no_pad float-left header-two">Current details</h2>
+          <div class="col-12 no_pad float-left mt10 brder-btm">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left">
+              <label class="col-12 no_pad float-left details-label" for="">Primary opportunity name</label>
+              <span class="col-12 no_pad float-left font-b">{{primaryOrderDetailsReview.primaryOppName}}</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left">
+              <label class="col-12 no_pad float-left details-label" for="">Primary opportunity number</label>
+              <span class="col-12 no_pad float-left font-b">{{primaryOrderDetailsReview.primaryOppNumber}}</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left">
+              <label class="col-12 no_pad float-left details-label" for="">Primary order</label>
+              <span class="col-12 no_pad float-left font-b">{{primaryOrderDetailsReview.primaryOrder}}</span>
+            </div>
+          </div>
+
+          <h2 class="col-12 no_pad float-left header-two mt-4">Selected order details</h2>
+          <div class="col-12 no_pad float-left">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left mt10">
+              <label class="col-12 no_pad float-left details-label" for="">Order/Amendment no.</label>
+              <span class="col-12 no_pad float-left font-b">{{selectedOrder.OrderId}}</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left mt10">
+              <label class="col-12 no_pad float-left details-label" for="">Opportunity no.</label>
+              <span class="col-12 no_pad float-left font-b">{{selectedOrder.OpportunityId}}</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left mt10">
+              <label class="col-12 no_pad float-left details-label" for="">Order owner</label>
+              <span class="col-12 no_pad float-left font-b">{{selectedOrder.OrderOwner}}</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left mt10">
+              <label class="col-12 no_pad float-left details-label" for="">SAP code</label>
+              <span class="col-12 no_pad float-left font-b">{{selectedOrder.SAPCustomerCode}}</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left mt10">
+              <label class="col-12 no_pad float-left details-label" for="">Order start date</label>
+              <span class="col-12 no_pad float-left font-b">{{selectedOrder.StartDate}}</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left mt10">
+              <label class="col-12 no_pad float-left details-label" for="">Order end date</label>
+              <span class="col-12 no_pad float-left font-b">{{selectedOrder.EndDate}}</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 no_pad float-left mt10">
+              <label class="col-12 no_pad float-left details-label" for="">Pricing type</label>
+              <span class="col-12 no_pad float-left font-b">{{selectedOrder.PricingType}}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>

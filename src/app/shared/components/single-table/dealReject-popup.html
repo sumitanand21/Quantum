@@ -1,0 +1,64 @@
+<div class="col-12 float-left  no_pad popup-container newchildconvo ">
+        
+                <div class="col-12 float-left  container-dialog">
+                    <div class="col-12 float-left  no_pad popup-hd">
+                        <span class="col-10 float-left  no_pad  margin-btm0" mat-dialog-title>{{data.header}}</span>
+                        <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close" mat-dialog-close></button>
+                    </div>
+                    <div class="col-12 float-left border-bottom-grey " *ngIf="data.flag == 'REJ' || data.flag == 'REWORK'|| data.flag == 'CHECK1'"></div>
+            
+                    <div class="col-12 no_pad float-left convo-name-title mt20 customized-input" *ngIf="data.flag == 'REJ'">
+                        <label class="col-12 float-left no_pad" for="reason">Reason code*</label>
+                        <textarea id="reason" class="col-12 float-left form-control" placeholder="Type here" [(ngModel)]="rejectReason" rows="5"></textarea>
+                    </div>
+
+                    <div class="col-12 no_pad float-left mt20" *ngIf="data.flag == 'REWORK'">
+                        <div class="col-12 no_pad float-left">
+                                <label class="col-12 no_pad float-left pop-label">Action name</label>
+                                <span class="col-12 no_pad float-left pop-labl-cntnt">{{data.rowData?.actionName}}</span>
+                        </div>
+                        <div class="col-12 float-left border-bottom-grey mt20"></div>
+                        <span class="col-12 no_pad float-left mt20 pop-para">
+                            This action is reassigned to the previous action owner <strong>{{data.rowData?.actionOwner}}</strong> for re-work.
+                        </span>
+                    </div>
+
+                    <div class="col-12 no_pad float-left mt20" *ngIf="data.flag == 'CHECK1'">
+                        <div class="col-12 no_pad float-left">
+                                <label class="col-12 no_pad float-left pop-label">Action name</label>
+                                <span class="col-12 no_pad float-left pop-labl-cntnt">Action name 01</span>
+                        </div>
+                        <div class="col-12 float-left border-bottom-grey mt20"></div>
+                        <span class="col-12 no_pad float-left mt20 pop-para">
+                            This action cannot be closed before closure of depending action<strong>Action name 02.</strong>
+                        </span>
+                    </div>
+            
+            
+                </div>
+            
+                <div class="col-12 float-left no_pad mt30" *ngIf="data.flag == 'REJ'">
+                    <button aria-label="No" class="col-6 float-left no_pad cancel-btn" (click)="cancel()">No</button>
+                    <button aria-label="Yes" class="col-6 float-left btndef-none no_pad confrm-btn mr0 mt0" (click)="confirm(data.flag)">Yes</button>
+                </div>
+
+                <div class="col-12 float-left no_pad mt30" *ngIf="data.flag == 'ACCEPT'">
+                    <button aria-label="No" class="col-6 float-left no_pad cancel-btn" (click)="cancel()">No</button>
+                    <button aria-label="Yes" class="col-6 float-left btndef-none no_pad confrm-btn mr0 mt0" (click)="confirm(data.flag)">Yes</button>
+                </div>
+
+                <div class="col-12 float-left no_pad mt30" *ngIf="data.flag == 'DELETE'">
+                        <button aria-label="No" class="col-6 float-left no_pad cancel-btn" (click)="cancel()">No</button>
+                        <button aria-label="Yes" class="col-6 float-left btndef-none no_pad confrm-btn mr0 mt0" (click)="confirm(data.flag)">Yes</button>
+                    </div>
+
+                    
+                        <div class="col-12 float-left no_pad mt20" *ngIf="data.flag == 'REWORK'">
+                                <button aria-label="ok" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="confirm(data.flag)">OK</button>
+                            </div>
+
+                            <div class="col-12 float-left no_pad mt20" *ngIf="data.flag == 'CHECK1'">
+                                <button aria-label="ok" class="col-12 float-left btndef-none no_pad confrm-btn">OK</button>
+                            </div>
+            
+            </div>

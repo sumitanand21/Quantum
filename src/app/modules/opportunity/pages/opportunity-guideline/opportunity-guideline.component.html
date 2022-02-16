@@ -1,0 +1,370 @@
+<div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab opportunityPage new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+
+        <button class="mdi mdi-keyboard-backspace cursor-pointer float-left back-buttonbg" (click)="goBack()" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+        <h1 class="heading-level-one heading-custom">Opportunity guidelines</h1>
+        <span class="brudcrumbs">Sales > Opportunities</span>
+      </div>
+    </div>
+  </div> 
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+  <div
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-228 new-container">
+  </div>
+
+  <!-- code goes here -->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad vertical-btns-div float-left flex-tab pad-top142">
+    <div class="col-9 float-left no_pad flex-tab-width">
+      <button (click)="tabone()" [ngClass]="service.Competitortab ? 'active':''"
+        class="col-lg-2 col-sm-4 col-md-3 col-4 col-xl-2 sub-vertical-but brd-right0 ">
+        <span class=" mdi mdi-trophy-variant calin-select-all"></span>
+        <span class=" no_pad btntxt-s pad-top2">Competitor</span>
+      </button>
+      <button (click)="tabtwo()" [ngClass]="service.Teambuildingtab ? 'active':''"
+        class="col-lg-2 col-sm-4 col-md-3 col-4 col-xl-2 float-right sub-vertical-but">
+        <span class=" calin-select-all mdi mdi-account-group"></span>
+        <span class="no_pad btntxt-s pad-top2">Team Building</span>
+      </button>
+      <button (click)="tabthree()" [ngClass]="service.Probabiltytab ? 'active':''"
+        class="col-lg-2 col-sm-4 col-md-3 col-4 col-xl-2 float-right sub-vertical-but brd-left0">
+        <span class=" calin-select-all mdi mdi-dice-multiple"></span>
+        <span class=" no_pad btntxt-s pad-top2">Probability</span>
+      </button>
+      <!-- <button (click)="tabfour()" [ngClass]="dealtab ? 'active':''"
+        class="col-lg-2 col-sm-4 col-md-3 col-4 col-xl-2 float-right sub-vertical-but brd-left0 ">
+        <span class=" calin-select-all mdi mdi-dice-multiple"></span>
+        <span class=" no_pad btntxt-s pad-top2">Strategic deal</span>
+      </button> -->
+    </div>
+  </div>
+
+  <div class="col-12 float-left pad-30">
+
+    <!-- card-content for first tab starts here-->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card float-left pad-20 pt0" *ngIf="service.Competitortab">
+
+      <div class="ol-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+        <h2 class="col-12 float-left heading-level-two no_pad bordr-bottm"> Competitor guidelines</h2>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Using the
+          Competitor Grid </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"> The Competitor Grid is a central
+          place
+          where you can record the likely competitors for your Opportunity and track their
+          progress, together with Wipro’s progress, through the sales stages.</p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Competitors identified in the
+          Competitor Grid also flow into the Competitor Strategy Tool (CST) which you can
+          find in the Opportunity Tool Kit. Similarly, competitors that are newly defined in the CST will flow back to
+          the
+          Competitor Grid so that both are kept in sync.
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Adding Competitors </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"> When you open the Competitor Grid
+          you will see that three entries are predefined. These are ‘Wipro’, ‘In House’ and ‘Do
+          Nothing’. While it may be obvious that ‘Wipro’ is a competitor in this Opportunity, we need the entry so that
+          in the CST we can set a strategy for any of our strengths or weaknesses. ‘In House’ and ‘Do Nothing’ are there
+          to remind you
+          that these options are always serious ‘competitors’ for your Opportunity. In the CST you will also be able to
+          set
+          strategies for these ‘competitors’.</p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Use the ‘search’ symbol to open up
+          the list of competitors and select the competitor you need. As you add a competitor, a
+          new blank row appears ready for you to add the next competitor
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Ranking Competitors </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"> Competitors are automatically
+          ranked in the order that you add them. The first one added is ranked #1, the second #2 and
+          so on. You can change the ranking by highlighting the competitor row and using the ‘move up’ or ‘move down’
+          button.</p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Note that ‘Wipro’, ‘In House’ and
+          ‘Do Nothing’ have a fixed ranking so they cannot be moved up or down.
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Incumbent Competitors</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">You can mark any of the competitors
+          (including Wipro but not ‘In House’ or ‘Do Nothing’) as an incumbent. An incumbent is a
+          Third Party that is already providing services to the Account.</p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">As soon as you mark a competitor as
+          incumbent, the Current Scope Share field open up. Here you can record the
+          (estimated) share of revenue that this competitor has of the current Opportunity(not of the overall Account).
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Tracking Progress </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">As you move through the sales cycle,
+          new fields will be added to the grid so you can mark the progress of the competitors in
+          the sales cycle. These are fields that you just need to tick against each competitor (see below) Note that
+          ‘Wipro’ will be
+          auto-ticked as you move from one sales stage to the next.</p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Longlisted?</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Here you can mark all competitors
+          that have been ‘Long-listed’ which means they have also been invited to the buying
+          process.</p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Shortlisted?</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Here you can mark all competitors
+          that have been Short-listed. You can mark them both in the case where Wipro is also
+          Shortlisted or where Wipro was eliminated.</p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Shared Win?</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Use this field to mark any
+          competitor that also won part of the scope of the overall Opportunity. You should mark this in
+          case the customer awards part of the scope we bid for to another party as well as if certain work was awarded
+          to another
+          party that we did not bid for, but was in our normal area of offerings.</p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">When you mark any competitor with
+          ‘Shared Win’ a new field will open up where you can record the share of the win, in
+          percentage terms.
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Winning Party</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">In the case where Wipro lost, you
+          can indicate which of the competitors won the deal. This can be one or more. When there
+          are multiple winners, you can indicate the share of the revenue won for each competitor.</p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Updating the Competitor Grid</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Note that you can update the
+          Competitor Grid at any time, even after the Opportunity has been hard-closed, as information
+          may not be available at the time of closing the Opportunity. Please record as much information as you can as
+          this will help
+          us to analyse our competitive position and performance and learn to improve the way we compete.</p>
+      </div>
+    </div>
+    <!-- card-content for first tab ends here-->
+
+
+    <!-- card-content for second tab starts here-->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card float-left pad-20 pt0" *ngIf="service.Teambuildingtab">
+
+      <div class="ol-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+        <h2 class="col-12 float-left heading-level-two no_pad bordr-bottm"> Team building guidelines</h2>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad-top10"> The opportunity team
+          building panel lets you do the following:</p>
+        <ul class="float-left">
+          <li>Assign a role to a named person.</li>
+          <li>Request a resource for a specific role.</li>
+          <li>Identify a role and start/ end details, but not fulfil it for now (make a memo note).</li>
+        </ul>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Each of these options is detailed
+          below.
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Assign a role to a named person </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">When you have a name of the person
+          that will be part of the Opportunity Team, you can tag that person to the team. You will
+          have to:</p>
+        <ul class="float-left">
+          <li>Enter the name.</li>
+          <li>Assign a role from the list of available roles.</li>
+          <li>Select a start date.</li>
+          <li>Select an end date.</li>
+          <li>Add some details.</li>
+        </ul>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">When you save the data, an email is
+          automatically generated to that person to notify that he or she is now part of the team.
+          The email will include the role name, start and end date and the information you added to the ‘Additional
+          Detail’ box.
+        </p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Use the ‘Additional Detail’ box to
+          outline what you expect this person to do, how to get in contact, etc.
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Request a resource for a specific role </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">This option allows you to request a
+          resource. Use this if you need a person for a specific role, but do not have a name. This
+          will also automatically generate an email, with the details as above, but the email will be sent to the
+          Pre-sales Head of the
+          unit to which the opportunity is tagged.</p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Note that ‘Wipro’, ‘In House’ and
+          ‘Do Nothing’ have a fixed ranking so they cannot be moved up or down.
+        </p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Here also you will have a box for
+          ‘Additional Detail’ but this time the details are used to communicate with the Pre-sales
+          Head so you may wish to state the urgency, minimum requirements or specific knowledge that you need from the
+          resource.
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Identify a role and start/ end details</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Use this option to start identifying
+          the required roles and their anticipated start & end date. This will serve as a ‘memo’ but
+          there is no action from the system at this point.</p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          About ‘Process Roles’ </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">The list of roles that are available
+          to choose from are mainly Process Roles with some Positional Roles.</p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">‘Process Roles’ are roles that
+          signify the roles and responsibilities for the opportunity. For example, the role of ‘Bid Owner’
+          may be assigned to a person for this particular opportunity only. This person can have a totally different
+          ‘Positional Role’,
+          for example, ‘PreSales Consultant’ or ‘Engagement Manager’</p>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">One person can have one or more
+          process roles, but certain process roles cannot be duplicated. These include ‘Pursuit
+          Lead’, ‘Business Solution Owner’, ‘Executive Sponsor’, ‘Pricing Lead’ etc.</p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          More information of Opportunity Team composition and role descriptions</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Use the link below to go to the Bid
+          Management Framework community team building page where you will find a chart of a
+          typical Opportunity Team composition, as well as role descriptions.</p>
+      </div>
+    </div>
+    <!-- card-content for second tab ends here-->
+
+
+    <!-- card-content for third tab starts here-->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card float-left pad-20 pt0" *ngIf="service.Probabiltytab">
+
+      <div class="ol-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+        <h2 class="col-12 float-left heading-level-two no_pad bordr-bottm"> Probability guidelines</h2>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad-top10"> Opportunity Management
+          has three different sets of probabilities:</p>
+        <ul class="float-left">
+          <li>System Probability.</li>
+          <li>StormCast Probability.</li>
+          <li>Manual Probability.</li>
+        </ul>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">Each of these terms is explained
+          below.
+        </p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          System Probability </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">This is a probability which is
+          automatically assigned to the Opportunity based on the sales stage it is in. It is expressed as a
+          term, rather than a percentage, which will be converted in certain financial reports to a percentage. Based on
+          our
+          experience these percentages may be adjusted in future, so storing it as a word will give us that flexibility.
+          The actual
+          values are given in the table below.</p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          StormCast Probability </h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">This is the percentage that is
+          calculated by the Revenue StormCast tool. You will need to complete the tool before the
+          percentage is displayed on the Opportunity record. For a full explanation of the StormCast, please consult the
+          RevenueStorm tools manual.</p>
+      </div>
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Manual Probability</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">This probability is decided and
+          entered by the user, based on the on-the-ground situation and experience. However, the
+          system will only allow a certain range, which is based on the sales stage of the Opportunity.The ranges are
+          given in the
+          table below.</p>
+      </div>
+
+      <!-- Table starts here -->
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ipmoreoption">
+        <table class="table table-borderless bordr-bottm">
+          <thead>
+            <tr class="col-12 float-left no_pad">
+              <th class="col-4 float-left ">SALES STAGE</th>
+              <th class="col-4 float-left ">MANUAL PROBABILITY RANGE</th>
+              <th class="col-4 float-left ">SYSTEM PROBABILITY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="col-12 float-left no_pad" *ngFor="let data of competitor_data">
+              <td class="col-4 float-left ">
+                <label class="col-12 float-left no_pad">{{data.salesstage}} </label>
+              </td>
+              <td class="col-4 float-left ">
+                <label class="col-12 float-left no_pad">{{data.manualrange}} </label>
+              </td>
+              <td class="col-4 float-left ">
+                <label class="col-12 float-left no_pad">{{data.systemprobability}} </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left ">Note: The manual probability can only be
+          set in increments
+          of 5 (five) percent within the allowable range.</p>
+      </div>
+      <!-- Table ends here -->
+
+      <div class="ol-12 col-sm-12 col-md-10 col-lg-9 col-xl-9 float-left">
+        <h3 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 heading-level-three no_pad pad-btm5">
+          Upside/ Commit</h3>
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">The ‘Manual Probability’ (as well as
+          the ‘Estimated Closure Date’) has an effect on both the ‘Upside’ and ‘Commit’ function
+          as the functions will only be enabled if the ‘Manual Probability’ has a minimum value as follows:</p>
+        <ul class="float-left">
+          <li>For the ‘Upside’ to be activated, the ‘Manual Probability’ must be >=10% and the ‘Estimated Closure Date’
+            must be
+            within 180 days.</li>
+          <li>For the ‘Commit’ to be activated, the ‘Manual Probability’ must be >=75% and the ‘Estimated Closure
+            Date’must be
+            within 180 days.</li>
+        </ul>
+      </div>
+
+    </div>
+    <!-- card-content for third tab ends here-->
+  </div>
+
+
+</div>

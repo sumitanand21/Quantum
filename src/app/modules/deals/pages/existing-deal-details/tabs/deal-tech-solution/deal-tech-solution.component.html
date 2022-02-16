@@ -1,0 +1,64 @@
+<ng-container *ngIf="isLoading; else tableTemplate">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div class="col-12 float-left no_pad">
+  <ng-template #tableTemplate>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad float-left">
+        <div class="float-left w-100 pos-rel mb15-mobd">
+          <h2
+            class="col-6 float-left heading-level-two color-white padng-10 no_pad padding-left0 padt-0 pos-abs top-mob">
+            Documents ({{tableTotalCount}})</h2>
+          <div class="col-6 no_pad float-right web-buttons">
+            <!-- <button aria-label="Download"
+            class="invisible btn-align-right primary-button h-40 std1 button-wd50 add-btn-design float-right"> 
+          </button> -->
+            <div class="float-right">
+              <button
+                class="btn-down-leads mdi mdi-download float-right mb10 standard-border bg-transparent color-white ml10 downloadBtn pos-rel"
+                matTooltip="Export to excel" aria-label="download"></button>
+              <!-- [attr.disabled]="config.totalItems == 0 ?'disabled':null"
+              (click)="generalSelectedAction(TableName,'DownloadCSV')" -->
+            </div>
+
+            <button
+              *ngIf="facadeService.dealTeam()?.IsRoleMappedToUser || facadeService.dealOwner()?.IsRoleMappedToUser"
+              class="no_pad save-responsive-btn button-wd50 primary-button d-flex h-40 w-170 float-right btn-align-right"
+              (click)="onCreateNewDoc()">
+              <span class="mdi mdi-content-save-outline pad-right"></span>Create new document</button>
+
+          </div>
+          <div class="float-left col-12 no_pad mobile-buttons bg-azure-icon text-center zIn9">
+
+            <button class="primary-button borderless deal-btn"
+              *ngIf="facadeService.dealTeam()?.IsRoleMappedToUser || facadeService.dealOwner()?.IsRoleMappedToUser"
+              (click)="onCreateNewDoc()">
+              Create new document
+            </button>
+
+          </div>
+        </div>
+
+        <div class="parent-container" *ngIf="existingTable.length > 0">
+          <app-single-dragable-table (detectActionValue)="performTableChildAction($event)"
+            (detectPageChangeData)="pagination($event)" [TableName]="'attchedDocs'" [TableCollection]="existingTable"
+            [IsActionFixed]=true [IsFreezedColumn]=true [IsSortBtn]=false [IsCustomBtn]=false [DownloadButton]=true
+            [IsDropBoxRequired]=false [totalTableCount]="tableTotalCount" [IsEdit]=true [IsDeleteDeal]=false
+            [IsFolder]=true [IsFileLock]=false [IsPackageClosed]=true [serviceSearch]=true
+            [paginationPageNumber]="paginationPageNo" [IsTabList]="tabList" (selectedValue)="appendConversation($event)"
+            [TabValueSelected]="selectedTabValue" [filterConfigData]="filterConfigData" [IsSend]=true [IsApprovar]=true
+            [IsReject]=true [IsRowDownload]=true>
+          </app-single-dragable-table>
+        </div>
+
+      </div>
+    </div>
+  </ng-template>

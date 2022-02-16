@@ -1,0 +1,591 @@
+<div class="top-header top-head-index insight" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad_mobile">
+
+            <!-- <div class="float-left col-12 header-action-tab no_pad "> -->
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 float-left width_25">
+                <button (click)="goBack()" class="mdi mdi-keyboard-backspace no_pad back-buttonbg" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+            </div>
+
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 float-left marg-10">
+                <h1 class="heading-level-one mtop-5"> Opportunity insight</h1>
+                <small class="colorWhite">Sales > Opportunity</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  insight no_pad pad-lr-30">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-250"></div>
+    <div class="col-12 float-left customized-accordians mtop-20 pad-lr-30">
+        <!-- <mat-accordion> -->
+        <!-- Level 1 Accordian Starts-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0  mtop-150 normal_table">
+
+            <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="min-height:60px;">
+                    <mat-panel-title class="accord-heading">
+                        <span [ngClass]="panelOpenState ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                        <span class="accordian-title pad-top-8">Similar opportunities executed in wipro</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="col-12 float-left border-bottom-grey"></div>
+                <div class="col-12 float-left no_pad scrollable_table">
+                    <table class="no_pad">
+                        <thead>
+                            <tr>
+                                <th class="br-tl">Opportunity number</th>
+                                <th>Opportunity name</th>
+                                <th>Opportunity owner</th>
+                                <th>Account name</th>
+                                <th>Account owner</th>
+                                <th>TCV</th>
+                                <th class="br-tr">Scope</th>
+                            </tr>
+                        </thead>
+                        <tbody class="no_pad">
+                            <tr *ngFor="let deal of deals">
+                                <!-- class="c-blue"   (click)="diableBtn()" -->
+                                <!-- <span class="cp" ></span> -->
+                                <td class="display-none"></td>
+                                <td [attr.data-label]="'Opportunity number'"><span>{{ deal.OpportunityNumber==null?'-':deal.OpportunityNumber }}</span></td>
+                                <td [attr.data-label]="'Opportunity name'">{{deal.OpportunityName==null?'-':deal.OpportunityName }}</td>
+                                <td [attr.data-label]="'Opportunity owner'">{{ deal.OwnerIdName==null?'-':deal.OwnerIdName }}</td>
+                                <td [attr.data-label]="'Account name'">{{ deal.AccountIdName==null?'-':deal.AccountIdName }}</td>
+                                <td [attr.data-label]="'Account owner'">{{ deal.AccountIdOwnerName==null?'-':deal.AccountIdOwnerName }}</td>
+                                <td [attr.data-label]="'TCV'">{{ deal.TCVCurrency==null?'-':deal.TCVCurrency }}</td>
+                                <td [attr.data-label]="'Scope'">{{ deal.ScopeOfWork==null?'-':deal.ScopeOfWork }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </mat-expansion-panel>
+        </div>
+        <!-- Level 1 Accordian Ends-->
+
+
+
+        <!-- Level 1 Accordian Starts-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0  mtop-20">
+
+            <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
+                <mat-expansion-panel-header style="min-height:60px;">
+                    <mat-panel-title class="accord-heading">
+                        <span [ngClass]="panelOpenState1 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                        <span class="accordian-title pad-top-8">Your account relationship status</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="col-12 float-left border-bottom-grey"></div>
+
+                <!-- <table class="no_pad">
+            <thead>
+              <tr>
+                <th class="br-tl">Contact name</th>
+                <th class="br-tr">Job title</th>
+                <th colspan="2" class="br-tlr brdr-lr">Political power radar</th>
+                <th colspan="2" class="br-tlr brdr-lr">Relationship score</th>
+                <th class="br-tlr">Buying score</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th class="brdr-left">Total score</th>
+                <th class="brdr-right">Power symbol</th>
+                <th class="brdr-left">Total score</th>
+                <th class="brdr-right">Status</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody class="no_pad">
+              <tr *ngFor="let stat of rel_status">
+                <td>{{stat.contact_name}}</td>
+                <td>{{stat.job_title}}</td>
+                <td>{{stat.total_score}}</td>
+                <td>{{stat.power_symbol}}</td>
+                <td>{{stat.total_score1}}</td>
+                <td>{{stat.status}}</td>
+                <td>{{stat.buying_score}}</td>
+              </tr>
+            </tbody>
+          </table> -->
+                <!-- width:500px; -->
+                <div *ngIf="loader" class=" loader-search" id="loader"> </div>
+                <iframe style="width:100%; height:500px;" src="" id="iframe">
+              <p>Your browser does not support iframes.</p>
+            </iframe>
+
+            </mat-expansion-panel>
+        </div>
+        <!-- Level 1 Accordian Ends-->
+
+
+        <!-- Level 1 Accordian Starts-->
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0  mtop-20">
+
+        <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState2 = true" (closed)="panelOpenState2 = false">
+          <mat-expansion-panel-header style="min-height:60px;">
+            <mat-panel-title class="accord-heading">
+              <span [ngClass]="panelOpenState2 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+              <span class="accordian-title pad-top-8">Digital coach - Get focused advice based on weak areas as defined in the revenue strom tools </span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="col-12 float-left border-bottom-grey"></div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20"> -->
+
+        <!-- Level 2 Accordian Starts-->
+        <!-- <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState3 = true" (closed)="panelOpenState3 = false">
+              <mat-expansion-panel-header style="min-height:60px;">
+                <mat-panel-title class="accord-heading">
+                  <span [ngClass]="panelOpenState3 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                  <span class="accordian-title pad-top-8">Opportunity qualifier</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Vulnerability</th>
+                    <th>Suggested remedial action</th>
+                    <th>See also</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor='let qual of qualifier'>
+                    <td>{{qual.vulnerability}} </td>
+                    <td>{{qual.suggested_remedial_action}}</td>
+                    <td class="c-blue">{{qual.see_also}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </mat-expansion-panel>
+            <div class="col-12 float-left border-bottom-grey"></div>
+          </div> -->
+        <!-- Level 2 Accordian Ends-->
+
+
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20"> -->
+        <!-- Level 2 Accordian Starts-->
+        <!--
+            <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad" (opened)="panelOpenState4 = true" (closed)="panelOpenState4 = false">
+              <mat-expansion-panel-header style="min-height:60px;">
+                <mat-panel-title class="accord-heading">
+                  <span [ngClass]="panelOpenState4 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                  <span class="accordian-title pad-top-8"> Pursuit profiler</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Vulnerability</th>
+                    <th>Suggested remedial action</th>
+                    <th>See also</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor='let qual of qualifier'>
+                    <td>{{qual.vulnerability}} </td>
+                    <td>{{qual.suggested_remedial_action}}</td>
+                    <td class="c-blue">{{qual.see_also}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </mat-expansion-panel>
+            <div class="col-12 float-left border-bottom-grey"></div>
+          </div> -->
+        <!-- Level 2 Accordian Ends-->
+
+
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20"> -->
+        <!-- Level 2 Accordian Starts-->
+        <!-- <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad" (opened)="panelOpenState5 = true" (closed)="panelOpenState5 = false">
+              <mat-expansion-panel-header style="min-height:60px;">
+                <mat-panel-title class="accord-heading">
+                  <span [ngClass]="panelOpenState5 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                  <span class="accordian-title pad-top-8"> Win strategy</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Vulnerability</th>
+                    <th>Suggested remedial action</th>
+                    <th>See also</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor='let qual of qualifier'>
+                    <td>{{qual.vulnerability}} </td>
+                    <td>{{qual.suggested_remedial_action}}</td>
+                    <td class="c-blue">{{qual.see_also}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </mat-expansion-panel>
+            <div class="col-12 float-left border-bottom-grey mbot-20"></div>
+          </div> -->
+        <!-- Level 2 Accordian Ends-->
+
+
+        <!-- </mat-expansion-panel>
+      </div> -->
+        <!-- Level 1 Accordian Ends-->
+
+
+        <!-- Level 1 Accordian Starts-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0  mtop-20 mobileHeight">
+
+            <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad" (opened)="panelOpenState6 = true" (closed)="panelOpenState6 = false">
+                <mat-expansion-panel-header style="min-height:60px;">
+                    <mat-panel-title class="accord-heading">
+                        <span [ngClass]="panelOpenState6 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                        <span class="accordian-title pad-top-8">Referenceable assets</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="col-12 float-left border-bottom-grey"></div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20">
+
+                    <!-- Level 2 Accordian Starts-->
+                    <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState7 = true" (closed)="panelOpenState7 = false">
+                        <mat-expansion-panel-header style="min-height:60px;">
+                            <mat-panel-title class="accord-heading">
+                                <span [ngClass]="panelOpenState7 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                                <span class="accordian-title pad-top-8">Based on solution</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Solution name</th>
+                                    <th>Solution URL</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="isLoading">
+                              <tr>
+                                <div class="loader-search" id="loader"> </div>
+                              </tr>
+                            </tbody>
+
+                            <tbody *ngIf="!isLoading">
+                                <tr *ngFor='let sol of solution'>
+                                    <td [attr.data-label]="'Solution name'">{{sol.SolutionName==null?'-':sol.SolutionName}} </td>
+                                    <td [attr.data-label]="'Solution URL'" class="c-blue WordBreak"><a [class.disabled]="flag1==1 ? true : null" target="_blank" href="{{sol.SolutionUrl}}" class="WordBreak">{{sol.SolutionUrl==null?'-':sol.SolutionUrl}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </mat-expansion-panel>
+                    <div class="col-12 float-left border-bottom-grey"></div>
+                </div>
+
+                <!-- Level 2 Accordian Ends-->
+
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20">
+
+                  <!-- Level 2 Accordian Starts-->
+                    <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState8 = true" (closed)="panelOpenState8 = false">
+                        <mat-expansion-panel-header style="min-height:60px;">
+                            <mat-panel-title class="accord-heading">
+                                <span [ngClass]="panelOpenState8 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                                <span class="accordian-title pad-top-8">Based on account</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Document name</th>
+                                    <th>Document URL</th>
+                                </tr>
+                            </thead>
+                            <tbody  *ngIf="isLoading2">
+                              <tr>
+                                <div class="loader-search" id="loader"> </div>
+                              </tr>
+                            </tbody>
+
+                            <tbody *ngIf="!isLoading2">
+                                <tr *ngFor='let acc of rucArray'>
+                                    <td [attr.data-label]="'Document name'">{{acc.DocumentName==null?'-':acc.DocumentName}} </td>
+                                    <td [attr.data-label]="'Document URL'" class="c-blue WordBreak"><a [class.disabled]="flag2==1 ? true : null" target="_blank" href="{{acc.DocumentUrl}}">{{acc.DocumentUrl==null?'-':acc.DocumentUrl}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </mat-expansion-panel>
+                    <div class="col-12 float-left border-bottom-grey"></div>
+                </div>
+                <!-- Level 2 Accordian Ends-->
+
+
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20">
+                    
+                  <!-- Level 2 Accordian Starts-->
+                    <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState9 = true" (closed)="panelOpenState9 = false">
+                        <mat-expansion-panel-header style="min-height:60px;">
+                            <mat-panel-title class="accord-heading">
+                                <span [ngClass]="panelOpenState9 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                                <span class="accordian-title pad-top-8">Case studies</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Document name</th>
+                                    <th>Document URL</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="isLoading3">
+                              <tr>
+                                <div class="loader-search" id="loader"> </div>
+                              </tr>
+                            </tbody>
+
+                            <tbody *ngIf="!isLoading3">
+                                <tr *ngFor='let acc of caseStudies'>
+                                    <td [attr.data-label]="'Document name'">{{acc.DocumentName==null?'-':acc.DocumentName}} </td>
+                                    <td [attr.data-label]="'Document URL'" class="c-blue WordBreak"><a [class.disabled]="flag3==1 ? true : null" target="_blank" href="{{acc.DocumentUrl}}">{{acc.DocumentUrl==null?'-':acc.DocumentUrl}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </mat-expansion-panel>
+                    <div class="col-12 float-left border-bottom-grey"></div>
+                </div>
+                <!-- Level 2 Accordian Ends-->
+
+
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20">
+
+                  <!-- Level 2 Accordian Starts-->
+                    <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState10 = true" (closed)="panelOpenState10 = false">
+                        <mat-expansion-panel-header style="min-height:60px;">
+                            <mat-panel-title class="accord-heading">
+                                <span [ngClass]="panelOpenState10 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                                <span class="accordian-title pad-top-8">Customer success stories</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Document name</th>
+                                    <th>Document URL</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="isLoading4">
+                              <tr>
+                                <div class="loader-search" id="loader"> </div>
+                              </tr>
+                            </tbody>
+
+                            <tbody *ngIf="!isLoading4">
+                                <tr *ngFor='let acc of clientSuccess'>
+                                    <td [attr.data-label]="'Document name'">{{acc.DocumentName==null?'-':acc.DocumentName}} </td>
+                                    <td [attr.data-label]="'Document URL'" class="c-blue WordBreak"><a [class.disabled]="flag4==1 ? true : null" target="_blank" href="{{acc.DocumentUrl}}">{{acc.DocumentUrl==null?'-':acc.DocumentUrl}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </mat-expansion-panel>
+                    <div class="col-12 float-left border-bottom-grey"></div>
+                </div>
+                <!-- Level 2 Accordian Ends-->
+
+
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20"> -->
+
+                <!-- Level 2 Accordian Starts-->
+                <!-- <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState11 = true" (closed)="panelOpenState11 = false">
+              <mat-expansion-panel-header style="min-height:60px;">
+                <mat-panel-title class="accord-heading">
+                  <span [ngClass]="panelOpenState11 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                  <span class="accordian-title pad-top-8">Competitor intelligence</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Competitor name</th>
+                    <th>Webinar URL</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor='let acc of copm_intelligence'>
+                    <td>{{acc.competitor_name}} </td>
+                    <td class="c-blue">{{acc.webinar_url}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </mat-expansion-panel>
+            <div class="col-12 float-left border-bottom-grey"></div>
+          </div> -->
+                <!-- Level 2 Accordian Ends-->
+
+
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20"> -->
+
+                <!-- Level 2 Accordian Starts-->
+                <!-- <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState12 = true" (closed)="panelOpenState12 = false">
+              <mat-expansion-panel-header style="min-height:60px;">
+                <mat-panel-title class="accord-heading">
+                  <span [ngClass]="panelOpenState12 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                  <span class="accordian-title pad-top-8">Industry trends</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>BU name</th>
+                    <th>Document title</th>
+                    <th>Document URL</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor='let acc of industry_trends'>
+                    <td>{{acc.bu_name}} </td>
+                    <td>{{acc.document_title}} </td>
+                    <td class="c-blue">{{acc.document_url}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </mat-expansion-panel>
+            <div class="col-12 float-left border-bottom-grey mbot-20"></div>
+          </div> -->
+                <!-- Level 2 Accordian Ends-->
+
+
+            </mat-expansion-panel>
+        </div>
+        <!-- Level 1 Accordian Ends-->
+
+        <!-- Level 1 Accordian Starts-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 mbot-30 mtop-20">
+
+            <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad" (opened)="panelOpenState13 = true" (closed)="panelOpenState13 = false">
+                <mat-expansion-panel-header style="min-height:60px;">
+                    <mat-panel-title class="accord-heading">
+                        <span [ngClass]="panelOpenState13 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                        <span class="accordian-title pad-top-8">Contacts</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="col-12 float-left border-bottom-grey"></div>
+
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20 normal_table">
+
+                    <!-- Level 2 Accordian Starts-->
+                    <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState14 = true" (closed)="panelOpenState14 = false">
+                        <mat-expansion-panel-header style="min-height:60px;">
+                            <mat-panel-title class="accord-heading">
+                                <span [ngClass]="panelOpenState14 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                                <span class="accordian-title pad-top-8">Colleagues executing similar opportunities</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Opportunity number</th>
+                                    <th>Opportunity owner</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor='let acc of colleguesExecuitingSimilarDeals'>
+                                    <td class="display-none"></td>
+                                    <td [attr.data-label]="'Opportunity number'">{{acc.OpportunityNumber==null?"-":acc.OpportunityNumber}} </td>
+                                    <td [attr.data-label]="'Opportunity owner'">{{acc.OwnerIdName==null?"-":acc.OwnerIdName}} </td>
+                                    <td [attr.data-label]="'Email'">{{acc.OwnerEmailId==null?"-":acc.OwnerEmailId}}</td>
+                                    <!-- class="c-blue" -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            Note: For more information on opportunity insights please drop a mail to <small class="c-blue"><a href = "mailto: sales.support@wipro.com">sales.support@wipro.com</a></small>
+                        </p>
+                        <!-- </div> -->
+                    </mat-expansion-panel>
+                    <div class="col-12 float-left border-bottom-grey"></div>
+                </div>
+                <!-- Level 2 Accordian Ends-->
+
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 bg-change mtop-20 normal_table">
+
+                    <!-- Level 2 Accordian Starts-->
+                    <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState15 = true" (closed)="panelOpenState15 = false">
+                        <mat-expansion-panel-header style="min-height:60px;">
+                            <mat-panel-title class="accord-heading">
+                                <span [ngClass]="panelOpenState15 ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                                <span class="accordian-title pad-top-8">Solution owner contact coordination</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Solution name</th>
+                                    <th>Solution owner</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor='let acc of contact_coordinantion'>
+                                    <!-- class="c-blue" -->
+                                    <td class="display-none"></td>
+                                    <td [attr.data-label]="'Solution name'">{{acc.Name==null?"-":acc.Name}} </td>
+                                    <td [attr.data-label]="'Solution owner'">{{acc.OwnerName==null?"-":acc.OwnerName}} </td>
+                                    <td [attr.data-label]="'Email'">{{acc.EmailID==null?"-":acc.EmailID}}</td>
+                                    <!-- class="c-blue" -->
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </mat-expansion-panel>
+                    <div class="col-12 float-left border-bottom-grey mbot-20"></div>
+                </div>
+                <!-- Level 2 Accordian Ends-->
+
+
+            </mat-expansion-panel>
+        </div>
+        <!-- Level 1 Accordian Ends-->
+
+        <!-- </mat-accordion> -->
+    </div>
+
+</div>
+<!-- </div> -->
+<!-- </div> -->

@@ -1,0 +1,286 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="iframeLoader">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+
+  <div
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left deal-aggregator-container card margin-btm55 no_pad ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt20 no_pad">
+      <h2 class="heading-level-two deal-head-txt">Deal parameters</h2>
+      <form [formGroup]="dealAgrrForm">
+        <div class="col-12 float-left customized-input pad-top35 pad20">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Period" class="w-100">Period type</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="drpPeriodType" formControlName="dealPeriodTypeDataVal" ng-model="Parameters.PERIODType"
+                required>
+                <option value="">Select</option>
+                <option value="M">Monthly</option>
+                <option value="Q">Quarterly</option>
+                <option value="Y">Yearly</option>
+              </select>
+
+              <div class="error-pos" *ngIf="submittedDealAggrForm && grrForm.dealPeriodTypeDataVal.errors">
+                <div *ngIf="grrForm.dealPeriodTypeDataVal.errors.required" class="error-message">Please select the period type
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Module" class="w-100">Module</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Module" formControlName="dealModelDataVal" role="listbox" required>
+                <option [ngValue]="null">Select</option>
+                <option value="ALL">All</option>
+                <option [ngValue]="module.ModuleID" *ngFor="let module of ModulenameData">{{module.ModuleName}}</option>
+              </select>
+
+              <div class="error-pos" *ngIf="submittedDealAggrForm && grrForm.dealModelDataVal.errors">
+                <div *ngIf="grrForm.dealModelDataVal.errors.required" class="error-message">Please select the module
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="RLS" class="w-100">RLS type</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="drpRLSType" formControlName="dealRlsTypeDataVal" ng-model="Parameters.RLSType">
+                <option value="">Select</option>
+                <option value="All">All</option>
+                <option value="STEADY">Steady</option>
+                <option value="TRANSITION">Transition</option>
+              </select>
+
+              <div class="error-pos" *ngIf="submittedDealAggrForm && grrForm.dealRlsTypeDataVal.errors">
+                <div *ngIf="grrForm.dealRlsTypeDataVal.errors.required" class="error-message">Please select the rLS type
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Currency" class="w-100">Currency</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Currency" formControlName="dealCurrencyDataVal" role="listbox">
+                <option [ngValue]="null">Select</option>
+                <option [ngValue]="currency" *ngFor="let currency of CurrencyData">{{currency}}</option>
+              </select>
+              <div class="error-pos" *ngIf="submittedDealAggrForm && grrForm.dealCurrencyDataVal.errors">
+                <div *ngIf="grrForm.dealCurrencyDataVal.errors.required" class="error-message">Please select the currency
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Price" class="w-100">Price element type</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="drpPricingElementType" formControlName="dealPriceElementDataVal"
+                ng-model="Parameters.PRICINGELEMENTType" (change)="DisableParameters()">
+                <option [ngValue]="null">Select</option>
+                <option value="RLS">RLS</option>
+                <option value="PASSTHRU">Passthrough</option>
+              </select>
+
+              <div class="error-pos" *ngIf="submittedDealAggrForm && grrForm.dealPriceElementDataVal.errors">
+                <div *ngIf="grrForm.dealPriceElementDataVal.errors.required" class="error-message">Please select the
+                  price element type
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!disableParams" class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Parameter1" class="w-100">Parameter 1</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Parameter1" role="listbox" formControlName="parameter1" (ngModelChange)="validateParams()">
+                <option value="">Select</option>
+                <option [value]="dealparam.ParamVal" *ngFor="let dealparam of DealaggregatorparamsData">
+                  {{dealparam.ParamText}}</option>
+
+              </select>
+            </div>
+          </div>
+          <div *ngIf="!disableParams" class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Parameter3" class="w-100">Parameter 2</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Parameter3" role="listbox" formControlName="parameter2" (ngModelChange)="validateParams()">
+                <option value="">Select</option>
+                <option [value]="dealparam.ParamVal" *ngFor="let dealparam of DealaggregatorparamsData">
+                  {{dealparam.ParamText}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div *ngIf="!disableParams" class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Parameter3" class="w-100">Parameter 3</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Parameter3" role="listbox" formControlName="parameter3" (ngModelChange)="validateParams()">
+                <option value="">Select</option>
+                <option [value]="dealparam.ParamVal" *ngFor="let dealparam of DealaggregatorparamsData">
+                  {{dealparam.ParamText}}</option>
+              </select>
+            </div>
+          </div>
+          <div *ngIf="!disableParams" class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Parameter4" class="w-100">Parameter 4</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Parameter4" role="listbox" formControlName="parameter4" (ngModelChange)="validateParams()">
+                <option value="">Select</option>
+                <option [value]="dealparam.ParamVal" *ngFor="let dealparam of DealaggregatorparamsData">
+                  {{dealparam.ParamText}}</option>
+              </select>
+            </div>
+          </div>
+          <div *ngIf="!disableParams" class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Parameter5" class="w-100">Parameter 5</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Parameter5" role="listbox" formControlName="parameter5" (ngModelChange)="validateParams()">
+                <option value="">Select</option>
+                <option [value]="dealparam.ParamVal" *ngFor="let dealparam of DealaggregatorparamsData">
+                  {{dealparam.ParamText}}</option>
+              </select>
+            </div>
+          </div>
+          <div *ngIf="!disableParams" class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Parameter6" class="w-100">Parameter 6</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Parameter6" role="listbox" formControlName="parameter6" (ngModelChange)="validateParams()">
+                <option value="">Select</option>
+                <option [value]="dealparam.ParamVal" *ngFor="let dealparam of DealaggregatorparamsData">
+                  {{dealparam.ParamText}}</option>
+              </select>
+            </div>
+          </div>
+          <div *ngIf="!disableParams" class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+            <label for="Parameter6" class="w-100">Parameter 7</label>
+
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select id="Parameter6" role="listbox" formControlName="parameter7" (ngModelChange)="validateParams()">
+                <option value="">Select</option>
+                <option [value]="dealparam.ParamVal" *ngFor="let dealparam of DealaggregatorparamsData">
+                  {{dealparam.ParamText}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12 float-left mar-botm22">
+            <button class="float-right primary-button w-130 btns" (click)="viewReport()">View report</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="col-12 float-left no_pad" *ngIf="showReport">
+        <!-- <table class="w-100">
+        <thead>
+          <tr>
+            <th rowspan="2">Functional area</th>
+            <th rowspan="2">Remarks</th>
+            <th rowspan="2">Service line</th>
+            <th rowspan="2">Practice</th>
+            <th colspan="2">Revenue in USD</th>
+            <th colspan="2">Person month</th>
+          </tr>
+          <tr>
+            <th class="border-0">M01</th>
+            <th>Total</th>
+            <th class="border-0">M01</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4">F1</td>
+            <td rowspan="3">R1</td>
+            <td rowspan="2">MAS</td>
+            <td>ACS</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+          </tr>
+          <tr>
+            <td><b>Total</b></td>
+            <td></td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+          </tr>
+          <tr>
+            <td><b>Total</b></td>
+            <td></td>
+            <td></td>
+
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+          </tr>
+          <tr>
+            <td><b>Total</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+            <td>16800.00</td>
+          </tr>
+
+        </tbody>
+
+      </table> -->
+        <iframe class="col-12 float-left no_pad standard-border color-azure" height="600"
+          [src]="viewreportdata" (load)="finishedLoading($event)"></iframe>
+      </div>
+
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,33 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-opportunity cio-popup">
+        
+        <div class="col-12 float-left  container-dialog">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>CIO details</span>
+                <button class="col-2 float-right no_pad brdr-none mdi mdi-window-close close-icn discard-close-btn" aria-label="close" mat-dialog-close></button>
+            </div>
+    
+            <div class="col-12 float-left border-bottom-grey"></div>
+    
+            <div class="col-12 float-left  no_pad">
+                <label class="col-12 float-left  no_pad margin-top-20 " for="percentage">Percentage of deal supported</label>
+                <input type="text" class="col-12 float-left border-gray w-100" name="percentage" placeholder="00.00" [(ngModel)]="data.CIODealPercentage" (keyup)="calculateWiproValue(data.CIODealPercentage)" onpaste="return false;"  ondrop="return false;" (blur)="blurWiproPerc(data.CIODealPercentage)"/>
+            </div>
+    
+            <div class="col-12 float-left  no_pad">
+                    <label class="col-12 float-left  no_pad margin-top-20 " for="value">Value ({{CurrencySymbol}})</label>
+                    <input type="text" class="col-12 float-left border-gray w-100 bg-gray in-value" name="WiproValue" placeholder="00.00" [(ngModel)]="data.WiproValue" disabled/>
+            </div>
+    
+            <div class="col-12 float-left  no_pad">
+                    <label class="col-12 float-left  no_pad margin-top-20 " for="functionlead">Function lead</label>
+                    <input type="text" class="col-12 float-left border-gray w-100 bg-gray in-value mbot-10 hd-val" name="functionlead" [(ngModel)]="data.CIOFunctionLeadName" disabled/>
+            </div>
+    
+        </div>
+    
+        <div class="col-12 float-left no_pad ">
+            <button aria-label="Confirm" class="col-12 float-left btndef-none no_pad confrm-btn"  (keypress)="returnvalue()"
+                (click)="returnvalue()">Confirm</button>
+        </div>
+    
+    </div>

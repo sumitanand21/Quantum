@@ -1,0 +1,52 @@
+<!--<div class="top-header" [ngClass]="userdat?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+</div>-->
+<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 app_landing_container relative_div_90">
+    <div class="padding_right_left col-lg-12 col-md-12 col-sm-12 col-xs-12 relative_div">
+        <div class="mt-70 pl-15">
+            <!-- <img class="img-responsive" alt="login logo" src="assets/images/logo-unit.svg"> -->
+        </div>
+        <div class="mt-80">
+            <h1 class="pl-15 Acc_header"> Account selection </h1>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad d_flex">
+                <div *ngFor="let role of Roles" class="col-12 col-sm-3 col-md-3 col-lg-3 module_card d_flex mb-4" (click)="setUser(role);checkRole(role.RoleId)" [routerLink]="['/accounts/accountlist/farming']">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad card_image flex_1 brad_6">
+                        <img class="img img-rounded w-100" alt=" " src="{{role.RoleImage}}">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad ">
+                            <span class="col-xs-12 txt_style pt-10">{{role.Name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-12 col-sm-3 col-md-3 col-lg-3 module_card d_flex " (click)="service.loggedin_user='sbu'"  [routerLink]="['/accounts/accountlist/farming']" >
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad card_image flex_1 brad_6">
+                        <img class="img img-rounded w-100" alt=" " src="assets/images/AM_logo.PNG">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad ">
+                            <span class="col-xs-12 txt_style pt-10">SBU </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-3 col-md-3 col-lg-3  module_card d_flex " (click)="service.loggedin_user='cso'" [routerLink]="['/accounts/accountlist/farming']">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad card_image flex_1 brad_6">
+
+                        <img class="img img-rounded w-100 h-185" alt=" " src="assets/images/SBU_head.PNG">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad ">
+                            <span class="col-xs-12  txt_style pt-10"> CSO</span>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div class="col-12 col-sm-3 col-md-3 col-lg-3 module_card d_flex" *ngFor="let role of Roles" (click)="service.loggedin_user='account_requestor'; checkRole(role.RoleId)"  [routerLink]="['/accounts/accountlist/farming']">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad card_image flex_1 brad_6">
+                        <img class="img img-rounded w-100" alt=" " src="assets/images/CSO_logo.PNG">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pad ">
+                            <span class="col-xs-12 txt_style pt-10">{{role.Name}} </span>
+                        </div>
+                    </div>
+                </div> -->
+
+
+            </div>
+        </div>
+    </div>
+</div>

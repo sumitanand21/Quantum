@@ -1,0 +1,45 @@
+<div class="top-header top-head-index insight" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+
+      <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 float-left width_25 responspad-0">
+        <button (click)="goBack()" class="mdi mdi-keyboard-backspace back-buttonbg padLeft-7" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+      </div>
+
+      <div class="col-10 col-sm-7 col-md-7 col-lg-7 col-xl-7 float-left ">
+        <h1 class="heading-level-one mtop-5">Email history</h1>
+        <small class="colorWhite">Opportunities</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  insight no_pad pad-lr-30">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-275"></div>
+  <div class="col-12 float-left customized-accordians mtop-20 pad-lr-30">
+    <!-- <mat-accordion> -->
+
+
+  <!-- Level 1 Accordian Starts-->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0  mtop-150">
+
+  </div>
+    <!-- Level 1 Accordian Ends-->
+
+  </div>
+
+</div>
+<!-- serviceSearch -->
+    <!-- email landing table starts here -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tag-container padLR-40-10">
+       <div class="parent-container" *ngIf="emailHistoryTable.length > 0">
+      <app-single-table (detectActionValue)="performTableChildAction($event)" [TableName]="'emailtable'"
+        [serviceSearch]=false [IsTabRequired]=false [hideSortFilter]=true  [TableCollection]="emailHistoryTable" [IscheckBoxRequired]=false [IsActionFixed]=true
+        [IsFreezedColumn]=true [IsCustomizeTable]=true  [IsDesp]=true 
+        [IsTabList]="tabList" (selectedValue)="appendConversation($event)"
+        [TabValueSelected]="selectedTabValue" [orderType]="'widthauto'"> </app-single-table>
+       </div>
+    </div>
+    <!-- email landing table ends here -->

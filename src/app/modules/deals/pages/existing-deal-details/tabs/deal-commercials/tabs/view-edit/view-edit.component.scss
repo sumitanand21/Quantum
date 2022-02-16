@@ -1,0 +1,14 @@
+.view-edit-container
+{
+   
+    .sub-tabs
+    {
+        position: absolute;
+        z-index: 8;
+        top: 88px;
+        button
+        {
+            min-width: 190px;
+        }
+    }
+}

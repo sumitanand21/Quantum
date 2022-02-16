@@ -1,0 +1,26 @@
+<div class="col-12 float-left  no_pad popup-container accountOwn ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd ">
+            <span class="col-10 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title>Confirm approval</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+        <div class="col-12 float-left border-bottom-grey1"></div>
+        <div class="col-12 float-left  no_pad">
+            <span class="col-12 float-left  no_pad logo-hd-popup1 padt-20">Are you sure you want to confirm the creation
+                of <span>{{data.itemData.Name}}</span> and add it to current hunting accounts? </span>
+        </div>
+        <div class="col-12 float-left  no_pad">
+            <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text-popup"
+                id="text3" name="text" [(ngModel)]="overallcomment" type="text" placeholder="Type here"></textarea>
+        </div>
+    </div>
+    <div class="col-12 float-left no_pad">
+
+        <button aria-label="Confirm" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="ConfirmComment();">Confirm</button>
+
+        <!--<button aria-label="Confirm" class="col-12 float-left btndef-none no_pad confrm-btn" mat-dialog-close
+            (click)="Confirm();accservive.accounttoast('\<Account name\> having the account number \<Account #\> has been successfully created. The account can be viewed in the account list page.')">Confirm</button>-->
+
+    </div>
+</div>

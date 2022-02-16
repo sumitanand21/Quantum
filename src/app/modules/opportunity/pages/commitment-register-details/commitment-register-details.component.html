@@ -1,0 +1,265 @@
+<div>
+  <ng-container *ngIf="isLoading">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+          <div class="loaderContainer">
+            <div class="loader"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <div class="top-header top-head-index" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab opportunityPage new-container">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 float-left no_pad">
+
+          <button class="mdi mdi-keyboard-backspace cursor-pointer float-left back-buttonbg" (click)="goBack()"
+            role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+          <h1 class="heading-level-one heading-custom">{{commitmentRegisterName}}</h1>
+          <span class="brudcrumbs">Opportunities > {{oppName}} > commitment register</span>
+        </div>
+        <div class="col-6  float-right no_pad mrg-top20 save-cancel-responsive web-action-button">
+          <button class="save-responsive-btn button-wd50 primary-button borderless btn-block h-40 std w-90 float-right "
+            *ngIf="state=='noneditable'" (click)="editData()">
+            Edit</button>
+          <button class="save-responsive-btn button-wd50 primary-button borderless btn-block h-40 std w-90 float-right "
+            *ngIf="state=='editable'" (click)="saveRegisterData()">
+            Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div clas="col-12 float-left no_pad ">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-228 new-container">
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container pad-top-90">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-180"> </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 ">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad  mt60">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt-15 "
+            *ngIf="state=='noneditable'">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+                  <h3 class="heading-level-three"> Commitment register details </h3>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt10">
+
+                  <div class="col-12 no_pad float-left">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 plb-60-20 customized-input float-left  ">
+                      <label class="w-100 label-form">Commitment number
+                      </label>
+
+                      <span class="label-form-data">{{registerData.SerialNumber}}</span>
+                    </div>
+                    <!-- Meeting date -->
+                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 float-left plb-60-20 pb21">
+                      <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad">Created
+                        date</label>
+                      <span class="label-form-data">{{createdDate}}</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-8 plb-60-20 customized-input float-left  ">
+                    <label class="w-100 label-form">Name
+                    </label>
+                    <span class="label-form-data" [(ngModel)]="registerData.Name"
+                      ngDefaultControl>{{registerData.Name}}</span>
+                  </div>
+                </div>
+              </div>
+              <!-- first col-xs-6 close -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 float-left plb-60-20">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-checkbox mt10 ">
+
+                  <section class=" meeting-check-sections float-left no_pad">
+                    <h3 class="heading-level-four"> Description</h3>
+                  </section>
+
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt30">
+                  <label class="col-6 float-left no_pad label-form rel-top-18">
+                  </label>
+                  <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                    {{registerData.Description}}</span>
+                </div>
+              </div>
+              <!-- mar 21 -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left no_pad ">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt10">
+                  <h3 class="heading-level-four mt10 d-inline-flex">Attachments </h3>
+                </div>
+                <section class="float-left w-100 padd-top-btm20 mt10">
+                  <span class="float-left attachment"> {{service.filesList.length}} Attachments </span>
+                  <button class="btn-none float-right download" *ngIf="service.filesList.length"
+                    (click)="downloadAll()"> Download all </button>
+                </section>
+                <section class="float-left col-12 no_pad mt-10" *ngFor="let item of service.filesList;let i=index">
+                  <div class="col-xl-7 col-lg-7 col-md-6 col-5 pl-0  download-uploaded-file float-left d-flex">
+                    <div class="float-left naming-tags-square pad-7 child-middle bg-azure">
+                      <span class="initials mdi mdi-file-document font-20" id="inti_name-kb"></span>
+                      <span class="initials mdi mdi-download font-20" role="button" tabindex="0"
+                        aria-label="Download file" id="inti_name-kb1" (click)="downloadFile(i,item)"
+                        matTooltip="Download file"></span>
+                    </div>
+                    <label for="inti_name-kb "
+                      class="float-left pos-rel pl10 name-sq padLR-10 border-std color-azure mx-width-90per">
+                      <div class="tag color-label_gray hover-attach padding-left5 ellipses " title="{{item.name}}" (click)="downloadFile(i,item)">
+                        {{item.name}}</div>
+                      <span class="float-right mdi mdi-window-close color-azure onone cp" role="button" tabindex="0">
+                        <span class="sr-only">Remove attachment
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                </section>
+               
+
+              </div>
+              <!-- mar 21 -->
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt-15 "
+            *ngIf="state=='editable'">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+                  <h3 class="heading-level-three"> Commitment register details </h3>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt10">
+
+                  <div class="col-12 no_pad float-left">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 plb-60-20 customized-input float-left  ">
+                      <label for="empty" class="w-100 label-form">Commitment number
+                      </label>
+                      <input id="empty" autocomplete="off" type="text" class="border-gray w-100 agenda-txt"
+                        placeholder="Commitment number" [(ngModel)]="registerData.SerialNumber" [appAlphaNumeric] = "'text'" disabled>
+                    </div>
+                    <!-- Meeting date -->
+                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 float-left plb-60-20 pb21">
+                      <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                        for="calStart">Created date</label>
+
+                      <div class="pos-rel">
+                        <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                          <div
+                            class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                            <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart"
+                              [matDatepicker]="picker6" title="DD-MMM-YYYY" [(ngModel)]="registerData.CreatedDate"
+                              disabled>
+                            <mat-datepicker-toggle matSuffix [for]="picker2" disabled>
+                              <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-8 plb-60-20 customized-input float-left  ">
+                    <label for="empty" class="w-100 label-form">Name
+                      <span class="required"> *</span>
+                    </label>
+                    <input id="empty" autocomplete="off" autofocus type="text" maxlength="100"
+                      [(ngModel)]="registerData.Name" (ngModelChange)="dataChange()" [appAlphaNumeric] = "'text'"
+                      class="border-gray w-100 agenda-txt" placeholder="Enter name">
+                  </div>
+                </div>
+              </div>
+              <!-- first col-xs-6 close -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 float-left plb-60-20">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-checkbox mt10 ">
+
+                  <section class=" meeting-check-sections float-left no_pad">
+                    <h3 class="heading-level-four descp"> Description
+                      <span class="label-form"
+                        *ngIf="registerData.Description?.length == 0 || registerData.Description == null"> (2000
+                        characters)</span>
+                      <span class="label-form"
+                        *ngIf="registerData.Description?.length > 0 && registerData.Description?.length < 1999">
+                        ({{ 2000 - registerData.Description?.length}} characters left)</span>
+                      <span class="label-form"
+                        *ngIf="registerData.Description?.length === 1999 || registerData.Description?.length === 2000">
+                        ({{ 2000 - registerData.Description?.length}} character left)</span>
+                    </h3>
+                  </section>                 
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt15">
+                  <label for="record" class="col-6 float-left no_pad label-form rel-top-18">
+                  </label>
+                  <textarea id="record" maxlength="2000" [(ngModel)]="registerData.Description"
+                    (ngModelChange)="dataChange()"
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left rel-top-18  text-area-content"
+                    placeholder="Enter description"></textarea>
+                </div>
+              </div>
+              <!-- mar 21 -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left no_pad ">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt10">
+                  <h3 class="heading-level-four d-inline-flex">Attachments </h3>
+                  <!-- <button class=" primary-button attach-btn d-flex align-items-center float-right"
+                  (click)="openAttachFilePopup()">
+                  <span class="mdi mdi-attachment attach-icon"> </span> Attach files </button> -->
+                  <input type="file" accept="/*" id="attach" multiple class="new-inputattach"
+                    (change)="fileChangeEvent($event)" style="display: none;" #addCommitmentregisterInput
+                    (click)="addCommitmentregisterInput.value = null" value="" name="files[]">
+                  <label class="mdi mdi-attachment new-attachment" for="attach">Attach files</label>
+                </div>
+                <span class="float-left attachment-type">File format supported
+                  <span class="mdi mdi-information-outline cp web-buttons"
+                    matTooltip="File format supported (PDF, XML, ZIP, MP3, MP4, PNG, JPEG, MPEG, GIF, TXT, DOCS, XLSX), file size allowed upto 5mb"></span>
+                </span>
+                <section class="float-left w-100 padd-top-btm20 mt10">
+                  <span class="float-left attachment"> {{service.filesList.length}} Attachments </span>
+                  <button class="btn-none float-right download" *ngIf="service.filesList.length && checkForNewReg>0"
+                    (click)="downloadAll()"> Download all </button>
+                </section>
+
+                <section class="float-left col-12 no_pad mt-10" *ngFor="let item of service.filesList;let i=index">
+
+                  <div class="col-xl-7 col-lg-7 col-md-6 col-5 pl-0 float-left d-flex" [ngClass]="item.AttachmentLink ? 'download-uploaded-file':''">
+                    <div class="float-left naming-tags-square pad-7 child-middle bg-azure">
+                      <span class="initials mdi mdi-file-document font-20" id="inti_name-kb"></span>
+                      <span class="initials mdi mdi-download font-20" role="button" tabindex="0"
+                        aria-label="Download file" id="inti_name-kb1" (click)="downloadFile(i,item)"
+                        matTooltip="Download file"></span>
+                    </div>
+                    <label for="inti_name-kb "
+                      class="float-left pos-rel pl10 name-sq padLR-10 border-std color-azure mx-width-90per">
+                      <div class="tag color-label_gray hover-attach padding-left5 ellipses " title="{{item.name}}"
+                        (click)="downloadFile(i,item)">
+                        {{item.name}}</div>
+                      <span class="float-right mdi mdi-window-close color-azure onone cp" role="button" tabindex="0"
+                        (click)="removeUploadFiles(i,item)">
+                        <span class="sr-only">Remove attachment
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                </section>
+
+              </div>
+              <!-- mar 21 -->
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

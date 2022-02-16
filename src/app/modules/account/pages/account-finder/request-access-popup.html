@@ -1,0 +1,28 @@
+<div class="col-12 float-left  no_pad popup-container accountOwn ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd ">
+            <span class="col-10 float-left  no_pad popup-hd-txt_latest popup-hd-size" mat-dialog-title>Do you want to request access
+            to this reserve account and activate it?</span>
+            <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+        </div>
+        <!--<div class="col-12 float-left border-bottom-grey1"></div>-->
+
+        <div class="col-12 float-left  no_pad">
+            <!-- <label class="col-12 float-left  no_pad logo-hd-popup1 padt-20" for="addcom">Additional comments<span class="required"> *</span></label>
+            <textarea [ngClass]="fieldSubmitted && !additionalComment ? 'border-pink' : 'border-gray'" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text-popup"
+                id="addcom" name="text"  type="text" placeholder="Enter additional comments" [(ngModel)]="additionalComment"></textarea>
+            <p *ngIf="fieldSubmitted && !additionalComment" class="error-message custom-msgtime pos-rel">Please enter additional comments</p> -->
+            <span *ngIf="IsHelpDesk == 'true'" class="col-10 float-left no_pad txt-style">To activate this reserve account <button class="clickhere cp btndef-none" routerLink="/accounts/accountdetails" mat-dialog-close>click here.</button>
+                 </span>
+            <span *ngIf="IsHelpDesk == 'false'" class="col-10 float-left no_pad txt-style">
+                To activate this reserve account kindly contact to your SE-SPoC and CSO (Central strategy office) teams. You will need approval from CSO to activate the reserve account. Once approved please write to helpdesk (<a href="mailto:sales.support@wipro.com">sales.support@wipro.com</a>)to get the same updated in system.
+             </span>
+        </div>
+    </div>
+
+    <!-- <div class="col-12 float-left no_pad ">
+            <button aria-label="No" class="col-6 float-left no_pad cancel-btn mt15" mat-dialog-close>No</button>
+            <button aria-label="yes" class="col-6 float-left btndef-none no_pad confrm-btn mr0 mt15" (click)="ReserveRequestActivation(additionalComment)"
+            >Yes</button>
+        </div> -->
+</div>

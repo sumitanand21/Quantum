@@ -1,0 +1,155 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-180"> </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 mob-card-pad no_pad mt20">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt-15 ">
+        <span class="back-arrow-helpdesk mdi mdi-arrow-left" (click)="goback()"></span>
+        <h2 class="heading-owner"> Order vertical owner change </h2>
+
+        <div class="divider mt10"> </div>
+
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+          <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+            <div class="customized-input">
+              <label for="callid" class="label-form w-100">Call ID</label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input id="callid" type="text" class="col-12 float-left" placeholder="Enter call ID">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+            <div class="customized-input">
+              <label for="callraised" class="label-form w-100">Call raised by (email ID)</label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input id="callraised" type="text" class="col-12 float-left" placeholder="Enter email">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+            <div class="customized-input">
+              <label for="OrderNumber" class="label-form w-100">Order number</label>
+              <div class="pos-rel w-100 float-left no_pad">
+                <input id="OrderNumber"  type="text" class="col-12 float-left" placeholder="Enter order number"
+                  [(ngModel)]="searchorder" (input)="checkOrderNum()">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CurrentVerticalOwner"
+                class="label-form">Current vertical owner
+              </label>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                <div class="flex-grow-1">
+                  <app-auto-complete-select [requiredField]="false" [source]="verticalOwner" [dataHeader]="dataHeaderVerticalOwner" [selectedObj]="selectedVerticalOwnerObj" 
+                  (content)="getVerticalOwnerData($event)" (SelectedData)="selectedVerticalOwner($event)"
+                  [IsinitialsView]=false
+                  [details]="VerticalOwnerName" [detailsId]="VerticalOwnerSysGuid" [labelName]="'CurrentVerticalOwner'"
+                  [Placeholder]="'Enter current vertical owner'" [Isdisabled]=false [IsApiCall]=true
+                 [isSearchLoader]='isSearchLoader' (advanceLookUp)="advanceLookUpSearch($event)">
+                  </app-auto-complete-select>
+                </div>
+              </div>
+              <!-- <p *ngIf="createFormErrorCheck && form_create.verticalSales.invalid" class="col-12 no_pad float-left validation-text manditary-cls">Vertical sales owner is required.</p> -->
+            </form>
+          </div>
+
+        </div>
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-right mt20 plb-60-20">
+          <button class="float-right pos-rel searchButton"  [disabled]="disableSummit" (click)="checkTableOnSearch()">  
+            Search
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left blue-patch">
+        <span class="blue-patch-text">Note - Target vertical owner should be orders's account number or account's
+          secondary account number</span>
+      </div>
+      <div *ngIf="showtable">
+        <div class="col-12 float-left pad-RL-30 heading-level-three mt20">Order</div>
+        <!--table starts-->
+
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt20 no_pad float-left">
+            <app-simple-scroll-table [TableHeader]="headernonsticky1" [TableCollection]="VerticalOwnerTable"
+            [IscheckBoxRequired]=false [totalTableCount]="tableCount" [TableName]="'verticalowner'"
+            [IsPaginationRequired]=false></app-simple-scroll-table>
+
+        </div>
+        <!--table ends-->
+      </div>
+      <!--scroll table starts-->
+      <div *ngIf="showScrolltable">
+        <div class="col-12 float-left pad-RL-30 heading-level-three mt20 pos-rel top-order-40">Order
+            
+        </div>
+        <app-simple-scroll-table [TableHeader]="headernonsticky1" [TableCollection]="VerticalOwnerTable"
+            [IscheckBoxRequired]=true [totalTableCount]="tableCount" [TableName]="'verticalowneredit'"
+            [IsPaginationRequired]=true (detectPageChangeData)="performTableChildAction($event)"></app-simple-scroll-table>
+    
+      </div>
+
+      <!--expansion table after checkbox-->
+      <div class="col-12 col-md-12 col-xl-12 float-left no_pad"
+      *ngIf="expandorder">
+        <div class="col-12 col-md-12 col-xl-12 float-left pad-RL-30 heading-level-three mt20 "
+          (click)="expandordertable =!expandordertable">
+          <span class="mdi-icon" [ngClass]="expandordertable ? 'mdi mdi-  
+          -down':'mdi mdi-chevron-up'"></span>{{selectedName?.length}}
+          orders
+          selected</div>
+
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad "
+          *ngIf="expandordertable">
+          <app-simple-scroll-table [TableHeader]="headernonsticky1" [TableCollection]="selectedName"
+          [IscheckBoxRequired]=false [totalTableCount]="tableCount" [TableName]="'verticalowner'"
+          [IsPaginationRequired]=false></app-simple-scroll-table>
+        </div>
+      </div>
+      <!--expansion table after checkbox-->
+      <!--scroll table starts-->
+      <div class="divider mt20 mar-RL-30" *ngIf="showtable"> </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt20 mb20 pad-RL-30">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 " >
+          <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="Childorder"
+              class="label-form">New vertical owner
+            </label>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+              <div class="flex-grow-1">
+                <app-auto-complete-select [requiredField]="false" [source]="newVerticalOwner" [dataHeader]="dataHeaderVerticalOwner" [labelName]="'Childorder'"
+                [selectedObj]="newSelectedVerticalOwnerObj" [IsinitialsView]=false
+                (content)="getNewVerticalOwnerData($event)" (SelectedData)="newSelectedVerticalOwner($event)"
+                  [Placeholder]="'Enter new vertical owner'"  [Isdisabled] ="disableInputField"
+                  [IsApiCall]=true [details]="newVerticalOwnerName" [detailsId]="newVerticalOwnerSysGuid"
+                  [isSearchLoader]='isSearchLoaderVerticalOwner' (advanceLookUp)="advanceLookUpSearch($event)" [isLastVar]=true>
+                </app-auto-complete-select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-right mt20 plb-60-20">
+          <button class="float-right pos-rel searchButton" [ngClass] = "getValidateUpdate() ?'disableAssign':''"  [disabled]='getValidateUpdate()' (click)="checkTableOnUpdate()">
+            Update
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad" *ngIf="showresults">
+      <div class="col-12 float-left pad-RL-30 heading-level-three mt20">Results</div>
+      <!-- <div class="divider mar-RL-30"> </div> -->
+     
+      
+      <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  no_pad float-left">
+          <app-simple-scroll-table [TableHeader]="headernonsticky2" [TableCollection]="UpdatedData"
+          [IscheckBoxRequired]=false [totalTableCount]="tableCount" [TableName]="'verticalownerupdate'"
+          [IsPaginationRequired]=false></app-simple-scroll-table>
+
+      </div>
+
+
+    </div>
+  </div>

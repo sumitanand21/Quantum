@@ -1,0 +1,19 @@
+<div class="col-xl-12 col-12 no_pad expand-table-panel w-100-selector" id="scroll-selector" [style.width.px]="width">
+    <div class="col-xl-12 col-12 float-left no_pad">
+       
+        <div class="col-xl-12 col-12 col-md-11 float-left expand-ryt-section  width100-max">
+            <div class="col-12 float-left desp-section">
+                <span class="col-12 no_pad float-left comment-head mt10" >{{expansionData?.Status}} remarks</span>
+                <perfect-scrollbar style="max-height: 110px;min-height: 110px;">
+                <!--only comes when lead is rejected with lead rejection reason from dropdown-->
+                <span class="no_pad float-left comment-head mt10">Reason:</span><span class="col-11 float-left mt12">{{expansionData.DisQualifyReason?expansionData.DisQualifyReason:"NA"}}</span> 
+                <!-- <span class="no_pad float-left comment-head mt10">Action:</span><span class="col-11 float-left mt12">{{expansionData?.Status}} by Rohit Shetty (07-jun-2019 at 15:00)</span>                -->
+                <span class="col-11 float-left mt12 no_pad"><span class="float-left comment-head mr-15">Comments:</span><pre class="float-left comment-head">{{expansionData?.Reason?.Remarks}}</pre></span>
+                </perfect-scrollbar>
+            </div>
+    
+        </div>
+  
+    </div>
+  </div>
+  

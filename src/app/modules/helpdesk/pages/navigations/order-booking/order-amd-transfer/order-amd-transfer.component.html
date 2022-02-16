@@ -1,0 +1,165 @@
+<div clas="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-228 new-container">
+    </div>
+
+    <!-- code goes here -->
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-30 pad-btm-100">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card pad-30 mb-0 block-disp">
+            <span class="back-arrow-helpdesk mdi mdi-arrow-left mobile-head" (click)="goback()"></span>
+            <h2 class="heading-level-two border-botton-pad-10 mobile-headml20"> Order Amendment Transfer </h2>
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left pad-45 mt20">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-input">
+                    <label for="callid" class="mb-0 label-form">Call ID</label>
+                    <input id="callid" type="text" class="border-gray w-100" placeholder="Enter call ID">
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left pad-45 mt20">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-input">
+                    <label for="callraised" class="mb-0 label-form">Call raised by (email ID)</label>
+                    <input id="callraised" type="text" class="border-gray w-100" placeholder="Enter email">
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mt20 height-105">
+                <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mb10 label-heading">Convert</span>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+                    <mat-radio-group class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mt5 radio-fontfamly" name="radiobtn" [(ngModel)]="favoriteSeason" (change)="toggleInit()">
+                        <mat-radio-button class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left" *ngFor="let season of seasons" [value]="season">
+                            {{season}}
+                        </mat-radio-button>
+                        <!-- <mat-radio-button value="Amendmentorder" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left">
+              Amendment to Order
+            </mat-radio-button>
+            <mat-radio-button value="oneamendment" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left">One
+              Amendment to
+              Other</mat-radio-button> -->
+                    </mat-radio-group>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left" *ngIf="favoriteSeason == 'Order to Amendment'">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left pad-45 mt20">
+                    <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="childorder" class="label-form">Child order
+          </label>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                            <div class="flex-grow-1">
+                                <app-auto-complete-select [requiredField]="false" [source]="ChildOrder" [dataHeader]="dataHeaderChildOrder" [selectedObj]="selectedChildOrderObj" (content)="getChildOrderData($event)" (SelectedData)="selectedChildOrder($event)" [IsinitialsView]=false [details]="ChildOrderNumber"
+                                    [detailsId]="ChildOrderId" [labelName]="'Childorder'" [Placeholder]="'Select child order'" [Isdisabled]=false [IsApiCall]=true [isSearchLoader]='isSearchLoader' (advanceLookUp)="advancelookupSearch($event)">
+                                </app-auto-complete-select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left pad-45 mt20">
+                    <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="parentorder" class="label-form">Parent order
+                        </label>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                            <div class="flex-grow-1">
+                                <app-auto-complete-select [requiredField]="false" [source]="Orderparent" [dataHeader]="dataHeaderParentOrder" [selectedObj]="selectedParentOrderObj" (content)="getParentOrder($event)" (SelectedData)="selectedParentOrder($event)" [IsinitialsView]=false [details]="ParentOrderNumber"
+                                    [detailsId]="ParentOrderId" [labelName]="'ParentOrder'" [Placeholder]="'Select parent order'" [Isdisabled]="selectedChildOrderObj.Name? false: true" [IsApiCall]=true [isSearchLoader]='isSearchLoader' (advanceLookUp)="advancelookupSearch($event)">
+                                </app-auto-complete-select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mt20 height-105">
+                    <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mb10">Amendment Type</span>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+                        <mat-radio-group [(ngModel)]="selection" class="col-6 no_pad float-left mt5 radio-fontfamly">
+                            <mat-radio-button value="renewal" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left">Renewal
+                            </mat-radio-button>
+                            <mat-radio-button value="incremental" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left">
+                                Incremental
+                            </mat-radio-button>
+                        </mat-radio-group>
+                        <button type="button" (click)="convertamendmentorder()" [disabled]="selectedChildOrderObj.Name ? ParentOrderNumber ? selection ? false: true: true: true" class="float-right btn-text h-40 std save-responsive-btn btn-width120 mr45">Convert
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mt20" *ngIf="favoriteSeason == 'Amendment to Order'">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left pad-45">
+                    <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="Amendment" class="label-form">Amendment
+            </label>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                            <div class="flex-grow-1">
+                                <app-auto-complete-select [requiredField]="false" [source]="selectedAdvisorName" [labelName]="'Amendment'" [Placeholder]="'Select amendment'" [dataHeader]="dataHeaderAmendmentOrder" (content)="getAmemdmentOrderData($event)" (SelectedData)="selectedAmendmentOrder($event)" [selectedObj]="selectedAdvisorOwnerObj"
+                                    [IsinitialsView]=false [Isdisabled]=false [IsApiCall]=true [details]="AmendmentOrderName" [detailsId]="AmendmentOrderSysGuid" [isSearchLoader]='isSearchLoader' (advanceLookUp)="advanceLookUpSearch($event)" [MandtErrorFlag]="advisorOwner">
+                                </app-auto-complete-select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- convertamendmentorder -->
+                <button type="button" (click)="convertamendmentorder()" [disabled]="!AmendmentOrderName" class="float-right btn-text h-40 std save-responsive-btn btn-width120 mt30 mr45">Convert</button>
+
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left" *ngIf="favoriteSeason == 'One Amendment to Other'">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left pad-45 mt20">
+                    <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="sourceAmendment" class="label-form">Source Amendment
+          </label>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                            <div class="flex-grow-1">
+                                <app-auto-complete-select [requiredField]="false" [source]="selectedAdvisorName" [labelName]="'Amendment'" [Placeholder]="'Select amendment'" [dataHeader]="dataHeaderAmendmentOrder" (content)="getAmemdmentOrderData($event)" (SelectedData)="selectedAmendmentOrder($event)" [selectedObj]="selectedAdvisorOwnerObj"
+                                    [IsinitialsView]=false [Isdisabled]=false [IsApiCall]=true [details]="AmendmentOrderName" [detailsId]="AmendmentOrderSysGuid" [isSearchLoader]='isSearchLoader' (advanceLookUp)="advanceLookUpSearch($event)" [MandtErrorFlag]="advisorOwner">
+                                </app-auto-complete-select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left pad-45 mt20">
+                    <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="TargetAmendment" class="label-form">Target Amendment
+            </label>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad d-flex">
+                            <div class="flex-grow-1">
+                                <app-auto-complete-select [requiredField]="false" [source]="selectedOneAdvisorName" [labelName]="'TargetAmendment'" [Placeholder]="'Select target amendment'" [dataHeader]="dataHeaderOneAmendmentOrder" (content)="getOneAmendmentOrderData($event)" (SelectedData)="selectedOneAmendmentOrder($event);onChangeHandlerCreateForm($event)"
+                                    [selectedObj]="selectedOneAdvisorOwnerObj" [IsinitialsView]=false [Isdisabled]="AmendmentOrderName?false:true" [IsApiCall]=true [details]="OneAmendmentOrderName" [detailsId]="OneAmendmentOrderSysGuid" [isSearchLoader]='isSearchLoader'
+                                    (advanceLookUp)="advanceLookUpSearch($event)" [MandtErrorFlag]="advisorOwner">
+
+                                </app-auto-complete-select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- [disabled]="!AmendmentOrderName && !OneAmendmentOrderName" -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mt10 height-105">
+                    <!-- <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left mb10">Amendment Type</span> -->
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-right">
+                        <button type="button" (click)="convertamendmentorder()" [disabled]="AmendmentOrderName ? OneAmendmentOrderName ? false :true :true" class="float-right btn-text h-40 std save-responsive-btn btn-width120 mt10 mr30">Convert</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left txtstyle pb20">
+            <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left textone">
+        1. Please note Orders/Amendments can not be tagged to unapproved Order/at risk approved orders.</span>
+            <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left texttwo">
+        2. Order/Amendment conversion cannot be done in case of </span>
+            <span class="col-12 float-left common-text">a. Account mismatch</span>
+            <span class="col-12 float-left common-text">b. SAP code mismatch</span>
+            <span class="col-12 float-left common-text">c. Currency mismatch</span>
+            <span class="col-12 float-left common-text">d. Parent order start date is after Order/Amendment start date.</span>
+        </div>
+
+    </div>
+</div>

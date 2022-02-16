@@ -1,0 +1,35 @@
+.color-white{
+  color: white !important;
+}
+.heading-level-two{
+  margin: 0;
+}
+
+.loader {
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+}
+.loaderContainer {
+width: 100%;
+top:0em;
+position: absolute;
+height: 100%;
+z-index: 9999;
+background: white;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

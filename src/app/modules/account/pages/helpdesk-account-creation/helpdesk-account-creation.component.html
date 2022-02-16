@@ -1,0 +1,1685 @@
+<app-small-spinner [isLoading]="isLoading"> </app-small-spinner>
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 mt10 header-action-tab  accountDetails_page" [ngClass]="userdat.chatBot? 'chat-bot-1100' : ''">
+        <div class="col-sm-12 no_pad float-left head ">
+            <div class="no_pad float-left heading cp pl30 headerAlignment">
+                <h2 class="heading-Account">Create new account</h2>
+            </div>
+            <div class="float-right save-cancel-responsive d-flex">
+                <button class="primary-button secondary-btn border-0 h-40 std cancel-responsived-btn button-wd50 marginR10" (click)="goback()">Cancel</button>
+                <button class="primary-button borderless border-0 h-40 std save-responsive-btn button-wd50" (click)="postobj()">
+                    <span class="edit">Submit</span>
+                </button>
+            </div>
+            <div class="float-right"> </div>
+        </div>
+    </div>
+</div>
+<div class="blue_bg_div account-details-back account_details_height gcp_list_height"> </div>
+<div class="min-hei accountDetails_page scroll-middle-ios-100vh pl30 noPadMobile">
+    <!--  REQUIRED WHEN SIDE NAV IS PRESENT [ngClass]="userdat.sideTrans ? 'main-containt-250' : 'main-containt'"  else use pl30-->
+    <div class="topNavHead pt20 plr30 float-left col-sm-12 padd-top-130">
+        <div class="scrollClass">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-sm-12 no_pad pad20_ipad mt35 vertical_btns_div float-left ">
+                <div class="col-lg-3 col-sm-3 col-md-3 col-sm-3 no_pad float-right sort_ipad height1">
+                </div>
+                <div [ngClass]="userdat.chatBot ?'col-lg-8 col-sm-8 col-md-8 col-sm-8':'col-lg-8 col-sm-8 col-md-8 col-sm-8'" class=" no_pad but_border float-right d-flex justify-content-center flex-row-reverse" [ngClass]="DIDI ?'btn_year_active':''">
+
+                    <button (click)="showAlliance()" role="tab" [attr.aria-selected]="allianceTab ? 'true': ''" [ngClass]="allianceTab?'active':''" class="col-lg-3 col-sm-3 col-md-3 col-sm-3 col-3 float-right sub_vertical_but rejected_acc_border brd-left0 btn_all">
+                        <span class="no_pad calinSelectall mdi mdi-account-network mr5 f-18"></span>
+                        <span class="no_pad txtpos btntxt_s mobile-capital-letter">Account relationships</span>
+                    </button>
+                    <button (click)="showCustomer()" role="tab" [attr.aria-selected]="CustomerTab? 'true': ''" [ngClass]="CustomerTab?'active':'' " class="col-lg-3 col-sm-3 col-md-3 col-sm-3 col-3 float-right sub_vertical_but btn_all borderleft">
+                        <span class="no_pad calinSelectall mdi mdi-account-settings mr5 f-18"></span>
+                        <span class=" no_pad txtpos btntxt_s mobile-capital-letter"> Customer details</span>
+                    </button>
+                    <button (click)="showAccount()" role="tab" [attr.aria-selected]="accountTab? 'true': ''" [ngClass]="accountTab?'active':''" class="col-lg-3 col-sm-3 col-md-3 col-sm-3 col-3 float-right sub_vertical_but btn_all">
+                        <span class="no_pad calinSelectall mdi mdi-home-currency-usd mr5 f-18"></span>
+                        <span class=" no_pad txtpos btntxt_s mobile-capital-letter">Account structure</span>
+                    </button>
+                    <button (click)="showOverview()" role="tab" [attr.aria-selected]="overviewTab ? 'true': ''" [ngClass]="overviewTab ? 'active':''" class="col-lg-3 col-sm-3 col-md-3 col-sm-3 col-3 btn_all sub_vertical_but brd-right0 brdr-rad4">
+                        <span class="no_pad mdi mdi-eye calinSelectall mr5 f-18"></span>
+                        <span class=" no_pad txtpos btntxt_s mobile-capital-letter">Overview</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 no_pad float-left mt20 pb-70" *ngIf="overviewTab">
+            <!--feb-18 rupali-->
+            <h3 class="col-sm-12 no_pad overviewHead">Account overview</h3>
+            <div class="col-sm-12 no_pad">
+                <div class="col-sm-12 no_pad backWht">
+                    <h4 class="cardsHead">Account details</h4>
+                    <div class="row">
+                        <div *ngFor="let editable of accountDetails; let i=index" [ngClass]="userdat.chatBot ?'col-sm-12 ':'col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4'">
+                            <!-- input field -->
+                            <div class="col-sm-12 no_pad mt10 float-left " *ngIf="editable.control == 'input'">
+                                <label class="col-sm-12 no_pad editLabel" for="account_name{{i}}" matTooltip="{{editable.tooltip}}">{{editable.accountName}}
+                                    <span *ngIf="editable.isRequired" class="asteriq"> * </span>
+                                </label>
+                                <div class="form-group no_pad customized-input" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                    <input #accountList (keypress)="(editable.datatype == 'number' || editable.datatype == 'float')?validate.maxValueValidation($event,editable.values,editable.AttributeName):'';getError(editable.record,editable.fkey)" (keydown)="(editable.datatype == 'number' || editable.datatype == 'float')?validate.deleteAfterDecimal($event,null,-1, editable.values,editable.AttributeName):'';getError(editable.record,editable.fkey)"
+                                        (keyup)='getdata(editable.fkey) ;getError(editable.record,editable.fkey)' name="accountList" maxlength="{{editable.maxlength?editable.maxlength:500}}" class="border-gray w-100 vision_txt_area_placeholder" id="account_name{{i}}"
+                                        [(ngModel)]="editable.record" [class.error]="submitted && editable.isRequired && !editable.record" placeholder="{{editable.placeholder}}" (input)="restrictspace(editable.fkey,$event,editable.record)">
+                                    <p *ngIf="submitted && editable.isRequired && !editable.record" class="error-message custom-msg top-40">
+                                        {{editable.accountName}} is required</p>
+                                </div>
+                            </div>
+                            <!-- disabled input field start -->
+
+                            <div class="col-sm-12 no_pad mt10 float-left " *ngIf="editable.control == 'disabledinput'">
+                                <label class="col-sm-12 no_pad editLabel" for="account_name{{i}}" matTooltip="{{editable.tooltip}}">{{editable.accountName}}</label>
+                                <div class="form-group no_pad" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                    <input class="form-control disabledInput vision_txt_area_placeholder" id="account_no{{i}}" disabled [(ngModel)]="editable.values">
+                                </div>
+                            </div>
+                            <!-- disabled input field end -->
+                            <!-- dropdown -->
+                            <div class="col-sm-12 no_pad mt10 float-left mb21 mobile-select-box " *ngIf="editable.control == 'dropdown'">
+                                <label class="col-sm-12 no_pad editLabel mb14" for="account_type{{i}}">{{editable.accountName}} <span *ngIf="editable.isRequired"
+                                        class="asteriq ng-star-inserted"> * </span></label>
+                                <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                    <span class="caret"></span>
+                                    <select class="w-100 border-gray Empaneled_txt" id="account_type{{i}}" [(ngModel)]="editable.Id" (change)="selectedvalue(editable);getError(editable.Id,editable.fkey)" [class.error]="submitted && editable.isRequired && !(editable.Id)">
+                                        <option value=''>Select {{editable.accountName | lowercase}}</option>
+                                        <option *ngFor="let ac of accountOverviewDropdown[editable.fkey]"
+                                            [value]="ac.Id">{{ac.Value}}
+                                        </option>
+                                    </select>
+                                    <p *ngIf="submitted && editable.isRequired && !(editable.Id)" class="error-message custom-msg top-40">
+                                        {{editable.accountName}} is required</p>
+                                    <!-- <select class="w-100 border-gray Empaneled_txt">
+                                        <option> test</option>
+                                        <option> test</option>
+                                    </select> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-12 no_pad mt10 float-left mb21 web-select-box " *ngIf="editable.control == 'dropdown'">
+                                <label class="col-sm-12 no_pad editLabel mb14" for="accountName{{i}}">{{editable.accountName}}<span *ngIf="editable.isRequired"
+                                        class="asteriq ng-star-inserted"> * </span></label>
+                                <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                    <span class="caret"></span>
+                                    <mat-form-field class="w-100 border-gray Empaneled_txt">
+                                        <mat-label> Select {{editable.accountName}}</mat-label>
+                                        <mat-select disableOptionCentering panelClass="Select-panel-class" [class.error]="submitted && editable.isRequired && !(editable.Id)" id="accountName{{i}}" [(ngModel)]="editable.Id" [ngClass]="{'error': editable.accountName.touched && !editable.accountName.valid}"
+                                            (keypress)="selectedvalue(editable);getError(ac.Value,editable.fkey)" (keydown)="selectedvalue(editable);getError(ac.Value,editable.fkey)" (keyup.enter)="selectedvalue(editable);getError(ac.Value,editable.fkey)"
+                                            (selectionChange)="selectedvalue(editable);getError(ac.Value,editable.fkey)" class="select-focus">
+                                            <!-- <mat-option value="">Select {{editable.accountName | lowercase}}
+                                            </mat-option> -->
+                                            <mat-option *ngFor="let ac of accountOverviewDropdown[editable.fkey]" [value]="ac.Id" matTooltip="{{ac.Value}}" [matTooltipHideDelay]="1" (click)="selectedvalue(editable);getError(ac.Value,editable.fkey)">
+                                                {{ac.Value}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <p *ngIf="submitted && editable.isRequired && !(editable.Id)" class="error-message custom-msg top-40"> {{editable.accountName}} is required </p>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- dropdown ends here-->
+                            <!-- lookup field starts here -->
+                            <!-- lookup field for legal entity name start -->
+                            <div class="col-sm-12 no_pad mt10 growth_container" *ngIf="editable.control == 'searchinput' && editable.fkey == 'Legalentityname'">
+                                <label class=" no_pad editLabel" for="ConversationNamee{{i}}" matTooltip="{{editable.tooltip}}">{{editable.accountName}}
+                                    <span *ngIf="editable.isRequired" class="asteriq"> * </span></label>
+                                <div class="col-sm-11 float-left no_pad">
+                                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text cur-ptr pr40" id="ConversationNamee{{i}}" name="ConversationNamee" autocomplete="off" type="text" placeholder="{{editable.placeholder}}" [class.error]="submitted && editable.isRequired && !editable.record"
+                                        (click)="openeSharedAdvanceLookupPopup();getwiproaccounts();getdata(editable.fkey)" title="Press enter" [(ngModel)]="editable.record" (keypress)="openeSharedAdvanceLookupPopup(); getwiproaccounts()" aria-describedby="legalerrorMsg">
+                                    <p *ngIf="submitted && editable.isRequired && !editable.record" class="error-message custom-msg top-40">
+                                        {{editable.accountName}} is required</p>
+                                    <p *ngIf="false" class="error-message" id="legalerrorMsg">Legal entity name is required
+                                    </p>
+                                    <span class="mdi mdi-magnify"></span>
+                                </div>
+                            </div>
+                            <!-- lookup field for legal entity name end -->
+                            <div class="col-sm-12 no_pad mt10 growth_container" *ngIf="editable.control == 'searchinput'  && editable.fkey != 'Legalentityname'">
+                                <label class="no_pad editLabel" for="delivery{{i}}" matTooltip="{{editable.tooltip}}">{{editable.accountName}} <span *ngIf="editable.fkey == 'Privateequaitity' && IsPrivateEquityOwned"
+                                    class="asteriq"> * </span></label>
+                                <div (clickOutside)="autoCompleteClose(editable)" class="float-left editSearch  cal_brdr-auto no_pad" id="campaign" [ngClass]="{'col-sm-6' : userdat.chatBot ,'col-sm-11': !userdat.chatBot }">
+                                    <input type="text" #accountDetailList (keydown.shift.Tab)="autoCompleteClose(editable)" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text pr40" type="text" appKeyListControl (arrowDown)="arrowkeyLocation=$event" (keyup.enter)="accountOverviewDropdown[editable.fkey]?.length+1 == arrowkeyLocation?openadvancetabs(accountDetails,editable.fkey,accountOverviewDropdown[editable.fkey],editable.record, 'record','accountDetail') : editable.prevValue=editable.record=accountOverviewDropdown[editable.fkey][arrowkeyLocation]['Name'];getPosts(accountDetails,editable,accountOverviewDropdown[editable.fkey][arrowkeyLocation], 'record','Name', arrowkeyLocation);arrowkeyLocation=0;autoCompleteClose(editable);"
+                                        [attr.data-arrayMaxLength]="accountOverviewDropdown[editable.fkey]?.length" [attr.data-isDownBtn]=true type="text" role="combobox" [attr.aria-expanded]="editable['isOpened']?true:false" aria-owns="read" [attr.aria-activedescendant]="accountOverviewDropdown[editable.fkey]?.length+1 == arrowkeyLocation?'adls'+arrowkeyLocation:arrowkeyLocation"
+                                        (intialLoadData)="editable['isOpened'] = true ; keyWordSearch(accountDetailList.value,accountDetailList.value, editable.fkey);(editable.fkey == 'Privateequaitity' ?getError(accountcreationobj[editable.payloadKey],editable.fkey):'')"
+                                        (input)="editable['isOpened'] = true; keyWordSearch(accountDetailList.value,accountDetailList.value, editable.fkey);(editable.fkey == 'Privateequaitity' ?getError(accountcreationobj[editable.payloadKey],editable.fkey):'')"
+                                        (keydown.Tab)="autoCompleteClose(editable)" [dataManipulate]="true" placeholder="Search {{editable.accountName}}" id="delivery{{i}}" [(ngModel)]="editable.record" [attr.data-selectedvalue]="editable.prevValue?getSymbol(editable.prevValue):''"
+                                        matTooltip="{{editable.record}}" [class.error]="submitted && editable.isRequired && !accountcreationobj[editable.payloadKey]">
+                                    <p *ngIf="submitted && editable.isRequired && !accountcreationobj[editable.payloadKey]" class="error-message custom-label top40" id="RequestErormsg">{{editable.accountName}} is required
+                                    </p>
+                                    <!--  -->
+                                    <span *ngIf="!accountDetailList.value || editable['isOpened']" class="mdi mdi-magnify btn_none float-right magnify_button"></span>
+                                    <span class="mdi mdi-close float-right magnify_button" (click)="removeSeletecedValue(accountDetails, editable,'record');arrowkeyLocation=0;editable.prevValue=''" *ngIf="accountDetailList.value!=='' && !editable['isOpened']"></span>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top39 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 border-leftdrop bg-white" *ngIf="editable['isOpened']">
+
+                                        <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                            <span class="w-100 z-ind-9 float-left bg-white"></span>
+                                            <ul class="list-group color-azure  sort-dropdown mr2" role="listbox">
+                                                <span class="loader-search" *ngIf="isActivityGroupSearchLoading">
+                                                </span>
+                                                <li class="list-group-item h-50 p-4-10" [matTooltip]=" option.Name" *ngFor="let option of accountOverviewDropdown[editable.fkey]; let ind = index" [value]="getSymbol(option.Name)" (click)="editable.prevValue=option.Name;editable['isOpened'] = false;getPosts(accountDetails,editable,option, 'record','Name', ind)"
+                                                    id="{{ind}}" tabindex="0" role="option" [class.active]="ind==arrowkeyLocation" aria-disabled="false">
+                                                    <label for="inti_name" class="float-left name w-80">
+                                                        <span class="d-block list-name ellipses">
+                                                            {{getSymbol(option.Name)}}</span>
+                                                        <!-- <span class="sub-list1 d-block blockcolor">{{item.AdId || NA}} | {{item.Email || NA}}</span> -->
+                                                        <!-- <span class="sub-list1 d-block blockcolor">{{item.Email || NA}}</span> -->
+                                                        <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+                                                    </label>
+                                                    <!-- <span class="btn-key float-right" *ngIf="item.value"> Key </span> -->
+                                                </li>
+
+                                                <li class="d-block list-name  p-10 bg-white" *ngIf="accountOverviewDropdown[editable.fkey] && accountOverviewDropdown[editable.fkey].length==0 && !isActivityGroupSearchLoading">
+                                                    No results found
+                                                    <!-- <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12 ellipses">
+                                      Ensure that you have typed correct legal entity name</span> -->
+
+                                                </li>
+                                            </ul>
+                                        </perfect-scrollbar>
+                                        <span *ngIf="editable.isAdvanceLookup" class="db-search" (click)="openadvancetabs(accountDetails,editable.fkey,accountOverviewDropdown[editable.fkey],editable.record, 'record','accountDetail')">
+                                            <button id="adls{{accountOverviewDropdown[editable.fkey]?.length+1}}"
+                                                tabindex="0" aria-disabled="false" type="button" class="button-search"
+                                                [class.active]="accountOverviewDropdown[editable.fkey]?.length+1 == arrowkeyLocation">
+                                                <span class="mdi mdi-file-outline"></span> Advance look up
+                                        </button>
+                                        </span>
+                                    </div>
+                                    <!-- <mat-autocomplete #auto="matAutocomplete">
+                                            <mat-option *ngFor="let option of accountOverviewDropdown[editable.fkey]; let ind = index" [value]="getSymbol(option.Name)" (click)="getPosts(editable,option, 'record','Name', ind)" id="{{ind}}" tabindex="0" role="option" [class.active]="ind==arrowkeyLocation"
+                                                aria-disabled="false" aria-selected="false">
+                                                {{getSymbol(option.Name)}}
+                                            </mat-option>
+                                            <mat-option *ngIf="accountOverviewDropdown[editable.fkey] && accountOverviewDropdown[editable.fkey].length==0">
+                                                No record found
+                                            </mat-option>
+                                            <span *ngIf="editable.isAdvanceLookup" class="db-search" (keypress)="openadvancetabs(ownershipDetails,editable.fkey,accountOverviewDropdown[editable.fkey],editable.record, 'record')" (click)="openadvancetabs(ownershipDetails,editable.fkey,accountOverviewDropdown[editable.fkey],editable.record, 'record')">
+                                                <button id="adls{{accountOverviewDropdown[editable.fkey]?.length+1}}"
+                                                    role="option" tabindex="0" aria-disabled="false" type="button"
+                                                    class="button-search"
+                                                    [class.active]="accountOverviewDropdown[editable.fkey]?.length+1 == arrowkeyLocation">
+                                                    <span class="mdi mdi-file-outline"></span> Advance look up
+                                            </button>
+                                            </span>
+                                        </mat-autocomplete> -->
+
+                                </div>
+                            </div>
+                            <!-- lookup field ends here-->
+                            <!-- radio buttons field starts here-->
+                            <div class="no_pad col-sm-12 mb 15 float-left " *ngIf="editable.control == 'radiobutton'">
+                                <label class="col-sm-12 no_pad editLabel " for="keycon{{i}}">{{editable.accountName}}
+                                </label>
+                                <mat-radio-group id="keycon{{i}}" (change)="privateequitityowned($event,editable)" [disabled]="editable.isDisabled">
+                                    <mat-radio-button [value]="true" [checked]="isactive" class="pr30">
+                                        Yes</mat-radio-button>
+                                    <mat-radio-button [value]="false" [checked]="!isactive">No
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <!-- radio buttons field ends here -->
+                        </div>
+                        <!--edit part for account details ends here-->
+                    </div>
+                </div>
+                <div class="col-sm-12 no_pad backWht ">
+                    <div class="col-sm-12 no_pad float-left ownershipborder">
+                        <div class="col-sm-10  no_pad float-left ">
+                            <!-- <h4 class="cardsHeadowner" [ngClass]="editPart ? 'editTopHeads' : ''">Ownership details</h4> -->
+                            <h4 class="cardsHeadowner pb-15">Ownership details</h4>
+                        </div>
+                    </div>
+                    <!--edit part-->
+                    <div class="col-sm-12 no_pad float-left pt-10">
+                        <div class="row">
+                            <div *ngFor="let own_editable of ownershipDetails;let i=index;" [ngClass]="userdat.chatBot ?'col-sm-12 ':'col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4'">
+                                <!--<div class="col-sm-12 no_pad  float-left" *ngIf="own_editable.control == 'disabledinput'">
+                                    <div class="col-sm-12 float-left no_pad mt-10">
+                                        <label class=" no_pad editLabel" for="sbu">{{own_editable.editname}}</label>
+                                        <button *ngIf="own_editable.isComment" [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover7" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos">
+                                            <span
+                                                [ngClass]="(own_editable.GrowthPositionSubmitted && own_editable.comment !== '')?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                                                <span class="sr-only">{{own_editable.editname}}</span>
+                                            </span>
+                                        </button>
+                                        <div class="form-group no_pad" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                            <input class="form-control disabledInput vision_txt_area_placeholder" id="sbu" disabled [(ngModel)]="own_editable.record">
+                                        </div>
+                                        <popover-content #myPopover7 title="Comments - {{own_editable.editname}}" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                                            <span class="">
+                                                <div class="textarea_readonly">
+                                                    <textarea class="form-control vision_txt_area_placeholder"
+                                                        [(ngModel)]="own_editable.comment" #newListItem7
+                                                        name="newListItem7" rows="6"
+                                                        placeholder="Write your comments here.."></textarea>
+                                                </div>
+                                                <button type="button" class="btn pull-left cancel_but"
+                                                    (click)="GrowthPositionInAccountClicked = false;myPopover7.hide();own_editable.comment =''; clearComment(own_editable)">Cancel
+                                                </button>
+                                                <button type="button" [disabled]="newListItem7.value.length < 1"
+                                                    [ngClass]="newListItem7.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                                                    (click)="own_editable.GrowthPositionSubmitted = true;GrowthPositionInAccountClicked = false;myPopover7.hide();savecomments(own_editable)">Submit</button>
+                                            </span>
+                                        </popover-content>
+                                    </div>
+                                </div>-->
+                                <ng-container *ngIf="own_editable.control == 'searchinput'">
+                                    <div class="col-sm-12 no_pad mt20 growth_container">
+                                        <label class="w-100 no_pad editLabel" for="ownershipAuto{{i}}">{{own_editable.editname}}
+                                            <span *ngIf="own_editable.isRequired && otherFieldsvalidation"
+                                                class="asteriq"> * </span></label>
+                                        <div (clickOutside)="autoCompleteClose(own_editable)" class="float-left editSearch  cal_brdr-auto no_pad" id="campaign" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                            <!-- {{own_editable.prevValue}} -->
+                                            <input #ownerDetailList type="text" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text" appKeyListControl (arrowDown)="arrowkeyLocation=$event" [attr.data-arrayMaxLength]="accountOverviewDropdown[own_editable.fkey]?.length"
+                                                [attr.data-isDownBtn]=true type="text" role="combobox" aria-autocomplete="list" [attr.aria-expanded]="own_editable['isOpened']?true:false" aria-owns="read" (keyup.enter)="accountOverviewDropdown[own_editable.fkey]?.length+1 == arrowkeyLocation?openadvancetabs(ownershipDetails,own_editable.fkey,accountOverviewDropdown[own_editable.fkey],own_editable.record, 'record','ownershipDetails'): own_editable.prevValue=own_editable.record=accountOverviewDropdown[own_editable.fkey][arrowkeyLocation]['Name'];getPosts(ownershipDetails,own_editable,accountOverviewDropdown[own_editable.fkey][arrowkeyLocation], 'record','Name', arrowkeyLocation);arrowkeyLocation=0;autoCompleteClose(own_editable);"
+                                                [attr.aria-activedescendant]="accountOverviewDropdown[own_editable.fkey]?.length+1 == arrowkeyLocation?'adls'+arrowkeyLocation:arrowkeyLocation" (intialLoadData)="own_editable['isOpened'] = true ; keyWordSearch(ownerDetailList.value,ownerDetailList.value, own_editable.fkey,ownerDetailList.value);(otherFieldsvalidation ?getError(own_editable.record,own_editable.fkey):'')"
+                                                (input)="own_editable['isOpened'] = true; keyWordSearch(ownerDetailList.value,ownerDetailList.value, own_editable.fkey,ownerDetailList.value)" (keydown.Tab)="autoCompleteClose(own_editable)" (keydown.shift.Tab)="autoCompleteClose(own_editable)"
+                                                [dataManipulate]="true" placeholder="Select {{own_editable.editname === 'SBU' ? own_editable.editname :own_editable.editname | lowercase}}" id="ownershipAuto{{i}}" [(ngModel)]="own_editable.record" [attr.data-selectedvalue]="own_editable.prevValue?own_editable.prevValue:''"
+                                                matTooltip="{{own_editable.record}}" [class.error]="submitted && own_editable.isRequired && !(accountcreationobj[own_editable.payloadKey]) && otherFieldsvalidation">
+                                            <p *ngIf="submitted && own_editable.isRequired && !(accountcreationobj[own_editable.payloadKey]) && otherFieldsvalidation" class="error-message custom-msg top-40">
+                                                {{own_editable.editname}} is required</p>
+                                            <!--<input class=" float-left col-sm-12 place_input" placeholder="Pick one"><span class="mdi mdi-magnify btn_none float-right magnify_button"></span>-->
+                                            <span *ngIf="!ownerDetailList.value || own_editable['isOpened']" class="mdi mdi-magnify btn_none float-right magnify_button"></span>
+                                            <span class="mdi mdi-close float-right magnify_button" (click)="removeSeletecedValue(ownershipDetails, own_editable,'record');arrowkeyLocation=0;own_editable.prevValue=''" *ngIf="ownerDetailList.value!=='' && !own_editable['isOpened']"></span>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top39 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 border-leftdrop bg-white" *ngIf="own_editable['isOpened']">
+                                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                                    <span class="w-100 z-ind-9 float-left bg-white"></span>
+                                                    <ul class="  list-group color-azure  sort-dropdown mr2" role="listbox">
+                                                        <span class="loader-search" *ngIf="isActivityGroupSearchLoading"> </span>
+                                                        <li class="list-group-item h-50 p-4-10 active" [matTooltip]=" option.Name" *ngFor="let option of accountOverviewDropdown[own_editable.fkey]; let ind = index" [value]="option.Name" (click)="own_editable.prevValue = getSymbol(option.Name);own_editable['isOpened']=false;getPosts(ownershipDetails,own_editable,option, 'record','Name', ind)"
+                                                            id="{{ind}}" tabindex="0" role="option" [class.active]="ind==arrowkeyLocation" aria-disabled="false" aria-selected="false">
+
+                                                            <!-- <li class="list-group-item h-50 p-4-10 " [matTooltip]=" option.Name" 
+                                                                *ngFor="let option of accountOverviewDropdown[own_editable.fkey]; let ind = index" [value]="option.Name"
+                                                                 (click)="own_editable['isOpened']=false;getPosts(own_editable,option, 'record','Name', ind)"
+                                                                    id="{{ind}}" id="{{ind}}" tabindex="0" role="option" [class.active]="ind==arrowkeyLocation" aria-disabled="false" aria-selected="false"> -->
+
+                                                            <label for="inti_name" class="float-left name">
+                                                                <span class="d-block list-name">
+                                                                    {{getSymbol(option.Name)}}</span>
+                                                                <!-- <span class="sub-list1 d-block blockcolor">{{item.AdId || NA}} | {{item.Email || NA}}</span> -->
+                                                                <!-- <span class="sub-list1 d-block blockcolor">{{item.Email || NA}}</span> -->
+                                                                <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+                                                            </label>
+                                                            <!-- <span class="btn-key float-right" *ngIf="item.value"> Key </span> -->
+                                                        </li>
+
+                                                        <li class="d-block list-name  p-10 bg-white" *ngIf="accountOverviewDropdown[own_editable.fkey] && accountOverviewDropdown[own_editable.fkey].length==0 && !isActivityGroupSearchLoading">
+                                                            No results found
+                                                            <!-- <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12 ellipses">
+                                              Ensure that you have typed correct legal entity name</span> -->
+
+                                                        </li>
+                                                    </ul>
+                                                </perfect-scrollbar>
+                                                <span *ngIf="own_editable.isAdvanceLookup" class="db-search" (click)="openadvancetabs(ownershipDetails,own_editable.fkey,accountOverviewDropdown[own_editable.fkey],own_editable.record, 'record','ownershipDetails')">
+                                                    <button
+                                                        id="adls{{accountOverviewDropdown[own_editable.fkey]?.length+1}}"
+                                                        tabindex="0" aria-disabled="false" type="button"
+                                                        class="button-search"
+                                                        [class.active]="accountOverviewDropdown[own_editable.fkey]?.length+1 == arrowkeyLocation">
+                                                        <span class="mdi mdi-file-outline"></span> Advance look up
+                                                </button>
+                                                </span>
+                                            </div>
+                                            <!-- <mat-autocomplete #auto="matAutocomplete">
+                                
+                                                    <mat-option *ngFor="let option of accountOverviewDropdown[own_editable.fkey]; let ind = index" [value]="option.Name" (click)="getPosts(own_editable,option, 'record','Name', ind);(otherFieldsvalidation ? getError(option.Name,own_editable.fkey) : '')" id="{{ind}}"
+                                                        tabindex="0" role="option" [class.active]="ind==arrowkeyLocation" aria-disabled="false" aria-selected="false">
+                                                        {{option.Name}}
+                                                    </mat-option>
+                                                    <mat-option *ngIf="accountOverviewDropdown[own_editable.fkey] && accountOverviewDropdown[own_editable.fkey].length==0">
+                                                        No record found
+                                                    </mat-option>
+                                                    <span *ngIf="own_editable.isAdvanceLookup" class="db-search" (click)="openadvancetabs(ownershipDetails,own_editable.fkey,accountOverviewDropdown[own_editable.fkey],own_editable.record, 'record')" (keypress)="openadvancetabs(ownershipDetails,own_editable.fkey,accountOverviewDropdown[own_editable.fkey],own_editable.record, 'record')">
+                                                        <button
+                                                            id="adls{{accountOverviewDropdown[own_editable.fkey]?.length+1}}"
+                                                            role="option" tabindex="0" aria-disabled="false"
+                                                            type="button" class="button-search"
+                                                            [class.active]="accountOverviewDropdown[own_editable.fkey]?.length+1 == arrowkeyLocation">
+                                                            <span class="mdi mdi-file-outline"></span> Advance look up
+                                                    </button>
+                                                    </span>
+                                                </mat-autocomplete> -->
+                                            <!-- </mat-form-field> -->
+                                            <div *ngIf="own_editable.fkey == 'StandByAccountOwner' || own_editable.fkey == 'Owner'" class="no_pad col-sm-12">
+                                                <!-- <input type="text" placeholder="Select {{own_editable.editname | lowercase}}" id="delivery" matInput [(ngModel)]="own_editable.record" (click)="OpenAddStandbypopup(own_editable.fkey )" (input)="OpenAddStandbypopup(own_editable.fkey )" [matAutocomplete]="auto"
+                                                    [readonly]="(roleType==3 && own_editable.fkey == 'StandByAccountOwner')? true : false"> -->
+                                                <input type="text" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 input-text " placeholder="Select {{own_editable.editname | lowercase}}" id="ownershipAuto{{i}}" [(ngModel)]="own_editable.record" (click)="OpenAddStandbypopup(own_editable.fkey )"
+                                                    (input)="OpenAddStandbypopup(own_editable.fkey )" [readonly]="(roleType==3 && own_editable.fkey == 'StandByAccountOwner')? true : false">
+                                                <span *ngIf="own_editable.fkey == 'StandByAccountOwner'" aria-describedby="stndby" class="cp mdi mdi-magnify btn_none float-right magnify_button" role="button" tabindex="0" (click)="OpenAddStandbypopup(own_editable.fkey )">
+                                                    <span class="sr-only" id="stndby">press enter to add standby account
+                                                        owner</span>
+                                                </span>
+                                                <span *ngIf="own_editable.fkey == 'Owner'" class="mdi mdi-magnify btn_none float-right magnify_button" role="button" tabindex="0" aria-label="search"></span>
+                                                <!-- <mat-autocomplete #auto="matAutocomplete"> -->
+                                                <!-- <span *ngIf="own_editable.isAdvanceLookup" class="db-search"
+                                                    (click)="openadvancetabs(ownershipDetails,own_editable.fkey,accountOverviewDropdown[own_editable.fkey],own_editable.record, 'record')">
+                                                    <button
+                                                        id="{{accountOverviewDropdown[own_editable.fkey]?.length+1}}"
+                                                        role="option" tabindex="0" aria-disabled="false" type="button"
+                                                        class="button-search"
+                                                        [class.active]="accountOverviewDropdown[own_editable.fkey]?.length+1 == arrowkeyLocation">
+                                                        <span class="mdi mdi-file-outline"></span> Advance look up
+                                                    </button>
+                                                </span> -->
+                                                <!-- </mat-autocomplete> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <!-- popup opens -->
+                                <div class="no_pad mt20 float-left" *ngIf="own_editable.control == 'popup'" [ngClass]="userdat.chatBot ?'col-sm-12 ':'col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4'">
+                                    <label class="col-sm-12 no_pad editLabel" for="ownerDetailsText{{i}}">{{own_editable.editname}}</label>
+                                    <div class="form-group no_pad customized-input" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                        <input class="border-gray w-100 disabledInput vision_txt_area_placeholder" id="ownerDetailsText{{i}}" [(ngModel)]="own_editable.record">
+                                    </div>
+                                </div>
+                                <!-- free input-->
+                                <div class="col-sm-12  no_pad mt20 float-left" *ngIf="own_editable.control == 'input'">
+                                    <label class="col-sm-12 no_pad editLabel" for="ownerDetailsNumber{{i}}">{{own_editable.editname}}</label>
+                                    <div class="form-group no_pad customized-input" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                        <input (keypress)="(own_editable.datatype == 'number' || own_editable.datatype == 'float')?validate.maxValueValidation($event,own_editable.record,own_editable.AttributeName):''" (keydown)="(own_editable.datatype == 'number' || own_editable.datatype == 'float')?validate.deleteAfterDecimal($event,null,-1, own_editable.record,own_editable.AttributeName):''"
+                                            maxlength="{{own_editable.maxlength?own_editable.maxlength:500}}" class="border-gray w-100 disabledInput vision_txt_area_placeholder" id="ownerDetailsNumber{{i}}" [(ngModel)]="own_editable.record">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 no_pad mt20 float-left" *ngIf="own_editable.control == 'dropdown'">
+                                    <label class="col-sm-12 no_pad editLabel" for="ownerDetailsNumber{{i}}">{{own_editable.editname}}</label>
+                                    <div class="customized-select no_pad current_position customized-input" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                        <span class="caret"></span>
+                                        <!--<select class="border-gray w-100 Empaneled_txt" (change)="selectBoxValue(own_editable,'record',accountOverviewDropdown[own_editable.fkey],'Value')" [(ngModel)]="own_editable.Id" id="region">
+                                            <option *ngFor="let option of accountOverviewDropdown[own_editable.fkey]"
+                                                [value]="option.Id">{{option.Value}}</option>
+                                        </select>-->
+                                        <select class="border-gray w-100 Empaneled_txt">
+                                            <option>test</option>
+                                            <option>test</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Swapping details start -->
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left nopadResponsive mt-20">
+                                <h4 class="cardsHead">
+                                    Swapping details</h4>
+                            </div>
+                            <!-- Swapping details dynamic code start -->
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad card-content float-left pad-create-lead-second pad-create-lead5Respnsiv">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left marginTopMobile " *ngFor="let item of swappingDetails;let i=index">
+                                    <!--Search input start -->
+                                    <ng-container *ngIf="item.control === 'search'">
+                                        <div class="col-12  float-left no_pad cust_autoComplete pos-rel mt20 ">
+                                            <div (clickOutside)="autoCompleteClose(item,'optionsSwitch')" class="col-12 float-left no_pad CompanyName" [ngClass]="getClassforOwner(item.fkey)">
+                                                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form" for="Swapping{{i}}">
+                                                    <!-- huntingRatio < 8 ? 'customized-input2':'customized-input1' -->
+                                                    {{item.AttributeName}} <span class="asteriq"
+                                                        *ngIf="item.fkey == 'Owner'?item.isRequired :isaltswapaccount">
+                                                        * </span></label>
+                                                <div class="pos-rel col-sm-11 float-left no_pad">
+                                                    <input #ownerinput [attr.data-selectedvalue]="item.prevValue?item.prevValue:''" appKeyListControl role="combobox" aria-owns="read" [dataManipulate]="true" [attr.aria-activedescendant]="accountOverviewDropdown[item.fkey]?.length+1 == arrowkeyLocation?'adls'+arrowkeyLocation:arrowkeyLocation"
+                                                        aria-autocomplete="list" [attr.aria-expanded]="item.optionsSwitch?true:false" (arrowDown)="arrowkeyLocation=$event" (keydown.Tab)="autoCompleteClose(item,'optionsSwitch')" (keydown.shift.Tab)="autoCompleteClose(item,'optionsSwitch')"
+                                                        [attr.data-arrayMaxLength]="OwnerSource?.length" [attr.data-isDownBtn]=true (keyup.enter)="accountOverviewDropdown[item.fkey]?.length+1 == arrowkeyLocation?openadvancetabs(swappingDetails,item.fkey,accountOverviewDropdown[item.fkey],item.record,'record','swappingDetails'): item.prevValue=item.record=accountOverviewDropdown[item.fkey][arrowkeyLocation]['FullName'];getPosts(swappingDetails,item,accountOverviewDropdown[item.fkey][arrowkeyLocation], 'record','FullName', arrowkeyLocation);arrowkeyLocation=0;autoCompleteClose(item,'optionsSwitch')"
+                                                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input" [ngClass]="item.fkey == 'Owner'?(huntingRatio >= 8 ?'border-pink':'border-gray') : (althuntingRatio>=8?'border-pink':'border-gray')"
+                                                        type="text" [attr.data-arrayMaxLength]="accountOverviewDropdown[item.fkey]?.length" (intialLoadData)="item.optionsSwitch = true; keyWordSearch(ownerinput.value,ownerinput.value, item.fkey);arrowkeyLocation=0"
+                                                        (input)="item.optionsSwitch = true; keyWordSearch(ownerinput.value,ownerinput.value, item.fkey);" id="Swapping{{i}}" name="text" placeholder="{{item.placeholder}}" [(ngModel)]="item.record" aria-describedby="OwnererrormsgRequired"
+                                                        [disabled]="item.fkey == 'alternativeOwner'? (!isaltswapaccount ? true:false):false" [class.error]="item.fkey == 'Owner'? (submitted && item.isRequired && !accountcreationobj[item.payloadKey] ? true:fasle):item.fkey == 'alternativeOwner'?(submitted && isaltswapaccount && !accountcreationobj[item.payloadKey] ? true:false):false">
+                                                    <!--samee safari sep 26th-->
+                                                    <p *ngIf="item.fkey == 'Owner'&& accountcreationobj['Owner'] && huntingRatio >=0 ? true : false" class="error-message cust-top-67">Number of hunting accounts:
+                                                        <span>{{huntingRatio}} </span> </p>
+                                                    <p *ngIf="item.fkey == 'alternativeOwner'&& accountcreationobj['alternativeOwner'] && althuntingRatio >= 0 ? true : false" class="error-message cust-top-67">Number of hunting accounts:
+                                                        <span>{{althuntingRatio}} </span> </p>
+                                                    <!-- <span *ngIf="huntingRatio > 8">{{huntingRatio}} </span> -->
+                                                    <p *ngIf="item.fkey == 'Owner' && submitted && item.isRequired && !accountcreationobj[item.payloadKey]" class="error-message custom-msg top-40" id="    ">Owner is required
+                                                    </p>
+                                                    <p *ngIf="item.fkey == 'alternativeOwner' && submitted && isaltswapaccount && !accountcreationobj[item.payloadKey]" class="error-message custom-msg top-40" id="OwnererrormsgRequired"> Alternate owner is required</p>
+                                                    <span class="mdi mdi-magnify"></span>
+                                                    <span *ngIf="!ownerinput.value || item.optionsSwitch" class="mdi mdi-magnify btn_none float-right magnify_button"></span>
+                                                    <span class="mdi mdi-close float-right magnify_button" (click)="removeSeletecedValue(swappingDetails, item,'record');arrowkeyLocation=0;item.prevValue=''" *ngIf="ownerinput.value!=='' && !item.optionsSwitch"></span>
+                                                    <!-- <span class="mdi mdi-close auto-close t-8 cp"
+                                                        (click)="removeSeletecedValue(swappingDetails,item,'record');arrowkeyLocation=0;item.record=''"
+                                                        *ngIf="item.fkey == 'alternativeOwner' && !item.optionsSwitch && ownerinput.value!==''"></span>
+                                                    <span class="mdi mdi-close float-right magnify_button cp"
+                                                        role="button" tabindex="0" aria-label="clear"
+                                                        (click)="removeSeletecedValue(swappingDetails,item,'record');arrowkeyLocation=0;"
+                                                        *ngIf="item.fkey == 'Owner' && ownerinput.value!==''"></span> -->
+                                                </div>
+                                                <div class="col-12 col-sm-11 col-md-11 col-lg-11 col-xl-11 border-btm border-right border-leftdrop float-left no_pad suggestion-box pos-abs border-bottom-4 top65 bg-white
+               color-azure z-ind-9 border_owner_lookup" *ngIf="item.optionsSwitch">
+                                                    <!-- customerName && optionsSwitch -->
+                                                    <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                                        <span class="w-100 z-ind-9 float-left bg-white"></span>
+                                                        <ul class=" list-group mr2 sort-dropdown cp" role="listbox">
+                                                            <span class="loader-search" *ngIf="isActivityGroupSearchLoading"> </span>
+                                                            <li class="list-group-item h-50 p-10 no_pad" *ngFor="let content of accountOverviewDropdown[item.fkey];index as j" [value]="content.FullName" (click)="item.prevValue=content.FullName;item.optionsSwitch = false; appendowner(content,item);getPosts(swappingDetails,item,content, 'record','FullName', arrowkeyLocation);getError(content.FullName,item.fkey)"
+                                                                id="{{j}}" tabindex="0" role="option" [class.active]="j==arrowkeyLocation" aria-disabled="false" aria-selected="false" [matTooltip]=" content.FullName">
+                                                                <label for="inti_name" class="float-left name">
+                                                                    <span
+                                                                        class="d-block list-name">{{content.FullName}}</span>
+                                                                    <!-- <span class="sub-list1 d-block blockcolor">{{item.AdId || NA}} | {{item.Email || NA}}</span> -->
+                                                                    <span
+                                                                        class="sub-list1 d-block blockcolor">{{content.Email || NA}}</span>
+                                                                    <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+                                                                </label>
+                                                                <!-- <span class="btn-key float-right" *ngIf="item.value"> Key </span> -->
+                                                            </li>
+                                                            <li class="d-block list-name  p-10 bg-white" *ngIf="accountOverviewDropdown[item.fkey]?.length  === 0 && !isActivityGroupSearchLoading">
+                                                                No results found
+                                                                <!-- <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12 ellipses">
+                        Ensure that you have typed correct legal entity name</span> -->
+                                                            </li>
+                                                        </ul>
+                                                    </perfect-scrollbar>
+                                                    <span class="db-search" (click)="openadvancetabs(swappingDetails,item.fkey,accountOverviewDropdown[item.fkey],item.record,'record','swappingDetails')">
+                                                        <button
+                                                            id="adls{{accountOverviewDropdown[item.fkey]?.length+1}}"
+                                                            role="option" tabindex="0" aria-disabled="false"
+                                                            type="button"
+                                                            [class.activeOwn]="accountOverviewDropdown[item.fkey]?.length+1 == arrowkeyLocation"
+                                                            class="button-search">
+                                                            <span class="mdi mdi-file-outline"></span> Advance look up
+                                                    </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <!-- search input end -->
+                                    <!--Toggle switch start-->
+                                    <ng-container *ngIf="item.control === 'toggleSwitch'">
+
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad width_message2">
+                                            <div class="float-left col-12 customized-input slidetoggle-helpdesk-alt noPadMobile customized-slider pt-20" [class.mob-mt-20]="item.AttributeName == 'Swap account' && accountcreationobj['Owner'] && huntingRatio >=0 ">
+                                                {{item.AttributeName}} <span class="mdi mdi-information-outline info-icon pl-0" role="button" tabindex="0" aria-label="information" matTooltip="{{item.tooltip}}"></span>
+                                                <mat-slide-toggle class="toggle_btn_helpdesk float-left" [ngModel]="item.fkey == 'swapaccount'? iswapaccount : isaltswapaccount" (change)="swapaccount($event,item)" (checked)="item.fkey == 'swapaccount'? iswapaccount : isaltswapaccount" [disabled]="item.fkey == 'swapaccount' ? ((!accountcreationobj['Owner'] || accountcreationobj['Owner'] && huntingRatio && huntingRatio <=0) ? true : false):((!accountcreationobj['Owner'])||(accountcreationobj['Owner'] && huntingRatio < 8 || iswapaccount)? true : false)">
+                                                    <span class="sr-only">{{item.AttributeName}}</span>
+                                                </mat-slide-toggle>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <!--Toggle switch start-->
+                                    <!--swap pop up code start -->
+                                    <ng-container *ngIf="item.control === 'openPopup'">
+                                        <div class="col-12  float-left no_pad cust_autoComplete pos-rel mt-20" [class.mob-mt-30]="item.AttributeName == 'Select alternative account' && accountcreationobj['alternativeOwner'] && althuntingRatio >= 0 ">
+                                            <div class="col-sm-11 float-left no_pad CompanyName">
+                                                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="swapaccount{{i}}" class="label-form">
+                                                    {{item.AttributeName}} <span class="asteriq"
+                                                        *ngIf="item.fkey == 'swapAccountfield'? iswapaccount : isaltswapaccount">
+                                                        * </span></label>
+                                                <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="swapaccount{{i}}" name="ConversationName" (keypress)="OpenSwap(item.AttributeName)" [(ngModel)]="item.record" (click)="OpenSwap(item.AttributeName)" autocomplete="off"
+                                                    type="text" placeholder="{{item.placeholder}}" [class.error]="item.fkey == 'swapAccountfield'?(submitted && iswapaccount && !accountcreationobj[item.payloadKey]) :(submitted && isaltswapaccount && accountcreationobj['alternativeOwner'] && !accountcreationobj[item.payloadKey])"
+                                                    aria-describedby="swaperrormsg" [attr.required]="item.required " [disabled]="item.fkey == 'swapAccountfield' ?(!accountcreationobj['Owner'] || (accountcreationobj['Owner'] && !iswapaccount) ? true :false) :(!isaltswapaccount || isaltswapaccount && !accountcreationobj['alternativeOwner'] ? true: false )">
+                                                <p *ngIf="item.fkey == 'swapAccountfield'?(submitted && iswapaccount && !accountcreationobj[item.payloadKey]) :(submitted && isaltswapaccount && accountcreationobj['alternativeOwner'] && !accountcreationobj[item.payloadKey])" class="error-message custom-msg top-64"
+                                                    id="swaperrormsg">
+                                                    {{item.AttributeName}} is required</p>
+                                                <span class="mdi mdi-magnify"></span>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <!--swap pop up code end -->
+                                </div>
+                            </div>
+
+                            <!-- Swapping details dynamic code end -->
+                            <!-- swapping details commented code start -->
+                            <!-- <div
+                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad card-content float-left pad-create-lead-second pad-create-lead5Respnsiv">
+                               
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad card-content float-left pad-create-lead-second pad-create-lead5Respnsiv">
+                                  
+                                    <div
+                                        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel mt20 mt20_20">
+                                        <div (clickOutside)="customerNameclose()"
+                                            class="col-11 float-left no_pad CompanyName"
+                                            [ngClass]="{'customized-input1':huntingRatio >= 8, 'customized-input2':huntingRatio < 8 || huntingRatio == 0 && huntingRatio !=undefined && huntingRatio != ''}">
+                                            <label
+                                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                                                for="ConversationName1">
+                                       
+                                                Owner <span class="asteriq"> * </span></label>
+                                            <div class="pos-rel w-100 float-left no_pad">
+                                                <input [attr.data-selectedvalue]="customerName" appKeyListControl
+                                                    #OwnerList role="combobox" aria-owns="read" [dataManipulate]="true"
+                                                    [attr.aria-activedescendant]="arrowkeyLocation"
+                                                    aria-autocomplete="list"
+                                                    [attr.aria-expanded]="customerNameSwitch?true:false"
+                                                    (arrowDown)="arrowkeyLocation=$event" autocomplete="off"
+                                                    (keydown.Tab)="customerNameclose()"
+                                                    [attr.data-arrayMaxLength]="customerContact?.length"
+                                                    [attr.data-isDownBtn]=true
+                                                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                                                    [ngClass]="false? 'border-pink':'border-gray'" required type="text"
+                                                    id="ConversationName1" name="text" autocomplete='off'
+                                                    placeholder="Search owner"
+                                                    (input)="customerNameSwitch = true"
+                                                    [(ngModel)]="OwnerName"
+                                                    [attr.data-selectedvalue]="OwnerName"
+                                                    [attr.aria-label]="'Owner edit selected' + OwnerName"
+                                                    (keydown.Tab)="customerNameclose()" 
+                                                    aria-describedby="OwnererrormsgRequired">
+                                           
+                                                <p *ngIf="false" class="error-message cust-top-67">Number of hunting
+                                                    accounts:
+                                                    <span>{{huntingRatio}} </span>
+                                          
+                                                </p>
+                                                <p *ngIf="false" class="error-messagevalid custom-msg"
+                                                    id="OwnererrormsgRequired">Owner is required</p>
+                                                <span class="mdi mdi-magnify"></span>
+                                                <span class="mdi mdi-close auto-close t-8" *ngIf="false"></span>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top65 
+               color-azure z-ind-9 border_owner_lookup" *ngIf="customerNameSwitch">
+                                            
+                                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                                    <span class="w-100 z-ind-9 float-left bg-white"></span>
+                                                    <ul class=" list-group mr2 sort-dropdown cp" role="listbox">
+                                                        <li class="list-group-item h-50 p-10 no_pad"
+                                                            [matTooltip]=" item.FullName" (click)="appendcustomer(item);
+                            customerNameSwitch=false" role="option" *ngFor="let item of customerContact;index as j"
+                                                            id="{{j}}" tabindex="0" role="option"
+                                                             aria-disabled="false"
+                                                            aria-selected="false">
+                                                            <label for="inti_name" class="float-left name">
+                                                                <span class="d-block list-name">{{item.FullName}}</span>
+                                                       
+                                                                <span
+                                                                    class="sub-list1 d-block blockcolor">{{item.Email || NA}}</span>
+                                                        
+                                                            </label>
+                                                      
+                                                        </li>
+                                                        <li class="d-block list-name  p-10"
+                                                            *ngIf="customerContact?.length  === 0 && !isActivityGroupSearchLoading">
+                                                            No results found
+                                                          
+                                                        </li>
+                                                    </ul>
+                                                </perfect-scrollbar>
+                                                <span class="db-search"
+                                                    (click)="openadvancetabs()">
+                                                    <button id="adls{{customerContact?.length+1}}" role="option" tabindex="0"
+                                                        aria-disabled="false" type="button" class="button-search"
+                                                        >
+                                                        <span class="mdi mdi-file-outline"></span> Advance look up
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                
+                                    <div
+                                        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 plb-60-20 sections-pad-20 float-left no_pad mt40_toglemobile ">
+                                        <div
+                                            class="float-left col-12 customized-input slidetoggle-helpdesk slidetoggle_responsive customized-slider pt-20">
+                                            Swap account<span class="mdi mdi-information-outline info-icon"
+                                                role="button" tabindex="0" aria-label="information"
+                                                matTooltip="Select an account that can be swapped with this Account request. Required if the Account owner's hunting ratio is >=8.
+                      A swap account is a Hunting account already present in Account master that needs to be moved out to make way for a new Hunting account. This is done to maintain the Hunting ratio for an Account owner"></span>
+                                            <mat-slide-toggle class="toggle_btn" [checked]="false"
+                                               >
+                                                <span class="sr-only">Swap account</span>
+                                            </mat-slide-toggle>
+                                        </div>
+                                    </div>
+                              
+                                    <div
+                                        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel p-28-32 mb20_toglemobile">
+                                        <div
+                                            class="col-11 float-left no_pad CompanyName">
+                                            <label
+                                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                                                for="ConversationName2" class="label-form">
+                                                Select account <span class="asteriq" *ngIf="false"> * </span></label>
+                                            <input
+                                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                                                id="ConversationName2" name="ConversationName"
+                                                (keypress)="SwapAccountOpen()" (click)="SwapAccountOpen()"
+                                                autocomplete="off" type="text" placeholder="Select account to swap with"
+                                                [ngClass]="false ? 'border-pink':'border-gray'"
+                                                aria-describedby="swaperrormsg" [required]="false " [disabled]="false">
+                                            <p *ngIf="false" class="error-message custom-msgaccount" id="swaperrormsg">
+                                                Swap Account is required</p>
+                                            <span class="mdi mdi-magnify"></span>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                             
+                                <div
+                                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad card-content float-left pad-create-lead-second pad-create-lead5Respnsiv">
+                                  
+                      
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  sections-pad-20 float-left no_pad mt10 ">
+                                        <div class="col-11 float-left no_pad  CompanyName" >                            
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad width_message2">
+                                                    <div class="float-left col-12 customized-input slidetoggle-helpdesk-alt customized-slider pt-20">
+                                                        Swap with alternate account owner<span class="mdi mdi-information-outline info-icon" matTooltip="If account for the requestor hunter cannot be swapped; then SE SPOC can swap account from some other hunter within SBU, to maintain the hunting ratio at BU level"></span>
+                                                        <mat-slide-toggle class="alternate_toggle_btn " >
+                                                            <span class="sr-only">Swap with alternate account owner</span>
+                                                    </mat-slide-toggle>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel mt20 mt20_20">
+                                        <div (clickOutside)="alternativeownerClose()"
+                                            class="col-11 float-left no_pad CompanyName"
+                                            [ngClass]="{'customized-input1':altHuntingRatio >= 8, 'customized-input2':altHuntingRatio < 8 || altHuntingRatio == 0 && altHuntingRatio !=undefined && altHuntingRatio != ''}">
+                                            <label
+                                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                                                for="alternativeowner">
+                                            
+                                                Select alternative account owner <span class="asteriq" *ngIf="false"> *
+                                                </span> </label>
+                                            <div class="pos-rel w-100 float-left no_pad">
+                                                <input appKeyListControl #alternativeOwnerList role="combobox"
+                                                    aria-owns="read" [dataManipulate]="true"
+                                                    [attr.aria-activedescendant]="arrowkeyLocation"
+                                                    aria-autocomplete="list"
+                                                    [attr.aria-expanded]="alternativeownerSwitch?true:false"
+                                                    (arrowDown)="arrowkeyLocation=$event" autocomplete="off"
+                                                    [ngClass]="false ? 'border-pink':'border-gray'"
+                                                    [attr.data-arrayMaxLength]="alternativeowner?.length"
+                                                    [attr.data-isDownBtn]=true
+                                                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                                                    type="text" id="alternativeowner" name="text"
+                                                    autocomplete='off' (input)="alternativeownerSwitch = true"
+                                                    placeholder="Search alternative account owner"
+                                                    [attr.data-selectedvalue]="AltOwnerName" [(ngModel)]="AltOwnerName"
+                                                    [attr.aria-label]="'Select alternative account owner edit selected' + AltOwnerName"
+                                                    (keydown.Tab)="alternativeownerClose()"
+                                                     [required]="false" aria-describedby="altererrormsg">
+                                              
+                                                <p *ngIf="false" class="error-message cust-top-67">Number of hunting
+                                                    accounts:
+                                                    <span>{{altHuntingRatio}} </span>
+                                                 
+                                                </p>
+                                                <p *ngIf="false" class="error-message top-40" id="altererrormsg">
+                                                    Alternative account owner is required</p>
+                                                <span class="mdi mdi-magnify"></span>
+                                                <span class="mdi mdi-close auto-close" *ngIf="false"></span>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top65 
+             color-azure z-ind-9 border_owner_lookup" *ngIf="alternativeownerSwitch">
+                                            
+                                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                                    <span class="w-100 z-ind-9 float-left bg-white"></span>
+                                                    <ul class=" list-group mr2 sort-dropdown cp" role="listbox">
+                                                        <li class="list-group-item h-50 p-10 no_pad"
+                                                            [matTooltip]=" item.FullName"
+                                                            *ngFor="let item of alternativeowner;index as j"
+                                                            (click)="appendAltOwner(item);alternativeownerSwitch=false"
+                                                            id="{{j}}" tabindex="0" role="option"
+                                                           aria-disabled="false"
+                                                            aria-selected="false">
+                                                            <label for="inti_name" class="float-left name">
+                                                                <span class="d-block list-name">{{item.FullName}}</span>
+                                                            
+                                                                <span
+                                                                    class="sub-list1 d-block blockcolor">{{item.Email || NA}}</span>
+                                                            
+                                                            </label>
+                                                         
+                                                        </li>
+                                                        <li class="d-block list-name  p-10"
+                                                            *ngIf="alternativeowner?.length  === 0 && !isActivityGroupSearchLoading">
+                                                            No results found
+                                    
+                                                        </li>
+                                                    </ul>
+                                                </perfect-scrollbar>
+                                                <span class="db-search"
+                                                    (click)="openadvancetabs()">
+                                                    <button id="adls{{alternativeowner?.length+1}}" role="option" tabindex="0"
+                                                        aria-disabled="false" type="button" class="button-search">
+                                                        <span class="mdi mdi-file-outline"></span> Advance look up
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+                                    <div
+                                        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel  mt20 mt20_20">
+                                        <div
+                                            class="col-11 float-left no_pad CompanyName">
+                                            <label
+                                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                                                for="secondaryOwnerSwap" class="label-form">
+                                                Select alternative account <span class="asteriq" *ngIf="false"> *
+                                                </span> </label>
+                                            <input
+                                                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                                                id="secondaryOwnerSwap" name="secondaryOwnerSwapAccount"
+                                                [disabled]="false" (keypress)="AltSwapAccountOpen()"
+                                                (click)="AltSwapAccountOpen()" autocomplete="off" type="text"
+                                                placeholder="Select account to swap with"
+                                                [ngClass]="false ? 'border-pink':'border-gray'" [required]="false"
+                                                aria-describedby="alternativemsg" [disabled]="false">
+                                            <p *ngIf="false" class="error-message custom-msgaccount"
+                                                id="alternativemsg"> Alternative account is required</p>
+                                            <span class="mdi mdi-magnify"></span>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                               
+                            </div> -->
+                            <!-- swapping details commented code start -->
+                            <!--Swapping details  end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 no_pad backWht">
+                <h4 class="cardsHead">Credit details</h4>
+                <div class="row">
+                    <div *ngFor="let edit_dt of creditDetails;let i=index;" [ngClass]="userdat.chatBot ?'col-sm-12 ':'col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4'">
+                        <div class="col-sm-12 no_pad mt10 float-left mobile-select-box" *ngIf="edit_dt.control == 'dropdown'">
+                            <label class="col-sm-12 no_pad editLabel" for="account_cat{{i}}" matTooltip="{{edit_dt.tooltip}}">{{edit_dt.editcreditname}}</label>
+                            <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                <span class="caret"></span>
+                                <select class="w-100 border-gray Empaneled_txt" [(ngModel)]="edit_dt.Id" (change)="selectedvalue(edit_dt)">
+                                    <option value=''>Select {{edit_dt.editcreditname | lowercase}}</option>
+                                    <option *ngFor="let ac of accountOverviewDropdown[edit_dt.fkey]" [value]="ac.Id">
+                                        {{ac.Value}}
+                                    </option>
+
+                                    <!-- <option>test</option>
+                                <option>test</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 no_pad mt10 float-left mb21 web-select-box" *ngIf="edit_dt.control =='dropdown'">
+                            <label class="col-sm-12 no_pad editLabel" for="account_cat{{i}}" matTooltip="{{edit_dt.tooltip}}">{{edit_dt.editcreditname}}</label>
+                            <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                <span class="caret"></span>
+                                <mat-form-field class="col-12 no_pad float-left">
+                                    <mat-label> Select {{edit_dt.editcreditname}}</mat-label>
+                                    <mat-select disableOptionCentering panelClass="Select-panel-class" (selectionChange)="selectedvalue(edit_dt)" [ngClass]="{'error': edit_dt.editcreditname.touched && !edit_dt.editcreditname.valid}" class="select-focus" [(ngModel)]="edit_dt.Id">
+                                        <mat-option value="">Select {{edit_dt.editcreditname}}</mat-option>
+                                        <mat-option *ngFor="let ac of accountOverviewDropdown[edit_dt.fkey]" [value]="ac.Id" matTooltip="{{ac.Value}}" (click)="selectedvalue(edit_dt)" [matTooltipHideDelay]="1">
+                                            {{ac.Value}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <p *ngIf="edit_dt.editcreditname.touched && !edit_dt.editcreditname.valid" class="error-message top-40"> </p>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!---3 input bax -->
+                <div class="col-sm-12 no_pad">
+                    <div *ngFor="let edit_dt of creditDetails;let i=index;">
+                        <div class="no_pad mt10 float-left" *ngIf="edit_dt.control == 'input'" [ngClass]="userdat.chatBot ?'col-sm-12 ':'col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4'">
+                            <div class="col-sm-11 float-left no_pad">
+                                <label class="no_pad editLabel" for="credit_score{{i}}" matTooltip="{{edit_dt.tooltip}}">{{edit_dt.editcreditname}}</label>
+                            </div>
+                            <div class="form-group no_pad" [ngClass]="userdat.chatBot ?'col-sm-4 ':'col-sm-11'">
+                                <input (keypress)="(edit_dt.datatype == 'number' || edit_dt.datatype == 'float')?validate.maxValueValidation($event,edit_dt.vals,edit_dt.AttributeName):''" (keydown)="(edit_dt.datatype == 'number' || edit_dt.datatype == 'float')?validate.deleteAfterDecimal($event,null,-1, edit_dt.vals,edit_dt.AttributeName):''"
+                                    maxlength="{{edit_dt.maxlength?edit_dt.maxlength:500}}" class="form-control disabledInput vision_txt_area_placeholder" id="credit_score" [(ngModel)]="edit_dt.vals">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12 no_pad backWht mb20 margin-btm55" [ngClass]=" areaPopOver ?'pb150':''">
+                <h4 class="cardsHead">Engagement details</h4>
+                <!--edit part-->
+                <div class="row" id="keyconGov">
+                    <div *ngFor="let edit_ed of engageDetails, let i=index" [ngClass]="userdat.chatBot ?'col-sm-12 ':'col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4'">
+                        <div class="col-sm-12 no_pad mt10 float-left mobile-select-box" *ngIf="edit_ed.control == 'dropdown' || control == 'dropdown'">
+                            <label class="col-sm-12 no_pad editLabel" for="account_cat{{i}}">{{edit_ed.editname}}</label>
+                            <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                <span class="caret"></span>
+                                <select class="w-100 border-gray Empaneled_txt" [(ngModel)]="edit_ed.Id" (change)="selectedvalue(edit_ed)">
+                                    <option value=''>Select {{edit_ed.editname | lowercase}}</option>
+                                    <option *ngFor="let ac of accountOverviewDropdown[edit_ed.fkey]" [value]="ac.Id">
+                                        {{ac.Value}}
+                                    </option>
+                                    <!-- <option>test</option>
+                                <option>test</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 no_pad mt10 float-left mb21 web-select-box" *ngIf="edit_ed.control == 'dropdown' || control == 'dropdown'">
+                            <label class="col-sm-12 no_pad editLabel" for="account_cat{{i}}">{{edit_ed.editname}}</label>
+                            <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                <span class="caret"></span>
+                                <mat-form-field class="col-12 no_pad float-left">
+                                    <mat-label> Select {{edit_ed.editname}}</mat-label>
+                                    <mat-select disableOptionCentering panelClass="Select-panel-class" (selectionChange)="selectedvalue(edit_ed)" [ngClass]="{'error': edit_ed.editname.touched && !edit_ed.editname.valid}" class="select-focus" [(ngModel)]="edit_ed.Id">
+                                        <mat-option value="">Select {{edit_ed.editname | lowercase}}</mat-option>
+                                        <mat-option *ngFor="let ac of accountOverviewDropdown[edit_ed.fkey]" [value]="ac.Id" matTooltip="{{ac.Value}}" [matTooltipHideDelay]="1">
+                                            {{ac.Value}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <p *ngIf="edit_ed.editname.touched && !edit_ed.editname.valid" class="error-message top-40"> </p>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="no_pad col-sm-12 float-left" *ngIf="edit_ed.control == 'disabledinput'">
+                            <label class=" no_pad editLabel" for="account_cat{{i}}">{{edit_ed.editname}}</label>
+                            <button *ngIf="edit_ed.isComment" [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover4" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos">
+                                <span
+                                    [ngClass]="(edit_ed.GrowthPositionSubmitted && edit_ed.comment !== '')?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                                    <span class="sr-only">{{edit_ed.editname}}</span>
+                                </span>
+                            </button>
+                            <!-- <popover-content #myPopover4 title="Comments - {{edit_ed.editname}}" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                                <span class="">
+                                <div class="textarea_readonly">
+                                    <textarea class="form-control vision_txt_area_placeholder" [(ngModel)]="edit_ed.comment"
+                                        #newListItem4 name="newListItem4" rows="6"
+                                        placeholder="Write your comments here.."></textarea>
+                                </div>
+                                <button type="button" class="btn pull-left cancel_but"
+                                    (click)="GrowthPositionInAccountClicked = false;myPopover4.hide();edit_ed.comment=''; clearComment(edit_ed)">Cancel
+                                </button>
+                                <button type="button" [disabled]="newListItem4.value.length < 1"
+                                    [ngClass]="newListItem4.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                                    (click)="edit_ed.GrowthPositionSubmitted = true;GrowthPositionInAccountClicked = false;myPopover4.hide();savecomments(edit_ed)">Submit</button>
+                            </span>
+                            </popover-content> -->
+                            <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                <span class="caret"></span>
+                                <select class="w-100 border-gray disable-input">
+                                    <option>text</option>
+                                    <option>text</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="no_pad col-sm-12 mb 15 float-left " *ngIf="edit_ed.control == 'radiobutton'">
+                            <label class="col-sm-12 no_pad editLabel " for="keycon{{i}}">{{edit_ed.editname}}
+                                <span class="mdi mdi-information-outline info-icon" tabindex="0"
+                                    aria-labelledby="atool atoola" matTooltip="{{edit_ed?.tooltip}}"
+                                    (mouseenter)="toggleTooltip(edit_ed.editname,'enter')"
+                                    (mouseleave)="toggleTooltip(edit_ed.editname,'leave')"></span></label>
+                            <div class="toolTipDiv" *ngIf="edit_ed.editname === 'Government account' && showTooltip">
+                                <span class="toolTipSpan" role="tooltip" id="atool">Government accounts means and
+                                    include agencies operating through state-owned
+                                    and state-controlled entities including the following:</span>
+                                <ul class="toolTipUl" role="tooltip" id="atoola">
+                                    <li class="toolTipLi">Public sector undertakings</li>
+                                    <li class="toolTipLi">Government run enterprises</li>
+                                    <li class="toolTipLi">Enterprises where key officers and directors are appointed by the government.
+                                    </li>
+                                    <li class="toolTipLi">Government funded /grants organizations</li>
+                                    <li class="toolTipLi">Enterprises is widely perceived and understood to be performing governmental functions
+                                    </li>
+                                </ul>
+                            </div>
+                            <mat-radio-group id="keycon{{i}}" (change)="isgovernament($event,edit_ed)">
+                                <mat-radio-button [value]="true" [checked]="edit_ed['Id']" class="pr30">
+                                    Yes</mat-radio-button>
+                                <mat-radio-button [value]="false" [checked]="!edit_ed['Id']">No
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div class="no_pad  col-sm-12 float-left" *ngIf="edit_ed.control == 'disabledradiobutton'">
+                            <label class="col-sm-12 no_pad editLabel" for="keycon{{i}}">{{edit_ed.editname}}
+                                <span class="mdi mdi-information-outline info-icon"
+                                    matTooltip="Government accounts means and include agencies operating through state-owned and state-controlled entities including  the following:
+                                            • Public sector undertakings,
+                                            • Government run enterprises
+                                            • Enterprises where key officers and directors are appointed by the government.
+                                            • Government funded /grants organizations
+                                            • Enterprises is widely perceived and understood to be performing governmental functions"></span>
+                                <button *ngIf="edit_ed.isComment" [popoverOnHover]="false"
+                                    [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true"
+                                    [popover]="myPopover_engageDetails" (click)="toggleComment()"
+                                    (keypress)="toggleComment()" class="button_messagespophover top_pos">
+                                    <span
+                                        [ngClass]="(edit_ed.GrowthPositionSubmitted && edit_ed.comment !== '')?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                                        <span class="sr-only">{{edit_ed.editname}}</span>
+                                    </span>
+                                </button>
+                            </label>
+                            <!-- <popover-content #myPopover_engageDetails title="Comments - {{edit_ed.editname}}" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                                <span class="">
+                                <div class="textarea_readonly">
+                                    <textarea class="form-control vision_txt_area_placeholder" [(ngModel)]="edit_ed.comment"
+                                        #newListItem_engageDetails name="newListItem_engageDetails" rows="6"
+                                        placeholder="Write your comments here.."></textarea>
+                                </div>
+                                <button type="button" class="btn pull-left cancel_but"
+                                    (click)="GrowthPositionInAccountClicked = false;myPopover_engageDetails.hide();edit_ed.comment='';clearComment(edit_ed);goback()">Cancel
+                                </button>
+                                <button type="button" [disabled]="newListItem_engageDetails.value.length < 1"
+                                    [ngClass]="newListItem_engageDetails.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                                    (click)="edit_ed.GrowthPositionSubmitted = true;GrowthPositionInAccountClicked = false;myPopover_engageDetails.hide();savecomments(edit_ed)">Submit</button>
+                            </span>
+                            </popover-content> -->
+                            <mat-radio-group [disabled]="true" id="keycon{{i}}">
+                                <mat-radio-button [value]="true" [checked]="edit_ed['Id']" class="pr30">
+                                    Yes</mat-radio-button>
+                                <mat-radio-button [value]="false" [checked]="!edit_ed['Id']">No
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <!-- Pursued opportunity scope/tenure/other Remarks text area starts -->
+                        <div class="col-sm-12 no_pad mt20 float-left" *ngIf="edit_ed.control == 'textarea'">
+                            <label class="no_pad editLabel" for="account_cat{{i}}">{{edit_ed.editname}}</label>
+                            <button *ngIf="edit_ed.isComment" [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover_Pursued" (click)="toggleCommentArea()" (keypress)="toggleComment()" class="button_messagespophover top_pos">
+                                <span
+                                    [ngClass]="(edit_ed.GrowthPositionSubmitted && edit_ed.comment !== '')?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                                    <span class="sr-only">{{edit_ed.editname}}</span>
+                                </span>
+                            </button>
+                            <!-- <popover-content #myPopover_Pursued title="Comments - {{edit_ed.editname}}" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                                <span class="">
+                                <div class="textarea_readonly">
+                                    <textarea class="form-control vision_txt_area_placeholder" [(ngModel)]="edit_ed.comment"
+                                        #newListItem_Pursued name="newListItem_Pursued" rows="5"
+                                        placeholder="Write your comments here.."></textarea>
+                                </div>
+                                <button type="button" class="btn pull-left cancel_but"
+                                    (click)="GrowthPositionInAccountClicked = false;myPopover_Pursued.hide();edit_ed.comment='';clearComment(edit_ed);areaPopOver = false;goback()">Cancel
+                                </button>
+                                <button type="button" [disabled]="newListItem_Pursued.value.length < 1"
+                                    [ngClass]="newListItem_Pursued.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                                    (click)="edit_ed.GrowthPositionSubmitted = true;GrowthPositionInAccountClicked = false;myPopover_Pursued.hide();savecomments(edit_ed);areaPopOver = false">Submit</button>
+                            </span>
+                            </popover-content> -->
+                            <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                <!-- <span class="caret"></span>
+                                        <select class="w-100 border-gray Empaneled_txt" (change)="selectBoxValue(edit_ed,'vals',accountOverviewDropdown[edit_ed.fkey],'Value')" [(ngModel)]="edit_ed.Id" id="account_cat{{i}}">
+                                            <option *ngFor="let option of accountOverviewDropdown[edit_ed.fkey]"
+                                                [value]="option.Id">
+                                                {{option.Value}}</option>
+                                        </select> -->
+                                <textarea class="form-control vision_txt_area_placeholder" (keydown.Tab)="showAccount()" [(ngModel)]="edit_ed.vals" name="newListItem" rows="4" placeholder="Type here.."></textarea>
+                            </div>
+                        </div>
+                        <!-- Pursued opportunity scope/tenure/other Remarks text area ends -->
+                        <!--(change)="setGovtAc($event)" [checked]="accountCreationObj['governementaccount']"-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Account structure tab starts here -->
+    <div class="col-12 plr30 float-left mt20 pb-70" *ngIf="accountTab">
+        <h3 class="col-sm-12 no_pad overviewHead">Account structure</h3>
+        <div class="col-sm-12 no_pad float-left">
+
+            <!-- SAP DETAILS CODE START -->
+            <!-- <div class="col-sm-12 no_pad backWht float-left mb20 pb-0">
+                <div class="col-12 no_pad float-left">
+                    <h4 class="float-left cardsHead border-0">SAP details</h4>
+                    <button class="float-right primary-button btn-block w-151">
+                        + Add SAP details
+                    </button>
+                </div>
+
+                <div class="float-left col-12 no_pad">
+                    <div class="col-sm-12 no_pad accbody overflow-horizontal">
+                        <table class="col-sm-12 no_pad allianceTable tablAlliance mt20">
+                            <thead>
+                                <tr>
+                                    <th>SAP customer name</th>
+                                    <th>SAP customer number</th>
+                                    <th>SAP company code</th>
+                                    <th>SAP Geo</th>
+                                    <th>SAP group customer name</th>
+                                    <th>Extended</th>
+                                    <th>Created on</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let sapdata of sapdetailsdata">
+                                    <td>{{sapdata['SAPCustomerName'] ? sapdata['SAPCustomerName'] : '-'}}</td>
+                                    <td>{{sapdata['SAPCustomerNumber'] ? sapdata['SAPCustomerNumber'] : '-'}}</td>
+                                    <td>{{sapdata['SAPCompanyCode'] ? sapdata['SAPCompanyCode'] : '-'}}</td>
+                                    <td>{{sapdata['SAPGeo'] ? sapdata['SAPGeo'] : '-'}}</td>
+                                    <td>{{sapdata['SAPGroupCustomerName'] ? sapdata['SAPGroupCustomerName'] : '-'}}
+                                    </td>
+                                    <td>{{sapdata['Extended'] ? sapdata['Extended'] : '-'}}</td>
+                                    <td>{{sapdata['CreatedOn'] ? sapdata['CreatedOn'] : '-'}}</td>
+                                    <td class="first_text action_align actionColumn no_pad" id="freezedColumn">
+                                            <div class="pos-rel float-left ">
+                                            <button aria-label="edit draft" title="Edit" class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn mr15" id="Edit draft" mattooltip="Edit draft" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" >
+                                                        <span class="col-xs-12 no_pad blue_circle_replay_img mdi mdi-pencil"></span>
+                                          </button>
+                                            </div>
+                                   </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <button class="btn-none cp color-azure font-weight-bold mt20"  (click)="OpenSAPCustomerCodepopup()" (keypress)="OpenSAPCustomerCodepopup()"> Request new SAP code </button>
+                    </div>
+                </div>
+            </div> -->
+            <!-- SAP DETAILS CODE END -->
+            <div class="col-sm-12 no_pad backWht float-left">
+                <h4 class="cardsHead">Account RE</h4>
+
+                <div class="row pad15px mbMobile20">
+                    <div class="no_pad mt10 float-left" *ngFor="let ed of Accstructure; let i = index;" [ngClass]="userdat.chatBot ?'col-sm-12 ':'col-sm-4'">
+                        <div *ngIf="ed.control =='dropdown'" class="no_pad mt10 float-left mobile-select-box" [ngClass]="userdat.chatBot ?'col-sm-12':'col-sm-12'">
+                            <label class="col-sm-12 no_pad editLabel" for="account_name{{i}}" matTooltip="{{ed.tooltip}}">{{ed.name}}</label>
+                            <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                <span class="color-azure caret"></span>
+                                <select [(ngModel)]="ed.Id" class="w-100 border-gray Empaneled_txt" placeholder="Select" id="account_name{{i}}" (change)="selectedvalue(ed)">
+                                    <option value=''>Select {{ed.name | lowercase}}</option>
+                                    <option *ngFor="let rel of accountREDropdown[ed.fkey]" [value]="rel.Id">
+                                        {{rel.Value}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 no_pad mt10 float-left mb21 web-select-box" *ngIf="ed.control =='dropdown'">
+                            <label class="col-sm-12 no_pad editLabel" for="dropdown{{i}}" matTooltip="{{ed.tooltip}}">{{ed.name}}</label>
+                            <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                                <span class="caret"></span>
+                                <mat-form-field class="col-12 no_pad float-left">
+                                    <mat-label> Select {{ed.name}}</mat-label>
+                                    <mat-select (keydown.Tab)="ed.fkey==='OwnershipType'?showCustomer() : ''" disableOptionCentering panelClass="Select-panel-class" (selectionChange)="selectedvalue(ed)" placeholder="Select" id="dropdown{{i}}" [ngClass]="{'error': ed.name.touched && ! ed.name.valid}"
+                                        class="select-focus" [(ngModel)]="ed.Id">
+                                        <mat-option value="">Select {{ed.name | lowercase}}</mat-option>
+                                        <mat-option *ngFor="let rel of accountREDropdown[ed.fkey]" [value]="rel.Id" matTooltip="{{rel.Value}}" [matTooltipHideDelay]="1">
+                                            {{rel.Value}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <p *ngIf="ed.name.touched && !ed.name.valid" class="error-message top-40"> </p>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="form-group no_pad mb-0 mt10 customized-input" *ngIf="ed.control=='disabledinput'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <label class="col-sm-12 no_pad editLabel" for="account_name" matTooltip="{{ed.tooltip}}">{{ed.name}}</label>
+                            <button *ngIf="ed.isComment" [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover_accountRE" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos l-150">
+                                <span
+                                    [ngClass]="(ed.GrowthPositionSubmitted && ed.comment !== '')?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                                    <span class="sr-only">{{ed.name}}</span>
+                                </span>
+                            </button>
+
+
+                            <input placeholder="{{ed.placeholder}}" class="border-gray w-100 vision_txt_area_placeholder" id="Address_details{{i}}" [(ngModel)]="ed.vals" disabled />
+                        </div>
+                        <!-- <popover-content #myPopover_accountRE title="Comments - {{ed.name}}" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                            <span class="">
+                            <div class="textarea_readonly">
+                                <textarea class="form-control vision_txt_area_placeholder" [(ngModel)]="ed.comment"
+                                    #newListItem_accountRE name="newListItem_accountRE" rows="6"
+                                    placeholder="Write your comments here.."></textarea>
+                            </div>
+                            <button type="button" class="btn pull-left cancel_but"
+                                (click)="GrowthPositionInAccountClicked = false;myPopover_accountRE.hide();ed.comment ='';clearComment(ed);goback()">Cancel
+                            </button>
+                            <button type="button" [disabled]="newListItem_accountRE.value.length < 1"
+                                [ngClass]="newListItem_accountRE.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                                (click)="ed.GrowthPositionSubmitted = true;GrowthPositionInAccountClicked = false;myPopover_accountRE.hide();savecomments(ed)">Submit</button>
+                        </span>
+                        </popover-content> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Account structure tab ends here -->
+
+    <!--customer details  starts here-->
+    <div class="col-12 plr30 float-left mt20 pb-70" *ngIf="CustomerTab">
+        <h3 class="col-sm-12 no_pad overviewHead ">Customer details</h3>
+        <div class="col-sm-12 no_pad float-left">
+
+            <div class="col-sm-12 no_pad backWht float-left">
+                <h4 class="cardsHead header_borderbottom">Company details </h4>
+                <div *ngFor="let editable of CustomDetails; let i=index">
+                    <div class="no_pad mt10 float-left " [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-4'">
+
+                        <label class="float-left no_pad editLabel" for="customer_details{{i}}">{{editable.name}} <span
+                                *ngIf="editable.isRequired" class="asteriq"> * </span></label>
+
+                        <div (clickOutside)="autoCompleteClose(editable)" class="form-group no_pad mb-0 Company-details" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'" *ngIf="editable.control == 'searchinput'">
+                            <!-- list autocomplete start -->
+                            <input appKeyListControl #requestedByList class="col-12  float-left h-40 label-input" (keydown.shift.Tab)="autoCompleteClose(editable)" id="customer_details{{i}}" autocomplete="off" type="text" [(ngModel)]="editable.record" placeholder="Search  {{editable.name | lowercase}}"
+                                (keyup.enter)="accountOverviewDropdown[editable.fkey]?.length+1 == arrowkeyLocation?openadvancetabs(CustomDetails,editable.fkey,accountOverviewDropdown[editable.fkey],editable.record, 'record','CustomDetails') : editable.prevValue=editable.record=getSymbol(accountOverviewDropdown[editable.fkey][arrowkeyLocation]['Desc']);
+                                getPosts(CustomDetails,editable,accountOverviewDropdown[editable.fkey][arrowkeyLocation], 'record','Desc', arrowkeyLocation);arrowkeyLocation=0;autoCompleteClose(editable);" (input)="editable['isOpened'] = true;keyWordSearch(requestedByList.value,requestedByList.value, editable.fkey)"
+                                (arrowDown)="arrowkeyLocation=$event" role="combobox" aria-autocomplete="list" (intialLoadData)="editable['isOpened'] = true ; keyWordSearch(requestedByList.value,requestedByList.value, editable.fkey);" (keydown.Tab)="autoCompleteClose(editable)"
+                                [dataManipulate]="true" [attr.data-arrayMaxLength]="accountOverviewDropdown[editable.fkey]?.length" [attr.data-isDownBtn]=true [attr.aria-expanded]="editable['isOpened'] ?true:false" [attr.aria-activedescendant]="accountOverviewDropdown[editable.fkey]?.length+1 == arrowkeyLocation?'adls'+arrowkeyLocation:arrowkeyLocation"
+                                [attr.data-selectedvalue]="editable.prevValue?editable.prevValue:''" [ngClass]="false ? 'border-pink':'border-gray'" aria-describedby="RequestErormsg" matTooltip="{{editable.record}}" [class.error]="submitted && editable.isRequired && !accountcreationobj[editable.payloadKey]">
+                            <p *ngIf="submitted && editable.isRequired && !accountcreationobj[editable.payloadKey]" class="error-message custom-label top64" id="RequestErormsg">{{editable.fkey}} is required
+                            </p>
+                            <span class="mdi mdi-magnify"></span>
+                            <!-- <span class="mdi mdi-close float-right magnify_button cp" role="button" tabindex="0"
+                                aria-label="clear"
+                                (click)="removeSeletecedValue(CustomDetails,editable,'record');arrowkeyLocation=0"
+                                *ngIf="editable.fkey == 'currency' && editable.record"></span> -->
+
+                            <span *ngIf="!requestedByList.value || editable['isOpened']" class="mdi mdi-magnify btn_none float-right magnify_button"></span>
+                            <span class="mdi mdi-close float-right magnify_button" (click)="removeSeletecedValue(CustomDetails,editable,'record');arrowkeyLocation=0;editable.prevValue=''" *ngIf="requestedByList.value!=='' && !editable['isOpened']"></span>
+                            <div class="col-12  z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top67  request-border color-azure z-ind-9 bg-white" *ngIf="editable['isOpened'] ">
+                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                    <span class="w-100 z-ind-9 float-left bg-white">
+                                        <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read">
+                                            <span class="loader-search" *ngIf="isActivityGroupSearchLoading"> </span>
+                                    <li class="list-group-item h-50 p-4-10" [value]="item.Desc" *ngFor="let item of accountOverviewDropdown[editable.fkey];index as j" (click)="item.prevValue=item.Desc;editable['isOpened'] = false;appendcurrency(item,editable);
+                                                getPosts(CustomDetails,item, 'record','Desc', arrowkeyLocation);getError(item.Desc,item.fkey)" id="{{j}}" tabindex="0" role="option" aria-disabled="false" aria-selected="false" [class.activeList]="j==arrowkeyLocation">
+                                        <label for="inti_name" class="float-left name w-80">
+                                                    <span
+                                                        class="d-block list-name ellipses">{{getSymbol(item.Desc)}}</span>
+                                                </label>
+                                    </li>
+                                    <!-- (click)="appendcurrency(item,editable);(editable.fkey == 'currency' ?getError(item.Desc,editable.fkey):'')" -->
+                                    <!-- <li class="d-block list-name h-40 p-10 cp" -->
+                                    <li class="d-block list-name h-40 p-10 cp bg-white" *ngIf="accountOverviewDropdown[editable.fkey].length == 0 && !isActivityGroupSearchLoading">
+                                        No results found
+                                        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12">
+                                                </span>
+                                    </li>
+                                    </ul>
+                                    </span>
+                                </perfect-scrollbar>
+                                <span class="db-search" (click)="openadvancetabs(CustomDetails, editable.fkey,accountOverviewDropdown[editable.fkey],editable.record,'record','CustomDetails')">
+                                    <button id="adls{{accountOverviewDropdown[editable.fkey]?.length+1}}" 
+                                        tabindex="0" aria-disabled="false" type="button" class="button-search"
+                                        [attr.data-count]="arrowkeyLocation"
+                                        [class.active]="accountOverviewDropdown[editable.fkey]?.length+1 == arrowkeyLocation"
+                                       >
+                                        <span class="mdi mdi-file-outline"></span> Advance look up
+                                </button>
+                                </span>
+
+                            </div>
+
+
+                            <!-- list autocomplete end-->
+
+
+                            <!-- <div class="editSearch  cal_brdr-auto no_pad col-12 float-left " id="campaign" *ngIf="jijij">
+                                <mat-form-field class="no_pad col-12 float-left">
+                                    <input type="text" appKeyListControl (arrowDown)="arrowkeyLocation=$event"
+                                        [attr.data-arrayMaxLength]="accountOverviewDropdown[editable.fkey]?.length" [attr.data-isDownBtn]=true type="text" role="combobox" aria-autocomplete="list" [attr.aria-expanded]="editable['isOpened']?true:false" aria-owns="read"
+                                        [attr.aria-activedescendant]="arrowkeyLocation" (intialLoadData)="editable['isOpened'] = true ; keyWordSearch($event,editable.record, editable.fkey);" (keydown.Tab)="editable['isOpened'] = false" [dataManipulate]="true"
+                                        placeholder="Select {{editable.editname | lowercase}}" id="delivery" matInput [(ngModel)]="editable.record" (input)="keyWordSearch($event,editable.record, editable.fkey)" [attr.data-selectedvalue]="editable.record"
+                                        matTooltip="{{editable.record}}" [matAutocomplete]="auto">
+                                    <span  class="mdi mdi-magnify btn_none float-right magnify_button" role="button" tabindex="0" aria-label="search"></span>
+                                
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                        <mat-option *ngFor="let option of accountOverviewDropdown[editable.fkey]; let ind = index" [value]="option.Name" (click)="getPosts(editable,option, 'vals','Name', ind)">
+                                            {{option.Desc}}
+                                        </mat-option>
+                                        <span *ngIf="editable.isAdvanceLookup" class="db-search" (click)="openadvancetabs(CustomDetails, editable.fkey,customerDetailsDropdown[editable.fkey],editable.vals,'vals')">
+                                            <button id="{{editable.Id}}" role="option" tabindex="0"
+                                                aria-disabled="false" type="button" class="button-search"
+                                                [class.active]="editable.Id == arrowkeyLocation">
+                                                <span class="mdi mdi-file-outline"></span> Advance look up
+                                        </button>
+                                        </span>
+                                    </mat-autocomplete>
+
+                                </mat-form-field>
+
+
+                            </div> -->
+                        </div>
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='disabledselect' || editable.control=='disabledinput'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <button *ngIf="editable.isComment" [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover_customer" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos">
+                                <span
+                                    [ngClass]="(editable.GrowthPositionSubmitted && editable.comment !== '')?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                                    <span class="sr-only">{{editable.name}}</span>
+                                </span>
+                            </button>
+                            <input placeholder="{{editable.placeholder}}" class="border-gray w-100 Empaneled_txt disabled-control" id="customer_details{{i}}" [(ngModel)]="editable.vals" disabled />
+                        </div>
+                        <!-- <popover-content #myPopover_customer title="Comments - {{editable.name}}" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                            <span class="">
+                                <div class="textarea_readonly">
+                                    <textarea class="form-control vision_txt_area_placeholder"
+                                        [(ngModel)]="editable.comment" #newListItem_customer name="newListItem_customer"
+                                        rows="6" placeholder="Write your comments here.."></textarea>
+                                </div>
+                                <button type="button" class="btn pull-left cancel_but"
+                                    (click)="GrowthPositionInAccountClicked = false;myPopover_customer.hide();editable.comment ='';clearComment(editable)">Cancel
+                                </button>
+                                <button type="button" [disabled]="newListItem_customer.value.length < 1"
+                                    [ngClass]="newListItem_customer.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                                    (click)="editable.GrowthPositionSubmitted = true;GrowthPositionInAccountClicked = false;myPopover_customer.hide();savecomments(editable)">Submit</button>
+                            </span>
+                        </popover-content> -->
+
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='input'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <input class="border-gray w-100 vision_txt_area_placeholder" placeholder="Enter {{editable.name | lowercase}}" id="customer_details{{i}}" [(ngModel)]="editable.vals" (keypress)="(editable.datatype == 'number' || editable.datatype == 'float')?validate.maxValueValidation($event,editable.vals,editable.AttributeName):''"
+                                (keydown)="(editable.datatype == 'number' || editable.datatype == 'float')?validate.deleteAfterDecimal($event,null,-1, editable.vals, editable.AttributeName):''" [class.error]="(editable.fkey == 'Email' && editable.vals && !emailValidator(editable,editable.vals)) || editable.fkey == 'WebsiteUrl' && editable.vals && !websiteValidator(editable,editable.vals)">
+                            <p *ngIf="editable.fkey == 'Email' && editable.vals && !emailValidator(editable,editable.vals)" class="error-message custom-label top64">
+                                Please enter valid email address</p>
+                            <p *ngIf="editable.fkey == 'WebsiteUrl' && editable.vals && !websiteValidator(editable,editable.vals)" class="error-message custom-label top64">
+                                Please enter valid website</p>
+
+                        </div>
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='textarea'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <textarea class="border-gray w-100 vision_txt_area_placeholder" placeholder="Enter {{editable.name | lowercase}}" id="customer_details{{i}}" [(ngModel)]="editable.vals"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-12 no_pad backWht float-left">
+                <h4 class="cardsHead header_borderbottom">Address</h4>
+
+                <div *ngFor="let editable of addressDetails; let i=index">
+                    <div class="no_pad mt10 float-left" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-4'">
+
+                        <label class="no_pad editLabel" for="sbu">{{editable.name}}</label>
+                        <button *ngIf="editable.isComment && editable.control=='disabledinput'" [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover_address" (click)="toggleComment()" (keypress)="toggleComment()"
+                            class="button_messagespophover top_pos">
+                            <span
+                                [ngClass]="(editable.GrowthPositionSubmitted && editable.comment !== '')?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                                <span class="sr-only">{{editable.name}}</span>
+                            </span>
+                        </button>
+
+
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='input'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <input (keypress)="(editable.datatype == 'number' || editable.datatype == 'float')?validate.maxValueValidation($event,editable.vals,editable.AttributeName):''" (keydown)="(editable.datatype == 'number' || editable.datatype == 'float')?validate.deleteAfterDecimal($event,null,-1, editable.vals,editable.AttributeName):''"
+                                maxlength="{{editable.maxlength?editable.maxlength:500}}" placeholder="Enter {{editable.name | lowercase}}" class="border-gray w-100 vision_txt_area_placeholder" id="Address_details{{i}}" [(ngModel)]="editable.vals">
+                        </div>
+
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='disabledinput'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+
+                            <input placeholder="Enter {{editable.name | lowercase}}" class="border-gray w-100 vision_txt_area_placeholder" id="Address_details{{i}}" [(ngModel)]="editable.vals" disabled />
+                        </div>
+                        <!-- <popover-content #myPopover_address title="Comments - {{editable.name}}" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                            <span class="">
+                                <div class="textarea_readonly">
+                                    <textarea class="form-control vision_txt_area_placeholder"
+                                        [(ngModel)]="editable.comment" #newListItem_address name="newListItem_address"
+                                        rows="6" placeholder="Write your comments here.."></textarea>
+                                </div>
+                                <button type="button" class="btn pull-left cancel_but"
+                                    (click)="GrowthPositionInAccountClicked = false;myPopover_address.hide();editable.comment ='';clearComment(editable);goback()">Cancel
+                                </button>
+                                <button type="button" [disabled]="newListItem_address.value.length < 1"
+                                    [ngClass]="newListItem_address.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                                    (click)="editable.GrowthPositionSubmitted = true;GrowthPositionInAccountClicked = false;myPopover_address.hide();savecomments(editable)">Submit</button>
+                            </span>
+                        </popover-content> -->
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- Key financials start -->
+            <div class="col-sm-12 no_pad backWht float-left ">
+                <h4 class="cardsHead header_borderbottom">Key financials</h4>
+                <div class="col-sm-12 no_pad">
+                    <div class="col-sm-12 no_pad float-left accord_s">
+                        <div class="col-sm-12 no_pad accbody overflow-horizontal">
+                            <table class="col-sm-12 no_pad allianceTable tablAlliance mt20">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let tab of table_headkey">{{tab.tablehead}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tab of table_datakey">
+                                        <td *ngFor="let tabTitle of table_headkey" [attr.data-label]="tabTitle.tablehead">{{tab[tabTitle.name]}}</td>
+                                        <td>{{tab.tabledata1}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- key financials end -->
+            <!-- Trends & analysis start -->
+            <div class="col-sm-12 no_pad backWht float-left">
+                <h4 class="cardsHead header_borderbottom">Trends & analysis</h4>
+
+                <div *ngFor="let editable of trendsAnalysis;let i=index;">
+                    <div class="no_pad mt10 float-left" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-4'">
+
+                        <label class="col-sm-12 no_pad editLabel" for="Analysis_details{{i}}">{{editable.name}}</label>
+
+                        <div class="customized-select no_pad current_position customized-select" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'" *ngIf="editable.control=='select'">
+                            <span class="caret"></span>
+                            <select class="border-gray w-100 Empaneled_txt disable-input" disabled [(ngModel)]="editable.vals" id="Analysis_details{{i}}">
+                                <option selected>India</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='disabledinput'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+
+
+
+                            <button *ngIf="editable.isComment" [popoverOnHover]="false" [popoverCloseOnMouseOutside]="false" [popoverCloseOnClickOutside]="true" [popover]="myPopover_accountRE" (click)="toggleComment()" (keypress)="toggleComment()" class="button_messagespophover top_pos">
+                                <span
+                                    [ngClass]="(editable.GrowthPositionSubmitted && editable.comment !== '')?'mdi mdi-comment-plus-outline message_cls_orange':'mdi mdi-comment-plus-outline message_cls'">
+                                    <span class="sr-only">{{editable.name}}</span>
+                                </span>
+                            </button>
+
+
+                            <input class="border-gray w-100 vision_txt_area_placeholder" id="Analysis_details{{i}}" [(ngModel)]="editable.vals" placeholder="Enter {{editable.name}}" disabled>
+                        </div>
+                        <!-- <popover-content #myPopover_Trends title="Comments - {{editable.name}}" placement="right" [animation]="false" [closeOnClickOutside]="true" [attr.aria-hidden]="clickmes ? 'false' : 'true'">
+                            <span class="">
+                                <div class="textarea_readonly">
+                                    <textarea class="form-control vision_txt_area_placeholder"
+                                        [(ngModel)]="editable.comment" #newListItem_Trends name="newListItem_Trendsr"
+                                        rows="6" placeholder="Write your comments here.."></textarea>
+                                </div>
+                                <button type="button" class="btn pull-left cancel_but"
+                                    (click)="GrowthPositionInAccountClicked = false;myPopover_Trends.hide();editable.comment ='';clearComment(editable);goback()">Cancel
+                                </button>
+                                <button type="button" [disabled]="newListItem_Trends.value.length < 1"
+                                    [ngClass]="newListItem_Trends.value.length < 1 ? 'btn pull-left submit_but':'btn pull-left submit_but1'"
+                                    (click)="editable.GrowthPositionSubmitted = true;GrowthPositionInAccountClicked = false;myPopover_Trends.hide();savecomments(editable)">Submit</button>
+                            </span>
+                        </popover-content> -->
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='input'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <input placeholder="Enter {{editable.name ==='Employees'? 'no. of employees':editable.name | lowercase}}" (keypress)="(editable.datatype == 'number' || editable.datatype == 'float')?validate.maxValueValidation($event,editable.vals,editable.AttributeName):''"
+                                (keydown)="(editable.datatype == 'number' || editable.datatype == 'float')?validate.deleteAfterDecimal($event,null,-1, editable.vals,editable.AttributeName):''" maxlength="{{editable.maxlength?editable.maxlength:500}}" class="border-gray w-100 vision_txt_area_placeholder"
+                                id="Analysis_details{{i}}" [(ngModel)]="editable.vals">
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+            <!-- Trends & analysis end -->
+            <!-- IT landscape start-->
+            <div class="col-sm-12 no_pad backWht float-left">
+                <h4 class="cardsHead header_borderbottom">IT landscape</h4>
+
+                <div *ngFor="let editable of LandIT;let i=index;">
+                    <div class="no_pad mt10 float-left" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-4'">
+
+                        <label class="col-sm-12 no_pad editLabel" for="landscape_details{{i}}">{{editable.name}}</label>
+
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='input'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <input class="border-gray w-100 vision_txt_area_placeholder" (keydown.Tab)="showAlliance()" placeholder="Enter {{editable.name =='IT landscape'?'IT landscape':editable.name | lowercase}}" id="landscape_details{{i}}" [(ngModel)]="editable.vals">
+                        </div>
+                        <div class="form-group no_pad customized-input" *ngIf="editable.control=='disabledinput'" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <input class="border-gray w-100 vision_txt_area_placeholder" (keydown.Tab)="showAlliance()" placeholder="Enter {{editable.name =='IT landscape'?'IT landscape':editable.name | lowercase}}" id="landscape_details{{i}}" [(ngModel)]="editable.vals" disabled>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- It landscape ends -->
+            <!-- Customer business units  start -->
+            <div class="col-sm-12 no_pad backWht float-left mb20 padd_top25cbu">
+                <div class="col-12 float-left cardsHeadheader no_pad">
+                    <div class="col-12 col-md-6 no_pad float-left">
+                        <h4 class="cardsHeadcbu no_pad">Customer business units </h4>
+                    </div>
+                    <div class="col-12 col-md-6 no_pad float-left">
+                        <button class="float-left float-md-right addAccountBtns" (keypress)="openAddCBUActivatePopup()" (click)="openAddCBUActivatePopup()">+ Add customer business unit</button>
+                    </div>
+                </div>
+                <div class="col-sm-12 no_pad">
+                    <div class="col-sm-12 no_pad float-left accord_s">
+                        <div class="col-sm-12 no_pad accbody">
+                            <table class="col-sm-12 no_pad allianceTable tablAlliance mt20">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let data of CustomerBusinessUnit.tableHead; let i=index">
+                                            {{data.title}}</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of CustomerBusinessUnitdata; let i=index">
+                                        <td>{{data.Name}}</td>
+                                        <td [ngClass]="!data.IsActivate?'dective_red':'active_green'">
+                                            {{data.IsActivate?'Activate':'InActivate'}}
+                                        </td>
+                                        <td>
+                                            <div class="col-12 float-left no_pad customized-input slidetoggle2 customized-slider">
+                                                <mat-slide-toggle [checked]="data.BuyerOrg" (change)="data.BuyerOrg = !data.BuyerOrg">
+                                                    <span class="sr-only">Buyer Org</span>
+                                                </mat-slide-toggle>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button id="reject" *ngIf="data.IsActivate && data.MapGuid" class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="reject" (click)="data.IsActivate = !data.IsActivate" matTooltip="Deactivate">
+                                                <span
+                                                    class="col-xs-12 nopad blue_circle_replay_img mdi mdi-close"></span>
+                                            </button>
+                                            <button id="approve" *ngIf="!data.IsActivate && data.MapGuid" class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="approve" (click)="data.IsActivate = !data.IsActivate" matTooltip="Activate">
+                                                <span
+                                                    class="col-xs-12 nopad blue_circle_replay_img mdi mdi-check"></span>
+                                            </button>
+                                            <button id="delete" *ngIf="!data.MapGuid" class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="delete" (click)="deleteCBU(data,i)" matTooltip="Delete">
+                                                <span
+                                                    class="col-xs-12 nopad blue_circle_replay_img mdi mdi-delete "></span>
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Customer business units  end-->
+        </div>
+
+    </div>
+
+    <!--customer details  ends here-->
+
+
+
+    <!-- account relationship Alliance tab starts here-->
+    <div class="col-12 plr30 float-left mt20 mb-100 pb-70" *ngIf="allianceTab">
+        <h3 class="col-sm-12 no_pad overviewHead">Account Relationships</h3>
+        <!--Alliance editable part starts here-->
+        <div class="col-sm-12 no_pad">
+            <div class="col-sm-12 no_pad backWht">
+                <h4 class="cardsHead">Vendor relationship</h4>
+                <div class="col-sm-12 no_pad" *ngFor="let v of vendorDetails;let i=index;">
+                    <div *ngIf="v.control=='dropdown'" class="no_pad mt10 float-left mobile-select-box" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-4'">
+                        <label class="col-sm-12 no_pad editLabel" for="primary_vendor{{i}}">{{v.name}}</label>
+                        <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <span class="caret"></span>
+                            <select [(ngModel)]="v.Id" class="w-100 border-gray Empaneled_txt" (change)="selectedvalue(v)" placeholder="Select" id="primary_vendor">
+                                <option value="">Select {{v.name | lowercase}}</option>
+                                <option *ngFor="let rel of vendorDropdown[v.fkey]" [value]="rel.Id">
+                                    {{rel.Value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt20 create-mt20 float-left mb21 web-select-box" *ngIf="v.control=='dropdown'">
+                        <label class="col-sm-12 no_pad editLabel" for="primary_vendor">{{v.name}}</label>
+                        <div class="customized-select no_pad current_position" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <!-- <span class="caret"></span> -->
+                            <mat-form-field class="col-12 no_pad float-left">
+                                <mat-label> Select {{v.name | lowercase}}</mat-label>
+                                <mat-select (keydown.Tab)="showOverview();getFocus()" disableOptionCentering panelClass="Select-panel-class" (selectionChange)="selectedvalue(v)" placeholder="Select" id="primary_vendor" [ngClass]="{'error': v.name.touched && !v.name.valid}" class="select-focus"
+                                    [(ngModel)]="v.Id">
+                                    <mat-option value="">Select {{v.name | lowercase}}</mat-option>
+                                    <mat-option *ngFor="let rel of vendorDropdown[v.fkey]" [value]="rel.Id" matTooltip="{{rel.Value}}" [matTooltipHideDelay]="1">
+                                        {{rel.Value}}
+                                    </mat-option>
+                                </mat-select>
+                                <p *ngIf="v.name.touched && !v.name.valid" class="error-message top-40"> </p>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div *ngIf="v.control=='input'" class="no_pad mt10 float-left" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-4'">
+                        <label class="col-sm-12 no_pad editLabel" for="advisory">{{v.name}}</label>
+                        <div class="form-group no_pad customized-input" [ngClass]="userdat.chatBot ?'col-sm-6 ':'col-sm-11'">
+                            <input (keypress)="(v.datatype == 'number' || v.datatype == 'float')?validate.maxValueValidation($event,v.vals,v.AttributeName):''" (keydown)="(v.datatype == 'number' || v.datatype == 'float')?validate.deleteAfterDecimal($event,null,-1, v.vals,v.AttributeName):''"
+                                maxlength="{{v.maxlength?v.maxlength:500}}" class="border-gray w-100 vision_txt_area_placeholder" id="advisory" [(ngModel)]="v.vals">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 no_pad reviewSubmit_Container mb20 float-left margin-btm55">
+                <mat-accordion class="col-sm-12 no_pad accountDtlsAcc mt10">
+                    <mat-expansion-panel (click)="expand(0)" [disabled]="editable" hideToggle="true" [expanded]="accountAlliancePanel" class="panel_bottom no_pad" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header style="min-height:80px;">
+                            <mat-panel-title class="accord_heading">
+                                <span [ngClass]="panelOpenState ? 'mdi mdi-chevron-right chev_right':'mdi mdi-chevron-down chev_right'"></span>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                                    <span role="heading" aria-level="4" class="title_s pt8 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">Account
+                                        alliance</span>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">
+                                        <button class="float-left float-md-right addAccountBtns mr15 mb10" (keypress)="OpenaddAlliancepopup()" (click)="OpenaddAlliancepopup()">+
+                                            Add alliance</button>
+                                    </div>
+                                </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="col-sm-12 no_pad float-left accord_s">
+                            <div class="col-sm-12 no_pad accbody">
+                                <table class="col-sm-12 no_pad allianceTable tablAlliance cust_check businessPanelTable table-accordin">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th class="width4  "></th> -->
+                                            <th *ngFor="let tab of table_headalli">{{tab.tablehead}}</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table_rows" *ngFor="let data of table_data;let i =index">
+                                            <!-- <td class="width4 customized-checkbox" *ngIf="data.LinkActionType && data.LinkActionType !=3">
+                                              </td> -->
+                                            <td data-label="Alliance">{{data.Name}}</td>
+                                            <!-- <td data-label="Customer Contact" >{{data.contact}}</td> -->
+                                            <td *ngIf="data.LinkActionType && data.LinkActionType !=3" class="center-delete-btn ">
+                                                <div class="mobile-align commonActionBlock">
+                                                    <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn float-right" matTooltip="Delete" aria-label="delete" (click)="deleteAlliance(data, i)">
+                                                        <span
+                                                            class="col-xs-12 nopad blue_circle_replay_img mdi mdi-delete "></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion class="col-sm-12 no_pad accountDtlsAcc mt10 mb20">
+                    <mat-expansion-panel (click)="expand(1)" [disabled]="editable1" hideToggle="true" [expanded]="accountCompetitorsPanel" class="panel_bottom no_pad" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header style="min-height:80px;">
+                            <mat-panel-title class="accord_heading">
+                                <span [ngClass]="panelOpenState ? 'mdi mdi-chevron-right chev_right':'mdi mdi-chevron-down chev_right'"></span>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                                    <span role="heading" aria-level="4" class="title_s pt8 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">Active
+                                        account competitors</span>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">
+                                        <button class="float-left float-md-right addAccountBtns mr15 mb10 " (click)="OpenaddActiveCompetitorepopup()" (keypress)="OpenaddActiveCompetitorepopup()">+ Add
+                                            active competitors</button>
+                                    </div>
+                                </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="col-sm-12 no_pad float-left accord_s mb20">
+                            <div class="col-sm-12 no_pad accbody">
+                                <table class="col-sm-12 no_pad allianceTable tablAlliance cust_check businessPanelTable table-accordin">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th class="width4 customized-checkbox ">
+                                            </th> -->
+                                            <th>
+                                                Competitor name
+                                                <!-- <span >
+                                                    <span> Competitor name </span>
+                                                 <span [ngClass]="reverse?'caret_up_table':'caret_down_table'"></span> 
+                                                </span> -->
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table_rows" *ngFor="let data of accountCompetitors1; let i = index;">
+                                            <!-- <td class="width4 customized-checkbox ">
+                                            </td> -->
+                                            <td data-label="Competitor name">{{data.Name}}</td>
+                                            <td *ngIf="data.LinkActionType && data.LinkActionType !=3" class="center-delete-btn">
+                                                <div class="mobile-align commonActionBlock">
+                                                    <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn float-right" matTooltip="Delete" aria-label="Delete" (click)="deleteCompetitore(data,i)">
+                                                        <span
+                                                            class="col-xs-12 nopad blue_circle_replay_img mdi mdi-delete "></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion class="col-sm-12 no_pad accountDtlsAcc mt10 mb20">
+                    <mat-expansion-panel (click)="expand(2)" [disabled]="editable2" hideToggle="true" class="panel_bottom no_pad" [expanded]="analystRelationsPanel" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header style="min-height:80px;">
+                            <mat-panel-title class="accord_heading">
+                                <span [ngClass]="panelOpenState ? 'mdi mdi-chevron-right chev_right':'mdi mdi-chevron-down chev_right'"></span>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                                    <span role="heading" aria-level="4" class="title_s pt8 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">Advisory/
+                                        Analyst relations</span>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">
+                                        <button class="float-left float-md-right addAccountBtns mr15 mb10" (click)="OpenAnalystRelationpopup()" (keypress)="OpenAnalystRelationpopup()">+
+                                            Add Advisory/ Analyst relations</button>
+                                    </div>
+                                    <!-- OpenAnalystRelationpopup() -->
+                                </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="col-sm-12 no_pad float-left accord_s">
+                            <div class="col-sm-12 no_pad accbody">
+                                <table class="col-sm-12 no_pad allianceTable compTables table-accordin">
+                                    <thead>
+                                        <tr>
+
+                                            <th> Competitor name </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let tab of advisory; let i=index">
+
+                                            <td data-label="Name of Advisory/ Analyst">{{tab.Name}}
+                                            </td>
+                                            <td *ngIf="tab.LinkActionType && tab.LinkActionType !=3" class="center-delete-btn">
+                                                <div class="mobile-align commonActionBlock">
+                                                    <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn float-right" matTooltip="Delete" aria-label="Delete" (click)="deleteadvisory(tab, i)">
+                                                        <span
+                                                            class="col-xs-12 nopad blue_circle_replay_img mdi mdi-delete "></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <!--Alliance editable part ends here-->
+    </div>
+    <!--account relationship Alliance tab ends here-->
+
+
+
+</div>

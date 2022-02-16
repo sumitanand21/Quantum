@@ -1,0 +1,74 @@
+
+	.deal-qualify {
+  
+        .closure-date{
+          .mdi-calendar-blank:before {
+            color: #2f81ff;
+            font-size: 20px;
+            position: relative;
+            right: 20px;
+          }
+      
+        }
+        .mdi-calendar-blank:before {
+          color: #2f81ff;
+          font-size: 20px;
+          position: relative;
+          right: 0px;
+        }
+        .caret {
+          top: 45px !important;
+          right: 16px;
+        }
+        .text-area-content{
+          font-family: WiproAkkuratTT-Bold;
+          font-size: 14px;
+          color: #4a4a4a;
+          resize: none;
+          border: 1.5px solid #d8d8d8;
+          border-radius: 4px;
+          background-color: #ffffff;
+          height: 120px;
+          padding: 10px;
+          outline: none;
+        }
+        .top64 {
+          top: 64px;
+        }
+        .sub-text{
+            font-size: 13px;
+            bottom: 6px;
+            font-family: WiproAkkuratTT-Bold;
+        }
+        .label-text{
+            font-size: 12px;
+            font-family: WiproAkkuratTT-Regular;
+            color: #000000b5;
+        }
+    
+        .pad-15-12{
+            padding: 12px 15px 4px 2px;
+        }
+        .font-12{
+            font-size: 12px;
+        }
+        .cancel-btn1{
+        background: #d9e9ff;
+        color: #2f81ff;
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.38;
+        font-family: "WiproAkkuratTT-Bold";
+        padding: 14px;
+        margin-top: 15px;
+        border: none;
+        }
+        
+      } 
+      .popup-container .popup-hd {
+        padding: 15px 0px 15px 2px !important;
+    } 
+    
+    .mb-20{
+        margin-bottom: 30px;
+    }

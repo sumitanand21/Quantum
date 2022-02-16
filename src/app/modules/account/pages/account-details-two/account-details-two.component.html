@@ -1,0 +1,229 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+
+    <app-nav></app-nav>
+    <app-small-spinner [isLoading]="isLoading"> </app-small-spinner>
+    <div class="float-left col-12 mt10 header-action-tab main-containt accountDetails_page" [ngClass]="userdat.chatBot? 'chat-bot-1100' : userdat.sideTrans ? 'main-containt-250' : ''">
+        <div class="col-sm-12 no_pad float-left head ">
+            <div class="no_pad float-left heading cp pl30">
+                <h2 class="heading-Account">Notes</h2>
+                <p>{{accountName}}</p>
+            </div>
+
+            <div class="float-right"> </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="blue_bg_div account-details-back account_details_height gcp_list_height"> </div>
+<div class="min-hei accountDetails_page scroll-middle-ios-100vh" [ngClass]="userdat.sideTrans ? 'main-containt-250' : 'main-containt'">
+    <div class="topNavHead pt20 plr30 float-left col-sm-12 padd-top-130">
+
+        <div class="col-sm-12 no_pad float-left mt20">
+
+            <div class="col-sm-12 no_pad">
+                <div class="col-sm-12 no_pad backWht">
+                    <h3 class="cardsHead">Notes and details</h3>
+                    <!--write input code-->
+
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mb20">
+                        <form [formGroup]="FileUploadFOrm" class="row">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-5 float-left mt20">
+                                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactName" class="label-form"> Notes <span class="asteriq"> * </span>
+                                </label>
+                                <textarea  (input)="restrictspace($event);checCharLimit($event)" maxlength="100000" formControlName="note" [class.error]="submitted && FileUploadFormValidation.note.errors && FileUploadFormValidation.note.errors.required" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text text-height-70"
+                                    id="text3" name="text" type="text" placeholder="Enter notes and details"></textarea>
+                                <p *ngIf="submitted && FileUploadFormValidation.note.errors && FileUploadFormValidation.note.errors.required" class="error-message custom-label">Notes is required</p>
+                                <br/>
+                                <p *ngIf="FileUploadFOrm.value.note" class="custom-label">{{characterCount}} char left</p>
+
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-5   float-left mt20 padding_conclusiontextarea">
+                                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactName" class="label-form"> Attach document</label>
+                                <input readonly formControlName="fileName" class="form-control col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
+                                <button type="button" class=" btn_none bttn-form  attach-icon-btn float-right right_margintopMobile" aria-label="attach">
+                                    <span *ngIf="!(FileUploadFOrm.value.filrUrl && FileUploadFOrm.value.fileName)" class="mdi mdi-attachment"></span>
+                                    <input type="file" id="attach" accept="/*" (change)="fileChangeEvent($event)"
+                                        class="ip_op0 file_ip" #addNoteFileInput (click)="addNoteFileInput.value = null"
+                                        value="" name="files[]">
+                                    <!-- <input  type="file" (change)="onFileChange($event)"   class="ip_op0 file_ip" type="file"  />  -->
+                                </button>
+                                <span *ngIf="FileUploadFOrm.value.filrUrl && FileUploadFOrm.value.fileName" class="mdi mdi-close auto-close" (click)="removeAttachment()"></span>
+                                <p *ngIf="submitted && FileUploadFormValidation.fileName.errors && FileUploadFormValidation.fileName.errors.required" class="error-message custom-msgaccount">Attachment is required</p>
+                                <!-- <p class="error-message">Attachment is required</p> -->
+                            </div>
+
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-1 paddingtop_notes justify-content-center commonActionBtn mobile-align justify-content-md-around float-left mt20 icon-center">
+                                <button id="reject" class="no_pad_mobile btn-none blue_circle_button pad_left_0 cp commonActionBtn float-left" aria-label="Remove" matTooltip="Remove" (click)="fileSubmit(false)">
+                                    <span
+                                        class="col-xs-12 nopad blue_circle_button_img mdi mdi-close comment-concl-btn"></span>
+                                </button>
+                                <button id="approve" class="no_pad_mobile btn-none blue_circle_button pad_left_0 cp commonActionBtn float-right" aria-label="Add" matTooltip="Add" (click)="fileSubmit(true,editData)">
+                                    <span
+                                        class="col-xs-12 nopad blue_circle_button_img comment-concl-btn mdi mdi-check"></span>
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card pb20 mt20 margin-btm55 pt20 plr30">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mb10">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt10">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-10 float-left no_pad">
+                        <h3 class="cardsHead"> Notes and details </h3>
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad bg-mid_light h-50">
+                <h3 class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left heading-level-three">Notes </h3>
+                <h3 class="col-12 col-sm-12 col-md-3 col-lg-4 col-xl-3  float-left heading-level-three">
+                    Attachment
+                </h3>
+                <h3 class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4  float-left heading-level-three">
+                    Created on and by
+                </h3>
+            </div> -->
+
+            <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mb20  border_topconclusion">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left padding_conclusion" *ngFor="let data of notesAndDetail">
+                    <div class="col-6 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  text-muted">
+                        {{data.NotesDescription}}</div>
+                    <div class="col-6 col-sm-12 col-md-3 col-lg-4 col-xl-3 float-left ">
+                        <!-- data.Attachment[0].Name ,  -->
+                        <!-- <a *ngIf="(data.Attachment[0].Url)" target="_blank" [href]="data.Attachment[0].Url">{{data.Attachment[0].Name}}</a>
+                        <a *ngIf="!(data.Attachment[0].Url)" [href]="">NA</a>
+                    </div>
+                    <div class="col-6 col-sm-12 col-md-3 col-lg-4 col-xl-3 float-left  text-muted">
+                        {{data.CreatedOn | date :'dd MMM yy'}}, {{data.CreatedOn | date :'shortTime'}} {{data.CreatedBy.FullName}}
+                    </div>
+                    <div class="col-5 col-sm-12 col-md-2 col-lg-4 col-xl-2 float-right icon-delete ">
+
+                        <button id="approve" (click)="deleteRowItem(data)" class="btn-none blue_circle_button pad_left_0 cp commonActionBtn float-right" aria-label="delete" matTooltip="Delete">
+                            <span
+                                class="col-xs-12 nopad blue_circle_button_img mdi mdi-delete comment-concl-btn"></span>
+                        </button>
+                        <button id="reject" (click)="editRowItem(data)" class="btn-none blue_circle_button pad_left_0 cp commonActionBtn float-left" aria-label="edit" matTooltip="Edit">
+                            <span
+                                class="col-xs-12 nopad blue_circle_button_img mdi mdi-square-edit-outline comment-concl-btn"></span>
+                        </button>
+                    </div>
+
+                </div> -->
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left padding_conclusion" >
+            <div class="col-6 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  text-muted">
+                test</div>
+            <div class="col-6 col-sm-12 col-md-3 col-lg-4 col-xl-3 float-left ">
+               tres
+            </div>
+            <div class="col-6 col-sm-12 col-md-3 col-lg-4 col-xl-3 float-left  text-muted">
+               tres
+            </div>
+            <div class="col-5 col-sm-12 col-md-2 col-lg-4 col-xl-2 float-right icon-delete ">
+                
+                <button  id="approve" class="btn-none blue_circle_button pad_left_0 cp commonActionBtn float-right" aria-label="approve"  matTooltip="delete">
+                            <span
+                                class="col-xs-12 nopad blue_circle_button_img mdi mdi-delete comment-concl-btn"></span>
+                        </button>
+              <button  id="reject" class="btn-none blue_circle_button pad_left_0 cp commonActionBtn float-left" aria-label="reject" matTooltip="edit">
+                            <span
+                                class="col-xs-12 nopad blue_circle_button_img mdi mdi-square-edit-outline comment-concl-btn"></span>
+                        </button>
+            </div>
+        </div> -->
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left padding_conclusion" >
+            <div class="col-6 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  text-muted">
+                test</div>
+            <div class="col-6 col-sm-12 col-md-3 col-lg-4 col-xl-3 float-left ">
+               tres
+            </div>
+            <div class="col-6 col-sm-12 col-md-3 col-lg-4 col-xl-3 float-left  text-muted">
+               tres
+            </div>
+            <div class="col-5 col-sm-12 col-md-2 col-lg-4 col-xl-2 float-right icon-delete ">
+                
+                <button  id="approve" class="btn-none blue_circle_button pad_left_0 cp commonActionBtn float-right" aria-label="approve"  matTooltip="delete">
+                            <span
+                                class="col-xs-12 nopad blue_circle_button_img mdi mdi-delete comment-concl-btn"></span>
+                        </button>
+              <button  id="reject" class="btn-none blue_circle_button pad_left_0 cp commonActionBtn float-left" aria-label="reject" matTooltip="edit">
+                            <span
+                                class="col-xs-12 nopad blue_circle_button_img mdi mdi-square-edit-outline comment-concl-btn"></span>
+                        </button>
+            </div>
+        </div> -->
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left padding_conclusion" >
+            <div class="col-6 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-left  text-muted">
+                test</div>
+            <div class="col-6 col-sm-12 col-md-3 col-lg-4 col-xl-3 float-left ">
+               tres
+            </div>
+            <div class="col-6 col-sm-12 col-md-3 col-lg-4 col-xl-3 float-left  text-muted">
+               tres
+            </div>
+            <div class="col-5 col-sm-12 col-md-2 col-lg-4 col-xl-2 float-right icon-delete ">
+                
+                <button  id="approve" class="btn-none blue_circle_button pad_left_0 cp commonActionBtn float-right" aria-label="approve"  matTooltip="delete">
+                            <span
+                                class="col-xs-12 nopad blue_circle_button_img mdi mdi-delete comment-concl-btn"></span>
+                        </button>
+              <button  id="reject" class="btn-none blue_circle_button pad_left_0 cp commonActionBtn float-left" aria-label="reject" matTooltip="edit">
+                            <span
+                                class="col-xs-12 nopad blue_circle_button_img mdi mdi-square-edit-outline comment-concl-btn"></span>
+                        </button>
+            </div>
+        </div>        -->
+            <!-- </div> -->
+
+            <table class="col-sm-12 no_pad allianceTable tablAlliance mt20">
+                <thead>
+                    <tr>
+                        <th>Notes</th>
+                        <th>Attachment</th>
+                        <th>Created on and by</th>
+                        <th style="width:110px" class="actionColumn"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of notesAndDetail; let i=index;">
+                        <td data-label="Notes" class="firstdatacolor">
+                            {{data.NotesDescription}}</td>
+                        <td data-label="Attachment">
+                            <!--<a *ngIf="(data.Attachment[0].Url)" target="_blank" [href]="data.Attachment[0].Url">{{data.Attachment[0].Name}}</a>-->
+                            <a class="firstdatacolor" *ngIf="(data.Attachment[0].Url)" (click)="downloadsingle(i)">{{data.Attachment[0].Name}}</a>
+                            <a *ngIf="!(data.Attachment[0].Url)" [href]="">NA</a>
+                        </td>
+                        <td data-label="Created on and by">
+                            {{data.CreatedOn | date :'dd MMM yy'}}, {{data.CreatedOn | date :'shortTime'}} {{data.CreatedBy.FullName}}
+                        </td>
+                        <td data-label="">
+                            <div class="button_div mobile-align commonActionBlock">
+                            <button id="approve" (click)="deleteRowItem(data)" class="no_pad_mobile btn-none blue_circle_button pad_left_0 cp commonActionBtn float-right" aria-label="delete" matTooltip="Delete">
+                                <span
+                                    class="col-xs-12 nopad blue_circle_button_img mdi mdi-delete comment-concl-btn"></span>
+                            </button>
+                            <button id="reject" (click)="editRowItem(data)" class="no_pad_mobile btn-none blue_circle_button pad_left_0 cp commonActionBtn float-left" aria-label="edit" matTooltip="Edit">
+                                <span
+                                    class="col-xs-12 nopad blue_circle_button_img mdi mdi-square-edit-outline comment-concl-btn"></span>
+                            </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>

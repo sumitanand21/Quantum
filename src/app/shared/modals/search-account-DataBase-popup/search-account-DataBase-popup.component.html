@@ -1,0 +1,281 @@
+<div class="col-12 float-left  no_pad db-container " [ngClass]="wiproDatabsebtn?'DynamicWidth400':'DynamicWidth600'">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-9 float-left  no_pad search-db-hd-txt" mat-dialog-title>Search account</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+        <div class="col-12 no_pad popup-tabs ">
+            <div class="row col-12 no_pad pad-top float-left">
+                <div class="col-6 text-center  no_pad">
+                    <button class="btn  btn-circle mb-5" role="button" [attr.aria-selected]="wiproDatabsebtn ? 'true': ''"
+                        [ngClass]="{'btn-default bg-light text-primary': wiproDatabsebtn == false ,'btn-primary text-light': wiproDatabsebtn == true}"
+                        (click)="wiproDatabsebtclick()"> <span class="mdi mdi-format-list-bulleted"></span></button>
+                    <br>
+                    <span class="">Wipro database</span>
+                    <div class="popup-tabs-arrow" *ngIf="wiproDatabsebtn"></div>
+                </div>
+
+                <div class="col-6 text-center mr-lt no_pad d-flex flex-column align-items-center">
+                    <button class="btn btn-circle mb-5"  role="button" [attr.aria-selected]="dDatabasebtn ? 'true': ''"
+                        [ngClass]="{'btn-default bg-light text-primary': dDatabasebtn == false ,'btn-primary text-light': dDatabasebtn == true}"
+                        (click)="dDatabasebtnClick()"> <span class="mdi mdi-format-list-bulleted"></span></button>
+                 
+                    <span class="">D&B database</span>
+                    <div class="popup-tabs-arrowdb" *ngIf="dDatabasebtn"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-105">
+            <span class="color-azure caretpopup11 second-headngsearch" *ngIf="wiproDatabsebtn">Searching: Wipro
+                accounts</span>
+            <!--<span class="color-azure caretpopup11 second-headngsearch"  *ngIf="dDatabasebtn">Searching: D&B accounts</span>-->
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20  mb-30 "
+            *ngIf="wiproDatabsebtn">
+            <form class="col-12 col-sm-12 col-md-4 col-lg-6 col-xl-12 float-left no_pad CompanyName CompanyNamewip">
+
+                <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+
+                appKeyListControl #WiproDatabase (arrowDown)="arrowkeyLocation=$event"
+                    (keyup.enter)="appendName(companyDetails[arrowkeyLocation]);showCompanySwitch=false"
+                    (keydown.enter)="$event.preventDefault()"
+                    [attr.data-arrayMaxLength]="companyDetails?.length" 
+                    role="combobox" aria-autocomplete="list"
+                    [attr.aria-expanded]="showCompanySwitch?true:false" aria-owns="read"
+                    [attr.aria-activedescendant]="arrowkeyLocation"
+                    id="CompanyNametest" name="CompanyNametest" type="text" [(ngModel)]="companyName" autocomplete="off" placeholder="Enter Account/Company name" 
+                    (input)="showCompanySwitch = true;onAccountSearch($event);"
+                     (click)="showCompanySwitch = true;onAccountSearch($event);"
+                    (clickOutside)="companyNameClose()">
+                <span class="mdi mdi-magnify"></span>
+                <!-- (click)="conversationNameSwitchAccountName=true;callTempSource()"
+                (input)="conversationNameSwitchAccountName=true;callTempSource()" -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad z-ind-9"
+                    *ngIf="showCompanySwitch ">
+                    <ul class=" list-group color-azure autocomplete-box" >
+                        <span class="w-100 z-ind-9 float-left bg-white">
+                            <perfect-scrollbar style="max-height:150px"  >
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                                    <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                                      [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                            <li class="list-group-item"  id="{{i}}" (click)="appendName(item)" 
+                             *ngFor="let item of companyDetails;let i = index"  tabindex="0" role="option" 
+                               [class.active]="i==arrowkeyLocation" aria-disabled="false">
+                                <button class="d-block list-name float-right sub-list mt10 btndef-none" (click)="ExistingAccount()" > {{item?.Type?.Value}} </button>
+                                <span class="d-block list-name float-right sub-list mt10"  (click)="reserveAccount()"> {{item?.Reserve_account}} </span>
+                                <button class="d-block list-name float-right sub-list mt10 btndef-none" > {{item?.refernce}} </button>
+                                <span class="d-block list-name float-right sub-list mt10" > {{item?.Pending_account}} </span>
+                                <span class="d-block list-name float-right sub-list mt10" > {{item?.Prospect_account}} </span>
+                                <span class="d-block list-name ellipses" title="{{item.Name}}"> {{getdecodevalue(item?.Name)}} </span>
+                                <span class="sub-list1 d-block"> {{item?.Number}} | {{item?.Owner?.FullName}} | {{item?.Vertical?.Name}} | {{item?.Address?.Region?.Name}} </span>
+
+                            </li>
+ 
+
+                              </ul>
+                                </span>
+                            </perfect-scrollbar>
+                            <div class="d-block list-name h-40 p-10" *ngIf="companyDetails && companyDetails['message'] && !isActivityGroupSearchLoading"> {{companyDetails['message']}}
+                                <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12">Ensure that you have typed correct legal entity name</span>
+                            </div>
+                        <!-- [routerLink]="['/conversations/prospectAccount']" -->
+                        </span>
+                     </ul>
+                </div>
+
+                <!--<button class="db-prospect mt-10"  [routerLink]="['/accounts/accountcreation/createprospectaccount']"   mat-dialog-close>
+                        + Custom account 
+                        </button> -->
+            </form>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad " *ngIf="dDatabasebtn">
+            <div class="col-12 col-sm-12 col-md-6 create_pading float-left">
+                <!--<form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName CompanyName1">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CompanyNameD"
+                            class="label-form">Account name<span class="asteriq"> * </span></label>
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                            id="CompanyNameD" name="CompanyNameD" type="text" [(ngModel)]="companyNameD" autocomplete="off"
+                            placeholder="Enter Account/Company name" (click)="showCompanySwitchD = true"
+                            (clickOutside)="companyNameCloseD()">
+                        <span class="mdi mdi-magnify"></span>
+        
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad z-ind-9"
+                            *ngIf="companyNameD && showCompanySwitchD ">
+                            <ul class=" list-group color-azure autocomplete-box">
+                                <perfect-scrollbar style="max-height:150px">
+                                    <li class="list-group-item" (click)="appendName(item)" mat-dialog-close *ngFor="let item of companyDetailsD1 |filter:companyNameD">
+                                            <span class="d-block list-name float-right sub-list mt10" mat-dialog-close (click)="reserveAccount()"> {{item.Reserve_account}} </span>
+                                            <button class="d-block list-name float-right sub-list mt10 btndef-none"  [routerLink]="['/accounts/createassignmentreference']"  mat-dialog-close> {{item.refernce}} </button>
+                                        <button class="d-block list-name float-right sub-list mt10 btndef-none" (click)="ExistingAccount()" mat-dialog-close> {{item.Existing_account}} </button>
+                                        <span class="d-block list-name float-right sub-list mt10" mat-dialog-close> {{item.Pending_account}} </span>
+                                        <span class="d-block list-name float-right sub-list mt10" mat-dialog-close> {{item.Prospect_account}} </span>
+                                        <span class="d-block list-name"> {{item.name}} </span>
+                                        <span class="sub-list d-block"> {{item.number}} | {{item.owner}} | {{item.vertical}} | {{item.region}} </span>
+        
+                                    </li>
+        
+                                    <li  class="d-block list-name h-40 p-10"  *ngIf="(companyDetailsD1 |filter:companyNameD).length == 0"> No Results found
+                                        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12">Ensure that you have typed correct legal entity name</span>
+                                    </li>
+                                </perfect-scrollbar>
+                                
+                            </ul>
+                        </div>
+                    </form>-->
+
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="txtlabel12"
+                    class="label-form">Account name<span class="asteriq"> * </span></label>
+                <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text"
+                    id="txtlabel12" name="text" type="text" placeholder="Enter account name" [(ngModel)]="accountname"  #ctrl="ngModel"
+                    [ngClass]="submitted && accOwnerSwap.city.errors && accOwnerSwap.city.errors.required ? 'border-pink':'border-gray'"
+                    required>
+                <p *ngIf="!ctrl.valid && !accountname && accountvaluerequried"
+                    class="error-message custom-msgDB">Account name is required</p>
+
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 no_pad create_pading float-left">
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName CompanyName1">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                        for="ConversationNameountry" class="label-form">Country <span class="asteriq"> * </span></label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                        id="ConversationNameountry" name="countryvalue" type="text" [(ngModel)]="countryvalue" #ctrl1="ngModel"
+                        autocomplete="off" placeholder="Enter country name"
+                        (keyup)="showCompanySwitchDc = true ; getcountrycode($event)"
+                        (click)="showCompanySwitchDc = true ; getcountrycode($event)"
+                        (clickOutside)="companyNameCloseDc()"
+                        [ngClass]="submitted && accOwnerSwap.sbu.errors && accOwnerSwap.sbu.errors.required ? 'border-pink':'border-gray'"
+                        required>
+                    <p *ngIf= "!ctrl1.valid && !countryvalue && countryvaluerequried"
+                        class="error-message custom-labelDB">Country is required</p>
+                    <span class="mdi mdi-magnify"></span>
+
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left top64 no_pad standard-border color-azure 
+                           suggestion-box pos-abs z-ind-99 border-leftdrop "
+                        *ngIf="countryvalue && showCompanySwitchDc">
+                        <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read" [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                            <perfect-scrollbar style="max-height:150px">
+                                <span class="w-100 z-ind-9 float-left bg-white"></span>
+                                <li class="list-group-item h-50 p-4-10 " *ngFor="let item of countrycode"
+                                    (click)="appendparent(item)">
+                                    <span class="d-block list-name">{{item.Desc}}</span>
+                                </li>
+                                <li class="d-block list-name h-40 p-10" *ngIf="countrycode['message'] && !isActivityGroupSearchLoading">
+                                       {{countrycode['message']}}
+                                    </li>
+                            </perfect-scrollbar>
+                        </ul>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 create_pading float-left">
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CompanyNamepin"
+                        class="label-form">Pincode </label>
+                    <input maxlength="15"class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                        id="CompanyNamepin" name="CompanyNamepin" [(ngModel)]="pincode" type="text" autocomplete="off"
+                        placeholder="Enter pincode">
+                    <!--<textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text text-height-70"
+                            id="text3I" name="text" type="text" placeholder="Enter pincode"></textarea> -->
+                </form>
+            </div>
+
+            <!--<div class="col-12 col-sm-12 col-md-6 no_pad create_pading float-left">
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                        for="ConversationNamed&b" class="label-form">D&B industry type </label>
+                    <div class="customized-select ">
+                        <span class="caret color-azure"></span>
+                        <select id="ConversationNamed&b" role="listbox" class="pad-left10">
+                            <option value="1">D&B industry1</option>
+                            <option value="2">D&B industry2</option>
+                            <option value="3">D&B industry2</option>
+                        </select>
+                    </div>
+                </form>
+            </div>-->
+
+            <div class="db-prospect mt-10" *ngIf="router.url.includes('/accounts/accountcreation/createprospectaccount')">
+            </div>
+
+            <div class="col-12 col-sm-12 col-lg-12 col-xl-12 float-left no_pad">
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad ng-star-inserted">
+                    <div class="float-right disp-flex col-12 no_pad mt15 mb15">
+                        <button
+                            class="primary-button  btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+                            (click)="getaccountInDNB(); ">Search</button>
+                        <button
+                            class="primary-button secondary-btn borderless h-40 std save-responsive-btn button-wd50" (click) = "resetall()">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <span class="border-bottm"></span>
+
+            <perfect-scrollbar style="max-height:150px ; min-height:150px" class="searchAccountDB">
+                <span class="w-100 z-ind-9 float-left bg-white"></span>
+                 <div class="col-12 col-sm-12 col-lg-12 col-xl-12 float-left "  > 
+                <div class="col-12 col-sm-12 col-lg-12 col-xl-12 float-left search_space"   >
+                   <!-- <div class="col-12 col-sm-12 col-lg-12 col-xl-12 float-left search_space_loader"  >  -->
+                            
+                    <!-- <ul class=" list-group mr2 sort-dropdown cp" [ngClass]="{'loader-search':isActivityGroupSearchLoading }" >
+                        <li class="list-group-item h-50 p-4-10 no_pad" (click)="dnbaccountlist(item.Duns); openDbList = false;"
+                            *ngFor="let item of accounts">
+
+                            <span class="d-block list-name" mat-dialog-close> {{item.Name}} </span>
+                            <span class="sub-list1 d-block" mat-dialog-close> {{item.number}} | {{item.Duns}} | {{item.Region}} </span>
+                        </li> -->
+                        <!-- <li class=" " *ngIf="accounts['message'] && !isActivityGroupSearchLoading">
+                            Search results will be displayed here </li> -->
+                    <!-- </ul> -->
+
+
+                    <!-- <p class="" *ngIf=" this.accounts['message']">{{accounts['message']}}</p> -->
+                    <p class="" *ngIf="accounts.length === 0 && !isActivityGroupSearchLoading">{{displayData}}</p>
+                                <!-- </div> -->
+                </div>
+                <div  class="col-12 col-sm-12 col-lg-12 col-xl-12 float-left search_space_loader" *ngIf="accounts.length > 0" >
+                        <div class="list-group-itemsearch no_pad  "  mat-dialog-close *ngFor="let item of accounts" >
+                        <!-- <button class="d-block list-name float-right sub-list mt10 btndef-none"  mat-dialog-close> {{item.Existing_account}} </button>
+                                <span class="d-block list-name float-right sub-list mt10" mat-dialog-close > {{item.Reserve_account}} </span> -->
+                        <span (click) = "dnbaccountlist(item.Duns)" class=" " mat-dialog-close>
+                                <span class="d-block list-name" mat-dialog-close> {{getdecodevalue(item.Name)}} </span>
+                                <span class="sub-list1 d-block" mat-dialog-close> {{item.ParentEquity || "NA"}} | {{item.Duns || "NA"}} | {{item.Region || "NA"}} </span>
+                            </span>
+                            </div>
+                        </div>
+                        <div  [ngClass]="{'loader-search':isActivityGroupSearchLoading }"></div>                 
+                    </div>
+            </perfect-scrollbar>
+               <!-- <p class="" *ngIf="accounts.length == 0 ">Search results will be displayed here.</p> -->
+   
+            <span class="border-bottm"></span>
+
+            <div class="col-12 col-sm-12 col-lg-12 col-xl-12 float-left no_pad">
+                <button class="db-prospect mt-10 primary-button cp std button_widthborder heightdb"
+                    *ngIf="!router.url.includes('/accounts/accountcreation/createprospectaccount')"
+                    (click)="accservive.accounttoast('Please enter account details manually. Details will be verified by the SE GEO/SPOC')"
+                    [routerLink]="['/accounts/accountcreation/createprospectaccount']" mat-dialog-close><span>+ Custom account </span>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--<input [ngClass]="submitted && accOwnerSwap.city.errors && accOwnerSwap.city.errors.required ? 'border-pink':'border-gray'" required>
+
+ <p *ngIf="submitted && accOwnerSwap.city.errors && accOwnerSwap.city.errors.required" class="error-message custom-msg">City is required</p>-->

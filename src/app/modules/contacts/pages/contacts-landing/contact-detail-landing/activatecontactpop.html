@@ -1,0 +1,16 @@
+<div class="col-12 float-left  no_pad popup-container ">
+        <div class="col-12 float-left  container-dialog">
+          <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Re-activate contact</span>
+            <button class="float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+            [mat-dialog-close]="false"></button>
+          </div>
+          <div class="col-12 float-left border-bottom-grey"></div>
+          <div class="col-12 float-left  no_pad">
+            <span class="col-12 float-left  no_pad txt-style mt10">Are you sure you want to activate this contact ? </span>
+          </div>
+        </div>
+        <div class="col-12 float-left no_pad">
+          <button aria-label="OK" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="reActivateContact()" >OK</button>
+        </div>
+      </div>

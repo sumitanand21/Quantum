@@ -1,0 +1,152 @@
+<!-- 
+<div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 container_performance">
+  <h6 class="heading_tag">Performance details</h6>
+
+  <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 performanceMainBlock no_pad" >
+      <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-8 no_pad" >
+      <mat-card class="example-card" *ngFor="let details of performanceDetails">
+          <mat-card-header class="mat-card-header1">
+            <mat-card-title>{{details.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-actions class="performSubDivisionBlock">
+            <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div><span class="tgt ">TGT</span></div>
+                <div><span class="tgtdata d-block ellipses" title="{{details.TGT}}">{{details.TGT}}</span></div>
+            </div>
+            
+            <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div>
+                  <span class="ach">ACH</span>
+                </div>
+                <div class="d-flex">
+                    <span *ngIf="!details.quarterFlag" class="mdi mdi-arrow-down failQuarter"></span>
+                    <span *ngIf="details.quarterFlag" class="mdi mdi-arrow-up successQuarter"></span>
+                  <span class="achdata ellipses d-block" title="{{details.ACH}}">{{details.ACH}}</span></div>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+        </div>
+
+      
+            <mat-card class="example-card" *ngFor="let details of performanceDetails">
+                <mat-card-header class="mat-card-header1">
+                  <mat-card-title>{{details.name}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-actions class="performSubDivisionBlock">
+                  <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                      <div><span class="tgt ">TGT</span></div>
+                      <div><span class="tgtdata d-block ellipses" title="{{details.TGT}}">{{details.TGT}}</span></div>
+                  </div>
+                  
+                  <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                      <div>
+                        <span class="ach">ACH</span>
+                      </div>
+                      <div class="d-flex">
+                          <span *ngIf="!details.quarterFlag" class="mdi mdi-arrow-down failQuarter"></span>
+                          <span *ngIf="details.quarterFlag" class="mdi mdi-arrow-up successQuarter"></span>
+                        <span class="achdata ellipses d-block" title="{{details.ACH}}">{{details.ACH}}</span></div>
+                  </div>
+                </mat-card-actions>
+              </mat-card>
+              </div> 
+  </div>
+
+</div> -->
+
+
+
+<div class="col-12  col-sm-12 col-md-12 col-lg-12  float-left no_pad container_performance">
+    <h6 class="heading_tag">Performance details</h6>
+  
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left  no_pad" >
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 float-left no_pad" >
+        <div class="col-12 col-md-6 col-lg-6 float-left mt-12" *ngFor="let details of performanceContent" > 
+        <mat-card class="col-12 float-left no_pad example-card" >
+            <mat-card-header class="mat-card-header1 d-flex align-items-center">
+              <mat-card-title>{{details.quatername}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions class="col-12 float-left no_pad">
+              <div class="col-12 float-left no_pad performance-table">
+                  <table class="col-12 float-left no_pad table ">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">OB</th>
+                          <th scope="col">Revenue 
+                              <span  class="mdi mdi-arrow-down failQuarter"></span>
+                              <!-- <span *ngIf="details.quarterFlag" class="mdi mdi-arrow-up successQuarter"></span> -->
+                          </th>
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">TGT</th>
+                          <td>0.25</td>
+                          <td>025</td>
+                        
+                        </tr>
+                        <tr>
+                          <th scope="row">ACH</th>
+                          <td>0.11</td>
+                          <td>0.25</td>
+                          
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+  
+  
+              </div>
+  
+           
+            </mat-card-actions>
+          </mat-card>
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 float-left no_pad  no_pad" >
+      <div class="col-12 float-left mt-12 ">
+        <mat-card class="col-12 float-left  Total-quarter" >
+            <mat-card-header class="mat-card-header1">
+              <mat-card-title>Total</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions class="col-12 float-left no_pad">
+              <div class="col-12 float-left no_pad performance-table-total">
+                  <table class="col-12 float-left no_pad table ">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">OB</th>
+                          <th scope="col">Revenue <span  class="mdi mdi-arrow-down failQuarter"></span></th>
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">TGT</th>
+                          <td>0.25</td>
+                          <td>025</td>
+                        
+                        </tr>
+                        <tr>
+                          <th scope="row">ACH</th>
+                          <td>0.11</td>
+                          <td>0.25</td>
+                          
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+  
+  
+              </div>
+  
+             </mat-card-actions>
+          </mat-card>
+          </div>
+    </div>
+    </div>
+  
+  </div>
+  

@@ -1,0 +1,499 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$DarkBlack: #2e2e2e;
+
+.h-170 {
+  height: 170px;
+}
+.mr10 {
+  margin-right: 10px !important;
+}
+.plb-60-20 {
+  padding: 0 60px 20px 0;
+}
+.plb-60-35 {
+  padding: 0 60px 35px 0;
+}
+.h-40 {
+  min-height: 40px;
+}
+.pr-100 {
+  padding-right: 100px;
+}
+.heading-level-two {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  letter-spacing: -0.4px;
+}
+.heading-level-one {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 24px;
+  color: $DarkBlack;
+
+  small {
+    font-family: "WiproAkkuratTT-Regular";
+    font-size: 14px;
+    padding: 0 30px;
+  }
+}
+.header-level-three {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 16px;
+  float: left;
+  padding: 0;
+}
+.primary-button.std {
+  padding: 7px 0;
+  min-width: 88px;
+  height: 40px;
+  margin: 0;
+}
+.pad-95 {
+  padding: 0 95px 0 95px;
+  background: #f9f9f9;
+}
+.card {
+  border-radius: 5px;
+  border: 0px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  display: table;
+}
+.contact-details-action-btn {
+  position: fixed;
+  margin-top: -23.5em;
+  z-index: 999;
+  right: 3em;
+  transition: 0.5s all;
+}
+.contact-details-action-btn.active {
+  margin-top: -28.3em;
+  transition: 0.5s all;
+}
+.plb-0-35 {
+  padding: 0px 15px 32px 0px;
+}
+.converstion-name {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px !important;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
+  color: $MetalLight !important;
+}
+.converstion-sub-text {
+  width: 196px;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: $DarkBlack;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.converstion-sub-text-interest{
+  width: 100%;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: $DarkBlack;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.pb5 {
+  padding-bottom: 5px;
+}
+.mdi-pencil:before {
+  margin-right: 5px;
+}
+.borderless {
+  border: none !important;
+}
+
+.CompanyName {
+  .mdi-magnify:before {
+    color: $Azure;
+    font-size: 20px;
+    right: 10px;
+    position: absolute;
+    bottom: 5px;
+  }
+}
+.new-container {
+  .input-border-left {
+    border-left: none;
+  }
+  .border-btm {
+    border-bottom: 2px solid;
+  }
+  .border-right {
+    border-right: 2px solid $Azure !important;
+  }
+  .z-ind-9999 {
+    z-index: 8;
+  }
+
+  .z-ind-99 {
+    z-index: 8;
+  }
+  .z-ind-9 {
+    z-index: 9;
+  }
+
+  .mt-8 {
+    margin-top: 8px;
+  }
+
+  .top62 {
+    top: 62px;
+  }
+  .top64 {
+    top: 64px;
+  }
+  .top66 {
+    top: 66px;
+  }
+
+  .pad-30 {
+    padding: 30px;
+  }
+  .mr10 {
+    margin-right: 10px;
+  }
+  .h-40 {
+    min-height: 40px;
+  }
+  .heading-level-one {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 24px;
+    color: $White;
+
+    small {
+      font-family: "WiproAkkuratTT-Regular";
+      font-size: 14px;
+      padding: 0 30px;
+    }
+  }
+  .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+  }
+  .borderless {
+    border: none !important;
+  }
+
+  .h-180 {
+    height: 210px;
+  }
+  .pad-30 {
+    padding: 30px;
+  }
+
+  .card {
+    border-radius: 5px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: $White;
+  }
+
+  .heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color: $DarkBlack;
+  }
+
+  .heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: $Black;
+  }
+
+  .divider {
+    border: 1px solid $Marble;
+  }
+
+  .mt10 {
+    margin-top: 10px;
+  }
+  .mt20 {
+    margin-top: 20px;
+  }
+  .mt15 {
+    margin-top: 15px;
+  }
+  .mt40 {
+    margin-top: 40px;
+  }
+  .plb-20-20 {
+    padding: 0px 20px 20px 0px;
+  }
+  .checkbox-label {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: $Metal;
+    line-height: 1.43;
+    letter-spacing: 0.3px;
+  }
+
+  .label-form {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    line-height: 1.83;
+    color: $Metal;
+    margin-bottom: 4px;
+    width: 100%;
+  }
+
+  .CompanyName {
+    .mdi-magnify:before {
+      color: $Azure;
+      font-size: 20px;
+      right: 10px;
+      position: absolute;
+      bottom: 5px;
+    }
+  }
+
+  .h-40 {
+    height: 40px;
+  }
+
+  .w-110 {
+    width: 110px;
+  }
+
+  .attach-btn {
+    height: 40px;
+    width: 110px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+  }
+
+  .add-btn {
+    height: 40px;
+    border-radius: 4px 0 0 4px;
+    border: 1.5px solid #d8d8d8;
+    padding: 3px 6px;
+    background: $White;
+    color: #9b9b9b;
+    font-size: 18px;
+    outline: none;
+    &:focus,
+    &:hover {
+      border-color: $Azure;
+      font-family: WiproAkkuratTT-Bold;
+      color: $Azure;
+      outline: none;
+    }
+  }
+
+  .attach-icon {
+    width: 18px;
+    height: 18px;
+    transform: rotate(-90deg);
+    text-align: center;
+    position: relative;
+    right: 6px;
+    font-size: 18px;
+  }
+
+  .record-icon {
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    bottom: 5px;
+    right: 3px;
+  }
+
+  .text-area-content1 {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+    resize: none;
+    border: 1.5px solid $Marble;
+    border-radius: 2px;
+    background-color: #ffffff;
+    height: 270px;
+    padding: 10px;
+  }
+  .rel-top-18 {
+    position: relative;
+    top: -18px;
+  }
+
+  .label-input {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    padding-right: 33px;
+
+    &:focus {
+      border: 1.5px solid $Azure !important;
+      outline: none;
+    }
+  }
+
+  .customized-input {
+    input {
+      &:focus {
+        border: 1.5px solid $Azure !important;
+        outline: none;
+      }
+    }
+  }
+  .list-group-item {
+    cursor: pointer;
+    font-size: 12px;
+    color: $Azure;
+    border: none;
+  }
+
+  .top70 {
+    top: 70px;
+  }
+
+  .list-group-item:hover {
+    background-color: $River;
+  }
+
+  .customized-select {
+    position: relative;
+    select {
+      width: 100%;
+      min-height: 40px;
+      border-radius: 5px;
+      // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+      border: 1.5px solid rgba(0, 0, 0, 0.1);
+      padding: 2px 5px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+
+      &:focus {
+        outline: none;
+        border-color: $Azure;
+      }
+    }
+    select::-ms-expand {
+      display: none !important;
+    }
+  }
+
+  .record-btn {
+    border: 1.5px solid $Marble;
+    color: $MetalLight;
+    width: 91px;
+    height: 40px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 8px 5px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .record-btn-active {
+    border: 1.5px solid $Azure;
+    color: $Azure;
+    width: 91px;
+    height: 40px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 8px 5px;
+    margin-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: $White;
+      background: $Azure;
+    }
+  }
+  /********** style for auto complete list start ***************/
+  .list-name {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .sub-list {
+    font-size: 10px;
+    color: #9b9b9b;
+    font-family: WiproAkkuratTT-Regular;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.new-container .list-name {
+  max-width: 100% !important;
+}
+.loaderContainer {
+  width: 100%;
+  top: 0em;
+  position: absolute;
+  height: 100%;
+  z-index: 9999;
+  background: white;
+}
+.loader {
+  top: -100px;
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.pr30 {
+  padding-right: 30px;
+}
+.max-w260 {
+  max-width: 225px;
+}
+.tagged-box {
+  label {
+    margin-bottom: 0 !important;
+  }
+}
+.tagged-box {
+    height: 40px;
+    border-radius: 4px;
+    color: $Azure;
+    background-color: #d9e9ff;
+    width: 100%;
+    .mdi-close:before {
+      font-size: 20px;
+      cursor: pointer;
+      color: $Azure;
+      right: 10px;
+      position: absolute;
+    }
+  }
+span.mdi.mdi-close.auto-close {
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 4px;
+  font-size: 20px;
+  color: #2f81ff;
+}

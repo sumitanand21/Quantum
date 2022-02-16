@@ -1,0 +1,162 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity submit">
+
+  <div class="col-12 float-left container-dialog">
+    <div class="col-12 float-left  no_pad popup-hd">
+      <span class="col-10 col-xl-11 col-lg-11 col-md-10 col-sm-10 float-left no_pad popup-hd-txt col-size"
+        mat-dialog-title>Do you want to submit the order for
+        approval ?
+      </span>
+      <button
+        class="col-2 col-xl-1 col-lg-1 col-md-2 col-sm-2 float-right no_pad btndef-none mdi mdi-window-close close-icn discard-close-btn"
+        aria-label="close" mat-dialog-close (click)="onNoClick()"></button>
+    </div>
+
+    <div class="col-12 float-left border-bottom-grey"></div>
+
+    <div
+      class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad submitchange">
+
+      <!-- Select DROPDOWN STARTS -->
+      <div *ngIf="!data.isconfirmOrderApproval"
+        class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-left mt-20 customized-select mobile-select-box">
+        <label for="approvalType" class="float-left w-100 label-form">Delivery manager </label>
+        <span *ngIf="data.status.WT==false" class="caret color-azure"></span>
+        <select *ngIf="data.status.WT==false" id="approvalType" role="listbox" class="col-12 ellipses"
+          (change)="selectedValueofOrderApproval($event.target.value, 'dmId')">
+          <option hidden value="">Select </option>
+          <option *ngFor="let nonWtDmData of data.DmNAMeForNonWt" [value]="nonWtDmData.AccountDMId">
+            {{nonWtDmData.AccountDMName}}</option>
+          <!--<option value="Eventtype2">Service 2</option>-->
+        </select>
+        <input *ngIf="data.status.WT && data.displayDMWt" class="col-12 float-left" placeholder="DM name" type="text"
+          [value]="data.displayDMWt" disabled>
+        <input *ngIf="data.status.WT && !data.displayDMWt" class="col-12 float-left" placeholder="DM name" type="text"
+          value="No DM tagged" disabled>
+      </div>
+      <div *ngIf="!data.isconfirmOrderApproval"
+        class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-left mt20 pr-10 customized-select web-select-box h100">
+        <label for="approvalType" class="float-left w-100 label-form">Delivery manager </label>
+        <!-- <span *ngIf="data.status.WT==false" class="caret color-azure"></span> -->
+        <mat-form-field *ngIf="data.status.WT==false" class="col-12 no_pad float-left">
+          <mat-label>Select delivery manager</mat-label>
+          <mat-select disableOptionCentering panelClass="Select-panel-class" id="select1" role="listbox"
+            class="select-focus ellipses" (selectionChange)="selectedValueofOrderApproval($event.value, 'dmId')">
+            <mat-option hidden value="">Select</mat-option>
+            <mat-option *ngFor="let nonWtDmData of data.DmNAMeForNonWt" [value]="nonWtDmData.AccountDMId">
+              {{nonWtDmData.AccountDMName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <input *ngIf="data.status.WT && data.displayDMWt" class="col-12 float-left" placeholder="DM name" type="text"
+          [value]="data.displayDMWt" disabled>
+        <input *ngIf="data.status.WT && !data.displayDMWt" class="col-12 float-left" placeholder="DM name" type="text"
+          value="No DM tagged" disabled>
+      </div>
+
+      <!-- Select DROPDOWN STARTS -->
+      <div [ngClass]="data.isconfirmOrderApproval ? 'width100Per':''"
+        class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-right mt-20 mobile-select-box customized-select">
+        <label for="approver" class="float-right w-100 label-form">Finance team</label>
+        <span class="caret color-azure"></span>
+        <select [disabled]="data.disableBFMFlag" id="approver" role="listbox" class="ellipses" [(ngModel)]="BFM_Data"
+          (change)="selectedValueofOrderApproval($event.target.value, 'bfmId')">
+          <option hidden value="" disabled>Select </option>
+          <option *ngFor="let notWtFinanceData of data.finanaceTeamForNonWt" [value]="notWtFinanceData.systemuserid">
+            {{notWtFinanceData.FullName}}</option>
+          <!--<option value="Eventtype2">Service 2</option>-->
+        </select>
+        <!--<input *ngIf="data.status.WT==true" class="col-12 float-left" placeholder="Team name" type="text" [value]="data.getTeamOfActive" disabled>-->
+        <!-- <div class="float-right w-100 customized-select disabled-control"> -->
+        <!-- <span class="caret color-azure"></span> -->
+        <!-- <select id="approver" role="listbox" disabled> 
+                        <option value="approver">DM name</option>
+                        <option value="anubhav">AnuBhav Jain</option>
+                        <option value="kinshuk">Kinshuk Bose</option>
+                        <option value="kanika">Kanika Tuteja</option>
+                    </select>
+                    <span class="caret color-azure"></span>
+                </div> -->
+      </div>
+      <div [ngClass]="data.isconfirmOrderApproval ? 'width100Per':''"
+        class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-right mt20 customized-select web-select-box h100">
+        <label for="approver" class="float-right w-100 label-form">Finance team</label>
+        <!-- <span class="caret color-azure"></span> -->
+        <mat-form-field class="col-12 no_pad float-left">
+          <mat-label>select finance team</mat-label>
+          <mat-select disableOptionCentering panelClass="Select-panel-class" name="Projection" [(ngModel)]="BFM_Data"
+            id="approver" [disabled]="data.disableBFMFlag"
+            (selectionChange)="selectedValueofOrderApproval($event.value, 'bfmId')" class="select-focus ellipses"
+            role="listbox">
+            <mat-option hidden value="">Select</mat-option>
+            <mat-option *ngFor="let notWtFinanceData of data.finanaceTeamForNonWt"
+              [value]="notWtFinanceData.systemuserid">
+              {{notWtFinanceData.FullName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="data.signedStatus=='No' && !data.isconfirmOrderApproval"
+        class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-left mt-20 customized-select mobile-select-box">
+        <!-- <span class="caret color-azure"></span> -->
+        <label for="sdh_adh_vdh" class="float-right w-100 label-form">ADH/VDH/SDH</label>
+        <select id="sdh_adh_vdh" role="listbox" class="ellipses"
+          (change)="selectedValueofOrderApproval($event.target.value, 'dhId')">
+          <option hidden value="">Select</option>
+          <option *ngFor="let nonWtData of data.getAdhBdhForWt" [value]="nonWtData.ApproverId">
+            {{nonWtData.ApproverName }}</option>
+
+          <!--<option value="Eventtype2">Service 2</option>-->
+        </select>
+      </div>
+      <div *ngIf="data.signedStatus=='No' && !data.isconfirmOrderApproval"
+        class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-left mt20 customized-select pr-10 mt-20-mob web-select-box h100">
+
+        <label for="sdh_adh_vdh" class="float-right w-100 label-form">ADH/VDH/SDH</label>
+        <mat-form-field class="col-12 no_pad float-left">
+          <mat-label>Select ADH/VDH/SDH</mat-label>
+          <mat-select disableOptionCentering panelClass="Select-panel-class"
+            (selectionChange)="selectedValueofOrderApproval($event.value, 'dhId')" class="select-focus ellipses"
+            role="listbox">
+            <mat-option hidden value="">Select</mat-option>
+            <mat-option *ngFor="let nonWtData of data.getAdhBdhForWt" [value]="nonWtData.ApproverId">
+              {{nonWtData.ApproverName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <div class="col-12 float-left border-bottom-grey margin-top-20">
+    </div>
+
+    <div *ngIf="data.mismatchData" class="col-12 margin-top-20 float-left no_pad colr-orang">
+      <span class="col-12 float-left bordr-top no_pad">
+        There are details missing in the OB distribution section, you can go ahead
+        and submit the order for approval. OB distribution section will be open for
+        validation & update upto 3 days from the order approval.</span>
+    </div>
+
+
+    <div *ngIf="data.tcvErrorMessage" class="col-12 float-left margin-top-20 no_pad colr-orang">
+      <span class="col-12 float-left bordr-top no_pad">
+        Note: This order will be put on-hold until TCV as per RLS and contract
+        matches. It will be pushed for BFM approval
+        once the value and currency matches.
+      </span>
+    </div>
+    <div class="col-12 float-left no_pad margin-top-20">
+      <span class="col-12 float-left bordr-top no_pad">
+        Your order will be submitted for approval, however OB distribution section
+        will be open for validation & update upto 3 days from the order approval.</span>
+    </div>
+
+
+
+  </div>
+
+
+  <div class="col-12 float-left no_pad">
+    <button aria-label="Cancel" class="col-6 float-left btndef-none no_pad discard-btn" mat-dialog-close
+      (click)="onNoClick()" (keypress)="onNoClick()">Cancel</button>
+    <button aria-label="Submit" class="col-6 float-left btndef-none no_pad confrm-btn mt15"
+      (click)="openOrderApprovalPopup()" (keypress)="openOrderApprovalPopup()">Submit</button>
+  </div>
+</div>

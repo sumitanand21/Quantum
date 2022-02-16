@@ -1,0 +1,893 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div *ngIf="dealCriteria && tabVisibility"
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left deal-criteria-container card margin-btm55 no_pad ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt20 no_pad">
+      <h2 class="col-10 float-left heading-level-two deal-head-txt">Deal parameters</h2>
+      <div class="col-lg-12 col-md-12 col-12 float-left fields-container">
+        <div class="col-lg-12 col-md-12 col-12 float-left pr17 btns-div mar-botm22" *ngIf="!NotdealOwner">
+          <button class="mdi  float-right" *ngIf="dealMainJSON.ValidationFlag.btnSaveManageParameters.Visible=='true'"
+            [ngClass]="edited ? 'mdi-pencil' : 'mdi-content-save'" (click)="SaveManageParams();edited=!edited"
+            [matTooltip]="edited ? 'Edit' : 'Save'" [attr.aria-label]="edited ? 'Edit' : 'Save'"></button>
+        </div>
+        <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input mt10">
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="Asset takeover" class="float-left">Asset takeover</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                  <mat-slide-toggle [disabled]="edited" (change)="dealParamsChanged(1)"
+                    [checked]="dealCriteria.ManageInfo.AssetTakeOverYN== 'Y' ? true : false"></mat-slide-toggle>
+                </div>
+              </div>
+              <input class="border-gray w-100" id="Asset takeover" type="number" min="0" step=".01"
+                specialIsAlphaNumeric [attr.data-type]="'decimalWithNegativeValue'"
+                [(ngModel)]="dealCriteria.ManageInfo.AssetTakeOverValue"
+                [attr.disabled]="edited || dealCriteria.ManageInfo.AssetTakeOverYN=='N'?'disabled':null">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="People takeover" class="float-left">People takeover</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                  <mat-slide-toggle [disabled]="edited" (change)="dealParamsChanged(2)"
+                    [checked]="dealCriteria.ManageInfo.PeopleTakeOverYN=='Y' ? true : false"></mat-slide-toggle>
+                </div>
+              </div>
+              <input class="border-gray w-100" id="People takeover" type="text"
+                [(ngModel)]="dealCriteria.ManageInfo.PeopleTakeOverValue" type="number" min="0" step=".01"
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 && event.charCode <= 57"
+                [attr.disabled]="edited || dealCriteria.ManageInfo.PeopleTakeOverYN=='N' ?'disabled':null">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="MSA Discount" class="float-left">MSA discount</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                  <mat-slide-toggle [disabled]="edited" (change)="dealParamsChanged(3)"
+                    [checked]="dealCriteria.ManageInfo.MsaDiscountYN=='Y' ? true : false"></mat-slide-toggle>
+                </div>
+              </div>
+              <input class="border-gray w-100" id="MSA Discount" type="text"
+                [(ngModel)]="dealCriteria.ManageInfo.MsaDiscount" type="number" min="0" step=".01"
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 && event.charCode <= 57"
+                [attr.disabled]="edited || dealCriteria.ManageInfo.MsaDiscountYN=='N'?'disabled':null">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="Niche skill discount" class="float-left">Niche skill discount(%)</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                  <mat-slide-toggle [disabled]="edited" (change)="dealParamsChanged(5)"
+                    [checked]="dealCriteria.ManageInfo.NicheSkillDiscountYN=='Y' ? true : false"></mat-slide-toggle>
+                </div>
+              </div>
+              <input class="border-gray w-100" id="Niche skill discount" type="text"
+                [(ngModel)]="dealCriteria.ManageInfo.NicheSkillDiscount" type="number" min="0" step=".01"
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 && event.charCode <= 57"
+                [attr.disabled]="edited || dealCriteria.ManageInfo.NicheSkillDiscountYN=='N'?'disabled':null">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="Bay area rate discount" class="float-left">Bay area rate discount</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                  <mat-slide-toggle disabled (change)="dealParamsChanged(7)"
+                    [checked]="dealCriteria.ManageInfo.BayAreaRateDiscYN=='Y' ? true : false"></mat-slide-toggle>
+                </div>
+              </div>
+              <input class="border-gray w-100" id="Bay area rate discount" type="text"
+                [(ngModel)]="dealCriteria.ManageInfo.BayAreaRateDiscVal"
+                disabled>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="Bay area OM discount" class="float-left">Bay area OM discount</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                  <mat-slide-toggle disabled (change)="dealParamsChanged(8)"
+                    [checked]="dealCriteria.ManageInfo.BayAreaOMDiscYN=='Y' ? true : false"></mat-slide-toggle>
+                </div>
+              </div>
+              <input class="border-gray w-100" id="Bay area OM discount" type="text"
+                [(ngModel)]="dealCriteria.ManageInfo.BayAreaOMDiscVal" disabled>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="Deal discount" class="float-left">Deal discount(%)</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                </div>
+              </div>
+              <input class="border-gray w-100" id="Deal discount" type="text"
+                [(ngModel)]="dealCriteria.ManageInfo.DealDiscount" type="number" min="0" step=".01"
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 && event.charCode <= 57"
+                [attr.disabled]="edited?'disabled':null">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="Volume discount" class="float-left">Volume discount</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                </div>
+              </div>
+              <input class="border-gray w-100" id="Volume discount" type="text" 
+                [(ngModel)]="dealCriteria.ManageInfo.VolumeDiscount" type="number" min="0" step=".01"
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 && event.charCode <= 57"
+                [attr.disabled]="edited || dealCriteria.ManageInfo.VolumeDiscountYN=='N'?'disabled':null">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+               <label for="Payment terms" class="float-left" >Payment terms (in days)</label>&nbsp;  <span class="required"> * </span>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                </div>
+              </div>
+              <input class="border-gray w-100" id="Payment terms" type="text" 
+                [(ngModel)]="dealCriteria.ManageInfo.PaymentTerms"  type="number" min="0" step=".01"
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 && event.charCode <= 57"
+                [attr.disabled]="edited?'disabled':null">
+                <p *ngIf="displayFlag == 'zerodisplay'" class="error-message">Zero is Not Allowed</p>
+                <p *ngIf="displayFlag == 'nulldisplay'" class="error-message">Please enter payment terms</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="Payments terms as per MSA" class="float-left">Payments terms as per MSA</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                  <mat-slide-toggle [disabled]="edited" (change)="dealParamsChanged(4)"
+                    [checked]="dealCriteria.ManageInfo.MsaPaymentTermsYN=='Y' ? true : false"></mat-slide-toggle>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+            <div class="w-100">
+              <div class="col-12 float-left no_pad">
+                <label for="Unbilled revenue" class="float-left">Unbilled revenue</label>
+                <div class="float-right  customized-input slidetoggle_toggle customized-slider">
+                  <mat-slide-toggle [disabled]="edited" (change)="dealParamsChanged(6)"
+                    [checked]="dealCriteria.ManageInfo.UnBilledRevenueYN=='Y' ? true : false"></mat-slide-toggle>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="col-12 float-left customized-accordians no_pad">
+        <mat-accordion>
+          <!-- rate inflation accordion starts -->
+          <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+            <mat-expansion-panel-header style="min-height:50px;">
+              <mat-panel-title class="accord-heading">
+                <span
+                  [ngClass]="panelOpenState ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-right chevron-right'"></span>
+                <span class="accordian-title pad-top-8">Rate inflation</span>
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <table class="col-12 float-left no_pad rate-table">
+              <thead>
+                <tr>
+                  <th>Country</th>
+                  <th>Classification</th>
+                  <th>Master STD. billing hrs</th>
+                  <th>Rate inflation (%)</th>
+                </tr>
+              </thead>
+              <perfect-scrollbar style="max-height:250px;">
+                <tbody>
+                  <tr *ngFor="let rateInfla of dealCriteria.RateInflations;let i=index">
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="rateInfla.CountryName" disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="rateInfla.LocationClassification"
+                          disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="rateInfla.MasterRateInflation"
+                          disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="rateInfla.RateInflation"
+                          [attr.disabled]="edited?'disabled':null">
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </perfect-scrollbar>
+            </table>
+
+          </mat-expansion-panel>
+          <!-- rate inflation accordion ends -->
+          <!-- standard billing hour accordion starts -->
+          <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad" (opened)="panelOpenState1 = true"
+            (closed)="panelOpenState1 = false">
+            <mat-expansion-panel-header style="min-height:50px;">
+              <mat-panel-title class="accord-heading">
+                <span
+                  [ngClass]="panelOpenState1 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-right chevron-right'"></span>
+                <span class="accordian-title pad-top-8">Standard billing hour</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <table class="col-12 float-left no_pad rate-table">
+              <thead>
+                <tr>
+                  <th>Country </th>
+                  <th>Location</th>
+                  <th>Classification</th>
+                  <th>Master STD. billing hrs</th>
+                  <th>STD. billing hrs</th>
+                </tr>
+              </thead>
+              <perfect-scrollbar style="max-height:250px;">
+                <tbody>
+                  <tr *ngFor="let STDbill of dealCriteria.StandardBillingHours;">
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="STDbill.CountryName" disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="STDbill.LocationName" disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="STDbill.LocationClassification"
+                          disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="STDbill.MasterStandardBillingHours"
+                          disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="STDbill.StandardBillingHours"
+                          [attr.disabled]="edited?'disabled':null">
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </perfect-scrollbar>
+            </table>
+          </mat-expansion-panel>
+          <!-- standard billing hour accordion ends -->
+          <!-- deal parameter accordion starts -->
+          <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad" (opened)="panelOpenState2 = true"
+            (closed)="panelOpenState2 = false">
+            <mat-expansion-panel-header style="min-height:50px;">
+              <mat-panel-title class="accord-heading">
+                <span
+                  [ngClass]="panelOpenState2 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-right chevron-right'"></span>
+                <span class="accordian-title pad-top-8">Deal parameters</span>
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <table class="col-12 float-left no_pad parameter-table rate-table mar-botm22">
+              <thead>
+                <tr>
+                  <th>Price factor</th>
+                  <th>Classification</th>
+                  <th>Shift</th>
+                  <th>Default value</th>
+                  <th>Value</th>
+                  <th>Type</th>
+                  <th>Currency</th>
+                  <th>Period</th>
+                </tr>
+              </thead>
+              <perfect-scrollbar style="max-height:250px;">
+                <tbody>
+                  <tr *ngFor="let dealParam of dealCriteria.DealParameters;let i=index">
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="dealParam.MasterPriceFactorsName"
+                          disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="dealParam.LocationClassificationName"
+                          disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="dealParam.ShiftName" disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="dealParam.MasterData" disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="dealParam.DATA"
+                          [attr.disabled]="edited?'disabled':null">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="dealParam.DataType" disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="dealParam.CurrencyCode" disabled>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                        <input class="border-gray w-100" type="text" [(ngModel)]="dealParam.UOMTName" disabled>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </perfect-scrollbar>
+
+            </table>
+            <div class="float-left  col-12"
+              *ngIf="modDetails.MasterData.OptionStatusCode=='OCALC' && dealMainJSON.ValidationFlag.btnSaveManageParameters.Visible=='true'">
+              <div class="col-12 float-left customized-input no_pad comn-fld" *ngIf="tabVisibility">
+                <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left">
+                  <div class="w-100">
+                    <label for="Target" class="w-100">Target deal revenue ( {{dealMainJSON.MasterData.CurrencyCode}}
+                      )</label>
+                    <input decimalNumberOnly class="border-gray w-100" (input)="addCommas(dealRev.value)" id="Target"
+                      #dealRev type="number" min="0" step=".01"
+                      onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 && event.charCode <= 57"
+                      value="">
+                  </div>
+                </div>
+                <button class="float-left primary-button recalc-btn"
+                  [ngClass]="{'disabled-control border-gray': dealRev.value==''}" [disabled]="dealRev.value==''"
+                  (click)="reCalculateDeal(dealCriteria,dealRev.value)">Recalculate</button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          </mat-accordion>
+      </section>
+
+    </div>
+  </div>
+  <section *ngIf="dealCriteria" class="col-12 float-left customized-accordians no_pad">
+    <mat-accordion>
+      <div
+        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left deal-criteria2-container card margin-btm55 no_pad"
+        *ngFor="let data1 of accRlS;let i = index">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt20 no_pad">
+          <mat-expansion-panel hideToggle="true" [expanded]="data1.expanded" class="no_pad"
+            (opened)="GetModuleDetails(data1,i,'RLS',true);data1.Opened = true;data1.panelOpenState3 = true ;rlsbtn=true;passthroughbtn=false;intellectualbtn=false;data1.isSteady=true"
+            (closed)="data1.panelOpenState3 = false;isPass=false;">
+            <mat-expansion-panel-header style="min-height:60px;">
+              <mat-panel-title class="accord-heading">
+                <span class="icon-lynHgt"
+                  [ngClass]="data1.panelOpenState3 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-right chevron-right'"></span>
+                <div class="col-12 float-left title-div">
+                  <span class="title-inner" title="{{data1.title1}}">{{data1.title1}}</span>
+                  <span class="title-inner" title="{{data1.title2}}">{{data1.title2}}</span>
+                  <span class="title-inner" title="{{data1.title3}}">{{data1.title3}}</span>
+                  <span class="title-inner" title="{{data1.title4}}">{{data1.title4}}</span>
+                </div>
+              </mat-panel-title>
+              <button class="float-right primary-button mr10 acc-btn"
+                (click)="OpenOwnersList(data1);$event.stopPropagation()" [ngClass]="{'disable-button-control': buttonDisable}" [attr.disabled]="buttonDisable ? 'disabled' : null">Co-owner</button>
+              <button class="float-right primary-button mr10 acc-btn"
+                (click)="downloadTemplate();$event.stopPropagation()" [ngClass]="{'disable-button-control': buttonDisable}" [attr.disabled]="buttonDisable ? 'disabled' : null">Download</button>
+              <div class="float-right pos-rel">
+                <button class="primary-button mr10 acc-btn" (click)="UploadRLS(data1);$event.stopPropagation()" [ngClass]="{'disable-button-control': buttonDisable}" [attr.disabled]="buttonDisable ? 'disabled' : null">Upload
+                  RLS
+                </button>
+              </div>
+
+
+            </mat-expansion-panel-header>
+            <ng-container *ngIf="isLoadingRLS; else elseRLSTemplate">
+              <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                    <div class="loaderContainer">
+                      <div class="loader"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #elseRLSTemplate>
+              <div *ngIf="data1.expanded">
+                <div class="col-12 float-left no_pad" *ngIf="steady">
+                  <div class="col-12 float-left no_pad steady-container">
+                    <div class="col-12 float-left no_pad sub-tabs">
+                      <button class="border-0" [ngClass]="rlsbtn ? 'active' : ''"
+                        (click)="showRLS(data1,i);rlsbtn=true;passthroughbtn=false;intellectualbtn=false;">RLS</button>
+                      <button class="border-0" [ngClass]="passthroughbtn ? 'active' : ''"
+                        (click)="showPassthrough(data1,i);rlsbtn=false;passthroughbtn=true;intellectualbtn=false;" *ngIf="tabVisibility">Passthrough</button>
+                      <button class="border-0" [ngClass]="intellectualbtn ? 'active' : ''"
+                        (click)="showIntellectual(data1,i);rlsbtn=false;passthroughbtn=false;intellectualbtn=true;" *ngIf="tabVisibility">Intellectual
+                        property
+                      </button>
+                    </div>
+                    <!-- rls container starts -->
+
+                    <div class="">
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ptop-20 no_pad flex-tab white-back ">
+                        <div class="col-12 col-lg-10 no_pad padd-left-right-15">
+                          <div class=" no_pad btn-tabs-active-white flex-tab-width">
+                            <button [ngClass]="data1.isSteady ? 'active' : ''"
+                              class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-2  sub-vertical-but-white brd-right0"
+                              (click)="showSteadyRtransition(data1,i,'STD')">
+                              <span
+                                class="no_pad mdi-icon-fontsz  mdi mdi-folder-upload calin-select-all pr6 icon-top"></span>
+                              <span class=" no_pad btntxt-s icon-btnbottm ">Steady
+                                <span class="sm-hide  ">state</span>
+                              </span>
+                            </button>
+
+                            <button [ngClass]="!data1.isSteady ? 'active' : ''"
+                              class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-2 pull-right sub-vertical-but-white brd-left0"
+                              (click)="showSteadyRtransition(data1,i,'TRS')">
+                              <span
+                                class="no_pad calin-select-all mdi-icon-fontsz  mdi mdi-flag-checkered pr6 icon-top"></span>
+                              <span class=" no_pad btntxt-s icon-btnbottm ">Transition
+                                <span class="sm-hide  ">state</span>
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="col-12 float-left no_pad pos-rel" *ngIf="passthroughbtn">
+                        <div
+                          class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left text-center scroll-tabs pb-0 commonActionBlock  pass-btn-tab"><!--pos-abs-->
+                          <div class="col-8 float-left overflow-div no_pad passthrough-tabs">
+                            <button class="float-left" [ngClass]="productPass ? 'inneractive' : ''"
+                              (click)="showProduct(data1,i);">Product
+                            </button>
+                            <button class=" float-left" [ngClass]="servicePass ? 'inneractive' : ''"
+                              (click)="showServicePass(data1,i);">Service
+                            </button>
+                            <button class=" float-left" [ngClass]="costPass ? 'inneractive' : ''"
+                              (click)="showCost(data1,i);">Other
+                              cost
+                            </button>
+                          </div>
+
+                        </div>
+                       
+                      </div>
+                      <p class="col-12 no_pad float-left text-center" *ngIf="data1.showAddbutton">No record
+                        found</p>
+                      <div *ngIf="data1.showAddbutton && data1.Isbilled" class="add-pass-btn po-rel">
+                        <button class="float-left primary-button recalc-btn edit-btn "
+                          [ngClass]="{'disabled-control border-gray': topLevelButtons.length==0}"
+                          (click)="Addrow(data1,i);"
+                          [disabled]="topLevelButtons.length==0 && tabVisibility">Add</button>
+                      </div>
+                      <div *ngIf="!data1.showAddbutton && showTable">
+                        <app-rls-editable-table [AllTopBtnLable]="topLevelButtons" [classNameCss]="'table-color-lyt'"
+                          [TableName]="'rLs'" [TableCollection]="data1.rlsTable" [IsHeaderData]="true"
+                          (detectActionValue)="performTableChildAction($event)" [HeaderData]="data1.RLSeHeader"
+                          [IscheckBoxRequired]=true [ConfigData]="configData" [IsEdit]=false [IsButtons]=true
+                          [IsAddMember]=false [IsAfterEdit]=false [IsSerialNo]=true
+                          (detectSelectDependentData)="performTableChildAction($event)" [isBillingDisable] = "rlsBillingDisable"
+                          [bgParentColor]="'bgWhiteContainer'" [AddnewRow]="isrowAdded" [isIP]="intellectualbtn">
+                        </app-rls-editable-table>
+                      </div>
+                    </div>
+                    <!-- rls container ends -->
+                    <!-- passthrough container starts -->
+
+
+                  </div>
+                </div>
+                <!-- common starts -->
+                <div class="col-12 float-left no_pad">
+                  <div class="col-12 float-left mb20">
+                    <div class="col-12 float-left customized-input no_pad comn-fld" *ngIf="tabVisibility">
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22 mobile-select-box">
+                        <label for="Report" class="w-100">Period</label>
+
+                        <div class="customized-select">
+                          <span class="caret color-azure"></span>
+                          <select id="Report" role="listbox" [disabled]="!enablePeriod" [(ngModel)]="period">
+                            <option value="">Select period</option>
+                            <option [value]="period.id" *ngFor="let period of periodTypes" [hidden]="period.id==''">
+                              {{period.label}} </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22 web-select-box">
+                        <label for="Report" class="w-100">Period</label>
+                        <mat-form-field class="col-12 no_pad float-left">
+                          <mat-label>Select period</mat-label>
+                          <mat-select id="Report" [(ngModel)]="period" [disabled]="!enablePeriod" disableOptionCentering
+                            panelClass="Select-panel-class" class="select-focus">
+                            <mat-option value="">Select period</mat-option>
+                            <mat-option [value]="period.id" [hidden]="period.id==''" *ngFor="let period of periodTypes">
+                              {{period.label}} </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22 mobile-select-box">
+                        <label for="Module" class="w-100">Billing rate type</label>
+                        <div class="customized-select">
+                          <span class="caret color-azure"></span>
+                          <select id="Module" role="listbox" [(ngModel)]="billing" [disabled]="!enablePeriod">
+                            <option value="">Select billing rate type</option>
+                            <option [value]="billingrate.id" [hidden]="billingrate.id==''"
+                              *ngFor="let billingrate of BillingRateList">
+                              {{billingrate.label}} </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22 web-select-box">
+                        <label for="Module" class="w-100">Billing rate type</label>
+                        <mat-form-field class="col-12 no_pad float-left">
+                          <mat-label>Select billing rate type</mat-label>
+                          <mat-select [(ngModel)]="billing" id="Module" disableOptionCentering
+                            panelClass="Select-panel-class" [disabled]="!enablePeriod" class="select-focus">
+                            <mat-option value="">Select billing rate type</mat-option>
+                            <mat-option [value]="billingrate.id" [hidden]="billingrate.id==''"
+                              *ngFor="let billingrate of BillingRateList">
+                              {{billingrate.label}} </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <button class="float-left primary-button recalc-btn edit-btn "
+                        [ngClass]="{'disabled-control border-gray': modDetails.ModuleList[i].ModuleEdit=='false'}"
+                        *ngIf="!enablePeriod" (click)="enablePeriod = true"
+                        [attr.disabled]="modDetails.ModuleList[i].ModuleEdit=='false' ? 'disabled' : null">Edit</button>
+                      <button class="float-left primary-button recalc-btn edit-btn" *ngIf="enablePeriod"
+                        (click)="ChangePeriod(data1);enablePeriod = false">Save</button>
+                    </div>
+                  </div>
+                  <ng-container *ngIf="tabVisibility">
+                    <section *ngIf="data1.ModuleParameters" class="col-12 float-left customized-accordians no_pad">
+                      <mat-accordion>
+                        <!-- Module parameters accordion starts -->
+                        <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad"
+                          (opened)="panelOpenState4 = true" (closed)="panelOpenState4 = false">
+                          <mat-expansion-panel-header style="min-height:50px;">
+                            <mat-panel-title class="accord-heading">
+                              <span
+                                [ngClass]="panelOpenState4 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-right chevron-right'"></span>
+                              <span class="accordian-title">Module parameters</span>
+                            </mat-panel-title>
+
+                          </mat-expansion-panel-header>
+
+                          <div class="col-12 float-left no_pad">
+                            <div class="col-12 float-left customized-input acc-input">
+
+                              <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+                                <div class="w-100">
+                                  <label for="Modulename" class="w-100">Module discount (%)</label>
+                                  <input class="border-gray w-100" id="Modulename" type="text" min="0" step=".01" #moduleDiscount
+                                    onkeypress="return event.keyCode !== 101 && event.keyCode !==43 && event.keyCode !== 45 && event.keyCode !== 69"
+                                    [(ngModel)]="data1.ModuleParameters.ModuleDiscount" [disabled]="!discount" (input)="regxforDecimal(moduleDiscount.value)">
+                                </div>
+                                <p class="error-message" *ngIf="notValid"><span>Please enter valid input</span></p>
+                              </div>
+                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22 mobile-select-box">
+                                <label for="Module1" class="w-100">Contingency type</label>
+
+                                <div class="customized-select">
+                                  <span class="caret color-azure"></span>
+                                  <select [(ngModel)]="data1.ModuleParameters.ContingencyTypeCode" id="Module1"
+                                    role="listbox" [disabled]="!discount">
+                                    <option [value]="data1.ModuleParameters.ContingencyTypeCode"
+                                      *ngFor="let list of data1.ModuleParameters.ContingencyType">
+                                      {{list.ContingencyTypeName}}</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22 web-select-box">
+                                <label for="Module1" class="w-100">Contingency type</label>
+                                <mat-form-field class="col-12 no_pad float-left">
+                                  <mat-label>Select contingency type</mat-label>
+                                  <mat-select [(ngModel)]="data1.ModuleParameters.ContingencyTypeCode" id="Module1"
+                                    disableOptionCentering panelClass="Select-panel-class" class="select-focus"
+                                    [disabled]="!discount">
+                                    <mat-option>Select contingency type</mat-option>
+                                    <mat-option *ngFor="let list of data1.ModuleParameters.ContingencyType"
+                                      [hidden]="list.ContingencyTypeCode==0" [value]="list.ContingencyTypeCode">
+                                      {{list.ContingencyTypeName}}
+                                    </mat-option>
+                                  </mat-select>
+
+                                </mat-form-field>
+                              </div>
+                              <button class="float-left primary-button recalc-btn edit-btn"
+                                [ngClass]="{'disabled-control border-gray': modDetails.ModuleList[i].ModuleEdit=='false'}"
+                                *ngIf="!discount" (click)="discount = true"
+                                [attr.disabled]="modDetails.ModuleList[i].ModuleEdit=='false' ? 'disabled' : null">Edit</button>
+                              <button  [ngClass]="{'disabled-control border-gray': notValid}" class="float-left primary-button recalc-btn edit-btn" *ngIf="discount"
+                                (click)="savemoduleparams(data1,i);discount = false" [disabled]="notValid">Save</button>
+                            </div>
+
+                            <table class="col-12 float-left no_pad parameter-table rate-table">
+                              <thead>
+                                <tr>
+                                  <th>Price factor</th>
+                                  <th>Classification</th>
+                                  <th>Shift</th>
+                                  <th>Default value</th>
+                                  <th>Value</th>
+                                  <th>Type</th>
+                                  <th>Currency</th>
+                                  <th>Period</th>
+                                </tr>
+                              </thead>
+                              <perfect-scrollbar style="height:200px;">
+                                <tbody>
+                                  <tr *ngFor="let records of data1.ModuleParameters.ModuleDataList;let i=index">
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text"
+                                          [(ngModel)]="records.MasterPriceFactorsName" disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text"
+                                          [(ngModel)]="records.LocationClassificationName" disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text" [(ngModel)]="records.ShiftName"
+                                          disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text" [(ngModel)]="records.MasterData"
+                                          disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text" [(ngModel)]="records.DATA"
+                                          [disabled]="!discount">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text" [(ngModel)]="records.DataType"
+                                          disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text" [(ngModel)]="records.CurrencyCode"
+                                          disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text" [(ngModel)]="records.UOMTName"
+                                          disabled>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </perfect-scrollbar>
+
+                            </table>
+
+                          </div>
+
+                        </mat-expansion-panel>
+                        <!-- Module parameters accordion ends -->
+
+                        <!-- rate inflation accordion starts -->
+                        <mat-expansion-panel hideToggle="true" [expanded]="false" class="no_pad"
+                          (opened)="panelOpenState5 = true" (closed)="panelOpenState5 = false">
+                          <mat-expansion-panel-header style="min-height:50px;">
+                            <mat-panel-title class="accord-heading">
+                              <span
+                                [ngClass]="panelOpenState5 ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-right chevron-right'"></span>
+                              <span class="accordian-title">Rate inflation</span>
+                            </mat-panel-title>
+
+                          </mat-expansion-panel-header>
+
+                          <div class="col-12 float-left no_pad">
+
+                            <table class="col-12 float-left no_pad rate-table">
+                              <thead>
+                                <tr>
+                                  <th>Country</th>
+                                  <th>Classification</th>
+                                  <th>Master STD. billing hrs</th>
+                                  <th>Rate inflation (%)</th>
+                                </tr>
+                              </thead>
+                              <perfect-scrollbar style="height:200px;">
+                                <tbody>
+                                  <tr *ngFor="let rateInflation of data1.RateInflations">
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text"
+                                          [(ngModel)]="rateInflation.CountryName" disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text"
+                                          [(ngModel)]="rateInflation.LocationClassification" disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text"
+                                          [(ngModel)]="rateInflation.MasterRateInflation" disabled>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="col-lg-12 col-md-12 col-12 float-left no_pad customized-input">
+                                        <input class="border-gray w-100" type="text"
+                                          [(ngModel)]="rateInflation.RateInflation" [disabled]="!discount">
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </perfect-scrollbar>
+                            </table>
+
+                            <div class="float-left  col-12">
+                              <div class="col-12 float-left customized-input no_pad comn-fld">
+                                <div class="col-lg-3 col-md-6 col-12  padbox-10-60-10 float-left  ">
+                                  <label for="Billing" class="w-100">Compute Billing Rate based on GM %?</label>
+                                  <mat-radio-group aria-label="Select an option" id="Billing"
+                                    [(ngModel)]="data1.GMBillingRate.GMBasedBillRateCalc" (change)="GmCalculate(data1,i)">
+                                    <mat-radio-button value="Y" class="mr20"
+                                      [disabled]="topLevelButtons.length==0">Yes</mat-radio-button>
+                                    <mat-radio-button value="N" [disabled]="topLevelButtons.length==0">
+                                      No
+                                    </mat-radio-button>
+                                  </mat-radio-group>
+                                </div>
+                                <div class="float-left col-lg-9 no_pad"
+                                  *ngIf="modDetails.MasterData.OptionStatusCode=='OCALC' && modDetails.ModuleList[i].ModuleEdit=='true'">
+                                  <div class="col-lg-5 col-md-6 col-12  padbox-10-60-10 float-left">
+                                    <div class="w-100">
+                                      <label for="Target" class="w-100">Target module revenue (
+                                        {{data1.MasterData.CurrencyCode}} )</label>
+                                      <input class="border-gray w-100" id="Target" type="number" min="0" step=".01"
+                                        (input)="addCommas(moduleRev.value)"
+                                        onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 && event.charCode <= 57"
+                                        #moduleRev value="">
+                                    </div>
+                                  </div>
+                                  <button class="float-left primary-button recalc-btn"
+                                    [ngClass]="{'disabled-control border-gray': moduleRev.value==''}"
+                                    [disabled]="moduleRev.value==''"
+                                    (click)="reCalculate(data1,i,moduleRev.value)">Recalculate</button>
+                                </div>
+                              </div>
+                            </div>
+                            <table class="col-12 float-left no_pad factor-table"
+                              *ngIf="data1.GMBillingRate.GMBasedBillRateCalc=='Y'">
+                              <thead>
+
+                                <th>price factor</th>
+                                <th>Classification</th>
+                                <th>type</th>
+                                <th></th>
+                                <th></th>
+
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let item of data1.GMBillingRate.GMParameters">
+                                  <td>{{item.MasterPriceFactorsName}}</td>
+                                  <td>{{item.LocationClassificationName}}</td>
+                                  <td>{{item.DataType}}</td>
+                                  <td>
+                                    <div class="button_div mobile-align commonActionBlock">
+                                      <div class="float-left arrow-div"   >
+                                        <div class="blue_circle_replay commonActionBtn pad_left_0">
+                                          <span
+                                            class="col-xs-12 nopad blue_circle_replay_img mdi mdi-arrow-down-thick" [ngStyle]="{'cursor': discount==true ? 'pointer' : '' }" (click)="ChangedGMParams(item,'D1x')"></span>
+                                        </div>
+                                        <span class="float-left">1X</span>
+                                      </div>
+                                      <div class="float-left arrow-div"  >
+                                        <div class="blue_circle_replay commonActionBtn pad_left_0">
+                                          <span 
+                                            class="col-xs-12 nopad blue_circle_replay_img mdi mdi-arrow-down-thick" [ngStyle]="{'cursor': discount==true ? 'pointer' : '' }" (click)="ChangedGMParams(item,'D5x')"></span>
+                                        </div>
+                                        <span class="float-left">5X</span>
+                                      </div>
+                                      <div class="float-left arrow-div">
+                                        <div class="blue_circle_replay commonActionBtn pad_left_0">
+                                          <span 
+                                            class="col-xs-12 nopad blue_circle_replay_img mdi mdi-arrow-up-thick" [ngStyle]="{'cursor': discount==true ? 'pointer' : '' }" (click)="ChangedGMParams(item,'I1x')"></span>
+                                        </div>
+                                        <span class="float-left">1X</span>
+                                      </div>
+                                      <div class="float-left arrow-div">
+                                        <div class="blue_circle_replay commonActionBtn pad_left_0">
+                                          <span
+                                            class="col-xs-12 nopad blue_circle_replay_img mdi mdi-arrow-up-thick" [ngStyle]="{'cursor': discount==true ? 'pointer' : '' }" (click)="ChangedGMParams(item,'I5x')"></span>
+                                        </div>
+                                        <span class="float-left">5X</span>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                      <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-reload top0" [ngStyle]="{'cursor': discount==true ? 'pointer' : '' }" (click)="ChangedGMParams(item,'refresh')"></span>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+
+                        </mat-expansion-panel>
+                        <!-- rate inflation accordion ends -->
+                      </mat-accordion>
+                    </section>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-template>
+            <!-- common ends -->
+          </mat-expansion-panel>
+        </div>
+      </div>
+    </mat-accordion>
+    <div class="col-12 float-left" *ngIf="tabVisibility">
+      <button class="float-right primary-button recalc-btn" [ngClass]="{'disable-button-control': modDetails?.BindHeaderDetail.Status != 'Open' && modDetails?.BindHeaderDetail.Status != 'Calculated'}" (click)="navigateToCalculate()">Calculate</button>
+    </div>
+  </section>
+</ng-template>
+<ng-container *ngIf="isLoadingSaveRLS">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

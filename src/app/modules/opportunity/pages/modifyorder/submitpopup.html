@@ -1,0 +1,30 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity">
+    <div class="col-12 float-left container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-11 float-left no_pad popup-hd-txt col-size" mat-dialog-title>Are you sure you want to
+                submit the modified order details for approval?
+            </span>
+            <button class="col-1 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn"
+                aria-label="close" mat-dialog-close></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+        <div class="col-12 float-left no_pad margin-top-20 text-clr">
+            <span class="col-12 float-left bordr-top no_pad">
+                Your request number is {{data.ModificationReqNo}}</span>
+        </div>
+
+        <div class="col-12 float-left no_pad mt20 mb10 text-clr">
+            <span class="col-12 float-left bordr-top no_pad">
+                Note: Changed values will be reflected on orders once approved
+                by the Finance team.</span>
+        </div>
+    </div>
+
+    <div class="col-12 float-left no_pad">
+        <button aria-label="No" class="col-6 float-left btndef-none no_pad discard-btn" mat-dialog-close>No</button>
+        <button aria-label="Yes" class="col-6 float-left btndef-none no_pad confrm-btn mt15" mat-dialog-close
+            (click)="submitforModification()">Yes</button>
+    </div>
+</div>

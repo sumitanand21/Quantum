@@ -1,0 +1,1273 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+.mt110
+{
+  margin-top: 110px;
+}
+.h-285 {
+  height: 220px;
+}
+.pt100 {
+  padding-top: 135px;
+}
+
+.pad-20{
+  padding: 20px;
+}
+
+.mdi-information-outline:before {
+  font-size: 18px;
+  color: #2f81ff;
+  position: relative;
+  padding-left: 5px;
+  top: 3px;
+}
+.mdi-information-outline:before {
+  line-height: 0px;
+}
+.info-icon {
+  font-size: 12px;
+  color: #2f81ff;
+}
+
+.inputfixed-width-pt {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 90px;
+  width: 90px;
+}
+
+.brudcrumbs {
+  position: relative;
+  left: 7px;
+  bottom: 2px;
+  opacity: 0.8;
+  font-size: 12px;
+  color: #e7ebf2;
+}
+.heading-custom {
+  position: relative;
+  left: 6px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mdi-keyboard-backspace:before {
+  content: "\F30D";
+  font-size: 22px;
+  color: #ffff;
+  position: relative;
+  // bottom: 40px;
+}
+
+.radio-cmnt {
+  font-family: WiproAkkuratTT-Bold;
+  color: #f58323;
+  font-size: 12px;
+}
+
+.pad-30 {
+  padding: 30px;
+}
+
+.mt-30{
+  margin-top:30px
+}
+
+.mt-150 {
+  margin-top: 115px;
+}
+.pad-top142{
+    padding-top: 142px;
+  }
+  .primary-button.std{
+    padding: 7px 0;
+    min-width: 100px;
+    height: 40px;
+    margin: 0;
+}
+.mr10 {
+    margin-right: 10px !important;
+}
+.borderless {
+    border: none !important;
+}
+
+.plb-0-20 {
+    padding: 8px 0 8px 15px;
+}
+.pad-top20{
+    padding-top: 20px
+}
+
+.pad-top2{
+    bottom: 2px;
+    position: relative;
+}
+
+.addAccountBtns {
+    height: 40px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 2px solid #2f81ff;
+    color: #2f81ff;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: center;
+    padding: 0px 30px;
+}
+
+.sub-text{
+  font-size: 13px;
+  bottom: 6px;
+  font-family: WiproAkkuratTT-Bold;
+}
+.pad-20-30{
+  padding: 20px 30px;
+}
+.padLR-24{
+  padding: 0px 24px;
+}
+table {
+    width: 100%;
+    // margin-top: 3px;      
+
+    tr th {
+        background: #e6f3f9;
+        height: 35px;
+        color: $NavyBlue;
+        font-family: WiproAkkuratTT-Regular;
+        font-size: 12px; 
+        position: sticky;
+        top: 0px;
+        z-index: 1;
+    }
+
+    .br-tl {
+        border-radius: 5px 0 0 0;
+    }
+
+    .br-tr {
+        border-radius: 0 5px 0 0;
+    }
+
+    .brdr-lr {
+        border-left: 2px solid white;
+        border-right: 2px solid white;
+    }
+
+    .brdr-left {
+        border-left: 2px solid white;
+    }
+
+    .brdr-right {
+        border-right: 2px solid white;            
+    }
+    .br-tlr {
+        border-radius: 5px 5px 0 0;
+    }
+
+    td, th {
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr td {
+        //height: 50px;
+        font-size: 12px;
+        //font-weight: bold;
+        font-family: WiproAkkuratTT-Regular;
+      }
+
+    //   tr:nth-child(even) {
+    //     background-color: #f0f0f080;
+    //   }
+
+      td tr {
+          background-color: inherit;
+      }
+}
+
+.card-heading .card-title {
+    font-size: 16px;
+    font-family: 'WiproAkkuratTT-Bold';
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    color: $Black;
+}
+
+.border-bottom-grey {
+    border-bottom: solid 1.5px #d7d7d7;
+}
+.colr-green{
+    color: $Green
+}
+.colr-orange{
+    color: $Orange
+}
+.mb10{
+    margin-bottom: 10px;
+}
+
+// for four acordian styling starts from here.
+
+// css for upload file ends here.. Pradeep
+.colr-orang{
+    color: Orange;
+ }
+ .mt-33
+ {
+     margin-top: 33px;
+ }
+ .pad-lr-30
+ {
+     padding: 0 30px;
+ }
+ .pad-26{
+     padding: 20px 0px;
+ }
+ .pad-15-30{
+     padding: 0px 30px;
+ }
+ .new-container{
+ .primary-button.std {
+     padding: 9px 5px;
+     min-width: 110px;
+     margin: 0;
+ }
+ .mr10 {
+     margin-right: 10px;
+ }
+ .margin-btm10{
+     margin-bottom: 10px !important;
+ }
+ .mar-btm25{
+     margin-bottom: 25px !important;
+ }
+ .mar-btm14{
+     margin-bottom: 14px;
+ }
+ .h-40 {
+     height: 40px;
+ }
+ .h-35 {
+     height: 32px;
+ }
+ .cardsHead {
+     font-family: WiproAkkuratTT-Bold;
+     font-size: 16px;
+     color: #000000;
+ }
+ }
+ .colorWhite{
+    color: $Marble;
+ }
+ .bluebox{
+     background: $Azure;
+     
+     border-radius: 5px;
+     margin-right:10px;
+     width: calc(25% - 13px);
+     margin-right: 13px;
+ }
+ .centerContent{
+     float: none;
+     margin: 0 auto;
+     color: $White;
+     padding-top: 22px;
+     padding-bottom: 14px;
+ }
+ .w100{
+     width: 100px;
+ }
+ .font12{
+     font-size: 12px;
+ }
+ .circleImg {
+   width: 40px;
+   height: 40px;
+   background: $White;
+   border-radius: 20px;
+ margin-bottom: 10px !important;
+ 
+ }
+ .pl36{
+     padding-left: 36px !important;
+ }
+ .Centerblock{
+     text-align: left;
+     float: none;
+     margin: 0 auto;
+ }
+ .mb20{
+     margin-bottom: 20px !important;
+ }
+ 
+ .plb-60-20 {
+     padding: 0 55px 20px 5px;
+ }
+ .mt-20{
+     margin-top: -18px;
+ }
+ .mb1{
+     margin-bottom: 2px;
+ }
+ .heading-level-three {
+     font-family: WiproAkkuratTT-Bold;
+     font-size: 16px;
+     color: #000000;
+ }
+ .popup-text{
+     font-size: 12px;
+     font-family: WiproAkkuratTT-Regular;
+ }
+ .text-area-content{
+     font-family: WiproAkkuratTT-Bold;
+     font-size: 14px;
+     color: #4a4a4a;
+     resize: none;
+     border: 1.5px solid #d8d8d8;
+     border-radius: 4px;
+     background-color: #ffffff;
+     height: 170px;
+     padding: 10px;
+     outline: none;
+ }
+ .attach-icon {
+     width: 18px;
+     height: 18px;
+     -webkit-transform: rotate(-90deg);
+     transform: rotate(-90deg);
+     text-align: center;
+     position: relative;
+     right: 6px;
+     font-size: 18px;
+ }
+ // .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+ //     background: #fff;
+ // }
+ 
+ // sathish code start
+ 
+ .margin_top_0 {
+     margin-top: 0px;
+ }
+ 
+ .pad_bottom_0 {
+     padding-bottom: 0px !important;
+ }
+ 
+ .margin_top_10 {
+     margin-top: 10px !important;
+ }
+ .padding_top_5 {
+     padding-top: 5px;
+ }
+ .padding_top_10 {
+     padding-top: 10px !important;
+ }
+ 
+ .downloadAllStyle {
+     color: #2f81ff;
+     font-family: 'WiproAkkuratTT-Bold';
+     font-size: 14px;
+ }
+ 
+ .circleName {
+     height: 15px;
+     width: 15px;
+     border-radius: 50%;
+     color: red;
+ }
+ .border_top {
+     border-top: 2px solid #d8d8d8;
+     // padding-top: 20px;
+ }
+ .width_25 {
+     color: white;
+     width: 28px;
+     .mdi-keyboard-backspace {
+         font-size: 22px;
+         cursor: pointer;
+     }
+ }
+ .margin_bottom_0 {
+     margin-bottom: 0px;
+ }
+ .pr0{
+     padding-right: 0 !important;
+ }
+ // sathish code end
+ 
+ .add-btn {
+     height: 40px;
+     width: 40px;
+     border-radius: 4px 0px 0px 4px;
+     padding: 3px 6px;
+     background: $White;
+     border: 1.5px solid $Azure;
+     font-family: WiproAkkuratTT-Bold;
+     color: $Azure;
+     outline: none;
+     font-size: 18px;
+     // width:40px;
+   }
+   .add-btn:hover {
+     background: #2f81ff;
+     color: white;
+   }
+ 
+ /********** style for auto complete list start ***************/
+ /********** style for auto complete list start ***************/
+ .list-name {
+     font-family: WiproAkkuratTT-Regular;
+     font-size: 14px;
+     color: #000000;
+   }
+ 
+   .sub-list {
+     font-size: 10px;
+     color: #9b9b9b;
+     font-family: WiproAkkuratTT-Regular;
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+   }
+ 
+   .autocomplete-box {
+     top: 0px;
+     font-size: 14px;
+     color: black;
+     background-color: white;
+     border: 1.5px solid $Azure;
+     border-radius: 4px;
+     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     transition: 0.2s;
+ 
+     .list-group-item {
+       cursor: pointer;
+       height: 50px;
+       padding: 10px;
+     }
+ 
+     .db-search {
+       height: 40px;
+       cursor: pointer;
+       list-style-type: none;
+ 
+       &:hover {
+         background-color: #d9e9ff;
+       }
+       button {
+         font-family: WiproAkkuratTT-Bold;
+         font-size: 14px;
+         letter-spacing: 0.3px;
+         color: $Azure;
+         outline: none;
+         border: none;
+         background: transparent;
+         text-align: left;
+         width: 100%;
+         height: 100%;
+       }
+     }
+ 
+     .list-box:hover {
+       background-color: #d9e9ff;
+       cursor: pointer;
+     }
+ 
+     .btn-none {
+       outline: none;
+       border: none;
+       background: transparent;
+     }
+   }
+ 
+ // meghana classes
+ .min_height60
+ {
+     min-height: 60px;
+ }
+ .accord-heading{
+     // position: absolute;
+     padding-top: 20px;
+ }
+ 
+ .accord-heading1{
+     padding-top: 10px;
+ }
+ .bot10
+ {
+     bottom: 10px;
+ }
+ th{
+     background: #d9e9ff;
+     color: #103f86;
+     font-family: WiproAkkuratTT-Bold;
+     font-size: 14px;
+ }
+ .table_data{
+     background: #d9e9ff;
+     color: #103f86;
+     font-family: WiproAkkuratTT-Bold;
+     font-size: 14px;
+     width: 100%;
+     border-radius: 4px 4px 0 0;
+ }
+ 
+ .row_content{
+     background: #d9e9ff;
+     font-family: WiproAkkuratTT-Bold;
+     font-size: 12px;
+     width: 100%;
+ }
+ .blue_circle_replay {
+     // float: right;
+     width: 30px;
+     height: 30px;
+     border-radius: 50%;
+     background-color: #d9e9ff;
+     position: relative;
+     text-align: center;
+     color: #2f81ff;
+    margin-left: 10px;
+   }
+   .blue_circle_replay:hover {
+     // float: right;
+     width: 30px;
+     height: 30px;
+     border-radius: 50%;
+     background-color: #2f81ff;
+     position: relative;
+ 
+     color: #ffffff;
+ 
+     .blue_circle_replay_img {
+       color: #ffffff;
+     }
+   }
+   .w-75
+   {
+       width: 75% !important;
+       font-size: 12px;
+   }
+   .w-100
+   {
+       width: 100% !important;
+       font-size: 12px;
+   }
+   .w-20
+   {
+       width: 18% !important;
+       font-size: 12px;
+   }
+   .display_flex
+   {
+       display: flex;
+   }
+   tr{
+       white-space: nowrap;
+   }
+   td{
+       vertical-align: middle;
+   }
+   .gray_back
+   {
+       background: #f9f9f9 !important;
+   }
+   .trans_back
+   {
+       background: transparent !important;
+   }
+   .disabled_check.customized-checkbox .mat-checkbox-frame
+   {
+     border-color:#d8d8d8 !important;
+   }
+   .comp_tool
+   {
+     font-family: "WiproAkkuratTT-Bold";
+     font-size: 12px;
+     color: #2f81ff;
+   }
+   .pb5
+   {
+     padding-bottom: 5px;
+   }
+   .pad_10
+   {
+       padding: 0px 10px !important;
+   }
+   .mdi-magnify:before {
+     color: #2f81ff;
+     font-size: 20px;
+     right: 5px;
+     position: absolute;
+     bottom: 9px;
+     background: #ffffff;
+ }
+ .new-change.mdi-magnify:before {
+    bottom: 5px !important;
+    right: 11px;
+}
+.new-change.mdi-close:before {
+  font-size: 14px;
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  cursor: pointer;
+}
+ .label-input:disabled + .mdi-magnify:before
+ {
+     color: #2f81ff;
+     font-size: 20px;
+     right: 5px;
+     position: absolute;
+     bottom: 9px;
+     background: #f9f9f9 !important;
+ 
+ }
+ .top64{
+     top: 39px;
+     min-width: 300px !important;
+     z-index: 5;
+ }
+ .pad_t0
+ {
+     padding-top: 0px !important;
+ }
+ .mdi-dots-vertical:before{
+     position: relative;
+     left: -1px;
+     top: 0px;
+     font-size: 18px;
+ }
+//  td,th{
+//      padding: 10px 5px !important
+//  }
+ td{
+    padding: 10px 5px !important
+}
+th{
+    padding: 10px 5px !important
+}
+ .width120
+ {
+     width: 120px !important;
+ }
+ .width125
+ {
+     width: 125px !important;
+ }
+ .width80
+ {
+     width: 80px !important;
+ }
+ .width95
+ {
+     width: 95px !important;
+ }
+ .width10
+ {
+     width: 10% !important;
+ }
+ .customized-select .caret
+ {
+     right: 14px !important;
+     // background: #ffffff !important;
+     // height: 14px !important;
+ }
+ .customized-select .new-change.caret
+ {
+     right: 22px !important;
+ }
+ .btop_withoutpadding{
+     border-top: 2px solid #d8d8d8;
+ }
+ 
+ 
+ // Pradeep 19-04 changes
+ 
+ .text-alignment{
+     text-align: center;
+ }
+ 
+ .border-rightazure{
+     border-right: 3px solid #d9e9ff;
+ }
+ .subtext1{
+     font-size: 14px;
+     font-family: WiproAkkuratTT-Bold;
+ }
+ .label-data{
+     font-size: 12px;
+     font-family: WiproAkkuratTT-Regular;
+     top: 8px;
+ }
+ .pt-10{
+     padding-top: 10px;
+ 
+ }
+ .padt0
+ {
+     padding-top: 0px !important;
+ }
+ 
+ // .mat-expansion-panel {
+ //     overflow: inherit !important;
+ // }
+ .upper-text{
+     font-family: WiproAkkuratTT-Bold;
+     font-size: 18px;
+     color: #000000;
+ }
+ 
+ .lower-text{
+     font-family: WiproAkkuratTT-Regular;
+     font-size: 12px;
+     color: #000000;
+ }
+ 
+ .new-container{
+
+    .h-40 {
+        height: 40px;
+    }
+    .cardsHead {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 16px;
+        color: #000000;
+    }
+
+
+}
+.customized-input input{
+    border: 1.5px solid #d8d8d8;
+    position: relative;
+    border-radius: 4px;
+}
+.label-input:focus {
+    border: 1.5px solid #2f81ff !important;
+    outline: none;
+}
+.mdi-chevron-up:before {
+    content: "\F143";
+    font-size: 24px;
+    color: #000;
+    position: initial;
+    margin-top: -5px;
+    margin-left: -15px;
+    margin-right: 8px;
+}
+.mdi-chevron-down:before {
+    content: "\F140";
+    font-size: 24px;
+    color: #000;
+    position: initial;
+    margin-top: -5px;
+    margin-left: -15px;
+    margin-right: 8px;
+}
+
+
+.enabledtext{
+    color: $Azure;
+    font-family: WiproAkkuratTT-Bold;
+}
+.enabledtext:hover{
+  color: #fff;
+  font-family: WiproAkkuratTT-Bold;
+}
+.disabledtext {
+    color: $MetalLight;
+    font-family: WiproAkkuratTT-Bold;
+}
+.disabledtext:hover {
+  background: #fff;
+  color: $MetalLight;
+  font-family: WiproAkkuratTT-Bold;
+}
+.text-clr{
+    font-family: WiproAkkuratTT-Regular;
+    color: black;
+    font-size: 14px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.height-180{
+    height:180px
+  }
+
+
+  //   12/08 cganges related to upload files. Pradeep
+
+  .suprt_text{
+    font-size: 15px;
+    font-family: WiproAkkuratTT-Bold;
+}
+
+/*****************file upload***************************/
+.upld_ip
+{
+border: none;
+    border-bottom: 1px solid #8a8888;
+}
+.upld_div
+{
+  position: relative;
+  margin-top: 20px;
+}
+.upld_div .icon-upload{
+  position: absolute;
+  right: 0px;
+  color: #989898;
+  bottom: 26px;
+  font-size: 22px;
+  top: 0em;
+  background: transparent;
+  border: none;
+}
+.file_ip
+{
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    padding: 2px 0 2px 0; 
+}
+.icon-file_upload{
+background:transparent;
+border:none;
+}
+.uploaded_doc
+{
+  padding: 5px 0px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #f8f9fa;
+  font-size: 12px;
+  width: 100%;
+  height: 42px;
+//   border: 2px solid #2f81ff;
+}
+.uploaded_doc_25
+{
+  position: relative;
+  padding: 5px 5px 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 3px;
+  background: #ededed;
+  font-size: 12px;
+  margin-top: 10px;
+  width: 19.33%;
+  float: left;
+}
+.uploaded_doc1
+{
+  position: relative;
+  padding: 5px 5px 5px 10px;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 3px;
+  background: #ededed;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.uploaded_text{
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: $Azure;
+  font-size: 12px;
+  padding: 5px;
+}
+.del_upload
+{
+  color: #2f81ff;
+     font-size: 14px;
+     background: transparent;
+     border: none;
+     opacity: 0.6;
+     font-size: 16px;
+     position: relative;
+}
+.upld_ip::-webkit-input-placeholder { /* Chrome */
+color: $Black;
+font-size: 14px;
+}
+.upld_ip:-ms-input-placeholder { /* IE 10+ */
+color: $Black;
+font-size: 14px;
+}
+.upld_ip::-moz-placeholder { /* Firefox 19+ */
+color: $Black;
+opacity: 1;
+font-size: 14px;
+}
+.upld_ip:-moz-placeholder { /* Firefox 4 - 18 */
+color: $Black;
+opacity: 1;
+font-size: 14px;
+}
+.infoFile{
+color: $Black;
+opacity: 0.6;
+font-family: WiproAkkuratTT-Regular !important;
+font-size: 12px;
+margin-bottom: 0px;
+}
+.charCount{
+color: $Black;
+opacity: 0.7;
+font-size: 13px;
+font-family: WiproAkkuratTT-Regular;
+position: relative;
+top: -8px;
+}
+
+.name {
+    height: 15px;
+    padding:0px 0px 0px 10px !important;
+}
+.border-rightaz {
+    border-right: 2px solid #4793e0 !important;
+}
+.border{
+  border: 2px solid #2f81ff !important;
+}
+
+
+.servicelineheader{
+    td,th{
+        padding: 10px 5px !important;
+        max-width: 100px !important;
+        // overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+.inputfixed-width {
+  //display: block;
+  position: relative;
+  flex: auto;
+  min-width: 90px;
+  width: 115px;
+  // border-top: .84375em solid transparent;
+}
+.inputfixed-width-pt {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 90px;
+  width: 90px;
+  // border-top: .84375em solid transparent;
+}
+.inputfixed-width-ip {
+  //display: block;
+  position: relative;
+  flex: auto;
+  min-width: 90px;
+  width: 121px;
+  // border-top: .84375em solid transparent;
+}
+.inputfixed-width-pt {
+  //display: block;
+  position: relative;
+  flex: auto;
+  min-width: 90px;
+  width: 90px;
+  // border-top: .84375em solid transparent;
+}
+.w-129{
+  width: 129px !important;
+}
+
+
+.mat-expansion-panel-body {
+    padding: 0 24px !important;
+}
+.orangeborder
+{
+    border: 2px solid #ef3341 !important;
+}
+
+.checkbox-orange{
+    width: 17px !important;
+    height: 17px;
+    float: left;
+    border-radius: 2px;
+    position: relative;
+    top: -3px;
+}
+
+.nodata_tr {
+    position: relative;
+    border-top: none;
+}
+.nodata_td {
+    text-align: center !important;
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    padding-top: 25px !important;
+}
+
+.table td {
+    padding: 0px 5px;
+}
+.f-12{
+    font-size: 12px !important;
+}
+
+.paddg10 {
+    padding-bottom: 10px;
+  }
+  .card-details {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    border: 0px !important;
+    background-color: #fff;
+    background-clip: border-box;
+  }
+  .card-details label {
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-family: WiproAkkuratTT-Regular;
+  }
+  .card-details span {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-family: WiproAkkuratTT-Bold;
+  }
+  .pdR10{
+    padding-right: 10px !important;
+    }
+  ::ng-deep .matfrm-wrap .mat-form-field-wrapper{
+        padding-bottom:0px !important;
+    }
+    .naming-tags-square {
+        padding: 0px 5px;
+      }
+
+      .download-uploaded-file:hover .mdi-download {
+        display: block;
+      }
+      .download-uploaded-file:hover .mdi-file-document,
+      .initials.mdi.mdi-download {
+        display: none;
+      }
+      .float-right{
+          float:right;
+      }
+      .po-detail{
+        margin: 0.4rem 0rem 0rem 2rem;
+        cursor: pointer;
+        font-weight: 600;
+    }
+    .radio-fontfamly{
+        color: #2f81ff;
+        font-size: 14px;
+        font-family: "WiproAkkuratTT-Regular";
+    }
+    
+    .float-left {
+        float: left !important;
+    }
+    .fontweights{
+        font-weight: bold;
+    margin-bottom: 20px;
+    }
+    .dotsize{
+        font-weight: bold;
+    font-size: 20px;
+    margin-right: 6px;
+    //float:left;
+    margin-top:-7px;
+
+    }
+    .displaytext{
+        float: left;
+        display: contents;
+    }
+    
+    .inlineflex{
+        display: inline-flex;
+    }
+    .servicelinetable{
+      .matcheckbx-pad{
+        padding: 0px 8px;
+      }
+      .mdi-magnify::before{
+        right: 18px !important;
+      }
+    }
+//Sandhiya made changes
+#order-servicetable{
+  .checkbox-center{
+    position: relative;
+    left: 8px;
+  }  
+}
+#order-iptable{
+  .checkbox-center{
+    position: relative ;
+    left: 8px;
+  }
+}
+//Sandhiya added css for ModifyOrders page in mobile view
+@media screen and (max-width: 823px) {
+  .checkbox-center{
+    position: unset !important;
+  }
+  .display-none
+  {
+      display: none !important;
+  }
+  table {
+    border: 0;
+  }
+  table caption {
+    font-size: 1.3em;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  table tr:not(:first-child) {
+      border-top: 20px solid #f9f9f9;
+  }
+  table tr {
+    margin-bottom: 0.625em;
+    height: auto !important;
+    // display: inline-block !important;
+    // height: auto !important;
+    position: relative;
+    background-color: white !important;
+    touch-action: pan-y !important;
+  }
+  table td {
+    display: inline-grid;
+    text-align: left;
+    width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    touch-action: pan-y !important;
+  }
+  table th.actionColumn {
+    display: inline-grid;
+    text-align: left;
+    //width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    padding-right: 0px;
+    
+  }
+  table tr th {
+    display: inline-grid;
+    text-align: left;
+    width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    touch-action: pan-y !important;
+    padding-right: 0px;
+    
+    
+  }
+  table td::before,
+  table tr th::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    color: #9b9b9b;
+    margin-bottom: 5px;
+  }
+    table th.actionColumn {
+    border-bottom: 0;
+    overflow-x: auto;
+  }
+.mobile-button-width {
+  width: 100%;
+  float: left !important;
+  margin-top: 20px;
+  display: flex;
+  left: -25px;
+}
+.mobile-no_pad {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.mobpad15 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+.inputfixed-width {
+  width: 100% !important;
+}
+.float-unset{
+  float: unset !important;
+}
+.pl0px{
+  padding-left:0px !important;
+}
+.servicelinetable{
+  .mdi-magnify::before{
+    right: 5px;
+  }
+}
+.heading-level-one{
+  max-width: 300px !important;
+}
+
+}
+.mtop-5 {
+  margin-bottom: 0px;
+    margin-top: 5px;
+}
+  

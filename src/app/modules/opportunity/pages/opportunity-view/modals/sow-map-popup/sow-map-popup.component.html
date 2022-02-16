@@ -1,0 +1,117 @@
+<!-- Super SOW-Mapping popup starts from here. -->
+
+<div class="col-12 float-left  no_pad popup-container popup-container-opportunity deal-qualify ">
+
+  <div class="col-12 float-left  container-dialog no_pad">
+      <div class="col-12 float-left">
+          <div class="col-12 float-left no_pad popup-hd">
+              <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Super SOW mapping</span>
+              <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn close-icn"
+                  aria-label="close" mat-dialog-close>
+              </button>
+          </div>
+
+          <div class="col-12 float-left border-bottom-grey"></div>
+
+          <!-- From here-->
+
+          <div >
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20 db-container wiprodatabse">
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                  <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt-20 h-40 label-input" matInput  placeholder="Search Super SOW">
+                  <span class="mdi mdi-magnify" ></span>
+                  <span class="mdi mdi-close cp" ></span>
+                  <!-- (click)="clearSearch()" -->
+                  <div class="col-12 float-left no_pad mt10 mb10">
+                    <span class="text-head" >All results ({{tabledata.length}})</span>
+                    <!-- <span class="text-head" [ngClass]="searchValue?.length>0?'d-block':'d-none'">Showing results for
+                      <b>{{searchValue}}</b> ({{data?.TotalRecordCount}})</span> -->
+                  </div>
+        
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad advance-table normal_table">
+                    <table class="float-left col-12 no_pad tasklist-table">
+                      <!-- <thead class="float-left col-12 no_pad">
+                        <tr class="float-left col-12 no_pad">
+                          <th class="float-left ellipses selTdTh"></th>
+                          <th class="float-left ellipses" *ngFor="let header of data.headerdata">
+                            <span matTooltip="{{header.title}}">{{header.title}}</span></th>
+                        </tr>
+                      </thead>
+                      <perfect-scrollbar style="max-height: 200px"  >
+                        <tbody class="float-left col-12 no_pad "  >
+                          <tr class="float-left col-12 no_pad"  *ngFor="let rowdata of data.tabledata;let i = index;trackBy: trackByFn">
+                            <td  class="float-left ellipses selTdTh">
+                                <mat-checkbox *ngIf="data.isCheckboxRequired == true"   [checked]="getCheckBoxSelectedData(rowdata)" #checkbox (change)="checkBoxChangeEvent($event,i)"  value="{{i}}"  class="pos-abs cust-label customized-checkbox rowMat-selection">
+                                  </mat-checkbox>
+                                  <mat-radio-button *ngIf="data.isCheckboxRequired == false"  [checked]="getRadioBoxSelectedData(rowdata)" #radio   (change)="radioChangeEvent(rowdata,radio.checked,i)"
+                                    value="{{i}}" name="accountdbname" class="pos-abs radio-label rowMat-selection">
+                                  </mat-radio-button>
+                            </td>
+                            <td class="float-left ellipses" *ngFor="let header of data.headerdata;let j = index" (click)="selectEntireRow(rowdata,i)"
+                            > <span matTooltip="{{rowdata[header.name]?rowdata[header.name]:'NA'}}">{{rowdata[header.name]?rowdata[header.name]:'NA'}}</span>
+                             
+                             
+                            
+                            </td>
+                          </tr>
+                          <button id="loadMore" class="loadMorePS" (click)="loadMoreEvent()"></button>
+        
+                        </tbody>
+                      </perfect-scrollbar> -->
+                      <thead class="float-left col-12 no_pad">
+                        <tr class="float-left col-12 no_pad">
+                          <th class="float-left ellipses selTdTh"></th>
+                          <th class="float-left ellipses " *ngFor="let header of headerdata">
+                            <span matTooltip="{{header.title}}">{{header.title}}</span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <perfect-scrollbar style="max-height: 200px">
+                        <tbody class="float-left col-12 no_pad "  >
+                          <tr class="float-left col-12 no_pad"  *ngFor="let rowdata of tabledata">
+                            <td  class="float-left ellipses selTdTh">
+                              <mat-radio-button    #radio   value="{{i}}" name="accountdbname" class="pos-abs radio-label rowMat-selection">
+                              </mat-radio-button>
+                            </td>
+                            <td [attr.data-label]="'Super SOW ID'" class="float-left ellipses" >
+                               <span matTooltip="{{rowdata.id}}">{{rowdata.id}}</span>
+                            </td>
+                            <td [attr.data-label]="'Account Name'" class="float-left ellipses" >
+                                <span matTooltip="{{rowdata.accountname}}">{{rowdata.accountname}}</span>
+                             </td>
+                             <td [attr.data-label]="'Linked SOWs'" class="float-left ellipses" >
+                                <span class="ellipses" matTooltip="{{rowdata.LinkedSOWs}}">{{rowdata.LinkedSOWs}}</span>
+                             </td>
+                          </tr>
+                      </perfect-scrollbar>
+                    </table>
+                    <!-- <div class="float-left no-record" *ngIf="data.tabledata.length==0 && !data?.isLoader" >No record found</div>
+                    <div [ngClass]="{'loader-search':data?.isLoader}" class="top-90" *ngIf="data?.isLoader" ></div> -->
+        
+                  </div>
+                </form>
+              </div>
+        
+            </div>
+
+          <!-- To here-->
+      </div>
+      <div class="col-12 float-left no_pad ">
+          <button aria-label="ADD" class="col-6 float-left no_pad cancel-btn1 mt15" mat-dialog-close>Create</button>
+          <button aria-label="ADD" class="col-6 float-left btndef-none no_pad confrm-btn mt15" mat-dialog-close >Map</button>
+      </div>
+
+  </div>
+  <!-- <span *ngFor="let data of dummyArray">
+    {{data.title}} 
+  </span>
+  <table>
+    <th *ngFor="let data of dummyArray">
+        {{data.title}}
+    </th>
+    <td *ngFor="let data of dummyArray">
+        {{data.value}}
+    </td>
+    </table> -->
+<!-- Super SOW-Mapping popup ends here-->
+</div>

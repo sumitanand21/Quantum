@@ -1,0 +1,163 @@
+<ng-container *ngIf="isLoading">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab mobile-contact">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 padd-15-top float-left no_pad">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left">
+        <div class="float-left">
+          <h1 class="float-left heading-level-one">
+            <span class="mdi mdi-arrow-left cp mr10" (click)="navTo()"></span>
+            <span class=" ellipses pos-abs float-left mx-250">{{SingleContactname}}</span>
+            <span class="convo-tag respo-tag cp"
+              *ngIf="this.routingState.getPreviousUrl().includes('/contacts')">{{moduleShowData}}</span>
+          </h1>
+        </div>
+
+
+
+        <!--HEADER BUTTON-->
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 float-right no_pad" *ngIf="hideheaderbtn">
+          <div
+            class="float-right disp-flex responsive-btn-div web-action-button contact-details-action-btn center web-buttons"
+            *ngIf="contactService.showeditbtn == true">
+            <button class="col-2 primary-button edit-mb-btn borderless mdi mdi-pencil btn-block h-40 std edit-btn responsive-btn-div-button 
+    button-wd100 w-100" *ngIf="contactDetails?.isUserCanEdit" (click)="onClickActions('edit')">
+              Edit
+            </button>
+            <button class="col-2 primary-button edit-mb-btn borderless ml10 mdi mdi-account-check btn-block h-40 std edit-btn responsive-btn-div-button 
+    button-wd100 w-100" *ngIf="contactDetails?.Status == 2 && contactDetails?.isUserCanEdit==false"
+              (click)="activatecontact()">
+              Re-activate
+            </button>
+          </div>
+
+          <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-right no_pad">
+            <div class="float-right disp-flex web-button contact-details-action-btn"
+              *ngIf="contactService.showeditbtn === false">
+              <button class="primary-button secondary-btn btn-block h-40 mr10 std "
+                (click)="onClickActions('cancel')">Cancel</button>
+              <button class="primary-button borderless btn-block h-40 std "
+                (click)="onClickActions('save')">Save</button>
+            </div>
+          </div>
+        </div>
+        <!--HEADER BUTTONS-->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- main div starts here -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left profile mt20 scroll-middle-ios-100vh">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-157"></div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad d-flex image-alighn pad-top-135">
+    <div class="col-1 no_pad float-left height-160 z-in">
+      <div class="grey-profile float-left" *ngIf="!showImageEditmode">
+        <span class="noeditcamera mdi mdi-camera col-12 float-left"></span>
+      </div>
+      <label *ngIf="showImageEditmode  && imageSrc1 == null; else imgBlock1" for="profilepic"
+        class="float-left cp image-contact d-flex">
+        <span class="upload cp color-azure btn-none w-100">
+          <span class="noeditcamera mdi mdi-camera"></span>
+        </span>
+      </label>
+      <ng-template #imgBlock1>
+        <div class="img-block float-left" [ngClass]="contactService.showeditbtn?'no-action':''">
+          <label class="col-12 float-left pos-rel no_pad cp" for="profilepic">
+            <div class="w-100 pos-abs  middle-btns-profile">
+              <button class="upload cp color-white btn-none z-999 pos-rel mdi mdi-camera pl150 color-azure replaceicn"
+                type="button" (click)="replaceImg1()" *ngIf="showImageEditmode">
+              </button>
+              <span class="seperator" *ngIf="showImageEditmode">|</span>
+              <button class="upload cp color-white btn-none pos-rel z-ind-9 mdi mdi-delete pl150 color-azure remove"
+                type="button" *ngIf="showImageEditmode" (click)="deleteprofile()">
+              </button>
+            </div>
+            <img class="image-contact pos-rel not-clickable" id="image1" [src]="imageSrc1" width="100%" height="100%"
+              *ngIf="imageSrc1 != null">
+          </label>
+        </div>
+      </ng-template>
+      <input type="file" style="opacity:0;" id="profilepic" [attr.disabled]="!showImageEditmode ?'disabled':null"
+        accept="image/*" (change)="detectProfileImage($event)" name="files[]" />
+    </div>
+
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ptop-20 no_pad flex-tab white-back ">
+    <div class="col-12 col-lg-10 no_pad padd-left-right-15">
+      <div class=" no_pad btn-tabs-active-white flex-tab-width">
+        <button class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2 max-width-140 sub-vertical-but-white brd-right0"
+          (click)="contactRounting(1);contactdetails()" role="tab" tabindex="0" [attr.aria-selected]="contactDtls"
+          [ngClass]="{'active': router.url.includes('contactDetailsChild')}">
+          <span class="no_pad mdi-icon-fontsz  mdi mdi-account calin-select-all pr6"></span>
+          <span class=" no_pad btntxt-s icon-btnbottm ">Contact <span class="sm-hide  ">details</span></span>
+        </button>
+        <button class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2 max-width-140 pull-right sub-vertical-but-white"
+          (click)="contactRounting(2);marketingInfo()" role="tab" tabindex="0" [attr.aria-selected]="marketInfo"
+          [ngClass]="{'active': router.url.includes('marketInfo')}">
+          <span class="no_pad mdi-icon-fontsz  mdi mdi-account-search calin-select-all pr6"></span>
+          <span class="no_pad btntxt-s icon-btnbottm ">Marketing <span class="sm-hide  ">info</span></span>
+        </button>
+        <button
+          class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2 max-width-140 pull-right sub-vertical-but-white brd-left0"
+          (click)="contactRounting(3);relationshipLog()" role="tab" tabindex="0" [attr.aria-selected]="relationLog"
+          [ngClass]="{'active': router.url.includes('relationLog')}">
+          <span class="no_pad mdi-icon-fontsz  mdi mdi-account-multiple-plus  calin-select-all pr6"></span>
+          <span class=" no_pad btntxt-s icon-btnbottm ">Relationship <span class="sm-hide  ">log</span></span>
+        </button>
+        <!-- <button 
+          class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2 max-width-140 pull-right sub-vertical-but-white brd-left0 "  routerLink="/contacts/Contactdetailslanding/history"
+          [ngClass]="{'active': router.url.includes('relationLog')}">
+          <span class="no_pad calin-select-all mdi-icon-fontsz  mdi mdi-history pr6"></span>
+          <span class=" no_pad btntxt-s icon-btnbottm ">History</span>
+        </button> -->
+      </div>
+    </div>
+  </div>
+  <router-outlet> </router-outlet>
+
+</div>
+
+
+
+<div *ngIf="hideheaderbtn">
+
+  <div class="float-left col-12 mobile-buttons bg-azure mobile-sticky-btns"
+    *ngIf="contactService.showeditbtn === true && contactDetails?.isUserCanEdit">
+
+    <button class="primary-button borderless w-100-contact" *ngIf="contactDetails?.isUserCanEdit"
+      (click)="onClickActions('edit')">
+      <span class="mdi mdi-pencil pr5 w-100 float-left"></span>Edit
+    </button>
+
+  </div>
+
+  <div class="float-left col-12 mobile-buttons bg-azure mobile-sticky-btns"
+    *ngIf="contactService.showeditbtn === true && contactDetails?.Status == 2 && contactDetails?.isUserCanEdit==false">
+    <button class="primary-button borderless w-100-contact"
+      *ngIf="contactDetails?.Status == 2 && contactDetails?.isUserCanEdit==false" (click)="activatecontact()">
+      <span class="mdi mdi-account-check pr5 w-100 float-left"></span>Re-activate
+    </button>
+
+  </div>
+
+  <div class="float-left col-12 no_pad mobile-buttons" *ngIf="contactService.showeditbtn === false">
+
+    <button type="button" class="col-6 no_pad float-left cancel-btn" (click)="onClickActions('cancel')">Cancel</button>
+    <button type="button" class="col-6 no_pad float-left save-btn" (click)="onClickActions('save')">Save</button>
+  </div>
+
+
+</div>

@@ -1,0 +1,49 @@
+
+<div clas="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container respon create-lead-page">
+ 
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mb-30">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card mt40 float-left mb-30 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-10-20 mb-0 block-disp">
+  
+          <label class="col-12 mt10 border-botton-pad-10 mb-0 float-left pad-RL-30 heading-level-three ">Account Consolidation-Summary of Records Getting Merged </label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mb-0 block-disp">
+          <table class="float-left col-12 no_pad tasklist-table allianceTable-home">
+            <tbody class="no_pad">
+              <tr *ngFor="let summary of summary_table">
+                <td class="pl_20 w5">{{summary.slNo}}</td>
+                <td class="pl20 w50">{{ summary.briefSummary }}</td>
+                <td class="colr-navyBlue pl20" *ngIf="summary.slNo!='10.'">{{ summary.noOfRecord }}</td>
+                <td data-label="Secondary owner" *ngIf="secondaryOwners.length>0 && summary.slNo=='10.'" (click)="openMultipleReferencePopup(secondaryOwners)" class="colr-navyBlue pl20">{{secondaryOwners[0].FullName || '-'}} <span *ngIf="secondaryOwners.length > 1">(+
+                {{secondaryOwners.length - 1}})</span> </td>
+                <td data-label="Secondary owner" *ngIf="secondaryOwners.length==0 && summary.slNo=='10.'">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left txtstyle mb-0">
+          <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-20 textone">NOTE-The "Number of Records" shown in each section includes both active and inactive records</span>
+        </div>
+  
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card float-left no_pad">
+  
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad mb-0 block-disp">
+          <label class="col-12 float-left pad-RL-20 pl_5 heading-level-three mt20 ">Source Account </label>
+          <app-simple-scroll-table [TableHeader]="headernonsticky1" [TableCollection]="srcAccountData"
+          [IscheckBoxRequired]=false [totalTableCount]="tableCount" [IsDelete]="(srcAccountData.length>1) ? true : false"
+          [TableName]="'sourceaccount'" [IsPaginationRequired]=false (detectPageChangeData)="performTableChildAction($event)"></app-simple-scroll-table>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad block-disp">
+          <label class="col-12 float-left pad-RL-20 pl_5 heading-level-three mt20 ">Target Account </label>
+          <app-simple-scroll-table [TableHeader]="headernonsticky2" [TableCollection]="targetAccountData"
+          [IscheckBoxRequired]=false [totalTableCount]="tableCount" [TableName]="'targetaccount'"
+          [IsPaginationRequired]=false></app-simple-scroll-table>
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  
+  </div>

@@ -1,0 +1,92 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="uploadLoader">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div
+    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left deal-milestone-container card margin-btm55 no_pad ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt20 no_pad">
+      <div class="col-12 float-left upload-milestone">
+        <h2 class="heading-level-two deal-head-txt">Upload/Download milestone</h2>
+        <div class="col-12 float-left no_pad mar-botm22">
+          <div class="col-3 no_pad float-left customized-input pad-top35">
+            <div class="col-lg-11 col-md-6 col-12  padbox-10-60-10 float-left no_pad">
+              <div class="w-100">
+                <label for="Modulename" class="w-100">Lead time to pay</label>
+                <input class="border-gray w-100" id="Modulename" type="text"
+                  onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                  [(ngModel)]="leadTime" (input)="leadTimeObject.value=leadTime"
+                  [attr.disabled]="disableleadtime == true ? '' : null">
+              </div>
+            </div>
+
+          </div>
+          <div class="col-3 no_pad float-left customized-input pad-top35">
+            <div class="col-lg-11 col-md-6 col-12  padbox-10-60-10 float-left no_pad">
+              <div class="w-100">
+                <label for="Modulename" class="w-100">DSO days</label>
+                <input class="border-gray w-100" id="Modulename" type="text" value="{{DSODays}}" disabled>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-6 col-md-6 col-12 float-left no_pad btns-div">
+            <div class="float-right pos-rel">
+              <button *ngIf="showAMileStoneUploadBtn"
+                class="primary-button btn-block w-121 mdi mdi-attachment attach-icon-deal">Upload
+                <input type="file" #fileInput (click)="fileInput.value = null" value="null"
+                  (change)="fileUpload($event)" class="w-121 upload-input cp" />
+              </button>
+            </div>
+
+            <button class="float-right primary-button w-189 mr10" (click)="fileDownload()">Download Milestone
+              template</button>
+          </div>
+        </div>
+
+        <h2 class="heading-level-two deal-head-txt mt0 border-0">Payment schedule</h2>
+
+      </div>
+
+      <div class="parent-container" *ngIf="milestoneTable.length>0">
+
+        <app-editable-expansion-table [classNameCss]="'table-color-lyt notAHyperLink'" [TableName]="'mileStone'"
+          [TableCollection]="milestoneTable" (detectActionValue)="performTableChildAction($event)"
+          [IsFreezedColumn]=true [IsActionFixed]=false [IscheckBoxRequired]=false [totalTableCount]="tableTotalCount"
+          [externalValue]="leadTimeObject" [ConfigData]="configData"  [IsSerialNo]=true
+          [IsPagination]="false" [paginationPageNumber]="MilestoneRequestBody" [IsPageRecords]="false"
+          [orderType]="'Number'" [orderByName]="'index'" [hideAddNewMember]=true [IsAfterEdit]=false
+          [IsEditWholeTable]=editButton>
+        </app-editable-expansion-table>
+
+
+
+      </div>
+      <div class="col-lg-12 col-md-12 col-12 float-left pr17 btns-div border-top">
+        <button *ngIf="showSubmitAllBtn" class="float-right primary-button w-95" (click)="submitAll()">Submit
+          All</button>
+        <button *ngIf="showRequestSpocBtn" class="float-right primary-button w-95 mr10" (click)="requestSpoc()">Request
+          SPOC</button>
+      </div>
+
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,1180 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad">
+      <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+        <h1 class="heading-level-one mtop6"> Add new meeting
+          <!-- <span class="sm-hide">Conversation </span> -->
+        </h1>
+      </div>
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad">
+        <div class="float-right disp-flex web-buttons">
+          <button type="button" class="primary-button secondary-btn btn-block h-40 mr10 std "
+            (click)="opencancelpop()">Cancel</button>
+          <button type="button" class="primary-button borderless btn-block h-40 std " [disabled]="clicked"
+            (click)="save()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- main div starts here -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-180"></div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 mt-90 scroll-middle-ios">
+
+    <form id="validatescroll" [formGroup]="newConversationForm">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad mt20 mt20col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm130 no_pad mt20 mt20">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt-15">
+          <h2 class="heading-level-two"> Meeting details </h2>
+          <div class="divider mt10"></div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20 mb20">
+                <h3 class="heading-level-three"> Overview </h3>
+              </div>
+              <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad customized-checkbox mt20 ">
+                            <section class="meeting-check-sections">
+                                <mat-checkbox class="checkbox-label" formControlName="liveMeeting" >Live meeting capture</mat-checkbox>
+                            </section>
+                        </div> -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                    (clickOutside)="ConversationNameclose()">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                      for="ConversationName" class="label-form">
+                      Activity group *</label>
+                    <div class="pos-rel float-left no_pad w-100">
+                      <input
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input ellipses"
+                        #searchConversation id="ConversationName" name="ConversationName"
+                        formControlName="conversationName" placeholder="Search activity group" type="text"
+                        role="combobox" title="{{Conversation}}" autocomplete="off" aria-required="true"
+                        aria-owns="read" appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true
+                        (arrowDown)="arrowkeyLocation=$event" [attr.data-selectedvalue]="conversationName"
+                        [attr.aria-label]="'Activity group edit selected' + conversationName"
+                        [attr.aria-expanded]="ConversationNameSwitch?true:false"
+                        [attr.aria-activedescendant]="arrowkeyLocation"
+                        (input)="ConversationNameSwitch=true;arrowkeyLocation=0"
+                        (intialLoadData)="ConversationNameSwitch=true;clickActivityGroup();arrowkeyLocation=conversationName?-1:0"
+                        (keyup.enter)="arrowkeyLocation=arrowkeyLocation==-1?0:arrowkeyLocation;appendActivityGroup(searchConversationList[arrowkeyLocation],arrowkeyLocation);ConversationNameSwitch=false;arrowkeyLocation=0"
+                        (keydown)="ConversationNameSwitch=true"
+                        [attr.data-arrayMaxLength]="searchConversationList?.length" aria-autocomplete="list"
+                        (keydown.Tab)="ConversationNameclose()"
+                        [ngClass]="{'error': f.conversationName.invalid && (f.conversationName.dirty || f.conversationName.touched)}">
+                      <p *ngIf="f.conversationName.touched && !f.conversationName.valid" class="error-message top-40">
+                        Enter valid name </p>
+                      <span class="mdi mdi-magnify" *ngIf="ConversationNameSwitch || conversationName ==''"></span>
+                      <span class="mdi mdi-close auto-close"
+                        (click)="clearActivityGroup();arrowkeyLocation=0;conversationName=''"
+                        *ngIf="!ConversationNameSwitch && activityGroupId!==''"></span>
+
+                    </div>
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                      *ngIf="ConversationNameSwitch && searchConversationList!==undefined"
+                      [attr.focus]="newConversationForm.value.conversationName && ConversationNameSwitch">
+                      <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                        <span class="w-100 z-ind-9 float-left bg-white">
+                          <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                            [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                            <li id="{{i}}" tabindex="0" role="option" class="list-group-item ellipses"
+                              [ngClass]="service.chatBot ? 'list-DA-action' : 'list-name'"
+                              *ngFor="let item of searchConversationList;let i = index"
+                              (click)="searchConversation.value=item.Name;appendActivityGroup(item,0)"
+                              [class.active]="i == arrowkeyLocation" matTooltip="{{item.Name}}">
+                              {{item.Name}}</li>
+                            <li class="d-block list-name h-40 p-10"
+                              *ngIf="(searchConversationList)?.length == 0 && !isActivityGroupSearchLoading">
+                              No record found </li>
+                          </ul>
+                          <span class="db-search" (click)="openactivitypop()">
+                            <button id="adls{{searchConversationList.length+1}}" role="option" tabindex="0"
+                              aria-disabled="false" type="button" class="button-search"
+                              [class.active]="searchConversationList?.length+1 == arrowkeyLocation">
+                              <span class="mdi mdi-message-settings-variant"></span> Create activity group
+                            </button>
+                          </span>
+                        </span>
+                      </perfect-scrollbar>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left  plb-60-20 mobile-select-box">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                    for="CoversationT1" class="label-form"> Activity type <span class="required"> *</span></label>
+                  <div class="customized-select">
+                    <span class="caret color-azure"></span>
+                    <select id="CoversationT1" role="listbox" aria-required="true" formControlName="activityType"
+                      [ngClass]="{'error': f.activityType.touched && !f.activityType.valid}"
+                      (change)="activitySelect($event)">
+                      <option value="">Select activity type</option>
+                      <option [value]="item.Id" *ngFor="let item of activityTypeList">{{item.Name}}</option>
+                    </select>
+                    <p *ngIf="f.activityType.touched && !f.activityType.valid" class="error-message top-40"> Select
+                      activity type </p>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left  plb-60-20 mt-20-mob web-select-box">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                    for="CoversationT1" class="label-form" placeholder="Select activity type">
+                    Activity type *</label>
+                  <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>Activity type</mat-label>
+                    <mat-select aria-label="{{'Activity type' + activityTypeName}}" disableOptionCentering
+                      panelClass="Select-panel-class" required (selectionChange)="activitySelectWeb($event)" 
+                      [ngClass]="{'error': f.activityType.touched && !f.activityType.valid}" class="select-focus"
+                      formControlName="activityType">
+                      <mat-option value="">Select activity type</mat-option>
+                      <mat-option *ngFor="let option of activityTypeList" [value]="option.Id"
+                        matTooltip="{{option.Name}}" TooltipAnimation>
+                        {{option.Name}}
+                      </mat-option>
+                    </mat-select>
+                    <p *ngIf="f.activityType.touched && !f.activityType.valid" class="error-message top-40"> Select
+                      activity type </p>
+                  </mat-form-field>
+                </div>
+
+                <!--account name starts-->
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                    (clickOutside)="companyNameClose()">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CompanyName"
+                      class="label-form"> Account name <span class="required"> *</span> </label>
+                    <div class="pos-rel w-100 float-left no_pad">
+                      <input
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 disable-input label-input"
+                        id="CompanyName" name="CompanyName" required autocomplete="off" type="text"
+                        placeholder="Search account/company" (click)="companyNameSwitch = true;"
+                        formControlName="accountcompanyName" [readonly]="child">
+                      <span class="mdi mdi-magnify"></span>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad z-ind-9 pos-abs top62"
+                      *ngIf="newConversationForm.value.accountcompanyName && companyNameSwitch">
+                      <ul class=" list-group color-azure autocomplete-box">
+                        <perfect-scrollbar style="max-height:150px">
+                          <li class="list-group-item mr2" (click)="appendName(item.Name,item)"
+                            *ngFor="let item of companyNameSearch |filter:newConversationForm.value.accountcompanyName">
+                            <span class="d-block list-name"> {{item.Name}} </span>
+                            <!-- <span class="sub-list d-block"> {{item.contact}} |{{item.location}} |{{item.BU}} </span> -->
+                          </li>
+                        </perfect-scrollbar>
+                        <li class="db-search mr2" (click)="openSearchDBPopup()">
+                          <button type="button">
+                            <span class="mdi mdi-database-search"></span> Search D&B
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!--Account name ends-->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left  plb-60-20 mobile-select-box">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationT1"
+                    class="label-form">Meeting type <span class="required"> *</span></label>
+                  <div class="customized-select">
+                    <span class="caret color-azure"></span>
+                    <select id="CoversationT1" role="listbox" aria-required="true" formControlName="conversationType" 
+                    (change)="meetingSelect($event)"
+                      [ngClass]="{'error': f.conversationType.invalid && (f.conversationType.dirty || f.conversationType.touched)}">
+                      <option value="">Select meeting type</option>
+                      <option [value]="item.Id" *ngFor="let item of conversationType">{{item.Value}}</option>
+                    </select>
+                    <p *ngIf="f.conversationType.touched && !f.conversationType.valid" class="error-message top-40">
+                      Select meeting type </p>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left  plb-60-20 web-select-box">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                    for="CoversationT1" class="label-form">Meeting type <span class="required"> *</span></label>
+
+                  <mat-form-field class="col-12 no_pad float-left">
+                    <mat-label>Select meeting type</mat-label>
+                    <mat-select id="CoversationT1" aria-label="{{'Meeting type' + meetingTypeAria}}"
+                      disableOptionCentering panelClass="Select-panel-class"
+                      (selectionChange)="meetingSelectWeb($event)" class="select-focus"
+                      formControlName="conversationType"
+                      [ngClass]="{'error': f.conversationType.invalid && (f.conversationType.dirty || f.conversationType.touched)}"
+                      required>
+                      <mat-option value="">Select meeting type</mat-option>
+                      <mat-option *ngFor="let item of conversationType" [value]="item.Id">
+                        {{item.Value}}
+                      </mat-option>
+                    </mat-select>
+                    <p *ngIf="f.conversationType.touched && !f.conversationType.valid" class="error-message top-40">
+                      Select meeting type </p>
+                  </mat-form-field>
+                </div>
+                <!-- Select DROPDOWN ENDS -->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 mb1">
+                  <div class="col-6 col-sm-6 col-md-6  float-left no_pad " [ngClass]="(service.chatBot || service.userManual)?'col-lg-7 col-xl-7':'col-lg-6 col-xl-6'">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                      for="calStart">
+                      Start date<span class="required"> *</span></label>
+                    <div class="pos-rel">
+                      <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                        <div
+                          class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input ">
+                          <div class="pos-rel w-100 float-left no_pad">
+                            <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart" readonly
+                              (click)="picker2.open()" (keypress)="picker2.open()" formControlName="StartDate"
+                              [ngClass]="{'error': f.StartDate.invalid && (f.StartDate.dirty || f.StartDate.touched)}"
+                              [matDatepicker]="picker2" autocomplete="off" readonly [min]="yearDateValidation" [max]="maxDate"
+                              (dateChange)="focusOutFunctionForStartDate($event)"
+                              title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY"  required
+                              >
+                            <p *ngIf="f.StartDate.touched && !f.StartDate.valid" class="error-message top-40">
+                              Select
+                              start date</p>
+                          </div>
+                          <mat-datepicker-toggle matSuffix [for]="picker2">
+                            <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker2></mat-datepicker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-6 col-md-6  float-left pr0 " [ngClass]="(service.chatBot || service.userManual)?'col-lg-5 col-xl-5':'col-lg-6 col-xl-6'">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                      for="extratime">
+                      Time
+                      <span class="required"> *</span>
+                    </label>
+                    <div class="pos-rel w-100 float-left no_pad">
+                      <input class="col-12 float-left  h-40 input-text pad-time "  id="extratime"
+                         title="HH:MM:tt Press ALT plus down arrow to open time picker" placeholder="Start time" formControlName="startTime"
+                         (dateTimeInput)="focusOutFunctionForStartTime($event)" (click)="dt4"
+                         [ngClass]="{'error': f.startTime.invalid && (f.startTime.dirty || f.startTime.touched)}"
+                        [owlDateTimeTrigger]="dt4" aria-required="true" [owlDateTime]="dt4">
+                      <p *ngIf="f.startTime.touched && !f.startTime.valid" class="error-message top-40">Select start
+                        time</p>
+
+                    </div>
+                    <owl-date-time [pickerType]="'timer'" hour12Timer="true" #dt4></owl-date-time>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 mb1">
+                  <div class="col-6 col-sm-6 col-md-6 float-left no_pad " [ngClass]="(service.chatBot || service.userManual)?'col-lg-7 col-xl-7':'col-lg-6 col-xl-6'">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                      for="calend">
+                      End date<span class="required"> *</span></label>
+                    <div class="pos-rel">
+                      <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                        <div
+                          class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input ">
+                          <div class="pos-rel w-100 float-left no_pad">
+                            <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calend" readonly
+                              (click)="picker3.open()" (keypress)="picker3.open()" formControlName="EndDate" 
+                              [ngClass]="{'error': f.EndDate.invalid && (f.EndDate.dirty || f.EndDate.touched)}"
+                              [matDatepicker]="picker3" autocomplete="off" readonly [min]="yearDateValidation" [max]="maxDate"
+                              (dateChange)="focusOutFunctionForEndDate($event)"
+                              title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY" required
+                              >
+                            <p *ngIf="f.EndDate.touched && !f.EndDate.valid" class="error-message top-40">
+                              Select
+                              end date</p>
+                          </div>
+                          <mat-datepicker-toggle matSuffix [for]="picker3">
+                            <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker3></mat-datepicker>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-6 col-md-6 float-left pr0 " [ngClass]="(service.chatBot || service.userManual)?'col-lg-5 col-xl-5':'col-lg-6 col-xl-6'">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                      for="extraendtime">
+                      Time
+                      <span class="required"> *</span>
+                    </label>
+                    <div class="pos-rel w-100 float-left no_pad">
+                      <input class="col-12 float-left  h-40 input-text pad-time" aria-required="true" placeholder="End time" 
+                        title="HH:MM:tt Press ALT plus down arrow to open time picker" id="extraendtime" formControlName="endTime"
+                        (dateTimeInput)="focusOutFunctionForEndTime($event)"
+                        [ngClass]="{'error': f.endTime.invalid && (f.endTime.dirty || f.endTime.touched)}"
+                       [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5">
+                      <p *ngIf="f.endTime.touched && !f.endTime.valid" class="error-message top-40">Select end time</p>
+                      <p *ngIf="newConversationForm.errors?.endDate" class="error-message top-40" matTooltip={{newConversationForm.errors?.endDate}}>
+                        {{newConversationForm.errors?.endDate}}</p>
+                    </div>
+                    <owl-date-time [pickerType]="'timer'" hour12Timer="true" #dt5></owl-date-time>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 plb-60-20 customized-input float-left  ">
+                  <label for="meetingSubjectId" class="w-100 label-form">Duration</label>
+                  <div class="pos-rel w-100 float-left no_pad">
+                    <input autocomplete="off" type="text" class="border-gray w-100 agenda-txt"
+                      formControlName='Duration' name='Duration' placeholder="00">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left plb-60-20">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationT2"
+                    class="label-form" matTooltip="Choose 'private' to provide read access to meeting participants and 'public' to enable access to all the users having access to account">Access <span class="required"> *</span></label>
+                  <div class="customized-select">
+                    <mat-radio-group class="float-left mt12" formControlName="access" [disabled]="isPrivate"
+                    (change)="radioChange($event)"
+                      aria-labelledby="key" aria-required="true">
+                      <mat-radio-button [value]=false [checked]="this.newConversationForm.value.access===false"
+                        class="pr30 label-form-blue">Public</mat-radio-button>
+                      <mat-radio-button [value]=true [checked]="this.newConversationForm.value.access===true"
+                        class="label-form-blue ">Private</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 plb-60-20 customized-input float-left  ">
+                  <label for="meetingSubjectId" class="w-100 label-form" matTooltip="Type a short description about the objective or the primary topic of the meeting">Meeting subject <span class="required"> *
+                    </span></label>
+                  <div class="pos-rel w-100 float-left no_pad">
+                    <input id="meetingSubjectId" specialIsAlphaNumeric [attr.data-type]="'text'" autocomplete="off"
+                    (blur)="meetingSubjuctCache()" (input)="inputChange($event)"
+                      type="text" aria-required="true" class="border-gray w-100 agenda-txt"
+                      formControlName="meetingSubject" name='meetingSubject' placeholder="Enter subject" maxlength="100"
+                      [ngClass]="{'error': f.meetingSubject.invalid && (f.meetingSubject.dirty || f.meetingSubject.touched) && !newConversationForm.get('meetingSubject').errors?.isError}">
+                    <p *ngIf="f.meetingSubject.touched && !f.meetingSubject.valid && !newConversationForm.get('meetingSubject').errors?.isError"
+                      class="error-message top-40"> Enter
+                      meeting subject</p>
+                    <p *ngIf="newConversationForm.get('meetingSubject').errors?.range" class="error-message top-40">Name
+                      cannot exceed 100 characters</p>
+                    <p *ngIf="newConversationForm.get('meetingSubject').errors?.isError" class="error-message top-40">
+                      Special characters are not allowed</p>
+                  </div>
+                </div>
+              </div>
+              <!-- first col-xs-6 close -->
+              <div class="divider mt20 col-12 no_pad float-left"></div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 float-left plb-60-20">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+                    <h3 class="heading-level-three float-left col-8 no_pad "> Minutes of meeting
+                      <!-- <span
+                        class="required mom-required">*</span> -->
+                      <span class="label-form" *ngIf="textValue.value?.length == 0"> (2000 characters)</span>
+                      <span class="label-form" *ngIf="textValue.value?.length > 0 && textValue.value?.length < 1999">
+                        ({{ 2000 - textValue.value?.length}} characters left)</span>
+                      <span class="label-form"
+                        *ngIf="textValue.value?.length === 1999 || textValue.value?.length === 2000">
+                        ({{ 2000 - textValue.value?.length}} character left)</span>
+                    </h3>
+
+                    <div class="col-2 col-xl-2 float-right no_pad customized-checkbox ">
+                      <!-- <section class=" meeting-check-sections float-left no_pad"
+                      [ngClass]="service.chatBot ? 'col-4 ellipses w-100':'col-6'">
+                      <mat-checkbox class="ellipses w-170 checkbox-label" formControlName="haveConsent"
+                        (change)="consentStatus($event)">
+                        Have consent to record customer information</mat-checkbox>
+                    </section> -->
+                      <div class="col-6 float-right no_pad">
+                        <button type="button" 
+                          class="d-flex align-items-center justify-content-center record-btn-active float-right"
+                          (click)="openRecordMomPopup(recordButton.name)"
+                          matTooltip="{{recordButton.Tooltip}}">
+                          <span class="{{recordButton.iconClass}}"></span>
+                          {{recordButton.name}}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mom-margin-top ">
+                    <!-- <label for="record" class="col-6 float-left no_pad label-form rel-top-18">
+                    </label> -->
+                    <textarea id="recordSpeech" maxlength="2000" #textValue
+                    specialIsAlphaNumeric [attr.data-type]="'textareaLength'"
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left rel-top-18  text-area-content"
+                      #box (blur)="updateTextarea( newConversationForm.value.recordMom)" [(ngModel)]="speechData"
+                      formControlName="recordMom" placeholder="Enter MoM" aria-label="Record/Type MoM "></textarea>
+                    <!-- <p *ngIf="f.recordMom.touched && !f.recordMom.valid" class="error-message top-156"> Please enter
+                      MoM</p>
+                      <p *ngIf="newConversationForm.get('recordMom').errors?.range" class="col-12 float-left posrel error-message" >MoM cannot exceed 2000 characters</p> -->
+                    <!-- <span *ngIf="f.recordMom.invalid && (f.recordMom.dirty || f.recordMom.touched)">
+                      <p *ngIf="f.recordMom.errors.required" class="error-message top-156">
+                        Please enter
+                        MoM
+                      </p>
+                      <p *ngIf="newConversationForm.get('recordMom').errors?.range" class="error-message top-156">MoM
+                        cannot exceed 2000 characters</p>
+                    </span> -->
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-8">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left no_pad">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20" >
+
+                    <h3 class="float-left heading-level-three mt10 d-inline-flex">Attachments </h3>
+
+
+                    <input type="file" id="attach" accept="/*" multiple (change)="fileChangeEvent($event)"
+                      [disabled]="isMobileDevice" 
+                      class="new-inputattach" style="display: none;" #addMeetingFileInput
+                      (click)="addMeetingFileInput.value = null" value="" name="files[]">
+                    <label class="mdi mdi-attachment new-attachment" role="button" tabindex="0" for="attach" [ngClass]="isMobileDevice ? 'disabled-control border-grey' : ''">Attach files</label>
+                    <!-- <span class="mdi mdi-attachment attach-icon"> </span><span class="sm-hide">Attach files </span> -->
+                    <!-- <button type="button"
+                      class=" primary-button attach-btn mobile-attachBtn d-flex align-items-center float-right"
+                      (click)="openAttachFilePopup()">
+              
+                    </button> -->
+                  </div>
+                  <span class="float-left attachment-type" *ngIf="!isMobileDevice">File format supported
+                    <span class="mdi mdi-information-outline cp web-buttons"
+                      matTooltip="File format supported (PDF, XML, ZIP, MP3, MP4, PNG, JPEG, MPEG, GIF, TXT, DOCS, XLSX), file size allowed upto 5mb"></span>
+                  </span>
+                  <!-- <span class="attachment-type col-12 no_pad float-left mt10" *ngIf="!isMobileDevice">File format supported (PDF, XML, ZIP, MP3, MP4, PNG, JPEG, MPEG, GIF, TXT, DOCS, XLSX), file size allowed upto 5mb</span> -->
+                  <section class="float-left w-100 padd-top-btm20" *ngIf="!isMobileDevice">
+                    <span class="float-left attachment"> {{newconversationService.attachmentList?.length}} Attachments
+                    </span>
+                    <button type="button" class="btn-none float-right download"
+                      *ngIf="newconversationService.attachmentList?.length>0" (click)="downloadAll()"> Download all
+                    </button>
+                  </section>
+
+                  <!-- <perfect-scrollbar style="max-height: 200px"> -->
+                  <div class="col-12 float-left pl0 height-200" [ngClass]="addcommmentpopover?'min-230':''" *ngIf="newconversationService.attachmentList?.length>0"
+                    slimScroll>
+                    <section class="float-left col-12 no_pad mt-10"
+                      *ngFor="let item of newconversationService.attachmentList;let i=index">
+                      <div class="col-xl-7 col-lg-7 col-md-6 col-1 pl-0 float-left d-flex download-uploaded-file">
+                        <div class="float-left naming-tags-square pad-7 child-middle bg-azure">
+                          <span class="initials mdi mdi-file-document font-20" id="inti_name-kb"></span>
+                          <span class="initials mdi mdi-download font-20" role="button" tabindex="0"
+                            aria-label="Download file" id="inti_name-kb1" (click)="downloadsingle(i)"
+                            matTooltip="Download file"></span>
+                        </div>
+                        <label for="inti_name-kb "
+                          class="float-left pos-rel pl10 name-sq padLR-10 border-std color-azure mx-width-90per">
+                          <div class="tag color-label_gray hover-attach padding-left5 ellipses w-160 "
+                            matTooltip="{{item.downloadFileName}}" (click)="downloadsingle(i)">
+                            {{item.downloadFileName}}</div>
+                          <span class="float-right mdi mdi-window-close color-azure onone cp" role="button" tabindex="0"
+                            (click)="delinkAttach(item.downloadFileName)">
+                            <span class="sr-only">Remove attachment
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="float-right">
+                        <!-- <button type="button" *ngIf="item.Comments[0].Description===''"
+                            class=" primary-button attach-btn d-flex align-items-center float-right commets "
+                            (click)="openCommentePopup('ADD',i, item.Name, item.Comments[0].Description)">
+                            <span class="mdi mdi-comment-plus-outline icon "> </span>
+                          </button> -->
+
+                        <!-- add comment button -->
+                        <button type="button" *ngIf="item.Comments[0].Description===''" matTooltip="Add comment"
+                          class=" primary-button attach-btn d-flex align-items-center float-right commets "
+                          (click)="onAddCommentPopup(i)">
+                          <span class="mdi mdi-comment-plus-outline icon "> </span>
+                        </button>
+                        <!-- 
+                          <button type="button" *ngIf="item.Comments[0].Description!==''"
+                            class=" primary-button attach-btn d-flex align-items-center float-right commets "
+                            (click)="openCommentePopup('VIEW',i,item.Name, item.Comments[0].Description)">
+                            <span class="mdi mdi-comment-processing-outline icon "> </span>
+                          </button> -->
+                        <!-- view button -->
+                        <button type="button" *ngIf="item.Comments[0].Description!==''" matTooltip="View comment"
+                          class=" primary-button attach-btn d-flex align-items-center float-right commets "
+                          (click)="onViewCommentPopUp(i)">
+                          <span class="mdi mdi-comment-processing-outline icon "> </span>
+                        </button>
+
+                      </div>
+                      <!--------------------------add comment popover starts------------------------------------>
+                      <div class="addcomment-popover" *ngIf="addcommmentpopover && i===commentindex">
+                        <span class="caret-popover"></span>
+                        <div class="col-12 float-left  no_pad popup-container ">
+
+                          <div class="col-12 float-left no_pad container-dial">
+                            <div class="col-12 float-left  no_pad ">
+                              <span class="col-12 col-md-4 col-xl-4 float-left  no_pad popup-hd-txt" mat-dialog-title>
+                                Comments</span>
+
+                              <span class="label-form" *ngIf="textValue.value.length == 0"> (2000 characters)</span>
+                              <span class="label-form"
+                                *ngIf="textValue.value.length > 0 && textValue.value.length < 1999">
+                                ({{ 2000 - textValue.value.length}} characters left)</span>
+                              <span class="label-form"
+                                *ngIf="textValue.value.length === 1999 || textValue.value.length === 2000">
+                                ({{ 2000 - textValue.value.length}} character left)</span>
+                              <!-- <div class="col-12 float-left no_pad" id="commts">
+                            <perfect-scrollbar style="max-height: 150px;">
+                              <span class="col-11 float-left  no_pad popup-txt ">
+                                {{data.comment}}
+                              </span>
+                            </perfect-scrollbar>
+                          </div> -->
+                              <div class="pos-rel float-left no_pad w-100 mt10">
+                                <textarea id="commts{{i}}" maxlength="2000" #textValue
+                                specialIsAlphaNumeric [attr.data-type]="'textareaLength'"
+                                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left"
+                                  [ngClass]="newConversationForm.value.comments.length===0 && isCommentEmpty?'error-area-content':'text-area-content'"
+                                  rows="5" placeholder="Enter your comment" name="addedtext"
+                                  formControlName="comments"></textarea>
+                                <!-- <p class="error-message top-130" *ngIf="newConversationForm.value.comments.length===0 && isCommentEmpty ">
+                                    Please enter the comment
+                                  </p> -->
+                              </div>
+                            </div>
+                            <div class="col-12 float-left no_pad">
+                              <div class="col-12 float-left no_pad d-flex ">
+                                <button class=" float-left btndef-none no_pad discard-btn" aria-lebel="cancel"
+                                  (click)="closepopover(i)">Cancel</button>
+                                <button class="float-left btndef-none no_pad confrm-btn" (click)="savepopover(i)"
+                                  type="button">Save</button>
+                              </div>
+                            </div>
+                            <!-- <div class="col-12 float-left no_pad">
+                          <div class="col-12 float-left no_pad d-flex ">
+                            
+                            <button class="float-left btndef-none no_pad confrm-btn" aria-label="Close">Close</button>
+                          </div>
+                        </div> -->
+
+                          </div>
+                        </div>
+                      </div>
+                      <!--------------------------add comment popover ends------------------------------------>
+                    </section>
+                  </div>
+                  <!-- </perfect-scrollbar> -->
+                </div>
+              </div>
+            </div>
+            <div class="divider  col-12 no_pad float-left" [ngClass]="isMobileDevice ? 'mt40':''"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mb20">
+                <h3 class="heading-level-three mt20"> Contacts </h3>
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel plb-60-20">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                  (clickOutside)="customerNameclose()">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="customerName"
+                    class="label-form"> Customer participants<span class="required" *ngIf="IsCustomerreq"> *</span>
+                    <span class="float-right pos-abs font-size12 right-0">({{selectedCustomer?.length}})</span>
+                  </label>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                    <button type="button" class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 float-left add-btn "
+                      (click)="onClickAddCustomerContacts()" matTooltip="Create new contact for the account, if required contact is not available">
+                      + </button>
+                    <input
+                      class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 float-left input-border-left h-40 label-input br-0-4 customer-contact-wid"
+                      #customerlist id="customerName" name="customerName" formControlName="customerContacts"
+                      placeholder="Search customer participants" type="text" role="combobox" autocomplete="off"
+                      aria-owns="read" appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true
+                      [attr.data-selectedvalue]="" [attr.aria-expanded]="customerNameSwitch?true:false"
+                      [attr.aria-activedescendant]="arrowkeyLocation"
+                      (input)="customerNameSwitch = true;arrowkeyLocation=0"
+                      (intialLoadData)="customerNameSwitch = true;callTempcustomerContacts();arrowkeyLocation=0"
+                      (keyup.enter)="appendCustometParticipants(customerContactSearch[arrowkeyLocation],arrowkeyLocation); customerNameSwitch=false;arrowkeyLocation=0"
+                      (keydown)="customerNameSwitch = true" [attr.data-arrayMaxLength]="customerContactSearch?.length"
+                      aria-autocomplete="list" (arrowDown)="arrowkeyLocation=$event"
+                      [ngClass]="{'error': f.customerContacts.touched && !f.customerContacts.valid}"
+                      [readonly]="activityGroupId===''" (keydown.Tab)="customerNameclose()">
+                    <p *ngIf=" f.customerContacts.touched && !f.customerContacts.valid" class="error-message top-40">
+                      Search
+                      customer participants</p>
+                    <span class="mdi mdi-magnify"></span>
+                  </div>
+                  <div
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left z-ind-9999 no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure "
+                    *ngIf="customerNameSwitch"
+                    [attr.focus]="newConversationForm.value.customerContacts && customerNameSwitch">
+                    <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                      <span class="w-100 z-ind-9 float-left bg-white">
+                        <ul class=" list-group mr2 sort-dropdown bg-white" role="listbox" id="read"
+                          [ngClass]="{'loader-search':isCustomerParticipantsSearchLoading }">
+                          <li class="list-group-item h-50 p-4-10 " id="{{i}}" tabindex="0" role="option"
+                            *ngFor="let item of customerContactSearch | filter:newConversationForm.value.customerContacts; let i=index"
+                            (click)="appendCustometParticipants(item, arrowkeyLocation)"
+                            [class.active]="i==arrowkeyLocation" aria-disabled="false">
+                            <div class="float-left naming-tags child-middle bg-azure"
+                              [ngStyle]="{'backgroundColor': (i%2 == 0) ? 'blue' : 'red'}">
+                              <span class="initials">{{item.FullName | firstWord | uppercase }}</span>
+                            </div>
+                            <label for="inti_name" class="float-left name w-80">
+                              <span class="d-block  ellipses"
+                                [ngClass]="item.isKeyContact?'list-name-btnkey':'list-name'"
+                                matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                              <span class="d-block sub-list" *ngIf="item.Email != ''">{{item.Email}}</span>
+                              <span class="d-block sub-list" *ngIf="item.Email == ''">NA</span>
+                            </label>
+                            <span class="btn-key" *ngIf="item.isKeyContact===true"> Key </span>
+                          </li>
+                          <li class="d-block list-name h-40 p-10 bg-white"
+                            *ngIf="(customerContactSearch |filter:newConversationForm.value.customerContacts)?.length == 0 && !isCustomerParticipantsSearchLoading">
+                            No record found </li>
+                        </ul>
+                      </span>
+                    </perfect-scrollbar>
+                    <span class="db-search"
+                      (click)="openadvancetabs('CustomerContactSearch',customerContactSearch,f.customerContacts.value)">
+                      <button id="adls{{customerContactSearch?.length+1}}" role="option" tabindex="0"
+                        aria-disabled="false" type="button" class="button-search"
+                        [class.active]="customerContactSearch?.length+1 == arrowkeyLocation">
+                        <span class="mdi mdi-file-outline"></span> Advance look up
+                      </button>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                  <perfect-scrollbar style="max-height:300px">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10"
+                      *ngFor="let item of selectedCustomer; let i=index">
+                      <div class="float-left naming-tags child-middle bg-azure"
+                        [ngStyle]="{'backgroundColor': (i%2 == 0) ? 'blue' : 'red'}">
+                        <span class="initials">{{item.FullName | firstWord | uppercase }}</span>
+                      </div>
+                      <label for="inti_name" class="float-left name w-80">
+                        <span class="d-block ellipses" [ngClass]="item.isKeyContact?'list-name-btnkey':'list-name'"
+                          matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                        <span class="d-block sub-list" *ngIf="item.Email != ''">{{item.Email}}</span>
+                        <span class="d-block sub-list" *ngIf="item.Email == ''">NA</span>
+                        <!-- <span class="d-block sub-list">{{item.Designation}}</span> -->
+                      </label>
+                      <span class="btn-key" *ngIf="item.isKeyContact===true"> Key </span>
+                      <span class="mdi mdi-close close-lead float-right cp"
+                        (click)="delinkCustomerContacts(item.Guid)"></span>
+                    </div>
+                  </perfect-scrollbar>
+                </div>
+              </div>
+              <!--wipro contact is below-->
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left  cust_autoComplete pos-rel plb-60-20">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                  (clickOutside)="wiproParticipantClose()">
+                  <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactName"
+                    class="label-form"> Wipro participants <span class="required"> *</span>
+                    <span class="float-right pos-abs font-size12 right-0">({{selectedContact?.length}})</span>
+                  </label>
+                  <div class="pos-rel w-100 float-left no_pad">
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                      #wiprolist id="contactName" name="contactName" formControlName="WiproContacts"
+                      placeholder="Search wipro participants" type="text" role="combobox" autocomplete="off"
+                      aria-required="true" aria-owns="read" appKeyListControl [dataManipulate]=true
+                      [attr.data-isDownBtn]=true [attr.data-selectedvalue]=""
+                      [attr.aria-activedescendant]="arrowkeyLocation" (arrowDown)="arrowkeyLocation=$event"
+                      (input)="contactNameSwitch = true;arrowkeyLocation=0"
+                      (intialLoadData)="contactNameSwitch = true;callTempWiproContacts();arrowkeyLocation=0"
+                      (keyup.enter)="appendWiproParticipants(wiprocontactsearch[arrowkeyLocation], arrowkeyLocation); contactNameSwitch=false; arrowkeyLocation=0"
+                      (keydown)="contactNameSwitch = true" [attr.data-arrayMaxLength]="wiprocontactsearch?.length"
+                      aria-autocomplete="list" [attr.aria-expanded]="contactNameSwitch?true:false"
+                      (keydown.Tab)="wiproParticipantClose()"
+                      [ngClass]="{'error': f.WiproContacts.invalid && (f.WiproContacts.dirty || f.WiproContacts.touched)}">
+                    <p *ngIf="f.WiproContacts.touched && !f.WiproContacts.valid" class="error-message top-40">Search
+                      wipro participants</p>
+                  </div>
+                  <span class="mdi mdi-magnify"></span>
+                  <div
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box z-ind-9999 pos-abs border-bottom-4 top64 standard-border color-azure  bg-white"
+                    *ngIf="contactNameSwitch"
+                    [attr.focus]="newConversationForm.value.WiproContacts && contactNameSwitch">
+                    <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                      <span class="w-100 z-ind-9 float-left bg-white">
+                        <ul class=" list-group mr2 sort-dropdown" role="listbox" id="read"
+                          [ngClass]="{'loader-search':isWiproParticipantsSearchLoading }">
+                          <li class="list-group-item h-50 p-4-10 " id="{{i}}" tabindex="0" role="option"
+                            *ngFor="let item of wiprocontactsearch |filter:newConversationForm.value.WiproContacts; let i=index"
+                            [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                            (click)="appendWiproParticipants(item, arrowkeyLocation)">
+                            <div class="float-left naming-tags child-middle bg-azure"
+                              [ngStyle]="{'backgroundColor': (i%2 == 0) ? 'red' : 'green'}">
+                              <span class="initials">{{item.FullName | firstWord | uppercase }}</span>
+                            </div>
+                            <label for="inti_name" class="float-left name w-80">
+                              <span class="d-block list-name ellipses"
+                                matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                              <span class="d-block sub-list" *ngIf="item.Designation != ''">{{item.Designation}}</span>
+                              <span class="d-block sub-list" *ngIf="item.Designation == ''">NA</span>
+                            </label>
+                            <!-- <span class="btn-key" *ngIf="item.value"> Key </span> -->
+                          </li>
+                          <li class="d-block list-name h-40 p-10 bg-white"
+                            *ngIf="(wiprocontactsearch |filter:newConversationForm.value.WiproContacts)?.length == 0 && !isWiproParticipantsSearchLoading">
+                            No record found </li>
+                        </ul>
+                      </span>
+                    </perfect-scrollbar>
+                    <span class="db-search" role="button"
+                      (click)="openadvancetabs('WiproParticipantSearch',wiprocontactsearch,f.WiproContacts.value)">
+                      <button id="adls{{wiprocontactsearch?.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                        type="button" class="button-search"
+                        [class.active]="wiprocontactsearch?.length+1 == arrowkeyLocation">
+                        <span class="mdi mdi-file-outline"></span> Advance look up
+                      </button>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                  <perfect-scrollbar style="max-height:300px">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10"
+                      *ngFor="let item of selectedContact; let i=index">
+                      <div class="float-left naming-tags child-middle bg-azure"
+                        [ngStyle]="{'backgroundColor': (i%2 == 0) ? 'blue' : 'red'}">
+                        <span class="initials">{{item.FullName | firstWord | uppercase }}</span>
+                      </div>
+                      <label for="inti_name" class="float-left name w-80">
+                        <span class="d-block list-name ellipses"
+                          matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                        <span class="d-block sub-list" *ngIf="item.Designation != ''">{{item.Designation}}</span>
+                        <span class="d-block sub-list" *ngIf="item.Designation == ''">NA</span>
+                      </label>
+                      <span class="mdi mdi-close close-lead float-right cp"
+                        (click)="delinkWiproParticipant(item.SysGuid)"></span>
+                    </div>
+                  </perfect-scrollbar>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left  "
+                [hidden]="newConversationForm.value.access === false">
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left plb-60-20 cust_autoComplete pos-rel">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                    (clickOutside)="privateAccessClose()">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contacttag"
+                      class="label-form"> Private access
+                      <span class="float-right pos-abs font-size12 right-0">({{selectedTag?.length}})</span>
+                    </label>
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input" #taglist
+                      id="contacttag" name="contacttag" formControlName="contacttag"
+                      placeholder="Search wipro participants" type="text" role="combobox" autocomplete="off"
+                      aria-owns="read" appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true
+                      [attr.data-selectedvalue]="" [attr.aria-expanded]="contactTagSwitch?true:false"
+                      [attr.aria-activedescendant]="arrowkeyLocation"
+                      (input)="contactTagSwitch = true;arrowkeyLocation=0"
+                      (intialLoadData)="contactTagSwitch = true;callTempcontacttag();arrowkeyLocation=0"
+                      (keyup.enter)="appendPrivateAccess(tagContactSearch[arrowkeyLocation],arrowkeyLocation);contactTagSwitch=false;arrowkeyLocation=0"
+                      (keydown)="contactTagSwitch = true" [attr.data-arrayMaxLength]="tagContactSearch?.length"
+                      aria-autocomplete="list" *ngIf="newConversationForm.value.access===true"
+                      (arrowDown)="arrowkeyLocation=$event" (keydown.Tab)="privateAccessClose()">
+                    <span class="mdi mdi-magnify"></span>
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-right  border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure"
+                      *ngIf="contactTagSwitch" [attr.focus]="newConversationForm.value.contacttag && contactTagSwitch">
+                      <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                        <span class="w-100 z-ind-9 float-left bg-white">
+                          <ul class=" list-group mr2 bg-white sort-dropdown " role="listbox" id="read"
+                            [ngClass]="{'loader-search':isTagContactToViewMeetingSearchLoading }">
+                            <li id="{{i}}" tabindex="0" role="option" class="list-group-item h-50 p-4-10 "
+                              *ngFor="let item of tagContactSearch |filter:newConversationForm.value.contacttag ; let i=index"
+                              [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                              (click)="appendPrivateAccess(item, arrowkeyLocation)">
+                              <div class="float-left naming-tags child-middle bg-azure"
+                                [ngStyle]="{'backgroundColor': (i%2 == 0) ? 'green' : 'red'}">
+                                <span class="initials">{{item.FullName | firstWord | uppercase }}</span>
+                              </div>
+                              <label for="inti_name" class="float-left name w-80">
+                                <span class="d-block list-name ellipses"
+                                  matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                                <span class="d-block sub-list"
+                                  *ngIf="item.Designation != ''">{{item.Designation}}</span>
+                                <span class="d-block sub-list" *ngIf="item.Designation == ''">NA</span>
+                              </label>
+                              <span class="btn-key" *ngIf="item.value"> Key </span>
+                            </li>
+                            <li class="d-block list-name h-40 p-10 bg-white"
+                              *ngIf="(tagContactSearch |filter:newConversationForm.value.contacttag)?.length == 0 && !isTagContactToViewMeetingSearchLoading">
+                              No record found </li>
+                          </ul>
+                        </span>
+                      </perfect-scrollbar>
+                      <span class="db-search"
+                        (click)="openadvancetabs('TaggedUserSearch',tagContactSearch,f.contacttag.value)">
+                        <button id="adls{{tagContactSearch?.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                          type="button" class="button-search"
+                          [class.active]="tagContactSearch?.length+1 == arrowkeyLocation">
+                          <span class="mdi mdi-file-outline"></span> Advance look up
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                    <perfect-scrollbar style="max-height:300px">
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10"
+                        *ngFor="let item of selectedTag">
+                        <div class="float-left naming-tags child-middle bg-azure">
+                          <span class="initials">{{item.FullName | firstWord | uppercase }}</span>
+                        </div>
+                        <label for="inti_name" class="float-left name w-80">
+                          <span class="d-block list-name ellipses"
+                            matTooltip="{{item.FullName}}">{{item.FullName}}</span>
+                          <span class="d-block sub-list" *ngIf="item.Designation != ''">{{item.Designation}}</span>
+                          <span class="d-block sub-list" *ngIf="item.Designation == ''">NA</span>
+                        </label>
+                        <!-- <span class="btn-key" *ngIf="item.value"> Key </span> -->
+                        <span class="mdi mdi-close close-lead float-right cp" (click)="delinkTag(item.Guid)"></span>
+                      </div>
+                    </perfect-scrollbar>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="divider  col-12 no_pad float-left mt20 "></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mb20">
+              <h3 class="heading-level-three mt20 "> Links </h3>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+              <!--Potential Wipro solutions  autocomplete starts -->
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left  ">
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left plb-60-20 cust_autoComplete pos-rel">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                    (clickOutside)="wiproSolutionClose()">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="solution"
+                      class="label-form">Potential wipro solutions <span class="required" *ngIf="IsPotentialreq"> *
+                      </span>
+                    </label>
+                    <span class="float-right pos-abs font-size12 right-0">({{selectedsolution?.length}})</span>
+                    <div class="pos-rel w-100 float-left no_pad">
+                      <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                        #potentiallist id="solution" name="solution" formControlName="potentialWiproSolution"
+                        placeholder="Search  potential wipro solutions" type="text" role="combobox" autocomplete="off"
+                        aria-owns="read" appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true
+                        [attr.data-selectedvalue]="" (arrowDown)="arrowkeyLocation=$event"
+                        [attr.aria-expanded]="solutionSwitch?true:false" [attr.aria-activedescendant]="arrowkeyLocation"
+                        (input)="solutionSwitch = true;arrowkeyLocation=0"
+                        (intialLoadData)="solutionSwitch = true;callTempPotentialWiproSoluction();arrowkeyLocation=0"
+                        (keyup.enter)="appendWiproSolution(wiproSolution[arrowkeyLocation],arrowkeyLocation);solutionSwitch=false;arrowkeyLocation=0"
+                        [attr.data-arrayMaxLength]="wiproSolution?.length" (keydown)="solutionSwitch = true"
+                        (keydown.Tab)="wiproSolutionClose()"
+                        [ngClass]="{'error': f.potentialWiproSolution.touched && !f.potentialWiproSolution.valid}"
+                        aria-autocomplete="list">
+                      <p *ngIf="f.potentialWiproSolution.touched && !f.potentialWiproSolution.valid"
+                        class="error-message top-40">Search wipro solutions</p>
+                      <span class="mdi mdi-magnify"></span>
+                    </div>
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-right  border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                      *ngIf="solutionSwitch"
+                      [attr.focus]="newConversationForm.value.potentialWiproSolution && solutionSwitch">
+                      <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                        <span class="w-100 z-ind-9 float-left bg-white">
+                          <ul class=" list-group mr2  sort-dropdown " role="listbox" id="read"
+                            [ngClass]="{'loader-search':isPotentialWiproSoluctionSearchLoading }">
+                            <li id="{{i}}" tabindex="0" role="option" class="list-group-item h-50 p-4-10 "
+                              (click)="appendWiproSolution(item, arrowkeyLocation)"
+                              *ngFor="let item of wiproSolution |filter:newConversationForm.value.potentialWiproSolution;let i = index"
+                              [class.active]="i==arrowkeyLocation" aria-disabled="false">
+                              <div class="float-left naming-tags child-middle bg-azure">
+                                <span class="initials">{{wiproSolutionData(item.Name) | firstWord | uppercase}}</span>
+                              </div>
+                              <label for="inti_name" class="float-left name w-80 ">
+                                <span class="d-block list-name ellipses" matTooltip="{{item.Name}}">{{item.Name}}</span>
+                                <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+                              </label>
+                            </li>
+                            <li class="d-block list-name h-40 p-10 bg-white"
+                              *ngIf="(wiproSolution |filter:newConversationForm.value.potentialWiproSolution)?.length == 0 && !isPotentialWiproSoluctionSearchLoading">
+                              No record found </li>
+                          </ul>
+                        </span>
+                      </perfect-scrollbar>
+                      <span class="db-search"
+                        (click)="openadvancetabs('PotentialWiproSolutionSearch',wiproSolution,f.potentialWiproSolution.value)">
+                        <button id="adls{{wiproSolution?.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                          type="button" class="button-search"
+                          [class.active]="wiproSolution?.length+1 == arrowkeyLocation">
+                          <span class="mdi mdi-file-outline"></span> Advance look up
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact selected-tags">
+                    <perfect-scrollbar style="max-height:300px">
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tagged-box mt-10 p-4-10 mr10  d-flex"
+                        *ngFor="let item of selectedsolution">
+                        <label for="inti_name" class="float-left name w-94">
+                          <span class="d-block color-azure mr10 float-left ellipses width-90"
+                            matTooltip="{{item.Name}}">{{item.Name}}</span>
+                        </label>
+                        <span role="button" tabindex="0" aria-label="delete" (click)="deleteicon(item.SysGuid)"
+                          class="mdi mdi-close close-lead float-right cp"></span>
+                      </div>
+                    </perfect-scrollbar>
+                  </div>
+                </div>
+              </div>
+              <!--Potential Wipro solutions  autocomplete ends-->
+              <!--Linked campaigns autocomplete starts -->
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left  ">
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left plb-60-20 cust_autoComplete pos-rel">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                    (clickOutside)="linkedCampaignClose()">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                      for="contactcampaign" class="label-form">Linked campaigns<span class="required"
+                        *ngIf="IsCampaignreq"> *</span>
+                    </label>
+                    <span class="float-right pos-abs font-size12 right-0">({{selectedcampaign?.length}})</span>
+                    <div class="pos-rel w-100 float-left no_pad">
+                      <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                        #campaignlist id="contactcampaign" name="contactcampaign" formControlName="linkCampaign"
+                        placeholder="Search linked campaigns" type="text" role="combobox" autocomplete="off"
+                        aria-owns="read" appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true
+                        [attr.data-selectedvalue]="" (arrowDown)="arrowkeyLocation=$event"
+                        [attr.aria-expanded]="linkedcampaignSwitch?true:false"
+                        [attr.aria-activedescendant]="arrowkeyLocation"
+                        (input)="linkedcampaignSwitch = true;arrowkeyLocation=0"
+                        (intialLoadData)="linkedcampaignSwitch = true;callTemplinkCampaign();arrowkeyLocation=0"
+                        (keyup.enter)="appendLinkedCampaign(campaignContact[arrowkeyLocation],arrowkeyLocation);linkedcampaignSwitch=false;arrowkeyLocation=0"
+                        (keydown)="linkedcampaignSwitch = true" [attr.data-arrayMaxLength]="campaignContact?.length"
+                        [readonly]="activityGroupId===''" (keydown.Tab)="linkedCampaignClose()"
+                        [ngClass]="{'error': f.linkCampaign.touched && !f.linkCampaign.valid}" aria-autocomplete="list">
+                      <p *ngIf="f.linkCampaign.touched && !f.linkCampaign.valid" class="error-message top-40">Search
+                        campaigns</p>
+                    </div>
+                    <span class="mdi mdi-magnify"></span>
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-right  border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                      *ngIf="linkedcampaignSwitch"
+                      [attr.focus]="newConversationForm.value.linkCampaign && linkedcampaignSwitch">
+                      <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                        <span class="w-100 z-ind-9 float-left bg-white">
+                          <ul class=" list-group mr2  sort-dropdown" role="listbox" id="read"
+                            [ngClass]="{'loader-search':isLinkedCampaignsSearchLoading }">
+                            <li id="{{i}}" tabindex="0" role="option" class="list-group-item h-50 p-4-10"
+                              (click)="appendLinkedCampaign(item, arrowkeyLocation)"
+                              *ngFor="let item of campaignContact |filter:newConversationForm.value.linkCampaign;let i = index"
+                              [class.active]="i==arrowkeyLocation" aria-disabled="false">
+                              <div class="float-left naming-tags child-middle bg-azure">
+                                <span class="initials">{{item.Name | firstWord | uppercase}}</span>
+                              </div>
+                              <label for="inti_name" class="float-left name w-80">
+                                <span class="d-block list-name ellipses" matTooltip="{{item.Name}}">{{item.Name}}</span>
+                                <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+                              </label>
+                            </li>
+                            <li class="d-block list-name h-40 p-10 bg-white"
+                              *ngIf="(campaignContact |filter:newConversationForm.value.linkCampaign)?.length == 0 && !isLinkedCampaignsSearchLoading">
+                              No record found </li>
+                          </ul>
+                        </span>
+                      </perfect-scrollbar>
+                      <span class="db-search"
+                        (click)="openadvancetabs('LinkedCampaignSearch',campaignContact,f.linkCampaign.value)">
+                        <button id="adls{{campaignContact?.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                          type="button" class="button-search"
+                          [class.active]="campaignContact?.length+1 == arrowkeyLocation">
+                          <span class="mdi mdi-file-outline"></span> Advance look up
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <!--mar-14-->
+                  <div
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact selected-tags">
+                    <perfect-scrollbar style="max-height:300px">
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tagged-box mt-10 p-4-10 mr10 d-flex"
+                        *ngFor="let item of selectedcampaign">
+                        <!--mar-14-->
+                        <label for="inti_name" class="float-left name w-94">
+                          <span class="d-block color-azure mr10 float-left ellipses width-90"
+                            matTooltip="{{item.Name}}">{{item.Name}}</span>
+                        </label>
+                        <span role="button" tabindex="0" aria-label="delete"
+                          class="mdi mdi-close close-lead float-right cp" (click)="delinkCampaign(item.Id)"></span>
+                      </div>
+                    </perfect-scrollbar>
+                  </div>
+                  <!--mar-14-->
+                </div>
+              </div>
+              <!--Linked campaigns autocomplete ends-->
+              <!--Link leads autocomplete starts -->
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left  ">
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left plb-60-20 cust_autoComplete pos-rel">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                    (clickOutside)="linkedLeadClose()">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactlead"
+                      class="label-form">Linked leads<span class="required" *ngIf="IsLeadreq"> *</span>
+                    </label>
+                    <span class="float-right pos-abs font-size12 right-0">({{selectedLinkedLeads?.length}})</span>
+                    <div class="pos-rel w-100 float-left no_pad">
+                      <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                        #leadslist id="contactlead" name="contactlead" formControlName="linkLead"
+                        placeholder="Search linked leads" type="text" role="combobox" autocomplete="off" aria-owns="read"
+                        appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true [attr.data-selectedvalue]=""
+                        (arrowDown)="arrowkeyLocation=$event" [attr.aria-expanded]="contactleadSwitch?true:false"
+                        [attr.aria-activedescendant]="arrowkeyLocation"
+                        (input)="contactleadSwitch = true;arrowkeyLocation=0"
+                        (intialLoadData)="contactleadSwitch = true;callTemplinkLead();arrowkeyLocation=0"
+                        (keyup.enter)="appendLinkedLead(linkedLeads[arrowkeyLocation], arrowkeyLocation);contactleadSwitch=false;arrowkeyLocation=0"
+                        (keydown)="contactleadSwitch = true" [attr.data-arrayMaxLength]="linkedLeads?.length"
+                        [ngClass]="{'error': f.linkLead.touched && !f.linkLead.valid}" [readonly]="activityGroupId===''"
+                        aria-autocomplete="list" (keydown.Tab)="linkedLeadClose()">
+                      <p *ngIf=" f.linkLead.touched && !f.linkLead.valid" class="error-message top-40">
+                        Search leads</p>
+                    </div>
+                    <span class="mdi mdi-magnify"></span>
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-right  border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                      *ngIf="contactleadSwitch" [attr.focus]="newConversationForm.value.linkLead && contactleadSwitch">
+                      <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                        <span class="w-100 z-ind-9 float-left bg-white">
+                          <ul class=" list-group mr2  sort-dropdown " role="listbox" id="read"
+                            [ngClass]="{'loader-search':isLinkedLeadsSearchLoading }">
+                            <li id="{{i}}" tabindex="0" role="option" class="list-group-item h-50 p-4-10 "
+                              (click)="appendLinkedLead(item, arrowkeyLocation)"
+                              *ngFor="let item of linkedLeads |filter:newConversationForm.value.linkLead; let i = index"
+                              [class.active]="i==arrowkeyLocation" aria-disabled="false">
+                              <div class="float-left naming-tags child-middle bg-azure"
+                                [ngStyle]="{'backgroundColor': (i%2 == 0) ? 'blue' : 'red'}">
+                                <span class="initials">{{item.Title | firstWord | uppercase }}</span>
+                              </div>
+                              <label for="inti_name" class="float-left name w-80">
+                                <span class="d-block list-name ellipses"
+                                  matTooltip="{{item.Title}}">{{item.Title}}</span>
+                                <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+                              </label>
+                            </li>
+                            <li class="d-block list-name h-40 p-10 bg-white"
+                              *ngIf="(linkedLeads |filter:newConversationForm.value.linkLead)?.length == 0 && !isLinkedLeadsSearchLoading">
+                              No record found </li>
+                          </ul>
+                        </span>
+                      </perfect-scrollbar>
+                      <span class="db-search"
+                        (click)="openadvancetabs('LinkedLeadsSearch',linkedLeads,f.linkLead.value)">
+                        <button id="adls{{linkedLeads?.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                          type="button" class="button-search"
+                          [class.active]="linkedLeads?.length+1 == arrowkeyLocation">
+                          <span class="mdi mdi-file-outline"></span> Advance look up
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact selected-tags">
+                    <perfect-scrollbar style="max-height:300px">
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tagged-box mt-10 p-4-10 mr10  d-flex"
+                        *ngFor="let item of selectedLinkedLeads">
+                        <label for="inti_name" class="float-left name w-94">
+                          <span class="d-block color-azure mr10 float-left ellipses width-90"
+                            matTooltip="{{item.Title}}">{{item.Title}}</span>
+                        </label>
+                        <span role="button" tabindex="0" aria-label="delete" (click)="delinkLead(item.LeadGuid)"
+                          class="mdi mdi-close close-lead float-right cp"></span>
+                      </div>
+                    </perfect-scrollbar>
+                  </div>
+                </div>
+              </div>
+              <!--link leads autocomplete ends-->
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left no_pad">
+              <!--Link opportunity autocomplete starts -->
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no_pad float-left  ">
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left plb-60-20 cust_autoComplete pos-rel">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName"
+                    (clickOutside)="linkedOpportunitiesOrderClose()">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                      for="contactopportunity" class="label-form">Linked opportunities<span class="required"
+                        *ngIf="IsOpporeq"> *</span>
+                    </label>
+                    <span class="float-right pos-abs font-size12 right-0">({{selectedLinkedOpp?.length}})</span>
+                    <div class="pos-rel w-100 float-left no_pad">
+                      <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                        [attr.disabled]="accountType == 'Prospect'?'disabled':null"
+                        #orderlist id="contactopportunity" name="contactopportunity" formControlName="linkOpportunity"
+                        placeholder="Search linked opportunities" type="text" role="combobox" autocomplete="off"
+                        aria-owns="read" appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true
+                        [attr.data-selectedvalue]="" (arrowDown)="arrowkeyLocation=$event"
+                        [attr.aria-activedescendant]="arrowkeyLocation"
+                        [attr.aria-expanded]="contactopportunitySwitch?true:false"
+                        (input)="contactopportunitySwitch = true;arrowkeyLocation=0"
+                        (intialLoadData)="contactopportunitySwitch = true;clickLinkedOpportunityOrder();arrowkeyLocation=0"
+                        (keyup.enter)="appendLinkedOpportunity(linkedOpportunity[arrowkeyLocation],arrowkeyLocation);contactopportunitySwitch=false;arrowkeyLocation=0"
+                        (keydown)="contactopportunitySwitch = true"
+                        [attr.data-arrayMaxLength]="linkedOpportunity?.length"
+                        (keydown.Tab)="linkedOpportunitiesOrderClose()"
+                        [ngClass]="{'error':f.linkOpportunity.touched && !f.linkOpportunity.valid}"
+                        [readonly]="activityGroupId===''" aria-autocomplete="list">
+                      <p *ngIf="f.linkOpportunity.touched &&  !f.linkOpportunity.valid" class="error-message top-40">
+                        Search opportunities</p>
+                    </div>
+                    <span class="mdi mdi-magnify"></span>
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-right  border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                      *ngIf="contactopportunitySwitch"
+                      [attr.focus]="newConversationForm.value.linkOpportunity && contactopportunitySwitch">
+                      <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                        <span class="w-100 z-ind-9 float-left bg-white">
+                          <ul class=" list-group mr2  sort-dropdown" role="listbox" id="read"
+                            [ngClass]="{'loader-search':isLinkedOpportunitySearchLoading }">
+                            <li id="{{i}}" tabindex="0" role="option" class="list-group-item h-50 p-4-10 "
+                              (click)="appendLinkedOpportunity(item, arrowkeyLocation)"
+                              *ngFor="let item of linkedOpportunity |filter:newConversationForm.value.linkOpportunity;let i = index"
+                              [class.active]="i==arrowkeyLocation" aria-disabled="false">
+                              <div class="float-left naming-tags child-middle bg-azure"
+                                [ngStyle]="{'backgroundColor': (i%2 == 0) ? 'red' : 'green'}">
+                                <span class="initials">{{item.Title | firstWord | uppercase }}</span>
+                              </div>
+                              <label for="inti_name" class="float-left name w-80">
+                                <span class="d-block list-name ellipses"
+                                  matTooltip="{{item.Title}}">{{item.Title}}</span>
+                                <!-- <span class="d-block sub-list">{{item.designation}}</span> -->
+                              </label>
+                            </li>
+                            <li class="d-block list-name h-40 p-10 bg-white"
+                              *ngIf="(linkedOpportunity |filter:newConversationForm.value.linkOpportunity)?.length == 0 && !isLinkedOpportunitySearchLoading">
+                              No record found </li>
+                          </ul>
+                        </span>
+                      </perfect-scrollbar>
+                      <span class="db-search"
+                        (click)="openadvancetabs('LinkedOpportunityOrderSearch',linkedOpportunity,f.linkOpportunity.value)">
+                        <button id="adls{{linkedOpportunity?.length+1}}" role="option" tabindex="0"
+                          aria-disabled="false" type="button" class="button-search"
+                          [class.active]="linkedOpportunity?.length+1 == arrowkeyLocation">
+                          <span class="mdi mdi-file-outline"></span> Advance look up
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact selected-tags">
+                    <perfect-scrollbar style="max-height:300px">
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tagged-box mt-10 p-4-10 mr10  d-flex"
+                        *ngFor="let item of selectedLinkedOpp">
+                        <label for="inti_name" class="float-left name w-94">
+                          <span class="d-block color-azure mr10 float-left ellipses width-90"
+                            matTooltip="{{item.Title}}" role="button" (click)="service.LinkedNavigation(item,'linkedOppAndOrder')">{{item.Title}}</span>
+                        </label>
+                        <span role="button" tabindex="0" aria-label="delete" (click)="delinkOpportunity(item)"
+                          class="mdi mdi-close close-lead float-right cp"></span>
+                      </div>
+                    </perfect-scrollbar>
+                  </div>
+                </div>
+              </div>
+              <!--link opportunity autocomplete ends-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isLoading" class="loaderContainer">
+        <div class="loader"></div>
+      </div>
+    </form>
+  </div>
+  <div class="float-left col-12 no_pad mobile-buttons">
+    <button type="button" class="col-6 no_pad float-left cancel-btn" (click)="opencancelpop()">Cancel</button>
+    <button type="button" class="col-6 no_pad float-left save-btn" [disabled]="clicked" (click)="save()">Save</button>
+  </div>
+</div>

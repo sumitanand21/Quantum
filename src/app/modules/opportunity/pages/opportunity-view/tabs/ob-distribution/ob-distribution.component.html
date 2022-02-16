@@ -1,0 +1,873 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pr-10 new-container businesssolution-page">
+  <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-218"> </div> -->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad"
+    [ngClass]="service.sideTrans ? 'main-containt-250' : 'main-containt1'">
+
+    <!-- service lines panel starts here -->
+    <div class="col-12 no_pad float-left scroll-tabs">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-26 service-tab padt0">
+      <mat-expansion-panel hideToggle="true" [expanded]="panelOpenState3" class="no_pad"
+        (opened)="panelOpenState3 = true" (closed)="panelOpenState3 = false">
+        <mat-expansion-panel-header class="min_height60">
+          <div class="min_height60 col-12 no_pad">
+            <div class="accord-heading col-12">
+              <span
+                [ngClass]="panelOpenState3 ? 'mdi mdi-chevron-down chevron-right float-left':'mdi mdi-chevron-right chevron-right float-left'"></span>
+              <div class="float-left no_pad"> <span class="accordian-title cardsHead col-6 no_pad">
+                  Service lines</span></div>
+              <div class="col-6 float-right no_pad bot10">
+                <!-- <button aria-label="Add service line" (click)="addserviceline();panelOpenState3 = false"
+                  class="primary-button borderless h-40 std save-responsive-btn float-right pad_10">+ Add
+                  service line</button> -->
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+
+        <!-- expansion data starts here -->
+        <div class="col-12 no_pad float-left btop_withoutpadding">
+          <!-- Table starts here -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad overflowscroll">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <!-- <th class="customized-checkbox">
+                    <mat-checkbox aria-label="select all" (change)="selectAll()" [(ngModel)]="selectedAll">
+                    </mat-checkbox>
+                  </th> -->
+                  <th>Service line*</th>
+                  <th>Practice*</th>
+                  <th>Sub practice</th>
+                  <th>SL BDM*</th>
+                  <th>% of TCV*</th>
+                  <th>Est. SL TCV*</th>
+                  <th>Cloud</th>
+                  <th>Engagement model*</th>
+                  <th>Dual credit</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of serviceline_data">
+                  <!-- <td class="customized-checkbox">
+                    <mat-checkbox aria-label="select" (change)="checkIfAllSelected(data)" [(ngModel)]="data.isCheccked">
+                    </mat-checkbox>
+                  </td> -->
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select disabled-control">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox" class="width120" disabled>
+                        <option value="serv">Service line</option>
+                        <option value="digi">Digital operations</option>
+                        <option value="tech">Technology</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select disabled-control">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox" disabled>
+                        <option value="practice">Practice</option>
+                        <option value="bsfi1">VS-BSFI-6123798</option>
+                        <option value="bsfi2">VS-BSFI-6123798</option>
+                        <option value="bsfi3">VS-BSFI-6123798</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select disabled-control">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox" class="width125" disabled>
+                        <option value="">Sub practice</option>
+                        <option value="Ref1">Ref data -In</option>
+                        <option value="Ref2">Ref data -In</option>
+                        <option value="Ref3">Ref data -In</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td class="no_pad">
+                    <!-- SL BDM autocomplete starts here-->
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+              class="label-form">Contracting country*</label> -->
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                          name="slbdmName" autocomplete="off" type="text" [(ngModel)]="data.slbdmName"
+                          placeholder="Select" (click)="data.slbdmNameSwitch = true"
+                          (clickOutside)="slbdmNameclose(data)">
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                          *ngIf="data.slbdmName && data.slbdmNameSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group sort-dropdown">
+                              <li class="list-group-item no_pad "
+                                (keypress)="appendslbdm(item.maintitle,item.index,data)"
+                                (click)="appendslbdm(item.maintitle,item.index,data)"
+                                *ngFor="let item of wiproslbdm |filter:data.slbdmName">
+                                <label for="inti_name" class="float-left name">
+                                  <span class="d-block list-name">{{item.maintitle}}</span>
+                                  <span class="d-block sub-list">{{item.subtitle}}</span>
+                                </label>
+                              </li>
+                              <li class="d-block list-name no_pad"
+                                *ngIf="(wiproslbdm |filter:data.slbdmName).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                        </div>
+                      </form>
+                    </div>
+                    <!--SL BDM autocomplete ends here-->
+
+                  </td>
+                  <td class="width10">
+                    <div class="customized-input">
+                      <label for="field1" class=""> </label>
+                      <input id="field1" type="text" class="border-gray w-100" value="70.00" placeholder="00.00" disabled>
+                    </div>
+                  </td>
+                  <td class="width10">
+                    <div class="customized-input">
+                      <label for="field1" class=""> </label>
+                      <input id="field1" type="text" class="border-gray w-100" value="20.00" placeholder="00.00" disabled>
+                    </div>
+                  </td>
+                  <td class="customized-checkbox">
+                    <mat-checkbox aria-label="select">
+                    </mat-checkbox>
+                  </td>
+
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox" [disabled]="data.disabled">
+                        <option value="Engagement">Engagement</option>
+                        <option value="Engagement1">Engagement 1</option>
+                        <option value="Engagement2">Engagement 2</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox" [disabled]="data.disabled" class="width80">
+                        <option value="">Credit</option>
+                        <option value="credit1">Credit 1</option>
+                        <option value="credit2">Credit 2</option>
+                      </select>
+                    </div>
+
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td class="no_pad display_flex">
+                      <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="service"
+                      matTooltip="service" routerLink="/opportunity/servicelineadditionaldetails">
+                      <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-dots-horizontal"></span>
+                    </button>
+                    <!-- <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="Delete"
+                      matTooltip="Delete" (click)="deleteserviceline(data.id);deletserline()">
+                      <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                    </button> -->
+                    <!-- (click)="openserviceline()" -->
+                    <!-- <button class="btn-none float-right more-btn-mobile mr10 cp" role="button" title="more"
+                      aria-label="more" tabindex="0" routerLink="/opportunity/servicelineadditionaldetails">
+                      <span class="morepop mdi mdi-dots-vertical expand-btn"></span>
+                    </button> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Table ends here -->
+        </div>
+      </mat-expansion-panel>
+
+    </div>
+    <!-- service lines panel ends here -->
+    </div>
+
+
+    <!-- IP panel starts here -->
+    <div class="col-12 no_pad float-left scroll-tabs">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-26 pad_t0 ip-tab">
+      <mat-expansion-panel hideToggle="true" [expanded]="panelOpenState4" class="no_pad"
+        (opened)="panelOpenState4 = true" (closed)="panelOpenState4 = false">
+        <mat-expansion-panel-header class="min_height60">
+          <div class="min_height60 col-12 no_pad">
+            <div class="accord-heading col-12">
+              <span
+                [ngClass]="panelOpenState4 ? 'mdi mdi-chevron-down chevron-right float-left':'mdi mdi-chevron-right chevron-right float-left'"></span>
+              <div class="float-left no_pad"> <span class="accordian-title cardsHead col-6 no_pad">
+
+                  IP</span></div>
+              <div class="col-6 float-right no_pad bot10">
+                <!-- <button (click)="addip();panelOpenState4 = false"
+                  class="primary-button borderless h-40 std save-responsive-btn float-right pad_10">+ Add
+                  IP</button> -->
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="col-12 no_pad float-left btop_withoutpadding">
+          <!-- Table starts here -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad overflowscroll">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <!-- <th class="customized-checkbox">
+                    <mat-checkbox aria-label="select all" (change)="selectAllip()" [(ngModel)]="selectedAllip">
+                    </mat-checkbox>
+                  </th> -->
+                  <th>IP*</th>
+                  <th>Module*</th>
+                  <th>Service line</th>
+                  <th>Practice</th>
+                  <th>SL BDM</th>
+                  <th>License value*</th>
+                  <th>AMC value*</th>
+                  <th>Cloud</th>
+                  <th>Accept IP*</th>
+                  <th>Holmes BDM</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of ip_data">
+                  <!-- <td class="customized-checkbox">
+                    <mat-checkbox aria-label="select" (change)="checkIfAllSelectedip(data)"
+                      [(ngModel)]="data.isCheccked">
+                    </mat-checkbox>
+                  </td> -->
+                  <td class="no_pad">
+                    <!-- IP autocomplete starts here-->
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+                  class="label-form">Contracting country*</label>  -->
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                          name="ipName" autocomplete="off" type="text" [(ngModel)]="data.ipName" placeholder="Select"
+                          (click)="data.ipNameSwitch = true" (clickOutside)="ipNameclose(data)" disabled>
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                          *ngIf="data.ipName && data.ipNameSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group sort-dropdown">
+                              <li class="list-group-item no_pad " (keypress)="appendip(item.maintitle,item.index,data)"
+                                (click)="appendip(item.maintitle,item.index,data)"
+                                *ngFor="let item of wiproip |filter:data.ipName">
+                                <label for="inti_name" class="float-left name">
+                                  <span class="d-block list-name">{{item.maintitle}}</span>
+                                  <span class="d-block sub-list">{{item.subtitle}}</span>
+                                </label>
+                              </li>
+                              <li class="d-block list-name no_pad" *ngIf="(wiproip |filter:data.ipName).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                        </div>
+                      </form>
+                    </div>
+                    <!--IP autocomplete ends here-->
+
+                  </td>
+
+                  <td class="no_pad">
+                    <!-- module autocomplete starts here-->
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+                class="label-form">Contracting country*</label>  -->
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                          name="moduleName" autocomplete="off" type="text" [(ngModel)]="data.moduleName"
+                          placeholder="Select" (click)="data.moduleNameSwitch = true"
+                          (clickOutside)="moduleNameclose(data)" disabled>
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                          *ngIf="data.moduleName && data.moduleNameSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group sort-dropdown">
+                              <li class="list-group-item no_pad "
+                                (keypress)="appendmodule(item.maintitle,item.index,data)"
+                                (click)="appendmodule(item.maintitle,item.index,data)"
+                                *ngFor="let item of wipromodule |filter:data.moduleName">
+                                <label for="inti_name" class="float-left name">
+                                  <span class="d-block list-name">{{item.maintitle}}</span>
+                                  <span class="d-block sub-list">{{item.subtitle}}</span>
+                                </label>
+                              </li>
+                              <li class="d-block list-name no_pad"
+                                *ngIf="(wipromodule |filter:data.moduleName).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                        </div>
+                      </form>
+                    </div>
+                    <!--module autocomplete ends here-->
+
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select disabled-control">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox" disabled>
+                        <option value="digi">Service line</option>
+                        <option value="digi1">Digital operations 1</option>
+                        <option value="digi2">Digital operations 2</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select disabled-control">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox" class="width95" disabled>
+                        <option value="Practice">Practice</option>
+                        <option value="Practice1">Practice 1</option>
+                        <option value="Practice2">Practice 2</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td class="no_pad">
+                    <!-- slbdm2 autocomplete starts here-->
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+                class="label-form">Contracting country*</label>  -->
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                          name="slbdm2Name" autocomplete="off" type="text" [(ngModel)]="data.slbdm2Name"
+                          placeholder="Select" (click)="data.slbdm2NameSwitch = true"
+                          (clickOutside)="slbdm2Nameclose(data)">
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                          *ngIf="data.slbdm2Name && data.slbdm2NameSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group sort-dropdown">
+                              <li class="list-group-item no_pad "
+                                (keypress)="appendslbdm2(item.maintitle,item.index,data)"
+                                (click)="appendslbdm2(item.maintitle,item.index,data)"
+                                *ngFor="let item of wiproslbdm2 |filter:data.slbdm2Name">
+                                <label for="inti_name" class="float-left name">
+                                  <span class="d-block list-name">{{item.maintitle}}</span>
+                                  <span class="d-block sub-list">{{item.subtitle}}</span>
+                                </label>
+                              </li>
+                              <li class="d-block list-name no_pad"
+                                *ngIf="(wiproslbdm2 |filter:data.slbdm2Name).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                        </div>
+                      </form>
+                    </div>
+                    <!--slbdm2 autocomplete ends here-->
+                  </td>
+
+                  <td class="width10">
+                    <div class="customized-input">
+                      <label for="license" class=""> </label>
+                      <input id="license" type="text" class="border-gray w-100" value="40.00" placeholder="00.00" disabled>
+                    </div>
+                  </td>
+                  <td class="width10">
+                    <div class="customized-input">
+                      <label for="amc" class=""> </label>
+                      <input id="amc" type="text" class="border-gray w-100" value="50.00" placeholder="00.00" disabled>
+                    </div>
+                  </td>
+                  <td class="customized-checkbox">
+                    <mat-checkbox aria-label="select">
+                    </mat-checkbox>
+                  </td>
+                  <td class="customized-checkbox">
+                    <mat-checkbox aria-label="select">
+                    </mat-checkbox>
+                  </td>
+                  <td class="no_pad">
+                      <!-- Holmes BDM autocomplete starts here-->
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                        <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                          <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+                    class="label-form">Contracting country*</label>  -->
+                          <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                            name="HolmesBDMName" autocomplete="off" type="text" [(ngModel)]="data.HolmesBDMName" placeholder="Select"
+                            (click)="data.HolmesBDNameSwitch = true" (clickOutside)="HolmesBDMNameclose(data)">
+                          <span class="mdi mdi-magnify"></span>
+                          <div
+                            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                            *ngIf="data.HolmesBDMName && data.HolmesBDNameSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                              <ul class=" list-group sort-dropdown">
+                                <li class="list-group-item no_pad " (keypress)="appendHolmesBDM(item.maintitle,item.index,data)"
+                                  (click)="appendHolmesBDM(item.maintitle,item.index,data)"
+                                  *ngFor="let item of wiproHolmesBDM |filter:data.HolmesBDMName">
+                                  <label for="inti_name" class="float-left name">
+                                    <span class="d-block list-name">{{item.maintitle}}</span>
+                                    <span class="d-block sub-list">{{item.subtitle}}</span>
+                                  </label>
+                                </li>
+                                <li class="d-block list-name no_pad" *ngIf="(wiproHolmesBDM |filter:data.HolmesBDMName).length == 0">
+                                  No record found </li>
+                              </ul>
+                            </perfect-scrollbar>
+                          </div>
+                        </form>
+                      </div>
+                      <!--Holmes BDM autocomplete ends here-->
+  
+                    </td>
+
+                  <td class="no_pad display_flex">
+                      <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="view"
+                      matTooltip="view">
+                      <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-eye"></span>
+                    </button>
+                    <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="view"
+                    matTooltip="view"  routerLink="/opportunity/ipadditionaldetails">
+                    <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-dots-horizontal"></span>
+                  </button>
+                    <!-- <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="Delete"
+                      matTooltip="Delete" (click)="deleteip(data.id);deleteippopup()">
+                      <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                    </button> -->
+                    <!-- (click)="openip()" -->
+                    <!-- <button class="btn-none float-right more-btn-mobile mr10 cp" role="button" title="more"
+                       aria-label="more" tabindex="0"  routerLink="/opportunity/ipadditionaldetails">
+                      <span class="morepop mdi mdi-dots-vertical expand-btn"></span>
+                    </button> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Table ends here -->
+        </div>
+      </mat-expansion-panel>
+
+    </div>
+    </div>
+    <!-- IP panel ends here -->
+
+
+    <!-- Solution panel starts here -->
+    <div class="col-12 no_pad float-left scroll-tabs">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-26 pad_t0 solution-tab ">
+      <mat-expansion-panel hideToggle="true" [expanded]="panelOpenState5" class="no_pad"
+        (opened)="panelOpenState5 = true" (closed)="panelOpenState5 = false">
+        <mat-expansion-panel-header class="min_height60">
+          <div class="min_height60 col-12 no_pad">
+            <div class="accord-heading col-12">
+              <span
+                [ngClass]="panelOpenState5 ? 'mdi mdi-chevron-down chevron-right float-left':'mdi mdi-chevron-right chevron-right float-left'"></span>
+              <div class="float-left no_pad"> <span class="accordian-title cardsHead col-6 no_pad">
+                  Solution</span></div>
+              <div class="col-6 float-right no_pad bot10">
+                <button aria-label="Add solution" (click)="addsol();panelOpenState5 = false"
+                  class="primary-button borderless h-40 std save-responsive-btn float-right pad_10">+ Add
+                  solution</button>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="col-12 no_pad float-left btop_withoutpadding">
+          <!-- Table starts here -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad overflowscroll">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th class="customized-checkbox">
+                    <mat-checkbox aria-label="select all" (change)="selectAllsol()" [(ngModel)]="selectedAllsol">
+                    </mat-checkbox>
+                  </th>
+                  <th>Type*</th>
+                  <th>Name*</th>
+                  <th>Owner</th>
+                  <th>%</th>
+                  <th>% of TCV*</th>
+                  <th>Value*</th>
+                  <th>Solution BDM</th>
+                  <th>Influence type</th>
+                  <th>Service type</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of sol_data">
+                  <td class="customized-checkbox">
+                    <mat-checkbox aria-label="select" (change)="checkIfAllSelectedsol(data)"
+                      [(ngModel)]="data.isCheccked">
+                    </mat-checkbox>
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox">
+                        <option value="Unit">Unit</option>
+                        <option value="Alliance">Alliance</option>
+                        <option value="Unit1">Unit 1</option>
+                        <option value="Unit2">Unit 2</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td class="no_pad">
+                    <!-- name autocomplete starts here-->
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+                class="label-form">Contracting country*</label>  -->
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                          name="nameName" autocomplete="off" type="text" [(ngModel)]="data.nameName"
+                          placeholder="Select" (click)="data.nameNameSwitch = true"
+                          (clickOutside)="nameNameclose(data)">
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                          *ngIf="data.nameName && data.nameNameSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group sort-dropdown">
+                              <li class="list-group-item no_pad "
+                                (keypress)="appendname(item.maintitle,item.index,data)"
+                                (click)="appendname(item.maintitle,item.index,data)"
+                                *ngFor="let item of wiproname |filter:data.nameName">
+                                <label for="inti_name" class="float-left name">
+                                  <span class="d-block list-name">{{item.maintitle}}</span>
+                                  <span class="d-block sub-list">{{item.subtitle}}</span>
+                                </label>
+                              </li>
+                              <li class="d-block list-name no_pad"
+                                *ngIf="(wiproname |filter:data.nameName).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                        </div>
+                      </form>
+                    </div>
+                    <!--name autocomplete ends here-->
+
+                  </td>
+
+                  <td class="no_pad">
+                    <!-- owner autocomplete starts here-->
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+                class="label-form">Contracting country*</label>  -->
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                          name="ownerName" autocomplete="off" type="text" [(ngModel)]="data.ownerName"
+                          placeholder="Select" (click)="data.ownerNameSwitch = true"
+                          (clickOutside)="ownerNameclose(data)">
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                          *ngIf="data.ownerName && data.ownerNameSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group sort-dropdown">
+                              <li class="list-group-item no_pad "
+                                (keypress)="appendowner(item.maintitle,item.index,data)"
+                                (click)="appendowner(item.maintitle,item.index,data)"
+                                *ngFor="let item of wiproowner |filter:data.ownerName">
+                                <label for="inti_name" class="float-left name">
+                                  <span class="d-block list-name">{{item.maintitle}}</span>
+                                  <span class="d-block sub-list">{{item.subtitle}}</span>
+                                </label>
+                              </li>
+                              <li class="d-block list-name no_pad"
+                                *ngIf="(wiproowner |filter:data.ownerName).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                        </div>
+                      </form>
+                    </div>
+                    <!--owner autocomplete ends here-->
+
+                  </td>
+                  <td class="customized-checkbox">
+                    <mat-checkbox aria-label="select">
+                    </mat-checkbox>
+                  </td>
+                  <td class="width10">
+                    <div class="customized-input">
+                      <label for="tcvdet" class=""> </label>
+                      <input id="tcvdet" type="text" class="border-gray w-100" value="" placeholder="Event details">
+                    </div>
+                  </td>
+                  <td class="width10">
+                    <div class="customized-input">
+                      <label for="solval" class=""> </label>
+                      <input id="solval" type="text" class="border-gray w-100" value="" placeholder="Event details">
+                    </div>
+                  </td>
+                  <td class="no_pad">
+                    <!-- solbdm autocomplete starts here-->
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+                class="label-form">Contracting country*</label>  -->
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                          name="solbdmName" autocomplete="off" type="text" [(ngModel)]="data.solbdmName"
+                          placeholder="Select" (click)="data.solbdmNameSwitch = true"
+                          (clickOutside)="solbdmNameclose(data)">
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                          *ngIf="data.solbdmName && data.solbdmNameSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group sort-dropdown">
+                              <li class="list-group-item no_pad "
+                                (keypress)="appendsolbdm(item.maintitle,item.index,data)"
+                                (click)="appendsolbdm(item.maintitle,item.index,data)"
+                                *ngFor="let item of wiprosolbdm |filter:data.solbdmName">
+                                <label for="inti_name" class="float-left name">
+                                  <span class="d-block list-name">{{item.maintitle}}</span>
+                                  <span class="d-block sub-list">{{item.subtitle}}</span>
+                                </label>
+                              </li>
+                              <li class="d-block list-name no_pad"
+                                *ngIf="(wiprosolbdm |filter:data.solbdmName).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                        </div>
+                      </form>
+                    </div>
+                    <!--solbdm autocomplete ends here-->
+                  </td>
+                  <td>
+                      <!-- Select DROPDOWN STARTS -->
+                      <div class="customized-select ">
+                        <span class="caret color-azure"></span>
+                        <select role="listbox" >
+                          <option value="Unit">Select</option>
+                          <option value="Alliance">Alliance</option>
+                          <option value="Unit1">Unit 1</option>
+                          <option value="Unit2">Unit 2</option>
+                        </select>
+                      </div>
+                      <!-- Select DROPDOWN STARTS -->
+                    </td>
+                    <td>
+                        <!-- Select DROPDOWN STARTS -->
+                        <div class="customized-select ">
+                          <span class="caret color-azure"></span>
+                          <select role="listbox" >
+                            <option value="Unit">Select</option>
+                            <option value="Alliance">Alliance</option>
+                            <option value="Unit1">Unit 1</option>
+                            <option value="Unit2">Unit 2</option>
+                          </select>
+                        </div>
+                        <!-- Select DROPDOWN STARTS -->
+                      </td>
+                  <td class="no_pad display_flex">
+                      <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="view"
+                      matTooltip="view">
+                      <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-eye"></span>
+                    </button>
+                    <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="Delete"
+                      matTooltip="Delete" (click)="deletesol(data.id)">
+                      <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Table ends here -->
+        </div>
+      </mat-expansion-panel>
+
+    </div>
+    </div>
+    <!-- Solution panel ends here -->
+
+
+    <!-- Credit allocation panel starts here -->
+    <div class="col-12 no_pad float-left scroll-tabs">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-26 pad_t0 credit-tab">
+      <mat-expansion-panel hideToggle="true" [expanded]="panelOpenState6" class="no_pad"
+        (opened)="panelOpenState6 = true" (closed)="panelOpenState6 = false">
+        <mat-expansion-panel-header class="min_height60">
+          <div class="min_height60 col-12 no_pad">
+            <div class="accord-heading col-12">
+              <span
+                [ngClass]="panelOpenState6 ? 'mdi mdi-chevron-down chevron-right float-left':'mdi mdi-chevron-right chevron-right float-left'"></span>
+              <div class="float-left no_pad"> <span class="accordian-title cardsHead col-6 no_pad">
+
+                  Credit allocation</span></div>
+              <div class="col-6 float-right no_pad bot10">
+                <button aria-label="Add credit" (click)="addcredit();panelOpenState6 = false"
+                  class="primary-button borderless h-40 std save-responsive-btn float-right pad_10">+ Add
+                  credit</button>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+        <div class="col-12 no_pad float-left btop_withoutpadding">
+          <!-- Table starts here -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad overflowscroll">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th class="customized-checkbox">
+                    <mat-checkbox aria-label="select all" (change)="selectAllcredit()" [(ngModel)]="selectedAllcredit">
+                    </mat-checkbox>
+                  </th>
+                  <th>Credit type*</th>
+                  <th>BDM*</th>
+                  <th>Service line</th>
+                  <th>Practice</th>
+                  <th>Sub practice</th>
+                  <th>Value($)</th>
+                  <th>% Contribution*</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of credit_data">
+                  <td class="customized-checkbox">
+                    <mat-checkbox aria-label="select" (change)="checkIfAllSelectedcredit(data)"
+                      [(ngModel)]="data.isCheccked">
+                    </mat-checkbox>
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox">
+                        <option value="">Type</option>
+                        <option value="Type">Type</option>
+                        <option value="Type1">Type 1</option>
+                        <option value="Type2">Type 2</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td class="no_pad">
+                    <!-- bdm autocomplete starts here-->
+                    <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left customized-input cust_autoComplete pos-rel no_pad">
+                      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <!-- <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ContractingName"
+                class="label-form">Contracting country*</label>  -->
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                          name="bdmName" autocomplete="off" type="text" [(ngModel)]="data.bdmName" placeholder="Select"
+                          (click)="data.bdmNameSwitch = true" (clickOutside)="bdmNameclose(data)">
+                        <span class="mdi mdi-magnify"></span>
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                          *ngIf="data.bdmName && data.bdmNameSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group sort-dropdown">
+                              <li class="list-group-item no_pad " (keypress)="appendbdm(item.maintitle,item.index,data)"
+                                (click)="appendbdm(item.maintitle,item.index,data)"
+                                *ngFor="let item of wiprobdm |filter:data.bdmName">
+                                <label for="inti_name" class="float-left name">
+                                  <span class="d-block list-name">{{item.maintitle}}</span>
+                                  <span class="d-block sub-list">{{item.subtitle}}</span>
+                                </label>
+                              </li>
+                              <li class="d-block list-name no_pad" *ngIf="(wiprobdm |filter:data.bdmName).length == 0">
+                                No record found </li>
+                            </ul>
+                          </perfect-scrollbar>
+                        </div>
+                      </form>
+                    </div>
+                    <!--bdm autocomplete ends here-->
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox">
+                        <option value="">Service line</option>
+                        <option value="serv">Service line 1</option>
+                        <option value="serv1">Service line 2</option>
+                        <option value="serv2">Service line 3</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox">
+                        <option value="Practice">Practice</option>
+                        <option value="Practice1">Practice 1</option>
+                        <option value="Practice2">Practice 2</option>
+                        <option value="Practice3">Practice 3</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td>
+                    <!-- Select DROPDOWN STARTS -->
+                    <div class="customized-select">
+                      <span class="caret color-azure"></span>
+                      <select role="listbox">
+                        <option value="">Sub practice</option>
+                        <option value="Sub practice1">Sub practice 1</option>
+                        <option value="Sub practice2">Sub practice 2</option>
+                      </select>
+                    </div>
+                    <!-- Select DROPDOWN STARTS -->
+                  </td>
+                  <td class="width10">
+                    <div class="customized-input">
+                      <label for="val" class=""> </label>
+                      <input id="val" type="text" class="border-gray w-100" value="00.00" placeholder="00.00">
+                    </div>
+                  </td>
+                  <td class="width10">
+                    <div class="customized-input">
+                      <label for="cont" class=""> </label>
+                      <input id="cont" type="text" class="border-gray w-100" value="00.00" placeholder="00.00">
+                    </div>
+                  </td>
+                  <td class="no_pad display_flex">
+                    <button class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn" aria-label="Delete"
+                      matTooltip="Delete" (click)="deletecredit(data.id)">
+                      <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Table ends here -->
+        </div>
+      </mat-expansion-panel>
+    </div>
+    </div>
+    <!-- Credit allocation panel ends here -->
+  </div>
+</div>

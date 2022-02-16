@@ -1,0 +1,459 @@
+<form [formGroup]="proposalCreateForm">
+  <div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab create-document-container">
+      <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+        <h1 class="heading-level-one1">Create new document</h1>
+      </div>
+
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad">
+        <div class="float-right disp-flex save-cancel-responsive">
+          <button class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+            (click)="onCancle()">Cancel</button>
+          <button class="primary-button borderless h-40 std save-responsive-btn button-wd50"
+            (click)="onCreate(proposalCreateForm)"
+            *ngIf="dealRoleService.dealTeam?.IsRoleMappedToUser || dealRoleService.dealOwner?.IsRoleMappedToUser">Create</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-container *ngIf="isLoading; else elseTemplate">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+          <div class="loaderContainer">
+            <div class="loader"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad create-document-container mar-top-65">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-180 "> </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad  mt40">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 ">
+            <div class="col-12 float-left no_pad customized-input">
+
+              <!-- Select DROPDOWN STARTS -->
+              <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
+            
+                      <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="dealA1" class="label-form"> Action name
+                        <span class="required"> *</span>
+                      </label>
+                      <div class="customized-select">
+                        <span class="caret color-azure"></span>
+                        <select id="dealA1" role="listbox">
+                          <option value="Face to face conversation">Action name</option>
+                          <option value="Virtual conversation">Action name 1 </option>
+                          <option value="Telephonic Conversation">Action name 2 </option>
+            
+                        </select>
+                      </div>
+                    </div>
+             -->
+              <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left ">
+            
+                      <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="dealA2" class="label-form"> Action type
+                        <span class="required"> *</span>
+                      </label>
+                      <div class="customized-select">
+                        <span class="caret color-azure"></span>
+                        <select id="dealA2" role="listbox">
+                          <option value="Face to face conversation">Tech solution submission </option>
+                          <option value="Virtual conversation">Virtual </option>
+                          <option value="Telephonic Conversation">Telephonic </option>
+            
+                        </select>
+                      </div>
+                    </div> -->
+
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 pb21 mt20">
+                <div class="w-100">
+                  <label for="Pricing" class="label-form w-100">Document name<span class="required"> *</span></label>
+                  <div class="customized-select">
+                    <input class="border-gray w-100" placeholder="Enter document name" id="Pricing" type="text"
+                      aria-required="true" formControlName="Name" maxlength="100"
+                      [ngClass]="{'error': proposalCreateForm.controls['Name'].errors && proposalCreateForm.controls['Name'].touched}" />
+                    <p *ngIf="proposalCreateForm.controls['Name'].touched && proposalCreateForm.controls['Name'].value == ''"
+                      class="error-message top-40">Please enter document name</p>
+                    <p *ngIf="proposalCreateForm.controls['Name'].errors?.range" class="error-message top-40">Document
+                      name cannot exceed 100 characters</p>
+                    <p *ngIf="proposalCreateForm.controls['Name'].errors?.isError" class="error-message top-40">Please
+                      enter a valid document name</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 pb21 mt20">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad mb5"
+                  for="calStart">Planned submission date
+                  <span class="required"> *</span>
+                </label>
+
+                <div class="pos-rel">
+                  <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                    <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                      <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart" aria-required="true"
+                        (click)="picker2.open()" (keypress)="picker2.open()" [matDatepicker]="picker2" readonly
+                        title="DD-MMM-YYYY" placeholder="DD-MMM-YYYY" formControlName="SubmissionDate" [min]="minDate"
+                        [ngClass]="{'error': proposalCreateForm.controls['SubmissionDate'].errors && proposalCreateForm.controls['SubmissionDate'].touched}">
+                      <mat-datepicker-toggle matSuffix [for]="picker2" disabled>
+                        <span (click)="picker2.open()" class="mdi mdi-calendar-blank float-right no_pad"
+                          matDatepickerToggleIcon></span>
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                      <p *ngIf="proposalCreateForm.controls['SubmissionDate'].touched && !proposalCreateForm.controls['SubmissionDate'].valid"
+                        class="error-message top-40">Please enter planned submission date</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- datepicker ends -->
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 pb21 mt20">
+                <label for="Ttype"
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad mb5">Select
+                  template type
+                  <span class="required"> *</span></label>
+
+                <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                  <mat-radio-group aria-label="Select an option" id="Ttype" (ngModelChange)="templateChange()"
+                    formControlName="TemplateType" aria-required="true">
+                    <mat-radio-button *ngFor="let element of statusArray" [value]="element.id" class="mr20">
+                      {{element.name}}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div *ngIf="!toggleUpload"
+                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 pb21 mt20">
+                <div class="w-100">
+                  <label for="Pricing" class="label-form w-100">Select template
+                    <span class="required"> *</span></label>
+                  <div class="customized-select">
+                    <input class="border-gray w-100" role="button" tabindex="-1" placeholder="Click here to select template from DA"
+                      id="dealA3" type="text" [value]="(this?.proposalCreateForm?.controls?.Template?.value !=null &&
+                      this?.proposalCreateForm?.controls?.Template?.value != '' &&
+                      this?.proposalCreateForm?.controls?.Template?.value != undefined
+                      ) ? (this?.proposalCreateForm?.controls?.Template?.value?.fileName) : ''" aria-required="true"
+                      formControlName="Template" readonly
+                      [ngClass]="{'error': proposalCreateForm.controls['Template'].errors && proposalCreateForm.controls['Template'].touched}" />
+                    <span class="W"><img src="assets/images/W.svg" alt="W" width="75%"></span>
+                    <p *ngIf="proposalCreateForm.controls['Template'].touched && !proposalCreateForm.controls['Template'].valid"
+                      class="error-message top-40">Please select template</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- <div *ngIf="!toggleUpload"
+                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 pb21 mt20">
+
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad mb5"
+                  for="dealA3" class="label-form">Select template
+                  <span class="required"> *</span>
+                </label>
+                <input class="border-gray w-100" tabindex="-1" id="dealA3" formControlName="Template" readonly
+                  placeholder="Click here to select template from DA"
+                  [ngClass]="{'error': proposalCreateForm.controls['Template'].errors && proposalCreateForm.controls['Template'].touched}" />
+                <p *ngIf="proposalCreateForm.controls['Template'].touched && !proposalCreateForm.controls['Template'].valid"
+                  class="error-message top-40">Please select template</p> -->
+              <!-- <mat-form-field class="col-12 no_pad float-left">
+                  <mat-label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad">Select
+                  </mat-label>
+                  <mat-select required id="dealA3" formControlName="Template" panelClass="Select-panel-class"
+                    class="select-focus" aria-required="true"
+                    [ngClass]="{'error': proposalCreateForm.controls['Template'].errors && proposalCreateForm.controls['Template'].touched}">
+                    <mat-option matTooltip="{{template}}" *ngFor="let template of wpListTemplate?.attachmentDetails"
+                      [value]="wpListTemplate.attachmentDetails[0]">
+                      {{template?.fileName}}
+                    </mat-option>
+                  </mat-select>
+
+                  <p *ngIf="proposalCreateForm.controls['Template'].touched && !proposalCreateForm.controls['Template'].valid"
+                    class="error-message top-40">Please select template</p>
+                </mat-form-field> -->
+              <!-- </div> -->
+
+              <div *ngIf="toggleUpload"
+                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20 pb21 mt20">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad mb5"
+                  for="dealA2" class="label-form"> Attach template
+                  <span class="required"> *</span>
+                </label>
+                <div class="customized-select">
+                  <input class="border-gray w-100 attach-span" tabindex="-1" id="spnFilePath" formControlName="Template"
+                    readonly
+                    [ngClass]="{'error': proposalCreateForm.controls['Template'].errors && proposalCreateForm.controls['Template'].touched}" />
+                  <button class="primary-button btn-block w-121 mdi mdi-attachment attach-icon-deal cp"
+                    id="btnFileUpload" tabindex="-1"> </button>
+                  <input type="file" aria-label="attach template" tabindex="0" id="fileUpload" #fileInput
+                    (click)="fileInput.value = null" class="w-121 upload-input" (change)="fileUpload($event)"
+                    name="files[]" aria-required="true" />
+                  <p *ngIf="proposalCreateForm.controls['Template'].touched && !proposalCreateForm.controls['Template'].valid"
+                    class="error-message top-40">Please choose file</p>
+                </div>
+
+              </div>
+
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 float-left plb-60-20 web-select-box">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="approverSelection"
+                  class="label-form"> Select Approver
+                </label>
+                <mat-form-field class="col-12 no_pad float-left">
+                  <mat-label>Select approver</mat-label>
+                  <mat-select id="approverSelection" formControlName="Approver" disableOptionCentering
+                    panelClass="Select-panel-class" class="select-focus" aria-label="{{selectactionType}}"
+                    aria-required="true">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let ele of approvarArr" [value]="ele" matTooltip="{{ele.FullName}}">
+                      {{ele.FullName}}</mat-option>
+                  </mat-select>
+                  <p *ngIf="proposalCreateForm.controls['Approver'].errors?.isError" class="error-message top-40">
+                    Please
+                    enter a valid approver name</p>
+                </mat-form-field>
+              </div>
+
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 float-left plb-60-20 mobile-select-box">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="approverSelection"
+                  class="label-form"> Select Approver
+                </label>
+                <mat-form-field class="col-12 no_pad float-left">
+                  <mat-label>Select approver</mat-label>
+                  <mat-select id="approverSelection" formControlName="Approver" disableOptionCentering
+                    panelClass="Select-panel-class" class="select-focus" aria-label="{{selectactionType}}"
+                    aria-required="true">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let ele of approvarArr" [value]="ele" matTooltip="{{ele.FullName}}">
+                      {{ele.FullName}}</mat-option>
+                  </mat-select>
+                  <p *ngIf="proposalCreateForm.controls['Approver'].errors?.isError" class="error-message top-40">
+                    Please
+                    enter a valid approver name</p>
+                </mat-form-field>
+              </div>
+
+
+
+
+
+              <!-- <div *ngIf="toggleUpload" class="col-12 col-sm-12 col-md-6 col-lg-6 float-left mt20 web-select-box">
+
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="StaTus"
+                  class="label-form"> Status
+                  <span class="required"> *</span>
+                </label>
+                <mat-form-field class="col-12 no_pad float-left">
+                  <mat-label>Select status</mat-label>
+                  <mat-select id="StaTus" formControlName="ProposalStatus" disableOptionCentering
+                    panelClass="Select-panel-class" class="select-focus">
+                    <mat-option *ngFor="let ele of statusList" [value]="ele.Id">{{ele.Name}}</mat-option>
+                  </mat-select>
+                  <p *ngIf="proposalCreateForm.controls['ProposalStatus'].touched && !proposalCreateForm.controls['ProposalStatus'].valid"
+                    class="error-message top-40">Please select status</p>
+                </mat-form-field>
+              </div> -->
+
+              <!-- Select DROPDOWN ENDS -->
+
+              <!--autocomplete action owner starts-->
+              <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  cust_autoComplete pos-rel mt20">
+                        <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="ActionOwner"
+                            class="label-form">
+                            Action owner
+                          </label>
+                          <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                            id="ActionOwner" name="ActionOwner" (click)="ActionOwnerSwitch=true" autocomplete="off"
+                            type="text" [(ngModel)]="Action" placeholder="Enter conversation name"
+                            (clickOutside)="ActionOwnerclose()">
+                          <span class="mdi mdi-magnify"></span>
+            
+                          <div
+                            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                            *ngIf="Action && ActionOwnerSwitch">
+                            <perfect-scrollbar style="max-height:160px">
+                              <ul class=" list-group color-azure  sort-dropdown mr2">
+                                <li class="list-group-item list-name" (click)="appendAction(item.contact)"
+                                  *ngFor="let item of Actions |filter:Action">{{item.contact}}</li>
+            
+                                <li class="d-block list-name h-40 p-10" *ngIf="(Actions |filter:Action).length == 0"> No
+                                  record found {{(Actions |filter:Action).length}} </li>
+                              </ul>
+                            </perfect-scrollbar>
+                          </div>
+                        </form>
+                      </div> -->
+              <!--autocomplete action owner ends-->
+
+              <!-- datepicker starts -->
+              <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 pb21 mt20">
+                          <label
+                              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad"
+                              for="calStart">Planned start date <span class="required"> *</span></label>
+            
+                          <div class="pos-rel">
+                              <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                                  <div
+                                      class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                                      <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left "
+                                          id="calStart" (click)="picker1.open()" (keypress)="picker1.open()"
+                                          [matDatepicker]="picker1" title="DD/MMM/YYYY" placeholder="DD-MMM-YYYY">
+                                      <mat-datepicker-toggle matSuffix [for]="picker1" disabled>
+                                          <span class="mdi mdi-calendar-blank float-right no_pad"
+                                              matDatepickerToggleIcon></span>
+                                      </mat-datepicker-toggle>
+                                      <mat-datepicker #picker1></mat-datepicker>
+                                  </div>
+                              </div>
+                          </div>
+                      </div> -->
+
+            </div>
+
+            <!-- <div class="col-12 float-left no_pad">
+          <div class="col-8 float-left no_pad">
+           <div class="col-12 col-sm-12 col-md-4 col-lg-6 col-xl-6 no_pad float-left  mt20">
+              <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  float-left plb-60-20 cust_autoComplete pos-rel">
+                  <form
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                      <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                          for="dependent" class="label-form">Dependent action(s)
+                      </label>
+                      <input
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input"
+                          id="dependent" name="dependent" autocomplete="off" type="text"
+                          [(ngModel)]="dependent" placeholder="Link potential wipro solutions"
+                          (clickOutside)="dependentclose()" (click)="dependentSwitch = true">
+                      <span class="mdi mdi-magnify"></span>
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-right  border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                          *ngIf="dependent && dependentSwitch">
+                          <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                              <ul class=" list-group mr2  sort-dropdown ">
+                                  <li class="list-group-item h-50 p-4-10 "
+                                      (click)="appenddependent(item.contact,item.index)"
+                                      *ngFor="let item of dependentArr |filter:dependent">
+
+                                      <label for="inti_name" class="float-left name w-80">
+                                          <span class="d-block list-name ellipses">{{item.contact}}</span>
+                                          <span class="d-block sub-list">{{item.designation}}</span>
+                                      </label>
+
+                                  </li>
+                                  <li class="d-block list-name h-40 p-10"
+                                      *ngIf="(dependentArr |filter:dependent).length == 0">
+                                      No record found </li>
+                              </ul>
+                          </perfect-scrollbar>
+                      </div>
+                  </form>
+                  <div
+                      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact selected-tags">
+                      <perfect-scrollbar style="max-height:300px">
+                          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tagged-box mt-10 p-4-10 mr10  d-flex"
+                              *ngFor="let item of selecteddependent">
+                              <label for="inti_name" class="float-left name w-94">
+                                  <span
+                                      class="d-block color-azure mr10 float-left ellipses w-100">{{item.contact}}</span>
+                              </label>
+                              <span role="button" tabindex="0" aria-label="delete"
+                                  class="mdi mdi-close close-lead float-right cp"></span>
+                          </div>
+                      </perfect-scrollbar>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left  cust_autoComplete pos-rel mt20">
+              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="escalation"
+                  class="label-form">
+                  Action owner
+                </label>
+                <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                  id="escalation" name="Escalation" (click)="escalationSwitch=true" autocomplete="off"
+                  type="text" [(ngModel)]="Escalation" placeholder="Enter conversation name"
+                  (clickOutside)="escalationclose()">
+                <span class="mdi mdi-magnify"></span>
+  
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg"
+                  *ngIf="Escalation && escalationSwitch">
+                  <perfect-scrollbar style="max-height:160px">
+                    <ul class=" list-group color-azure  sort-dropdown mr2">
+                      <li class="list-group-item list-name" (click)="appendEscalation(item.contact)"
+                        *ngFor="let item of Escalations |filter:Escalation">{{item.contact}}</li>
+  
+                      <li class="d-block list-name h-40 p-10" *ngIf="(Escalations |filter:Escalation).length == 0"> No
+                        record found {{(Escalations |filter:Escalation).length}} </li>
+                    </ul>
+                  </perfect-scrollbar>
+                </div>
+              </form>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt20">
+                <label for="description" class="col-6 float-left no_pad label-form ">Description
+                </label>
+                <textarea id="description"
+                    class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  text-area-content"
+                    placeholder="Please enter the Customer Strategic Initiative description"></textarea>
+
+            </div>
+
+        </div>
+         <div class="col-4 float-left ">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad ">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+                    <h3 class="heading-level-three mt10 d-inline-flex">Attachments </h3>
+                    <button class=" primary-button attach-btn d-flex align-items-center float-right"
+                        (click)="openAttachFilePopup()">
+                        <span class="mdi mdi-attachment attach-icon"> </span> Attach files </button>
+                </div>
+                <section class="float-left w-100 padd-top-btm20 mt20">
+                    <span class="float-left attachment"> {{service.filesList.length}} Attachments </span>
+                    <button class="btn-none float-right download"> Download all </button>
+                </section>
+
+                <section class="float-left col-12 no_pad mt-10"
+                    *ngFor="let item of service.filesList;let i=index">
+
+                    <div class="col-xl-7 col-lg-7 col-md-6 col-5 pl-0 float-left d-flex">
+                        <div class="float-left naming-tags-square pad-7 child-middle bg-azure">
+                            <span class="initials mdi mdi-file-document font-20" id="inti_name-kb"></span>
+                        </div>
+                        <label for="inti_name-kb "
+                            class="float-left pos-rel pl10 name-sq padLR-10 border-std color-azure mx-width-90per">
+                            <div class="tag color-label_gray padding-left5 ellipses " title="{{item.name}}">
+                                {{item.name}}</div>
+                            <span class="float-right mdi mdi-window-close color-azure onone cp" role="button"
+                                tabindex="0" (click)="removeUploadFiles(i)">
+                                <span class="sr-only">Remove attachment
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+
+                    
+                </section>
+
+            </div>
+        </div> 
+        </div>-->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</form>

@@ -1,0 +1,115 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-180"> </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 ">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad mt20">
+  
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt-15 ">
+          <span class="back-arrow-helpdesk mdi mdi-arrow-left " (click)="goback()"></span>
+          <h2 class="heading-owner"> Service line BDM Transfer </h2>
+          <h6 class="cardsHead mt20 heading-level-three">Search</h6>
+  
+          <div class="divider mt10"> </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+            <!-- Call ID starts here -->
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+              <div class="customized-input">
+                <label for="callid" class="label-form w-100">Call ID</label>
+                <div class="pos-rel w-100 float-left no_pad">
+                  <input id="callid" type="text" class="col-12  float-left" placeholder="Enter call ID">
+                </div>
+              </div>
+            </div>
+            <!--Call ID  ends here -->
+  
+            <!-- Call raised by (email ID) starts here -->
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+              <div class="customized-input">
+                <label for="callraised" class="label-form w-100">Call raised by (email ID)</label>
+                <div class="pos-rel w-100 float-left no_pad">
+                  <input id="callraised" type="text" class="col-12  float-left" placeholder="Enter email">
+                </div>
+              </div>
+            </div>
+            <!--Call raised by (email ID) ends here -->
+  
+            <!-- Account number starts here -->
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left plb-60-20">
+              <div class="customized-input">
+                <label for="oldsl" class="label-form w-100">Account number</label>
+                <div class="pos-rel w-100 float-left no_pad">
+                  <input id="oldsl" type="text" class="col-12  float-left" placeholder="Enter account number">
+                </div>
+              </div>
+            </div>
+            <!--Account number ends here -->
+  
+  
+  
+            <!--Search button starts here -->
+            <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-right mt4 plb-60-20">
+              <button class="float-right pos-rel searchButton">
+                Search
+              </button>
+            </div>
+            <!--Search button ends here -->
+     
+          </div>
+        </div>
+  
+      </div>
+  
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card1 margin-btm55 no_pad mt20">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt-15 ">
+          <h6 class="mt20 heading-level-three">List of ADH/VDH/SDH</h6>
+          <!--table starts seleceted records-->
+          <!-- <h6 class=" heading-level-three cp" [ngClass]="showtable ? 'mdi mdi-chevron-down':'mdi mdi-chevron-up'" (click)="showtable = !showtable">6 orders selected</h6> -->
+          <div >
+          <app-simple-scroll-table [TableHeader]="headernonsticky1" [TableCollection]="userArray"
+          [IscheckBoxRequired]=false [totalTableCount]="tableCount" [TableName]="'slbdm'"
+          [IsPaginationRequired]=false></app-simple-scroll-table>
+        </div>
+          <!--table starts seleceted records-->
+          <div class="divider mt10"> </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt20">
+  
+  
+         <!-- Service Line starts here -->
+         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left  plb-60-20 mt-20-mob web-select-box h100">
+            <label for="serviceline" class="w-100 label-form">New account delivery manager</label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>New account delivery manager</mat-label>
+              <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus mat-select cursor"
+                name="serviceline" id="serviceline" role="listbox">
+                <mat-option value="" selected hidden disabled>CBU Name</mat-option>
+                <mat-option value="val1">CBU Name 1</mat-option>
+                <mat-option value="val2">CBU Name 2</mat-option>
+                <mat-option value="val3">CBU Name 3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  plb-60-20 mobile-select-box">
+            <label for="serviceline" class="w-100 label-form">New account delivery manager</label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <select class="select-focus mat-select" name="serviceline" id="serviceline" role="listbox">
+                <option value="val1">CBU Name 1</option>
+                <option value="val2">CBU Name 2</option>
+                <option value="val3">CBU Name 3</option>
+              </select>
+            </div>
+          </div>
+          <!--Service Line ends here -->
+  
+    
+          <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 float-right mt4 plb-60-20">
+              <button class="float-right pos-rel searchButton" (click)="openmangrchnage()">
+                Submit
+              </button>
+            </div>
+ 
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>

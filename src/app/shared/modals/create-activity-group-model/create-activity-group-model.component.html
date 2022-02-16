@@ -1,0 +1,75 @@
+<div class="col-12 float-left  no_pad db-container ">
+
+  <div class="col-12 float-left  container-dialog">
+    <div class="col-12 float-left  no_pad popup-hd">
+      <span class="col-11 float-left  no_pad search-db-hd-txt" mat-dialog-title>Craete activity group</span>
+      <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+        mat-dialog-close (click)="onNoClick()"></button>
+    </div>
+
+    <div class="col-12 float-left border-bottom-grey"></div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20 ">
+      <label for="empty" class="w-100 label-form">New activity group <span class="required"> * </span></label>
+      <div class="pos-rel w-100 float-left no_pad customized-input">
+        <input id="empty" autocomplete="off" type="text" class="border-gray w-100 agenda-txt-activity" value=""
+          placeholder="Enter activity group">
+        <!-- <p *ngIf="f.meetingSubject.touched && !f.meetingSubject.valid" class="error-message"> Please enter
+          meeting subject</p> -->
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20">
+      <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationT1"
+        class="label-form"> Activity type <span class="required"> *</span></label>
+      <div class="customized-select">
+        <span class="caret color-azure"></span>
+        <select id="CoversationT1" role="listbox">
+          <option value="">Select activity type</option>
+          <option [value]="item.Id" *ngFor="let item of conversationType">{{item.Value}}</option>
+        </select>
+        <!-- <p *ngIf="f.conversationType.touched && !f.conversationType.valid" class="error-message"> Please
+          enter activity type </p> -->
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20">
+      <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" class="label-form">
+          Account name *</label>
+        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="CompanyName"
+          name="CompanyName" type="text" [(ngModel)]="companyName" autocomplete="off" placeholder="Enter Account name"
+          (click)="showCompanySwitch = true" (clickOutside)="companyNameClose()">
+        <span class="mdi mdi-magnify magnify-activity"></span>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad z-ind-9  mt-10"
+          *ngIf="companyName && showCompanySwitch ">
+          <ul class=" list-group color-azure autocomplete-box">
+            <perfect-scrollbar style="max-height:150px">
+              <li class="list-group-item" (click)="appendName(item.name)"
+                *ngFor="let item of companyDetails |filter:companyName">
+
+                <span class="d-block list-name"> {{item.name}} </span>
+                <span class="sub-list d-block"> {{item.contact}}
+                  |{{item.location}}
+                  |{{item.BU}} </span>
+              </li>
+              <li class="d-block list-name h-40 p-10" *ngIf="(companyDetails |filter:companyName).length == 0">
+                No record found </li>
+            </perfect-scrollbar>
+          </ul>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-12 float-left border-bottom-grey mt-20"></div>
+
+    <span class="mt-20 float-left">Are you sure you want to create this activity group ?</span>
+
+  </div>
+
+  <div class="col-12 float-left no_pad mt-20">
+    <button aria-label="ok" class="col-12 float-left btndef-none no_pad confrm-btn" mat-dialog-close>Create</button>
+  </div>
+
+</div>

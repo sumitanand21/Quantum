@@ -1,0 +1,52 @@
+<div class="col-12 float-left mb50 order-list-BFM">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left card no_pad mb10">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 card-content float-left pad-30 mediaPad">
+      <div class="col-12 no_pad float-left ">
+        <mat-card class="col-12 float-left" *ngFor="let data of manualchecks;let i = index">
+          <span class="no_pad float-left num"><span *ngIf="i<9">0</span>{{i+1}}</span>
+          <span class="col-12 col-xs-4 col-md-4 float-left no_pad question-sub-text">{{data.question}}</span>
+
+          <div class="col-12 col-md-4 col-xs-4 no_pad float-left">
+            <div class="col-4 float-right plb-0-35 w100">
+              <div *ngIf="data.status"
+               class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Status
+              </div>
+              <div *ngIf="data.status" 
+              class="float-left no_pad doc-text">{{data.status}}
+
+              </div>
+            </div>
+            <div class="col-4 float-right plb-0-35 w100">
+              <div *ngIf="data.sow" 
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">SOW
+              </div>
+              <div *ngIf="data.sow" 
+              class="float-left no_pad doc-text"><a href="#">{{data.sow}}</a>
+
+              </div>
+            </div>
+
+            <div class="col-4 float-right plb-0-35 w100 fRight right-33">
+              <div *ngIf="data.sign" 
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad converstion-name pb5">Signatures
+              </div>
+              <div *ngIf="data.sign" 
+              class="float-left no_pad doc-text"><a href="#">{{data.sign}}</a>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 col-xs-3  float-right mob_h80">
+            <div class="col-2 float-right plb-0-35">
+                <button class="mdi mdi-check message_cls float-right"  matTooltip="Approve"></button>
+            
+            </div>
+            <div class="col-4 float-right plb-0-35 mRight-10">
+                <button class="mdi mdi-close message_cls float-right"  matTooltip="Reject"></button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-deal suspendPop">
+    
+        <div class="col-12 float-left  container-dialog">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Assign deal owner</span>
+                <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn cp" aria-label="close" mat-dialog-close></button>
+            </div>
+            <div class="col-12 float-left border-bottom-grey "></div>
+    
+    
+    
+    
+            <!-- added-search-names -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left customized-input cust_autoComplete pos-rel no_pad  mar-top22">
+    
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="customerName" class="label-form"> Search contacts</label>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+    
+                        <input class="col-12 standard-border float-left h-40 label-input" id="customerName" name="customerName"
+                            type="text" autocomplete="off" [(ngModel)]="customerName" placeholder="Search people to assign opportunity  "
+                            (clickOutside)="customerNameSwitch = false" (input)="onButtonClick();customerNameSwitch = true">
+                        <span class="mdi mdi-magnify"></span>
+                        
+                    </div>
+                    <div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box pos-abs border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                        *ngIf="customerName && customerNameSwitch">
+                        <perfect-scrollbar style="max-height:77px" class="z-ind-9">
+                            <ul class=" list-group mr2 sort-dropdown">
+                                <li class="list-group-item h-50 p-4-10 " (click)="appendcustomer(item)" *ngFor="let item of data.configdata[data.action]">
+    
+                                    <div class="float-left naming-tags child-middle bg-azure">
+                                        <span class="initials">{{item.initials}}</span>
+                                    </div>
+                                    <label for="inti_name" class="float-left name">
+                                        <span class="d-block list-name">{{item.contact}}</span>
+                                        <span class="d-block sub-list">{{item.designation}}</span>
+                                    </label>
+                                    <span class="btn-key" *ngIf="item.value"> Key </span>
+                                </li>
+    
+                                <li class="d-block list-name h-40 p-10" *ngIf="(data.configdata[data.action]).length == 0">
+                                    No record found </li>
+                            </ul>
+    
+                        </perfect-scrollbar>
+                    </div>
+                </div>
+                </form>
+    
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                    <perfect-scrollbar style="max-height:200px">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10" *ngFor="let item of selectedCustomerDeal">
+    
+                            <div class="float-left naming-tags child-middle bg-azure">
+                                <span class="initials">{{item.initials}}</span>
+                            </div>
+                            <label for="inti_name" class="float-left name">
+                                <span class="d-block list-name">{{item.contact}}</span>
+                                <span class="d-block sub-list">{{item.designation}}</span>
+                            </label>
+                            <span class="mdi mdi-close close-lead float-right cp" ></span>
+    
+    
+                        </div>
+                    </perfect-scrollbar>
+    
+                </div>
+            </div>
+    
+            </div>
+    
+    
+            <div class="col-12 float-left no_pad mt20">
+                <button aria-label="Archive" class="col-12 float-left btndef-none no_pad confrm-btn mar-top22" (click)="onConfirm()" >Done</button>
+            </div>
+    
+        </div>

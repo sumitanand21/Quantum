@@ -1,0 +1,44 @@
+<div class="col-12 float-left  no_pad popup-container ">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt popup-hd-size" mat-dialog-title>Confirm changes</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn close_bottom5"
+                aria-label="close" mat-dialog-close></button>
+        </div>
+        <!--<div class="col-12 float-left border-bottom-grey1"></div>-->
+        <!--<div class="col-12 no_pad float-left">
+            <div class="customized-select paddtop-25">
+                <span class="mdi mdi-chevron-down color-azure caretpopup"></span>
+                <select id="CoversationT1" role="listbox" class="marbtm-45">
+                    <option value="Face to face conversation">Reason code</option>
+                    <option value="Virtual conversation">Not Listed</option>
+                    <option value="Telephonic Conversation">Delay in Delivery</option>
+                </select>
+            </div>
+        </div>-->
+        <!-- <div class="col-12 float-left  no_pad">
+            <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left Padd-5 h-40 input-text-popup mt30"
+                id="text3" [(ngModel)]="overviewComment" name="text" type="text" placeholder="Type here *"
+                aria-required="true"></textarea>
+
+
+        </div> -->
+
+        <div class="col-12 float-left  no_pad">
+            <label class="col-12 float-left  no_pad logo-hd-popup1 padt-20" for="addcom">Additional comments<span
+                    class="required"> *</span></label>
+            <textarea [ngClass]="fieldSubmitted && !overviewComment ? 'input-text-popup_borderred' : 'border-gray'"
+                [(ngModel)]="overviewComment"
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left Padd-5 h-40 input-text-popup"
+                id="text3" name="text" type="text" placeholder="Enter additional comments"></textarea>
+            <p *ngIf="fieldSubmitted && !overviewComment" class="error-message_popup custom-msgtime pos-rel">Please enter
+                additional comments</p>
+        </div>
+
+    </div>
+    <div class="col-12 float-left no_pad">
+        <button aria-label="SUBMIT"
+            (click)="accservive.accounttoast('Changes made are successfully saved');openHelpline();"
+            class="col-12 float-left btndef-none no_pad confrm-btn">Submit</button>
+    </div>
+</div>

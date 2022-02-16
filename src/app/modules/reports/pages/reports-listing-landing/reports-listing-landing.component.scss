@@ -1,0 +1,42 @@
+$White : #ffffff;
+
+.heading-level-one{
+             
+    font-family:WiproAkkuratTT-Bold;
+    font-size: 24px;
+    color:$White;
+}
+     
+.small{
+    font-family: 'WiproAkkuratTT-Regular';
+    font-size: 12px;
+    color: $White;
+    display: block;
+    }
+.backspace_button {
+    width: 22px;
+    height: 22px;
+    float: left;
+    color: #fff;
+    font-size: 22px;
+    letter-spacing: -0.2px;
+    line-height: 1.27;
+    margin-right: 5px;
+    background: transparent;
+    border: none;
+}
+.reports-list-landing{
+    .h-300 {
+     height: 285px; 
+    }
+  
+   .pad-30{
+     padding: 30px;
+    }
+    .padb-0{
+      padding-bottom: 0px !important
+    }
+    .padd-top-120{
+        padding-top: 120px !important;
+      }
+}

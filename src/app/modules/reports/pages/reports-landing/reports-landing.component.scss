@@ -1,0 +1,101 @@
+$Azure: #2f81ff;
+$White: #fff;
+$MidNight: #103f86;
+$LightBlue: #2f81ff;
+$Black: #000000;
+$Wash: #9f9f9f;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$LabelGrey: #4a4a4a;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$Metal: #4a4a4a;
+$RubyRed: #ef3341;
+
+.blue-back-ht{
+    height: 250px;
+}
+  // search box
+  input {
+    background: transparent;
+  }
+  input::placeholder {
+    color: $White !important;
+  }
+  .w105 {
+    width: 160px;
+  }
+  .w180 {
+    width: 280px;
+  }
+  // search box
+  .mar-top-100 {
+    margin-top: 100px;
+}
+.back-white{
+    background: $White;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 14px 0 rgba(128, 128, 128, 0.2);
+}
+.report-header{
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: $Black;
+    margin-bottom: 10px;
+    line-height: 18px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    display: -webkit-box;
+    height: 36px;
+}
+.report-desc{
+    opacity: 0.87;
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    color: $Black;
+    line-height: 16px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    display: -webkit-box;
+    height: 35px;
+}
+.report-btn{
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: $Azure;
+    background: transparent;
+    border: none;
+    padding: 0px;
+}
+// .block-ellipsis {
+//     display: block;
+//     display: -webkit-box;
+//     max-width: 100%;
+//     height: 43px;
+//     margin: 0 auto;
+//     line-height: 1;
+//     -webkit-line-clamp: 3;
+//     -webkit-box-orient: vertical;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//   }
+  .padding15{
+      padding: 15px;
+  }
+  .padding-30{
+      padding: 30px 30px 0px 30px;
+  }
+  .padd-btm50{
+    padding-bottom: 50px;
+  }
+
+ .pad-8-10{
+   padding: 8px 10px;
+ } 

@@ -1,0 +1,228 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card margin-btm55 no_pad mt20">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt20 ">
+      <h2 class="heading-level-two float-left"> Deal summary</h2>
+
+      <button class="mdi  float-right" [ngClass]="edited ? 'mdi-pencil' : 'mdi-content-save'" (click)="showEdited()"
+        [matTooltip]="edited ? 'Edit' : 'Save'" [attr.aria-label]="edited ? 'Edit' : 'Save'"
+        *ngIf="Roleflags?.btnSaveManageTab?.Edit=='true' && this.originUrl != '/deals/rlsView'"></button>
+      <button class="mdi mdi-close float-right" matTooltip="Cancel" *ngIf="!edited" aria-label="cancel"
+        (click)="resetOverview();edited=true;"></button>
+        <button class="mdi mdi-restore mdi-pencil float-right" *ngIf="revertDeal && this.originUrl != '/deals/rlsView'" matTooltip="Revert"  aria-label="revert deal"
+        (click)="revertDealStatus();"></button>
+      <div class="divider  float-left w-100 mt10"> </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt10" *ngIf="edited">
+
+          <div class="col-lg-4 col-md-6 col-12  padbox-0-100-10 float-left label-content"
+            *ngFor="let data of summary;let i=index">
+            <div class="w-100">
+              <label for="AddDeal{{i}}" class="w-100">{{data.label}}
+              </label>
+              <p id="AddDeal{{i}}">{{data.content}}</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10">
+            <label class="w-100" for="serviceLine"> Co-owners list
+            </label>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+              <!-- <perfect-scrollbar style="max-height:200px"> -->
+              <div class=" float-left p-4-10 main-details ellipses d-flex" *ngFor="let item of EmployeeDetails">
+                <div class="float-left naming-tags child-middle bg-azure">
+                  <span class="initials">{{item.EmployeeId | slice:0:2}}</span>
+                </div>
+                <label for="inti_name" class="float-left name" title="{{item.EmployeeName}}">
+                  <span class="d-block list-name ellipses">{{item.EmployeeName}}</span>
+
+                </label>
+
+              </div>
+              <!-- </perfect-scrollbar> -->
+
+            </div>
+
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-0-100-10 float-left label-content">
+            <div class="w-100">
+              <label for="DA" class="w-100">DA approval document
+              </label>
+              <div class="col-xl-10 col-lg-10 col-md-10 col-10 pl-0 float-left d-flex attach-box"
+                *ngIf="OvervieweJSON?.MasterData?.FileName!=''">
+                <div class="float-left naming-tags-square pad-7 child-middle bg-azure">
+                  <span class="initials mdi mdi-file-document font-20" id="inti_name-kb"></span>
+                </div>
+                <label for="inti_name-kb "
+                  class="float-left pos-rel pl10 name-sq padLR-10 border-std color-azure mx-width-90per">
+                  <div class="tag color-label_gray padding-left5 ellipses " title="" (click)="daFileDownload()">
+                    <span>{{OvervieweJSON?.MasterData?.FileName}}</span>
+
+                  </div>
+                </label>
+              </div>
+              <div *ngIf="OvervieweJSON?.MasterData?.FileName==''"
+                class="col-xl-10 col-lg-10 col-md-10 col-10 pl-0 float-left label-content d-flex attach-box">
+                <p>No file exist</p>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-lg-4 col-md-6 col-12  padbox-0-100-10 float-left label-content">
+                <div class="w-100">
+                  <label for="Linked" class="w-100">Linked activities
+                  </label>
+                  <p id="Linked" class="color-azure">Activity_prime_studio_zenith<br/> Activity_enigma_2019</p>
+                </div>
+              </div> -->
+
+        </div>
+        <!-- edited page starts -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt10 customized-input"
+          *ngIf="!edited">
+          <div class="col-lg-4 col-md-6 col-12  float-left "
+            [ngClass]="{'padbox-10-60-10 ': data.label!='Pricing type' && data.label!='Deal type' }"
+            *ngFor="let data of summary;let i=index">
+            <div class="w-100">
+              <label for="Dealname{{i}}" *ngIf="data.label!='Pricing type' && data.label!='Deal type'"
+                class="w-100">{{data.label}}</label>
+              <input class="border-gray w-100" *ngIf="data.label!='Pricing type' && data.label!='Deal type'"
+                placeholder="{{data.content}}" id="Dealname{{i}}" type="text" disabled>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 pb13 float-left ">
+            <div class="w-100">
+              <label for="Pricing" class="w-100">DA approval document</label>
+
+              <div class="col-xl-10 col-lg-10 col-md-10 col-10 pl-0 float-left d-flex attach-box"
+                *ngIf="OvervieweJSON?.MasterData?.FileName!=''">
+                <div class="float-left naming-tags-square pad-7 child-middle bg-azure">
+                  <span class="initials mdi mdi-file-document font-20" id="inti_name-kb"></span>
+                </div>
+                <label for="inti_name-kb "
+                  class="float-left pos-rel pl10 name-sq padLR-10 border-std color-azure mx-width-90per">
+                  <div class="tag color-label_gray padding-left5 ellipses " title="" (click)="daFileDownload()">
+                    <span>{{OvervieweJSON?.MasterData?.FileName}}</span>
+
+                  </div>
+                </label>
+              </div>
+              <div *ngIf="OvervieweJSON?.MasterData?.FileName==''"
+                class="col-xl-10 col-lg-10 col-md-10 col-10 pl-0 float-left label-content d-flex attach-box">
+                <p>No file exist</p>
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 mobile-select-box">
+            <label for="Pricing" class="w-100">Pricing type<span class="required"> * </span></label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <div class="float-left col-12 no_pad">
+                <select id="Pricing" role="listbox" [(ngModel)]="OvervieweJSON.AuditLogList.AuditLog[0].NewValue">
+                  <option value="">SELECT</option>
+                  <option [value]="pricingtype.PricingCategoryName" *ngFor="let pricingtype of pricingTypeList"
+                    [hidden]="pricingtype.PricingCategoryName=='---Select---'">{{pricingtype.PricingCategoryName}}
+                  </option>
+                </select>
+                <p *ngIf="!(_validate.validate(OvervieweJSON.AuditLogList.AuditLog[0].NewValue)) && submitted"
+                  class="error-message top-40"> Please select pricing type</p>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 web-select-box">
+            <label for="Pricing" class="w-100">Pricing type<span class="required"> * </span></label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select pricing type</mat-label>
+              <mat-select id="Pricing"
+                aria-label="{{'Pricing type selected' + OvervieweJSON.AuditLogList.AuditLog[0].NewValue}}"
+                [(ngModel)]="OvervieweJSON.AuditLogList.AuditLog[0].NewValue" disableOptionCentering
+                panelClass="Select-panel-class" class="select-focus">
+                <mat-option>Select pricing type</mat-option>
+                <mat-option [value]="pricingtype.PricingCategoryName" *ngFor="let pricingtype of pricingTypeList"
+                  [hidden]="pricingtype.PricingCategoryName=='---Select---'">{{pricingtype.PricingCategoryName}}
+                </mat-option>
+              </mat-select>
+              <p *ngIf="!(_validate.validate(OvervieweJSON.AuditLogList.AuditLog[0].NewValue)) && submitted == true"
+                class="error-message top-40"> Please select pricing type</p>
+            </mat-form-field>
+          </div>
+
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 mobile-select-box">
+            <label for="DealT" class="w-100">Deal type <span class="required"> * </span></label>
+            <div class="customized-select">
+              <span class="caret color-azure"></span>
+              <div class="float-left col-12 no_pad">
+                <select id="DealT" role="listbox" [(ngModel)]="OvervieweJSON.AuditLogList.AuditLog[1].NewValue">
+                  <option value="">Select Deal type</option>
+                  <option [value]="dealtype.DealTypeName" *ngFor="let dealtype of dealtypeList"
+                    [hidden]="dealtype.DealTypeName=='---Select---'">{{dealtype.DealTypeName}}</option>
+                </select>
+                <p *ngIf="!(_validate.validate(OvervieweJSON.AuditLogList.AuditLog[1].NewValue)) && submitted == true"
+                  class="error-message top-40"> Please select deal type</p>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left padbox-10-60-10 web-select-box">
+            <label for="DealT" class="w-100">Deal type <span class="required"> * </span></label>
+            <mat-form-field class="col-12 no_pad float-left">
+              <mat-label>Select Deal type</mat-label>
+              <mat-select id="DealT"
+                aria-label="{{'Deal type selected' + OvervieweJSON.AuditLogList.AuditLog[1].NewValue}}"
+                [(ngModel)]="OvervieweJSON.AuditLogList.AuditLog[1].NewValue" disableOptionCentering
+                panelClass="Select-panel-class" class="select-focus">
+                <mat-option value="">Select Deal type</mat-option>
+                <mat-option [value]="dealtype.DealTypeName" *ngFor="let dealtype of dealtypeList"
+                  [hidden]="dealtype.DealTypeName=='---Select---'">{{dealtype.DealTypeName}}</mat-option>
+              </mat-select>
+              <p *ngIf="!(_validate.validate(OvervieweJSON.AuditLogList.AuditLog[1].NewValue)) && submitted"
+                class="error-message top-40">Please select deal type</p>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22 padbox-10-60-10">
+            <label class="w-100" for="serviceLine"> Deal Co-owner
+              <span class="required"> * </span>
+            </label>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+              <perfect-scrollbar style="max-height:200px">
+                <div class=" float-left p-4-10 main-details" *ngFor="let item of EmployeeDetails">
+                  <div class="float-left naming-tags child-middle bg-azure">
+                    <span class="initials">{{item.EmployeeId | slice:0:2}}</span>
+                  </div>
+                  <label for="inti_name" class="float-left name" title="{{item.EmployeeName}}">
+                    <span class="d-block list-name w-100 ellipses">{{item.EmployeeName}}</span>
+
+                  </label>
+
+                </div>
+              </perfect-scrollbar>
+
+            </div>
+            <!-- <div class="col-12 float-left no_pad ">
+              <button class="mdi mdi-plus primary-button btn-block wid100" type="button" (click)="showAssignPop()"
+                [attr.disabled]="disabledealonwer == false ? '' : null">Add</button>
+            </div> -->
+          </div>
+        </div>
+        <!-- edited page ends -->
+      </div>
+    </div>
+  </div>
+</ng-template>

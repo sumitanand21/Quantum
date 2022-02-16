@@ -1,0 +1,62 @@
+<!-- <div class="col-12 float-left no_pad popup-container overview">
+        <div class="col-12 float-left pb-30 container-dialog">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left  no_pad  mt5" mat-dialog-title>HelpLine ticket</span>
+                <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" 
+                mat-dialog-close></button>
+            </div>
+            <div class="col-12 float-left border-bottom-grey"></div>
+            <div class="col-12 float-left pa-helpline no_pad mt10">
+                       <span  class="col-1 no_pad mdi float-left mdi-information-outline infoIcon" ></span>
+                       <span class="col-11 float-right no_pad pad-left10">A helpline ticket will be generated for this account modification.
+                        Please go to Mywipro>My helpline to follow up </span>
+                        <span class="col-1"></span>
+                        <span class=" col-11 float-right no_pad mb20 pad-left10">Please mentioned any additional comments below.</span>
+             </div>
+    
+            <div class="col-12 float-left no_pad">
+                  <span class="col-12 float-left  no_pad helpline-text">Modification request *</span>
+                <textarea [ngClass]="fieldSubmitted && !overviewComment ? 'input-text-popup_borderred' : 'border-gray'" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left Padd-5 h-40 input-text-popup"
+                    id="text3" name="text" type="text" [(ngModel)]="overviewComment" placeholder="Enter modification request"></textarea>
+                    <br/>
+                    <p *ngIf="fieldSubmitted && !overviewComment" class="error-message_popup custom-msgtime pos-rel">Please enter
+                        additional comments</p>
+            </div>
+        </div>
+            <div class="col-12 float-left no_pad">
+                    <button aria-label="Confirm" class="col-12 float-left btndef-none no_pad confrm-btn" 
+                    (click)="accservive.accounttoast('Helpline ticket raised successfully')" (click)="submitComment()">Confirm</button>
+                </div>
+        
+        </div>
+     -->
+<div class="col-12 float-left no_pad popup-container overview">
+    <div class="col-12 float-left pb-30 container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad  mt5" mat-dialog-title>Are you sure you want to
+                    submit a helpdesk ticket for
+                    "{{getdecodevalue(accountName)}}"?</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close></button>
+        </div>
+        <!-- <div class="col-12 float-left border-bottom-grey"></div> -->
+        <div class="col-12 float-left no_pad ">
+            <span class="col-12 float-right no_pad text_styles">A helpline ticket will be generated for this account
+                        modification. Please go to My helpline to
+                        follow up.</span>
+            <span class="col-12 float-right no_pad  mt20 text_styles">Please mention any additional comments below:</span>
+        </div>
+
+        <div class="col-12 float-left no_pad mt20">
+            <span class="col-12 float-left  no_pad helpline-texts">Additional comments <span class="asteriq"> * </span> </span>
+            <textarea [ngClass]="fieldSubmitted && !overviewComment ? 'input-text-popup_borderred' : 'border-gray'" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left Padd-5 h-40 input-text-popup" id="text3" name="text" type="text" [(ngModel)]="overviewComment"
+                placeholder="Type here"></textarea>
+            <br/>
+            <p *ngIf="fieldSubmitted && !overviewComment" class="error-message_popup custom-msgtime pos-rel">Please enter additional comments</p>
+        </div>
+    </div>
+    <div class="col-12 float-left no_pad">
+        <button aria-label="No" class="col-6 float-left no_pad cancel-btn " mat-dialog-close>No</button>
+        <button aria-label="yes" (click)="accservive.accounttoast('Helpline ticket raised successfully')" (click)="submitComment()" (keypress)="submitComment();" class="col-6 float-left btndef-none no_pad confrm-btn mr0">Yes</button>
+    </div>
+
+</div>

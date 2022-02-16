@@ -1,0 +1,363 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$MidNight: #103f86;
+$LightBlue: #2f81ff;
+$Black: #000000;
+$Wash: #9f9f9f;
+$MetalLight: #9b9b9b;
+
+
+.expand-table-panel
+{
+  position: sticky;
+  background: #fff;
+  left:0;
+  height: auto;
+  
+  .expand-comment-hgt
+  {
+   height: 145px;
+  }
+  .expand-comment-h{
+    height: 205px;
+  }
+  .exp-cancel-btn {
+   background: #d9e9ff;
+   border-radius: 4px;
+   border: none;
+   color: #2f81ff;
+   padding: 9px 5px;
+   min-width: 110px;
+  
+   font-family: WiproAkkuratTT-Bold;
+   &:hover {
+     background: #2f81ff;
+     color: #ffffff;
+   }
+}
+.post-btn {
+ background: #2f81ff;
+ border-radius: 4px;
+ border: none;
+ color: #ffffff;
+ padding: 9px 5px;
+ min-width: 110px;
+margin-left: 10px;
+ font-family: WiproAkkuratTT-Bold;
+ 
+}
+
+  .expand-content
+  {
+   display: flex;
+  }
+  .lightBlueBackground
+  {
+      background: #eaf0ff;
+      border:none;
+      outline:none;
+      padding-top: 9px;
+      padding-bottom: 10px;
+  }
+  .exp-btns-div
+  {
+    margin-top: 10px;
+  }
+  .button-align
+  {
+      padding: 20px 0px;
+      text-align: center;
+  }
+ 
+ .bot-border {
+   border-bottom: solid 2px #d5e5ff;
+ }
+ .Overview
+ {
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ font-stretch: normal;
+ line-height: normal;
+ letter-spacing: normal;
+ text-align: center;
+ color: #4a4a4a;
+ margin-bottom: 6px;
+ //padding-left: 7px;
+ }
+ .Rejection
+ {
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ font-stretch: normal;
+ line-height: normal;
+ letter-spacing: normal;
+ text-align: center;
+ color: #4a4a4a;
+ margin-bottom: 6px;
+  //padding-left: 7px;
+ }
+ .blueCircle
+ {
+   width: 43px;
+   height: 43px;
+   background-color: #2f81ff;
+ //   background-color: var(--warm-grey-two);
+   border-radius: 50px;
+   // margin-left: 10px;
+   pointer-events: none;
+   span {
+     color: #ffffff;
+   }
+ }
+ .whiteCircle
+ {
+   width: 43px;
+   height: 43px;
+   background-color: #ffffff;
+ //   background-color: var(--warm-grey-two);
+   border-radius: 50px;
+   // margin-left: 10px;
+   span
+   {
+     color: #2f81ff;
+   }
+   &:hover
+   {
+    background-color: #2f81ff;
+    span{
+      color: #ffffff;
+    }
+    
+   }
+ }
+ .table-icons
+ {
+     font-size: 20px;
+ }
+ .tooltip-arrow:after
+ {
+
+ }
+ .comment-head
+ {
+   line-height: 1.38;
+   letter-spacing: -0.2px;
+   color: #353535;
+   font-family: WiproAkkuratTT-Bold;
+   font-size: 16px;
+ }
+ .comment-name
+ {
+   font-family: WiproAkkuratTT-Bold;
+   font-size: 14px;
+   line-height: 1.57;
+   letter-spacing: -0.1px;
+   color: #353535;
+   width: auto;
+ }
+ .comment-date
+ {
+   font-family: WiproAkkuratTT-Regular;
+   font-size: 12px;
+   line-height: 1.83;
+   letter-spacing: -0.1px;
+   color: #353535;
+   width: auto;
+   padding-left: 20px;
+ }
+ .comment-text
+ {
+   font-family: WiproAkkuratTT-Regular;
+   font-size: 14px;
+   line-height: 1.57;
+   letter-spacing: -0.1px;
+   color: #353535;
+   margin-top: 5px;
+ }
+ .desp-text
+ {
+   font-family: WiproAkkuratTT-Regular;
+   font-size: 14px;
+   line-height: 1.57;
+   color: #343434;
+   margin-top: 10px;
+ }
+ .expand-ryt-section
+ {
+   padding-top: 19px;
+ }
+ .comment-main
+ {
+   margin-top: 20px;
+   textarea
+   {
+     resize: none !important;
+     padding: 12px 9px;
+     font-family: WiproAkkuratTT-Regular;
+     font-size: 14px;
+   }
+   textarea::placeholder
+   {
+     color: #bcbcbc;
+     font-family: WiproAkkuratTT-Regular;
+   }
+ }
+ .cancel-mobile
+ {
+   display: none;
+ }
+ .desp-section, .comments-section
+ {
+   padding: 15px;
+ }
+ .tooltip-expand
+ {
+ .caret_right_table
+ {
+   position: absolute;
+   top: 43px;
+   right: -37px;
+   width: 0;
+   height: 0;
+   margin-left: 2px;
+   vertical-align: middle;
+  
+   border-top: 18px dashed;
+   border-right: 13px solid transparent;
+   z-index: 99;
+   color: #eaf0ff;
+   border-left: 13px solid transparent;
+   transform: rotate(-90deg);
+   -ms-transform:  rotate(-90deg); 
+   -webkit-transform:  rotate(-90deg); 
+ }   
+}
+
+}
+@media screen and (max-width: 823px) {
+  .expand-table-panel
+  {
+    width: 100% !important;
+  }
+  .h-228
+  {
+    height: auto !important;
+  }
+  .width100-max
+  {
+    max-width: 100%;
+  }
+  .width50-max
+  {
+    max-width: 50%;
+  }
+ 
+  .expand-table-panel
+  {
+   float:left;
+    margin-top: 0;
+    position: static;
+    .expand-ryt-section
+    {
+      padding-bottom: 19px;
+    }
+    .expand-content
+    {
+      display: block;
+    }
+    .bot-border
+    {
+      border-bottom: 0;
+    }
+    .tooltip-expand
+    {
+      width: 100%;
+      float: left;
+      position: absolute;
+      .caret_right_table
+      {
+        float: none;
+        margin: 0 auto;
+        position: relative;
+        top: 25px;
+        right: 0;
+        // position: absolute;
+        // top: 74px;
+        // right: 66px;
+        // width: 0;
+        // height: 0;
+        // margin-left: 2px;
+        //vertical-align: middle;
+        border-top: 18px dashed;
+        border-right: 13px solid transparent;
+        z-index: 99;
+        color: #eaf0ff;
+        border-left: 13px solid transparent;
+        transform: none;
+      }  
+    }
+    .cancel-mobile
+    {
+      padding-top: 25px;
+      display: block;
+    }
+    .button-align
+    {
+      padding: 0;
+    }
+    .desp-section, .comments-section
+    {
+      padding: 10px;
+      padding-bottom: 0;
+    }
+  }
+   
+  
+    
+}
+.color-azure{
+    color: $Azure;
+   
+}
+.borderAzure{
+    border-bottom: 1px solid $Azure;
+}
+.h-228{
+    height: 228px;
+}
+.convo-name-title {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: 0.3px;
+    color: $MetalLight;
+  }
+  .convo-name {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: 0.3px;
+    color: #000000;
+  }
+
+  .catalystLink {
+    float: left;
+    font-style: inherit;
+    color: #2f81ff !important;
+
+    span {
+      text-decoration: underline;
+    }
+  }
+  
+  .removePointer {
+    pointer-events: none;
+  }

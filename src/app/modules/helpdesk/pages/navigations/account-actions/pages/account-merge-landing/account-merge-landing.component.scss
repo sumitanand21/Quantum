@@ -1,0 +1,135 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$Black: #000000;
+$NavyBlue: #0e3570;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+
+.mb20 {
+  margin-bottom: 20px;
+}
+.mt40 {
+  margin-top: 40px;
+}
+.h-250 {
+  height: 280px;
+}
+.btm-20{
+  bottom: 20px;
+}
+.back-helpdesk {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  position: absolute;
+  color: white;
+}
+.heading-level-two {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  letter-spacing: -0.4px;
+  margin-left: 30px;
+  color: white;
+}
+.child-container-account {
+  left: 30px;
+  top: 200px;
+}
+.searchButton {
+  padding: 5px 10px;
+  background-color: white;
+  color: #2f81ff;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Bold";
+  min-width: 110px;
+  height: 40px;
+  border: none;
+}
+.searchButton:hover {
+  background-color: #2f81ff;
+  color: white;
+}
+//stepper
+.circle-step {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: auto;
+  outline: none;
+  z-index: 8;
+  position: relative;
+  line-height: 35px;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0px;
+}
+.active{
+  .circle-step{
+    background-color: #ffffff;
+    color: #0e3570;
+    border: none;
+    cursor: pointer;
+  }
+  .line-step{
+    border-bottom: 2px solid rgba(255, 255, 255, 1);
+  }
+  .step-below-tex{
+  font-family: "WiproAkkuratTT-Bold";
+  }
+}
+.current {
+.circle-step{
+  background-color: #2f81ff;
+  color: #ffffff;
+  border: 1.5px solid white;
+  cursor: pointer;
+}
+.line-step{
+  border-bottom: 2px dotted rgba(255, 255, 255, 0.5);
+}
+}
+.inactive {
+  .circle-step{
+    background-color: #0e3570;
+    color: #ffffff;
+    border: 1.5px solid white;
+  }
+  .line-step{
+    border-bottom: 2px dotted rgba(255, 255, 255, 0.5);
+  }
+}
+
+.width-step{
+  width: 120px;
+}
+.pad-30-landing{
+  padding: 30px;
+}
+
+
+.width-step:last-child .line-step{
+  display: none;
+}
+.step-below-text {
+  width: 100%;
+  position: relative;
+  right: 40px;
+  top: 10px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+#dummyStepCtrl{
+  display: none;
+}
+
+.details-label{
+    color: #e7ebf2;
+    opacity: 0.8;
+    font-family: "WiproAkkuratTT-Regular";
+    cursor: default;
+    margin-left: 15px;
+}
+.pl-60{
+  padding-left: 60px !important
+}

@@ -1,0 +1,191 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  opportunity-landing-container pt0 no_pad">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left top-24">
+
+    <div class="col-12 float-left card no_pad pad-top20">
+
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-create-lead">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 flaot-left no_pad">
+          <span class="col-12 float-left no_pad text-heading">Win reasons for this {{orderflag?'Order':'Opportunity'}}
+          </span>
+        </div>
+
+        <!-- Table starts here -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt10 no_pad border-btm">
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th class="col-3 float-left">Win category *</th>
+                <th class="col-3 float-left">Win reason *</th>
+                <th class="col-3 float-left no_pad">Additional details (10 characters) *</th>
+                <th class="col-3 float-left">Information source *</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of competitor_data1; let i = index">
+                <!--<tr *ngFor="let data of competitor_data1">-->
+                <td [attr.data-label]="'Win category*'" class="col-12 col-lg-3 col-md-3 col-sm-3 col-xl-3 float-left">
+                  <div class="col-12 customized-select no_pad">
+                    <span class="caret color-azure"></span>
+                    <!--{{winSaveDetails[i].WiproWinCategories}}-->
+                    <select id="select1" role="listbox" class="ellipses" name="winCategoryFlag"
+                      [ngClass]=" data.winCategoryFlag && autoFocus && (competitor_data1[0]==data)? 'orangeborder' : ''"
+                      [disabled]="editAccess" (change)="getCategoryId(data.WinCategoryValue,$event, i)"
+                      [(ngModel)]="data.WinCategoryValue">
+                      <option value="" disabled selected>Select category</option>
+                      <option *ngFor="let categoryOptionSetDD of categoryOptionSets"
+                        [value]="categoryOptionSetDD.WiproWinCategoryId">
+                        {{categoryOptionSetDD.WiproCategoryname}}
+                      </option>
+                      <p *ngIf="data.winCategoryFlag && data.isTouched && autoFocus"
+                        class="col-12 no_pad float-left validation-text">win category is mandatory</p>
+                    </select>
+
+                  </div>
+
+                  <!-- Select DROPDOWN STARTS -->
+
+
+                </td>
+                <td [attr.data-label]="'Win reason *'" class="col-12 col-lg-3 col-md-3 col-sm-3 col-xl-3 float-left">
+                  <div class="col-12 customized-select no_pad">
+                    <span class="caret color-azure"></span>
+                    <select id="select1" role="listbox" class="ellipses" name="winReasonFlag"
+                      [ngClass]="data.winReasonFlag && data.isTouched ? 'orangeborder' : ''" [disabled]="editAccess"
+                      (change)="getWinReasonId(data.WinReasonId,$event, i)" [(ngModel)]="data.WinReasonId">
+                      <option value="" disabled selected>Select reason</option>
+                      <option *ngFor="let winOptionSetDD of data.winOptionSets" [value]="winOptionSetDD.WinReasonId">
+                        {{winOptionSetDD.WinReasonName}}
+                      </option>
+
+                    </select>
+                    <p *ngIf="data.winReasonFlag && data.isTouched" class="col-12 no_pad float-left validation-text">win
+                      Reason is mandatory</p>
+                  </div>
+                </td>
+                <td [attr.data-label]="'Additional details (10 characters) *'"
+                  class="col-12 col-lg-3 col-md-3 col-sm-3 col-xl-3 float-left no_pad padleftright10">
+                  <div class="col-12 customized-input no_pad">
+                    <input id="field1" type="text" class="border-gray col-12" value="" [appAlphaNumeric] = "'text'"
+                      [(ngModel)]="data.WiproAdditionalDetails" placeholder="Additional details"
+                      name="additionalDetailFlag"
+                      [ngClass]=" data.additionalDetailFlag && data.isTouched ? 'orangeborder' : ''"
+                      [disabled]="editAccess" (input)="getAdditionalTestDetails($event, i)">
+                  </div>
+                  <p *ngIf="data.additionalDetailFlag && data.isTouched"
+                    class="col-12 no_pad float-left validation-text">Additional Details is mandatory</p>
+                </td>
+                <td [attr.data-label]="'Information source *'"
+                  class="col-12 col-lg-3 col-md-3 col-sm-3 col-xl-3 float-left">
+                  <div class="col-12 customized-select no_pad">
+                    <span class="caret color-azure"></span>
+                    <select id="select1" role="listbox" class="ellipses" name="infoSourceFlag"
+                      [ngClass]=" data.infoSourceFlag && data.isTouched ? 'orangeborder' : ''" [disabled]="editAccess"
+                      (change)="getInformationSourceId(data.InformationSource,$event,i)"
+                      [(ngModel)]="data.InformationSource">
+                      <option value="" disabled selected>Select source</option>
+                      <option *ngFor="let informationOptionSetDD of informationOptionSets"
+                        [value]="informationOptionSetDD.Id">
+                        {{informationOptionSetDD.Name}}
+                      </option>
+                    </select>
+
+                    <p *ngIf="data.infoSourceFlag && data.isTouched" class="col-12 no_pad float-left validation-text">
+                      Info source is mandatory</p>
+
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+          <table class="table table-borderless mt10">
+            <thead class="bgnone">
+              <tr>
+            <th class="dispnone">
+              <label class=" ">
+                Three things that went well (*one mandatory)</label>
+            </th>
+            <th class="dispnone">
+              <label class=" ">
+                Three things that did not go well (*one mandatory)</label>
+            </th>
+            <th class="dispnone">
+              <label class=" ">
+                Please suggest opportunity for Improvement (OFIs) based on your learnings</label>
+            </th>
+          </tr>
+          </thead>
+            <tbody>
+              <tr>
+                <td [attr.data-label]="'Things that went well (*one mandatory) *'">
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text3"
+                    type="text" placeholder="Reason 1" name="wentWell1" [appAlphaNumeric] = "'text'"
+                    [ngClass]="resultReasonForm[0].wentWell1 ? 'orangeborder' : ''" [disabled]="editAccess"
+                    [(ngModel)]="resultReasonForm[0].wentWell" (input)="getWellData($event)"></textarea>
+                </td>
+                <td [attr.data-label]="'Things did not go well (*one mandatory) *'">
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text4"
+                    name="notWell1" type="text" placeholder="Reason 1" [appAlphaNumeric] = "'text'"
+                    [ngClass]="resultReasonForm[0].notWell1 ? 'orangeborder' : ''" [disabled]="editAccess"
+                    [(ngModel)]="resultReasonForm[0].notWell" (input)="getNotWellData($event)"></textarea>
+                </td>
+                <td [attr.data-label]="'Please suggest opportunity for Improvement (OFIs) based on your learnings *'">
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text6"
+                    type="text" placeholder="Reason 1" [disabled]="editAccess" [appAlphaNumeric] = "'text'"
+                    [(ngModel)]="resultReasonForm[0].improvement" (input)="getImproveData($event)"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td [attr.data-label]="'Things that went well'">
+
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text3"
+                    name="wentWell1" type="text" placeholder="Reason 2" [disabled]="editAccess" [appAlphaNumeric] = "'text'"
+                    (input)="getWellData($event)"></textarea>
+                </td>
+                <td [attr.data-label]="'Things did not go well'">
+
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text4"
+                    name="notWell1" type="text" placeholder="Reason 2" [disabled]="editAccess" [appAlphaNumeric] = "'text'"
+                    (input)="getNotWellData($event)"></textarea>
+                </td>
+                <td [attr.data-label]="'Please suggest opportunity for Improvement (OFIs) based on your learnings '">
+
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text6"
+                    name="improveWell1" type="text" placeholder="Reason 2" [disabled]="editAccess" [appAlphaNumeric] = "'text'"
+                    (input)="getImproveData($event)"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td [attr.data-label]="'Things that went well'">
+
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text3"
+                    name="wentWell1" type="text" placeholder="Reason 3" [disabled]="editAccess" [appAlphaNumeric] = "'text'"
+                    (input)="getWellData($event)"></textarea>
+                </td>
+                <td [attr.data-label]="'Things did not go well'">
+
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text4"
+                    name="notWell1" type="text" placeholder="Reason 3" [disabled]="editAccess" [appAlphaNumeric] = "'text'"
+                    (input)="getNotWellData($event)"></textarea>
+                </td>
+                <td [attr.data-label]="'Please suggest opportunity for Improvement (OFIs) based on your learnings '">
+
+                  <textarea class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  input-text" id="text6"
+                    name="improveWell1" type="text" placeholder="Reason 3 " [disabled]="editAccess" [appAlphaNumeric] = "'text'"
+                    (input)="getImproveData($event)"></textarea>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="col-12 float-left  no_pad popup-container ">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Add active competitor</span>
+            <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn"
+                aria-label="close" mat-dialog-close (click)="onNoClick()"></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+        <div class="col-12 float-left no_pad">
+            <label class="col-12 float-left  no_pad margin-top-20 hd-val" for="percentage">competitor name</label>
+            <input type="text" class="col-12 float-left border-gray w-100" name="percentage"
+                placeholder="Enter competitor name" />
+        </div>
+
+    </div>
+
+    <div class="col-12 float-left no_pad mt30 margin-btm">
+        <div class="float-left disp-flex save-cancel-responsive mar-28">
+            <button class="primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50"
+                (click)="goBack()" aria-label="cancel">Cancel</button>
+            <button class="primary-button borderless h-40 std save-responsive-btn button-wd50"
+            (keypress)="addrowalliance();competitors=false" (click)="addrowalliance();competitors=false" 
+            mat-dialog-close aria-label="add">Add</button>
+        </div>
+
+    </div>
+
+</div>

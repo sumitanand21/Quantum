@@ -1,0 +1,80 @@
+<div class="col-12 float-left no_pad popup-container" *ngIf="userdat.cachedArray[0].tableName=='Relations Ship'">
+ 
+        <div class="col-12 float-left container-dialog">
+        <div class="col-12 float-left no_pad popup-hd">
+        <span class="col-10 float-left no_pad popup-hd-txt" mat-dialog-title>Delete {{userdat.cachedArray[0].tableName}} Plan</span>
+        <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" (click)="onCancel()"  ></button>
+        </div>
+         
+        <div class="col-12 float-left border-bottom-grey"></div>
+         
+        <div class="col-12 float-left no_pad">
+         
+        <span class="col-12 float-left no_pad logo-hd"> {{data[userdat.cachedArray[0].popUpProperties[0]]}}  FY 19-20 </span>
+         
+        <span class="col-12 float-left no_pad txt-style"> Your {{userdat.cachedArray[0].tableName}} plan will be sent to {{data[userdat.cachedArray[0].popUpProperties[1]]}}(<span>{{data[userdat.cachedArray[0].popUpProperties[2]]}}</span>) for approval process.
+        Track approval status will be available on the {{userdat.cachedArray[0].tableName}} plan page. </span>
+         
+        </div>
+         
+        </div>
+
+
+       
+        <div class="col-12 float-left no_pad">
+        <button aria-label="SUBMIT" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="onSubmit()" >Submit</button>
+        </div>
+</div>
+
+
+        <div class="col-12 float-left no_pad popup-container"  *ngIf="userdat.cachedArray[0].tableName=='Mangement-Log' || userdat.cachedArray[0].tableName=='Relationship'">
+ 
+        <div class="col-12 float-left container-dialog">
+                <div class="col-12 float-left no_pad popup-hd">
+                <span class="col-10 float-left no_pad popup-hd-txt" mat-dialog-title>Delete {{(userdat.cachedArray[0].tableName=='Mangement-Log') ? 'Meeting':'Relationship plan'}}</span>
+                <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" (click)="onCancel()"  ></button>
+                </div>
+                 
+                <div class="col-12 float-left border-bottom-grey"></div>
+                 
+                <div class="col-12 float-left no_pad">
+                 
+                <!-- <span class="col-12 float-left no_pad logo-hd"> {{data[userdat.cachedArray[0].popUpProperties[0]]}}  FY 19-20 </span> -->
+                 
+                <span class="col-12 float-left no_pad txt-style"> Are you sure you want to delete ?
+                </span>
+                 
+                </div>
+                 
+                </div>
+                <div class="col-12 float-left no_pad">
+                        <button aria-label="SUBMIT" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="onSubmit()" >Confirm</button>
+                        </div>
+                        </div>
+
+
+
+                            <div class="col-12 float-left no_pad popup-container"  *ngIf="userdat.cachedArray[0].tableName=='Non-Incentives'">
+ 
+        <div class="col-12 float-left container-dialog">
+                <div class="col-12 float-left no_pad popup-hd">
+                <span class="col-10 float-left no_pad popup-hd-txt" mat-dialog-title>Delete User</span>
+                <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" (click)="onCancel()"  ></button>
+                </div>
+                 
+                <div class="col-12 float-left border-bottom-grey"></div>
+                 
+                <div class="col-12 float-left no_pad">
+                 
+                <!-- <span class="col-12 float-left no_pad logo-hd"> {{data[userdat.cachedArray[0].popUpProperties[0]]}}  FY 19-20 </span> -->
+                 
+                <span class="col-12 float-left no_pad txt-style pt20"> Are you sure you want to delete user <strong>{{data[userdat.cachedArray[0].popUpProperties[0]]}}</strong> from the list of non-incentivised users?This will revoke account access from this user?
+                </span>
+                 
+                </div>
+                 
+                </div>
+                <div class="col-12 float-left no_pad">
+                        <button aria-label="SUBMIT" class="col-12 float-left btndef-none no_pad confrm-btn" (click)="onSubmit()" >Confirm</button>
+                        </div>
+                        </div>

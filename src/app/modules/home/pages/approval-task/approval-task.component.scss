@@ -1,0 +1,824 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$MidNight: #103f86;
+$LightBlue: #2f81ff;
+
+.child-conversation-landing {
+  .is-checked {
+    height: 384px !important;
+  }
+  .not-checked {
+    height: 190px;
+  }
+  .pad-30 {
+    padding: 30px;
+  }
+  .pad-left-right-10 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .mr10 {
+    margin-right: 10px !important;
+  }
+  .pos_rel {
+    position: relative;
+  }
+  .top-5 {
+    top: 5px;
+  }
+  .top-2 {
+    top: 2px;
+  }
+  .h-40 {
+    min-height: 40px;
+  }
+  .heading-level-one {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 24px;
+    color: $White;
+
+    small {
+      font-family: "WiproAkkuratTT-Regular";
+      font-size: 14px;
+      padding: 0 30px;
+    }
+  }
+  .heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color: $White;
+    letter-spacing: -0.4px;
+  }
+  .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+    margin: 0;
+  }
+  .borderless {
+    border: none !important;
+  }
+  .w-180 {
+    width: 180px;
+  }
+  .w-184 {
+    width: 184px;
+  }
+  .w-140 {
+    width: 121px;
+  }
+  .pr5 {
+    padding-right: 5px !important;
+  }
+  .bg-transparent {
+    background: transparent;
+  }
+  .pr10 {
+    padding-right: 10px !important;
+  }
+  .convo-tag {
+    position: absolute;
+    left: 65px;
+    width: 80px;
+    height: 16px;
+    opacity: 0.6;
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #e7ebf2;
+    float: left;
+    top: 45px;
+  }
+  .main-content {
+    z-index: -1;
+  }
+  button {
+    cursor: pointer;   
+  }
+  .vertical-btns-div {
+    margin: 15px 0px 0px 0px;
+  }
+  .btn-tabs-active {
+    background-color: $MidNight;
+    text-align: center;
+    border: solid 1.5px #ffffff;
+    color: $Azure;
+    border-radius: 5px;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 25px 20px;
+  }
+  .sub-vertical-but.active, .sub-vertical-but:hover  {
+    background: #fff;
+    color: $Azure;
+    outline: none;
+    .btntxt-s {
+      color: $Azure;
+    }
+  }
+
+  .sub-vertical-but {
+    font-family: WiproAkkuratTT-Bold;
+    background: transparent;
+    border: none;
+    font-size: 0.85em;
+    color: #fff;
+    font-weight: bold;
+    border: 1.5px solid #fff;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+  }
+  .calin-select-all {
+    font-size: 17px;
+    text-align: center;
+    padding-right: 5px;
+  }
+  .brd-left0 {
+    border-left: 0px !important;
+    border-radius: 0px 5px 5px 0px;
+  }
+  .brd-right0 {
+    border-right: 0px !important;
+    border-radius: 5px 0px 0px 5px;
+  }
+  .brd-right {
+    border-radius: 5px 0px 0px 5px;
+  }
+  .brd_r0 {
+    border-right: 0px !important;
+  }
+  .flex-tab {
+    display: flex;
+    justify-content: center;
+  }
+  .flex-tab-width {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .heading-tab {
+    font-family: WiproAkkuratTT-Bold;
+    text-align: left;
+    margin-top: 30px;
+    font-size: 24px;
+  }
+  .top-20 {
+    top: 20px;
+  }
+
+  .btn-tabs-active-white {
+    text-align: center;
+    border: solid 1.5px #ffffff;
+    color: #2f81ff;
+    border-radius: 5px;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 25px 20px;
+  }
+  .sub-vertical-but-white {
+    font-family: WiproAkkuratTT-Bold;
+    background: $White;
+    border: none;
+    font-size: 0.85em;
+    color: #2f81ff;
+    font-weight: bold;
+    border: 1.5px solid #2f81ff;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+  }
+  .sub-vertical-but-white.active {
+    background: #2f81ff;
+    color: #fff;
+    outline: none;
+  }
+  .sub-vertical-but-white.active {
+    .btntxt-s {
+      color: #fff;
+    }
+  }
+  .pt40 {
+    padding-top: 40px;
+  }
+  input {
+    background: transparent;
+  }
+  input::placeholder {
+    color: $White !important;
+  }
+  .w105 {
+    width: 105px;
+  }
+  .w180 {
+    width: 180px;
+  }
+  .cust_check {
+    .mat-checkbox-inner-container {
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+    }
+    .mat-checkbox-frame {
+      border-color: $LightBlue;
+    }
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+      background-color: $LightBlue;
+      margin: 3px;
+    }
+    .mat-checkbox-checkmark {
+      display: none;
+    }
+    .mat-checkbox-label-before .mat-checkbox-inner-container {
+      position: absolute;
+      right: 0;
+    }
+
+    .mat-ripple-element {
+      background: #2f82ff3b !important;
+    }
+  }
+
+  .add_planning_membersthree {
+    .mt36 {
+      margin-top: 36px;
+    }
+    .mr10 {
+      margin-right: 10px;
+    }
+    .pr5 {
+      padding-right: 5px;
+    }
+
+    .mt10 {
+      margin-top: 10px;
+    }
+    .display_flex {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .mt20 {
+      margin-top: 20px;
+    }
+    .mt15 {
+      margin-top: 15px;
+    }
+
+    .pad10 {
+      padding: 10px;
+    }
+    .circle_placeholder {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      border-radius: 50%;
+    }
+    .circle_placeholder.light_blue_class {
+      background-color: #accdff;
+    }
+    .circle_placeholder.purple_class {
+      background-color: #708cb6;
+    }
+    .circle_placeholder.pink_class {
+      background-color: #ee3341;
+    }
+    .circle_placeholder.green_class {
+      background-color: #6cc24a;
+    }
+    .circle_placeholder.blue_class {
+      background-color: #2f81ff;
+    }
+    .circle_placeholder.dark_blue_class {
+      background-color: #0e356f;
+    }
+
+    .width25 {
+      width: 25%;
+    }
+    .circle_name {
+      opacity: 0.87;
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 14px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #ffffff;
+      top: 10px;
+      left: 10px;
+      position: relative;
+    }
+    .gray_circle {
+      width: 32px;
+      height: 32px;
+      background-color: #d5e6ff;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .planning_without_hover {
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+
+    .drop_options {
+      width: 78px;
+      height: 20px;
+      font-family: WiproAkkuratTT-Regular !important;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.43;
+      letter-spacing: 0.3px;
+      color: #0f0f0f;
+    }
+    .form-control {
+      background: none !important;
+      border: none !important;
+      width: 80% !important;
+      box-shadow: none !important;
+      padding: 0px !important;
+    }
+
+    .left_pagination {
+      height: 40px;
+      border-radius: 4px;
+      border: solid 1.5px #ffffff;
+      background-color: #103f86;
+      display: inline-flex;
+      margin-right: 10px;
+    }
+
+    .pull-right {
+      float: right !important;
+    }
+    .pull-left {
+      float: left !important;
+    }
+    .accounts_count {
+      height: 40px;
+      object-fit: contain;
+      border: 1px solid #2f81ff;
+      color: #2f81ff;
+      background: #ffffff;
+      border-radius: 4px;
+      font-family: WiproAkkuratTT-Bold;
+      padding: 0px 15px;
+    }
+
+    .plan_status {
+      opacity: 0.6;
+      font-family: WiproAkkuratTT-Regular;
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: right;
+      color: #e7ebf2;
+    }
+    .delete_icon_planing:before {
+      width: 14.4px;
+      height: 18px;
+      font-size: 18px;
+      padding-top: 4px;
+      padding-left: 1px;
+      color: #2f81ff !important;
+    }
+    .del_style {
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      background-color: #d5e6ff;
+      text-align: center;
+      color: #2f81ff;
+      padding-right: 5px;
+      display: block;
+      top: 45px;
+    }
+    .caret_down {
+      display: inline-block;
+      float: right;
+      position: relative;
+      top: 8px;
+      right: -15px;
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+      vertical-align: middle;
+      border-top: 6px dashed;
+      border-right: 4px solid #52494900;
+      z-index: 99;
+      color: #ffffff;
+      border-left: 4px solid transparent;
+    }
+    .search_icon {
+      font-family: Material-Design-Icons;
+      font-size: 18px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #ffffff;
+      top: 1px;
+      position: relative;
+      float: left;
+    }
+    ::placeholder {
+      color: #ffffff;
+    }
+
+    .mdi-checkbox-intermediate {
+      top: 7px;
+      position: relative;
+    }
+    .mdi-checkbox-blank-outline {
+      top: 7px;
+      position: relative;
+    }
+    .pointercls {
+      cursor: pointer;
+    }
+    h2 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .posRel {
+      position: relative;
+    }
+
+    .caret_down_table {
+      position: relative;
+      top: 10px;
+      right: -5px;
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+      vertical-align: middle;
+      border-top: 6px dashed;
+      border-right: 4px solid #52494900;
+      z-index: 99;
+      color: #9b9b9b;
+      border-left: 4px solid transparent;
+    }
+
+    .pad5 {
+      padding: 5px !important;
+    }
+    .rework {
+      color: red;
+    }
+  }
+
+  .caret {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    // color: #9b9b9b;
+  }
+
+  .buiedit {
+    background-color: #d5e6ff;
+    border-radius: 21px;
+    width: 32px;
+    height: 32px;
+  }
+  .caret {
+    display: none;
+  }
+
+  .mobile-action-button {
+    display: none;
+  }
+  .mobile-dropdown {
+    display: none;
+  }
+  .mobile-table {
+    display: none;
+  }
+  .mobile-tab {
+    display: none;
+  }
+
+  .mat-card-css {
+    .card-header {
+      width: 223px;
+      height: 19px;
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 16px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #2f81ff;
+    }
+    .action-btn {
+      background-color: $Azure;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      float: left;
+      color: #ffffff;
+      font-size: 27px;
+      padding: 0;
+    }
+    ul li {
+      list-style: none;
+    }
+    .card-header {
+      background: none !important;
+      border-bottom: none !important;
+      padding: 0px !important;
+    }
+    .mat-checkbox {
+      left: 20px;
+      right: 10px;
+      position: absolute;
+    }
+    .disp-flex {
+      display: flex !important;
+    }
+    .mb20 {
+      margin-bottom: 20px;
+    }
+    .card-header-title {
+      width: 160px;
+      height: 15px;
+      font-family: WiproAkkuratTT-Regular;
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: -0.3px;
+      color: #9b9b9b;
+      padding-top: 20px;
+    }
+    .card-data {
+      width: 100px;
+      height: 17px;
+      font-family: WiproAkkuratTT-Regular;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.1px;
+      color: #000000;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .name {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #2f81ff;
+    }
+    .text_ellipses {
+      text-overflow: ellipsis;
+      width: 105px;
+      overflow: hidden;
+      display: block;
+      white-space: nowrap;
+      position: relative;
+      top: 6px;
+      display: inline-block;
+      padding-left: 0px;
+      outline: none;
+    }
+    .top0 {
+      top: 0px !important;
+    }
+    .mat-card:not([class*="mat-elevation-z"]) {
+      box-shadow: none !important;
+    }
+    .center-icons {
+      display: flex;
+      justify-content: center;
+      padding: 0px;
+    }
+    .action-btn-card {
+      width: 50px;
+      height: 50px;
+      background-color: #2f81ff;
+      border-radius: 50%;
+      font-size: 30px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.2px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .mdi-share-variant:before {
+      color: #ffffff !important;
+      display: inline-block;
+      font-size: inherit;
+      text-rendering: auto;
+      line-height: inherit;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mdi-star:before {
+      color: #ffffff !important;
+      display: inline-block;
+      font-size: inherit;
+      text-rendering: auto;
+      line-height: inherit;
+      -webkit-font-smoothing: antialiased;
+    }
+    .icon-text {
+      height: 13px;
+      font-family: WiproAkkuratTT-Regular;
+      font-size: 10px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.3;
+      letter-spacing: -0.1px;
+      text-align: center;
+      color: #2f81ff;
+      display: block;
+      left: -5px;
+      position: relative;
+      margin-top: 5px;
+    }
+    .mdi-rounded-corner {
+      color: white !important;
+    }
+  }
+  .divbox-shadow {
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .new-convo-button {
+    padding: 10px 5px;
+    background-color: #2f81ff;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 0%;
+  }
+}
+
+.archive-tag {
+  height: 29px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #103f86;
+  padding: 6px 15px;
+  font-size: 11px;
+  opacity: 60%;
+  margin-left: 10px;
+}
+
+// MORE ACTION STARTS ***************
+
+.cust-dropdown-btn {
+  .h-40 {
+    height: 40px;
+  }
+  .dropdown-content {
+    width: max-content;
+    border: 1.5px solid $White;
+    background: $White;
+    color: $Azure;
+    border-radius: 0px 0px 4px 4px;
+  }
+
+  .b-top {
+    border-top: 1.5px solid #d9e9ff;
+  }
+  .pad-0-10 {
+    padding: 0px 10px;
+  }
+
+  ul {
+    li {
+      list-style-type: none;
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 14px;
+    }
+  }
+
+  .show-action {
+    .caret {
+      transform: rotate(180deg);
+      color: $Azure;
+    }
+  }
+
+  .primary-button:hover {
+    .caret {
+      color: $White;
+    }
+  }
+
+  .m-r-5 {
+    margin-right: 5px;
+  }
+
+  .line-height-40 {
+    line-height: 40px;
+  }
+
+  .m-r-8 {
+    margin-right: 8px;
+  }
+  .z-ind-99 {
+    z-index: 8;
+  }
+
+  .min-width-161 {
+    min-width: 168px !important;
+  }
+
+  .top-2 {
+    top: -2px;
+  }
+
+  .d-block {
+    display: block;
+  }
+
+  // .caret_right {
+  //   float: right;
+  //   position: absolute;
+  //   right: 10px;
+  //   width: 0;
+  //   height: 0;
+  //   border-top: 5px dashed;
+  //   border-right: 5px solid transparent;
+  //   border-left: 5px solid transparent;
+  //   pointer-events: none;
+  // }
+}
+// MORE ACTION ENDS ***************
+.new-action-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-family: WiproAkkuratTT-Bold;
+  border-radius: 4px;
+  padding: 9px 12px 10px 12px;
+  text-align: left;
+  outline: 0;
+}
+.cust-dropdown-btn .min-width-161 {
+  min-width: 166px !important;
+}
+.pad-top-61 {
+  padding-top: 61px;
+}
+.btn-down-leads {
+  padding: 3px 8px 5px 8px !important;
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
+  right: 0;
+  font-size: 21px !important;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+.p-top-100 {
+  padding-top: 100px;
+}
+.pad-top-45 {
+  padding-top: 55px;
+}
+
+.loader {
+
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+}
+.loaderContainer {
+
+width: 100%;
+top:0em;
+position: absolute;
+height: 100%;
+z-index: 9999;
+background: white;
+}

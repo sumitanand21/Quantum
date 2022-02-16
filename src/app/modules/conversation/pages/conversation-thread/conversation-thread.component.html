@@ -1,0 +1,146 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab child-conversation-landing conver-archive">
+    <h1 class="float-left heading-level-one  ">
+      <span class="mdi mdi-arrow-left cp pos-abs mr10 " (click)="navTo()"></span>
+      <p class="ellipses float-left pos-rel mx250 left30" matTooltip="{{name}}">{{name}}</p>
+      <span class="convo-tag respo-tag cp">Activities</span>
+    </h1>
+    <span class="archive-tag" *ngIf="userdat.archiveTag">Archived</span>
+    <div class="cust-dropdown-btn float-right custom-mob-btn mob-more-btn web-button noshow-button-mob">
+      <button class="primary-button borderless pad-0-10 btn-block h-40 min-width168 pos-rel min-width-168
+                     responsive-btn-div-button color-azure d-flex justify-content-start align-items-center"
+        [ngClass]="showContent?'show-action border-radius0':''" (click)="toggleContent()"
+        (clickOutside)="closeContent()">
+        <span class="mdi mdi-dots-vertical m-r-8 dot-respon"></span> <span class="more-respon">More actions</span> <span
+          class="caret d-block caret-respon color-azure">
+        </span>
+      </button>
+      <div *ngIf="showContent" class="pos-rel group-content">
+        <ul class=" dropdown-content pad-0-10 pos-abs z-ind-99 respon-top no_pad">
+          <li class="h-40 cp color-azure line-height-40" (click)="onMoreDetails()">
+            <span class=" mdi mdi-settings-outline m-r-5"> </span> <span>Activity details </span>
+          </li>
+          <li class="h-40 cp color-azure line-height-40" (click)="additem(item);openarchive()"
+            *ngIf="!userdat.archiveTag">
+            <span class="mdi mdi-vector-difference-ab m-r-5"> </span> <span>Archive </span>
+          </li>
+          <li class="h-40 cp color-azure line-height-40" (click)="additem(item);openrestore()"
+            *ngIf="userdat.archiveTag">
+            <span class="mdi mdi-restore m-r-5"> </span> <span>Restore </span>
+          </li>
+          <li class="h-40 cp color-azure line-height-40" (click)="additem(item);clickToCampaign()"
+            *ngIf="!userdat.archiveTag">
+            <span class="mdi mdi-bullhorn m-r-5"> </span> <span>Request campaign </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad child-conversation-landing mar-top-75">
+  <div class="col-12 pos-abs bg-mid_night pad-30" [ngClass]="userdat.tableRecordsChecked == true ? 'h-475':'h-388'">
+  </div>
+  <div class="col-12 no_pad float-left conver-archive">
+    <div class="col-12 ptop-20 no_pad vertical-btns-div flex-tab pt40">
+      <div class="col-lg-10 col-md-8 col-12 no_pad flex-tab-width web-tab child-activity-btns"
+        [ngClass]="userdat.chatBot ?'col-xl-8 ':'col-xl-7 '">
+
+        <button (click)="tabone();userdat.serviceSearchItem=''" [attr.aria-selected]="contactstab  ? true : '' "
+          routerLinkActive="active" [ngClass]="(userdat.chatBot || userdat.userManual)?'col-lg-3':'col-lg-2'"
+          class=" col-sm-4 col-md-4 col-4 sub-vertical-but brd-right0 " [routerLink]="['meetingList']">
+          <span class="no_pad mdi mdi-comment-text-outline calin-select-all pr5 pos_rel top-2"></span>
+          <span class=" no_pad btntxt-s pos-btn">
+            <span class="sm-hide"></span> Meetings</span>
+        </button>
+
+        <button (click)="tabtwo()" [attr.aria-selected]="suitetab  ? true : '' " routerLinkActive="active"
+          [ngClass]="(userdat.chatBot || userdat.userManual)?'col-lg-3':'col-lg-2'"
+          class=" col-sm-4 col-md-4 col-4 pull-right sub-vertical-but  " [routerLink]="['actionList']">
+          <span class="no_pad calin-select-all mdi mdi-comment-check-outline pr5 pos_rel top-2"></span>
+          <span class="no_pad btntxt-s pos-btn">
+            <span class="sm-hide"></span> Actions</span>
+        </button>
+
+        <button (click)="tabthree(); userdat.serviceSearchItem=''" [attr.aria-selected]="plantab  ? true : '' "
+          routerLinkActive="active" [ngClass]="(userdat.chatBot || userdat.userManual)?'col-lg-3':'col-lg-2'"
+          class=" col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 " [routerLink]="['othersList']">
+          <span class="no_pad calin-select-all mdi mdi-comment-processing-outline pr5 pos_rel top-2"></span>
+          <span class=" no_pad btntxt-s pos-btn">
+            <span class="sm-hide"></span> Other activities</span>
+        </button>
+      </div>
+      <div class="col-12 col-md-8 no_pad flex-tab-width mobile-tab">
+
+        <button (click)="tabone(); userdat.serviceSearchItem=''" [routerLink]="['meetingList']"
+          routerLinkActive="active" [attr.aria-selected]="contactstab ? true : '' "
+          class="col-lg-3 col-sm-4 col-md-4 col-4 sub-vertical-but brd-right0 ">
+          <span class="no_pad mdi mdi-comment-processing-outline calin-select-all pr5 pos_rel top-5"></span>
+          <span class=" no_pad btntxt-s">Meetings</span>
+        </button>
+
+        <button (click)="tabtwo()" [attr.aria-selected]="suitetab ? true : '' " routerLinkActive="active"
+          class=" col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but  " [routerLink]="['actionList']">
+          <span class="no_pad calin-select-all mdi mdi-message-settings-variant pr5 pos_rel top-5"></span>
+          <span class="no_pad btntxt-s">Actions</span>
+        </button>
+
+        <button (click)="tabthree(); userdat.serviceSearchItem=''" [routerLink]="['othersList']"
+          [attr.aria-selected]="plantab ? true : '' " routerLinkActive="active"
+          class="col-lg-3 col-sm-4 col-md-4 col-4 pull-right sub-vertical-but brd-left0 ">
+          <span class="no_pad calin-select-all mdi mdi-message-settings-variant pr5 pos_rel top-5"></span>
+          <span class=" no_pad btntxt-s">Others</span>
+        </button>
+      </div>
+    </div>
+    <div class="pad-30">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!--mobile sticky buttons-->
+  <div class="float-left col-12 mobile-buttons bg-azure mobile-sticky-btns">
+    <button *ngIf="!userdat.archiveTag" class="primary-button borderless" (click)="addNewMeeting()">
+      <span class="mdi mdi-comment-plus-outline pr5 w-100 float-left"></span>Add meeting
+    </button>
+    <button *ngIf="!userdat.archiveTag" class="primary-button borderless" routerLink="/activities/newaction">
+      <span class="mdi mdi-plus pr5 w-100 float-left"></span>New action
+    </button>
+    <button class=" borderless" (click)="showmore = !showmore" *ngIf="!userdat.archiveTag"
+      (clickOutside)="showmore = false;" [ngClass]="showmore?'active-button':'primary-button'">
+      <span class="mdi mdi-dots-vertical pr5 w-100 float-left"></span>More actions
+
+    </button>
+    <!--archive buttons-->
+    <button *ngIf="userdat.archiveTag" class="primary-button borderless archivebuttoncase" (click)="onMoreDetails()">
+      <span class="mdi mdi-settings-outline pr5 w-100 float-left"></span>Activity details
+    </button>
+    <button *ngIf="userdat.archiveTag" class="primary-button borderless archivebuttoncase"
+      (click)="additem(item);openrestore()">
+      <span class="mdi mdi-restore pr5 w-100 float-left"></span>Restore
+    </button>
+    <!--archive buttons-->
+    <div class="pos-abs group-content-mob float-right " *ngIf="showmore">
+      <ul class=" dropdown-content-mob pad-0-10 z-ind-99 respon-top no_pad">
+        <li class="h-40 cp color-azure line-height" (click)="onMoreDetails()">
+          <span class=" mdi mdi-settings-outline mar-r-10"> </span> <span>Activity details </span>
+        </li>
+        <li class="h-40 cp color-azure line-height" (click)="additem(item);openarchive()" *ngIf="!userdat.archiveTag">
+          <span class="mdi mdi-vector-difference-ab mar-r-10"> </span> <span>Archive </span>
+        </li>
+        <li class="h-40 cp color-azure line-height" (click)="additem(item);openrestore()" *ngIf="userdat.archiveTag">
+          <span class="mdi mdi-restore mar-r-10"> </span> <span>Restore </span>
+        </li>
+        <li class="h-40 cp color-azure line-height" (click)="additem(item);clickToCampaign()"
+          *ngIf="!userdat.archiveTag" [routerLink]="['/campaign/RequestCampaign']">
+          <span class="mdi mdi-bullhorn mar-r-10"> </span> <span>Request campaign </span>
+        </li>
+        <li *ngIf="!userdat.archiveTag" class="h-40 cp color-azure line-height" routerLink="/activities/otheractivity">
+          <span class=" mdi mdi-plus mar-r-10"> </span> <span>Add other activities </span>
+        </li>
+        <li *ngIf="!userdat.archiveTag" class="h-40 cp color-azure " routerLink="/activities/syncActivity">
+          <span class="mdi mdi-sync mar-r-10"> </span> <span> Sync activities </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

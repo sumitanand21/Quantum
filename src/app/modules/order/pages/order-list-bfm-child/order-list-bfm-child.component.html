@@ -1,0 +1,66 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'" >
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab child-leads-landing " 
+      [ngClass]="service.sideTrans ? 'main-containt-250' : 'main-containt'" >
+    <div class="float-left  ">
+      <div class="d-flex float-left">
+        <button class="mdi mdi-arrow-left cp back btn-none" aria-label="back" (click)="goBack()"></button>
+        <h1 class="float-left heading-level-one">{{lookup_orderId}}</h1>
+        <!-- <div class="loaderContainer col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" >
+          <div class="loader"></div>
+        </div> -->
+      </div>
+      <small class="d-md-block d-none tag">Orders</small>
+    </div>
+    <div class="float-right disp-flex responsive-btn-div web-action-button" >
+
+      <!-- <button class="svgHover primary-button borderless h-40 mr10 button-width-25 responsive-btn-div-button" (click)="openassign()">
+        <span class="mdi mdi-account-convert pr5 responsive-btn-div-span" ></span>Assign
+      </button> -->
+      <button *ngIf = "BFM_RejectBtn" class="primary-button borderless h-40 mr10 button-width-25 responsive-btn-div-button" (click)="openreject()" [ngClass]="(BFM_reject_Disable) ? 'disabledclass' : ''">
+        <span class="mdi mdi-close pr5 responsive-btn-div-span"></span>Reject
+      </button>
+      <button *ngIf = "BFM_OnholdBtn" class="primary-button borderless h-40 mr10 button-wd50 responsive-btn-div-button" (click)="openonhold()" [ngClass] = "(BFM_Onhold_Disable) ? 'disabledclass' : ''" >
+        <span class="mdi mdi-timer pr5 responsive-btn-div-span"></span>On hold
+      </button>
+      <button *ngIf = "BFM_ApproveBtn" class="primary-button borderless h-40 mr10 button-wd50 responsive-btn-div-button" (click)="openapprove()" [ngClass] = "(BFM_approve_Disable) ? 'disabledclass' : ''">
+        <span class="mdi mdi-check pr5 responsive-btn-div-span"></span>Approve
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- main div starts here -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad tabs_mdi child-leads-landing" 
+    [ngClass]="service.sideTrans ? 'main-containt-250' : 'main-containt'" >
+      <div class="col-12 pos-abs bg-mid_night h-300 pad-30 res-position-rel no_pad"></div>
+  <div class="col-12 padd-all pad-left-right-10 float-left padding-top20 top-22 mar-top-75">
+
+    <!-- <div class=" float-left col-12 ptop-20 no_pad vertical-btns-div flex-tab">
+      <div class="no_pad btn-tabs-active flex-tab-width leads-tab-mt20">
+        <button role="tab" [attr.aria-selected]="systemchecks ? true : '' " (click)="systemchecks1()"
+          [routerLink]="['systemchecks']" routerLinkActive="active"
+          class="col-lg-2  col-md-4 col-4 sub-vertical-but brd-right0 ">
+          <span class="no_pad mdi mdi-clipboard-check-outline calin-select-all"></span>
+          <span class=" no_pad btntxt-s tab_icon">System checks</span>
+        </button>
+        <button role="tab" [attr.aria-selected]="userdeclarations ? true : '' " (click)="userdeclarations1()" 
+        [routerLink]="['userdeclarations']" routerLinkActive="active"
+          class=" col-lg-2  col-md-4 col-4 pull-right sub-vertical-but  ">
+          <span class="no_pad calin-select-all mdi mdi-checkbox-multiple-marked-circle-outline"></span>
+          <span class="no_pad btntxt-s tab_icon">User declarations</span>
+        </button>
+        <button role="tab" [attr.aria-selected]="manualchecks ? true : '' " (click)="manualchecks1()"
+          [routerLink]="['manualchecks']" routerLinkActive="active"
+          class="col-lg-2 col-md-4 col-4 pull-right sub-vertical-but brd-left0 ">
+          <span class="no_pad calin-select-all mdi mdi-pen"></span>
+          <span class=" no_pad btntxt-s tab_icon">Manual checks</span>
+        </button>
+      </div>
+    </div> -->
+    <router-outlet> </router-outlet>
+  </div>
+</div>
+
+<!-- main div ends here -->

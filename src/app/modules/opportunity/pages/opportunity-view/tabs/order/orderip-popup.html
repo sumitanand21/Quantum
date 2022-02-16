@@ -1,0 +1,339 @@
+<div class="col-12 float-left  no_pad ipmoreoption ">
+    <form #myIPCloudForm="ngForm">
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left mt20 pad_10 no_pad popup-hd">
+            <span class="col-11 float-left  no_pad search-db-hd-txt" mat-dialog-title>Additional details : IP</span>
+            <button type="button" class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+                mat-dialog-close></button>
+        </div>
+
+        <!-- <div class="col-12 float-left border-bottom-grey"></div> -->
+        <div class="col-12 col-lg-12 col-xl-12 col-md-12 col-sm-12 no_pad popup-tabs">
+            <div class="row col-12 col-lg-12 col-xl-12 col-md-12 col-sm-12 no_pad pad-top float-left">
+                <div class="col-6 col-lg-3 col-xl-3 col-sm-6 col-md-6 text-center ">
+                    <button type="button" aria-labelledby="Wipro" class="btn  btn-circle mb-5"
+                        [ngClass]="{'btn-default bg-light text-primary': wiproDatabsebtn == false ,'btn-primary text-light': wiproDatabsebtn == true}"
+                        role="tab" [attr.aria-selected]="wiproDatabsebtn ? 'true':''" (click)="additionalInfo()">
+                        <span class="mdi mdi-regex"></span></button>
+                    <br>
+                    <span class="text-fontpop" id="Wipro">Additional IP Information</span>
+                    <div class="popup-tabs-arrow" *ngIf="wiproDatabsebtn"></div>
+                </div>
+
+                <div class="col-6 col-lg-3 col-xl-3 col-sm-6 col-md-6 text-center mr-lt ">
+                    <button type="button" aria-labelledby="database" class="btn btn-circle mb-5"
+                        [ngClass]="{'btn-default bg-light text-primary': dDatabasebtn == false ,'btn-primary text-light': dDatabasebtn == true}"
+                        role="tab" [attr.aria-selected]="dDatabasebtn ? 'true':''" (click)="servicevalue()"> <span
+                            class="mdi mdi-cloud-outline"></span></button>
+                    <br>
+                    <span class="text-fontpop" id="database">Cloud details</span>
+                    <div class="popup-tabs-arrow" *ngIf="dDatabasebtn"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-90 mb-30"
+            *ngIf="wiproDatabsebtn">
+            <div class="col-12 float-left no_pad">
+                <button type="button" aria-label="Delete IP additional info." (click) = "ipadditionaldelete()" [disabled]="disableOnRoleBSIp" [ngClass]="disableOnRoleBSIp ? 'bg-grey':'bg-azure'"
+                    class="col-9 col-sm-9 col-md-5 col-lg-3 col-xl-3 primary-button ml10 h-40 std save-responsive-btn float-right pad_10">
+                    <span class="mdi mr10 mdi-delete"></span>Delete
+                    IP additional info.</button>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" style="max-height:180px" slimScroll>
+
+                    <div class="col-6 float-left no_pad" *ngFor="let tab of table_data">        
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left plb-0-10">
+                              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-text ellipses">{{tab.first_data}}</label>
+                              <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text ellipses">{{tab.second_data}}</span>
+                            </div>                
+                    </div>            
+
+                    <div class="col-12 float-left">
+                         <span class="col-12 sub-text pad-topbtm float-left plb-0-10 font-14">Services
+                            Value</span>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10">
+                        <div class="customized-input">
+                            <label for="field1" class="w-100">Implementation ({{CurrencySymbol}})</label>
+                            <input onkeypress="return event.charCode >= 48
+                            && event.charCode <= 57" id="field1" type="number" class="col-9 border-gray w-100" value=""  name="ImplementationValue" placeholder="00.00" [(ngModel)] = "additionalIpData.wipro_implementationvalues">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 float-left plb-0-10 ">
+                        <div class="col-12 float-left customized-input no_pad">
+                            <label for="field1" class="w-100">Comments</label>
+                            <textarea class="float-left Padd-5 h-40 input-text-more" [appAlphaNumeric] = "'alphanumeric'"
+                            id="text3"  type="text" placeholder="Enter comments" name="ImplementationComment" [(ngModel)] = "additionalIpData.wipro_implementationcomment"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10">
+                        <div class="customized-input">
+                            <label for="field1" class="w-100">Customization ({{CurrencySymbol}})</label>
+                            <input onkeypress="return event.charCode >= 48
+                            && event.charCode <= 57" id="field1" type="number" class="col-9 border-gray w-100" value=""  placeholder="00.00" name="CustomValue" [(ngModel)] = "additionalIpData.wipro_customizationvalue">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 float-left plb-0-10 ">
+                        <div class="col-12 float-left customized-input no_pad">
+                            <label for="field1" class="w-100">Comments</label>
+                            <textarea class="float-left Padd-5 h-40 input-text-more" [appAlphaNumeric] = "'alphanumeric'"
+                             id="text3"  type="text" placeholder="Enter comments" name="CustomComment" [(ngModel)] = "additionalIpData.wipro_customizationcomments"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10">
+                        <div class="customized-input">
+                            <label for="field1" class="w-100">Professional services ({{CurrencySymbol}})</label>
+                            <input onkeypress="return event.charCode >= 48
+                            && event.charCode <= 57" id="field1" type="number" class="col-9 border-gray w-100" value=""  name="ProfserValue" placeholder="00.00" [(ngModel)] = "additionalIpData.wipro_professionalservicesvalues">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 float-left plb-0-10 ">
+                        <div class="col-12 float-left customized-input no_pad">
+                            <label for="field1" class="w-100">Comments</label>
+                            <textarea class="float-left Padd-5 h-40 input-text-more" [appAlphaNumeric] = "'alphanumeric'"
+                            id="text3"  type="text" placeholder="Enter comments" name="ProfserComment" [(ngModel)] = "additionalIpData.wipro_professionalservicescomment"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- <div
+                        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10 customized-checkbox no_pad ">
+                        <div class="col-12 customized-input">
+                            <label for="field1" class="w-100">Additional solution value</label>
+                            <mat-checkbox class="col-1 pad-leftright">
+                            </mat-checkbox>
+                            <input onkeypress="return event.charCode >= 48
+                            && event.charCode <= 57" id="field1" type="number" class="col-9 border-gray w-100" value=""  placeholder="00.00" [(ngModel)] = "additionalIpData.wipro_additionalsolutionvalue">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-0-10 pad-left22">
+                        <div class="col-12  float-left customized-input no_pad">
+                            <label for="field1" class="w-100">Absolute value ($)</label>
+                              <input onkeypress="return event.charCode >= 48
+                              && event.charCode <= 57" id="field1" type="number" class="col-9 border-gray w-100" value=""  placeholder="00.00" [(ngModel)] = "abc">
+                        </div>
+                    </div>   -->
+
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-90" *ngIf="dDatabasebtn">
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad mt10 float-left">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 float-left plb-0-20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">IP TCV
+                        ({{CurrencySymbol}})</label>
+                    <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text ellipses" title= "{{IPTCV}}">{{IPTCV}}</span>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 float-left plb-0-20">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text">Cloud TCV
+                        ({{CurrencySymbol}})</label>
+                    <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad sub-text ellipses" title="{{finalTCVValue}}">{{finalTCVValue}}</span>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad  float-left">
+                <span class="col-6 float-left sub-text pad-css pad-leftright">Cloud
+                    details</span>
+                <span class="col-6 float-right plb-0-10">
+                    <button type="button" aria-label="Add row" (click)="addIpCloud();panelOpenState2 = false" class="float-right addAccountBtns" *ngIf="!disableOnRoleBSIp">+ Add
+                        row</button></span>
+            </div>
+
+
+            <div class="col-12 no_pad float-left">
+                <!-- Table starts here -->
+                <perfect-scrollbar style="max-height:180px">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left matfrm-wrap popuptbl-padbtm20">
+                        <table class="table table-borderless mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Function *</th>
+                                    <th>Category *</th>
+                                    <th class="ellipses">Service provider *</th>
+                                    <th>Technology *</th>
+                                    <th class="ellipses">Open source</th>
+                                    <th>Value *</th>
+                                    <th>Remarks</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <tr class="nodata_tr" *ngIf = "cloudData.length == 0">
+                                    <td class="nodata_td" colSpan="12"> No records found </td>
+                                </tr>
+                                <tr *ngFor="let data of cloudData; let i = index">
+                                        <!-- [hidden] = "data.CloudStatecode == 1" -->
+                                    <td class="display-none"></td>
+                                    <td [attr.data-label]="'Function *'" class="mobile-no_pad">
+                                        <!-- Select DROPDOWN STARTS -->
+                                        <div class="customized-select mobile-select-box" [ngClass]="{'disabled-control' : disableOnRoleBSIp}">
+                                            <span class="caret color-azure"></span>
+                                            <select id="selectFunction{{i}}" role="listbox"
+                                            [ngClass]="{'orangeborder':(!data.Functionid)}" 
+                                            [title]="data.Function"
+                                            (change)="setIPCloudName('function',data.Functionid,i)"
+                                            [(ngModel)]="data.Functionid" name="Function{{data.FrontEndID}}" [disabled] = "disableOnRoleBSIp">
+                                                <option value="" hidden>Select</option>
+                                                <option *ngFor="let function of FunctionList" [value]="function.Id">{{function.Name}}</option>
+                                            </select>
+                                        </div>
+                                        <!-- Select DROPDOWN STARTS -->
+                        
+
+                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left h100 no_pad web-select-box">
+                                                <mat-form-field class="col-12 no_pad float-left">
+                                                  <mat-select disableOptionCentering panelClass="Select-panel-class-btm"  class="select-focus mat-select {{service.getSelectedClass(data.Functionid)}}" id="selectFunction{{i}}" role="listbox"
+                                                  [ngClass]="{'orangeborder':(!data.Functionid)}" 
+                                                  [title]="data.Function"
+                                                  (selectionChange)="setIPCloudName('function',data.Functionid,i)"
+                                                  [(ngModel)]="data.Functionid" name="Function{{data.FrontEndID}}" [disabled] = "disableOnRoleBSIp">
+                                                    <mat-option value="" hidden>Select</mat-option>
+                                                    <mat-option *ngFor="let function of FunctionList" [value]="function.Id">{{function.Name}}</mat-option>
+                                                  </mat-select>
+                                                </mat-form-field>
+                                              </div>
+
+                                    </td>
+                                    <td [attr.data-label]="'Category *'" class="mobile-no_pad no_pad">
+                                        <!-- Select DROPDOWN STARTS -->
+                                        <div class="customized-select mobile-select-box" [ngClass]="{'disabled-control' : disableOnRoleBSIp}">
+                                            <span class="caret color-azure"></span>
+                                            <select id="selectCategory{{i}}" role="listbox"
+                                            [ngClass]="{'orangeborder':(!data.CategoryId)}" 
+                                            [title]="data.Category"
+                                            (change)="setIPCloudName('category',data.CategoryId,i)"
+                                            [(ngModel)]="data.CategoryId" name="Category{{data.FrontEndID}}" [disabled] = "disableOnRoleBSIp">
+                                                <option value="" hidden>Select</option>
+                                                <option *ngFor="let category of CategoryList"  [value]="category.Id">{{category.Name}}</option>
+                                            </select>
+                                        </div>
+                                        <!-- Select DROPDOWN STARTS -->
+                                   
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left h100 no_pad web-select-box">
+                                            <mat-form-field class="col-12 no_pad float-left">
+                                              <mat-select disableOptionCentering panelClass="Select-panel-class-btm"  class="select-focus mat-select {{service.getSelectedClass(data.CategoryId)}}" id="selectCategory{{i}}" role="listbox"
+                                              [ngClass]="{'orangeborder':(!data.CategoryId)}" 
+                                              [title]="data.Category"
+                                              (selectionChange)="setIPCloudName('category',data.CategoryId,i)"
+                                              [(ngModel)]="data.CategoryId" name="Category{{data.FrontEndID}}" [disabled] = "disableOnRoleBSIp">
+                                                <mat-option value="" hidden>Select</mat-option>
+                                                <mat-option *ngFor="let category of CategoryList"  [value]="category.Id">{{category.Name}}</mat-option>
+                                              </mat-select>
+                                            </mat-form-field>
+                                          </div>
+                                    </td>
+                                    <td [attr.data-label]="'Service provider *'" class="mobile-no_pad">
+                                        <!-- Select DROPDOWN STARTS -->
+                                        <div class="customized-select mobile-select-box" [ngClass]="{'disabled-control' : disableOnRoleBSIp}">
+                                            <span class="caret color-azure"></span>
+                                            <select id="selectServiceProvider{{i}}" role="listbox"
+                                            [ngClass]="{'orangeborder':(!data.ServiceProviderId)}" 
+                                                [title]="data.ServiceProvider"
+                                            (change)="setIPCloudName('service',data.ServiceProviderId,i)"
+                                            [(ngModel)]="data.ServiceProviderId" name="ServiceProvider{{data.FrontEndID}}" [disabled] = "disableOnRoleBSIp">
+                                                <option value="" hidden>Select</option>
+                                                <option *ngFor="let serviceprovider of ServiceProviderList" [value]="serviceprovider.Id">{{serviceprovider.Name}}</option>
+                                                 
+                                            </select>
+                                        </div>
+                                        <!-- Select DROPDOWN STARTS -->
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left h100 no_pad web-select-box">
+                                            <mat-form-field class="col-12 no_pad float-left">
+                                              <mat-select disableOptionCentering panelClass="Select-panel-class-btm"  class="select-focus mat-select {{service.getSelectedClass(data.ServiceProviderId)}}" id="selectServiceProvider{{i}}" role="listbox"
+                                              [ngClass]="{'orangeborder':(!data.ServiceProviderId)}" 
+                                                  [title]="data.ServiceProvider"
+                                              (selectionChange)="setIPCloudName('service',data.ServiceProviderId,i)"
+                                              [(ngModel)]="data.ServiceProviderId" name="ServiceProvider{{data.FrontEndID}}" [disabled] = "disableOnRoleBSIp">
+                                                <mat-option value="" hidden>Select</mat-option>
+                                                <mat-option *ngFor="let serviceprovider of ServiceProviderList" [value]="serviceprovider.Id">{{serviceprovider.Name}}</mat-option>
+                                              </mat-select>
+                                            </mat-form-field>
+                                          </div>
+                                    </td>
+                                    <td [attr.data-label]="'Technology *'" class="mobile-no_pad no_pad">
+                                        <!-- Select DROPDOWN STARTS -->
+                                        <div class="customized-select mobile-select-box" [ngClass]="{'disabled-control' : disableOnRoleBSIp}">
+                                            <span class="caret color-azure"></span>
+                                            <select id="selectTechnology{{i}}" role="listbox"
+                                            [ngClass]="{'orangeborder':(!data.TechnologyId)}"  
+                                                    [title]="data.Technology"
+                                         (change)="setIPCloudName('technology',data.TechnologyId,i)"
+                                            [(ngModel)]="data.TechnologyId" name="Technology{{data.FrontEndID}}" [disabled] = "disableOnRoleBSIp">
+                                                <option value="" hidden>Select</option>
+                                                <option *ngFor="let technology of TechnologyList"  [value]="technology.Id">{{technology.Name}}</option>
+                                             </select>
+                                        </div>
+                                        <!-- Select DROPDOWN STARTS -->
+
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left h100 no_pad web-select-box">
+                                            <mat-form-field class="col-12 no_pad float-left">
+                                              <mat-select disableOptionCentering panelClass="Select-panel-class-btm"  class="select-focus mat-select {{service.getSelectedClass(data.TechnologyId)}}" id="selectTechnology{{i}}" role="listbox"
+                                              [ngClass]="{'orangeborder':(!data.TechnologyId)}"  
+                                                      [title]="data.Technology"
+                                           (selectionChange)="setIPCloudName('technology',data.TechnologyId,i)"
+                                              [(ngModel)]="data.TechnologyId" name="Technology{{data.FrontEndID}}" [disabled] = "disableOnRoleBSIp">
+                                                <mat-option value="" hidden>Select</mat-option>
+                                                <mat-option *ngFor="let technology of TechnologyList"  [value]="technology.Id">{{technology.Name}}</mat-option>
+                                              </mat-select>
+                                            </mat-form-field>
+                                          </div>
+                                    </td>
+
+                                    <td [attr.data-label]="'Open source'" class="mobile-no_pad customized-checkbox"> 
+                                        <mat-checkbox aria-label="select" [(ngModel)]="data.OpenSource" name="OpenSource{{data.FrontEndID}}" (change)="updateCloudValue(i,$event,'OpenSource')"
+                                        [disabled] = "disableOnRoleBSIp"></mat-checkbox>
+                                    </td>
+                                    <td [attr.data-label]="'Value *'" class="mobile-no_pad no_pad">
+                                        <div class="customized-input" (change)="updateCloudValue(i,$event,'Value')">
+                                            <label for="field1" class=""> </label>
+                                            <input id="field1" type="text" name="Value{{data.FrontEndID}}" class="border-gray w-75 mob_width100" [ngClass]="{'orangeborder':(!data.Value)}"
+                                            [(ngModel)]="data.Value" #ipclval [decimalnumbersOnly]="acceptNegative" [oldValue]="ipclval.value"  placeholder="00.00"
+                                            [disabled] = "disableOnRoleBSIp">
+                                        </div>
+                                    </td>
+                                    <td [attr.data-label]="'Remarks'" class="mobile-no_pad no_pad">
+                                        <div class="customized-input">
+                                            <label for="field1" class=""> </label>
+                                            <input id="field1" type="text" class="border-gray w-75 mob_width100" 
+                                                placeholder="Remarks" [ngClass]="{'orangeborder':(!data.Remarks && data.OpenSource)}" 
+                                                [title]="data.Remarks"  [appAlphaNumeric] = "'alphanumeric'"
+                                                [(ngModel)]="data.Remarks" name="Remarks{{data.FrontEndID}}" title="{{data.Remarks}}" (change)="updateCloudValue(i,$event,'Remarks')"
+                                                [disabled] = "disableOnRoleBSIp">
+                                                <!-- <span class="required" *ngIf="data.OpenSource"> * </span> -->
+                                        </div>
+                                    </td>
+                                    <td class="display_flex mobile-align">
+                                        <button type="button" class="btn-none blue_circle_replay pad_left_0 cp commonActionBtn top-5ml0"
+                                            aria-label="Delete" matTooltip="Delete" (click)="confirmdelete(i,data)"
+                                            [disabled] = "disableOnRoleBSIp">
+                                            <span class="col-xs-12 nopad blue_circle_replay_img mdi  mdi-delete"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </perfect-scrollbar>
+                <!--Table ends here -->
+            </div>
+        </div>
+
+    </div>
+</form>
+</div>
+
+<div class="col-12 float-left no_pad ipmoreoption">
+    <button type="button" aria-label="Cancel" class="col-6 float-left no_pad cancel-btn1 mt15" mat-dialog-close>Cancel</button>
+    <button type="button" aria-label="Save" class="col-6 float-left btndef-none no_pad confrm-btn-save" [ngClass]="disableOnRoleBSIp ? 'bg-grey':'bg-azure'" [disabled]="disableOnRoleBSIp" (click) = "saveData()">Save</button>
+</div>

@@ -1,0 +1,506 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab new-container">
+        <div class="col-12 no_pad float-left">
+            <div class=" no_pad float-left padbox-20">
+                <h1 class="float-left heading-level-one">Create prospect account
+                    <!-- <small class="mobile">* Prospect account fields to be finalized</small> -->
+                </h1>
+            </div>
+            <div class="float-right d-flex save-cancel-responsive">
+                <button class="primary-button secondary-btn btn-block h-40 marginR10 std primaryBtnGen" type="button" [disabled]="saveClicked" (click)="opencancelpop()" [ngClass]="saveClicked ? 'disabled-control' : 'primary-button'">Cancel</button>
+                <!-- <div *ngIf="sessionstorageData?.model != 'Account'">
+                    <button class="primary-button borderless btn-block h-40 std" type="button" [disabled]="saveClicked" (click)="onSubmit()" [ngClass]="saveClicked ? 'disabled-control' : 'primary-button'">Create</button>
+                </div>  -->
+                <button class="primary-button borderless btn-block h-40 std primaryBtnGen" type="button" [disabled]="saveClicked" (click)="onSubmit()" [ngClass]="saveClicked ? 'disabled-control' : 'primary-button'">Save</button>
+                <!-- <div class="btnholder">
+                    
+                </div> -->
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container">
+    <div class="col-12 float-left no_pad pos-abs bg-mid_night h-170"></div>
+    <div class="col-12 pad-30 padding-top20 float-left scroll-middle-ios-100vh">
+        <div class="col-12 float-left padding-lr15" *ngIf="isLoading">
+            <ng-container>
+                <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                            <div class="loaderContainer">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div *ngIf="!isLoading" class="col-12 col-sm-12 col-md-12 col-lg-12 float-left card prospect-main-page margin-btm55 mt-110">
+            <form id="validatescroll" [formGroup]="prospectAccountForm" class="form">
+               
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 float-left plb-60-20 marg-top-15" *ngIf="isAccountCustomProspect == true">
+                    <div class="customized-input">
+                        <label class="w-100 label-form">Name <span class="required">*</span></label>
+                        <div class="pos-rel float-left no_pad w-100">
+                            <input type="text" id="name" specialIsAlphaNumeric [attr.data-type]="'text'" formControlName="name" maxlength="100" class="border-gray w-100" value="" [ngClass]="{'error': f.name.invalid && (f.name.dirty || f.name.touched)}" placeholder="Enter name" required>
+                            <p *ngIf="f.name.touched && !f.name.valid" class="error-message top-40">Enter valid name </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20" *ngIf="isAccountCustomProspect == false">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="accID" class="label-form">
+              Account <span class="required">*</span></label>
+                        <div class="pos-rel float-left no_pad w-100">
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" #verticallist id="accID" name="accID" formControlName="accountName" placeholder="Search account" type="text" (click)="clicAccountData()" [ngClass]="{'error': f.accountName.invalid && (f.accountName.dirty || f.accountName.touched)}" readonly>
+                            <span class="mdi mdi-magnify" *ngIf="accountNameSwitch || accountNameSelect ==''"></span>
+                            <p *ngIf="f.accountName.touched && !f.accountName.valid" class="error-message top-40">Account is required</p>
+                            <span class="mdi mdi-close auto-close" role="button" (click)="clearSbuName();arrowkeyLocation=0;accountNameSelect=''" *ngIf="!accountNameSwitch && accountIdSelect!==''"></span>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="accountNameSwitch" [attr.focus]="f.accountName.value && accountNameSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                [ngClass]="{'loader-search':isAccountSearchLoading }">
+                  <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name"
+                  [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                    *ngFor="let item of subVerticleByName; let i=index"
+                    (click)="verticallist.value=item.Name;appendAccount(item)"   matTooltip="{{item.Name}}">
+                    {{item.Name}}</li>
+                  <li class="d-block list-name h-40 p-10"
+                    *ngIf="(subVerticleByName |filter:f.accountName.value)?.length == 0 && !isAccountSearchLoading">
+                    No record found </li>
+                </ul>
+                </span>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                </div>
+
+
+             
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="sbuNameClose()">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="sbuID" class="label-form">
+              SBU <span class="required">*</span></label>
+                        <div class="pos-rel float-left no_pad w-100">
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" #verticallist id="sbuID" name="sbuID" formControlName="sbu" placeholder="Search sbu" type="text" role="combobox" autocomplete="off" aria-owns="read" appKeyListControl
+                                [dataManipulate]=true [attr.data-isDownBtn]=true (arrowDown)="arrowkeyLocation=$event" [attr.data-selectedvalue]="sbuName" [attr.aria-expanded]="sbuNameSwitch?true:false" [attr.aria-activedescendant]="arrowkeyLocation" (input)="sbuNameSwitch = true;arrowkeyLocation=0"
+                                (intialLoadData)="sbuNameSwitch = true;clickSbuData();arrowkeyLocation=0" (keyup.enter)="appendSbu(subVerticleByName[arrowkeyLocation]);sbuNameSwitch=false;arrowkeyLocation=0" (keydown)="sbuNameSwitch=true" (keydown.Tab)="sbuNameClose()"
+                                [attr.data-arrayMaxLength]="subVerticleByName?.length" aria-autocomplete="list" [ngClass]="{'error': f.sbu.invalid && (f.sbu.dirty || f.sbu.touched)}">
+                            <span class="mdi mdi-magnify" *ngIf="sbuNameSwitch || sbuName ==''"></span>
+                            <p *ngIf="f.sbu.touched && !f.sbu.valid" class="error-message top-40">SBU is required</p>
+                            <span class="mdi mdi-close auto-close" role="button" (click)="clearSbuName();arrowkeyLocation=0;sbuName=''" *ngIf="!sbuNameSwitch && getsbuId!==''"></span>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="sbuNameSwitch" [attr.focus]="f.sbu.value && sbuNameSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                [ngClass]="{'loader-search':isSbuSearchLoading }">
+                  <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name"
+                  [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                    *ngFor="let item of subVerticleByName; let i=index"
+                    (click)="verticallist.value=item.Name;appendSbu(item)"   matTooltip="{{item.Name}}">
+                    {{item.Name}}</li>
+                  <li class="d-block list-name h-40 p-10"
+                    *ngIf="(subVerticleByName |filter:f.sbu.value)?.length == 0 && !isSbuSearchLoading">
+                    No record found </li>
+                </ul>
+                </span>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="verticalNameclose()">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="verticalID" class="label-form">
+              Vertical <span class="required">*</span></label>
+                        <div class="pos-rel float-left no_pad w-100">
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" #verticallist id="verticalID" name="verticalID" formControlName="vertical" placeholder="Search vertical" type="text" role="combobox" autocomplete="off" aria-owns="read"
+                                appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true (arrowDown)="arrowkeyLocation=$event" [attr.data-selectedvalue]="verticleName" [attr.aria-expanded]="verticalNameSwitch?true:false" [attr.aria-activedescendant]="arrowkeyLocation"
+                                (input)="verticalNameSwitch = true;arrowkeyLocation=0" (intialLoadData)="verticalNameSwitch = true;clickVerticleData();arrowkeyLocation=0" (keyup.enter)="appendVertical(VerticalByname[arrowkeyLocation]);verticalNameSwitch=false;arrowkeyLocation=0"
+                                (keydown)="verticalNameSwitch=true" (keydown.Tab)="verticalNameclose()" [attr.data-arrayMaxLength]="VerticalByname?.length" aria-autocomplete="list" [ngClass]="{'error': f.vertical.invalid && (f.vertical.dirty || f.vertical.touched)}">
+                            <span class="mdi mdi-magnify" *ngIf="verticalNameSwitch || verticleName ==''"></span>
+                            <p *ngIf="f.vertical.touched && !f.vertical.valid" class="error-message top-40">Vertical is required</p>
+                            <span class="mdi mdi-close auto-close" role="button" (click)="clearVerticalName();arrowkeyLocation=0;verticleName=''" *ngIf="!verticalNameSwitch && getVerticle!==''"></span>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="verticalNameSwitch" [attr.focus]="f.vertical.value && verticalNameSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                [ngClass]="{'loader-search':isVerticalSearchLoading }">
+                  <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name"
+                  [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                    *ngFor="let item of VerticalByname; let i=index"
+                    (click)="verticallist.value=item.Name;appendVertical(item)"   matTooltip="{{item.Name}}">
+                    {{item.Name}}</li>
+                  <li class="d-block list-name h-40 p-10"
+                    *ngIf="(VerticalByname |filter:f.vertical.value)?.length == 0 && !isVerticalSearchLoading">
+                    No record found </li>
+                </ul>
+                </span>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="geoNameclose()">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="geoID" class="label-form">
+                      Geo <span class="required" *ngIf="sessionstorageData?.model !== 'Account'">*</span></label>
+                        <div class="pos-rel float-left no_pad w-100">
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" #geolist id="geoID" name="geoID" formControlName="geo" placeholder="Search geo" type="text" role="combobox" autocomplete="off" aria-owns="read" appKeyListControl
+                                [dataManipulate]=true [attr.data-isDownBtn]=true (arrowDown)="arrowkeyLocation=$event" [attr.data-selectedvalue]="geoName" [attr.aria-expanded]="geoNameSwitch?true:false" [attr.aria-activedescendant]="arrowkeyLocation" (input)="geoNameSwitch=true;arrowkeyLocation=0"
+                                (intialLoadData)="geoNameSwitch=true;clickGeoData();arrowkeyLocation=0" (keyup.enter)="appendGeo(getGoe[arrowkeyLocation]);geoNameSwitch=false;arrowkeyLocation=0" (keydown)="geoNameSwitch=true" (keydown.Tab)="geoNameclose()"
+                                [attr.data-arrayMaxLength]="getGoe?.length" aria-autocomplete="list" [ngClass]="{'error': f.geo.invalid &&  f.geo.touched}">
+                            <span class="mdi mdi-magnify" *ngIf="geoNameSwitch || geoName ==''"></span>
+                            <p *ngIf="f.geo.touched && f.geo.invalid" class="error-message top-40">Geo is required</p>
+                            <span class="mdi mdi-close auto-close" role="button" (click)="clearGeoName();arrowkeyLocation=0;geoName=''" *ngIf="!geoNameSwitch && getGeo!=='' && sessionstorageData?.model !== 'Account'"></span>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="geoNameSwitch" [attr.focus]="f.geo.value && geoNameSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                        <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                        [ngClass]="{'loader-search':isGeoSearchLoading }">
+                          <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name"
+                          [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                            matTooltip="{{item.Name}}" *ngFor="let item of getGoe; let i=index"
+                            (click)="geolist.value=item.Name;appendGeo(item)">
+                            {{item.Name}}</li>
+                          <li class="d-block list-name h-40 p-10"
+                            *ngIf="(getGoe |filter:f.geo.value)?.length == 0 && !isGeoSearchLoading">
+                            No record found </li>
+                        </ul>
+                        </span>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                </div>
+                <!--autocomplete ends here-->
+                <!--autocomplete starts here-->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="RegionNameclose()">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="regionID" class="label-form">
+                      Region <span class="required" *ngIf="sessionstorageData?.model !== 'Account'">*</span></label>
+                        <div class="pos-rel w-100 float-left no_pad">
+                            <input 
+                            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" 
+                            #regionlist 
+                            #region 
+                            id="regionID" 
+                            name="regionID" 
+                            formControlName="region" 
+                            placeholder="Search region" 
+                            type="text" role="combobox" 
+                            autocomplete="off" 
+                            aria-owns="read"
+                            appKeyListControl 
+                            [dataManipulate]=true 
+                            [attr.data-isDownBtn]=true 
+                            (arrowDown)="arrowkeyLocation=$event" 
+                            [attr.data-selectedvalue]="regionName" 
+                            [attr.aria-expanded]="RegionNameSwitch?true:false" 
+                            [attr.aria-activedescendant]="arrowkeyLocation"
+                            (input)="RegionNameSwitch = true;arrowkeyLocation=0" 
+                            (intialLoadData)="RegionNameSwitch = true;clickRegionData();arrowkeyLocation=0" 
+                            (keyup.enter)="appendRegion(searchRegion[arrowkeyLocation]);RegionNameSwitch=false;arrowkeyLocation=0"
+                            (keydown)="RegionNameSwitch=true" 
+                            (keydown.Tab)="RegionNameclose()" 
+                            [attr.data-arrayMaxLength]="searchRegion?.length" 
+                            aria-autocomplete="list" 
+                            [ngClass]="{'error': f.region.invalid &&  f.region.touched}">
+                            <p *ngIf="f.region.touched && f.region.invalid" class="error-message top-40">Region is required</p>
+                            <span class="mdi mdi-magnify" *ngIf="RegionNameSwitch || regionName ==''"></span>
+                            <span class="mdi mdi-close auto-close" (click)="clearRegionName();arrowkeyLocation=0;regionName=''" *ngIf="!RegionNameSwitch && accountCompanyName!=='' && sessionstorageData?.model !== 'Account'"></span>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="RegionNameSwitch" [attr.focus]="prospectAccountForm.value.region && RegionNameSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9" >
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                        <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                        [ngClass]="{'loader-search':isRegionSearchLoading }">
+                          <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name"
+                          [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                           (click)="regionlist.value=item.Name;appendRegion(item)" matTooltip="{{item.Name}}"
+                            *ngFor="let item of searchRegion |filter:prospectAccountForm.value.region; let i=index">
+                            {{item.Name}}</li>
+                          <li class="d-block list-name h-40 p-10"
+                            *ngIf="(searchRegion |filter:prospectAccountForm.value.region)?.length == 0 && !isRegionSearchLoading">
+                            No record found </li>
+                        </ul>
+                        </span>
+                            </perfect-scrollbar>
+
+                            <!-- <perfect-scrollbar style="max-height:160px" class="z-ind-9" >
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                        <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                        [ngClass]="{'loader-search':isRegionSearchLoading }">
+                          <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name"
+                          [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                           (click)="regionlist.value=item.Region.Name;appendRegion(item)" matTooltip="{{item.Region.Name}}"
+                            *ngFor="let item of searchRegion |filter:prospectAccountForm.value.region; let i=index">
+                            {{item.Region.Name}}</li>
+                          <li class="d-block list-name h-40 p-10"
+                            *ngIf="(searchRegion |filter:prospectAccountForm.value.region)?.length == 0 && !isRegionSearchLoading">
+                            No record found </li>
+                        </ul>
+                        </span>
+                            </perfect-scrollbar> -->
+                        </div>
+                    </div>
+                </div>
+                <!--autocomplete ends here-->
+                <!--autocomplete starts here-->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="ConversationCountryNameclose()">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="countryID" class="label-form">
+              Country <span class="required">*</span></label>
+                        <div class="pos-rel float-left no_pad w-100">
+                            <input 
+                            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" 
+                            #countrylist 
+                            #country 
+                            id="countryID" 
+                            name="countryID" 
+                            formControlName="country" 
+                            placeholder="Search country" 
+                            type="text" 
+                            role="combobox" 
+                            autocomplete="off" 
+                            aria-owns="read"
+                            appKeyListControl 
+                            [dataManipulate]=true 
+                            [attr.data-isDownBtn]=true 
+                            (arrowDown)="arrowkeyLocation=$event" 
+                            [attr.data-selectedvalue]="getCountryName"
+                            [attr.aria-expanded]="ConversationCountrtyNameSwitch?true:false" 
+                            [attr.aria-activedescendant]="arrowkeyLocation"
+                            (input)="ConversationCountrtyNameSwitch = true;arrowkeyLocation=0"
+                            (intialLoadData)="ConversationCountrtyNameSwitch = true;clickCountryData();arrowkeyLocation=0" 
+                            (keyup.enter)="appendCountryConversation(getCountry[arrowkeyLocation]);ConversationCountrtyNameSwitch=false;arrowkeyLocation=0"
+                            (keydown)="ConversationCountrtyNameSwitch=true" 
+                            (keydown.Tab)="ConversationCountryNameclose()" 
+                            [attr.data-arrayMaxLength]="getCountry?.length" 
+                            aria-autocomplete="list" 
+                            [ngClass]="{'error': f.country.invalid && (f.country.dirty || f.country.touched)}">
+                            <p *ngIf="f.country.touched && !f.country.valid" class="error-message top-40">Country is required</p>
+                            <span class="mdi mdi-magnify" *ngIf="ConversationCountrtyNameSwitch || getCountryName ==''"></span>
+                            <span class="mdi mdi-close auto-close" (click)="clearCountryName();arrowkeyLocation=0;getCountryName=''" *ngIf="!ConversationCountrtyNameSwitch && getCountri!==''"></span>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="ConversationCountrtyNameSwitch" [attr.focus]="prospectAccountForm.value.country && ConversationCountrtyNameSwitch">
+
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                [ngClass]="{'loader-search':isCountrySearchLoading }">
+                  <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name" 
+                  [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                  (click)="countrylist.value=item.Name;appendCountryConversation(item)" matTooltip="{{item.Name}}"
+                    *ngFor="let item of getCountry |filter:prospectAccountForm.value.country; let i=index">
+                    {{item.Name}}</li>
+                  <li class="d-block list-name h-40 p-10"
+                    *ngIf="(getCountry |filter:prospectAccountForm.value.country)?.length == 0 && !isCountrySearchLoading">
+                    No record found </li>
+                </ul>
+                </span>
+                            </perfect-scrollbar>
+
+                            <!-- <perfect-scrollbar style="max-height:160px" class="z-ind-9" *ngIf="accountCompanyName == ''">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                [ngClass]="{'loader-search':isCountrySearchLoading }">
+                  <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name" 
+                  [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                  (click)="countrylist.value=item.Country.Name;appendCountryConversation(item)" matTooltip="{{item.Country.Name}}"
+                    *ngFor="let item of getCountry |filter:prospectAccountForm.value.country; let i=index">
+                    {{item.Country.Name}}</li>
+                  <li class="d-block list-name h-40 p-10"
+                    *ngIf="(getCountry |filter:prospectAccountForm.value.country)?.length == 0 && !isCountrySearchLoading">
+                    No record found </li>
+                </ul>
+                </span>
+                            </perfect-scrollbar> -->
+                        </div>
+                    </div>
+                </div>
+                <!--autocomplete ends here-->
+                <!--autocomplete starts here-->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="ConversationStateNameclose()">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="stateID" class="label-form">
+                      State <span class="required" *ngIf="isStateValid">*</span></label>
+                        <div class="pos-rel float-left no_pad w-100">
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" #statelist #state id="stateID" name="stateID" formControlName="state" placeholder="Search state" type="text" role="combobox" autocomplete="off" aria-owns="read"
+                                appKeyListControl [dataManipulate]=true [attr.data-isDownBtn]=true (arrowDown)="arrowkeyLocation=$event" [attr.data-selectedvalue]="getStateName" [attr.aria-expanded]="ConversationStateNameSwitch?true:false" [attr.aria-activedescendant]="arrowkeyLocation"
+                                (input)="ConversationStateNameSwitch = true;arrowkeyLocation=0" (intialLoadData)="ConversationStateNameSwitch = true;clickStateData();arrowkeyLocation=0" (keyup.enter)="appendStateConversation(getState[arrowkeyLocation]);ConversationStateNameSwitch=false;arrowkeyLocation=0"
+                                (keydown)="ConversationStateNameSwitch=true" (keydown.Tab)="ConversationStateNameclose()" [attr.data-arrayMaxLength]="getState?.length" aria-autocomplete="list" [ngClass]="{'error': f.state.invalid && (f.state.dirty || f.state.touched)}">
+                            <p *ngIf="f.state.touched && !f.state.valid" class="error-message top-40">State is required</p>
+                            <span class="mdi mdi-magnify" *ngIf="ConversationStateNameSwitch || getStateName ==''"></span>
+                            <span class="mdi mdi-close auto-close" (click)="clearStateName();arrowkeyLocation=0;getStateName=''" *ngIf="!ConversationStateNameSwitch && getStateID!==''"></span>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="ConversationStateNameSwitch" [attr.focus]="prospectAccountForm.value.state && ConversationStateNameSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                        <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                        [ngClass]="{'loader-search':isStateSearchLoading }">
+                          <li  id="{{i}}" tabindex="0" role="option"  class="list-group-item list-name"
+                          [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                           (click)="statelist.value=item.Name;appendStateConversation(item)" matTooltip="{{item.Name}}"
+                            *ngFor="let item of getState |filter:prospectAccountForm.value.state; let i=index">
+                            {{item.Name}}</li>
+                          <li class="d-block list-name h-40 p-10"
+                            *ngIf="(getState |filter:prospectAccountForm.value.state)?.length == 0 && !isStateSearchLoading">
+                            No record found </li>
+                        </ul>
+                        </span>
+                            </perfect-scrollbar>
+
+                            <!-- <perfect-scrollbar style="max-height:160px" class="z-ind-9" *ngIf="getCountri == ''">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                        <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                        [ngClass]="{'loader-search':isCountrySearchLoading }">
+                          <li  id="{{i}}" tabindex="0" role="option"  class="list-group-item list-name"
+                          [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                           (click)="statelist.value=item.State.Name;appendStateConversation(item)" matTooltip="{{item.State.Name}}"
+                            *ngFor="let item of getState |filter:prospectAccountForm.value.state; let i=index">
+                            {{item.State.Name}}</li>
+                          <li class="d-block list-name h-40 p-10"
+                            *ngIf="(getState |filter:prospectAccountForm.value.state)?.length == 0 && !isCountrySearchLoading">
+                            No record found </li>
+                        </ul>
+                        </span>
+                            </perfect-scrollbar> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left cust_autoComplete pos-rel plb-60-20">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName" (clickOutside)="ConversationCityNameclose()">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="cityID" class="label-form">
+              City <span class="required" *ngIf="isCityValid">*</span></label>
+                        <div class="pos-rel float-left no_pad w-100">
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" #citylist #city id="cityID" name="cityID" formControlName="city" placeholder="Search city" type="text" role="combobox" autocomplete="off" aria-owns="read" appKeyListControl
+                                [dataManipulate]=true [attr.data-isDownBtn]=true (arrowDown)="arrowkeyLocation=$event" [attr.data-selectedvalue]="getCityName" [attr.aria-expanded]="ConversationCityNameSwitch?true:false" [attr.aria-activedescendant]="arrowkeyLocation"
+                                (input)="ConversationCityNameSwitch = true;arrowkeyLocation=0" (intialLoadData)="ConversationCityNameSwitch = true;clickCityData();arrowkeyLocation=0" (keyup.enter)="appendCityConversation(getCity[arrowkeyLocation]);ConversationCityNameSwitch=false;arrowkeyLocation=0"
+                                (keydown)="ConversationCityNameSwitch=true" (keydown.Tab)="ConversationCityNameclose()" [attr.data-arrayMaxLength]="getCity?.length" aria-autocomplete="list" [ngClass]="{'error': f.city.invalid && (f.city.dirty || f.city.touched)}">
+                            <p *ngIf="f.city.touched && !f.city.valid" class="error-message top-40">City is required</p>
+                            <span class="mdi mdi-magnify" *ngIf="ConversationCityNameSwitch || getCityName ==''"></span>
+                            <span class="mdi mdi-close auto-close" (click)="clearCityName();arrowkeyLocation=0;getCityName=''" *ngIf="!ConversationCityNameSwitch && getCityId!==''"></span>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  border-right  float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="ConversationCityNameSwitch" [attr.focus]="prospectAccountForm.value.city && ConversationCityNameSwitch">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                <span class="w-100 z-ind-9 float-left bg-white">
+                <ul class=" list-group color-azure  sort-dropdown mr2"  role="listbox" id="read"
+                [ngClass]="{'loader-search':isCitySearchLoading }">
+                  <li id="{{i}}" tabindex="0" role="option" class="list-group-item list-name"
+                  [class.active]="i==arrowkeyLocation" aria-disabled="false"
+                   (click)="citylist.value=item.Name;appendCityConversation(item)" matTooltip="{{item.Name}}"
+                    *ngFor="let item of getCity |filter:prospectAccountForm.value.city; let i=index">
+                    {{item.Name}}</li>
+                  <li class="d-block list-name h-40 p-10"
+                    *ngIf="(getCity |filter:prospectAccountForm.value.city)?.length == 0 && !isCitySearchLoading">
+                    No record found </li>
+                </ul>
+                </span>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left  plb-60-20 mobile-select-box">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="solution" class="label-form">Ownership type <span class="required">*</span></label>
+                    <div class="customized-select">
+                        <span class="caret color-azure"></span>
+                        <div class=" float-left no_pad w-100">
+                            <select id="solution" role="listbox" formControlName="ownershiptype" [ngClass]="{'error': f.ownershiptype.invalid && (f.ownershiptype.dirty || f.ownershiptype.touched)}" required>
+                <option value="">Select Ownership type</option>
+                <option *ngFor="let item of getOwnerShipType" [value]="item.Id" matTooltip="{{item.Value}}">{{item.Value}}</option>
+              </select>
+                            <p *ngIf="f.ownershiptype.touched && !f.ownershiptype.valid" class="error-message top-40">Ownership type is required</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left  plb-60-20 web-select-box">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="solution" class="label-form">Ownership type <span class="required">*</span></label>
+                    <mat-form-field class="col-12 no_pad float-left">
+                        <mat-label>Ownership type </mat-label>
+                        <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus" required formControlName="ownershiptype" [ngClass]="{'error': f.ownershiptype.invalid && (f.ownershiptype.dirty || f.ownershiptype.touched)}">
+                            <mat-option value="">Select Ownership type</mat-option>
+                            <mat-option *ngFor="let item of getOwnerShipType" [value]="item.Id" matTooltip="{{item.Value}}">
+                                {{item.Value}}
+                            </mat-option>
+                        </mat-select>
+                        <p *ngIf="f.ownershiptype.touched && !f.ownershiptype.valid" class="error-message top-40">Ownership type is required</p>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 float-left plb-60-20 marg-top-15">
+                    <div class="customized-input">
+                        <label class="w-100 label-form">Website</label>
+                        <input  type="text" id="website" formControlName="website" class="border-gray w-100" value="" placeholder="Enter website"  [ngClass]="{'error': prospectAccountForm.get('website').hasError('pattern')}">
+                        <p *ngIf="prospectAccountForm.get('website').hasError('pattern')" class="error-message">Enter valid website</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 float-left plb-60-20 customized-input">
+                    <label for="Email" class="w-100 label-form">Email</label>
+                    <div class="pos-rel float-left no_pad w-100">
+                        <input class="border-gray w-100" type="text" id="Email" name="email" formControlName="email" placeholder="Enter email " pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" autocomplete='off'>
+                        <p *ngIf="prospectAccountForm.get('email').hasError('pattern')" class="error-message top-40">Enter valid email</p>
+                    </div>
+                </div>
+                <!-- pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" -->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left plb-60-20 phone-number marg-top-15" formArrayName="contacts">
+                    <label for="phone" class="w-100 label-form">Phone number </label>
+                    <div class="mb15" [formGroupName]="i" *ngFor="let number of getContacts.controls;let i=index">
+                        <div class="customized-select float-left w-90">
+                            <span class="caret color-azure"></span>
+                            <select id="phone" (change)="contactTypeChanges($event,i)" role="listbox" #phoneType formControlName="ContactType" [required]="phoneType.value == '' && phoneNo.value?.length>1">
+                <option value="">Select</option>
+                <option *ngFor="let item of contactType" [value]="item.Id" matTooltip="{{item.Value}}">{{item.Value}}</option>
+              </select>
+                        </div>
+                        <div class="customized-input d-flex prospect-details">
+                            <div class="pos-rel w-100 float-left no_pad">
+                                <input id="phone" type="text" #phoneNo class="border-gray w-220"
+                                [ngClass]="{'error' : number.get('ContactNo').hasError('pattern')}"
+                                 [attr.disabled]="phoneType.value==''?'disabled' : null" placeholder="Enter phone number" formControlName="ContactNo" minlength="8"
+                                     [required]="phoneType.value != '' && phoneNo.value?.length==0">
+                                    <p class="error-message top-40" *ngIf="number.get('ContactNo').hasError('pattern')">Enter valid phone number</p>
+                                <!-- <p *ngIf=" (this.prospectAccountForm.controls['contacts'].controls[i].controls['ContactNo'].touched) 
+                  && (!this.prospectAccountForm.controls['contacts'].controls[i].controls['ContactNo'].valid)" class="error-message top-40">Enter valid phone number</p> -->
+                                <!-- <p *ngIf="(phoneType.value == '' && this.prospectAccountForm.controls['contacts'].controls[i].controls['ContactNo'].touched 
+                  && this.prospectAccountForm.controls['contacts'].controls[i].controls['ContactNo'].valid)" class="error-message top-40">Select phone type</p> -->
+                            </div>
+                            <div class="float-right no_pad pagination ml10">
+                                <button aria-label="add contact" class="standard-border color-azure mdi mdi-plus" *ngIf="i == 0 ? true : false" type="button" (click)="addContactss($event)"></button>
+                                <button aria-label="Delete" class="standard-border color-azure mdi mdi-delete" *ngIf="i == 0 ? false : true" type="button" (click)="deleteContact(i)"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 float-left plb-60-20 marg-top-15">
+                    <div class="customized-input">
+                        <label class="w-100 label-form">Business description 
+                <span class="label-form" *ngIf= "textValue.value.length == 0">  (2000 characters)</span>
+                <span class="label-form" *ngIf= "textValue.value.length > 0 && textValue.value.length < 1999">  ({{ 2000 - textValue.value.length}} characters left)</span>
+                <span class="label-form" *ngIf= "textValue.value.length === 1999 || textValue.value.length === 2000">  ({{ 2000 - textValue.value.length}} character left)</span>
+            </label>
+
+                        <textarea id="Description" #textValue formControlName="businessdescription"
+                        specialIsAlphaNumeric [attr.data-type]="'textareaLength'" 
+                        maxlength="2000" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left rel-top-18  text-area-content" placeholder="Enter business description"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="float-left col-12 no_pad mobile-buttons" *ngIf="!isLoading">
+        <button class="col-6 no_pad float-left cancel-btn" type="button" (click)="opencancelpop($event)" [ngClass]="saveClicked ? 'disabled-control' : 'primary-button'" [disabled]="saveClicked">Cancel</button>
+        <button class="col-6 no_pad float-left save-btn" type="button" (click)="onSubmit()" [ngClass]="saveClicked ? 'disabled-control' : 'primary-button'" [disabled]="saveClicked">Save</button>
+    </div>
+</div>

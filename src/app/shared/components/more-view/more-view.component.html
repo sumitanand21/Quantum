@@ -1,0 +1,142 @@
+<div class="top-header" *ngIf="showTopHeader" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav ></app-nav>
+    <div class="float-left col-12 new-container" [ngClass]="sidebar?service.sideTrans ? 'main-containt-280-sideleads pt-12' : 'main-containt-sideleads pt-12':'header-action-tab'">
+        <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad">
+            <h1 class="float-left heading-level-one ml30">All view
+                <span class="mdi mdi-arrow-left cp l-0 pos-abs" (click)="generalSelectedAction('navTo','navTo')"></span>
+              
+            </h1>
+        </div>
+     
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 float-left no_pad">
+            <div class="float-right disp-flex save-cancel-responsive web-buttons">
+                <button
+                    class="btn-align-right primary-button h-40 std1 add-btn-design float-right white-boreder w-155"
+                    (click)="generalSelectedAction('Create','Create')">
+                    <span class="mdi mdi-view-dashboard pad-right float-left"></span><span class="float-left create-btn">Create new
+                        view</span></button>
+
+            </div>
+        </div>
+        <div class="col-6 float-left no_pad ml15 pos-rel btm-15">
+                <span class="con-first f-capital ellipses float-left">{{moduleName}}</span>
+                <span class="mdi mdi-chevron-right con-arrow float-left "></span>
+                <span class="con-tag float-left cp">All view</span>
+        </div>
+
+    </div>
+</div>
+
+
+<!--card view starts from here.. 01-04-2019 -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad float-left" >
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night" [ngClass]="selectedRowCount > 1?'h-250':'h-180'" 
+                [class.h-10] =" this.router.url === '/accounts/accountlist/moreview'"
+            ></div>
+            <div class="col-12 float-left no_pad mt20">
+    <span class="col-12 padL30 selected-count mb10  color-white float-left pos-abs pbtop130" *ngIf="selectedRowCount > 1"
+            [class.pt-0] =" this.router.url === '/accounts/accountlist/moreview'">
+        <span *ngIf="selectedRowCount>0">{{selectedRowCount}}</span><span
+            class="mr5 ml5">{{headerData[0].selectName}}</span>selected
+    </span>
+    <div class="col-12 padL30 float-left table-action-btn mb10 web-action-button mob-multi pos-abs z-ind-9 pbtop160" 
+     *ngIf="IsDeleteAll" [class.pt-35] =" this.router.url === '/accounts/accountlist/moreview'">
+
+        <button id="multipleDelete"
+            class="float-left primary-button web-button borderless mr8 h-40 pad-0-5 responsive-btn-div-button d-flex align-items-center"
+            aria-label="multiple delete" (click)="openMultipleGenericModal('delete')" matTooltip="Multiple Delete">
+            <span class="mdi mdi-delete pr5"></span><span class="mobi-multi-text align-delete-btn">Delete</span>
+        </button>
+
+    </div>
+</div>
+
+
+    <!-- Card starrts from here -->
+    <!-- <div class="col-12 float-left " [ngClass]="selectedRowCount > 1? 'mt220':'mt50'" > -->
+            <div class="col-12 float-left "  [ngClass]="sidebar?service.sideTrans ? 'main-containt-280-sideleads ' : 'main-containt-sideleads':''">
+            <div class="col-12 float-left " [ngClass]="selectedRowClass()" >
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 float-left mb-3 pad-leftright"
+            *ngFor="let item of tableCollectionData; let i=index">
+            <div class="col-12  no_pad float-left card">
+                <div class="card-header cust_check-filter d-flex no_pad"
+                    *ngFor="let headerItem of headerData; let j=index">
+                    <div class="col-10 display_flex">
+
+                        <mat-checkbox *ngIf="IsDelete && !item.deleteBtnVisibility" tabindex="0" aria-label="select" class="col-1 float-left no_pad" name="checkbox"
+                            [(ngModel)]="item.isChecked" (change)="checkIfAllSelected(i)" 
+                            (keypress)="checkIfAllSelected(i)">
+                        </mat-checkbox>
+                        <span class="cp text_ellipses col-11 float-left no_pad" role="link" tabindex="0"
+                            id="item[headerItem.name]{{i}}" matTooltip="{{item[headerItem.name]}}"
+                            (click)="generalSelectedAction(item,headerItem.name)">{{ item[headerItem.name]}}</span>
+                    </div>
+                    <div class="col-2 no_pad" *ngIf="IsPin && !(item.pinButtonVisibility)">
+                        <span (click)="generalSelectedAction(item,'pin')"
+                            [ngClass]="item[headerItem.subProp] ? 'mdi-pin' : 'mdi-pin-outline'"
+                            class="float-left mdi cp"></span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="col-12 d-flex pb-35 bottom-10 float-left">
+                        <div class="created-by col-6 pad-left5" *ngFor="let headerItem of cardHeader; let i=index">
+                            <span>{{headerItem.title}}</span>
+                            <p *ngIf="headerItem.type=='text'" matTooltip="{{item[headerItem.name]}}">
+                                {{item[headerItem.name]}}</p>
+                            <p *ngIf="headerItem.type=='date'"
+                                matTooltip="{{item[headerItem.name] | date: 'dd MMM yyyy'}}">
+                                {{item[headerItem.name]  | date: 'dd MMM yyyy'}}</p>
+                        </div>
+
+                    </div>
+                    <div class="col-12 float-left pad-left10 moreActions custombtndiv">
+                        <div class="pos-rel" *ngIf="IsEdit && !item.editBtnVisibility">
+                            <button id="edit" (click)="generalSelectedAction(item,'edit')"
+                                class="btn-none blue_circle_replay  ng-tns-c8-2 pad_left_0 cp" aria-label="edit"
+                                matTooltip="edit">
+                                <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-border-color"></span>
+                            </button>
+                            <span class="mobile-icon-text">Edit</span>
+                        </div>
+                        <div class="pos-rel" *ngIf="IsDelete && !item.deleteBtnVisibility">
+                            <button id="delete" (click)="generalSelectedAction(item,'delete')"
+                                class="btn-none blue_circle_replay  ng-tns-c8-2 pad_left_0 cp" aria-label="delete"
+                                matTooltip="delete">
+                                <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-delete"></span>
+                            </button>
+                            <span class="mobile-icon-text">Delete</span>
+                        </div>
+                        <div class="pos-rel float-left" *ngIf="IsShare && !item.shareBtnVisibility">
+                            <button id="share" (click)="generalSelectedAction(item,'share')"
+                                class="btn-none blue_circle_replay  ng-tns-c8-2 pad_left_0 cp" aria-label="share"
+                                matTooltip="share">
+                                <span class="col-xs-12 nopad blue_circle_replay_img mdi mdi-share-variant"></span>
+                            </button>
+                            <span class="mobile-icon-text">Share</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <div class="float-left col-12 mobile-buttons no_pad bg-azure mobile-sticky-btns">
+            <button class="primary-button-more borderless " (click)="generalSelectedAction('Create','Create')">
+                <span class="mdi mdi-view-dashboard pr5 w-100 float-left"></span>Create new
+                view
+            </button>
+   
+        </div>
+
+</div>
+
+<!-- Cards ends here -->
+<div class="col-12 no_pad float-left no-record" *ngIf="tableCollectionData.length==0">No Records found</div>
+
+
+<div class="loaderContainer" *ngIf="isLoading">
+    <div class="loader"></div>
+</div>

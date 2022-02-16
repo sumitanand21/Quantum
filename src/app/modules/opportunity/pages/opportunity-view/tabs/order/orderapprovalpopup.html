@@ -1,0 +1,83 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity order-tab">
+
+    <div class="col-12 float-left container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-11 float-left no_pad popup-hd-txt col-size" mat-dialog-title>Do you want to submit the order for approval?
+            </span>
+            <button class="col-1 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn close-icn" aria-label="close" mat-dialog-close (click)="onNoClick()"></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+
+        <div class="col-12 col-lg-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left tcv-compare blue-div no_pad">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 ob-style float-left pad-top-10">
+                <span class="float-left col-12 no_pad">
+                        Pricing TCV</span>
+                <span class="col-12 float-right no_pad">
+                        $ 30,000,000.00
+                </span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 ob-style float-left pad-top-10">
+                <span class="float-left col-12 no_pad">
+                        Contract TCV</span>
+                <span class="col-12 float-right no_pad">
+                        $ 20,000,000.00
+                </span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 ob-style float-left pad-top-10">
+                <span class="float-left col-12 no_pad">
+                        TCV Difference</span>
+                <span class="col-12 float-right no_pad">
+                        $ 10,00,000.00
+                </span>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad">
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-left mt-20 pr-10 disabled-control">
+                    <label for="approvalType" class="float-left w-100 label-form">Delivery manager </label>
+                    <input class="col-12 float-left" placeholder="DM name" type="text" value="" disabled>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 no_pad float-right mt-20 disabled-control">
+                    <label for="approver" class="float-right w-100 label-form">Finance team</label>
+                    <input class="col-12 float-left" placeholder="Team name" type="text" value="" disabled>
+                </div>
+
+        </div>
+
+
+        <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left mt10 no_pad">
+            <div class="col-12 float-left no_pad">
+                <label class="float-left w-100 label-form">TCV difference comments *
+                </label>
+                <textarea required class="txt-area" maxlength="500" [appAlphaNumeric] = "'alphanumeric'" rows="6" cols="51" placeholder="Enter your comment"></textarea>
+            </div>
+        </div>
+
+        <div class="col-12 float-left no_pad margin-top-20 colr-orang">
+                <span class="col-12 float-left bordr-top no_pad">
+                        Note: This order will be put on-hold until TCV as per RLS and contract matches.
+                        It will be pushed for BFM approval once the value and currency matches.</span>
+            </div>
+
+        <div class="col-12 float-left no_pad mt10">
+            <span class="col-12 float-left bordr-top no_pad">
+                    Your order will be submitted for approval, however OB distribution section will
+                    be open for validation & update upto 3 days from the order approval.</span>
+        </div>
+        
+    
+
+    </div>
+
+
+    <div class="col-12 float-left no_pad">
+        <button aria-label="Cancel" class="col-6 float-left btndef-none no_pad discard-btn" mat-dialog-close (click)="onNoClick()"
+            (keypress)="onNoClick()">Cancel</button>
+        <button aria-label="submit" class="col-6 float-left btndef-none no_pad confrm-btn" mat-dialog-close (click)="orderStatus()"
+            (keypress)="orderStatus()">Submit</button>
+    </div>
+</div>

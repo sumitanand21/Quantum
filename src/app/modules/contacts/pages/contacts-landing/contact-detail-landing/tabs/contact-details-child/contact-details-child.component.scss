@@ -1,0 +1,918 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$DarkBlack: #2e2e2e;
+.type-accepted-contact{
+  width: 90%;
+  float: left;
+  left: 0;
+  color: #9b9b9b;
+  font-size: 12px;
+  font-family: WiproAkkuratTT-Regular;
+  letter-spacing: 0.4px;
+}
+.h-170 {
+  height: 170px;
+}
+.max-w-100{
+  max-width: 150px !important;
+}
+.mr10 {
+  margin-right: 10px !important;
+}
+.ml10 {
+  margin-left: 10px !important;
+}
+.plb-60-20 {
+  padding: 0 60px 20px 0;
+}
+.h-40 {
+  min-height: 40px;
+}
+.pr-100 {
+  padding-right: 100px;
+}
+.heading-level-two {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  letter-spacing: -0.4px;
+}
+.heading-level-one {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 24px;
+  color: $White;
+
+  small {
+    font-family: "WiproAkkuratTT-Regular";
+    font-size: 14px;
+    padding: 0 30px;
+  }
+}
+.header-level-three {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 16px;
+  float: left;
+  padding: 0;
+}
+.primary-button.std {
+  padding: 7px 0;
+  min-width: 88px;
+  height: 40px;
+  margin: 0;
+}
+.mdi-pencil:before {
+  margin-right: 5px;
+}
+.borderless {
+  border: none !important;
+}
+.plb-0-35 {
+  padding: 0px 30px 32px 0px;
+}
+.business-card1 {
+  width: 84%;
+  height: 140px;
+  border-radius: 4px;
+  background-color: $Marble;
+  text-align: center;
+  align-items: center;
+  .upload {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    line-height: 1.43;
+    letter-spacing: 0.3px;
+  }
+  .mdi {
+    padding-right: 5px;
+    font-size: 16px;
+  }
+  .middle-btns {
+    opacity: 0;
+    background-color: #121212;
+    height: 100%;
+    width: 100%;
+  }
+  .z-999 {
+    z-index: 999;
+  }
+}
+.card {
+  border-radius: 5px;
+  border: 0px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  display: table;
+}
+.pad-95 {
+  padding: 0 30px 0 30px;
+  background: #f9f9f9;
+}
+.converstion-name {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px !important;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
+  color: #737373 !important;
+
+}
+.no-transorm
+{
+  text-transform: none !important;
+}
+.converstion-sub-text {
+  width: 196px;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: $Black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  // text-transform: capitalize
+}
+.textcolor {
+  color: #0e3570;
+  padding: 5px 0 5px 0 !important;
+}
+
+.textclr {
+  color: #2f81ff;
+  font-size: 14px;
+  padding: 5px 0 5px 0 !important;
+  max-width: 200px;
+}
+
+.pad-30-contact {
+  padding-left: 30px;
+}
+.primary-button.attach {
+  padding: 7px 0;
+  height: 40px;
+  margin: 0;
+}
+.attach-btn {
+  padding: 20px 0 30px 0 !important;
+}
+.mdi-attachment:before {
+  content: "\F066";
+  font-size: 14px;
+  position: relative;
+  right: 10px;
+  transform: rotate(-90deg);
+}
+.customized-caret {
+  top: 42px;
+  right: 15px;
+}
+.customized-caret1 {
+  top: 17px;
+  right: 5px;
+}
+.pad-left {
+  padding-left: 0px !important;
+}
+.autocomplete-box {
+  top: 0px;
+  font-size: 14px;
+  color: black;
+  background-color: white;
+  border: 1.5px solid $Azure;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: 0.2s;
+
+  .list-group-item {
+    cursor: pointer;
+    height: 50px;
+    padding: 10px;
+  }
+
+  .db-search {
+    height: 40px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #d9e9ff;
+    }
+    button {
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      color: $Azure;
+      outline: none;
+      border: none;
+      background: transparent;
+      text-align: left;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .list-box:hover {
+    background-color: #d9e9ff;
+    cursor: pointer;
+  }
+
+  .btn-none {
+    outline: none;
+    border: none;
+    background: transparent;
+  }
+}
+.w-95 {
+  width: 100% !important;
+}
+.social-media {
+  .mdi-twitter-circle:before {
+    content: "\F546";
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+    padding-right: 8px;
+  }
+  .mdi-linkedin-box:before {
+    content: "\F33C";
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+    padding-right: 8px;
+  }
+}
+.pb10 {
+  padding-bottom: 12px;
+}
+.caretright {
+  top: 17px;
+  right: 5px !important;
+}
+.cal_brdr {
+  .mat-form-field-flex {
+    background-color: #fff;
+    border: 1.5px solid #ccc;
+    border-radius: 4px;
+  }
+  .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.4375em 0;
+    padding-left: 10px;
+    padding-right: 5px;
+    height: 40px; //oct 24
+  }
+  .mat-form-field-infix {
+    position: relative;
+    border: 0;
+    padding: 3px;
+  }
+  .mdi-calendar-blank:before {
+    color: #2f81ff;
+    font-size: 20px;
+    position: relative;
+  }
+  .mat-icon-button {
+    position: relative;
+    outline: none;
+  }
+  .mat-icon-button:hover {
+    box-shadow: none;
+  }
+  .mat-focused {
+    border-color: transparent !important;
+  }
+}
+.pb5 {
+  padding-bottom: 5px;
+}
+.pb9{
+  padding-bottom: 9px;
+}
+.border-rd {
+  border-radius: 50%;
+}
+.pad8 {
+  padding: 8px !important;
+}
+.pl8 {
+  padding-left: 8px !important;
+}
+.CompanyName {
+  .mdi-magnify:before {
+    color: $Azure;
+    font-size: 20px;
+    right: 10px;
+    position: absolute;
+    bottom: 5px;
+  }
+}
+.top38 {
+  top: 38px;
+}
+.z-ind-9 {
+  z-index: 9;
+}
+.list-name {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #000000;
+}
+.sub-list {
+  font-size: 10px;
+  color: #9b9b9b;
+  font-family: WiproAkkuratTT-Regular;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.prof-image {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+.image-delete-btn {
+  opacity: 0;
+}
+.contact-details-action-btn {
+  position: fixed;
+  margin-top: -23.5em;
+  z-index: 999;
+  right: 3em;
+  transition: 0.5s all;
+}
+.contact-details-action-btn.active {
+  margin-top: -28.3em;
+  transition: 0.5s all;
+}
+.grey-back-profile {
+  height: 140px;
+  width: 84%;
+  top: -12px;
+  border-radius: 4px;
+  text-align: center;
+  padding-top: 44px;
+  font-size: 14px;
+  font-family: WiproAkkuratTT-Regular;
+  color: #2f81ff;
+  background-color: #d8d8d8;
+}
+.popup-container .confrm-btn {
+  margin-top: 0px !important;
+  font-size: 14px !important;
+}
+.discard-btn {
+  background-color: #d9e9ff !important;
+  text-align: center;
+  font-size: 14px !important;
+  line-height: 1.38;
+  color: #2f81ff;
+  font-family: "WiproAkkuratTT-Bold";
+  padding: 14px;
+  border-radius: 4px;
+  margin-top: 0px !important;
+  cursor: pointer;
+}
+.noeditbui{
+
+  position: absolute !important;
+  left: 0 !important;
+  top: 46px !important;
+  background: transparent;
+}
+
+.mdi-camera:before {
+  font-size: 21px;
+}
+.new-container {
+  .input-border-left {
+    border-left: none;
+  }
+  .border-btm {
+    border-bottom: 2px solid;
+  }
+  .border-right {
+    border-right: 2px solid $Azure !important;
+  }
+  .z-ind-9999 {
+    z-index: 8;
+  }
+
+  .z-ind-99 {
+    z-index: 8;
+  }
+  .z-ind-9 {
+    z-index: 9;
+  }
+
+  .mt-8 {
+    margin-top: 8px;
+  }
+
+  .top62 {
+    top: 62px;
+  }
+  .top64 {
+    top: 64px;
+  }
+  .top66 {
+    top: 66px;
+  }
+
+  .pad-30 {
+    padding: 30px;
+  }
+  .mr10 {
+    margin-right: 10px;
+  }
+  .h-40 {
+    min-height: 40px;
+  }
+  .heading-level-one {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 24px;
+    color: $White;
+
+    small {
+      font-family: "WiproAkkuratTT-Regular";
+      font-size: 14px;
+      padding: 0 30px;
+    }
+  }
+  .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+  }
+  .borderless {
+    border: none !important;
+  }
+
+  .h-180 {
+    height: 210px;
+  }
+  .pad-30 {
+    padding: 30px;
+  }
+
+  .card {
+    border-radius: 5px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: $White;
+  }
+
+  .heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color: $DarkBlack;
+  }
+
+  .heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: $Black;
+  }
+
+  .divider {
+    border: 1px solid $Marble;
+  }
+
+  .mt10 {
+    margin-top: 10px;
+  }
+  .mt20 {
+    margin-top: 20px;
+  }
+  .mt15 {
+    margin-top: 15px;
+  }
+  .mt40 {
+    margin-top: 40px;
+  }
+  .plb-20-20 {
+    padding: 0px 20px 20px 0px;
+  }
+  .checkbox-label {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: $Metal;
+    line-height: 1.43;
+    letter-spacing: 0.3px;
+  }
+
+  .label-form {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    line-height: 1.83;
+    color: $Metal;
+    margin-bottom: 4px;
+    width: 100%;
+  }
+
+  .CompanyName {
+    .mdi-magnify:before {
+      color: $Azure;
+      font-size: 20px;
+      right: 10px;
+      position: absolute;
+      bottom: 5px;
+    }
+  }
+
+  .h-40 {
+    height: 40px;
+  }
+
+  .w-110 {
+    width: 110px;
+  }
+
+  .attach-btn {
+    height: 40px;
+    width: 110px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+  }
+
+  .add-btn {
+    height: 40px;
+    border-radius: 4px 0 0 4px;
+    border: 1.5px solid #d8d8d8;
+    padding: 3px 6px;
+    background: $White;
+    color: #9b9b9b;
+    font-size: 18px;
+    outline: none;
+    &:focus,
+    &:hover {
+      border-color: $Azure;
+      font-family: WiproAkkuratTT-Bold;
+      color: $Azure;
+      outline: none;
+    }
+  }
+
+  .attach-icon {
+    width: 18px;
+    height: 18px;
+    transform: rotate(-90deg);
+    text-align: center;
+    position: relative;
+    right: 6px;
+    font-size: 18px;
+  }
+
+  .record-icon {
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    bottom: 5px;
+    right: 3px;
+  }
+
+  .text-area-content1 {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+    resize: none;
+    border: 1.5px solid $Marble;
+    border-radius: 2px;
+    background-color: #ffffff;
+    height: 270px;
+    padding: 10px;
+  }
+  .rel-top-18 {
+    position: relative;
+    top: -18px;
+  }
+
+  .label-input {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    padding-right: 33px;
+
+    &:focus {
+      border: 1.5px solid $Azure !important;
+      outline: none;
+    }
+  }
+
+  .customized-input {
+    input {
+      padding: 3px 30px 3px 10px !important;
+      &:focus {
+        border: 1.5px solid $Azure !important;
+        outline: none;
+      }
+    }
+  }
+  .list-group-item {
+    cursor: pointer;
+    font-size: 12px;
+    color: $Azure;
+    border: none;
+  }
+
+  .top70 {
+    top: 70px;
+  }
+
+  .list-group-item:hover {
+    background-color: $River;
+  }
+
+  .customized-select {
+    position: relative;
+    select {
+      width: 100%;
+      min-height: 40px;
+      border-radius: 5px;
+      // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+      border: 1.5px solid rgba(0, 0, 0, 0.1);
+      padding: 2px 5px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+
+      &:focus {
+        outline: none;
+        border-color: $Azure;
+      }
+    }
+    select::-ms-expand {
+      display: none !important;
+    }
+  }
+
+  .record-btn {
+    border: 1.5px solid $Marble;
+    color: $MetalLight;
+    width: 91px;
+    height: 40px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 8px 5px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .record-btn-active {
+    border: 1.5px solid $Azure;
+    color: $Azure;
+    width: 91px;
+    height: 40px;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-family: WiproAkkuratTT-Bold;
+    padding: 8px 5px;
+    margin-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: $White;
+      background: $Azure;
+    }
+  }
+  /********** style for auto complete list start ***************/
+  .list-name {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .sub-list {
+    font-size: 10px;
+    color: #9b9b9b;
+    font-family: WiproAkkuratTT-Regular;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.button-create-attach {
+  width: 100%;
+  height: 40px;
+  border: 1.5px solid $Azure;
+}
+
+.error-message1{
+  background: transparent !important;
+  padding: 4px 0px !important;
+  color: #ef3341 !important;    
+  position: absolute;
+  // top: 38px; 
+  width: 100%;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.w-100{
+    width: 100%;
+}
+.error {
+    border: 1.5px solid $RubyRed !important;
+}
+.new-container .list-name{
+  max-width:100% !important
+}
+
+.loaderContainer {
+  width: 100%;
+  top:0em;
+  position: absolute;
+  height: 100%;
+  z-index: 9999;
+  background: white;
+}
+.loader {
+  top:-100px;
+  margin: 200px auto;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+}
+.top-18{
+  top:23px;
+  right: 0;
+}
+.mat-dialog-title{
+margin: 0 !important;
+}
+.max-width-200{
+  max-width: 200px;
+}
+.disable-input{
+  background-color: #f3f3f3;
+}
+.linkedIn-icon:before{
+  background: $Azure;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    padding-top: 2px;
+    color: $White;
+    margin-right: 10px;
+}
+.paddtop-6{
+  padding-top: 6px !important;
+}
+
+.phone-number {
+  select {
+    color: $Azure !important;
+    font-family: "WiproAkkuratTT-Regular";
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+    &:focus {
+      border-color: $Marble;
+    }
+  }
+  input {
+    width: 100%;
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid #d8d8d8 !important;
+  }
+  .caret {
+    right: 7px;
+    top: 16px;
+    border-top: 6px dashed;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+  }
+  button {
+    font-family: "WiproAkkuratTT-Bold";
+  }
+  button.mdi:before {
+    font-size: 19px !important;
+    top: 0 !important;
+  }
+  .mdi-delete::before {
+    background: transparent !important;
+  }
+  .customized-select select{
+    padding: 2px 20px 2px 10px !important;
+    border-radius: 5px 0px 0px 5px !important;
+  }
+}
+
+.height-70{
+  height: 60px;
+}
+.business-card{
+  height: 152px;
+  width: 230px !important;
+}
+.mar-100-top{
+  margin-top: 190px;
+}
+.popup-container .txt-style{
+  margin-bottom: 15px !important;
+}
+.mobile-buttons{
+  .cancel-btn{
+    height: 55px !important;
+    }
+    .save-btn{
+    height: 55px !important;
+    }
+}
+
+span.mdi.mdi-close.auto-close {
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 4px;
+  font-size: 20px;
+  color: #2f81ff;
+}
+
+.top-20{
+  top:20px;
+}
+.tagged-box {
+  height: 40px;
+  border-radius: 4px;
+  color: $Azure;
+  background-color: #d9e9ff;
+  width: 100%;
+  .mdi-close:before {
+    font-size: 20px;
+    cursor: pointer;
+    color: $Azure;
+    right: 10px;
+    position: absolute;
+  }
+}
+.tagged-box{
+  label{
+    margin-bottom: 0 !important;
+  }
+}
+.width90{
+  width: 90%;
+}
+.mar-top-11{
+  margin-top: 11px;
+}
+.mt25 {
+  margin-top: 25px;
+}
+
+.mt3 {
+  margin-top: 3px;
+}
+
+//new attachments css ends
+//////////////////////////////slim scroll css starts-------------------------->
+
+.scroll-window {
+  width: 100%;
+  max-height: 200px;
+  font-size: 13px;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.slimscroll-grid {
+  display: none !important;
+}
+
+.slimscroll-bar {
+  width: 7px !important;
+  right: 0px !important;
+  background: #bab6b6 !important;
+  z-index: 1 !important;
+}
+
+.slimscroll-bar:hover {
+  background: #bab6b6 !important;
+}
+span.mdi.mdi-close.auto-close {
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 4px;
+  font-size: 20px;
+  color: #2f81ff;
+}
+//////////////////////////////slim scroll css ends-------------------------->

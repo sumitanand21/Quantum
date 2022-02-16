@@ -1,0 +1,20 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab main-containtnoSide"
+    [ngClass]="userdat.chatBot? 'chat-bot-1100' : ''">
+    <button class="no_pad mdi mdi-keyboard-backspace backspace_button cp" aria-label="Back" (keypress)="goBack()" (click)="goBack()"></button>
+    <div class="float-left"> 
+    <h1 class="float-left heading-level-one">All reports</h1>
+    <small class="small"> Reports</small>
+  </div>
+  </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad reports-list-landing">
+  <div class="col-12 pos-abs bg-mid_night h-300 pad-30"></div>
+  <div class="col-12 pad-30 padb-0 float-left padd-top-120">
+
+
+  </div>
+</div>
+<router-outlet></router-outlet>

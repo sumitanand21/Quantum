@@ -1,0 +1,406 @@
+<ng-container *ngIf="isLoading">
+    <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                <div class="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<div class="control-section" id="changescrollstyle">
+    <div class="col-lg-12 no_pad content-wrapper">
+
+
+        <div class="col-3 float-right no_pad mb20 calender-btns">
+            <div class="float-right web-buttons">
+                <!-- <button
+                    class="btn-down-tracker mdi mdi-download float-right mb10 standard-border bg-transparent color-white ml10 downloadBtn"
+                     aria-label="download" mat-tooltip="Download"
+                   ></button> -->
+                <button class="btn-outlined pos-rel std responsive-btn-div-button float-right"
+                    [routerLink]="['/deals/createNewAction']" [hidden]="!rollAccess">
+                    Create action
+                </button>
+
+            </div>
+            <div class="float-left col-12 no_pad mobile-buttons bg-azure-icon text-center zIn9" *ngIf="hidecreateAction">
+
+                <button class="primary-button borderless deal-btn" [routerLink]="['/deals/createNewAction']"
+                    [hidden]="!rollAccess">
+                    Create action
+                </button>
+
+            </div>
+
+            <div
+                class="btn-outlined toggle-btns padding-0 mr10 pos-rel std responsive-btn-div-button web-buttons float-right d-flex">
+                <button class="btn-none mdi mdi-table-large" (click)="tableView()" [ngClass]=" !view ? 'active':''"
+                    [hidden]="!rollAccess" aria-label="table view"></button>
+                <button class="btn-none mdi mdi-chart-pie " (click)="tableView()" [ngClass]="view ? 'active':''"
+                    [hidden]="!rollAccess" aria-label="calendar view"></button>
+            </div>
+        </div>
+
+        <div class="float-left col-9 no_pad hedr_input select_tag_algn" *ngIf="view">
+            <app-custom-tab-dropdown class="float-left cal-drop" [tabList]="TabListCal" [selectedTab]="selectedTab"
+                [recordCount]="totalCalendarRecord" (TabSelectEvent)="emitSelected($event)">
+            </app-custom-tab-dropdown>
+        </div>
+
+        <div class="float-left pos-rel mon-drop-div" *ngIf="view">
+            <select class="float-left cal_select mdi mdi-sort mr10 " (change)="onselect($event)">
+                <option value="TimelineMonth"><i class="mdi mdi-sort"></i>Monthly</option>
+                <option value="TimelineWeek"><i class="mdi mdi-sort"></i>Weekly</option>
+            </select>
+
+            <div class="float-left no_pad search_pos  " *ngIf="!serviceSearch || view">
+
+                <div class="input-box  pos-rel" (clickOutside)="OutsideInput()">
+
+                    <span class="mdi mdi-magnify color-white" (click)="inputClick()"></span>
+                    <input class="standard-border color-white search_color " [ngClass]="expand? 'w180':'w105'"
+                        (keypress)="inputClick($event)" (click)="inputClick($event)" name="searchItem"
+                        [(ngModel)]="searchItem" placeholder="Search action">
+
+                    <span class="mdi mdi-close color-white " tabindex="0" role="button" (click)="close()"
+                        (keypress)="close()" [ngClass]="expand? 'visible':'opacity-0'">
+
+                        <span class="sr-only">close</span>
+
+                    </span>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12  no_pad float-left calendar-view-main" *ngIf="view">
+            <ejs-schedule #scheduleObj width='100%' height='650px' [(selectedDate)]="selectedDate" [group]="group"
+                (eventRendered)="onEventRendered($event)" [showQuickInfo]=showQuickInfo (cellClick)="onCellClick()"
+                (actionBegin)="onActionBegin($event)" (actionComplete)="onActionComplete($event)"
+                (popupOpen)='onPopupOpen($event)' [views]="views" (renderDayCell)='highlightWeekend($event)'
+                [currentView]='currentView' [eventSettings]="eventSettings">
+                <!-- <perfect-scrollbar style="max-width: 600px; max-height: 520px;" [config]="config"> -->
+                <e-resources>
+                    <e-resource field='ProjectId' title='Choose Project' [dataSource]='projectDataSource'
+                        [allowMultiple]='allowMultiple' name='Projects' textField='text' idField='id'
+                        colorField='color'>
+                    </e-resource>
+                    <e-resource field='TaskId' title='Category' [dataSource]='categoryDataSource'
+                        [allowMultiple]='allowMultiple' name='Categories' textField='text' idField='id'
+                        groupIDField='groupId' colorField='color'>
+                    </e-resource>
+
+                </e-resources>
+                <e-header-rows>
+                    <e-header-row option='Week'>
+                        <ng-template #template let-data>
+                            <span [innerHTML]="getWeekDetails(data) " class="week_txt"></span>
+                        </ng-template>
+
+
+                    </e-header-row>
+                    <e-header-row option='Date'>
+                        <ng-template #dateHeaderTemplate let-data>
+                            <!-- ,'selectedDate':true -->
+                            <div [ngClass]="{'selected_date':data.date===selectedDates,'selected_date_calendar':getselectedDate(data.date),'padd_month':currentView==='TimelineMonth','padd_week':currentView==='TimelineWeek'}"
+                                (click)="selectdate(data)">
+                                <div class="active" [ngClass]="{'disable':selectdatedd(data)}"
+                                    [innerHTML]="getDateDetails(data)" class="date_txt"></div>
+                                <div [innerHTML]="getDayDetails(data)" class="day_clr"
+                                    [ngClass]="{'padd_left_6': currentView==='TimelineWeek'}"></div>
+                            </div>
+                        </ng-template>
+                    </e-header-row>
+
+                </e-header-rows>
+                <e-views>
+                    <e-view option="TimelineWeek">
+                        <ng-template #eventTemplate let-data>
+
+                            <div class='template-wrap ' style="width:100%" [style.background]="data.backgdColor"
+                                matTooltip="({{data.StartTime | date:'dd MMM'}} - {{data.EndTime | date:'dd MMM'}}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{data.Stage}}"
+                                matTooltipClass="tooltip-class"  matTooltipPosition="above">
+
+
+                                <div class="subject" [style.background]="data.SecondaryColor"
+                                    [style.border-color]="data.PrimaryColor">
+                                </div>
+
+                                <div class="time" *ngIf="data.subject !='approve'"
+                                    [style.background]="data.PrimaryColor">
+                                    ({{data.StartTime | date:'dd MMM'}} - {{data.EndTime | date:'dd MMM'}})
+                                </div>
+                                <div class="image">
+                                    <img src="./assets/schedule/images/{{data.ImageName}}.svg" alt="{{ImageName}}" />
+                                </div>
+
+                                <div class="footer" [style.background]="data.PrimaryColor"></div>
+                            </div>
+                            <div class="complete_icon" *ngIf="data.Stage === 'complete'"> -Completed</div>
+                            <div class="icons-alg" *ngIf="data.Stage === 'rework'">
+                                <i class="arrow_turn mdi mdi-redo-variant"></i>
+                            </div>
+
+                            <div class="icons-alg" *ngIf="data.Stage === 'open'">
+                                -->
+                                <i class="arrow_right mdi mdi-arrow-right-thick"></i>
+                            </div>
+
+                        </ng-template>
+                    </e-view>
+
+                    <e-view option="TimelineMonth">
+                        <ng-template #eventTemplate let-data>
+
+                            <div class='template-wrap ' style="width:100%" [style.background]="data.backgdColor"
+                                matTooltip="({{data.StartTime | date:'dd MMM'}} - {{data.EndTime | date:'dd MMM'}}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{data.Stage}}"
+                                matTooltipClass="tooltip-class"  matTooltipPosition="above">
+
+
+                                <div class="subject" [style.background]="data.SecondaryColor"
+                                    [style.border-color]="data.PrimaryColor">
+
+                                </div>
+
+                                <div class="time" *ngIf="data.subject !='approve'"
+                                    [style.background]="data.PrimaryColor">
+                                    ({{data.StartTime | date:'dd MMM'}} - {{data.EndTime | date:'dd MMM'}})
+                                </div>
+                                <div class="image">
+                                    <img src="./assets/schedule/images/{{data.ImageName}}.svg" alt="{{ImageName}}" />
+                                </div>
+
+                                <div class="footer" [style.background]="data.PrimaryColor"></div>
+                            </div>
+                            <div class="complete_icon" *ngIf="data.Stage === 'complete'"> -Completed</div>
+                            <div class="icons-alg" *ngIf="data.Stage === 'rework'">
+
+                                <i class="arrow_turn mdi mdi-redo-variant"></i>
+                            </div>
+
+                            <div class="icons-alg" *ngIf="data.Stage === 'open'">
+                                <i class="arrow_right mdi mdi-arrow-right-thick"></i>
+                            </div>
+
+                        </ng-template>
+                    </e-view>
+                </e-views>
+                <ng-template #resourceHeaderTemplate let-data>
+
+                    <div class='template-wrap'>
+
+                        <div class="name action_name">
+                            <span *ngIf="data.resourceData['groupId']" class="dots_icon"
+                                [style.background-color]="data.resourceData.color">
+                            </span>
+
+                            <ng-template #popTemplate tabindex="0" aria-label="information">
+                                <div class="flex">
+                                    <div class="tooltip_div pad_top_10">
+                                        <div class="tooltip_heading">Action creator</div>
+                                        <span class="tooltip_txt ellips">{{data.resourceData.creator}}</span>
+                                    </div>
+                                    <div class="tooltip_div">
+                                        <div class="tooltip_heading">Action owner</div>
+                                        <span class="tooltip_txt ellips">{{data.resourceData.owner}}</span>
+                                    </div>
+                                </div>
+                                <div class="flex pad_top_10">
+                                    <div class="tooltip_div pad_top_10">
+                                        <div class="tooltip_heading">Start date</div>
+                                        <span
+                                            class="tooltip_txt">{{data.resourceData.startDate | date: 'dd-MMM-yy'}}</span>
+                                    </div>
+                                    <div class="tooltip_div">
+                                        <div class="tooltip_heading">End date</div>
+                                        <span
+                                            class="tooltip_txt">{{data.resourceData.endDate | date: 'dd-MMM-yy'}}</span>
+                                    </div>
+                                </div>
+                                <div class="flex pad_top_10">
+                                    <div class=" pad_top_10">
+                                        <div class="tooltip_heading">Status</div>
+                                        <span class="tooltip_txt">{{data.resourceData.status}}</span>
+                                    </div>
+                                </div>
+
+                            </ng-template>
+
+                            <span *ngIf="!data.resourceData['groupId']" class="project_name ellips_proj">
+                                {{data.resourceData.text}}
+                            </span>
+                            <span class="name_txt padd_left_5 ellips" (click)="actionRouting(data.resourceData.id)"
+                                *ngIf="data.resourceData['groupId']" [popover]="popTemplate" placement="auto"
+                                containerClass="customClass" triggers="mouseenter:mouseleave">
+                                {{data.resourceData.text}}
+                            </span>
+                            <span *ngIf="data.resourceData['groupId']" class="float-rgt  note_icon"
+                                (click)="checkeve(data.resourceData)"><i
+                                    class="mdi mdi-calendar-clock pointer"></i></span>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </ejs-schedule>
+            <!-- bottom summary list-->
+            <div class="sum_list" *ngIf="view">
+
+                <span class="sum_details_bottom">Summary details</span>
+                <span>
+                    <div class="action_list_bottom">
+                        <div class="status_clr_bottom total_item"></div>
+                        <span class="status_name_bottom">
+                            Total Items
+                        </span>
+                        <span class="status_num_bottom status_name_bottom ">
+                            {{summaryArray[4].Count}}
+                        </span>
+                    </div>
+                </span>
+                <span>
+                    <div class="action_list_bottom">
+                        <div class="status_clr_bottom open_stage"></div>
+                        <span class="status_name_bottom">
+                            Open Stage
+                        </span>
+                        <span class="status_num_bottom status_name_bottom ">
+                            {{summaryArray[3].Count}}
+                        </span>
+                    </div>
+                </span>
+                <span>
+                    <div class="action_list_bottom">
+                        <div class="status_clr_bottom closed_stage"></div>
+                        <span class="status_name_bottom">
+                            Closed Stage
+                        </span>
+                        <span class="status_num_bottom status_name_bottom">
+                            {{summaryArray[2].Count}}
+                        </span>
+                    </div>
+                </span>
+                <span>
+                    <div class="action_list_bottom">
+                        <div class="status_clr_bottom approval_stage"></div>
+                        <span class="status_name_bottom">
+                            Pending Stage
+                        </span>
+                        <span class="status_num_bottom status_name_bottom ">
+                            {{summaryArray[1].Count}}
+                        </span>
+                    </div>
+                </span>
+
+            </div>
+            <!-- bottom summary list end-->
+        </div>
+    </div>
+</div>
+<!-- table  view starts -->
+<div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad" *ngIf="!view">
+    <!-- <div class="parent-container cal-table" *ngIf="calTable.length>0">
+        <app-single-table (detectActionValue)="performTableChildAction($event)"
+            (detectPageChangeData)="pagination($event)" [serviceSearch]=true [TableName]="'calandarData'"
+            [TableCollection]="calTable" [totalTableCount]="tableTotalCount" [IsActionFixed]=true [IsFreezedColumn]=true
+            [IsCustomizeTable]=true [IsDownload]=false [IsEditDeal]=true [IsRowDownload]=true [IsCheck1]=true
+            [orderType]="'actionIcons4Plus'" [paginationPageNumber]="paginationPageNo" [IsApprovar]=true [IsRework]=true
+            [IsDeleteCalendar]=true [IsSend]=true [TabList]="TabListCalTbl" [SelectedTab]="selectAction"
+            [IsTabRequired]=true [filterConfigData]="filterConfigData">
+        </app-single-table>
+    </div> -->
+
+    <div class="parent-container removeScrll cal-table" *ngIf="calTable.length>0">
+        <app-single-dragable-table (detectActionValue)="performTableChildAction($event)"
+            (detectPageChangeData)="pagination($event)" [serviceSearch]=true [TableName]="'calandarData'"
+            [TableCollection]="calTable" [totalTableCount]="tableTotalCount" [IsActionFixed]=true [IsFreezedColumn]=true
+            [IsCustomizeTable]=true [IsEdit]=true [IsRowDownload]=true [IsCheck1]=true [IsDeleteDeal]=true
+            [paginationPageNumber]="paginationPageNo" [IsApprovar]=true [IsRework]=true [DownloadButton]=true
+            [IsSend]=true [filterConfigData]="filterConfigData" [TabList]="TabListCalTbl" [SelectedTab]="selectAction"
+            [IsTabRequired]=true [IsDropBoxRequired]=false>
+        </app-single-dragable-table>
+    </div>
+</div>
+
+<!-- Table view ends [IsNotApprove]=true -->
+
+
+<ng-template #popContent>
+
+    <!--total iteam-->
+    <div class="action_list_pop">
+        <div class="status_clr total_item"></div>
+        <span class="status_name">
+            Total Items
+        </span>
+        <span class="status_num total_item_number">
+            {{summaryArray[4].Count}}
+        </span>
+    </div>
+    <!--total item end-->
+
+    <!-- Open Stage-->
+
+    <div class="action_list_pop">
+        <div class="status_clr open_stage"></div>
+        <span class="status_name">
+            Open Stage
+        </span>
+        <span class="status_num open_stage_number">
+            {{summaryArray[3].Count}}
+        </span>
+    </div>
+    <!--Open Stage end-->
+
+    <!-- Closed Stage-->
+    <div class="action_list_pop">
+        <div class="status_clr closed_stage"></div>
+        <span class="status_name">
+            Closed Stage
+        </span>
+        <span class="status_num closed_stage_number">
+            {{summaryArray[2].Count}}
+        </span>
+    </div>
+    <!--Closed Stage end-->
+    <!-- Approval Stage-->
+    <div class="action_list_pop">
+        <div class="status_clr approval_stage"></div>
+        <span class="status_name">
+            Pending Stage
+        </span>
+        <span class="status_num approval_stage_number">
+            {{summaryArray[1].Count}}
+        </span>
+    </div>
+    <!--Approval Stage end-->
+    <!-- Rework Stage-->
+    <!-- <div class="action_list_pop">
+        <div class="status_clr rework_stage"></div>
+        <span class="status_name">
+            Rework Stage
+        </span>
+        <span class="status_num rework_stage_number">
+            02
+        </span>
+    </div> -->
+    <!--Rework Stage end-->
+
+
+
+
+</ng-template>
+<ng-template #popTitle class="pop_top" tabindex="0"><span class="popover_header">Summary </span><span class="close_icon"
+        role="button" tabindex="0" aria-label="close"><i class="mdi mdi-close"></i> </span></ng-template>
+
+<button *ngIf="view" type="button" class="btn btn_action" [ngbPopover]="popContent" [popoverTitle]="popTitle"
+    placement="right" aria-label="action list information">
+    Action List <span class="action_list_icon info_icon">
+        <i class="info mdi mdi-information-outline"></i>
+    </span>
+</button>
+
+<div #container class='root-container'></div>

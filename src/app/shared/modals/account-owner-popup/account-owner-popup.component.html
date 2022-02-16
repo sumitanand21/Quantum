@@ -1,0 +1,79 @@
+<div class="col-12 float-left  no_pad popup-container accountOwn">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad heading-level-two" mat-dialog-title>Assign account owner</span>
+            <button class="col-2 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close"
+               data-dismiss="modal" aria-hidden="true" mat-dialog-close></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+        <div class="col-12 no_pad float-left">
+
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left margin30 no_pad  CompanyName pt30">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="customerName"
+                    class="label-form"> Search contacts <span class="asteriq"> * </span></label>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                    <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input br-0-4"
+                        id="customerName" name="customerName" type="text" autocomplete="off" [(ngModel)]="customerName"
+                        placeholder="Enter wipro contacts" (clickOutside)="customerNameclose()"
+                        (keyup)="customerNameSwitch = true;SearchAccountOwner(customerName)" autofocus="true">
+                    <span class="mdi mdi-magnify"></span>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm  float-left no_pad suggestion-box border-bottom-4 color-azure z-ind-9"
+                    *ngIf="customerName && customerNameSwitch">
+                    <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                        <span class="w-100 z-ind-9 float-left bg-white">
+                            <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                              [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                      <!--  <ul class=" list-group mr2 sort-dropdown cp">-->
+                            <li class="list-group-item h-50 p-4-10 no_pad" (click)="appendcustomer(item)"
+                                *ngFor="let item of customerContact">
+
+                                    <div class="float-left naming-tags child-middle bg-ash">
+                                        <span class="initials">{{item.Initials | uppercase}}</span>
+                                    </div>
+                                <label for="inti_name" class="float-left name">
+                                    <span class="d-block list-name">{{item.FullName}}</span>
+                                    <!-- <span class="d-block sub-list">{{item.MobileNo}}</span> -->
+                                    <span class="d-block sub-list">{{item.Designation}}</span>
+                                </label>
+                                <!-- <span class="btn-key float-right" *ngIf="item.value"> Key </span> -->
+                            </li>
+
+                            <li class="d-block list-name h-40 p-10" *ngIf="customerContact['message'] && !isActivityGroupSearchLoading">
+                                {{customerContact['message']}}
+                                <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12">
+                                    Ensure that you have typed correct legal entity name</span></li>
+                        </ul>
+                      </span>
+                    </perfect-scrollbar>
+                </div>
+            </form>
+            <!-- <perfect-scrollbar style="max-height:180px">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pr0 mt-10 p-4-10 cp no_pad"
+                *ngFor="let item of selectedCustomer" >
+                <div class="float-left naming-tags child-middle bg-ash">
+                    <span class="initials">{{item.initials}}</span>
+                </div>
+                <label for="inti_name" class="float-left name">
+                    <span class="d-block list-name">{{item.contact}}</span>
+                    <span class="d-block sub-list">{{item.designation}}</span>
+                </label>
+                <span class="float-right mdi mdi-close cp" (click)="closeDiv(item)"></span>
+
+
+            </div>
+
+
+        </div>
+    </perfect-scrollbar> -->
+        </div>
+    </div>
+    <div class="col-12 float-left no_pad mt15">
+        <button aria-label="ok" (click)="closepop();accservive.accounttoast('Account owner added successfully')"
+            class="col-12 float-left btndef-none no_pad confrm-btn" mat-dialog-close>Done</button>
+    </div>
+
+</div>

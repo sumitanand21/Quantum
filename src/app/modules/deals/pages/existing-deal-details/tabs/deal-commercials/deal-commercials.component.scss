@@ -1,0 +1,22 @@
+.commercial-landing {
+  .vertical-btns-div {
+    .sub-vertical-but:last-child {
+      border-radius: 0 4px 4px 0;
+    }
+    .border-rad-none {
+      border-radius: 0;
+    }
+  }
+  .pos-btn {
+    position: relative;
+    top: -2px;
+  }
+}
+.no-data
+{
+  text-align: center;
+  color: #ffffff;
+}
+.vertical-btns-div{
+  margin: 0;
+}

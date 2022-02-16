@@ -1,0 +1,359 @@
+.back-color{
+    background-color: #d9e9ff;
+    margin-left: 0px;
+}
+.btn-circle{
+    background: white;
+    color: #2f81ff;
+    cursor: pointer;
+}
+.btn-circle:hover{
+    background: #2f81ff;
+    color: white;
+    cursor: pointer;
+}
+.btn-circle-active{
+  background: #2f81ff;
+  color: white;
+  cursor: pointer;
+}
+.mt40{
+    margin-top: 40px;
+}
+.popup-tabs-arrow {
+    margin-left: 145px;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 17px 15px 0 15px;
+    border-color: #d9e9ff transparent transparent transparent;
+    line-height: 0px;
+    margin-top: 3px;  
+     z-index: 9;
+    position: relative;
+    top: 15px;
+  }
+  .text-head {
+    color: #0e3570;
+    font-size: 16px;
+  }
+  .db-prospect-btn {
+    border: 1.5px solid #2f81ff;
+    border-radius: 4px;
+    background: transparent;
+    color: #2f81ff;
+    width: 210px;
+    height: 40px;
+    position: relative;
+    bottom: 10px;
+  }
+  .db-prospect-btn:hover {
+    border: 1.5px solid white;
+    background: #2f81ff;
+    color: white;
+    border-radius: 4px;
+  }
+  
+  .d-block {
+    display: block;
+  }
+  .d-none {
+    display: none;
+  }
+
+  
+  .advance-table thead tr {
+    background: #d9e9ff;
+  }
+  .advance-table th {
+    padding: 12px 20px;
+    color: #0e3570;
+    font-size: 14px;
+    font-family: "WiproAkkuratTT-Regular";
+    font-weight: normal;
+    background: #d9e9ff;
+    // width:160px;
+    // max-width: 140px;
+    // min-width: 140px;
+  }
+  .advance-table th:first-child {
+    padding: 12px 35px;
+  }
+  .advance-table td:first-child {
+    padding: 10px 35px;
+  }
+  .advance-table td {
+    padding: 10px 20px;
+    font-family: "WiproAkkuratTT-Regular";
+    font-size: 14px;
+    color: black;
+    // width:160px;
+    // max-width: 140px;
+    // min-width: 140px;
+  }
+  .width160sync{
+    width:160px;
+  }
+  .actionsync{
+    float: left;
+    min-width: 100px;
+    max-width: 100px;
+  }
+  .advance-table td.actions
+  {
+    float: left;
+    // min-width: 100px;
+    // max-width: 100px;
+  }
+  .selTdTh {
+    max-width: 30px !important;
+    min-width: 30px !important;
+    min-height: 45px;
+    max-height: 100%;
+    position: relative;
+    padding: 10px 0px !important;
+    height: 100%;
+    float: left !important;
+  }
+  .advance-table tbody tr {
+    cursor: pointer !important;
+  }
+  .advance-table tbody tr:nth-child(even) {
+    background: #f3f5f9;
+  
+    border-radius: 0 !important;
+    border-bottom: 1px solid #e2e0e0;
+  }
+  .advance-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  
+  //////////////////////////////slim scroll css starts-------------------------->
+  
+  .scroll-window {
+    width: 100%;
+    height: 200px;
+    font-size: 13px;
+    font-size: 15px;
+    line-height: 30px;
+  }
+  
+  .slimscroll-grid {
+    display: none !important;
+  }
+  
+  .slimscroll-bar {
+    width: 7px !important;
+    right: 0px !important;
+    background: #bab6b6 !important;
+    z-index: 1 !important;
+  }
+  
+  .slimscroll-bar:hover {
+    background: #bab6b6 !important;
+  }
+  //////////////////////////////slim scroll css ends-------------------------->
+  .radio-label {
+    left: 10px;
+  }
+  .cust-label {
+    top: 11px;
+    left: 10px;
+  }
+  .popup-tabs-col {
+    background-color: #d9e9ff;
+    width: 100%;
+    height: 75px;
+    top: 90px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+  }
+  .popup-tabs {
+    background-color: #d9e9ff;
+    width: 100%;
+    height: 75px;
+    top: 73px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+  }
+  .mt-180 {
+    margin-top: 180px;
+  }
+  .loadMorePS {
+    visibility: hidden;
+  }
+  .customized-checkbox {
+    .mat-checkbox-inner-container {
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+    }
+  
+    .mat-checkbox-frame {
+      border-color: #2f81ff;
+    }
+  
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+      background-color: #2f81ff;
+      margin: 4px !important;
+    }
+  
+    .mat-checkbox-checkmark {
+      display: none;
+    }
+  
+    .mat-checkbox-label-before .mat-checkbox-inner-container {
+      position: absolute;
+      right: 0;
+    }
+  
+    .mrl-10 {
+      margin-left: -10px;
+    }
+  
+    .mat-checkbox-label {
+      padding-left: 5px !important;
+      font-family: WiproAkkuratTT-Bold !important;
+      color: #5e5e5e !important;
+      font-size: 14px !important;
+    }
+  
+    .mat-ripple-element {
+      background: #2f82ff3b !important;
+    }
+  
+    small {
+      padding-left: 30px;
+      bottom: 5px;
+    }
+  }
+  .no-record {
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 40px;
+    margin: 10px 0;
+  }
+  .top-90 {
+    top: 75px;
+  }
+  .top40 {
+    top: 37px;
+  }
+  .ml20 {
+    margin-left: 20px;
+  }
+  .back-btn {
+    position: absolute;
+    font-size: 26px;
+    left: -14px;
+    top: 16px;
+    cursor: pointer;
+  }
+  .sort-dropdown .list-group-item {
+    border: none !important;
+    height: 40px !important;
+    padding: 5px 0px;
+  }
+  //removed because of tootltip issue 19196
+  // .rowMat-selection
+  // {
+  //   width: 100%;
+  //   height: 100%;
+  //   z-index: 99;
+  //   top: 0;
+  //   left: 0;
+  //   padding-left: 11px;
+  
+  //   ::ng-deep {
+  //     .mat-checkbox-layout {
+  //       width: 100%  !important;
+  //       height: 100% !important;
+  //       z-index: 99 !important;
+  //     }
+  //   }
+  //   ::ng-deep {
+  //   .mat-radio-label
+  //   {
+  //     width: 100%  !important;
+  //     height: 100% !important;
+  //     z-index: 99 !important;
+  //   }
+  // }
+  // }
+  b {
+    font-family: "WiproAkkuratTT-Bold";
+  }
+  .lowerCase {
+    text-transform: lowercase;
+  }
+  .min-wd180 {
+    min-width: 180px;
+  }
+  .text-pop{
+    font-family: "WiproAkkuratTT-Bold";
+    color:#0e3570;
+    font-size: 16px;
+  }
+.mb50{
+  margin-bottom: 50px;;
+}
+
+  .bottom-btn {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background-color: #2f81ff;
+    text-align: center ;
+    font-family: "WiproAkkuratTT-Regular";
+    font-size: 14px;
+    height: 50px;
+    z-index: 9;
+  }
+  .disable-btn-bottom{
+    background-color: grey !important;
+    color:white !important;
+  }
+
+  .deleteColumn {
+    font-size: 18px;
+    padding: 2px 0px 0px 2px;
+  }
+  .customer-button{
+    border:none;
+    background: #2f81ff;
+    color:white;
+    padding: 5px;
+    height: 40px;
+    border-radius: 4px;
+    margin-left: 20px;
+    .mdi-account-plus:before{
+      margin-right: 5px;
+    }
+  }
+  .pos-abs-check{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+  }
+  .advance-table th:nth-child(2){
+    padding-left: 35px !important;
+  }
+  .advance-table td:nth-child(2){
+    padding-left: 35px !important;
+  }
+  @media screen and (max-width: 414px){
+    .advance-table td:first-child {
+      top: 15px;
+  }
+  .fontsync-12{
+    font-size: 12px !important;
+  }
+  .advance-table td.actions {
+    min-width: 100% !important;
+}
+  }

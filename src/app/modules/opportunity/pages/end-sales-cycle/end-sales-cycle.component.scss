@@ -1,0 +1,1021 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+.h-228 {
+    height: 215px;
+  }
+.pt100 {
+    padding-top: 152px;
+  }
+  .heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #00000054;
+    letter-spacing: -0.4px;
+  }
+  .heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: $Black;
+    letter-spacing: -0.4px;
+  }
+  .brudcrumbs {
+    position: relative;
+    left: 7px;
+    bottom: 2px;
+    opacity: 0.8;
+    font-size: 12px;
+    color: #e7ebf2;
+  }
+  .heading-custom {
+    position: relative;
+    left: 6px;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+.primary-button.std {
+padding: 9px 5px;
+min-width: 110px;
+}
+.h-40{
+    height:40px;
+}
+.mr10{
+    margin-right: 10px ;
+    }
+.borderless {
+    border:none !important;
+    }
+.pad-top150{
+  padding-top: 150px !important;
+}
+.text-height-70{
+  height: 110px;
+}
+
+.customized-calandar{
+  display: flex;
+  input{
+      height: 40px;
+      border-radius: 4px;
+      border: 1.5px solid $Marble;
+      padding: 0 8px;
+      &:focus{
+          border-color:  $Azure;
+      }
+  }
+  .mat-datepicker-toggle{
+      position: absolute !important;
+      right: 7px;
+      height: 40px;
+      width: 40px;
+  }
+}
+.mdi-magnify:before {
+  color: #2f81ff;
+  font-size: 20px;
+  right: 10px;
+  position: absolute;
+  bottom: 4px;
+}
+.plb-60-20 {
+  padding: 0 55px 20px 5px;
+}
+/********** style for auto complete list start ***************/
+.list-name {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #000000;
+}
+.sub-list {
+  font-size: 10px;
+  color: #9b9b9b;
+  font-family: WiproAkkuratTT-Regular;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.z-ind-9 {
+  z-index: 9;
+}
+
+.btn-key {
+  width: 54px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1.5px solid $Azure;
+  display: inline-block;
+  text-align: center;
+  margin-top: 9px;
+  margin-left: 35px;
+}
+.list-group-item {
+  cursor: pointer;
+  font-size: 12px;
+  color: #2f81ff;
+  border: none;
+  }
+ .list-group-item :hover {
+      background-color: #d9e9ff;
+  }
+  .list-group-item:hover{
+      background-color: $River;
+  }
+  .p-4-10 {
+      padding: 0px 10px 10px 10px;
+  }
+  .top64{
+      top: 64px;
+  }
+  .border-btm{
+  border-bottom: 1.3px solid #9e9e9e47;
+  }
+
+   .border-right{
+       border-right: 2px solid $Azure !important;
+       border-bottom: 2px solid #2f81ff !important;
+   }
+   .cardsHead {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: #000000;
+}
+
+   // business solution css starts here sprint-4
+.endsalescycle
+{
+  .mat-radio-label-content
+  {
+      color: #2f81ff;
+      font-family: "WiproAkkuratTT-Regular";
+  }
+  .mat-checkbox-label
+  {
+    color: #2f81ff;
+    font-family: "WiproAkkuratTT-Regular";
+  }
+}
+.radio-fontfamly {
+  color:$Azure;
+  font-size: 14px;
+  font-family: "WiproAkkuratTT-Regular"
+}
+// business solution css ends here sprint 4
+
+/********** style for auto complete list end ***************/
+    // Pradeep from create assignement page
+
+    .input-border-left{
+      border-left: none;
+  }
+  .border-right{
+      border-right: 2px solid $Azure !important;
+      border-bottom: 2px solid #2f81ff !important;
+  }
+  .pad-30{
+      padding: 30px;
+      }
+      .mr10{
+      margin-right: 10px ;
+      }
+      .h-40{
+      min-height: 40px;
+      }
+      .heading-level-one{
+      font-family:WiproAkkuratTT-Bold;
+      font-size: 24px;
+      color:$White;
+
+      small{
+      font-family: 'WiproAkkuratTT-Regular';
+      font-size: 14px;
+      padding: 0 30px;
+      }
+      }
+      .primary-button.std{
+      padding: 9px 5px;
+      min-width: 110px;
+
+      }
+      .borderless{
+      border:none !important;
+      }
+  .h-190{
+      height:190px;
+  }
+  .pad-30{
+      padding:30px;
+  }
+
+  .card{
+      border-radius: 5px;
+      box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+      background-color:$White;
+      padding-bottom: 30px;
+  }
+
+  .heading-level-three{
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 16px;
+      color:$Black
+  }
+
+  .mt20{
+      margin-top: 20px;
+      padding-left: 32px;
+      padding-right: 28px;
+      padding-top: 0px;
+  }
+  .label-form{
+      font-family: WiproAkkuratTT-Bold;
+      font-size: 12px;
+      line-height: 1.83;
+      color: $Metal;
+      margin-bottom: 4px;
+  }
+
+  .h-40{
+      height:40px;
+  }
+  thead{
+    background: #d9e9ff;
+    color: #103f86;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 12px;
+  }
+  .customized-select{
+      position: relative;
+      select{
+      width: 100%;
+      min-height: 40px;
+      border-radius: 5px;
+      // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+      border: 1.5px solid rgba(0, 0, 0, 0.1);
+      padding: 2px 5px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+
+      &:focus{
+      outline: none;
+      border-color:$Azure;
+      }
+      }
+      select::-ms-expand {
+      // for IE
+      display: none !important;
+      }
+      .caret{
+      top: 45px;
+      right: 16px;
+      }
+      }
+
+  table
+  {
+    .caret{
+      top: 17px !important;
+      right: 16px;
+      }
+  }
+
+.pad-create-lead{
+  padding:5px 30px 30px 30px;
+
+}
+.pad-create-lead1 {
+  padding: 10px 30px 10px 20px;
+}
+
+.pad-top-8{
+  padding-top: 8px;
+}
+.input-text{
+  border-radius: 4px;
+  // box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border: 1.5px solid #d8d8d8;
+  padding: 0 10px;
+}
+select option {
+  line-height: 20px;
+}
+.mt21{
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 25px;
+}
+.top-3{
+  top: 3px;
+}
+
+.tableclass{
+
+  .topdrop64 {
+         top: 39px;
+         min-width: 278px !important;
+         z-index: 5;
+  }
+  .cust_autoComplete input{
+    border: 1.5px solid #d8d8d8;
+    position: relative;
+    border-radius: 4px;
+}
+
+  .pad-30{
+    padding: 26px 30px;
+}
+.pad-15-30{
+    padding: 0px 30px;
+}
+.new-container{
+ .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+    margin: 0;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.h-40 {
+    height: 40px;
+}
+.cardsHead {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: #000000;
+}
+}
+.colorWhite{
+   color: $Marble;
+}
+.bluebox{
+    background: $Azure;
+
+    border-radius: 5px;
+    margin-right:10px;
+    width: calc(25% - 13px);
+    margin-right: 13px;
+}
+.centerContent{
+    float: none;
+    margin: 0 auto;
+    color: $White;
+    padding-top: 22px;
+    padding-bottom: 14px;
+}
+.w100{
+    width: 100px;
+}
+.font12{
+    font-size: 12px;
+}
+.circleImg {
+  width: 40px;
+  height: 40px;
+  background: $White;
+  border-radius: 20px;
+margin-bottom: 10px !important;
+
+}
+.mdi-chevron-down:before{
+
+    content: "\F140";
+    font-size: 24px;
+    color: #000;
+    position: absolute;
+    top: 43px;
+    margin-right: 8px;
+}
+.mdi-chevron-right:before{
+    font-size: 24px;
+    color: #000;
+    position: absolute;
+    top: 43px;
+    margin-right: 8px;
+}
+.pl36{
+    padding-left: 36px !important;
+}
+.Centerblock{
+    text-align: left;
+    float: none;
+    margin: 0 auto;
+}
+.mb20{
+    margin-bottom: 20px !important;
+}
+
+.plb-60-20 {
+    padding: 0 55px 20px 5px;
+}
+.mt-20{
+    margin-top: -18px;
+}
+.mb1{
+    margin-bottom: 2px;
+}
+.heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: #000000;
+}
+.text-area-content{
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #4a4a4a;
+    resize: none;
+    border: 1.5px solid #d8d8d8;
+    border-radius: 4px;
+    background-color: #ffffff;
+    height: 170px;
+    padding: 10px;
+    outline: none;
+}
+.attach-icon {
+    width: 18px;
+    height: 18px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    text-align: center;
+    position: relative;
+    right: 6px;
+    font-size: 18px;
+}
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+    background: #fff;
+}
+
+
+// sathish code start
+
+.margin_top_0 {
+    margin-top: 0px;
+}
+
+.pad_bottom_0 {
+    padding-bottom: 0px !important;
+}
+
+.margin_top_10 {
+    margin-top: 10px !important;
+}
+.padding_top_5 {
+    padding-top: 5px;
+}
+.padding_top_10 {
+    padding-top: 10px !important;
+}
+
+.downloadAllStyle {
+    color: #2f81ff;
+    font-family: 'WiproAkkuratTT-Bold';
+    font-size: 14px;
+}
+
+.circleName {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    color: red;
+}
+.border_top {
+    border-top: 2px solid #d8d8d8;
+    padding-top: 20px;
+}
+.width_25 {
+    color: white;
+    width: 28px;
+    .mdi-keyboard-backspace {
+        font-size: 22px;
+        cursor: pointer;
+    }
+}
+.margin_bottom_0 {
+    margin-bottom: 0px;
+}
+.pr0{
+    padding-right: 0 !important;
+}
+// sathish code end
+
+.add-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 4px 0px 0px 4px;
+    padding: 3px 6px;
+    background: $White;
+    border: 1.5px solid $Azure;
+    font-family: WiproAkkuratTT-Bold;
+    color: $Azure;
+    outline: none;
+    font-size: 18px;
+    // width:40px;
+  }
+  .add-btn:hover {
+    background: #2f81ff;
+    color: white;
+  }
+
+
+/********** style for auto complete list start ***************/
+/********** style for auto complete list start ***************/
+.list-name {
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .sub-list {
+    font-size: 10px;
+    color: #9b9b9b;
+    font-family: WiproAkkuratTT-Regular;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .autocomplete-box {
+    top: 0px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    border: 1.5px solid $Azure;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: 0.2s;
+
+    .list-group-item {
+      cursor: pointer;
+      height: 50px;
+      padding: 10px;
+    }
+
+    .db-search {
+      height: 40px;
+      cursor: pointer;
+      list-style-type: none;
+
+      &:hover {
+        background-color: #d9e9ff;
+      }
+      button {
+        font-family: WiproAkkuratTT-Bold;
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        color: $Azure;
+        outline: none;
+        border: none;
+        background: transparent;
+        text-align: left;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .list-box:hover {
+      background-color: #d9e9ff;
+      cursor: pointer;
+    }
+
+    .btn-none {
+      outline: none;
+      border: none;
+      background: transparent;
+    }
+  }
+
+
+// meghana classes
+.min_height60
+{
+    min-height: 60px;
+}
+.accord-heading{
+    // position: absolute;
+    padding-top: 20px;
+}
+.bot10
+{
+    bottom: 10px;
+}
+th{
+    background: #d9e9ff;
+    color: #103f86;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+}
+.disabled_blue_circle_replay
+{
+    background: #d2d5d8 !important;
+    color: #ffffff !important;
+}
+
+.blue_circle_replay {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #d9e9ff;
+    position: relative;
+    text-align: center;
+    color: #2f81ff;
+    margin-left: 10px;
+  }
+  .blue_circle_replay:hover {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #2f81ff;
+    position: relative;
+    color: #ffffff;
+
+    .blue_circle_replay_img {
+      color: #ffffff;
+    }
+  }
+  .w-75
+  {
+      width: 75% !important;
+      font-size: 12px;
+  }
+  .display_flex
+  {
+      display: flex;
+  }
+  tr{
+      white-space: nowrap;
+  }
+  td{
+      vertical-align: middle;
+  }
+  .gray_back
+  {
+      background: #f9f9f9 !important;
+  }
+  .trans_back
+  {
+      background: transparent !important;
+  }
+  .disabled_check.customized-checkbox .mat-checkbox-frame
+  {
+    border-color:#d8d8d8 !important;
+  }
+  .comp_tool
+  {
+    font-family: "WiproAkkuratTT-Bold";
+    font-size: 12px;
+    color: #2f81ff;
+  }
+  .pb5
+  {
+    padding-bottom: 5px;
+  }
+  .pad_10
+  {
+      padding: 0px 10px !important;
+  }
+  .mdi-magnify:before {
+    color: #2f81ff;
+    font-size: 20px;
+    right: 8px;
+    position: absolute;
+    background: #ffffff;
+    bottom: 5px;
+}
+}
+// css for Mandatory feild check validation starts here
+.validation-text
+{
+    // font-size: 12px;
+    // font-family: WiproAkkuratTT-Bold;
+    // color: #ef3341;
+    // position: absolute;
+    // margin: 0px !important;
+    background: transparent !important;
+    padding: 4px 0px !important;
+    color: #ef3341 !important;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: normal;
+}
+.orangeborder
+{
+    //border: 2px solid #ef3341 !important;
+    border-color: #ef3341 !important;
+}
+.validation-bar
+{
+    background: #ef3341;
+    width: 0px;
+    height: 53px;
+    position: absolute;
+}
+.top50
+{
+    top: 52px;
+}
+.manditary-cls
+{
+ position: absolute;
+ top: 68px;
+}
+.top50
+{
+    top: 50px;
+}
+// css for Mandatory feild check validation ends here
+
+.cursorDisable{
+    // pointer-events: none;
+    // cursor: not-allowed;
+    pointer-events: none !important;
+    cursor: not-allowed;
+    opacity: 0.9;
+    color: #9b9b9b!important;
+    background-color: #f9f9f9 !important;
+
+}
+ .pb0
+ {
+   padding-bottom: 0px;
+ }
+ .text-transform-capitalize
+ {
+   text-transform: capitalize;
+ }
+
+ .wiproCustRadioBtn{
+    pointer-events: none;
+}
+
+.liststyle_none{
+    list-style: none;
+     }
+
+     // advanced search css starts here
+.db-search {
+  height: 40px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #d9e9ff;
+  }
+  button {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    color: $Azure;
+    outline: none;
+    border: none;
+    background: transparent;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.db-search {
+  height: 40px;
+  cursor: pointer;
+  list-style-type: none;
+
+  &:hover {
+    background-color: #d9e9ff;
+  }
+  button {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    color: $Azure;
+    outline: none;
+    border: none;
+    background: transparent;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+  }
+}
+.button-search {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: $Azure;
+  outline: none;
+  border: none;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+  height: 40px;
+}
+.button-search:hover{
+background: #d9e9ff !important;
+}
+.button-search.active{
+  background: #d9e9ff;
+}
+// advanced search css ends here
+// .btnDisable{
+//   pointer-events: none !important;
+//   cursor: not-allowed;
+//   //color: $MetalLight !important;
+//   background-color: #f9f9f9 !important;
+// }
+.left-67 {
+  top: 42%;
+  left: 3%;
+}
+.left-34 {
+  top: 47%;
+  left: 3%;
+}
+.left-1 {
+  top: 47%;
+  left: 3%;
+}
+.padr-10
+{
+  padding-right: 8px !important;
+}
+.cursorPointer{
+  cursor: pointer;
+}
+textarea {
+  resize: none;
+}
+.w-350
+{
+  width:350px;
+}
+@media screen and (max-width: 823px) {
+  .manditary-cls{
+  position: absolute;
+  top: 89px;
+  }
+ .top114{
+  position: absolute; 
+  top: 114px;
+  }
+ .top125{
+  position: absolute;
+  top: 125px;
+  }
+  .mt10{
+    margin-top: 10px;
+  }
+  .top50{
+    top: 50px !important;
+  }
+  .top-40{
+    top:86px !important;
+  }
+
+  .mt20{
+    margin-top: 20px;
+  }
+  .mt50{
+    margin-top: 50px;
+  }
+  .end-sales{
+  .customized-select .caret
+  {
+  top: 22px !important;
+  position: relative !important;
+  }
+  }
+  .mt20{
+    padding-left: 15px !important;
+    padding-right: 10px !important;
+}
+  .mob_width100
+  {
+      width: 100% !important;
+  }
+  .display-none
+  {
+      display: none !important;
+  }
+  table {
+    border: 0;
+  }
+  table caption {
+    font-size: 1.3em;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  table tr:not(:first-child) {
+      border-top: 20px solid #f9f9f9;
+  }
+  table tr {
+    margin-bottom: 0.625em;
+    height: auto !important;
+    // display: inline-block !important;
+    // height: auto !important;
+    position: relative;
+    background-color: white !important;
+    touch-action: pan-y !important;
+  }
+  table td {
+    display: inline-grid;
+    text-align: left;
+    width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    touch-action: pan-y !important;
+  }
+  table th.actionColumn {
+    display: inline-grid;
+    text-align: left;
+    //width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    padding-right: 0px;
+    
+  }
+  table tr th {
+    display: inline-grid;
+    text-align: left;
+    width: 100% !important;
+    float: left;
+    line-height: normal !important;
+    touch-action: pan-y !important;
+    padding-right: 0px;
+   
+   
+  }
+  table td::before,
+  table tr th::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    font-family: WiproAkkuratTT-Regular;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    color: #9b9b9b;
+  }
+   table th.actionColumn {
+    border-bottom: 0;
+    overflow-x: auto;
+  }
+  .mobile_hide
+  {
+      display: none !important;
+  }
+  .w-80
+  {
+      width: 80%;
+  }
+  .mobile-button-width
+  {
+      width: 100%;
+      float: left !important;
+      margin-top: 20px;
+      display: flex;
+      left : -25px;
+  }
+  .mobile-no_pad
+  {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+  }
+}

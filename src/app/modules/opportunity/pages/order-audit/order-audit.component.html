@@ -1,0 +1,78 @@
+<div class="top-header top-head-index insight" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+    <app-nav></app-nav>
+    <div class="float-left col-12 header-action-tab">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pl0px">
+
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 float-left width_25 pl0px">
+                <button (click)="goBack()" class="mdi mdi-keyboard-backspace back-buttonbg" role="button" tabindex="0" aria-label="go back" (keypress)="goBack()"></button>
+            </div>
+
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 float-left ">
+                <h1 class="heading-level-one mtop-5">Order audit history</h1>
+                <small class="colorWhite">Opportunities</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  insight no_pad pad-lr-30 order-hierarchy-mob">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-abs no_pad bg-mid_night h-250"></div>
+    <div class="col-12 float-left customized-accordians mtop-20 pad-lr-30">
+        <!-- <mat-accordion> -->
+
+
+        <!-- Level 1 Accordian Starts-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pad_t0 mb30 mtop-150 normal_table">
+
+            <mat-expansion-panel hideToggle="true" [expanded]="true" class="no_pad" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="min-height:60px;">
+                    <mat-panel-title class="accord-heading mar-top10">
+                        <span [ngClass]="panelOpenState ? 'mdi mdi-chevron-up chevron-right':'mdi mdi-chevron-down chevron-right'"></span>
+                        <span class="accordian-title pad-top-8">Audit details</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="col-12 float-left border-bottom-grey"></div>
+
+                <div class="col-12 no_pad float-left mt20 mb20 sub-text pad-top0-20">
+                    <span class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 no_pad float-left">Important to note : Audit records can be found from 23rd August 2013 in TRACE CRM </span>
+                    <span class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 no_pad float-right small-text"> Track opportunity/order number changes</span>
+                </div>
+
+                <table class="no_pad table table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="br-tl">Order number</th>
+                            <th>Changed by</th>
+                            <th>Changed on</th>
+                            <th>Attribute altered</th>
+                            <th>Value before updating</th>
+                            <th>Value after updating</th>
+                            <!-- <th>Reason</th> -->
+                        </tr>
+                    </thead>
+                    <tbody class="no_pad" *ngIf="auditHistory.length > 0">
+                        <tr class="color-black" *ngFor="let order of auditHistory">
+                            <td class="display-none"></td>
+                            <td [attr.data-label]="'Order Number'">{{ order.OrderNumber ? order.OrderNumber : '-' }}</td>
+                            <td [attr.data-label]="'Changed By'">{{ order.CreatedByName ? order.CreatedByName : '-' }}</td>
+                            <td [attr.data-label]="'Changed On'">{{ (order.ChangedOn)? (order.ChangedOn | date:'MM/dd/y'): '-'}}</td>
+                            <td [attr.data-label]="'Attribute Altered'">{{ order.Name ? order.Name : '-' }}</td>
+                            <!-- <td [attr.data-label]="'Value Before Updating'" >{{( order.OldValue)? (order.OldValue | date:'MM/dd/y'): order.OldValue }}</td>
+                <td [attr.data-label]="'Value After Updating'" >{{ (order.NewValue)? (order.NewValue) : (order.NewValue | date:'MM/dd/y')}}</td> -->
+                            <td [attr.data-label]="'Value Before Updating'">{{order.OldValue ? order.OldValue: '-'}}</td>
+                            <td [attr.data-label]="'Value After Updating'">{{ order.NewValue ? order.NewValue: '-'}}</td>
+                            <!-- <td>{{ order.reason }}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
+            </mat-expansion-panel>
+        </div>
+        <!-- Level 1 Accordian Ends-->
+
+        <!-- </mat-accordion> -->
+    </div>
+
+</div>

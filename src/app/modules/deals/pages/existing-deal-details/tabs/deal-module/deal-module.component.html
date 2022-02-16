@@ -1,0 +1,374 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="issaveLoader;">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left deal-module-container  margin-btm55 no_pad ">
+    <div class="float-left w-100 pb-3 align-center" style="z-index: 1">
+      <h2 class="col-6 float-left heading-level-two color-white no_pad padding-left0 padt-0">
+        {{moduleListTable?.length}} Modules</h2>
+      <div class="col-6 no_pad float-right ">
+
+        <button *ngIf="showAddModuleBtn && (originUrl !== '/deals/rlsView' && originUrl !== '/deals/pastDeal')"
+          class="standard-border h-40 ellipses bg-transperent color-white float-right font-bold module-mobile-btn"
+          type="button" (click)="addModule()">
+          <span class="mdi mdi-plus"></span>Add module</button>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad card">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left pad-30 pt20 ">
+        <p class="col-12 no_pad float-left text-center" *ngIf="noRecordFound">No record found</p>
+        <section class="col-12 float-left customized-accordians no_pad">
+          <div class="col-12 noPad float-left accordians-div">
+            <mat-accordion>
+
+              <form [formGroup]="Adddealmodule" id="validatescroll" *ngIf="showaddModule">
+                <div class="col-12 no_pad float-left accordians-lvl2 mobile-mod new-mod-acc-main">
+                  <mat-expansion-panel [hideToggle]="true" [expanded]="saveexpand == true" class="no_pad"
+                    (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header style="min-height:60px;" class="sub-accord-container">
+                      <mat-panel-title>
+                        <span class="icon-lynHgt"
+                          [ngClass]="panelOpenState ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-right chevron-right'"></span>
+                        <span class="title-inner">New module</span>
+                      </mat-panel-title>
+
+                      <div class="float-right panel-btns-div">
+
+                        <button *ngIf="Adddealmodule.controls.copymodule.value == true && this.originUrl != '/deals/rlsView'" role="button" tabindex="0"
+                          class="float-left mdi mdi-note-multiple color-azure edit-icon mr10"
+                          (click)="copymodule($event);"
+                          (keydown.enter)="copymodule($event)" (keypress)="copymodule($event)" matTooltip="Copy"></button>
+
+                        <button *ngIf="Adddealmodule.controls.copymodule.value == false && this.originUrl != '/deals/rlsView'" role="button" tabindex="0"
+                          class="float-left mdi color-azure edit-icon mdi-content-save" (click)="saveModule($event);"
+                          (keypress)="saveModule($event)" (keydown.enter)="saveModule($event)" matTooltip="Save"></button>
+
+                        <button class="float-left mdi mdi-delete color-azure edit-icon" role="button" tabindex="0"
+                          (click)="deleteaddModule($event);" 
+                          matTooltip="Delete"></button>
+                      </div>
+
+                    </mat-expansion-panel-header>
+
+                    <div class="col-12 no_pad float-left customized-input pad-top35">
+                      <div class="col-12 float-left no_pad">
+                        <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+                          <div class="w-100">
+                            <label for="Modulename" class="w-100">Module name</label>
+                            <div class="pos-rel">
+                              <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                                <div
+                                  class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                                  <div class="pos-rel w-100 float-left no_pad">
+                                    <input class="border-gray w-100" id="Modulename" type="text"
+                                      formControlName="moduleName"
+                                      [ngClass]="this.Adddealmodule.controls['moduleName'].errors ? 'red-brdr' : ''"
+                                      (change)="setCache(this.Adddealmodule.value)">
+                                    <p *ngIf="this.Adddealmodule.controls['moduleName'].errors"
+                                      class="error-message top-40"> Please enter the module name</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+                          <label for="Modulename" class="w-100">Project start month</label>
+                          <div class="pos-rel">
+                            <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                              <div
+                                class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                                <div class="pos-rel w-100 float-left no_pad">
+                                  <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart"
+                                    (click)="dp.open()"  [min]="minDate" [max]="endDate" (keypress)="dp.open()" [matDatepicker]="dp" title="DD/MMM/YYYY"
+                                    placeholder="MMM-YYYY" formControlName="project_start_date" (dateChange)="setCache(this.Adddealmodule.value)">
+                                  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                  <mat-datepicker #dp startView="year" panelClass="example-month-picker">
+                                    <span class="mdi mdi-calendar-blank float-right no_pad"
+                                      matDatepickerToggleIcon></span>
+                                  </mat-datepicker>
+                                  <!-- <p *ngIf="this.Adddealmodule.controls['project_start_date'].errors"
+                                    class="error-message top-40"> Please enter the start date</p> -->
+                                  <!-- <p *ngIf="error.isError"
+                                    class="error-message top-40">Project start date cannot be less than todays date</p> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 float-left no_pad">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 float-left customized-checkbox mar-botm22">
+                          <label class="w-100"> Service line</label>
+                          <div class="pos-rel">
+                            <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                              <div
+                                class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+
+                                <ng-container formArrayName="serviceLines">
+                                  <section
+                                    *ngFor="let lines of Adddealmodule?.controls?.serviceLines?.controls; let i = index "
+                                    [formGroupName]="i" class="float-left mr10">
+                                    <mat-checkbox formControlName="status" (change)="setCache(this.Adddealmodule.value)"
+                                      *ngIf="rlsDropdownList[i]?.ServiceLineName != '--Select--'">
+                                      {{rlsDropdownList[i]?.ServiceLineName}}
+                                    </mat-checkbox>
+                                  </section>
+
+                                </ng-container>
+                                <div class="pos-rel w-100 float-left no_pad"
+                                  *ngIf="this.Adddealmodule.controls['serviceLines'].errors">
+                                  <p class="error-message"> Please select service line</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left customized-checkbox mar-botm22"
+                          *ngIf="LoadManageDeal?.Output?.ModuleList.length > 0">
+                          <mat-checkbox formControlName="copymodule" class="float-left col-12 no_pad text-uppercase"
+                            (ngModelChange)="copyToggle();" (change)="setCache(this.Adddealmodule.value)">
+                            copy existing module
+                          </mat-checkbox>
+                          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left plb-60-20 mobile-select-box"
+                            *ngIf="Adddealmodule.controls.copymodule.value">
+                            <div class="customized-select">
+                              <span class="caret color-azure"></span>
+                              <select id="copymodulename" role="listbox" formControlName="copymodulename"
+                                [ngClass]="this.Adddealmodule.controls['copymodulename'].errors ? 'red-brdr' : ''" (change)="SelectCopyModule($event);setCache(this.Adddealmodule.value)">
+                                <option value="" selected disabled default="true">Select Module</option>
+                                <option [value]="i" *ngFor="let data of LoadManageDeal?.Output.ModuleList;let i=index">
+                                  {{data?.ModuleName}}</option>
+                              </select>
+                              <p *ngIf="this.Adddealmodule.controls['copymodulename'].errors"
+                                class="error-message top-40"> Please select the module name</p>
+                            </div>
+                          </div>
+                          <div class="col-12 float-left customized-input no_pad comn-fld  web-select-box">
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-12 float-left no_pad web-select-box"
+                              *ngIf="Adddealmodule.controls.copymodule.value">
+
+                              <mat-form-field class="col-12 no_pad float-left">
+                                <div class="pos-rel w-100 float-left no_pad">
+                                  <mat-select formControlName="copymodulename" aria-label="{{'Module selected' + dropdownSelectedModule}}"
+                                    (selectionChange)="SelectCopyModule($event);setCache(this.Adddealmodule.value)" id="copymodulename"
+                                    class="select-focus"
+                                    [ngClass]="this.Adddealmodule.controls['copymodulename'].errors ? 'red-brdr' : ''">
+                                    <mat-option value="" selected disabled>Select Module</mat-option>
+                                    <mat-option [value]="i"
+                                      *ngFor="let data of LoadManageDeal?.Output.ModuleList;let i=index">
+                                      {{data?.ModuleName}}
+                                    </mat-option>
+                                  </mat-select>
+                                  <p *ngIf="this.Adddealmodule.controls['copymodulename'].errors"
+                                    class="error-message top-40"> Please select the module name</p>
+                                </div>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <!--copy code ends  -->
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22">
+                          <label class="w-100" for="serviceLine"> Module Owner
+                          </label>
+                          <div
+                            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                            <perfect-scrollbar style="max-height:200px">
+                              <ng-container formArrayName="moduleOwner">
+                                <div class=" float-left p-4-10 main-details"
+                                  *ngFor="let owner of Adddealmodule?.controls?.moduleOwner?.controls; let i = index"
+                                  [formGroupName]="i">
+                                  <div class="float-left naming-tags child-middle bg-azure">
+                                    <span class="initials">{{SelectedModuleOwner[i]?.AdId | firstWord}}</span>
+                                  </div>
+                                  <label for="inti_name" class="float-left name">
+                                    <span class="d-block list-name">{{SelectedModuleOwner[i]?.FullName}}</span>
+
+                                  </label>
+                                  <span role="button" tabindex="0" aria-label="delete"
+                                    class="mdi mdi-close close-lead x float-right cp delete"
+                                    (click)="deleteOwner()"></span>
+                                </div>
+                              </ng-container>
+                            </perfect-scrollbar>
+
+                          </div>
+                          <div class="col-12 float-left no_pad ">
+                            <button class="mdi mdi-plus primary-button btn-block wid100" type="button"
+                              (click)="OpenModuleOwners();">{{SelectedModuleOwner?.length != 0 ? 'Modify' : 'Add'}}</button>
+                            <p *ngIf="!this.Adddealmodule.controls['moduleOwner'].valid && this.Adddealmodule.controls['moduleOwner'].errors"
+                              class="error-message top-40"> Please add module owner</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </div>
+              </form>
+              <ng-container *ngIf="showModules == true">
+                <div class="col-12 no_pad float-left accordians-lvl2 mobile-mod new-mod-acc-main"
+                  *ngFor="let data of moduleListTable;let i=index">
+                  <mat-expansion-panel hideToggle=true
+                    [expanded]="(data.edited == false || data.nameedited == true) ? true : false" class="no_pad"
+                    (opened)="data.panelOpenState = true" (closed)="data.panelOpenState = false">
+                    <mat-expansion-panel-header style="min-height:60px;" class="sub-accord-container">
+                      <mat-panel-title>
+                        <span class="icon-lynHgt"
+                          [ngClass]="data.panelOpenState ? 'mdi mdi-chevron-down chevron-right':'mdi mdi-chevron-right chevron-right'"></span>
+                        <span class="title-inner">{{moduleTableInfo[i]?.ModuleName}}</span>
+                      </mat-panel-title>
+                      <div class="float-right panel-btns-div">
+                        <!-- <span *ngIf="moduleTableInfo[i]?.ModuleDeleteEnable == 'true'"
+                        class="float-left mdi mdi-note-multiple color-azure edit-icon mr10"
+                        (click)="copymodule(i);" matTooltip="Copy"></span> -->
+                        <button *ngIf="moduleTableInfo[i]?.ModuleEdit == 'true' && this.originUrl != '/deals/rlsView'" role="button" tabindex="0"
+                          class="float-left mdi color-azure edit-icon "
+                          [ngClass]="data.edited ? 'mdi-pencil' : 'mdi-content-save'"
+                          (click)="editModule(data,i);data.nameedited = false;$event.stopPropagation();"
+                          (keydown.enter)="editModule(data,i);data.nameedited = false;$event.stopPropagation();"
+                          [matTooltip]="data.edited ? 'Edit' : 'Save'"></button>
+                        <button *ngIf="moduleTableInfo[i]?.ModuleRevert == 'true' && this.originUrl != '/deals/rlsView'" role="button" tabindex="0"
+                          class="float-left mdi mdi-undo-variant color-azure edit-icon mr10" matTooltip="Revert"
+                          (click)="revertpop(i);$event.stopPropagation();"
+                          (keydown.enter)="revertpop(i);$event.stopPropagation();"></button>
+                        <button *ngIf="moduleTableInfo[i]?.ModuleDeleteEnable == 'true' && this.originUrl != '/deals/rlsView'" role="button" tabindex="0"
+                          class="float-left mdi mdi-delete color-azure edit-icon"
+                          (click)="moduledelete(i);$event.stopPropagation();"
+                          (keydown.enter)="moduledelete(i);$event.stopPropagation();" matTooltip="Delete"></button>
+                      </div>
+
+                    </mat-expansion-panel-header>
+                    <div class="col-12 no_pad float-left customized-input pad-top35">
+                      <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+                        <div class="w-100">
+
+                          <label for="Modulename" class="float-left">Module name</label>
+
+                          <div class="pos-rel">
+                            <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                              <div
+                                class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                                <button *ngIf="moduleTableInfo[i]?.ModuleEdit == 'true'"
+                                  class="btn-block btn-none mdi color-azure cp mname-edit"
+                                  [ngClass]="data.nameedited ? 'mdi-content-save' : 'mdi-pencil'"
+                                  (click)="data.nameedited ? renamemodule(i,module.value) : data.nameedited = !data.nameedited;data.edited=true">
+                                </button>
+                                <input #module class="border-gray w-100" id="Modulename" type="text"
+                                  [value]="moduleTableInfo[i]?.ModuleName" [disabled]="!data.nameedited"
+                                  (keyup)="checkvalidname($event)">
+                                <p *ngIf="invalidmodulename" class="error-message top-40"> Please enter the module name
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+                        <div class="w-100">
+                          <label for="Moduleowner" class="w-100">Module owner</label>
+                          <input class="border-gray w-100" id="Moduleowner" type="text"
+                            [value]="moduleTableInfo[i]?.ModuleOwner?.EmployeeName" disabled>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+                        <div class="w-100">
+                          <label for="Status" class="w-100">Status</label>
+                          <input class="border-gray w-100" id="Status" type="text" [value]="moduleTableInfo[i]?.Status"
+                            disabled>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left customized-checkbox mar-botm22">
+                        <label class="w-100"> Service line  </label>
+                        <section *ngFor="let lines of moduleTableInfo[i]?.ServiceLines | orderByLines" class="float-left mr10">
+                          <mat-checkbox [value]="lines?.ServiceLineCode" checked="true" disabled>
+                            {{lines?.ServiceLineName}}
+                          </mat-checkbox>
+                        </section>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-12  padbox-10-60-10 float-left mar-botm22">
+                        <div class="w-100">
+                          <label for="PStartMonth" class="w-100">Project start month</label>
+
+                          <div class="pos-rel" *ngIf="submissiondates[i]">
+                            <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                              <div
+                                class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cust_calan customized-input">
+                                <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left " id="calStart"
+                                  (click)="dp1.open()" (keypress)="dp1.open();" [matDatepicker]="dp1"
+                                  title="{{submissiondates[i].date | date:'MMM-yyyy'}}" placeholder="MMM-YYYY"
+                                  [min]="minDate" [max]="endDate"  [(ngModel)]="submissiondates[i].date" [disabled]="data.edited"
+                                  (ngModelChange)="validatestartdate($event)"
+                                  [ngClass]="invalidstartdate ? 'red-brdr' : ''">
+                                <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                                <mat-datepicker #dp1 startView="year" panelClass="example-month-picker">
+                                  <span class="mdi mdi-calendar-blank float-right no_pad"
+                                    matDatepickerToggleIcon></span>
+                                </mat-datepicker>
+                                <p *ngIf="invalidstartdate" class="error-message top-40"> Please enter the start date
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left mar-botm22"
+                        *ngIf="moduleTableInfo[i]?.ModuleTeam?.length > 0 || !data.edited">
+                        <label class="w-100" for="serviceLine"> Members
+                        </label>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                          <perfect-scrollbar style="max-height:200px">
+                            <div class=" float-left p-4-10 main-details"
+                              *ngFor="let value of moduleTableInfo[i]?.ModuleTeam;">
+                              <div class="float-left naming-tags child-middle bg-azure">
+                                <span class="initials">{{value.EmployeeId | firstWord}}</span>
+                              </div>
+                              <label for="inti_name" class="float-left name">
+                                <span class="d-block list-name">{{value.EmployeeName}}</span>
+
+                              </label>
+
+                            </div>
+                          </perfect-scrollbar>
+
+                        </div>
+                        <div class="col-12 float-left no_pad " *ngIf="!data.edited">
+                          <button class="mdi mdi-plus primary-button btn-block wid100"
+                            (click)="OpenCoOwners(i)">Add</button>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </div>
+              </ng-container>
+            </mat-accordion>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</ng-template>

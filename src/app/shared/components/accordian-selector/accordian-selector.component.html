@@ -1,0 +1,76 @@
+<div class="col-xl-12 col-12 no_pad expand-table-panel w-100-selector" id="scroll-selector" [style.width.px]="width">
+    <div class="col-xl-12 col-12 float-left no_pad expand-content">
+        <div class="col-xl-1 col-12 col-md-1 float-left lightBlueBackground width100-max">
+            <div class="col-xl-12 col-6 col-md-12 float-left button-align bot-border width50-max">
+                <span class="col-12 no_pad float-left Overview">Description</span>
+                <button class="btn-none " (click)="showdesp_cntnt()" [ngClass]="desp_cntnt ? 'blueCircle' : 'whiteCircle'">
+                    <span class="table-icons mdi mdi-eye "></span>
+                </button>
+                <div class="tooltip-expand">
+                    <span [ngClass]="desp_cntnt ? 'caret_right_table' : ''"></span>
+                </div>
+            </div>
+            <div class="col-xl-12 col-6 col-md-12 float-left button-align tooltip-arrow  width50-max">
+                <span class="col-12 no_pad float-left Rejection Exception">Comments</span>
+                <button class="btn-none pos-rel" (click)="showcmnts_cntnt()" [ngClass]="cmnts_cntnt || localPartentRef ? 'blueCircle' : 'whiteCircle'">
+                    <!--Comments count starts here-->
+                    <span class="commentsCount" *ngIf="false"></span>
+                     <!--Comments count ends here-->
+                    <span class="table-icons mdi mdi-comment-multiple-outline "></span>
+                </button>
+                <div class="tooltip-expand">
+                    <span [ngClass]="cmnts_cntnt || localPartentRef ? 'caret_right_table' : ''"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-11 col-12 col-md-11 float-left expand-ryt-section  width100-max">
+            <div class="col-12 float-left desp-section" *ngIf="desp_cntnt">
+                <!-- <span class="col-12 no_pad float-left comment-head">Description</span> -->
+                <perfect-scrollbar class="desctiption-height">
+                <span class="col-xl-7 col-12 no_pad float-left desp-text">
+                  {{expansionData.Description}}
+                </span>
+            </perfect-scrollbar>
+                
+            </div>
+            <div class="col-12 float-left comments-section" *ngIf="cmnts_cntnt">
+                <!-- <span class="col-12 no_pad float-left comment-head">All Comments</span> -->
+                
+                <div class="col-12 no_pad float-left">
+                    <perfect-scrollbar class="expand-comment-hgt">
+                        <div class="col-12 no_pad float-left comment-main mt20" *ngFor="let comment of expansionData.Comments">
+                            <div class="col-12 no_pad float-left">
+                                <span class="comment-name">{{comment.Owner.FullName}}</span>
+                                <span class="comment-date">{{comment.Date | date: 'dd-MMM-yyyy h:mm a'}}</span>
+                            </div>
+                            <span class="col-10 no_pad float-left comment-text">{{comment.Description}}</span>
+                        </div>
+                       
+                    </perfect-scrollbar>
+                    <div class="col-12 no_pad float-left mt10">
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12 no_pad float-left comment-main-text">
+                                    <textarea rows="1" class="col-12" placeholder="Write your comment (2000 characters)" maxlength=2000 [(ngModel)]="commentArea" name="comment"></textarea>
+                                </div>
+                                <div class="col-4 float-left no_pad ">
+                                        <button class="float-left btn-none f-capital post-btn" (click)="postComment()"> post </button>
+                                    </div>
+                                </div>
+                </div>
+              
+            </div>
+            <!-- <div class="col-12 float-left" *ngIf="localPartentRef">
+                <span class="col-12 no_pad float-left comment-head">Your Comments</span>
+                <div class="col-12 no_pad float-left comment-main">
+                    <div class="col-12 no_pad float-left">
+                        <textarea rows="3" class="col-xl-6 col-12" placeholder="Write your comments" [(ngModel)]="commentArea" name="comment"></textarea>
+                    </div>
+                    <div class="col-12 float-left no_pad exp-btns-div">
+                        <button class="float-left btn-none f-capital exp-cancel-btn exp-cancel-cmnt-btn" (click)="showcmnts_cntnt()"> cancel </button>
+                        <button class="float-left btn-none f-capital post-btn" (click)="postComment()"> post </button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+  
+    </div>
+  </div>

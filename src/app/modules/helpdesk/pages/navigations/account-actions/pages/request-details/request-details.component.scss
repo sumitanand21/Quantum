@@ -1,0 +1,114 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$Black: #000000;
+$NavyBlue: #0e3570;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+
+
+.card{
+  border-radius: 5px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  background-color:$White;
+  margin-bottom:5px !important;
+}
+
+
+.mb20{
+  margin-bottom: 20px;
+}
+
+.mt4 {
+  margin-top: 25px;
+}
+
+
+.sub-text-request{
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+  color: $Black;
+
+}
+.converstion-name {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px !important;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
+  color: #737373 !important;
+
+}
+.heading-level-two {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color: $NavyBlue !important;
+  letter-spacing: -0.4px;
+}
+
+.heading-owner {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 20px;
+  color: #0e3570;
+  letter-spacing: -0.4px;
+}
+.plb-60-20 {
+  padding: 0 60px 15px 0;
+}
+.text-area-account{
+  min-height: 100px;
+}
+.margin-btm100{
+  margin-bottom: 100px;
+}
+
+.active {
+  background-color: #2f81ff !important;
+  color: #ffffff;
+}
+
+.list-group-item {
+  cursor: pointer;
+  font-size: 12px;
+  color: #2f81ff;
+  border: none;
+  }
+ .list-group-item :hover {
+      background-color: #d9e9ff;
+  }
+  .list-group-item:hover{
+      background-color: #d9e9ff;
+  }
+  .p-4-10 {
+      padding: 4px 10px 4px 10px;
+  }
+  .top64{
+      top: 64px;
+  }
+
+  .request-border{
+    border-radius: 0px 0px 4px 4px;
+    border-right: 2px solid #2f81ff !important;
+    border: 2px solid #2f81ff;
+  }
+
+  span.mdi.mdi-close.auto-close {
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+  }
+
+.CompanyName {
+ .mdi-magnify:before {
+    color: $Azure;
+    font-size: 20px;
+    right: 10px;
+    position: absolute;
+    bottom: 5px;
+  }
+}
+
+
+
+
+
+

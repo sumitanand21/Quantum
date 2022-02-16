@@ -1,0 +1,191 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-opportunity deal-qualify ">
+
+    <div class="col-12 float-left  container-dialog no_pad">
+        <div class="col-12 float-left">
+            <div class="col-12 float-left  no_pad popup-hd">
+                <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Opportunity qualifier </span>
+                <button
+                    class="col-2 float-right no_pad btndef-none mdi mdi-window-close close-icn discard-close-btn close-icn"
+                    aria-label="close" (click)='closeQualifier()'></button>
+            </div>
+
+            <div class="col-12 float-left border-bottom-grey"></div>
+
+            <div class="col-12 float-left mtb-5 no_pad ">
+                <!-- <label class="col-12 float-left  no_pad margin-top-20 hd-val" for="percentage">Qualification status *</label>
+                <input type="text" class="col-12 float-left border-gray w-100" name="percentage" placeholder="Not applicable" /> -->
+                <!-- Select DROPDOWN STARTS -->
+                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left plb-60-20"> -->
+                <form>
+                    <!-- <div [ngClass]="{ 'bg-error': f.source.touched && f.source.invalid }"> -->
+                    <!-- <label for="select1" class="w-100">Qualification status * </label>
+                    <div class="customized-select">
+                        <span class="caret color-azure"></span>
+                        <select id="select1" role="listbox" >
+                                    <option value="">Select status</option>
+                                    <option value="saab">completed</option>
+                                    <option value="opel">incomplete</option>
+                                    <option value="audi">yet to complete</option>
+                                  </select>
+                        <select [(ngModel)]='qualifierValue' name="qualifierValue" id="select1" role="listbox">
+                            <option value="" selected hidden disabled>Qualification status</option>
+                            <option [value]="qualifierData.Id" *ngFor="let qualifierData of qualifierData">
+                                {{qualifierData.Name}}</option>
+                        </select>
+
+                    </div> -->
+
+
+                    <!-- matselect for web -->
+                    <div *ngIf="!DataCommunicationService.MobileDevice" class="col-12 col-sm-12 col-md-12 col-lg-12 float-left no_pad web-select-box newOpp-uniformPlaceholder">
+                        <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left label-form no_pad" for="select1"
+                            class="hd-val">Qualification status *</label>
+                        <mat-form-field class="col-12 no_pad float-left">
+                            <mat-label>Select qualification status</mat-label>
+                            <mat-select  id="select1" role="listbox" [(ngModel)]='qualifierValue'
+                                name="qualifierValue" required disableOptionCentering panelClass="Select-panel-class"
+                                class="select-focus mat-select {{DataCommunicationService.getSelectedClass(qualifierValue)}}">
+                                <mat-option value="" selected hidden>Select qualification status</mat-option>
+                                <mat-option [value]="qualifierData.Id" *ngFor="let qualifierData of qualifierData">
+                                    {{qualifierData.Name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    
+                    <!-- select for mobile -->
+                    <div *ngIf="DataCommunicationService.MobileDevice" class="col-12 col-sm-12 col-md-12 col-lg-12 float-left  plb-60-20 mobile-select-box">
+                        <label for="select1" class="w-100 hd-val">Qualification status *</label>
+                        <div class="customized-select">
+                            <span class="caret color-azure"></span>
+                            <select [(ngModel)]='qualifierValue' name="qualifierValue" id="select1" role="listbox">
+                                <option value="" selected hidden disabled>Select qualification status</option>
+                                <option [value]="qualifierData.Id" *ngFor="let qualifierData of qualifierData">
+                                    {{qualifierData.Name}}</option>
+                            </select>
+                            <!-- <p *ngIf="createFormErrorCheck && form_create.source.invalid" class="col-12 no_pad float-left validation-text top40">Source is required.</p> -->
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </form>
+
+                <!-- </div> -->
+                <!-- Select DROPDOWN STARTS -->
+            </div>
+
+            <!-- <div class="col-12 float-left  no_pad">
+                            <label class="col-12 float-left  no_pad margin-top-20 hd-val" for="value">Qualification date *</label>
+                            <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad" id="calStart" (click)="picker1.open()" [(ngModel)]="picker1.SearchDate" (keypress)="picker1.open()"
+                            [matDatepicker]="picker1">
+                          <mat-datepicker-toggle matSuffix [for]="picker1" tabindex="0" aria-label="calender" (click)="picker1.open()" (keypress)="picker1.open()">
+                            <span class="mdi mdi-calendar-blank float-right no_pad" matDatepickerToggleIcon></span>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker1></mat-datepicker>
+                    </div> -->
+
+            <div class="col-12 float-left mtb-5 no_pad">
+                <label class="col-12 float-left  no_pad mt10 hd-val" for="value">Qualification date *</label>
+                <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad cal_brdr">
+                    <!--<div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad customized-calandar">
+                        <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left border-gray w-100 in-value" id="calStart"    name="qualification" [matDatepicker]="picker1" title=""
+                    [min]="startDate"     [(ngModel)]="dateVal"      title="{{dateVal | date:'dd-MMM-yyyy' }}"       >
+                        <mat-datepicker-toggle matSuffix [for]="picker1" tabindex="0" aria-label="calender" (click)="picker1.open()" (keypress)="picker1.open()">
+                            <span class="mdi mdi-calendar-blank float-right no_pad date-pick" matDatepickerToggleIcon></span>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </div>-->
+
+
+                    <div class="col-12 col-lg-12 col-sm-12 col-md-12 float-left no_pad customized-calandar">
+                        <input class="col-12 col-lg-12 col-sm-12 col-md-12 float-left border-gray w-100 in-value"
+                            id="calStart" (click)="picker1.open()" (keypress)="picker1.open()" [matDatepicker]="picker1"
+                            [min]="qualifyCreatedDate" [max]="startDate" [(ngModel)]="dateVal"
+                            title="{{dateVal | date:'dd-MMM-yyyy' }}" placeholder="DD-MMM-YYYY">
+                        <mat-datepicker-toggle matSuffix [for]="picker1" (click)="picker1.open()"
+                            (keypress)="picker1.open()">
+                            <span class="mdi mdi-calendar-blank float-right no_pad date-pick"
+                                matDatepickerToggleIcon></span>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-12 float-left  no_pad">
+                <label class="col-12 float-left  no_pad hd-val" for="functionlead">Decision by *</label>
+                <input type="text" class="col-12 float-left border-gray w-100 mbot-10" placeholder="Enter Account Name" />
+            </div> -->
+            <div class="col-12 float-left no_pad search-input">
+                <!--Currency autocomplete starts here-->
+                <div class="col-12 float-left no_pad  float-left customized-input cust_autoComplete pos-rel mb1">
+                    <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+
+
+
+                        <div class="Vertical_Owner">
+
+                            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                                for="decisionBy" class="hd-val">Decision by *</label>
+                                <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="CurrencyName" name="defaultOwnerName"  type="text" [(ngModel)]="ownerName" disabled>
+                            <!-- <app-auto-complete-select [requiredField]="true" [source]="searchOwnerData"
+                                (content)="searchOwnerContent($event)" (advanceLookUp)="advanceLookUpSearch($event)"
+                                [selectedObj]='selectedOwnerObj' [IsApiCall]=true [isSearchLoader]='isSearchLoader'
+                                [labelName]="'ownerArrayy'" [titleName]="'Decision by'" [details]="ownerName"
+                                [detailsId]="ownerId" [dataHeader]='header' (SelectedData)="selectedOwner($event)"
+                                [Placeholder]="'Select'" [showSelected]=false>
+                            </app-auto-complete-select> -->
+                        </div>
+                        <!--<div>
+                            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CurrencyName" class="hd-val">Decision by *</label>
+                            <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="CurrencyName" name="CurrencyName" autocomplete="off" type="text" [(ngModel)]="CurrencyName" placeholder="Select" (clickOutside)="currencyNameclose()"
+                                (click)="CurrencyNameSwitch = true">
+                            <span class="mdi mdi-magnify"></span>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure suggestion-box pos-abs z-ind-99 white-bg" *ngIf="CurrencyName && CurrencyNameSwitch">
+                                <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                                    <ul class=" list-group mr2 sort-dropdown">
+                                        <li class="list-group-item h-50 p-4-10 " (keypress)="appendcurrency(item.contact,item.index)" (click)="appendcurrency(item.contact,item.index)" *ngFor="let item of wiproCurrency |filter:CurrencyName">
+
+                                            <div class="float-left naming-tags child-middle bg-azure">
+                                                <span class="initials">{{item.initials}}</span>
+                                            </div>
+                                            <label for="inti_name" class="float-left name">
+                    <span class="d-block list-name">{{item.contact}}</span>
+                    <span class="d-block sub-list">{{item.designation}}</span>
+                  </label>
+                                        </li>
+                                        <li class="d-block list-name h-40 p-10" *ngIf="(wiproCurrency |filter:CurrencyName).length == 0">
+                                            No record found </li>
+                                    </ul>
+                                </perfect-scrollbar>
+                            </div>
+                        </div>-->
+                    </form>
+                </div>
+                <!--Currency autocomplete ends here-->
+                <!-- </div> -->
+
+                <div class="col-12 float-left btm-10 no_pad mt30">
+                    <!-- <span class="col-12 float-left mbot-5 no_pad hd-val">Comments *</span> -->
+                    <span class="col-12 col-sm-9 col-md-9 col-lg-9 col-xl-9 float-left no_pad hd-val">
+                        Comments *
+                        <span class="label-form" *ngIf="textValue.value?.length == 0"> (2000 characters)</span>
+                        <span class="label-form" *ngIf="textValue.value?.length > 0 && textValue.value?.length < 1999">
+                            ({{ 2000 - textValue.value?.length}} characters left)</span>
+                        <span class="label-form"
+                            *ngIf="textValue.value?.length === 1999 || textValue.value?.length === 2000">
+                            ({{ 2000 - textValue.value?.length}} character left)</span>
+                    </span>
+                    <textarea #textValue    [appAlphaNumeric] = "'alphanumeric'" [(ngModel)]='comment' class="col-12 float-left rel-top-18 text-area-content"
+                        maxlength="2000" rows="4" cols="40" placeholder="Enter your comments"></textarea>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12 float-left no_pad ">
+            <button aria-label="Save" [ngClass]="getValidate() ?'disableAssign':''" [disabled]="getValidate()"
+                class="col-12 float-left btndef-none no_pad confrm-btn" (click)='saveQualifier()'>Save</button>
+        </div>
+
+    </div>

@@ -1,0 +1,328 @@
+$Azure : #2f81ff;
+$White : #ffffff;
+$LightBlue:#2f81ff;
+$MidNight : #103f86;
+$greyish:#a6a6a6;
+
+
+  .search-box {
+    width: 490px;
+     border-radius: 20px;
+     background-color: #fafafa;
+     border: solid 1px #dddddd;
+   }
+   .input-search{
+    padding-top: 12px;
+    padding-left: 15px;
+    font-family: WiproAkkuratTT-Regular;
+    color:$greyish;
+    background: transparent;
+    outline: none;
+    border: none;
+
+  }
+  .p-10{
+      
+    padding:0.63em;
+  }
+  .padbox-heading-search{
+    padding-top: 12px;
+    padding-left: 15px;
+  }
+  .btn-none{
+    background: transparent;
+    outline: none;
+    border: none;
+  }
+  .btn-search{
+    padding-right:15px;
+    float: right;
+    line-height: 40px;
+    font-size: 24px;
+    color:$LightBlue;
+}
+.btn-search.inner{
+  position: absolute;
+    top: -1px !important;
+    left: 18.5em;
+}
+.searchNames
+{
+  height: 41px;
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2;
+  letter-spacing: 0.4px;
+  color: #4a4a4a;
+      padding: 8px 0px 8px 14px;
+}
+.search-names-1
+{
+  height: 41px;
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2;
+  letter-spacing: 0.4px;
+  color: #4a4a4a;
+  border-bottom: 1.5px solid $Azure;
+  padding: 8px 0px 8px 14px;
+}
+.searchNames1:first-child
+{
+  border-bottom: 1px solid #2f81ff;
+}
+.searchNames:hover{
+      padding: 8px 0px 8px 14px;
+  background: #d9e9ff;
+}
+.search_box_head li:last-child:hover{
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+      padding: 8px 0px 8px 14px;
+  background: #d9e9ff;
+}
+.dropplaceholder-search{
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2;
+  letter-spacing: 0.4px;
+  color: #4a4a4a;
+  border: none;
+  outline: none
+
+}
+.headerdrop-search
+{
+    list-style-type: none;
+    position: absolute;
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    top: -22px;
+    padding: 0px;
+    left: 5px
+}
+.search-box-head
+{
+ width: 490px;
+  height: 166px;
+  border-radius: 20px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+  border: 1px solid #2f81ff;
+    
+}
+.mb-0{
+    margin-bottom: 0px;
+  }
+  .login-img{
+    
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    
+  }
+  .mtop-1{
+    margin-top: -1px;
+  }
+  .login-img-chat{
+    width: 51px;
+    height: 47px;
+    border-radius: 50%;
+  }
+   //profile notification
+   .filterContent{
+    background: white;
+    box-shadow: 0px 5px 13px 5px rgba(111, 110, 110, 0.56);
+    text-transform: none;
+    font-size: 14px;
+    font-family: 'AkkuratStd-Regular'; 
+  
+  }
+  .filterContent button:hover{
+    background: #dadada;
+    color: #000;
+  }
+  .filterContent button{
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    width: 100%;
+    border: none;
+    background: none;
+    text-transform: uppercase !important;
+    display: inline-flex;
+    padding: 7px;
+  }
+  .filterBody {
+    font-family: 'WiproAkkuratTT-Regular';
+    padding: 10px;
+    background: #fff;
+    position: absolute;
+    border-radius: 4px !important;
+    top: 61px;
+    right:0px;
+    min-width: 165px;
+    z-index: 9999;
+    box-shadow: 0px 4px 11px 3px rgba(0, 0, 0, 0.45);
+    text-align: left;
+    color: #000;
+    padding-bottom: 7px;
+  }
+  .filterBody:after, .filterBody:before {
+    bottom: 100%;
+    left: 49.5%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  
+  .filterBody:after {
+   border-color: rgba(136, 183, 213, 0);
+   border-bottom-color: #fff;
+   border-width: 7px;
+   margin-left: 42px;
+  }
+  .filterBody:before {
+   border-color: rgba(194, 225, 245, 0);
+   border-bottom-color: #ccc;
+   border-width: 9px;
+   margin-left: 40px;
+  }
+
+.sub-search{
+  float: right;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 12px;
+  line-height: 2.33;
+  letter-spacing: 0.3px;
+  margin-top: 12px;
+  text-align: right;
+  color: #9b9b9b;
+}
+
+/************************************search new styles starts***************************************/
+
+
+
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.searchtab.mdi-magnify:before {
+    content: "\F349";
+    font-size: 24px;
+    z-index: 9;
+    top: 0.6em;
+    position: absolute;
+    color: #2f81ff;
+    
+  }
+ .searchtab{
+        position: absolute;
+        right: 10%;
+    }
+
+.placeholder_search{
+  color:white;
+  font-size:12px;
+  font-family: WiproAkkuratTT-Bold;
+  position: absolute;
+  padding-left: 36px;
+  margin-top: 11px;
+}
+.name_search{
+  font-size:14px;
+  margin-top:-14px; 
+  font-family: WiproAkkuratTT-Regular;
+  color: #4a4a4a;
+}
+
+
+.email_search{
+  font-size: 14px;
+    position: absolute;
+    font-family: WiproAkkuratTT-Bold;
+    margin-left: 1px;
+    color: #4a4a4a;
+    padding-left: 5px;
+    padding-top: 1px;
+}
+.close_search.mdi-close:before {
+
+  color: white;
+  font-size: 18px;
+  margin-left: -25px;
+  margin-top: 6px;
+  position: absolute;
+}
+.w-450
+{
+  width:450px !important;
+
+}
+
+.new-search-header{
+  top: 2px;
+}
+.new-search-header-mob{
+  top: 2px;
+}
+.search-custom{
+  height: 40px !important;
+  border: 1.5px solid #dddddd !important;
+  border-radius: 20px !important;
+  padding: 0px 50px 0px 16px  !important;
+  
+  top: -8px;
+  font-size: 14px;
+  font-family: 'WiproAkkuratTT-Regular';
+  position: absolute;
+  outline: none;
+
+}
+.search-custom:focus{
+  border-radius:  20px 20px 0 0 !important;
+  border: 1.5px solid $Azure !important;
+ 
+}
+/**************************header autocomplete search styles starts**************************/
+::ng-deep{
+  .mat-autocomplete-panel.mat-autocomplete-visible {
+   top:-3px; 
+   border: 1.5px solid #2f81ff ;
+   border-radius: 0 0 20px 20px  !important;
+ }
+ .mat-form-field-appearance-legacy .mat-form-field-underline{
+   display: none !important;
+ }
+
+ .mat-form-field-appearance-legacy .mat-form-field-infix {
+       padding: 32px 0px 0 0px !important;
+       margin-top: 7px !important;
+   }
+ .mat-form-field-appearance-legacy .mat-form-field-label{
+       font-size: 14px !important;
+       font-family: 'WiproAkkuratTT-Regular';
+       padding-left: 16px !important;
+   }
+   .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{
+       display: none !important;
+   }
+   .mat-option:hover:not(.mat-option-disabled){
+       background: #d9e9ff !important;
+   }
+  }
+ /**************************header autocomplete search styles starts**************************/
+/*********************************search new styles ends*********************************/

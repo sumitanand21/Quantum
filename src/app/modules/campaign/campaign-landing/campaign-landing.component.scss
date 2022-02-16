@@ -1,0 +1,153 @@
+.h-388{
+  height: 290px;
+}
+.h-427{
+  height:360px;
+}
+.pr6 {
+  position: relative;
+  right: 6px;
+}
+.icon-btnbottm {
+  position: relative;
+  bottom: 2px;
+}
+.ptop-20 {
+  padding-top: 25px;
+}
+.padng-30 {
+  padding: 36px 0 30px 0px;
+}
+.padd-top-130 {
+  padding-top: 112px;
+}
+.sync-btn {
+  background: transparent;
+  border: 1.5px solid white;
+  border-radius: 4px;
+  color: white;
+  width: 140px;
+  position: relative;
+  top: 40px;
+  z-index: 1;
+}
+.mt50 {
+  margin-top: 50px;
+}
+.primary-button.std {
+  padding: 9px 10px;
+  min-width: 110px;
+  margin: 0;
+}
+.borderless {
+  border: none !important;
+}
+.w-180 {
+  width: 180px;
+}
+.pr5 {
+  padding-right: 5px !important;
+}
+.db-search {
+  height: 40px;
+  cursor: pointer;
+  list-style-type: none;
+
+  &:hover {
+    background-color: #d9e9ff;
+  }
+}
+.mr2 {
+  margin-right: 2px !important;
+}
+// pop up styles start
+
+.contact-txt {
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #4a4a4a;
+}
+
+.mr-15 {
+  margin-right: 15px;
+}
+
+.mt-150 {
+  margin-top: 150px;
+}
+.acc-type {
+  font-size: 10px;
+  position: relative;
+  top: 5px;
+}
+
+.popup-tabs {
+  background-color: #d9e9ff;
+  width: 100%;
+  height: 75px;
+  margin-top: 65px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+
+.popup-tabs-arrow {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  margin-left: 76px;
+  border-width: 17px 15px 0 15px;
+  border-color: #d9e9ff transparent transparent transparent;
+  line-height: 0px;
+  margin-top: 3px;
+}
+
+.btn-circle {
+  width: 35px;
+  height: 35px;
+  padding: 4px 0px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.42857;
+}
+
+.mr-lt {
+  margin-left: -49px;
+}
+
+.mr-lt {
+  margin-left: -55px;
+}
+
+.mt-09 {
+  margin-top: 10px;
+}
+
+.mb-5 {
+  margin-bottom: 5px !important;
+}
+
+.mt-105 {
+  margin-top: 155px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+// pop up style end
+.sync-btn:hover{
+  background: #fff;
+  color: #2f81ff;
+}

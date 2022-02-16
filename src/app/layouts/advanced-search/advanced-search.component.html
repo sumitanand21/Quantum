@@ -1,0 +1,233 @@
+<div class="top-header" [ngClass]="service.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <div class="float-left col-12 header-action-tab new-container">
+    <button class="mdi mdi-keyboard-backspace backspace_button cp no_pad" aria-label="back" (keypress)="service.goBack()" (click)="service.goBack()"></button>
+    <h1 class="float-left heading-level-one">
+     Advanced search</h1>
+
+  </div>
+</div>
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container pad-top-90 advanced-search">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-120"> </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card no_pad  mt50">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 card-content float-left">
+        <input type="text" placeholder="Search here" #search [(ngModel)]="searchString"
+          class="float-left col-xl-11 col-lg-11 col-md-11 col-sm-10 col-10 advanced-search-input">
+        <button class="float-right btndef-none mdi mdi-magnify btn-search" aria-label="search"
+          (click)="advanceSearch(search.value)"></button>
+      </div>
+    </div>
+
+    <div class="float-left col-12 filter-checkboxes">
+      <span class="float-left filter-text">Filters({{getFilteredData.length}})</span>
+      <div class="customized-checkbox float-left mt10">
+
+        <section *ngFor="let ing of getFilteredData; let i = index" class="float-left mr10">
+          <mat-checkbox [(ngModel)]="ing.checked" (change)="advanceSearch(search.value)" [value]="ing.Id">
+            {{ing.Value}}
+          </mat-checkbox>
+        </section>
+      </div>
+      <div class="float-right customized-checkbox mt10">
+
+        <mat-checkbox class="float-right mr10" (change)="updateCheck($event,search.value)" [checked]="getcheckedStat()">
+          Select All
+        </mat-checkbox>
+      </div>
+    </div>
+
+
+    <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card no_pad mt20">
+      <h2 class="recent-searches col-12">Recent searches</h2>
+
+      <div class="col-12 no_pad float-left">
+        <div class="recent-search-div col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 float-left"
+          *ngFor="let records of recentResults">
+          <div class="col-12 inner-cards float-left">
+            <span class="col-12 no_pad float-left search-names">{{records.name}}</span>
+            <p class="col-12 no_pad float-left search-compny ellipses">{{records.company}}</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div> -->
+
+
+
+  </div>
+  <div class="col-12 float-left padding-lr15" *ngIf="isLoading">
+    <ng-container >
+      <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+            <div class="loaderContainer">
+              <div class="loader"></div>
+            </div>
+          </div>
+        </div>      </div>
+    </ng-container>
+  </div>
+  <div class="col-12 float-left padding-lr15" *ngIf="!isLoading">
+    <ng-container *ngIf="isLoading">
+      <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+            <div class="loaderContainer">
+              <div class="loader"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <h2 class="results-text" *ngIf="totalresults"> {{totalresults}} Results</h2>
+    <div *ngFor="let item of mainArray">
+      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 float-left padding15" *ngIf="item?.data?.length>0">
+        <div class="col-12 float-left card no_pad min-ht-350">
+          <div class="col-12 padding15 float-left">
+            <h3 class="heading-three float-left">{{item.name}}</h3>
+            <span class="float-right results-count">{{item.data.length}}</span>
+          </div>
+          <perfect-scrollbar style="max-height:300px">
+            <div class="col-12 float-left padding20">
+              <div class="col-12 inner-cards float-left mb10 cusrsorPoint" *ngFor="let rec of item.data"
+                (click)="Navigate(item,rec)">
+                <span *ngIf="item.name != 'Orders'" class="col-12 no_pad float-left search-names">{{ item.name=='Opportunities'?rec.OpportunityName:rec.Name}}</span>
+  <p *ngIf="item.name=='Opportunities'" class="col-12 no_pad float-left search-compny ellipses">{{getOpportunityNumber(rec)}}</p>
+  <p *ngIf="item.name=='Opportunities'" class="col-12 no_pad float-left search-compny ellipses">{{getAccount(rec)}}</p>
+  <p *ngIf="item.name=='Opportunities'" class="col-12 no_pad float-left search-compny ellipses">{{getTcv(rec)}}</p>
+    <span *ngIf="item.name == 'Orders'" class="col-12 no_pad float-left search-names">{{ item.name=='Orders'?rec.OrderNumber:'-'}}</span>     <!-- order number -->           
+    <p *ngIf="item.name=='Orders'" class="col-12 no_pad float-left search-compny ellipses">{{item.name=='Orders'?rec.OpportunityIdName : '-'}}</p>  <!-- opp name -->
+    <p *ngIf="item.name=='Orders'" class="col-12 no_pad float-left search-compny ellipses">{{item.name=='Orders'?rec.OpportunityNumber : '-'}}</p> <!-- opp number -->
+    <p *ngIf="item.name=='Orders'" class="col-12 no_pad float-left search-compny ellipses">{{item.name=='Orders'?rec.CustomerIdName : '-'}}</p>  <!-- account -->
+    <p *ngIf="item.name=='Orders'" class="col-12 no_pad float-left search-compny ellipses">{{item.name=='Orders'?rec.OverallOrderTCV : '-'}}</p>
+
+                  <p class="col-12 no_pad float-left search-compny ellipses">{{ item.name=='Opportunities' || item.name=='Orders'?'':item.name}}</p>
+
+               
+              </div>
+            </div>
+          </perfect-scrollbar>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 noRecord" *ngIf="!totalresults && isSearch">
+      No records found
+    </div>
+  </div>
+
+
+  <!-- <div class="col-12 float-left padding-lr15">
+    <h2 class="results-text">18 Results</h2>
+
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 float-left padding15">
+      <div class="col-12 float-left card no_pad min-ht-350">
+        <div class="col-12 padding15 float-left">
+          <h3 class="heading-three float-left">Campaigns</h3>
+          <span class="float-right results-count">10 Results</span>
+        </div>
+
+        <perfect-scrollbar style="max-height:300px">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left padding-lr15"
+            *ngFor="let rec of allcampaigns">
+            <div class="col-12 inner-cards float-left mb10">
+              <span class="col-12 no_pad float-left search-names ellipses">{{rec.name}}</span>
+              <p class="col-12 no_pad float-left search-compny ellipses">{{rec.details}}</p>
+            </div>
+
+          </div>
+
+        </perfect-scrollbar>
+      </div>
+    </div>
+
+
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 float-left padding15">
+      <div class="col-12 float-left card no_pad min-ht-350">
+        <div class="col-12 padding15 float-left">
+          <h3 class="heading-three float-left">Campaigns</h3>
+          <span class="float-right results-count">6 Results</span>
+        </div>
+
+        <perfect-scrollbar style="max-height:300px">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left padding-lr15">
+            <div class="col-12 inner-cards float-left mb10">
+              <span class="col-12 no_pad float-left search-names">Apple digital transformation</span>
+              <p class="col-12 no_pad float-left search-compny ellipses">All accounts</p>
+            </div>
+
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left padding-lr15">
+            <div class=" col-12 inner-cards float-left mb10">
+              <span class="col-12 no_pad float-left search-names">Apple digital transformation</span>
+              <p class="col-12 no_pad float-left search-compny ellipses">All accounts</p>
+            </div>
+
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left padding-lr15">
+            <div class="col-12 inner-cards float-left mb10">
+              <span class="col-12 no_pad float-left search-names">Apple digital solution</span>
+              <p class="col-12 no_pad float-left search-compny ellipses">All accounts</p>
+            </div>
+
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left padding-lr15">
+            <div class=" col-12 inner-cards float-left mb10">
+              <span class="col-12 no_pad float-left search-names">Apple digital solution</span>
+              <p class="col-12 no_pad float-left search-compny ellipses">All accounts</p>
+            </div>
+
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left padding-lr15">
+            <div class="col-12 inner-cards float-left mb10">
+              <span class="col-12 no_pad float-left search-names">Apple digital transformation</span>
+              <p class="col-12 no_pad float-left search-compny ellipses">All accounts</p>
+            </div>
+
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left padding-lr15">
+            <div class=" col-12 inner-cards float-left mb10">
+              <span class="col-12 no_pad float-left search-names">Apple digital transformation</span>
+              <p class="col-12 no_pad float-left search-compny ellipses">All accounts</p>
+            </div>
+
+          </div>
+
+        </perfect-scrollbar>
+      </div>
+    </div>
+
+  </div> -->
+  <!-- 
+  <div class="col-12 float-left padding-lr15">
+    <h2 class="results-text">25 Results</h2>
+
+    <div class="col-12 float-left padding15">
+      <div class="col-12 float-left card no_pad min-ht-350">
+        <div class="col-12 padding15 float-left">
+          <h3 class="heading-three float-left">Activities</h3>
+          <span class="float-right results-count">25 Results</span>
+        </div>
+
+        <perfect-scrollbar style="max-height:300px">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 float-left padding-lr15"
+            *ngFor="let rec of allActivities">
+            <div class="col-12 inner-cards float-left mb10">
+              <span class="col-12 no_pad float-left search-names ellipses">{{rec.name}}</span>
+              <p class="col-12 no_pad float-left search-compny ellipses">{{rec.details}}</p>
+            </div>
+
+          </div>
+
+        </perfect-scrollbar>
+      </div>
+    </div>
+
+
+
+
+  </div> -->
+
+</div>

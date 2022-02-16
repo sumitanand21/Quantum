@@ -1,0 +1,135 @@
+<div class="col-12 float-left no_pad popup-container popup-container-opportunity">
+
+  <div class="col-12 float-left container-dialog">
+    <div class="col-12 float-left  no_pad popup-hd">
+      <span class="col-10 float-left no_pad popup-hd-txt col-size" mat-dialog-title>Alliance deal registered details
+      </span>
+      <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close close-icn discard-close-btn"
+        aria-label="close" mat-dialog-close></button>
+    </div>
+
+    <div class="col-12 float-left border-bottom-grey"></div>
+
+    <div class="col-12 float-left no_pad">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad normal_table mt20 mob-mb-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pad-26 service-tab pad-0">
+
+          <!-- expansion data starts here -->
+          <div class="col-12 no_pad float-left btop_withoutpadding potable_changes">
+            <!-- Table starts here -->
+            <div class="col-12 float-left no_pad overflowscroll po-details">
+              <perfect-scrollbar style="max-height:340px;min-height: 210px;">
+                <table class="table-podetails table table-borderless">
+                  <thead>
+                    <tr>
+                      <th class="width-18">Registration status*</th>
+                      <th class="width-18">Status reason*</th>
+                      <th class="width-18">Partner portal ID*</th>
+                      <th class="width-18">Registered value*</th>
+                      <th class="width-30">Remarks<span class="required" >*</span></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td class="display-none"></td>
+                      
+                      <td [attr.data-label]="'Registration status*'" class="width-18 mt10 pb-0">
+                          <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left h100 no_pad web-select-box">
+                              <mat-form-field class="col-12 no_pad float-left inputfixed-width-dealp">
+                                <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus mat-select"
+                                  role="listbox" [(ngModel)]="registrationDetails.RegistrationStatus" [title]="registrationDetails.RegistrationStatusName">
+                                  <mat-option selected hidden disabled value="">Select</mat-option>
+                                  <mat-option *ngFor="let status of registrationStatus" [value]="status.Id">{{status.Name}}</mat-option>
+                                  
+                                </mat-select>
+                                <!-- <p class="error-message top-40" *ngIf="(!solData.solutions.WiproType)" title="Type is required">Type is required</p> -->
+                              </mat-form-field>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left h100 no_pad  mobile-select-box">
+                            <div class="customized-select">
+                              <span class="caret color-azure"></span>
+                              <select role="listbox" [(ngModel)]="registrationDetails.RegistrationStatus" [title]="registrationDetails.RegistrationStatusName">
+                                <option selected hidden disabled value="">Select</option>
+                                <option *ngFor="let status of registrationStatus" [value]="status.Id">{{status.Name}}</option>
+                                
+                              </select>
+                            </div>
+                        </div>
+                      </td>
+
+                      <td [attr.data-label]="'Status reason*'" class="width-18 mt10 pb-0">
+                          <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left h100 no_pad web-select-box">
+                              <mat-form-field class="col-12 no_pad float-left inputfixed-width-dealp">
+                                <mat-select disableOptionCentering panelClass="Select-panel-class" class="select-focus mat-select"
+                                  role="listbox" [(ngModel)]="registrationDetails.RegistrationStatusReason" [title]="registrationDetails.RegistrationStatusReasonName">
+                                  <mat-option selected hidden disabled value="">Select</mat-option>
+                                  <mat-option *ngFor="let statusReason of registrationStatusReason" [hidden]="!statusReason.IsVisible" [value]="statusReason.Id">{{statusReason.Name}}</mat-option>
+                                 
+                                </mat-select>
+                                <!-- <p class="error-message top-40" *ngIf="(!solData.solutions.WiproType)" title="Status reason is required">Status reason is required</p> -->
+                              </mat-form-field>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left h100 no_pad  mobile-select-box">
+                            <div class="customized-select">
+                              <span class="caret color-azure"></span>
+                              <select role="listbox" [(ngModel)]="registrationDetails.RegistrationStatusReason" [title]="registrationDetails.RegistrationStatusReasonName">
+                                <option selected hidden disabled value="">Select</option>
+                                <option *ngFor="let statusReason of registrationStatusReason" [hidden]="!statusReason.IsVisible" [value]="statusReason.Id">{{statusReason.Name}}</option>
+                                 
+                              </select>
+                            </div>
+                        </div>
+                      </td>
+
+                      <td [attr.data-label]="'Partner portal ID*'" class="width-18 mt10">
+                        <div class="customized-input">
+                          <input id="field1" name="PartnerportalID" [(ngModel)]="registrationDetails.PartnerPortalId" [title]="registrationDetails.PartnerPortalId" type="text" class="border-gray w-100 ellipses" 
+                            placeholder="Enter ID" title="Enter partner portal ID">
+                            <!-- <p class="error-message top-40" *ngIf="(!solData.solutions.WiproType)" title="Partner portal ID is required">Partner portal ID is required</p> -->
+                        </div>
+                      </td>
+                      <td [attr.data-label]="'Registered value*'" class="mt10 width-18">
+                          <div class="customized-input">
+                            <input id="field2" name="Registeredvalue" type="number" [(ngModel)]="registrationDetails.RegisteredValue" [title]="registrationDetails.RegisteredValue"
+                             class="border-gray w-100 ellipses" placeholder="Enter Registred value" title="Enter Registred value" maxlength="17">
+                              <!-- <p class="error-message top-40" *ngIf="(!solData.solutions.WiproType)" title="Registered value is required">Registered value is required</p>                                 -->
+                          </div>
+                      </td>
+                      
+                      <td [attr.data-label]="'Remarks'" class="width-30 mt10">
+                        <div class="customized-input">
+                          <label for="field1" class=""> </label>
+                          <input id="field3" type="text" name="remarks" [(ngModel)]="registrationDetails.Remarks" [title]="registrationDetails.Remarks"
+                            maxlength="2000"class="border-gray w-100" placeholder="Write remarks">
+                        </div>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+              </perfect-scrollbar>
+            </div>
+            <!-- Table ends here -->
+          </div>
+
+
+        </div>
+        <!-- expansion data ends here -->
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="col-12 float-left no_pad">
+    <button aria-label="Cancel" class="col-6 float-left no_pad discard-btn btndef-none" (click)="cancel()"
+      mat-dialog-close>Cancel</button>
+    <button aria-label="Save" (click)="saveData()"
+      class="col-6 float-left no_pad confrm-btn mt15 btndef-none">Save</button>
+  </div>
+</div>

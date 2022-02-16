@@ -1,0 +1,141 @@
+.advanced-search-input{
+    border: none;
+    font-family: "WiproAkkuratMono-Regular";
+    font-size: 20px;
+    padding: 20px 0px;
+}
+.btndef-none{
+    background: transparent;
+    border: none;
+}
+.btn-search{
+    color: #2f81ff;
+    font-size: 28px;
+    margin-top: 16px;
+}
+.h-120{
+    height: 120px;
+}
+.cusrsorPoint{
+    cursor: pointer;
+}
+.noRecord {
+    margin-left: 45%;
+    padding-bottom: 15px;
+}
+.mt50{
+    margin-top: 55px;
+}
+.filter-checkboxes{
+    background: #d9e9ff;
+    border-radius: 0.25rem;
+    margin-top: 20px;
+    padding: 10px 15px;
+}
+.filter-text{
+    color: #0e356f;
+    font-family: 'WiproAkkuratTT-Bold';
+    font-size: 16px;
+    padding: 10px 20px 10px 0px;
+}
+.mr10{
+    margin-right: 15px;
+}
+.recent-searches{
+    font-size: 16px;
+    font-family: 'WiproAkkuratTT-Bold';
+    padding: 15px 15px 0px 15px;
+    color: #4a4a4a;
+}
+.recent-search-div{
+    padding: 15px;
+}
+.inner-cards{
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 0.25rem;
+}
+.search-names{
+    color: #2f81ff;
+    font-family: 'WiproAkkuratTT-Bold';
+    font-size: 14px;
+}
+.search-compny{
+    font-family: 'WiproAkkuratTT-Regular';
+    font-size: 14px;
+    color: #41413d;
+    margin-bottom: 0;
+}
+.white-card{
+    background: #fff;
+}
+.padding-lr15{
+    padding: 0px 15px;
+}
+.results-text{
+    color: #4a4a4a;
+    font-size: 20px;
+    font-family: 'WiproAkkuratTT-Bold';
+    padding-left: 15px;
+    margin-bottom: 0px;
+}
+
+.heading-three{
+    color: #103f86;
+    font-family: 'WiproAkkuratTT-Bold';
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+.results-count{
+    color: #a1a4a4;
+    font-family: 'WiproAkkuratTT-Regular';
+    font-size: 14px;
+}
+.padding20{
+    padding: 0px 20px;
+}
+.padding15{
+    padding: 15px 20px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.min-ht-350{
+    min-height: 350px;
+}
+.loader {
+    top:100px;
+    // margin: 200px auto;
+    border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 6px solid #3498db;
+    width: 64px;
+    height: 64px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  
+}
+.loaderContainer {
+
+  width: 100%;
+  top:0em;
+  position: absolute;
+  height: 100%;
+  z-index: 9999;
+  background: white;
+}
+.card{
+    margin-bottom: 0px !important;
+}
+.backspace_button {
+    width: 22px;
+    height: 22px;
+    float: left;
+    color: #fff;
+    font-size: 22px;
+    letter-spacing: -0.2px;
+    line-height: 1.27;
+    margin-right: 5px;
+    background: transparent;
+    border: none;
+  }

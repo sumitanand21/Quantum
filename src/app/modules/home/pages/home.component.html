@@ -1,0 +1,629 @@
+<div class="top-header1" [attr.aria-hidden]="dashboardFab">
+  <app-nav></app-nav>
+</div>
+
+<div class="col-12 float-left padding-lr15" *ngIf="isLoading">
+  <ng-container>
+      <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+              <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+                  <div class="loaderContainer">
+                      <div class="loader"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </ng-container>
+</div>
+
+
+<div class="col-12 float-left por-rel no_pad mar-top-home-65" [attr.aria-hidden]="dashboardFab">
+  <div *ngIf="headerBannerList" class="float-left col-12 no_pad pos-abs ">
+    <ngu-carousel #myCarouselFirst class="carousel-ht z-index-1" [inputs]="carouselConfig" [dataSource]="headerBannerList">
+      <div  *nguCarouselDef="let item;" class="item cp" (click)="getBanner(item.RedirectUrl)">
+        <img [src]="item.ImageUrl" width="100%" alt="" class="carousalimg">
+        <div class="all-header-div">
+          <h1 class="carosel-header {{item.classname}}">{{item.Title}}</h1>
+          <span class="carosel-header {{item.classname}}">{{item.name}}</span>
+          <p class="col-xl-4 col-lg-4 col-md-8 col-sm-12 col-12 no_pad carosel-desc">{{item.Subtitle}}</p>
+        </div>
+      </div>
+      <ul class="myPoint" NguCarouselPoint>
+        <li *ngFor="let j of myCarouselFirst.pointNumbers; let j = index"
+          [class.active]="j==myCarouselFirst.activePoint" (click)="myCarouselFirst.moveTo(j)"></li>
+      </ul>
+    </ngu-carousel>
+  </div>
+</div>
+
+<div class="float-left col-12 no_pad dashBoardLanding_main pos-rel" [attr.aria-hidden]="dashboardFab">
+  <!-- <div class="col-12 plr30 dshBoard_main_content dashBoardLanding_main ">
+
+    <span class="float-left col-12 no_pad sales-name">GCP/CP AM</span>
+  </div> -->
+  <div class="float-left col-12 no_pad mt106">
+    <div class="col-12 cardMainDiv float-left tasklist-div pos-rel margin-top-85 z-index-1">
+      <!-- tasklist starts -->
+
+      <button class="view-all-btn" *ngIf="viewAllBtnVisibility" (click)="navTo()">View all</button>
+      <mat-tab-group (selectedTabChange)="tabChanged($event)" #tabGroup [(selectedIndex)]=selectedIndex>
+        <mat-tab [label]="ApprovalLabel">
+          <div class="float-left no_pad " [ngClass]="service.chatBot? 'col-12':'col-lg-12'">
+            <div class="col-12 no_pad firstCardBrder float-left">
+
+              <div class="col-12 no_pad float-left">
+                <table class="float-left col-12 no_pad tasklist-table allianceTable-home" role="table" >
+                  <thead class="white-backgrd" role="rowgroup">
+                    <tr  role="row">
+                      <th class="col-12 col-md-1 col-xl-1 float-left" role="columnheader" [attr.data-label]="'S.No.'">S.No.</th>
+                      <th class="col-12 col-md-3 col-xl-5 float-left width-535" role="columnheader" [attr.data-label]="'Description'">Description</th>
+                      <th class="col-12 col-md-1 col-xl-2 float-left" role="columnheader" [attr.data-label]="'Priority'">Priority </th>
+                      <th class="col-12 col-md-3 col-xl-2 float-left" role="columnheader" [attr.data-label]="'Due Date'">Due Date </th>
+                      <th class="col-12 col-md-3 col-xl-2 float-right text-align-right" role="columnheader">Actions</th>
+                    </tr>
+                  </thead>
+                  <div class="scroll-window message-textarea" >
+                    <tbody class="float-left col-12 no_pad" role="rowgroup">
+                      <tr class="float-left col-12 no_pad" role="row" *ngFor="let approval of approvalListDetails"
+                        [ngClass]="approvalListDetails.length == 0 ? 'disp_none' : ''">
+                        <td class="col-12 col-md-1 col-xl-1 float-left" role="cell" [attr.data-label]="'S.No.'">{{approval.number}}</td>
+                        <td class="col-12 col-md-3 col-xl-5 float-left ellipses width-535 " role="cell" [attr.data-label]="'Description'">{{approval.desc}}</td>
+                        <td class="col-12 col-md-1 col-xl-2 float-left" role="cell"
+                          [ngClass]="approval.priority == 'High' ? 'red-text' : 'green-text'" [attr.data-label]="'priority'">
+                          {{approval.priority}}</td>
+                        <td class="col-12 col-md-3 col-xl-2 float-left" role="cell" [attr.data-label]="'Due Date'">{{approval.dueDate | date: 'dd-MMM-yyyy'}}</td>
+                        <td class="float-right" role="cell">
+                          <!-- <div class="float-right btn-hover">
+                            <button class="float-left mdi mdi-account-convert all-action-btns margin-left-right15"
+                                    [ngClass]="tasks.priority == 'High' ? 'disp_block' : 'disp_none'"></button>
+                            <button *ngIf="approval.approveBtnVisibility" (click)="approveReject(approval, 'approve')" class="float-left mdi mdi-check all-action-btns" matTooltip="Mark complete">
+                            </button>
+                            <button  *ngIf="approval.rejectBtnVisibility" class="float-left mdi mdi-close all-action-btns margin-left-right15"
+                              matTooltip="Reject" (click)="approveReject(approval, 'reject')"></button>
+                            <button  *ngIf="approval.viewBtnVisibility" class="float-left mdi mdi-eye all-action-btns" matTooltip="View" (click)="viewApproveDetails(approval)"></button>
+                          </div> -->
+
+
+                          <div class="button_div mobile-align commonActionBlock-home no_pad">
+                              <div class="w-100 mobile-align pos-rel">
+                                  <button  *ngIf="approval.viewBtnVisibility" (click)="viewApproveDetails(approval)" class="mdi mdi-eye float-right deleteColumn-home"
+                                    matTooltip="View" aria-label="view">
+                                <span class="mobile-icon-text-home">View</span>
+    
+                                </button>
+                                <button *ngIf="approval.rejectBtnVisibility" (click)="approveReject(approval, 'reject')" class="mdi mdi-close float-right deleteColumn-home"
+                                  matTooltip="Reject" aria-label="reject">
+                              <span class="mobile-icon-text-home">Reject</span>
+
+                              </button>
+                                <button  *ngIf="approval.approveBtnVisibility" (click)="approveReject(approval, 'approve')" class="mdi mdi-check float-right deleteColumn-home"
+                                    matTooltip="complete" aria-label="complete">
+                                  <span class="mobile-icon-text-home">Complete</span>
+                                </button>
+                                
+                             
+                           
+                              </div>
+                            </div>
+                        </td>
+                      </tr>
+                      <tr class="float-left col-12 col-md-12 col-xl-12 no_pad norecord" *ngIf="approvalListDetails.length == 0">
+                        <div class="w-100 recordempty">No record found</div>
+                      </tr>
+                    </tbody>
+                  </div>
+                </table>
+
+                <!--ends here-->
+
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab [label]="TaskLable">
+          <div class="float-left no_pad  tasklist-div" [ngClass]="service.chatBot? 'col-12':'col-lg-12'">
+            <div class="col-12 no_pad firstCardBrder float-left tasks-table-div overflow-hide">
+              <div class="col-12 no_pad float-left">
+
+
+
+                <table class="float-left col-12 no_pad tasklist-table allianceTable-home" role="table">
+                  <thead class="white-backgrd" role="rowgroup">
+                    <tr role="row">
+                      <th class="col-12 col-md-1 col-xl-1 float-left" role="columnheader" [attr.data-label]="'S.No.'">S.No.</th>
+                      <th class="col-12 col-md-3 col-xl-5 float-left width-535" role="columnheader" [attr.data-label]="'Description'">Description</th>
+                      <th class="col-12 col-md-1 col-xl-2 float-left" role="columnheader" [attr.data-label]="'Priority'">Priority</th>
+                      <th class="col-12 col-md-3 col-xl-2 float-left" role="columnheader" [attr.data-label]="'Created Date'">Created Date</th>
+                      <th class="col-12 col-md-3 col-xl-2 float-right text-align-right" role="columnheader">Actions</th>
+                    </tr>
+                  </thead>
+                  <div class="scroll-window message-textarea">
+                    <tbody class="float-left col-12 no_pad" role="rowgroup">
+                      <tr class="float-left col-12 no_pad" role="row" *ngFor="let tasks of taskListDetails;let i=index">
+                        <td class="col-12 col-md-1 col-xl-1 float-left" role="cell" [attr.data-label]="'S.No.'">{{i+1}}</td>
+                        <td class="col-12 col-md-3 col-xl-5 float-left ellipses-home width-535 " title="{{tasks.desc}}" role="cell" [attr.data-label]="'Description'">{{tasks.desc}}</td>
+                        <td class="col-12 col-md-1 col-xl-2 float-left" role="cell" [ngClass]="tasks.priority == 'High' ? 'red-text' : 'green-text'" [attr.data-label]="'Priority'">
+                          {{tasks.priority}}</td>
+                        <td class="col-12 col-md-3 col-xl-2 float-left" role="cell" [attr.data-label]="'Created Date'">{{tasks.date}}</td>
+                        <td class="float-right" role="cell">
+                          <!-- <div class="float-right">
+                            <button class="float-left mdi mdi-account-convert all-action-btns"
+                                    [ngClass]="tasks.priority == 'High' ? 'disp_block' : 'disp_none'"></button>
+                            <button class="float-left mdi mdi-check all-action-btns margin-left-right15"
+                              matTooltip="Mark complete" (click)="GetStatusComplete(tasks.activityId)"></button>
+                            <button class="float-left mdi mdi-close all-action-btns " matTooltip="Reject"></button>
+                            <button class="float-left mdi mdi-eye all-action-btns" matTooltip="View"
+                              (click)="viewTaskDetails(tasks)"></button>
+                          </div> -->
+
+                          <div class="button_div mobile-align commonActionBlock-home no_pad">
+                              <div class="w-100 mobile-align pos-rel" >
+                                  <button type="button" class="mdi mdi-eye float-right deleteColumn-home"
+                                  (click)="viewTaskDetails(tasks)" (keypess)="viewTaskDetails(tasks)" matTooltip="View" aria-label="view">
+                                <span class="mobile-icon-text-home">View</span>
+  
+                                </button>
+                                <button type="button" (click)="GetStatusComplete(tasks.activityId)" (keypress)="GetStatusComplete(tasks.activityId)" class="mdi mdi-check float-right deleteColumn-home"
+                                    matTooltip="Mark complete" aria-label="mark complete">
+                                <span class="mobile-icon-text-home">Complete</span>
+
+                                </button>
+                            
+                          
+                              </div>
+                            </div>
+
+
+
+                        </td>
+                      </tr>
+                      <tr class="float-left col-12 col-md-12 col-xl-12 no_pad norecord" *ngIf="taskListDetails.length == 0">
+                        <div class="w-100 recordempty">No record found</div>
+                      </tr>
+                    </tbody>
+                  </div>
+                </table>
+
+                <!--ends here-->
+
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+
+
+    </div>
+
+
+    <div class="float-left col-12 cards-inner-div ">
+      <div *ngIf="showInsights && !loadingPowerBi" class="col-12 cards-inner-div float-left">
+        <h2 class="insight-head float-left col-12" id="insight">Insights</h2>
+      </div>
+      <div class="float-left col-12 padd15">
+        <div *ngIf="!showInsights && !loadingPowerBi" class="float-left col-12 Cards-insight">
+          <div class="float-left padd10"
+            [ngClass]="service.chatBot? 'col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12':'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12'">
+            <div class="col-12 no_pad float-left tableCards">
+
+              <div class="col-12 float-left sales-div">
+                <h3 class="float-left tablHead">Sales insights (FY19-20)</h3>
+                <div class="col-12 float-left no_pad sales-border-btm">
+                  <span class="float-left totalAccText mt8">Funnel</span>
+                  <span class="float-left wonAccCount">$800Mn</span>
+
+                </div>
+
+              </div>
+
+              <div class="col-12 no_pad float-left mt20 sales-div-height">
+
+                <div class="scroll-window" slimScroll>
+                  <table class="float-left col-12 no_pad sales-table">
+                    <tbody>
+                      <tr>
+                        <td class="float-left">GFA</td>
+                        <td class="float-right">$60Mn</td>
+                      </tr>
+                      <tr>
+                        <td class="float-left">OB TCV</td>
+                        <td class="float-right">$100Mn</td>
+                      </tr>
+                      <tr>
+                        <td class="float-left">Revenue</td>
+                        <td class="float-right">$32Mn</td>
+                      </tr>
+                      <tr>
+                        <td class="float-left">Win rate</td>
+                        <td class="float-right">36%</td>
+                      </tr>
+                      <tr>
+                        <td class="float-left">Sales activity</td>
+                        <td class="float-right">32</td>
+                      </tr>
+                      <tr>
+                        <td class="float-left">GFA</td>
+                        <td class="float-right">$60Mn</td>
+                      </tr>
+                      <tr>
+                        <td class="float-left">OB TCV</td>
+                        <td class="float-right">$100Mn</td>
+                      </tr>
+                      <tr>
+                        <td class="float-left">Revenue</td>
+                        <td class="float-right">$32Mn</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+          <div class="float-left padd10"
+            [ngClass]="service.chatBot? 'col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12':'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12'">
+            <div class="col-12 no_pad float-left tableCards">
+              <div class="padding-20 col-12 float-left">
+                <h3 class="float-left tablHead col-12 float-left top-hedr">Top 5 opportunities closing in Q2</h3>
+              </div>
+
+              <table class="float-left col-12 no_pad opportunity-tbl">
+                <thead>
+                  <tr>
+                    <th class="">Opportunity name</th>
+                    <th class="textright">TCV</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="">Opportunity name 1</td>
+                    <td class="textright">$2.3Mn</td>
+                  </tr>
+                  <tr>
+                    <td class="">Opportunity name 2</td>
+                    <td class="textright">$2.3Mn</td>
+                  </tr>
+                  <tr>
+                    <td class="">Opportunity name 3</td>
+                    <td class="textright">$2.3Mn</td>
+                  </tr>
+                  <tr>
+                    <td class="">Opportunity name 4</td>
+                    <td class="textright">$2.3Mn</td>
+                  </tr>
+                  <tr>
+                    <td class="">Opportunity name 5</td>
+                    <td class="textright">$2.3Mn</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="float-left padd10"
+            [ngClass]="service.chatBot? 'col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12':'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12'">
+            <div class="col-12 big-bets-div float-left tableCards">
+              <h3 class="float-left tablHead">DIDI & big bets (FY19-20)</h3>
+              <div class="col-12 no_pad float-left card-header-btm1">
+                <div class="col-lg-10 col-md-9 col-sm-10 col-9 float-left no_pad">
+                  <span class="float-left totalAccText">Total funnel <br> valuation</span>
+                  <span class="float-left wonAccCount">200$Mn</span>
+
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-10 col-3 float-right no_pad customized-slider">
+                  <div class="col-12 no_pad float-right">
+                    <button class="mdi mdi-chart-pie graph-view-btn active  float-right"
+                      aria-label="graph view"></button>
+                    <button class="mdi  mdi-table-large table-view-btn  float-right" aria-label="table view"></button>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-12 no_pad float-left">
+
+                <img src="assets/images/didi_image.JPG" [ngClass]="service.chatBot? 'active' : 'graph-image'"
+                  height="100%">
+              </div>
+
+
+            </div>
+          </div>
+
+
+          <!-- <div class="float-left padd15 announcement-card" [ngClass]="service.chatBot? 'col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12':'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12'">
+                <div class="col-12 float-left no_pad tableCards">
+                  <h2 class="col-12 float-left padd20 head-black">Announcements</h2>
+                  <div class="float-left col-12 no_pad second-carousel mt40">
+                    <ngu-carousel #myCarousel class="carousel-ht-263" [inputs]="carouselConfig" [dataSource]="carouselItemsSec">
+                      <div *nguCarouselDef="let item;" class="item">
+                        <img src="{{item}}" alt="">
+                      </div>
+                      <ul class="myPoint" NguCarouselPoint>
+                        <li *ngFor="let j of myCarousel.pointNumbers; let j = index" [class.active]="j==myCarousel.activePoint"
+                          (click)="myCarousel.moveTo(j)"></li>
+                      </ul>
+                    </ngu-carousel>
+                  </div>
+    
+                  <div class="float-left col-12  padd20 mt130">
+                    <span class="float-left col-12 no_pad sec-carousel-head-one">Why businesses <br> need to
+                      transfrom</span>
+                    <p class="float-left col-12 no_pad sec-carousel-head-two">While Intelligent Enterprise is generally
+                      understood as an approach to management that applies technology and...</p>
+                  </div>
+    
+                </div>
+              </div> -->
+
+
+
+          <div class="float-left padd10"
+            [ngClass]="service.chatBot? 'col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12':'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12'">
+            <div class="col-12 no_pad float-left tableCards">
+              <div class="col-12 padd20 float-left">
+                <div class="float-left col-12 no_pad  card-header-btm">
+                  <h3 class="col-lg-10 col-md-9 col-sm-10 col-9 float-left team-engagedment no_pad">Team engagements
+                  </h3>
+                  <div class="col-lg-2 col-md-3 col-sm-10 col-3 float-right no_pad customized-slider padding-btm20">
+                    <div class="col-12 no_pad float-right">
+                      <button class="mdi mdi-chart-pie graph-view-btn   float-right" aria-label="graph view"></button>
+                      <button class="mdi  mdi-table-large table-view-btn active float-right"
+                        aria-label="table view"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="float-left col-12 no_pad">
+                <table class="float-left col-12 no_pad team-engagement-tbl">
+                  <thead>
+                    <tr>
+                      <th class="">Criteria</th>
+                      <th class="textright">Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="">Percentage of GTM penetration</td>
+                      <td class="textright color-red">30%</td>
+                    </tr>
+                    <tr>
+                      <td class="">Employee engagement score</td>
+                      <td class="textright">70</td>
+                    </tr>
+                    <tr>
+                      <td class="">IP Funnel</td>
+                      <td class="textright">50</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+
+
+          <!-- -->
+
+          <div class="float-left padd10"
+            [ngClass]="service.chatBot? 'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12':'col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12'">
+            <div class="col-12 no_pad float-left tableCards">
+
+              <div class="padding-20 col-12 float-left">
+                <div class="my-helpline-hdr float-left col-12 no_pad">
+                  <h3 class="float-left team-engagedment float-left">OB performance</h3>
+                  <div class="float-right toogle-div" align="right">
+                    <div class="col-12 no_pad float-right">
+                      <mat-slide-toggle class="float-right" aria-labelledby="graph"></mat-slide-toggle>
+                    </div>
+
+                    <span class="col-12 no_pad" id="graph">Graph view</span>
+                  </div>
+                </div>
+                <img src="assets/images/ob_image.JPG" alt="" class="float-left mt10" width="100%">
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+        <div *ngIf="showInsights && !loadingPowerBi" class="col-12 float-left padd15 announcement-card powerBIClass">
+          <div class="col-12 no_pad" [ngClass]="{'height355px': Tiles=== 1, 'height710px': Tiles=== 2,'height1065px': Tiles=== 3 }"  id="RevenueSummaryreportContainer"></div>
+        </div>
+
+      </div>
+
+      <div   *ngIf="helpLineCounts || knowledgeCenterBanners || upcomingTrainingBanners || goToWidgetList.length > 0" class="col-12 cards-inner-div float-left">
+        <h2 class="insight-head float-left col-12">Overview</h2>
+      </div>
+
+      <div *ngIf="knowledgeCenterBanners" class="float-left padd15 announcement-card"
+        [ngClass]="service.chatBot || service.userManual ? 'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12':'col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12'">
+        <div class="col-12 float-left no_pad tableCards-knowledge">
+          <h2 class="col-12 float-left knowledge-center head-black">Knowledge center</h2>
+
+          <div class="float-left col-12 no_pad">
+            <ngu-carousel #myCarouselSec class="carousel-ht-263" [inputs]="carouselConfig"
+              [dataSource]="knowledgeCenterBanners">
+              <div *nguCarouselDef="let item;" (click)="goToUrl(item.RedirectUrl)" class="item cp">
+                <img src="{{item.ImageUrl}}" alt="" width="100%" class="carousel-ht-263 positionAbsolute">
+                <div class="float-left col-12  padd20 mt130 ">
+                  <span class="float-left col-12 no_pad sec-carousel-head-one">{{item.Title}}</span>
+                  <p class="float-left col-xl-5 col-lg-5 col-md-8 col-sm-12 col-12 no_pad sec-carousel-head-two">
+                    {{item.Subtitle}}
+                  </p>
+                </div>
+              </div>
+              <ul class="myPoint" NguCarouselPoint>
+                <li *ngFor="let j of myCarouselSec.pointNumbers; let j = index"
+                  [class.active]="j==myCarouselSec.activePoint" (click)="myCarouselSec.moveTo(j)"></li>
+              </ul>
+            </ngu-carousel>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div *ngIf="upcomingTrainingBanners" class="float-left padd15 announcement-card"
+        [ngClass]="service.chatBot || service.userManual ? 'col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12':'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12'">
+        <div class="col-12 float-left no_pad tableCards">
+          <h2 class="col-12 float-left padd20 head-black">Upcoming sales training</h2>
+          <div class="float-left col-12 no_pad second-carousel mt40">
+            <ngu-carousel #myCarouselThird class="carousel-ht-263" [inputs]="carouselConfig"
+              [dataSource]="upcomingTrainingBanners">
+              <div *nguCarouselDef="let item;" (click)="goToUrl(item.RedirectUrl)" class="item cp">
+                <img src="{{item.ImageUrl}}" alt="" width="100%" class="carousel-ht-263 positionAbsolute">
+                <div class="float-left col-12  padd20 mt130 ">
+                  <span class="float-left col-12 no_pad sec-carousel-head-one">{{item.Title}}</span>
+                  <p class="float-left col-xl-5 col-lg-5 col-md-8 col-sm-12 col-12 no_pad sec-carousel-head-two">
+                    {{item.Subtitle}}
+                  </p>
+                </div>
+              </div>
+              <ul class="myPoint" NguCarouselPoint>
+                <li *ngFor="let j of myCarouselThird.pointNumbers; let j = index"
+                  [class.active]="j==myCarouselThird.activePoint" (click)="myCarouselThird.moveTo(j)"></li>
+              </ul>
+            </ngu-carousel>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="float-left padd15"
+        [ngClass]="service.chatBot || service.userManual ? 'col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12':'col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12'">
+        <div class="col-12 no_pad float-left tableCards">
+
+          <div class="padding-20 col-12 float-left">
+            <h2 class="float-left team-engagedment col-12 float-left my-helpline-hdr">My helpline</h2>
+          </div>
+
+          <div class="float-left col-12 no_pad">
+            <table class="float-left col-12 no_pad helpline-table">
+              <thead>
+                <tr>
+                  <th class="float-left">Items</th>
+                  <th class="float-right">No.of items</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="float-left"> <span class="mdi mdi-ticket-outline">Open tickets</span> </td>
+                  <td class="float-right color-blue">{{helpLineCounts?.OpenStateCount}}</td>
+                </tr>
+                <tr>
+                  <td class="float-left"><span class="mdi mdi-comment-question-outline">Clarification pending</span> </td>
+                  <td class="float-right color-orange">{{helpLineCounts?.UCPStateCount}}</td>
+                </tr>
+                <tr>
+                  <td class="float-left"><span class="mdi mdi-approval">Closed</span> </td>
+                  <td class="float-right color-green">{{helpLineCounts?.ClosedStateCount}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="goToWidgetList.length > 0" class="float-left padd15 announcement-card"
+        [ngClass]="service.chatBot || service.userManual ? 'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12':'col-xl-8 col-lg-6 col-md-12 col-sm-12 col-12'">
+        <div class="col-12 no_pad float-left tableCards">
+
+
+          <div class="padding-20 col-12 float-left">
+            <h2 class="float-left team-engagedment  col-12 float-left my-helpline-hdr">Go to</h2>
+          </div>
+
+          <div class="float-left col-12 no_pad goto-scroll-div">
+
+            <div class="scroll-window" slimScroll>
+              <div *ngFor="let links of goToWidgetList" 
+                class="float-left col-12 goto-brder">
+                <div class="col-11 no_pad float-left" (click)="goToUrl(links)">
+                  <h3 class="float-left col-12 no_pad goto-headers">{{links.Title}}</h3>
+                  <p class="float-left col-12 no_pad goto-desc">{{links.Description}}</p>
+                </div>
+                <span class="float-right mdi mdi-arrow-top-right"></span>
+              </div>
+
+              <!-- <div
+                class="float-left col-12 goto-brder">
+                <div class="col-11 no_pad float-left">
+                  <h3 class="float-left col-12 no_pad goto-headers">Deal Pricing System</h3>
+                  <p class="float-left col-12 no_pad goto-desc">Deal pricing system is the application for creating Pricing for Opportunities.</p>
+                </div>
+                <span class="float-right mdi mdi-arrow-top-right"></span>
+              </div> -->
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <div class="sticky-btns-div float-left" [ngClass]="help ? 'active' : ''">
+
+    <button class="mdi mdi-help-circle-outline sticky-inner-div" (click)="showSelfHelp()">Self help</button>
+    <img src="assets/images/Capture.JPG" alt="">
+
+
+  </div> -->
+  <!-- <div class="float-right mr-70">
+  <div class="sticky-btns-div1 float-left feedback-opacity" [ngClass]="help ? 'active' : ''">
+    <button class="mdi mdi-pencil" (click)="openFeedbackPop()">Feedback</button>
+  </div>
+</div> -->
+
+</div>
+
+<div class="plus-icon" [ngClass]="dashboardFab?'active':''">
+  <button class="Oval" (click)="Oval()" (keypress)="Oval()" [ngClass]="service.chatbotDA?'p-none':''" [matTooltip]="dashboardFab ?  '' : 'Quick actions'" aria-label="quick actions">+</button>
+  <ul class="dashborad-fab" [ngClass]="dashboardFab?'pointer-event':'' " *ngIf="service.oval">
+    <li routerLink="/activities/syncActivity"
+      (click)="service.overlay = false;this.dashboardFab = false;removeScroll()">
+      <span>Sync activities</span>
+      <span class="mdi mdi-sync pr5 fab-icon"></span>
+    </li>
+    <li routerLink="/contacts/CreateContactComponent"
+      (click)="service.overlay = false;this.dashboardFab = false;removeScroll()">
+      <span>Create contact</span>
+      <span class="mdi mdi-account-plus pr5 fab-icon"></span>
+    </li>
+    <li (click)="service.overlay = false;this.dashboardFab = false;removeScroll();changeAccntCreate()">
+        <span>Create account</span>
+        <span class="mdi mdi-account pr5 fab-icon"></span>
+      </li>
+    <li (click)="typeOfConversationPopup();removeScroll()">
+      <span>Add meeting</span>
+      <span class="mdi mdi-message-plus pr5 fab-icon"></span>
+    </li>
+    <li [routerLink]="['/leads/createlead']" (click)="service.overlay = false;this.dashboardFab = false;removeScroll()">
+      <span>Create lead</span>
+      <span class="mdi mdi-rounded-corner pr5 fab-icon"></span>
+    </li>
+    <li [routerLink]="['/opportunity/newopportunity']"
+      (click)="service.overlay = false;this.dashboardFab = false;removeScroll()">
+      <span>Create opportunity</span>
+      <span class="mdi mdi-arrange-send-backward pr5 fab-icon"></span>
+    </li>
+
+  </ul>
+
+</div>

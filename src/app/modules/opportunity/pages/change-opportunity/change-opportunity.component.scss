@@ -1,0 +1,667 @@
+$Azure: #2f81ff;
+$White: #ffffff;
+$River: #d9e9ff;
+$MetalLight: #9b9b9b;
+$MidNight: #103f86;
+$Metal: #4a4a4a;
+$Black: #000000;
+$Orange: #f58323;
+$RubyRed: #ef3341;
+$Green: #6dc24b;
+$Wash: #9f9f9f;
+$MidGrey: #343434;
+$Assistant-blue: #e5f0ff;
+$NavyBlue: #0e3570;
+$Marble: #d8d8d8;
+$BlackHead: #2e2e2e;
+$Label: #6f6f6f;
+$LabelGrey: #4a4a4a;
+$BlueSoftBG: #eaf2ff;
+$ashGry: #708cb6;
+$DarkBlack : #2e2e2e;
+
+.top64
+{
+  top: 64px;
+  min-width: 300px !important;
+  z-index: 5;
+  border: 2px solid #2f81ff !important;
+}
+.cardsHead {
+  font-family: WiproAkkuratTT-Bold;
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 12px;
+}
+.opportunity-landing-container{
+
+  
+  .mt-126{
+    margin-top:126px
+  }
+.borderless 
+{
+    border: none !important;
+}
+    .h-150{
+        height: 150px;
+    }
+    .h-360{
+        height: 360px;
+    }
+
+    .border-none{
+        border: none;
+    }
+    .w-145{
+        width: 145px;
+    }
+    .pad-30{
+        padding:30px 30px;
+    }
+    .h-40{
+        height: 40px;
+    }
+    .mt40{
+        margin-top: 40px;
+    }
+
+
+    .d-inline-w-h-20{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+    }
+
+    .d-inline-w-h-16-14{
+        display: inline-block;
+        width: 16px;
+        height: 14px;
+        font-size: 12px;
+    }
+    .mleft-5{
+        margin-left: 5px;
+    }
+
+    .logo{
+        text-align: center;
+        font-size: 14px;
+    }
+    .sub-vertical-but{
+        padding: 5px 0px !important;
+    }
+
+
+
+}
+.pr5{
+    padding-right: 5px;
+}
+.w-110{
+    width:110px; 
+}
+ .convo-tag
+{
+position: absolute;
+left: 36px;
+width: 180px;
+height: 16px;
+opacity: 0.6;
+font-family: WiproAkkuratTT-Regular;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+font-stretch: normal;
+line-height: 1.33;
+letter-spacing: normal;
+color: #e7ebf2;
+float: left;
+top: 30px;
+}
+//alex
+//Sandhiya test
+.font-bold{
+    color: $Black;
+    font-family: "WiproAkkuratTT-Bold";
+    font-size: 18px!important;
+}
+.label-text{
+  font-size: 14px;
+  font-family: WiproAkkuratTT-Bold;
+  color: #9e9e9e;
+  margin-bottom: 12px!important;
+}
+
+.successpopup{
+  .pr-80{
+    padding-right: 80px;
+  }
+  .font-text{
+    color: #000000;
+    font-family: "WiproAkkuratTT-Bold";
+    font-size: 14px;
+  }
+  .padL-13{
+    padding-left: 13px!important;
+    padding-right: 25px!important;
+  }
+  .padLR-25{
+    padding-left: 25px!important;
+    padding-right: 25px!important;
+  }
+  .popup-hd{
+    padding-bottom: 5px!important;
+  }
+  .popup-hd-txt {
+    color: $Black !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+  }
+  span{
+    color: $Black;
+    font-family: "WiproAkkuratTT-Bold";
+    font-size: 14px;
+  }
+  tr{
+    line-height: 2;
+  }
+  tr:nth-child(even) {
+    background-color: #f0f0f0;
+    border-radius: unset!important;
+  }
+  th {
+    color: $Black;
+    font-family: "WiproAkkuratTT-Bold";
+    font-size: 14px;
+  }
+
+}
+@media screen and (max-width: 823px) {
+  .pd-lf {
+    padding-left: 0px;
+  }
+}
+
+.h-178 {
+  height: 311px;
+  }
+  .card {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom:0px !important;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .pad-20 {
+    padding: 20px 20px;
+  }
+  .heading-level-two {
+    font-family:WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color:$White;
+    letter-spacing: -0.4px;
+  }
+  .m-right16 {
+    margin-right: 16px;
+  }
+  .m-left13 {
+    margin-left: 13px;
+  }
+  .m-left16 {
+    margin-left: 16px;
+  }
+  .brudcrumbs {
+    position: relative;
+    left: 40px;
+    top: 0px;
+    opacity: 0.8;
+    font-size: 12px;
+    color: #e7ebf2;
+  }
+  .heading-custom {
+    position: relative;
+  }
+  
+  .mdi-keyboard-backspace:before {
+    content: "\F30D";
+    font-size: 22px;
+    color: #ffff;
+    position: relative;
+  }
+  
+  .web-alpha-caret {
+    color: #ffff;
+    position: absolute;
+  }
+  .d-flex {
+    display: flex;
+  }
+  .pad-create-lead1 {
+    padding: 10px 30px 10px 20px;
+  }
+  .heading-level-two{
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 20px;
+    color:$DarkBlack
+  }
+  .border-bottm{
+    border: 1px solid #d8d8d8;
+    height: 2px;
+    margin: 5px 25px 0 25px;
+  }
+  .mdi-magnify:before{
+    color: $Azure ;
+    font-size: 18px;
+    right: 26px;
+    position: absolute;
+    bottom: 5px;
+  }
+  .create-mt20 {
+    margin-top: 20px;
+  }
+  .mar-b30 {
+    margin-bottom: 30px;
+  }
+  .pad-top20 {
+    padding: 10px 0px 20px 0px;
+    margin-top: 60px;
+  }
+  .customized-input {
+    input {
+        border: 1.5px solid #e5e5e5;
+        &:focus {
+          border: 1.5px solid  $Azure;
+          outline: none;
+        }
+    }
+    input::placeholder {
+      color: #a7a4a4;
+    }
+  }
+  .customized-select {
+    position: relative;
+    select {
+      width: 100%;
+      min-height: 40px;
+      border-radius: 5px;
+      border: 1.5px solid rgba(0, 0, 0, 0.1);
+      padding: 2px 5px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      &:focus {
+        outline: none;
+        border-color:$Azure;
+      }
+    }
+    select::-ms-expand {
+      // for IE
+      display: none !important;
+    }
+    .caret {
+      top: 17px;
+      right: 16px;
+    }
+  }
+ .serachbutton.primary-button {
+// width: 16%;
+    padding: 4px 7px;
+  }
+  .show-more {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2f81ff;
+  }
+  ::ng-deep .customized-checkbox:first-child .matcheck .mat-checkbox-frame {
+    border-color: #2f81ff !important;
+  }
+  
+  ::ng-deep .customized-checkbox:first-child .matcheck.mat-checkbox-checked .mat-checkbox-background {
+    background-color: #2f81ff !important;
+  }
+  .primary-button:hover {
+    background-color: rgb(47, 129, 255);
+    color: rgb(255, 255, 255);
+}
+  .primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+    margin: 0;
+}
+  //alex css ends
+  .downloadOppo{
+    display:none !important;
+  }
+  //--------------- stepper
+  .center{
+      justify-content: center;
+  }
+  .round-btn{
+  
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-color:rgb(136, 159, 195);
+      border-radius: 50%;
+      color: #103f86;
+      cursor: pointer;
+      outline:none;
+      border:none;
+      z-index: 1;
+  }
+  .active{
+      background-color: white !important;
+  }
+  .horizontal-bar-one{
+      width: 100%;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      bottom: 22px;
+    left: 27px;
+  }
+  .horizontal-bar-two{
+      width: 100%;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      bottom: 21px;
+      left: 30px;
+  }
+  .disable-input{
+      background-color: #f3f3f3;
+  }
+  .active-text{
+      color: white !important;
+      position: relative;
+      width: 100px;
+      top: 15px;
+      right: 36px;
+   }
+  .text-step{
+      position: relative;
+      width: 135px;
+      top: 15px;
+      right: 53px;
+      color:rgba(255, 255, 255, 0.5);
+  }
+  .no-pad-lead{
+      padding: 0 !important;
+  }
+  .span-text{
+      margin-top: 5px;
+      margin-left: 5px;
+  }
+  .mb20{
+      margin-bottom: 20px;
+  }
+  
+  textarea{
+      width: 100%;
+      border: 1.5px solid #d8d8d8;
+  }
+  .h-180{
+      height:270px;
+  }
+  //table-stepper-two
+  .backWht{
+    border-radius: 8px;
+    box-shadow: 0 2px 10px 0 rgba(157, 157, 157, 0.3);
+    background-color: #ffffff;
+    padding: 25px;
+    margin-top: 10px;
+    float: left;
+   }
+   .accord_s{
+    padding: 0px 25px 25px 25px;
+   }
+   .accbody{
+    padding-bottom: 15px;
+  }
+  .allianceTable
+  {
+   th{
+    padding: 10px;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    height: 40px;
+padding-left: 20px;
+
+ }
+  td{
+  padding: 10px;
+  font-family: WiproAkkuratTT-Regular;
+  font-size: 14px;
+  color: #3f3f3f;
+  height:60px;
+padding-left: 20px;
+
+ }
+ tbody tr:nth-child(even){
+  background: #f9f9f9;
+}
+}
+  
+ .tablAlliance
+ { thead tr th:first-child{
+    border-radius: 8px 0px 0px 0px;
+ }
+  thead tr th:last-child{
+  border-radius: 0px 8px 0px 0px;
+}
+ }
+.compTables th{
+ border-radius: 8px 8px 0px 0px;
+}
+ 
+.posRelative{
+ position: relative;
+}
+.tabs_mdi
+{
+.mdi{
+  position: relative;
+  top: 3px;
+}
+.h-228 {
+    height: 225px;
+  }
+.pt100 {
+    padding-top: 135px;
+  }
+  .heading-level-two {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 16px;
+    color: $Black !important;
+    letter-spacing: -0.4px;
+  }
+  .heading-level-three {
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: $Black;
+    letter-spacing: -0.4px;
+  }
+  .brudcrumbs {
+    position: relative;
+    left: 7px;
+    top: 0px;
+    opacity: 0.8;
+    font-size: 12px;
+    color: #e7ebf2;
+  }
+  .heading-custom {
+    position: relative;
+    left: 6px;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  
+  .mdi-keyboard-backspace:before {
+    font-size: 22px;
+    color: #ffff;
+    position: relative;
+  }
+  .mt100{
+    margin-top: 100px;
+  }
+  .pad-top142{
+    padding-top: 142px;
+  }
+
+  .pad-top2{
+    bottom: 2px;
+    position: relative;
+  }
+
+  .card{
+    border-radius: 5px ;
+    border: 0px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1) ;
+    margin: 80px 0;
+    display: table;
+}
+.mb10
+{
+  margin-bottom: 10px;
+}
+.bordr-bottm{
+  border-bottom: 1.3px solid #d8d8d8;
+  padding: 15px 0;
+}
+.pad-btm5{
+  padding: 0 0 5px 0;
+}
+.pad-top10{
+  padding: 10px 0 0px 0;
+}
+.text_subhead{
+  font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #000000;
+}
+.text_subhead2{
+  font-family: WiproAkkuratTT-Bold;
+    font-size: 14px;
+    color: #000000;
+    padding: 5px 0;
+}
+.pad-topbtm5{
+  padding: 5px 0;
+}
+.pad-leftrigt{
+  padding: 0px 15px;
+}
+.mail-format{
+  color: #2f81ff;
+  font-family: WiproAkkuratTT-Bold;
+}
+
+// CSS starts popup for sprint-4 
+.ipmoreoption {
+  th{
+    background: #d9e9ff;
+    color: #103f86;
+    font-family: WiproAkkuratTT-Bold;
+    font-size: 12px;
+} 
+   .border-bottm{
+      margin-top: 70px;
+     border-top: 1px solid;
+     color: #9b9b9b73;
+    }
+    .text-label{
+      color: $Black;
+      font-family: WiproAkkuratTT-Regular;
+    }
+  .bg-gray-p {
+    background-color: $Marble !important;
+    color: $White !important;
+  }
+}
+// CSS ends here for sprint-4 
+
+// Pradeep 09-05-2019
+
+
+.primary-button.std {
+    padding: 9px 5px;
+    min-width: 110px;
+}
+.primary-button:hover {
+  background-color: #2f81ff !important;
+  color: #fff !important;
+}
+.h-40 {
+    height:40px;
+}
+.mr10 {
+    margin-right: 10px ;
+}
+.borderless {
+    border:none !important;
+}
+.mdi-check:before {
+    padding-right: 6px;
+    font-weight: bold;
+}
+.mdi-timer:before {
+    padding-right: 6px;
+    font-weight: bold;
+}
+.mdi-account-convert:before {
+    padding-right: 10px;
+    padding-right: 6px;
+    font-weight: bold;
+}
+.sub-text{
+    font-size: 14px;
+    bottom: 6px;
+    font-family: WiproAkkuratTT-Bold;
+}
+
+.pad-15-12{
+    padding: 12px 15px 4px 15px;
+    height: 75px;
+}
+}
+.cd
+{
+  cursor:default !important;
+}
+    
+       .loader {
+ margin: 200px auto;
+ border: 6px solid #f3f3f3;
+ border-radius: 50%;
+ border-top: 6px solid #3498db;
+ width: 64px;
+ height: 64px;
+ -webkit-animation: spin 2s linear infinite; /* Safari */
+ animation: spin 2s linear infinite;
+ 
+}
+.loaderContainer {
+ width: 100%;
+ top:0em;
+ position: absolute;
+ height: 100%;
+ z-index: 9999;
+ background: white;
+}
+@-webkit-keyframes spin {
+ 0% { -webkit-transform: rotate(0deg); }
+ 100% { -webkit-transform: rotate(360deg); }
+ }
+ 
+ @keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+ }
+
+ .liststyle_none{
+list-style: none;
+ }
+ .list-group-item.active {
+  color: black !important;
+  }

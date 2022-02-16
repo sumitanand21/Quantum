@@ -1,0 +1,485 @@
+<div class="top-header" [ngClass]="userdat.header?'navbar-sticky-top':'navbar-fixed-top'">
+  <app-nav></app-nav>
+  <app-small-spinner [isLoading]="isLoading"> </app-small-spinner>
+  <div class="float-left col-12  header-action-tab main-containt "
+    [ngClass]="userdat.chatBot? 'chat-bot-1100' : userdat.sideTrans ? 'main-containt-250' : ''">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  no_pad mt10 mb10 pl30 ">
+      <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 float-left no_pad pbl30">
+        <h1 class="heading-level-one ">
+          Add relationship plan</h1>
+        <span class="sub-heading">{{accountName}}</span>
+      </div>
+
+      <div class="float-right save-cancel-responsive">
+        <!--<button class="primary-button float-right a borderless border-0  h-40 std save-responsive-btn button-wd50 mr5">
+          <span class="edit" (click)="createrelationshipplan();">Add</span>
+        </button>-->
+        <div class=" a disp-flex responsive-btn-div web-action-button mr5">
+          <button (click)="goBack()"
+            class="primary-button secondary-btn border-0 mr10 h-40 std cancel-responsived-btn button-wd50">Cancel
+          </button>
+          <button (click)="createrelationshipplanData()"
+            class="primary-button float-right a borderless border-0  h-40 std save-responsive-btn button-wd50 mr5">
+            <span class="edit" *ngIf="isEdit != 'edit'">Add</span>
+            <span class="edit" *ngIf="isEdit === 'edit'">Save</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" [ngClass]="service.sideTrans ? 'main-containt-250' : 'main-containt'"> -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad new-container"
+  [ngClass]="userdat.sideTrans ? 'main-containt-250' : 'main-containt'">
+  <form [formGroup]="addrelationshipplanForm">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad pos-abs bg-mid_night h-245 res-position-rel">
+    </div>
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 top-13 padd-top-130 scroll-middle-ios">
+
+
+      <!-- Editable field on click of search icon starts here-->
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left card mt22 margin-btm55 no_pad">
+        <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 no_pad card-content float-left pad-create-lead">
+          <!--autocomplete-->
+          <!--<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  cust_autoComplete pos-rel mt20">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactName"
+                class="label-form"> Contact name
+              </label>
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                id="contactName" name="contactName" autocomplete="off" type="text" [(ngModel)]="contactName"
+                placeholder="Enter the contact name" value="Rohith Sing" (clickOutside)="contactNameclose()" (click)="openaccountowner()">
+              <span class="mdi mdi-magnify"></span>
+            </form>
+          </div>
+        </div>-->
+          <!--autocomplete-->
+
+          <!-- auto complete for Contact name starts from here -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  cust_autoComplete pos-rel mt20">
+              <div (clickOutside)="contactNameclose4c()"
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <!-- [formGroup]="accOwnerSwapForm"> -->
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="contactName4c"
+                  class="label-form">Contact name <span class="required"> *</span></label>
+                <input (keypress)="restrictspace1($event,ContactNameList.value);" appKeyListControl #ContactNameList (arrowDown)="arrowkeyLocation=$event" (keyup.enter)="ContactNameList.value=contactNamevalue[arrowkeyLocation].FullName;
+                ContactNameData=contactNamevalue[arrowkeyLocation].FullName; 
+            appendcontactname(contactNamevalue[arrowkeyLocation]);contactNameSwitch4c=false;arrowkeyLocation=0;"
+                  [attr.data-arrayMaxLength]="contactNamevalue?.length" [attr.data-isDownBtn]=true type="text"
+                  role="combobox" aria-autocomplete="list" [dataManipulate]="true" (keydown.Tab)="contactNameclose4c()"
+                  [attr.data-selectedvalue]="ContactNameData ? ContactNameData:''" matTooltip="{{ContactNameList.value}}"
+                  [attr.aria-expanded]="contactNameSwitch4c?true:false" aria-owns="read"
+                  [attr.aria-activedescendant]="arrowkeyLocation"
+                  (intialLoadData)="contactNameSwitch4c = true;getcontactname(ContactNameList.value);arrowkeyLocation=0"
+                  (input)="contactNameSwitch4c = true;getcontactname(ContactNameList.value);"
+                  [ngClass]="(relationFormSubmitted && ContactNameData==='') || (relationFormSubmitted && addrelationshipplanForm.controls['contactName'].errors?.required) ? 'border-pink':'border-gray'"
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input" id="contactName4c"
+                  name="contactName4c" autocomplete="off" type="text" formControlName="contactName"
+                  [(ngModel)]="contactName4c" placeholder="Search contact name" required>
+                  <!-- {{ContactNameData}} -->
+                <p *ngIf="(relationFormSubmitted && ContactNameData==='') || (relationFormSubmitted && !contactName4c && addrelationshipplanForm.controls['contactName'].errors?.required)"
+                  class="error-message custom-msg">Contact name is required</p>
+                <span *ngIf="ContactNameData ==='' && ContactNameList.value===''" class="mdi mdi-magnify"></span>
+                <span class="mdi mdi-close auto-close"
+                  (click)="contactTitle='';contactName4c ='';contactNameId='';arrowkeyLocation=0;ContactNameData='';ContactNameList.value=''"
+                  *ngIf="ContactNameData !=='' && ContactNameList.value!==''"></span>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure
+                     suggestion-box pos-abs z-ind-99 border-leftdrop mb30" *ngIf="contactNameSwitch4c">
+                  <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                    <span class="w-100 z-ind-9 float-left bg-white">
+                      <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                        [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                        <li class="list-group-item h-50 p-4-10 " *ngFor="let item of contactNamevalue;index as j"
+                          (click)="appendcontactname(item);ContactNameList.value =item.FullName; ContactNameData = item.FullName;contactNameSwitch4c=false"
+                          id="{{j}}" [class.active]="j==arrowkeyLocation" aria-disabled="false" aria-selected="false"
+                          tabindex="0" role="option">
+
+                          <div class="float-left naming-tags child-middle bg-azure">
+                            <span class="initials">{{item.Initials | uppercase}}</span>
+                          </div>
+                          <label for="inti_name" class="float-left name">
+                            <span class="d-block list-name">{{item.FullName}}</span>
+                            <span class="d-block sub-list">{{item.Designation}}</span>
+                          </label>
+                        </li>
+                        <li class="d-block list-name h-40 p-10"
+                          *ngIf="(contactNamevalue.length == 0 && !isActivityGroupSearchLoading)">
+                          No record found </li>
+                      </ul>
+                    </span>
+                  </perfect-scrollbar>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- auto complete for Contact name ends here -->
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  float-left  mt20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="text2"
+              class="label-form">Title <span class="required"> *</span></label>
+            <input (keypress)="restrictspace1($event,TitleData.value);" #TitleData
+              [ngClass]="relationFormSubmitted && addrelationshipplanForm.controls['Title'].errors?.required && !contactTitle ? 'border-pink':'border-gray'"
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text " id="text2" name="text"
+              type="text" formControlName="Title" placeholder="Enter the title" [(ngModel)]="contactTitle">
+            <p *ngIf="relationFormSubmitted && addrelationshipplanForm.controls['Title'].errors?.required && !contactTitle"
+              class="error-message custom-msg title_align">Title is required</p>
+          </div>
+          <!-- <div class="col-12 no_pad float-left"> -->
+          <!--<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left mt20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationT1"
+            class="label-form">Level</label>
+          <div class="customized-select">
+            <span class="caret color-azure"></span>
+            <select id="CoversationT1" formControlName ="Level" role="listbox" class="pad-left10">
+                <option value="">select</option>
+              <option [value]="level.Id" *ngFor="let level of levelValue"> {{level.Value}}</option>
+            </select>
+          </div>
+        </div>-->
+
+
+          <!--<div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 float-left  mt20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="text3"
+            class="label-form">Relationship indicator</label>
+          <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text " id="text3"
+            name="text" type="text" placeholder="Value">
+        </div>-->
+          <!-- </div> -->
+          <!--autocomplete-->
+          <!--<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  cust_autoComplete pos-rel mt20">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="wiproservice"
+                class="label-form">Contact using wipro services
+              </label>
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                id="wiproservice" name="wiproservice" autocomplete="off" type="text" [(ngModel)]="wiproservice"
+                placeholder="Search contact">
+              <span class="mdi mdi-magnify"></span>
+            </form>
+          </div>
+        </div>-->
+
+          <!--<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left  mt20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="text_1"
+            class="label-form">Relationship indicator</label>
+          <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text " id="text_1"
+            name="text" type="text" formControlName= "StrategyToImproveRelationship" placeholder="value">
+        </div>-->
+
+
+          <!-- auto complete for Key wipro starts from here -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  cust_autoComplete pos-rel mt20">
+              <div (clickOutside)="contactNameclose4()"
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+                <!-- [formGroup]="accOwnerSwapForm"> -->
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad"
+                  for="contactName4relation" class="label-form">Relationship owner <span class="required">
+                    *</span></label>
+                <input  (keypress)="restrictspace1($event,RelationshipOwnerList.value);"  appKeyListControl #RelationshipOwnerList (arrowDown)="arrowkeyLocation=$event" (keyup.enter)="RelationshipOwnerList.value=keywiprocontactname[arrowkeyLocation].FullName;
+          OwnerName=keywiprocontactname[arrowkeyLocation].FullName; 
+          appendcontact4(keywiprocontactname[arrowkeyLocation]);
+          contactNameSwitch4=false;arrowkeyLocation=0;" [attr.data-arrayMaxLength]="keywiprocontactname?.length"
+                  [attr.data-isDownBtn]=true type="text" role="combobox" aria-autocomplete="list"
+                  [dataManipulate]="true" (keydown.Tab)="contactNameclose4()"
+                  [attr.data-selectedvalue]="OwnerName? OwnerName:''" matTooltip="{{RelationshipOwnerList.value}}"
+                  [attr.aria-expanded]="contactNameSwitch4?true:false" aria-owns="read"
+                  [attr.aria-activedescendant]="arrowkeyLocation"
+                  (input)="contactNameSwitch4 = true ; getOwnersList(RelationshipOwnerList.value)"
+                  (intialLoadData)="contactNameSwitch4 = true;getOwnersList(RelationshipOwnerList.value);arrowkeyLocation=0"
+                  [ngClass]="(relationFormSubmitted && OwnerName==='') || (relationFormSubmitted && addrelationshipplanForm.controls['relationOwner'].errors?.required) ? 'border-pink':'border-gray'"
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                  id="contactName4relation" name="contactName4" autocomplete="off" type="text"
+                  [(ngModel)]="contactName4" placeholder="Search relationship owner" formControlName="relationOwner"
+                  required>
+                <p *ngIf="(relationFormSubmitted && OwnerName==='') || (relationFormSubmitted && !contactName4 && addrelationshipplanForm.controls['relationOwner'].errors?.required)"
+                  class="error-message custom-msg">Relationship owner is required</p>
+                <span *ngIf="OwnerName==='' && RelationshipOwnerList.value===''" class="mdi mdi-magnify"></span>
+                <span class="mdi mdi-close auto-close"
+                  (click)="contactName4 ='';contactid='';arrowkeyLocation=0;OwnerName=''"
+                  *ngIf="OwnerName!=='' && RelationshipOwnerList.value!==''"></span>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top64 no_pad standard-border color-azure
+                     suggestion-box pos-abs z-ind-99 border-leftdrop mb30" *ngIf="contactNameSwitch4">
+                  <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                    <span class="w-100 z-ind-9 float-left bg-white">
+                      <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                        [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                        <li *ngFor="let item of keywiprocontactname;index as j" id="{{j}}"
+                          [class.active]="j==arrowkeyLocation" aria-disabled="false" aria-selected="false" tabindex="0"
+                          role="option" class="list-group-item h-50 p-4-10 "
+                          (click)="appendcontact4(item);OwnerName = item.FullName;RelationshipOwnerList.value = item.FullName;contactNameSwitch4 = false">
+
+                          <div class="float-left naming-tags child-middle bg-azure">
+                            <span class="initials">{{item.Initials | uppercase}}</span>
+                          </div>
+                          <label for="inti_name" class="float-left name">
+                            <span class="d-block list-name">{{item.FullName}}</span>
+                            <span class="d-block sub-list">{{item.Designation}}</span>
+                          </label>
+                        </li>
+                        <li class="d-block list-name h-40 p-10"
+                          *ngIf="(keywiprocontactname.length == 0 && !isActivityGroupSearchLoading)">
+                          No record found </li>
+                      </ul>
+                    </span>
+                  </perfect-scrollbar>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- auto complete for Key wipro ends here -->
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  float-left no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pos-rel mt20">
+              <div class="float-left customized-inputrelation slidetoggle slidetoggle_responsive customized-slider">
+                <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                  for="CoversationT2">Contact uses Wipro Services <span class="required"> *</span></label>
+                <!--<mat-slide-toggle [checked]="ContactUsingWiproServices" (change)="setBussiness($event)">
+                Contact using wipro services
+              </mat-slide-toggle>-->
+                <mat-radio-group formControlName="ContactUsingWiproServices"
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt10 no_pad">
+                  <mat-radio-button value="true" [checked]="addrelationshipplanForm.value.ContactUsingWiproServices"
+                    (change)="setBussiness($event, 'true')" class="pr30">
+                    Yes</mat-radio-button>
+                  <mat-radio-button value="false" [checked]="!addrelationshipplanForm.value.ContactUsingWiproServices"
+                    (change)="setBussiness($event, 'false')">No
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+          <!--autocomplete-->
+          <!--autocomplete-->
+          <!--<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  cust_autoComplete pos-rel mt20">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="competitor"
+                class="label-form"> Contact working with competitor
+              </label>
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                id="competitor" name="competitor" autocomplete="off" type="text" [(ngModel)]="competitor"
+                placeholder="Search contact">
+              <span class="mdi mdi-magnify"></span>
+            </form>
+          </div>
+        </div>-->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  no_pad">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pos-rel mt20">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad label-form"
+                for="CoversationT2">Contact working with competitor <span class="required"> *</span></label>
+              <div class="float-left customized-inputrelation  slidetoggle slidetoggle_responsive customized-slider">
+                <!--<mat-slide-toggle [checked]="ContactWorkswithCompetition" (change)="setCompetitor($event)">
+                Contact working with competitor
+              </mat-slide-toggle>-->
+                <mat-radio-group formControlName="ContactWorkswithCompetition"
+                  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left mt10 no_pad">
+                  <mat-radio-button value="true" [checked]="addrelationshipplanForm.value.ContactWorkswithCompetition"
+                    (change)="setCompetitor($event, 'true')" class="pr30">
+                    Yes</mat-radio-button>
+                  <mat-radio-button value="false" [checked]="!addrelationshipplanForm.value.ContactWorkswithCompetition"
+                    (change)="setCompetitor($event, 'false')">No
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+          <!--autocomplete-->
+          <!--<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  no_pad float-left">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationT2"
+            class="label-form">Meeting frequency </label>
+          <div class="customized-select">
+            <span class="caret color-azure"></span>
+            <select id="CoversationT2"  formControlName ="MeetingFrequency"  role="listbox" class="pad-left10">
+              <option value=""> select </option>
+              <option  *ngFor="let frequency of meetingfrequencyvalue"   [value]="frequency.Id">{{frequency.Value}}</option>
+            </select>
+          </div>
+        </div>
+        </div>-->
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 float-left  mt20">
+            <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="text4"
+              class="label-form">Stratergy to improve relationship <span class="required"> *</span></label>
+            <input (keypress)="restrictspace1($event,StrategyToImproveRelationship.value);" #StrategyToImproveRelationship
+              [ngClass]="relationFormSubmitted && addrelationshipplanForm.controls['StrategyToImproveRelationship'].errors?.required ? 'border-pink':'border-gray'"
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 input-text label-input" id="text4"
+              name="text" type="text" formControlName="StrategyToImproveRelationship" placeholder="Enter the stratergy"
+              required>
+            <p *ngIf="relationFormSubmitted && addrelationshipplanForm.controls['StrategyToImproveRelationship'].errors?.required"
+              class="error-message custom-msg title_align">Strategy To Improve Relationship is required</p>
+          </div>
+
+          <!--autocomplete-->
+          <!--<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left no_pad">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  cust_autoComplete pos-rel mt20">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName">
+              <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="keywip"
+                class="label-form">Key wipro contact name
+              </label>
+              <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                id="keywip" name="keywip" autocomplete="off" type="text" [(ngModel)]="keywip"
+                placeholder="Search owner">
+              <span class="mdi mdi-magnify"></span>
+            </form>
+          </div>
+        </div>-->
+
+          <!--autocomplete-->
+          <!--<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 float-left  mt20">
+          <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="CoversationT3"
+            class="label-form">Relationship theme</label>
+          <div class="customized-select">
+            <span class="caret color-azure"></span>
+            <select id="CoversationT3" formControlName ="Relationshiptheme" role="listbox" class="pad-left10">
+              <option value="">Select the relationship theme</option>
+              <option [value]="relationship.Id" *ngFor="let relationship of relationshiptheamvalue" >{{relationship.Value}}</option>
+            </select>
+          </div>
+        </div>-->
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  pad-30 top-13 pt0 pb-85">
+    <div class="col-sm-12 no_pad backWht float-left mb20">
+      <div class="col-sm-12 cardsHeadheader float-left no_pad">
+        <div class="col-sm-6 no_pad float-left">
+          <h3 class="col-sm-12 cardsHeadcbu no_pad">Key wipro contacts </h3>
+        </div>
+        <div class="col-sm-6 no_pad float-right">
+          <button class="float-right addAccountBtns" (click)="addRowTable()">+
+            Add key wipro contacts
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-12 no_pad">
+        <div class="col-sm-12 no_pad float-left accord_s">
+          <div class="col-sm-12 no_pad accbody overflow-horizontal">
+            <table class="col-sm-12 no_pad allianceTable tablAlliance ">
+              <thead>
+                <tr>
+                  <th *ngFor="let tab of table_headkey">{{tab.tablehead}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!--<tr *ngFor="let tab of table_datakey">
+                          <td>{{tab.tabledata1}}</td>
+                          <td>{{tab.tabledata2}}</td>
+                          <td>{{tab.tabledata3}}</td>
+                        </tr>-->
+
+                <tr *ngFor="let item of newMem; let index=index">
+                  <td [attr.data-label]="'Wipro key contact'">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-7 float-left no_pad">
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  cust_autoComplete pos-rel no_pad">
+                        <div
+                          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName marginTopBottom">
+                          <input (keypress)="restrictspace1($event,keyContact.value);" #keyContact   (clickOutside)="item['showAndHide']=false"
+                            class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  h-40 label-input"
+                            id="{{index}}" name="keyContact" autocomplete="off" type="text" [(ngModel)]="item.FullName"
+                            placeholder="Search key contact"
+                            (click)="item['showAndHide']=true; getkeywiprocontactname($event, index)"
+                            (input)="item['showAndHide']=true; getkeywiprocontactname($event, index)">
+                          <span class="mdi mdi-magnify"></span>
+                          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border-btm border-right float-left top-align no_pad standard-border color-azure
+                                    suggestion-box pos-abs z-ind-99 border-leftdrop mb30" *ngIf="item['showAndHide']">
+                            <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                              <span class="w-100 z-ind-9 float-left bg-white">
+                                <ul class=" list-group color-azure  sort-dropdown mr2" role="listbox" id="read"
+                                  [ngClass]="{'loader-search':isActivityGroupSearchLoading }">
+                                  <li class="list-group-item h-50 p-4-10 "
+                                    *ngFor="let item of newMem[index].keyDataArray; let ind=index;"
+                                    (click)="item['showAndHide']=false;appendkeycontactname(item, index)">
+                                    <label for="inti_name" class="float-left name">
+                                      <span class="d-block list-name">{{item.FullName}}</span>
+                                      <span class="d-block sub-list">{{item.Designation}}</span>
+                                    </label>
+                                  </li>
+                                  <li class="d-block list-name h-40 p-10"
+                                    *ngIf=" newMem[index].keyDataArray != undefined && (newMem[index].keyDataArray).length == 0 && !isActivityGroupSearchLoading">
+                                    No record found </li>
+                                </ul>
+                              </span>
+                            </perfect-scrollbar>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td [attr.data-label]="'Meeting frequency'">
+                    <div
+                      class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-7 no_pad float-left contact-relationship mobile-select-box">
+                      <select [(ngModel)]="item.MeetingFrequency.Id"
+                        class="select-focus {{service.getSelectedClass(proposalTypeValue)}}" name="proposal"
+                        id="proposal" role="listbox">
+                        <option value="">Select frequency</option>
+                        <option *ngFor="let frequency of meetingfrequencyvalue" [value]="frequency.Id">
+                          {{frequency.Value}}
+                        <option>
+                      </select>
+                    </div>
+                    <div
+                      class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-7 no_pad float-left contact-relationship web-select-box">
+                      <mat-form-field class="col-12 no_pad float-left">
+                        <mat-select disableOptionCentering panelClass="Select-panel-class"
+                          [(ngModel)]="item.MeetingFrequency.Id"
+                          class="select-focus mat-select {{service.getSelectedClass(proposalTypeValue)}}"
+                          name="proposal" id="proposal" role="listbox">
+                          <mat-option value="">Select frequency</mat-option>
+                          <mat-option *ngFor="let frequency of meetingfrequencyvalue" [value]="frequency.Id">
+                            {{frequency.Value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </td>
+                  <td [attr.data-label]="'Relationship theme'">
+                    <div
+                      class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-7 no_pad float-left contact-relationship mobile-select-box">
+                      <select [(ngModel)]="item.Relationshiptheme.Id"
+                        class="select-focus {{service.getSelectedClass(proposalTypeValue)}}" name="proposal"
+                        id="proposal" role="listbox">
+                        <option value="">Select theme type</option>
+                        <option [value]="relationship.Id" *ngFor="let relationship of relationshiptheamvalue">
+                          {{relationship.Value}}</option>
+                      </select>
+                    </div>
+                    <div
+                      class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-7 no_pad float-left contact-relationship web-select-box">
+                      <mat-form-field class="col-12 no_pad float-left">
+                        <mat-select disableOptionCentering panelClass="Select-panel-class"
+                          [(ngModel)]="item.Relationshiptheme.Id"
+                          class="select-focus mat-select {{service.getSelectedClass(proposalTypeValue)}}"
+                          name="proposal" id="proposal" role="listbox">
+                          <mat-option value="">Select theme type</mat-option>
+                          <mat-option [value]="relationship.Id" *ngFor="let relationship of relationshiptheamvalue">
+                            {{relationship.Value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+            <div class="col-12 float-left no_pad" *ngIf="newMem.length == 0">
+              <p class="text-center pad-30"> No records available </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

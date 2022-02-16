@@ -1,0 +1,15 @@
+.namedefalutInactive {
+    background: #9b9b9b !important;
+}
+
+.namedefalutactive {
+    background: #2f81ff !important;
+}
+
+.namedefalutInactivetext{
+    color: #9b9b9b !important;
+}
+
+.namedefalutactiveText {
+    color: #2f81ff !important;
+}

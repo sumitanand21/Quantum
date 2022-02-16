@@ -1,0 +1,54 @@
+<div class="col-12 float-left  no_pad popup-container popup-container-opportunity user-targets ">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-11 float-left  no_pad popup-hd-txt" mat-dialog-title>Users carrying results</span>
+            <button class="col-1 float-left no_pad btndef-none mdi mdi-window-close close-icn" aria-label="close" mat-dialog-close (click)="onNoClick()"></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 no_pad float-left customized-input cust_autoComplete pos-rel mb1">
+            <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                <div>
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad margin-top-20 hd-val label-form" for="contactName">Search by email ID</label>
+                    <input class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 float-left border-gray h-40 w-100 in-value" id="contactName" name="contactName"
+                        autocomplete="off" type="text" [(ngModel)]="contactName" (ngModelChange)="onChangeHandler()" placeholder="Enter email/name"
+                        required>
+                    <button aria-label="search" class="search primary-button h-40" (click)="searchdata()">Search</button>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="col-12 float-left mtop-15 no_pad" *ngIf='displaydata'>
+            <span class="txt-italic">Showing results for </span> &nbsp;{{contactName}}
+        </div>
+
+
+
+        <div class="col-12 float-left no_pad for-mbl" *ngIf="displaydata">
+            <div class="col-12 float-left mtop-15 no_pad" *ngIf='(wiproContact | filter:contactName).length == 0'>
+                <span class="txt-italic">No results for </span> &nbsp;{{contactName}}
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 float-left mbot-10 no_pad">
+                <perfect-scrollbar class="scrollHeight2 mtb-5 col-11 no_pad">
+                    <div class="col-12 float-left  no_pad customized-checkbox" *ngFor='let item of wiproContact | filter:contactName'>
+                        <section class="col-12 float-left mtb-5 mbot-10 no_pad">
+                            <mat-checkbox class="col-12 float-left no_pad">{{item.name}}</mat-checkbox>
+                            <small class="col-12 float-left">{{item.email}} | {{item.role}} | {{item.targets}}</small>
+                        </section>
+                    </div>
+                </perfect-scrollbar>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-12 float-left no_pad ">
+        <button aria-label="ADD" class="col-12 float-left btndef-none no_pad confrm-btn" mat-dialog-close (keypress)="onNoClick()"
+            (click)="onNoClick()">Add</button>
+    </div>
+
+</div>

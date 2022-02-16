@@ -1,0 +1,204 @@
+<div class="col-12 float-left  no_pad popup-container ">
+
+    <div class="col-12 float-left  container-dialog">
+        <div class="col-12 float-left  no_pad popup-hd">
+            <span class="col-10 float-left  no_pad popup-hd-txt" mat-dialog-title>Advisory/ Analyst Relations</span>
+            <button class="col-2 float-right no_pad btndef-none mdi mdi-window-close discard-close-btn close-icn" aria-label="close" mat-dialog-close></button>
+        </div>
+
+        <div class="col-12 float-left border-bottom-grey"></div>
+
+        <!-- <div class="col-12 float-left no_pad cust_autoComplete">
+                <label class="col-12 float-left  no_pad margin-top-20 hd-val" for="percentage">Initiative name</label>
+                <input type="text"  class="col-12 float-left border-gray w-100 label-input" name="percentage"
+                    placeholder="Please enter the initiative name" />
+            </div> -->
+
+        <div class="col-12 float-left mt20 no_pad">
+            <div (clickOutside)="linkedCBUSwitch = false" class="col-12  no_pad float-left plb-60-20 cust_autoComplete pos-rel">
+                <form class="col-12  float-left no_pad add-advisory">
+                    <label class="col-12  float-left no_pad" for="contactCBU" class="label-form">Advisory/ Analyst Account Name<span style="color: red;font-weight: bold;"> *</span>
+                    </label>
+                    <!--<span class="required"> *</span>-->
+                    <input class="col-12  float-left h-40 label-input" appKeyListControl #DetailAccountNameList (arrowDown)="arrowkeyLocation=$event" (keyup.enter)="
+                    appendCBU(CBUContact[arrowkeyLocation].Name,arrowkeyLocation,true);linkedCBUSwitch=false;arrowkeyLocation=0" [attr.data-arrayMaxLength]="CBUContact?.length" [attr.data-isDownBtn]=true type="text" role="combobox" aria-autocomplete="list"
+                        [attr.aria-expanded]="linkedCBUSwitch?true:false" aria-owns="read" [attr.aria-activedescendant]="arrowkeyLocation" autocomplete="false" [dataManipulate]="true" (keydown.Tab)="linkedCBUSwitch = false" [attr.data-selectedvalue]="AccountName"
+                        matTooltip="{{DetailAccountNameList.value}}" id="contactCBU" name="contactCBU" autocomplete="off" type="text" [(ngModel)]="contactCBU" placeholder="Search Advisory/Analyst name" (intialLoadData)="linkedCBUSwitch = true ; searchAdvisoryAnalyst(DetailAccountNameList.value);arrowkeyLocation=0"
+                        (input)="linkedCBUSwitch = true;searchAdvisoryAnalyst(DetailAccountNameList.value)" [ngClass]="pressedAdd && !contactCBU ? 'error':'border-gray'">
+
+                    <span class="mdi mdi-magnify"></span>
+                    <p *ngIf="pressedAdd && !contactCBU" class="error-message custom-label top64" id="stateerrormsg">Advisory/ Analyst account name is required</p>
+
+                    <!-- <span class="mdi mdi-close auto-close"
+              (click)="contactCBU='';arrowkeyLocation=0;ParentAccountName=''"
+              *ngIf="!parentNameSwitch && ParentNameList.value!==''"></span> -->
+                    <div class="col-12  border-btm z-ind-9999 float-left no_pad suggestion-box pos-sticky  border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white" *ngIf="linkedCBUSwitch">
+                        <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group mr2  sort-dropdown ">
+                                <li class="list-group-item h-50 p-4-10" *ngFor="let item of CBUContact |filter:contactCBU;let i = index;" id="{{i}}" tabindex="0" role="option" [class.active]="i==arrowkeyLocation" aria-disabled="false" aria-selected="false" (click)="appendCBU(item.Name,i,true);linkedCBUSwitch=false">
+
+                                    <label for="inti_name" class="float-left name w-80">
+                                        <span class="d-block list-name ellipses">{{getdecodevalue(item.Name)}}</span>
+                                        <span class="d-block sub-list">{{item.Number}} | {{item.Owner ? item.Owner.FullName : '' }}</span> 
+                                    </label>
+                                    <!-- (click)="appendCBU(item.Name,i)" -->
+                                </li>
+                                <li class="d-block list-name h-40 p-10 cp" *ngIf="(CBUContact |filter:contactCBU).length == 0">
+                                    No record found </li>
+                            </ul>
+                        </perfect-scrollbar>
+                        <span class="db-search" (click)="openadvancetabs('AdvisoryAnalystSearch',CBUContact,contactCBU)">
+                            <button id="adls{{CBUContact?.length+1}}" role="option" tabindex="0" aria-disabled="false"
+                                type="button" class="button-search"
+                                [class.active]="CBUContact?.length+1 == arrowkeyLocation">
+                                <span class="mdi mdi-file-outline"></span> Advance look up
+                        </button>
+                        </span>
+                    </div>
+                </form>
+
+                <!-- multi select code start -->
+                <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                    <perfect-scrollbar style="max-height:150px">
+                        <div *ngFor="let item of selectedAnalyst; let i=index" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left  mt-10 p-4-10">
+                            <div class="float-left naming-tags child-middle bg-azure" [ngStyle]="{'backgroundColor': (5%2 == 0) ? 'blue' : 'red'}">
+                                <span class="initials">{{item.Name | firstWord}}</span>
+                            </div>
+                            <label for="inti_name" class="float-left name w-80">
+                                <span class="d-block list-name ellipses" matTooltip="Quantum">{{item.Name}}</span>
+                                <span class="d-block sub-list">{{item.Number}}</span>
+                            </label>
+                            <span class="mdi mdi-close close-lead float-right cp" (click)="deleteSelectedItem(item, i)"></span>
+                        </div>
+                    </perfect-scrollbar>
+
+                </div> -->
+
+                <!-- multi select code end -->
+
+            </div>
+        </div>
+
+        <!-- <div class="textarea_readonly col-12 float-left padt-20 no_pad">
+                    <label class="col-12  float-left no_pad" for="contactcampaign1" class="label-form">Description
+                     </label>
+                    <textarea class="form-control vision_txt_area_placeholder" ngModel="" #newListItem1
+                    name="newListItem1" rows="3" placeholder="Enter the description"></textarea>
+                </div> -->
+
+        <!--<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad mt-20" >
+                <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad CompanyName CompanyNamewip">
+                    <label class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad" for="customerName"
+                     class="label-form"> Target contact name 
+                    </label>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad">
+                        <input class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left h-40 label-input br-0-4"
+                            id="customerName" name="customerName" type="text" autocomplete="off"
+                            [(ngModel)]="customerName" (keyup)="standBySearch()" placeholder="Search target contact name" (clickOutside)="customerNameclose()"
+                            (click)="customerNameSwitch = true">
+                        <span class="mdi mdi-magnify"></span>
+                    </div>
+    
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad z-ind-9"
+                         *ngIf="customerName && customerNameSwitch">
+                        <ul class=" list-group color-azure autocomplete-box" >
+                            <span class="w-100 z-ind-9 float-left bg-white">
+                              <perfect-scrollbar style="max-height:160px" class="z-ind-9"> 
+                             <span class="w-100 z-ind-9 float-left bg-white">
+                                <ul class=" list-group mr2 sort-dropdown cp">
+                                    <li class="list-group-item h-50 p-4-10 " (click)="appendcustomer(item.FullName,i)"
+                                        *ngFor="let item of customerContact |filter:customerName;let i = index">
+                    
+                                        <div class="float-left naming-tags child-middle bg-ash">
+                                            <span class="initials">{{item.FullName | firstWord}}</span>
+                                        </div>
+                                        <label for="inti_name" class="float-left name">
+                                            <span class="d-block list-name">{{item.FullName}}</span>
+                                            <span class="d-block sub-list">{{item.Designation}}</span>
+                                        </label>
+                                    </li>
+                    
+                                    <li class="d-block list-name h-40 p-10" *ngIf="(customerContact |filter:customerName).length == 0">No results found 
+                                        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad font-12">
+                                            Ensure that you have typed correct legal entity name</span></li>
+                                </ul>
+                              </span>
+                             </perfect-scrollbar>
+                            </span>
+                          </ul>
+                    </div>
+                </form>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left no_pad selected-contact">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left pr0 mt-10 p-4-10 cp"
+                        *ngFor="let item of selectedCustomer" >
+                        <div class="float-left naming-tags child-middle bg-ash">
+                            <span class="initials">{{item.FullName | firstWord}}</span>
+                        </div>
+                        <label for="inti_name" class="float-left name">
+                            <span class="d-block list-name">{{item.FullName}}</span>
+                            <span class="d-block sub-list">{{item.Designation}}</span>
+                        </label>
+                        <span class="float-right mdi mdi-close cp" (click)="closeDiv(item)"></span>
+                    </div>
+               </div>
+            </div>-->
+
+        <!-- <div class="col-12 float-left mt20 no_pad">
+            <div class="col-12  no_pad float-left plb-60-20 cust_autoComplete pos-rel">
+                <form class="col-12  float-left no_pad">
+                    <label class="col-12  float-left no_pad" for="contactTarget" class="label-form">Target contact name 
+                    </label>
+                    <input class="col-12  float-left h-40 label-input" id="contactTarget" name="contactTarget"
+                        autocomplete="off" type="text" [(ngModel)]="contactTarget" placeholder="Search target contact name"
+                        (clickOutside)="linkedTargetSwitch = false" (click)="linkedTargetSwitch = true">
+                    <span class="mdi mdi-magnify"></span>
+                    <div class="col-12  border-right border-btm z-ind-9999 float-left no_pad suggestion-box pos-abs mt39 border-bottom-4 top64 standard-border color-azure z-ind-9 bg-white"
+                        *ngIf="contactTarget && linkedTargetSwitch">
+                        <perfect-scrollbar style="max-height:160px" class="z-ind-9">
+                            <ul class=" list-group mr2  sort-dropdown ">
+                                <li class="list-group-item h-50 p-4-10"
+                                    (click)="appendTarget(item.contact,item.index)"
+                                    *ngFor="let item of TargetContact |filter:contactTarget">
+
+                                    <label for="inti_name" class="float-left name w-80">
+                                        <span class="d-block list-name ellipses">{{item.contact}}</span>
+                                        <span class="d-block sub-list">{{item.designation}}</span>
+                                    </label>
+
+                                </li>
+                                <li class="d-block list-name h-40 p-10 cp"
+                                    *ngIf="(TargetContact |filter:contactTarget).length == 0">
+                                    No record found </li>
+                            </ul>
+                        </perfect-scrollbar>
+                    </div>
+                </form>
+
+            </div>
+        </div> -->
+
+        <!-- <div class="col-12 no_pad float-left pt20">
+               <label class="col-12  float-left no_pad" for="CoversationT1" class="label-form">Target role</label>
+                <div class="customized-select ">
+                    <span class="color-azure caret"></span>
+                    <select id="CoversationT1" role="listbox" class="">
+                        <option value="Face to face conversation">Reason code</option>
+                        <option value="Virtual conversation">Not Listed</option>
+                        <option value="Telephonic Conversation">Delay in Delivery</option>
+                    </select>
+                </div>
+            </div> -->
+
+    </div>
+
+    <div class="col-12 float-left  mt30 mb20 margin-btm">
+        <div class="col-12  float-left disp-flex  mar-28">
+            <button class="col-6 primary-button secondary-btn btn-block h-40 mr10 std cancel-responsived-btn button-wd50" mat-dialog-close aria-label="cancel">Cancel</button>
+            <button class="col-6 primary-button h-40 std save-responsive-btn button-wd50" aria-label="add" (click)="addAdvisoryAnalyst(); pressedAdd = true;" (keypress)="addAdvisoryAnalyst();">Add</button>
+
+        </div>
+
+    </div>
+
+</div>

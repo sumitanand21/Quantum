@@ -1,0 +1,68 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="col-12 float-left complex_table unqualified-padding pt0 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="loaderContainer">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="col-12 float-left complex_table unqualified-padding pt20 no_pad">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no_pad leads-archived-landing">
+      <div class="col-lg-12 col-sm-12 col-md-12 col-12 no_pad">
+        <div class="parent-container" *ngIf="activityList?.length>=1">
+          <app-single-table 
+          (detectActionValue)="performListActions($event)"
+          (detectPageChangeData)="onPagination($event)"
+          [TableName]="'conversation'"
+          [totalTableCount]="tableTotalCount"
+          [TableCollection]="activityList" 
+          [IscheckBoxRequired]=true 
+          [IsActionFixed]=true 
+          [IsFreezedColumn]=true
+          
+          [IsReplicate]=true 
+          [IsNewConversation]=true
+          [IsAddActivity] = true
+          [IsViewAction] = true
+          [IsArchiveActivity] = true
+          [IsDropBoxRequired] = true
+          [serviceSearch]=true
+          [IsCustomizeTable] = true
+          [paginationPageNumber]="AllActivityRequestBody"
+          [TabName]="'allConversation'"
+          [filterConfigData]="filterConfigData"
+          >
+          <!-- [bgParentColor]="'bgWhiteContainer'" -->
+        </app-single-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!--- use the below flags to enable buttons in respective tables using property binding [yourChoice] = true -->
+<!--
+   [orderByName]="'CreatedOn'"
+IsShare :boolean;
+IsReplicate :boolean;
+IsFavorite :boolean;
+IsCampaign :boolean;
+IsCreateLead :boolean;
+IsArchive :boolean;
+IsDelete :boolean;
+IsRestore :boolean;
+IsNurture :boolean;
+IsDisqualify :boolean;
+IsQualify :boolean;
+IsCreateOpportunity :boolean;
+-->
+<!-- @output from child table to parent listen actions
+(detectActionValue)="performTableChildAction($event)"
+detectActionValue is emitted from child which has
+row specific data & action indicating action to be performed like delete or favourite
+format of (detectActionValue) will be : {objectRowData: (whole row item), action: (delete or favourite etc)}
+-->
+<!-- For white container table, please pass this input :([bgParentColor]="'bgWhiteContainer'")-->

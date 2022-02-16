@@ -1,0 +1,11 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left view-edit-container no_pad">
+  
+   
+    <div class="col-12 float-left no_pad sub-tabs" *ngIf="tabVisibility">
+      <button class="border-0" [routerLink]="['dealCriteria']" routerLinkActive="active">Deal criteria</button>
+      <button class="border-0" [routerLink]="['reports']" routerLinkActive="active">Reports</button>
+      <button class="border-0" [routerLink]="['dealAggregator']" routerLinkActive="active">Deal aggregator</button>
+    </div>
+    <router-outlet></router-outlet>
+ 
+</div>
