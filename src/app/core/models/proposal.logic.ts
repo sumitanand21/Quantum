@@ -1,5 +1,0 @@
-export class ProposalLogic {
-    splitAdidName() {
-        
-    }
-}
